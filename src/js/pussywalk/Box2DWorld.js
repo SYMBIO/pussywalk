@@ -37,10 +37,6 @@ export default class Box2DWorld {
     this.textures = {};
     this.sortedTextures = [];
 
-    let textureConfigNames = Constants.textureConfig.map(function(texture) {
-      return texture.name
-    })
-
     let bodiesJson = json.body;
     let body,
       loadedBodies = [];
@@ -48,36 +44,14 @@ export default class Box2DWorld {
     bodiesJson.forEach((b) => {
       body = Rube2Box2D.loadBodyFromRUBE(b, this.world);
       this.bodies[body.name] = body;
-      let index = textureConfigNames.indexOf(body.name)
+      let index = Constants.textureNames.indexOf(body.name)
       if (index != -1) {
         let image = new Image()
         image.src = "images/figure/" + body.name + ".png"
         // image.src = "images/figure/square.png"
-        this.textures[body.name] = {
-          image: image,
-          name: body.name,
-          zIndex: Constants.textureConfig[index].zIndex,
-          offset: {
-            x: 0,
-            y: 0
-          },
-          position: {
-            x: 0,
-            y: 0
-          },
-          rotation: 0
-        }
+        this.textures[body.name] = image
       }
       loadedBodies.push(body);
-    });
-
-    // Sort textures by zIndex for faster rendering
-    for (var key in this.textures) {
-      this.sortedTextures.push(this.textures[key])
-    }
-
-    this.sortedTextures = this.sortedTextures.sort(function(t1, t2) {
-      return t1.zIndex - t2.zIndex;
     });
 
     let jointsJson = json.joint;
@@ -190,33 +164,9 @@ export default class Box2DWorld {
     this.world.Step(this.fps.dt, this.velocityIterations, this.positionIterations);
     this.world.ClearForces();
 
-    // Store position and rotation for rendering cycle
+    // Graphics
 
     let PTM = 32;
-
-    for (var body = this.world.GetBodyList(); body.e != 0; body = body.GetNext()) {
-      if (this.textures[body.name]) {
-
-        let offset = {
-          x: -this.textures[body.name].image.naturalWidth / 2,
-          y: -this.textures[body.name].image.naturalHeight / 2
-        }
-
-        if (Constants.offsets[body.name]) {
-          offset.x += Constants.offsets[body.name].x
-          offset.y += Constants.offsets[body.name].y
-        }
-
-        this.textures[body.name].offset = offset
-        this.textures[body.name].position = {
-          x: body.GetPosition().get_x() * PTM,
-          y: -body.GetPosition().get_y() * PTM
-        }
-        this.textures[body.name].rotation = -body.GetAngle()
-      }
-    }
-
-    // Graphics
 
     let context = this.canvas.getContext('2d')
 
@@ -229,24 +179,46 @@ export default class Box2DWorld {
     context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     context.translate(canvasOffset.x, canvasOffset.y);
 
-    for (var key in this.sortedTextures) {
+    for (var i in Constants.textureNames) {
 
-      let texture = this.sortedTextures[key]
-      context.translate(texture.position.x, texture.position.y);
-      context.rotate(texture.rotation)
-      context.drawImage(texture.image,
+      let textureName = Constants.textureNames[i]
+      let texture = this.textures[textureName]
+      if (this.bodies[textureName] == null) {
+        continue;
+      }
+
+      let body = this.bodies[textureName];
+
+      let position = {
+        x: body.GetPosition().get_x() * PTM,
+        y: -body.GetPosition().get_y() * PTM
+      }
+
+      let offset = {
+        x: -texture.naturalWidth / 2,
+        y: -texture.naturalHeight / 2
+      }
+
+      if (Constants.offsets[textureName]) {
+        offset.x += Constants.offsets[textureName].x
+        offset.y += Constants.offsets[textureName].y
+      }
+
+      context.translate(position.x, position.y);
+      context.rotate(-body.GetAngle())
+      context.drawImage(texture,
         0,
         0,
-        texture.image.naturalWidth,
-        texture.image.naturalHeight,
-        texture.offset.x,
-        texture.offset.y,
-        texture.image.naturalWidth,
-        texture.image.naturalHeight
+        texture.naturalWidth,
+        texture.naturalHeight,
+        offset.x,
+        offset.y,
+        texture.naturalWidth,
+        texture.naturalHeight
       )
 
-      context.rotate(-texture.rotation)
-      context.translate(-texture.position.x, -texture.position.y);
+      context.rotate(body.GetAngle())
+      context.translate(-position.x, -position.y);
     }
 
     // Debug draw
