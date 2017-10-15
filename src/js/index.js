@@ -1,6 +1,7 @@
-import styles from  '../styles/index.less';
-import PussywalkMinigame  from './pussywalk/PussywalkMinigame';
+import styles from '../styles/index.less';
+import PussywalkMinigame from './pussywalk/PussywalkMinigame';
 
-window.addEventListener('load', () => {
-    let _game = new PussywalkMinigame();
-});
+// window.addEventListener('load', () => {
+window.onload = function() {
+  let _game = new PussywalkMinigame();
+}

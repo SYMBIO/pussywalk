@@ -1,0 +1,26 @@
+//Restarted script log at Sat Oct 14 20:39:16 2017
+getBody(16).deselect();
+getBody(6).select();
+getBody(6).deselect();
+getJoint(6).delete();
+getJoint(15).delete();
+getJoint(18).delete();
+getJoint(1).delete();
+getFixture(20).delete();
+getImage(11).delete();
+getBody(6).delete();
+addBody(6, '{"angle":-0.1865739673376083,"angularVelocity":0,"awake":true,"linearVelocity":0,"massData-mass":1,"name":"head","position":{"x":5.754459381103516,"y":-2.273001670837402},"type":"dynamic"}');
+addImage(11, '{"aspectScale":1,"body":6,"center":{"x":0.01840309984982014,"y":0.1128330007195473},"file":"/Users/zoltan.pall/Work/pussywalk2/web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_head.png","filter":1,"flip":false,"name":"image4","opacity":0.5,"scale":2.102461576461792}');
+getBody(6).addFixture(20, '{"density":0.09593086689710617,"friction":0.2,"name":"fixture0","shapes":[{"type":"polygon"}],"vertices":{"x":[0.4480539858341217,0.03891839832067490,-0.5089889764785767,-0.7701159715652466,-0.5727239847183228,-0.03180589899420738,0.4272759854793549],"y":[0.8843950033187866,1.111400008201599,1.089969992637634,0.7701159715652466,-0.6766139864921570,-0.9077060222625732,-0.8843960165977478]}}');
+addJoint(1, '{"anchorA":{"x":0.7894105911254883,"y":-0.1349418163299561},"anchorB":{"x":0.2027392685413361,"y":-0.8711889982223511},"bodyA":3,"bodyB":6,"collideConnected":false,"dampingRatio":0,"frequency":2,"length":0.6,"name":"joint9","type":"distance"}');
+addJoint(18, '{"anchorA":{"x":-0.001827239990234375,"y":-0.0002193450927734375},"anchorB":{"x":0.5815401673316956,"y":-0.3711928725242615},"bodyA":2,"bodyB":6,"collideConnected":false,"enableLimit":false,"enableMotor":false,"lowerLimit":0.7679448723793030,"maxMotorTorque":0,"motorSpeed":0,"name":"cigaretteJoint","referenceAngle":0,"type":"revolute","upperLimit":0.7853981852531433}');
+addJoint(15, '{"anchorA":{"x":-0.6316989064216614,"y":-0.4306057691574097},"anchorB":{"x":0.3056182861328125,"y":0.9843266010284424},"bodyA":6,"bodyB":3,"collideConnected":false,"enableLimit":true,"enableMotor":false,"lowerLimit":-0.1745329201221466,"maxMotorTorque":0,"motorSpeed":0,"name":"joint0","referenceAngle":0,"type":"revolute","upperLimit":0.5235987901687622}');
+addJoint(6, '{"anchorA":{"x":-0.1550292968750,"y":-1.907348632812500e-05},"anchorB":{"x":-0.1065478324890137,"y":0.1288230717182159},"bodyA":2,"bodyB":6,"collideConnected":false,"dampingRatio":0,"frequency":0,"length":0.75,"name":"cigaretteJoint2","type":"distance"}');getBody(6).select();
+getBody(6).deselect();
+getJoint(6).delete();
+getJoint(15).delete();
+getJoint(1).delete();
+getJoint(18).delete();
+getFixture(20).delete();
+getImage(11).delete();
+getBody(6).delete();
