@@ -1,11 +1,13 @@
 import $ from 'jquery';
 import Box2dWorld from './Box2dWorld';
+import Renderer from './Renderer';
 
 // https://github.com/kripken/box2d.js
 
 var _json = null;
 var _enterFrame = null;
 var _world;
+var _renderer;
 var _canvas;
 var _ctx;
 var _keymap = {};
@@ -35,12 +37,15 @@ const loadJSON = () => {
 
 const initBox2D = () => {
 
-  _canvas = $('<canvas width="430" height="330" style="visibility: hidden;" />');
+  _canvas = $('<canvas width="2048" height="2000" style="width: 1024px; height: 1000px; background: red; visibility: hidden;" />');
   $('.game__scene').prepend(_canvas);
   _ctx = _canvas[0].getContext('2d');
 
   _world = new Box2dWorld(_canvas[0], _json);
+  _renderer = new Renderer(_world.world, _canvas[0], _world.bodies)
+
   _world.addEndListener(gameEndListener)
+  _world.addRenderListener(_renderer.render)
 
   if (!_paused) {
     start();
@@ -55,6 +60,7 @@ const gameEndListener = () => {
 
   _world = new Box2dWorld(_canvas[0], _json);
   _world.addEndListener(gameEndListener)
+  _world.addRenderListener(_renderer.render)
 }
 
 const start = () => {

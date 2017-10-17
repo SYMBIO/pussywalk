@@ -1,10 +1,6 @@
 import $ from 'jquery';
 import Rube2Box2D from './Rube2Box2D';
 import Box2Debug from './Box2Debug';
-import Constants from './Constants'
-
-// class ContactListener extends Box2D.b2ContactListener {
-// }
 
 export default class Box2DWorld {
 
@@ -14,28 +10,19 @@ export default class Box2DWorld {
     this.timeStep = 1 / 60;
     this.velocityIterations = 10;
     this.positionIterations = 8;
-    this.camera = {
-      x: 0,
-      y: 0,
-      ptm: 34,
-      canvasCenter: this.canvas.width / 2 + 10,
-      lineWidth: 1 / 34
-    };
-
 
     var gravity = new Box2D.b2Vec2(0.0, -10.0);
     this.world = new Box2D.b2World(gravity);
 
-    var gravity = new Box2D.b2Vec2(0.0, -10.0);
-    this.world = new Box2D.b2World(gravity);
+    this.step = this.step.bind(this)
 
+    this.progress = 0
+    this.progressPoints = [0.2, 0.3]
 
     this.debug();
 
     this.bodies = {};
     this.joints = {};
-    this.textures = {};
-    this.sortedTextures = [];
 
     let bodiesJson = json.body;
     let body,
@@ -44,14 +31,11 @@ export default class Box2DWorld {
     bodiesJson.forEach((b) => {
       body = Rube2Box2D.loadBodyFromRUBE(b, this.world);
       this.bodies[body.name] = body;
-      let index = Constants.textureNames.indexOf(body.name)
-      if (index != -1) {
-        let image = new Image()
-        image.src = "images/figure/" + body.name + ".png"
-        // image.src = "images/figure/square.png"
-        this.textures[body.name] = image
-      }
       loadedBodies.push(body);
+
+      if (body.name == "end") {
+        this.endBody = body
+      }
     });
 
     let jointsJson = json.joint;
@@ -75,7 +59,6 @@ export default class Box2DWorld {
       e.preventDefault();
       this.handleArrows($(e.target).hasClass('game__key--right') ? 39 : 37, false);
     });
-
 
     let that = this;
     var _end = ["hand_front_top", "hand_back_top", "leg_front_tie", "leg_back_tie", "body", "head"];
@@ -110,6 +93,10 @@ export default class Box2DWorld {
 
   addEndListener(callback) {
     this.EndListener = callback;
+  }
+
+  addRenderListener(callback) {
+    this.RenderListener = callback;
   }
 
   death() {
@@ -164,74 +151,11 @@ export default class Box2DWorld {
     this.world.Step(this.fps.dt, this.velocityIterations, this.positionIterations);
     this.world.ClearForces();
 
-    // Graphics
+    this.progress = Math.max(this.progress, this.bodies["body"].GetPosition().get_x() / this.endBody.GetPosition().get_x())
 
-    let PTM = 32;
-
-    let context = this.canvas.getContext('2d')
-
-    var canvasOffset = {
-      x: -this.bodies['body'].GetPosition().get_x() * PTM + this.camera.canvasCenter,
-      y: 0
-    };
-
-    context.setTransform(1, 0, 0, 1, 0, 0);
-    context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    context.translate(canvasOffset.x, canvasOffset.y);
-
-    for (var i in Constants.textureNames) {
-
-      let textureName = Constants.textureNames[i]
-      let texture = this.textures[textureName]
-      if (this.bodies[textureName] == null) {
-        continue;
-      }
-
-      let body = this.bodies[textureName];
-
-      let position = {
-        x: body.GetPosition().get_x() * PTM,
-        y: -body.GetPosition().get_y() * PTM
-      }
-
-      let offset = {
-        x: -texture.naturalWidth / 2,
-        y: -texture.naturalHeight / 2
-      }
-
-      if (Constants.offsets[textureName]) {
-        offset.x += Constants.offsets[textureName].x
-        offset.y += Constants.offsets[textureName].y
-      }
-
-      context.translate(position.x, position.y);
-      context.rotate(-body.GetAngle())
-      context.drawImage(texture,
-        0,
-        0,
-        texture.naturalWidth,
-        texture.naturalHeight,
-        offset.x,
-        offset.y,
-        texture.naturalWidth,
-        texture.naturalHeight
-      )
-
-      context.rotate(body.GetAngle())
-      context.translate(-position.x, -position.y);
+    if (this.RenderListener != null) {
+      this.RenderListener(this.bodies)
     }
-
-    // Debug draw
-
-    // context.setTransform(1, 0, 0, 1, 0, 0);
-    // context.translate(canvasOffset.x, canvasOffset.y);
-    // context.scale(PTM, PTM);
-    // context.lineWidth = 1 / PTM;
-    //
-    // context.scale(1, -1);
-    // this.world.DrawDebugData();
-
-  // context.restore();
   }
 
   update() {

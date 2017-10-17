@@ -647,11 +647,11 @@
         ],
         "id" : 5,
         "linearVelocity" : 0,
-        "massData-I" : 0.1196009367704391,
+        "massData-I" : 0.1196009293198586,
         "massData-center" : 
         {
-          "x" : 0.007761077489703894,
-          "y" : -0.03876790404319763
+          "x" : 0.007761078886687756,
+          "y" : -0.03876791521906853
         },
         "massData-mass" : 0.6776448488235474,
         "name" : "hand_front_top",
@@ -719,8 +719,8 @@
         "name" : "head",
         "position" : 
         {
-          "x" : 23.44750022888184,
-          "y" : -13.89039993286133
+          "x" : 23.44753265380859,
+          "y" : -13.8903808593750
         },
         "type" : "dynamic"
       },
@@ -1163,10 +1163,10 @@
         "massData-I" : 0.2868023216724396,
         "massData-center" : 
         {
-          "x" : 0.006862461101263762,
+          "x" : 0.006862462963908911,
           "y" : 0.07951408624649048
         },
-        "massData-mass" : 0.8560815453529358,
+        "massData-mass" : 0.8560814857482910,
         "name" : "hand_front_bottom",
         "position" : 
         {
@@ -1367,13 +1367,13 @@
         ],
         "id" : 13,
         "linearVelocity" : 0,
-        "massData-I" : 0.2868023216724396,
+        "massData-I" : 0.2868023514747620,
         "massData-center" : 
         {
-          "x" : 0.006862461101263762,
-          "y" : 0.07951407134532928
+          "x" : 0.006862460635602474,
+          "y" : 0.07951407879590988
         },
-        "massData-mass" : 0.8560815453529358,
+        "massData-mass" : 0.8560814857482910,
         "name" : "hand_back_bottom",
         "position" : 
         {
@@ -1733,55 +1733,6 @@
           "y" : -11.61737823486328
         },
         "type" : "dynamic"
-      },
-      
-      {
-        "angle" : 0,
-        "angularVelocity" : 0,
-        "awake" : true,
-        "fixture" : 
-        [
-          
-          {
-            "density" : 0.09593086689710617,
-            "friction" : 0.2,
-            "id" : 45,
-            "name" : "fixture0",
-            "shapes" : 
-            [
-              
-              {
-                "type" : "polygon"
-              }
-            ],
-            "vertices" : 
-            {
-              "x" : 
-              [
-                0.4480539858341217,
-                -0.5564852952957153,
-                -0.5641790628433228,
-                0.4443734586238861
-              ],
-              "y" : 
-              [
-                0.8843950033187866,
-                0.8803495168685913,
-                -0.6766139864921570,
-                -0.6793109774589539
-              ]
-            }
-          }
-        ],
-        "id" : 18,
-        "linearVelocity" : 0,
-        "name" : "end",
-        "position" : 
-        {
-          "x" : 126.9412002563477,
-          "y" : 1.676709175109863
-        },
-        "type" : "static"
       }
     ],
     "metaimage" : 
@@ -1989,23 +1940,6 @@
         "name" : "image6",
         "opacity" : 0.5,
         "scale" : 2.457573175430298
-      },
-      
-      {
-        "aspectScale" : 1,
-        "body" : 18,
-        "center" : 
-        {
-          "x" : 0.01840309984982014,
-          "y" : 0.1128330007195473
-        },
-        "file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_head.png",
-        "filter" : 1,
-        "flip" : false,
-        "id" : 13,
-        "name" : "image4",
-        "opacity" : 0.5,
-        "scale" : 2.102461576461792
       }
     ],
     "metajoint" : 
