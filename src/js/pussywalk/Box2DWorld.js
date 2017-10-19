@@ -11,6 +11,7 @@ export default class Box2DWorld {
     this.timeStep = 1 / 60;
     this.velocityIterations = 10;
     this.positionIterations = 8;
+    this.lives = 3
 
     var gravity = new Box2D.b2Vec2(0.0, -10.0);
     this.world = new Box2D.b2World(gravity);
@@ -42,13 +43,19 @@ export default class Box2DWorld {
     this.joints = {};
 
     let bodiesJson = json.body;
-    let body,
-      loadedBodies = [];
+    let body
+    let loadedBodies = [];
+    var _floor = []
+
 
     bodiesJson.forEach((b) => {
       body = Rube2Box2D.loadBodyFromRUBE(b, this.world);
       this.bodies[body.name] = body;
       loadedBodies.push(body);
+
+      if (body.name.indexOf('ground') == 0 || body.name.indexOf('lift') == 0) {
+        _floor.push(body.name)
+      }
 
       if (Constants.bodyparts.indexOf(body.name) != -1) {
         this.startState[body.name] = {
@@ -109,11 +116,19 @@ export default class Box2DWorld {
         bA = contact.GetFixtureA().GetBody(),
         bB = contact.GetFixtureB().GetBody();
 
-      if ((bA.name === 'ground' && _end.indexOf(bB.name) >= 0) || (bB.name === 'ground' && _end.indexOf(bA.name) >= 0)) {
+      if ((_floor.indexOf(bA.name) != -1 && _end.indexOf(bB.name) >= 0) ||
+        (_floor.indexOf(bB.name) != -1 && _end.indexOf(bA.name) >= 0)) {
         that.finish = true;
         setTimeout(() => {
-          that.resetPlayer()
+          that.lives -= 1
+
+          if (that.lives == 0) {
+            // end game
+            return
+          }
+
           that.finish = false;
+          that.resetPlayer()
         }, 1000);
       }
     }

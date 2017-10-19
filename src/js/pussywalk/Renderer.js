@@ -1,4 +1,5 @@
 import Constants from './Constants'
+import SpriteSheet from 'spritesheet-canvas'
 
 export default class Renderer {
 
@@ -13,6 +14,19 @@ export default class Renderer {
     this.scale = 64
 
     this.render = this.render.bind(this)
+
+    var walk_texture = new Image();
+    walk_texture.src = "images/walk_texture.png";
+
+    this.walk_spritesheet = SpriteSheet.new(walk_texture, {
+      frames: [100, 100, 100], //Each frame defined by the amount of time it will be rendered before moving on
+      x: 0, //Start coordinates of the sequence
+      y: 0,
+      width: 48, //Size of each frame. Only supports one frame size for all
+      height: 48,
+      restart: true, //Loops the sequence
+      autoPlay: true, //Starts the
+    });
 
     for (var i = 0; i < 4; i++) {
       let image = new Image()
@@ -37,7 +51,7 @@ export default class Renderer {
 
     var canvasOffset = {
       x: -this.bodies['body'].GetPosition().get_x() * this.scale + this.canvas.width / 2 + 10,
-      y: 0
+      y: this.bodies['body'].GetPosition().get_y() * this.scale + this.canvas.height / 2 + 10
     };
 
     canvasOffset.x = Math.round(canvasOffset.x)
@@ -93,18 +107,26 @@ export default class Renderer {
         texture.naturalHeight * 2
       )
 
+      if (body.name == 'head') {
+        this.walk_spritesheet.tick();
+        this.walk_spritesheet.draw(this.context);
+      }
+
       this.context.rotate(body.GetAngle())
       this.context.translate(-position.x, -position.y);
     }
 
     // Debug draw
-    //
+
     this.context.setTransform(1, 0, 0, 1, 0, 0);
     this.context.translate(canvasOffset.x, canvasOffset.y);
     this.context.scale(this.scale, this.scale);
     this.context.lineWidth = 1 / this.scale;
 
     this.context.scale(1, -1);
+    this.context.rect(this.bodies.lift_1.GetPosition().get_x(),
+      this.bodies.lift_1.GetPosition().get_y(), 10, 10);
+    this.context.stroke();
     this.world.DrawDebugData();
   }
 

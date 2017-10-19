@@ -37,7 +37,7 @@ const loadJSON = () => {
 
 const initBox2D = () => {
 
-  _canvas = $('<canvas width="2048" height="2000" style="width: 1024px; height: 1000px; background: red; visibility: hidden;" />');
+  _canvas = $('<canvas width="2048" height="2000" style="width: 1024px; height: 1000px; visibility: hidden;" />');
   $('.game__scene').prepend(_canvas);
   _ctx = _canvas[0].getContext('2d');
 
