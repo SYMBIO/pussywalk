@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import Rube2Box2D from './Rube2Box2D';
 import Box2Debug from './Box2Debug';
+import Constants from './Constants';
 
 export default class Box2DWorld {
 
@@ -16,8 +17,24 @@ export default class Box2DWorld {
 
     this.step = this.step.bind(this)
 
-    this.progress = 0
-    this.progressPoints = [0.2, 0.3]
+    this.checkpoints = [{
+      x: 20,
+      y: 0
+    }, {
+      x: 80,
+      y: 0
+    }, {
+      x: 30,
+      y: 0
+    }]
+    this.progressPoints = [{
+      x: 100,
+      y: 0
+    }, {
+      x: 10,
+      y: 0
+    }]
+    this.startState = []
 
     this.debug();
 
@@ -33,10 +50,28 @@ export default class Box2DWorld {
       this.bodies[body.name] = body;
       loadedBodies.push(body);
 
-      if (body.name == "end") {
-        this.endBody = body
+      if (Constants.bodyparts.indexOf(body.name) != -1) {
+        this.startState[body.name] = {
+          x: body.GetPosition().get_x(),
+          y: body.GetPosition().get_y(),
+          angle: body.GetAngle()
+        }
       }
     });
+
+    // Normalize distances
+    let bodyPosition = {
+      x: body.GetPosition().get_x(),
+      y: body.GetPosition().get_y()
+    }
+    for (var i = 0; i < this.startState.length; i++) {
+      this.startState[i].x -= bodyPosition.x
+      this.startState[i].y -= bodyPosition.y
+    }
+
+    this.progressPoints = this.progressPoints.concat(this.checkpoints).sort(function(c1, c2) {
+      return c1.x - c2.x
+    })
 
     let jointsJson = json.joint;
     let joint;
@@ -77,8 +112,9 @@ export default class Box2DWorld {
       if ((bA.name === 'ground' && _end.indexOf(bB.name) >= 0) || (bB.name === 'ground' && _end.indexOf(bA.name) >= 0)) {
         that.finish = true;
         setTimeout(() => {
-          that.death();
-        }, 10);
+          that.resetPlayer()
+          that.finish = false;
+        }, 1000);
       }
     }
     this.world.SetContactListener(contactListener);
@@ -151,10 +187,26 @@ export default class Box2DWorld {
     this.world.Step(this.fps.dt, this.velocityIterations, this.positionIterations);
     this.world.ClearForces();
 
-    this.progress = Math.max(this.progress, this.bodies["body"].GetPosition().get_x() / this.endBody.GetPosition().get_x())
+    this.progress = this.bodies["body"].GetPosition().get_x()
+
+    let numProgressPoints = this.progressPoints.length
+    for (var i = 0; i < numProgressPoints; i++) {
+      if (this.progressPoints[i].x < this.progress) {
+        numProgressPoints--;
+        this.onProgress(this.progressPoints.shift())
+      } else {
+        i = numProgressPoints
+      }
+    }
 
     if (this.RenderListener != null) {
       this.RenderListener(this.bodies)
+    }
+  }
+
+  onProgress(value) {
+    if (this.checkpoints.indexOf(value) != -1) {
+      this.lastCheckpoint = value
     }
   }
 
@@ -255,6 +307,16 @@ export default class Box2DWorld {
 
     $('body').off('keydown keyup');
     $('.game__key').off('touchstart touchend touchcancel');
+  }
+
+  resetPlayer() {
+    for (var bodyName in this.startState) {
+      let state = this.startState[bodyName]
+      this.bodies[bodyName].SetType(Box2D.b2_staticBody)
+      this.bodies[bodyName].SetTransform(new Box2D.b2Vec2(state.x + this.lastCheckpoint.x, state.y + this.lastCheckpoint.y), state.angle)
+      this.bodies[bodyName].SetType(Box2D.b2_dynamicBody)
+    }
+
   }
 }
 ;

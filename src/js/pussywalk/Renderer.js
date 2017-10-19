@@ -48,14 +48,8 @@ export default class Renderer {
 
     // Draw level
     let startIndex = Math.max(1, Math.ceil(-(canvasOffset.x) / 3000))
-    if (startIndex == 2) {
-      debugger
-    }
     let endIndex = Math.min(4, startIndex + 2)
     for (var i = startIndex; i < endIndex; i++) {
-      if (this.levelTextures == null) {
-        debugger;
-      }
       this.context.drawImage(this.levelTextures[i - 1], (i - 1) * 3000, 0)
     }
 
