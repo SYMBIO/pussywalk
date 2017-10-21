@@ -1570,7 +1570,6 @@
         ],
         "gravityScale" : 0,
         "id" : 20,
-        "linearDamping" : 1,
         "linearVelocity" : 0,
         "massData-I" : 33333.33593750,
         "massData-center" : 

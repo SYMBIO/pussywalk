@@ -20,13 +20,13 @@ export default class Box2DWorld {
 
     this.checkpoints = [{
       x: 20,
-      y: 0
+      y: -14.7
     }, {
       x: 80,
-      y: 0
+      y: -24.7
     }, {
       x: 30,
-      y: 0
+      y: -24.7
     }]
     this.progressPoints = [{
       x: 100,
@@ -35,6 +35,7 @@ export default class Box2DWorld {
       x: 10,
       y: 0
     }]
+    this.lastCheckpoint = this.checkpoints[0]
     this.startState = []
 
     this.debug();
@@ -135,12 +136,12 @@ export default class Box2DWorld {
     }
     this.world.SetContactListener(contactListener);
 
-
     this.fps = {
       dt: 0,
       time: 0
     };
 
+    this.resetPlayer()
   }
 
   addEndListener(callback) {
@@ -204,6 +205,10 @@ export default class Box2DWorld {
     this.world.ClearForces();
 
     this.progress = this.bodies["body"].GetPosition().get_x()
+
+    if (this.progress >= 30) {
+      this.onGameWon()
+    }
 
     let numProgressPoints = this.progressPoints.length
     for (var i = 0; i < numProgressPoints; i++) {
@@ -332,7 +337,14 @@ export default class Box2DWorld {
       this.bodies[bodyName].SetTransform(new Box2D.b2Vec2(state.x + this.lastCheckpoint.x, state.y + this.lastCheckpoint.y), state.angle)
       this.bodies[bodyName].SetType(Box2D.b2_dynamicBody)
     }
+  }
 
+  onGameWon() {
+    if (!this.finish) {
+      this.finish = true
+
+      this.keymap = {}
+    }
   }
 }
 ;

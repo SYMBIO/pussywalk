@@ -13,6 +13,7 @@ var _ctx;
 var _keymap = {};
 var _loaderPromise;
 var _paused = false;
+var _scoreboard = []
 
 const loadJSON = () => {
 
@@ -30,12 +31,12 @@ const loadJSON = () => {
     _loaderPromise
   ).done((dn) => {
     _loaderPromise = null;
-    initBox2D();
+    initGame();
   });
 
 }
 
-const initBox2D = () => {
+const initGame = () => {
 
   _canvas = $('<canvas width="2048" height="2000" style="width: 1024px; height: 1000px; visibility: hidden;" />');
   $('.game__scene').prepend(_canvas);
@@ -46,6 +47,8 @@ const initBox2D = () => {
 
   _world.addEndListener(gameEndListener)
   _world.addRenderListener(_renderer.render)
+
+  _renderer.scoreboard = _scoreboard
 
   if (!_paused) {
     start();
@@ -169,6 +172,12 @@ export default class PussywalkMinigame {
       _preloader = null;
     }
 
+  }
+
+  setScoreboard(scoreboard) {
+    console.log(scoreboard);
+    _scoreboard = scoreboard
+    _renderer.scoreboard = scoreboard
   }
 
 }

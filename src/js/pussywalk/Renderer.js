@@ -10,6 +10,7 @@ export default class Renderer {
     this.bodies = bodies
     this.levelTextures = []
     this.textures = {}
+    this.scoreboard = []
 
     this.scale = 64
 
@@ -54,7 +55,8 @@ export default class Renderer {
       y: this.bodies['body'].GetPosition().get_y() * this.scale + this.canvas.height / 2 + 10
     };
 
-    canvasOffset.x = Math.round(canvasOffset.x)
+    canvasOffset.x = Math.min(0, Math.round(canvasOffset.x))
+    canvasOffset.y = Math.min(0, Math.round(canvasOffset.y))
 
     this.context.setTransform(1, 0, 0, 1, 0, 0);
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -89,6 +91,14 @@ export default class Renderer {
 
       image.src = "images/eyeball.png";
       this.context.drawImage(image, offset.eye2.x + percent * 10, offset.eye2.y)
+    }
+
+    // Scoreboard
+
+    this.context.font = '48px serif';
+    this.context.fillStyle = "#F00"
+    for (var i = 0; i < this.scoreboard.length; i++) {
+      this.context.fillText(this.scoreboard[i], 1000, 500 + 50 * i);
     }
 
     // Draw figure
@@ -153,5 +163,4 @@ export default class Renderer {
     // this.context.stroke();
     this.world.DrawDebugData();
   }
-
 }

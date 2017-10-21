@@ -1,9 +1,13 @@
-//Restarted script log at Sat Oct 21 19:25:22 2017
+//Restarted script log at Sat Oct 21 21:20:22 2017
 getBody(20).deselect();
-getBody(22).select();
-getBody(22).deselect();
-getBody(16).select();
-getBody(16).deselect();
-getBody(22).select();
-getBody(22).deselect();
+getBody(10).select();
+getBody(10).deselect();
+getBody(3).select();
+getBody(3).deselect();
+getBody(20).select();
+getBody(20).deselect();
 getBody(21).select();
+getBody(21).deselect();
+getBody(20).select();
+getBody(20).deselect();
+getBody(5).select();
