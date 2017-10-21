@@ -67,6 +67,30 @@ export default class Renderer {
       this.context.drawImage(this.levelTextures[i - 1], (i - 1) * 3000, 0)
     }
 
+    // Putin's face:
+    if (startIndex == 1) {
+      // Offset 1500
+      let offset = {
+        eye1: {
+          x: 1870,
+          y: 650
+        },
+        eye2: {
+          x: 1920,
+          y: 650
+        }
+      }
+      var image = new Image();
+      let percent = (this.bodies['body'].GetPosition().get_x() * this.scale - (offset.eye1.x + offset.eye2.x) / 2) / 500
+      percent = Math.min(1, Math.max(-1, percent))
+
+      image.src = "images/eyeball.png";
+      this.context.drawImage(image, offset.eye1.x + percent * 10, offset.eye1.y)
+
+      image.src = "images/eyeball.png";
+      this.context.drawImage(image, offset.eye2.x + percent * 10, offset.eye2.y)
+    }
+
     // Draw figure
     for (var i in Constants.textureNames) {
 
@@ -124,9 +148,9 @@ export default class Renderer {
     this.context.lineWidth = 1 / this.scale;
 
     this.context.scale(1, -1);
-    this.context.rect(this.bodies.lift_1.GetPosition().get_x(),
-      this.bodies.lift_1.GetPosition().get_y(), 10, 10);
-    this.context.stroke();
+    // this.context.rect(this.bodies.lift_1.GetPosition().get_x(),
+    //   this.bodies.lift_1.GetPosition().get_y(), 10, 10);
+    // this.context.stroke();
     this.world.DrawDebugData();
   }
 

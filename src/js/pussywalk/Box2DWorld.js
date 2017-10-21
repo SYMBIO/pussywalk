@@ -68,12 +68,13 @@ export default class Box2DWorld {
 
     // Normalize distances
     let bodyPosition = {
-      x: body.GetPosition().get_x(),
-      y: body.GetPosition().get_y()
+      x: this.bodies['body'].GetPosition().get_x(),
+      y: this.bodies['body'].GetPosition().get_y()
     }
-    for (var i = 0; i < this.startState.length; i++) {
-      this.startState[i].x -= bodyPosition.x
-      this.startState[i].y -= bodyPosition.y
+
+    for (var key in this.startState) {
+      this.startState[key].x -= bodyPosition.x
+      this.startState[key].y -= bodyPosition.y
     }
 
     this.progressPoints = this.progressPoints.concat(this.checkpoints).sort(function(c1, c2) {
