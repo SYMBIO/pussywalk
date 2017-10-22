@@ -11,3 +11,4 @@ getBody(21).deselect();
 getBody(20).select();
 getBody(20).deselect();
 getBody(5).select();
+getBody(5).deselect();

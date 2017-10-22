@@ -11,7 +11,7 @@ export default class Box2DWorld {
     this.timeStep = 1 / 60;
     this.velocityIterations = 10;
     this.positionIterations = 8;
-    this.lives = 3
+    this.lives = 1
 
     var gravity = new Box2D.b2Vec2(0.0, -10.0);
     this.world = new Box2D.b2World(gravity);
@@ -120,17 +120,16 @@ export default class Box2DWorld {
 
       if ((_floor.indexOf(bA.name) != -1 && _end.indexOf(bB.name) >= 0) ||
         (_floor.indexOf(bB.name) != -1 && _end.indexOf(bA.name) >= 0)) {
-        that.finish = true;
         setTimeout(() => {
           that.lives -= 1
 
-          if (that.lives == 0) {
-            // end game
-            return
+          if (that.lives <= 0) {
+            that.finish = true;
+            debugger
+            that.death(false)
+          } else {
+            that.resetPlayer()
           }
-
-          that.finish = false;
-          that.resetPlayer()
         }, 1000);
       }
     }
@@ -152,7 +151,7 @@ export default class Box2DWorld {
     this.RenderListener = callback;
   }
 
-  death() {
+  death(didWin) {
 
     let joints = ['tendon_rf', 'knee_r', 'ankle_r', 'tendon_lf', 'knee_l', 'ankle_l', 'joint26', 'joint8']
     joints.forEach((j) => {
@@ -162,7 +161,7 @@ export default class Box2DWorld {
 
     let that = this;
     setTimeout(() => {
-      that.EndListener();
+      that.EndListener(didWin);
     }, 1000);
   }
 
@@ -206,8 +205,12 @@ export default class Box2DWorld {
 
     this.progress = this.bodies["body"].GetPosition().get_x()
 
-    if (this.progress >= 30) {
-      this.onGameWon()
+    if (this.progress >= 100) {
+      if (!this.finish) {
+        this.finish = true
+        this.keymap = {}
+        this.death(true)
+      }
     }
 
     let numProgressPoints = this.progressPoints.length
@@ -336,14 +339,6 @@ export default class Box2DWorld {
       this.bodies[bodyName].SetType(Box2D.b2_staticBody)
       this.bodies[bodyName].SetTransform(new Box2D.b2Vec2(state.x + this.lastCheckpoint.x, state.y + this.lastCheckpoint.y), state.angle)
       this.bodies[bodyName].SetType(Box2D.b2_dynamicBody)
-    }
-  }
-
-  onGameWon() {
-    if (!this.finish) {
-      this.finish = true
-
-      this.keymap = {}
     }
   }
 }

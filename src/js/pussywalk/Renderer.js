@@ -163,4 +163,14 @@ export default class Renderer {
     // this.context.stroke();
     this.world.DrawDebugData();
   }
+
+  dispose() {
+    this.world = null
+    this.canvas = null
+    this.context = null
+    this.bodies = null
+    this.levelTextures = null
+    this.textures = null
+    this.scoreboard = null
+  }
 }

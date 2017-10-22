@@ -38,6 +38,8 @@ const loadJSON = () => {
 
 const initGame = () => {
 
+  debugger;
+
   _canvas = $('<canvas width="2048" height="2000" style="width: 1024px; height: 1000px; visibility: hidden;" />');
   $('.game__scene').prepend(_canvas);
   _ctx = _canvas[0].getContext('2d');
@@ -55,15 +57,23 @@ const initGame = () => {
   }
 }
 
-const gameEndListener = () => {
+const gameEndListener = (didWin) => {
+
   if (_world) {
     _world.dispose();
     _world = null;
   }
 
-  _world = new Box2dWorld(_canvas[0], _json);
-  _world.addEndListener(gameEndListener)
-  _world.addRenderListener(_renderer.render)
+  if (_renderer) {
+    _renderer.dispose();
+    _renderer = null;
+  }
+
+  if (_canvas) {
+    _canvas.remove()
+  }
+
+  initGame()
 }
 
 const start = () => {
