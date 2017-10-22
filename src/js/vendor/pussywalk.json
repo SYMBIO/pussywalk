@@ -15,6 +15,7 @@
 				{
 					"density" : 0.02058310434222221,
 					"filter-categoryBits" : 2,
+					"filter-groupIndex" : 1,
 					"friction" : 0.2,
 					"name" : "fixture10",
 					"polygon" : 
@@ -54,31 +55,32 @@
 				{
 					"density" : 0.02058310434222221,
 					"filter-categoryBits" : 2,
+					"filter-groupIndex" : 1,
 					"friction" : 0.2,
 					"name" : "fixture10",
 					"polygon" : 
 					{
 						"vertices" : 
 						{
-							"x" : [ 1.5, 0.0, 0.0, 1 ],
-							"y" : [ 0.0, 0.0, -3.25, -3.25 ]
+							"x" : [ 1.5, 1.5, 0.0, 0.0, 1 ],
+							"y" : [ -2.7, 0.0, 0.0, -3.25, -3.25 ]
 						}
 					}
 				}
 			],
 			"linearVelocity" : 0,
-			"massData-I" : 0.3102608323097229,
+			"massData-I" : 0.3968121111392975,
 			"massData-center" : 
 			{
-				"x" : 0.6333333253860474,
-				"y" : -1.516666650772095
+				"x" : 0.7330694794654846,
+				"y" : -1.583157420158386
 			},
-			"massData-mass" : 0.08361886441707611,
+			"massData-mass" : 0.09751245379447937,
 			"name" : "decor_1",
 			"position" : 
 			{
-				"x" : 28.81584358215332,
-				"y" : -16.65497779846191
+				"x" : 28.81579971313477,
+				"y" : -16.65500068664551
 			},
 			"type" : 2
 		},
@@ -93,6 +95,7 @@
 				{
 					"density" : 0.02058310434222221,
 					"filter-categoryBits" : 2,
+					"filter-groupIndex" : 1,
 					"friction" : 0.2,
 					"name" : "fixture10",
 					"polygon" : 
@@ -288,6 +291,7 @@
 					},
 					"density" : 5,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 8,
 					"friction" : 0.1,
 					"name" : "fixture11"
@@ -315,6 +319,7 @@
 				{
 					"density" : 1,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 2,
 					"friction" : 0.2,
 					"name" : "fixture6",
@@ -371,6 +376,7 @@
 				{
 					"density" : 1,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 2,
 					"friction" : 0.2,
 					"name" : "fixture9",
@@ -399,6 +405,7 @@
 				{
 					"density" : 1,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 2,
 					"friction" : 0.2,
 					"name" : "fixture9",
@@ -415,6 +422,7 @@
 				{
 					"density" : 1,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 2,
 					"friction" : 0.2,
 					"name" : "fixture9",
@@ -445,6 +453,7 @@
 				{
 					"density" : 1,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 2,
 					"friction" : 0.2,
 					"name" : "fixture9",
@@ -497,6 +506,7 @@
 				{
 					"density" : 12.50,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 2,
 					"friction" : 1.5,
 					"name" : "fixture2",
@@ -551,6 +561,7 @@
 				{
 					"density" : 1,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 2,
 					"friction" : 0.2,
 					"name" : "fixture9",
@@ -579,6 +590,7 @@
 				{
 					"density" : 1,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 2,
 					"friction" : 0.2,
 					"name" : "fixture9",
@@ -595,6 +607,7 @@
 				{
 					"density" : 1,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 2,
 					"friction" : 0.2,
 					"name" : "fixture9",
@@ -623,6 +636,7 @@
 				{
 					"density" : 1,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 2,
 					"friction" : 0.2,
 					"name" : "fixture9",
@@ -682,6 +696,7 @@
 					},
 					"density" : 1,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 8,
 					"friction" : 0.1,
 					"name" : "fixture13"
@@ -709,6 +724,7 @@
 				{
 					"density" : 1,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 2,
 					"friction" : 0.2,
 					"name" : "fixture5",
@@ -769,6 +785,7 @@
 				{
 					"density" : 1,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 2,
 					"friction" : 0.2,
 					"name" : "fixture3",
@@ -803,6 +820,7 @@
 				{
 					"density" : 1,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 2,
 					"friction" : 0.2,
 					"name" : "fixture3",
@@ -833,6 +851,7 @@
 				{
 					"density" : 1,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 2,
 					"friction" : 0.2,
 					"name" : "fixture3",
@@ -889,6 +908,7 @@
 				{
 					"density" : 12.50,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 2,
 					"friction" : 1.5,
 					"name" : "fixture1",
@@ -942,6 +962,7 @@
 				
 				{
 					"density" : 0.09593086689710617,
+					"filter-groupIndex" : -1,
 					"friction" : 0.2,
 					"name" : "fixture0",
 					"polygon" : 
@@ -999,6 +1020,7 @@
 				{
 					"density" : 1,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 2,
 					"friction" : 0.2,
 					"name" : "fixture8",
@@ -1015,6 +1037,7 @@
 				{
 					"density" : 1,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 2,
 					"friction" : 0.2,
 					"name" : "fixture8",
@@ -1031,6 +1054,7 @@
 				{
 					"density" : 1,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 2,
 					"friction" : 0.2,
 					"name" : "fixture8",
@@ -1047,6 +1071,7 @@
 				{
 					"density" : 1,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 2,
 					"friction" : 0.2,
 					"name" : "fixture8",
@@ -1063,6 +1088,7 @@
 				{
 					"density" : 1,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 2,
 					"friction" : 0.2,
 					"name" : "fixture8",
@@ -1079,6 +1105,7 @@
 				{
 					"density" : 1,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 2,
 					"friction" : 0.2,
 					"name" : "fixture8",
@@ -1119,6 +1146,7 @@
 				{
 					"density" : 1,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 2,
 					"friction" : 0.2,
 					"name" : "fixture4",
@@ -1175,6 +1203,7 @@
 				{
 					"density" : 1,
 					"filter-categoryBits" : 0,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 8,
 					"friction" : 0.2,
 					"name" : "fixture12",
@@ -1203,6 +1232,7 @@
 				
 				{
 					"density" : 0.6995531916618347,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 0,
 					"friction" : 0.2,
 					"name" : "fixture1",
@@ -1232,6 +1262,7 @@
 				
 				{
 					"density" : 0.6995531916618347,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 0,
 					"friction" : 0.2,
 					"name" : "fixture1",
@@ -1247,6 +1278,7 @@
 				
 				{
 					"density" : 0.6995531916618347,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 0,
 					"friction" : 0.2,
 					"name" : "fixture1",
@@ -1278,6 +1310,7 @@
 				
 				{
 					"density" : 0.6995531916618347,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 0,
 					"friction" : 0.2,
 					"name" : "fixture1",
@@ -1331,6 +1364,7 @@
 				
 				{
 					"density" : 1,
+					"filter-groupIndex" : -1,
 					"friction" : 0.2,
 					"name" : "fixture7",
 					"polygon" : 
@@ -1382,6 +1416,7 @@
 				{
 					"density" : 1,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 2,
 					"friction" : 0.2,
 					"name" : "fixture8",
@@ -1398,6 +1433,7 @@
 				{
 					"density" : 1,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 2,
 					"friction" : 0.2,
 					"name" : "fixture8",
@@ -1414,6 +1450,7 @@
 				{
 					"density" : 1,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 2,
 					"friction" : 0.2,
 					"name" : "fixture8",
@@ -1430,6 +1467,7 @@
 				{
 					"density" : 1,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 2,
 					"friction" : 0.2,
 					"name" : "fixture8",
@@ -1446,6 +1484,7 @@
 				{
 					"density" : 1,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 2,
 					"friction" : 0.2,
 					"name" : "fixture8",
@@ -1462,6 +1501,7 @@
 				{
 					"density" : 1,
 					"filter-categoryBits" : 4,
+					"filter-groupIndex" : -1,
 					"filter-maskBits" : 2,
 					"friction" : 0.2,
 					"name" : "fixture8",
@@ -1538,51 +1578,6 @@
 	},
 	"image" : 
 	[
-		
-		{
-			"aspectScale" : 1,
-			"body" : 18,
-			"center" : 
-			{
-				"x" : -0.03073430061340332,
-				"y" : -0.1430550068616867
-			},
-			"corners" : 
-			{
-				"x" : 
-				[
-					-0.7441197037696838,
-					0.6826511025428772,
-					0.6826511025428772,
-					-0.7441197037696838
-				],
-				"y" : 
-				[
-					-0.8564404249191284,
-					-0.8564404249191284,
-					0.5703303813934326,
-					0.5703303813934326
-				]
-			},
-			"file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_arm_top_01.png",
-			"filter" : 1,
-			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
-			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
-			"glVertexPointer" : 
-			[
-				-0.7441197037696838,
-				-0.8564404249191284,
-				0.6826511025428772,
-				-0.8564404249191284,
-				0.6826511025428772,
-				0.5703303813934326,
-				-0.7441197037696838,
-				0.5703303813934326
-			],
-			"name" : "image10",
-			"opacity" : 0.5,
-			"scale" : 1.426770806312561
-		},
 		
 		{
 			"aspectScale" : 1,
@@ -1721,6 +1716,51 @@
 		
 		{
 			"aspectScale" : 1,
+			"body" : 16,
+			"center" : 
+			{
+				"x" : 0.1813929975032806,
+				"y" : 0.02582979947328568
+			},
+			"corners" : 
+			{
+				"x" : 
+				[
+					-0.07958149909973145,
+					0.4423674941062927,
+					0.4423674941062927,
+					-0.07958149909973145
+				],
+				"y" : 
+				[
+					-0.2351447045803070,
+					-0.2351447045803070,
+					0.2868042886257172,
+					0.2868042886257172
+				]
+			},
+			"file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_leg_shoe_02.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : 
+			[
+				-0.07958149909973145,
+				-0.2351447045803070,
+				0.4423674941062927,
+				-0.2351447045803070,
+				0.4423674941062927,
+				0.2868042886257172,
+				-0.07958149909973145,
+				0.2868042886257172
+			],
+			"name" : "image8",
+			"opacity" : 0.5,
+			"scale" : 0.5219489932060242
+		},
+		
+		{
+			"aspectScale" : 1,
 			"body" : 15,
 			"center" : 
 			{
@@ -1811,6 +1851,51 @@
 		
 		{
 			"aspectScale" : 1,
+			"body" : 9,
+			"center" : 
+			{
+				"x" : 0.08099889755249023,
+				"y" : -0.04775090143084526
+			},
+			"corners" : 
+			{
+				"x" : 
+				[
+					-0.9956049919128418,
+					1.157602787017822,
+					1.157602787017822,
+					-0.9956049919128418
+				],
+				"y" : 
+				[
+					-1.124354839324951,
+					-1.124354839324951,
+					1.028852939605713,
+					1.028852939605713
+				]
+			},
+			"file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_leg_calf_02.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : 
+			[
+				-0.9956049919128418,
+				-1.124354839324951,
+				1.157602787017822,
+				-1.124354839324951,
+				1.157602787017822,
+				1.028852939605713,
+				-0.9956049919128418,
+				1.028852939605713
+			],
+			"name" : "image9",
+			"opacity" : 0.5,
+			"scale" : 2.153207778930664
+		},
+		
+		{
+			"aspectScale" : 1,
 			"body" : 12,
 			"center" : 
 			{
@@ -1852,6 +1937,51 @@
 			"name" : "image11",
 			"opacity" : 0.5,
 			"scale" : 2.316968441009521
+		},
+		
+		{
+			"aspectScale" : 1,
+			"body" : 18,
+			"center" : 
+			{
+				"x" : -0.03073430061340332,
+				"y" : -0.1430550068616867
+			},
+			"corners" : 
+			{
+				"x" : 
+				[
+					-0.7441197037696838,
+					0.6826511025428772,
+					0.6826511025428772,
+					-0.7441197037696838
+				],
+				"y" : 
+				[
+					-0.8564404249191284,
+					-0.8564404249191284,
+					0.5703303813934326,
+					0.5703303813934326
+				]
+			},
+			"file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_arm_top_01.png",
+			"filter" : 1,
+			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
+			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
+			"glVertexPointer" : 
+			[
+				-0.7441197037696838,
+				-0.8564404249191284,
+				0.6826511025428772,
+				-0.8564404249191284,
+				0.6826511025428772,
+				0.5703303813934326,
+				-0.7441197037696838,
+				0.5703303813934326
+			],
+			"name" : "image10",
+			"opacity" : 0.5,
+			"scale" : 1.426770806312561
 		},
 		
 		{
@@ -1901,96 +2031,6 @@
 		
 		{
 			"aspectScale" : 1,
-			"body" : 9,
-			"center" : 
-			{
-				"x" : 0.08099889755249023,
-				"y" : -0.04775090143084526
-			},
-			"corners" : 
-			{
-				"x" : 
-				[
-					-0.9956049919128418,
-					1.157602787017822,
-					1.157602787017822,
-					-0.9956049919128418
-				],
-				"y" : 
-				[
-					-1.124354839324951,
-					-1.124354839324951,
-					1.028852939605713,
-					1.028852939605713
-				]
-			},
-			"file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_leg_calf_02.png",
-			"filter" : 1,
-			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
-			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
-			"glVertexPointer" : 
-			[
-				-0.9956049919128418,
-				-1.124354839324951,
-				1.157602787017822,
-				-1.124354839324951,
-				1.157602787017822,
-				1.028852939605713,
-				-0.9956049919128418,
-				1.028852939605713
-			],
-			"name" : "image9",
-			"opacity" : 0.5,
-			"scale" : 2.153207778930664
-		},
-		
-		{
-			"aspectScale" : 1,
-			"body" : 20,
-			"center" : 
-			{
-				"x" : 0.1178610026836395,
-				"y" : 0.1310900002717972
-			},
-			"corners" : 
-			{
-				"x" : 
-				[
-					-1.416357636451721,
-					1.652079701423645,
-					1.652079701423645,
-					-1.416357636451721
-				],
-				"y" : 
-				[
-					-1.403128623962402,
-					-1.403128623962402,
-					1.665308713912964,
-					1.665308713912964
-				]
-			},
-			"file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_body.png",
-			"filter" : 1,
-			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
-			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
-			"glVertexPointer" : 
-			[
-				-1.416357636451721,
-				-1.403128623962402,
-				1.652079701423645,
-				-1.403128623962402,
-				1.652079701423645,
-				1.665308713912964,
-				-1.416357636451721,
-				1.665308713912964
-			],
-			"name" : "image5",
-			"opacity" : 0.5,
-			"scale" : 3.068437337875366
-		},
-		
-		{
-			"aspectScale" : 1,
 			"body" : 19,
 			"center" : 
 			{
@@ -2036,47 +2076,47 @@
 		
 		{
 			"aspectScale" : 1,
-			"body" : 16,
+			"body" : 20,
 			"center" : 
 			{
-				"x" : 0.1813929975032806,
-				"y" : 0.02582979947328568
+				"x" : 0.1178610026836395,
+				"y" : 0.1310900002717972
 			},
 			"corners" : 
 			{
 				"x" : 
 				[
-					-0.07958149909973145,
-					0.4423674941062927,
-					0.4423674941062927,
-					-0.07958149909973145
+					-1.416357636451721,
+					1.652079701423645,
+					1.652079701423645,
+					-1.416357636451721
 				],
 				"y" : 
 				[
-					-0.2351447045803070,
-					-0.2351447045803070,
-					0.2868042886257172,
-					0.2868042886257172
+					-1.403128623962402,
+					-1.403128623962402,
+					1.665308713912964,
+					1.665308713912964
 				]
 			},
-			"file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_leg_shoe_02.png",
+			"file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_body.png",
 			"filter" : 1,
 			"glDrawElements" : [ 0, 1, 2, 2, 3, 0 ],
 			"glTexCoordPointer" : [ 0.0, 0.0, 1, 0.0, 1, 1, 0.0, 1 ],
 			"glVertexPointer" : 
 			[
-				-0.07958149909973145,
-				-0.2351447045803070,
-				0.4423674941062927,
-				-0.2351447045803070,
-				0.4423674941062927,
-				0.2868042886257172,
-				-0.07958149909973145,
-				0.2868042886257172
+				-1.416357636451721,
+				-1.403128623962402,
+				1.652079701423645,
+				-1.403128623962402,
+				1.652079701423645,
+				1.665308713912964,
+				-1.416357636451721,
+				1.665308713912964
 			],
-			"name" : "image8",
+			"name" : "image5",
 			"opacity" : 0.5,
-			"scale" : 0.5219489932060242
+			"scale" : 3.068437337875366
 		}
 	],
 	"joint" : 

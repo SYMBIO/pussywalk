@@ -128,7 +128,7 @@ export default class Box2DWorld {
 
       if (decor) {
         let filterData = decor.GetFixtureList().GetFilterData()
-        filterData.set_categoryBits(0b00000100)
+        filterData.set_groupIndex(-1)
         decor.GetFixtureList().SetFilterData(filterData)
       }
 
