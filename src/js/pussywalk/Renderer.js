@@ -35,12 +35,16 @@ export default class Renderer {
       this.levelTextures.push(image)
     }
 
+    let mappedTextureNames = Constants.textureNames.map(function(textureName) {
+      return textureName.body
+    })
+
     for (var key in bodies) {
       let body = bodies[key]
-      let index = Constants.textureNames.indexOf(body.name)
+      let index = mappedTextureNames.indexOf(body.name)
       if (index != -1) {
         let image = new Image()
-        image.src = "images/figure/" + body.name + ".png"
+        image.src = "images/" + Constants.textureNames[index].asset
         this.textures[body.name] = image
       }
     }
@@ -105,12 +109,12 @@ export default class Renderer {
     for (var i in Constants.textureNames) {
 
       let textureName = Constants.textureNames[i]
-      if (this.bodies[textureName] == null) {
+      if (this.bodies[textureName.body] == null) {
         continue;
       }
 
-      let texture = this.textures[textureName]
-      let body = this.bodies[textureName];
+      let texture = this.textures[textureName.body]
+      let body = this.bodies[textureName.body];
 
       let position = {
         x: body.GetPosition().get_x() * this.scale,
@@ -122,23 +126,22 @@ export default class Renderer {
         y: -texture.naturalHeight / 2
       }
 
-      if (Constants.offsets[textureName]) {
-        offset.x += Constants.offsets[textureName].x
-        offset.y += Constants.offsets[textureName].y
+      if (Constants.offsets[textureName.body]) {
+        offset.x += Constants.offsets[textureName.body].x
+        offset.y += Constants.offsets[textureName.body].y
       }
 
       this.context.translate(position.x, position.y);
       this.context.rotate(-body.GetAngle())
-      // Stretch out the textures becuase we have 1x scale only now
       this.context.drawImage(texture,
         0,
         0,
         texture.naturalWidth,
         texture.naturalHeight,
-        offset.x * 2,
-        offset.y * 2,
-        texture.naturalWidth * 2,
-        texture.naturalHeight * 2
+        offset.x,
+        offset.y,
+        texture.naturalWidth,
+        texture.naturalHeight
       )
 
       if (body.name == 'head') {

@@ -107,15 +107,15 @@ export default class Box2DWorld {
     let that = this;
     var _end = ["hand_front_top", "hand_back_top", "leg_front_tie", "leg_back_tie", "body", "head"];
     let contactListener = new Box2D.JSContactListener();
-    contactListener.EndContact = function() {};
+    contactListener.PostSolve = function() {};
     contactListener.PreSolve = function() {};
-    contactListener.PostSolve = function(contactPtr) {
-
-      if (that.finish) return;
-
+    contactListener.EndContact = function(contactPtr, impulse) {
       let contact = Box2D.wrapPointer(contactPtr, Box2D.b2Contact),
         bA = contact.GetFixtureA().GetBody(),
         bB = contact.GetFixtureB().GetBody();
+
+      // Check for decor collision
+
       var decor;
 
       if (Constants.bodyparts.indexOf(bA.name) >= 0 && bB.name.indexOf('decor_') == 0) {
@@ -127,9 +127,16 @@ export default class Box2DWorld {
       }
 
       if (decor) {
-        let filterData = decor.GetFixtureList().GetFilterData()
-        filterData.set_groupIndex(-1)
-        decor.GetFixtureList().SetFilterData(filterData)
+        setTimeout(() => {
+          let fixture = decor.GetFixtureList()
+
+          do {
+            let filterData = fixture.GetFilterData()
+            filterData.set_maskBits(65533)
+            fixture.SetFilterData(filterData)
+            fixture = fixture.GetNext()
+          } while (fixture.e != 0)
+        }, 100)
       }
 
     };
@@ -141,13 +148,16 @@ export default class Box2DWorld {
         bA = contact.GetFixtureA().GetBody(),
         bB = contact.GetFixtureB().GetBody();
 
+      // Check for body to floor collision
+
       if ((_floor.indexOf(bA.name) != -1 && _end.indexOf(bB.name) >= 0) ||
         (_floor.indexOf(bB.name) != -1 && _end.indexOf(bA.name) >= 0)) {
+        that.finish = true;
+
         setTimeout(() => {
           that.lives -= 1
 
           if (that.lives <= 0) {
-            that.finish = true;
             debugger
             that.death(false)
           } else {
@@ -175,6 +185,8 @@ export default class Box2DWorld {
   }
 
   death(didWin) {
+
+    console.log(">>>" + new Date());
 
     let joints = ['tendon_rf', 'knee_r', 'ankle_r', 'tendon_lf', 'knee_l', 'ankle_l', 'joint26', 'joint8']
     joints.forEach((j) => {
