@@ -1549,6 +1549,52 @@
         [
           
           {
+            "density" : 0.02058310434222221,
+            "filter-categoryBits" : 2,
+            "friction" : 0.2,
+            "id" : 38,
+            "name" : "fixture10",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : [ 1.494598388671875, 0.0, 0.03779602050781250, 1.532394409179688 ],
+              "y" : [ 0.03309631347656250, 0.0, -3.249771118164062, -3.21667480468750 ]
+            }
+          }
+        ],
+        "gravityScale" : 0,
+        "id" : 18,
+        "linearVelocity" : 0,
+        "massData-I" : 0.4240254163742065,
+        "massData-center" : 
+        {
+          "x" : 0.7661972045898438,
+          "y" : -1.608337402343750
+        },
+        "massData-mass" : 0.1,
+        "name" : "lift_1",
+        "position" : 
+        {
+          "x" : 28.82212257385254,
+          "y" : -16.66441345214844
+        },
+        "type" : "dynamic"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
             "density" : 1,
             "filter-categoryBits" : 2,
             "friction" : 0.2,
@@ -1570,7 +1616,6 @@
         ],
         "gravityScale" : 0,
         "id" : 20,
-        "linearDamping" : 1,
         "linearVelocity" : 0,
         "massData-I" : 33333.33593750,
         "massData-center" : 

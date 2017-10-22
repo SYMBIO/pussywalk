@@ -15,6 +15,26 @@ var _loaderPromise;
 var _paused = false;
 var _scoreboard = []
 
+const resizeCanvas = () => {
+  let htmlCanvas = $('canvas')[0]
+  if (htmlCanvas && htmlCanvas.getContext) {
+
+    let context = htmlCanvas.getContext('2d')
+
+    let dpr = window.devicePixelRatio || 1;
+    let bsr = context.webkitBackingStorePixelRatio ||
+      context.mozBackingStorePixelRatio ||
+      context.msBackingStorePixelRatio ||
+      context.oBackingStorePixelRatio ||
+      context.backingStorePixelRatio || 1;
+
+    htmlCanvas.width = window.innerWidth * dpr / bsr;
+    htmlCanvas.height = window.innerHeight * dpr / bsr;
+    htmlCanvas.style.width = window.innerWidth + "px";
+    htmlCanvas.style.height = window.innerHeight + "px";
+  }
+}
+
 const loadJSON = () => {
 
   enableLoader(true);
@@ -38,9 +58,7 @@ const loadJSON = () => {
 
 const initGame = () => {
 
-  debugger;
-
-  _canvas = $('<canvas width="2048" height="2000" style="width: 1024px; height: 1000px; visibility: hidden;" />');
+  _canvas = $('<canvas />');
   $('.game__scene').prepend(_canvas);
   _ctx = _canvas[0].getContext('2d');
 
@@ -51,6 +69,8 @@ const initGame = () => {
   _world.addRenderListener(_renderer.render)
 
   _renderer.scoreboard = _scoreboard
+
+  resizeCanvas()
 
   if (!_paused) {
     start();
@@ -132,6 +152,8 @@ const playLoader = () => {
 export default class PussywalkMinigame {
 
   constructor() {
+    $(window).resize(resizeCanvas)
+
     loadJSON();
   }
 

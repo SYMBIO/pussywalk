@@ -94,12 +94,12 @@ export default class Box2DWorld {
       this.handleArrows(e.keyCode, e.type == 'keydown');
     });
 
-    $('.game__key').on('touchstart', (e) => {
+    $('.game__key').on('touchstart mousedown', (e) => {
       e.preventDefault();
       this.handleArrows($(e.target).hasClass('game__key--right') ? 39 : 37, true);
     });
 
-    $('.game__key').on('touchend touchcancel', (e) => {
+    $('.game__key').on('touchend touchcancel mouseup', (e) => {
       e.preventDefault();
       this.handleArrows($(e.target).hasClass('game__key--right') ? 39 : 37, false);
     });
@@ -109,7 +109,30 @@ export default class Box2DWorld {
     let contactListener = new Box2D.JSContactListener();
     contactListener.EndContact = function() {};
     contactListener.PreSolve = function() {};
-    contactListener.PostSolve = function() {};
+    contactListener.PostSolve = function(contactPtr) {
+
+      if (that.finish) return;
+
+      let contact = Box2D.wrapPointer(contactPtr, Box2D.b2Contact),
+        bA = contact.GetFixtureA().GetBody(),
+        bB = contact.GetFixtureB().GetBody();
+      var decor;
+
+      if (Constants.bodyparts.indexOf(bA.name) >= 0 && bB.name.indexOf('decor_') == 0) {
+        decor = bB
+      }
+
+      if (Constants.bodyparts.indexOf(bB.name) >= 0 && bA.name.indexOf('decor_') == 0) {
+        decor = bA
+      }
+
+      if (decor) {
+        let filterData = decor.GetFixtureList().GetFilterData()
+        filterData.set_categoryBits(0b00000100)
+        decor.GetFixtureList().SetFilterData(filterData)
+      }
+
+    };
     contactListener.BeginContact = function(contactPtr) {
 
       if (that.finish) return;

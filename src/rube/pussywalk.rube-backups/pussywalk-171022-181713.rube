@@ -719,8 +719,8 @@
         "name" : "head",
         "position" : 
         {
-          "x" : 23.44753265380859,
-          "y" : -13.8903808593750
+          "x" : 23.44750022888184,
+          "y" : -13.89039993286133
         },
         "type" : "dynamic"
       },
@@ -1367,13 +1367,13 @@
         ],
         "id" : 13,
         "linearVelocity" : 0,
-        "massData-I" : 0.2868023514747620,
+        "massData-I" : 0.2868023216724396,
         "massData-center" : 
         {
-          "x" : 0.006862460635602474,
-          "y" : 0.07951407879590988
+          "x" : 0.006862461101263762,
+          "y" : 0.07951408624649048
         },
-        "massData-mass" : 0.8560814857482910,
+        "massData-mass" : 0.8560815453529358,
         "name" : "hand_back_bottom",
         "position" : 
         {
@@ -1498,188 +1498,6 @@
             "density" : 1,
             "filter-categoryBits" : 2,
             "friction" : 0.2,
-            "id" : 38,
-            "name" : "fixture10",
-            "shapes" : 
-            [
-              
-              {
-                "type" : "polygon"
-              }
-            ],
-            "vertices" : 
-            {
-              "x" : [ 81.52706909179688, 81.36185455322266, 81.51809692382812 ],
-              "y" : [ 1.657908558845520, 1.808464050292969, 1.316505789756775 ]
-            }
-          },
-          
-          {
-            "density" : 1,
-            "filter-categoryBits" : 2,
-            "friction" : 0.2,
-            "id" : 39,
-            "name" : "fixture10",
-            "shapes" : 
-            [
-              
-              {
-                "type" : "polygon"
-              }
-            ],
-            "vertices" : 
-            {
-              "x" : 
-              [
-                81.51809692382812,
-                81.36185455322266,
-                68.42417907714844,
-                68.40487670898438,
-                81.33229827880859
-              ],
-              "y" : 
-              [
-                1.316505789756775,
-                1.808464050292969,
-                1.794712543487549,
-                1.308938503265381,
-                -12.49730014801025
-              ]
-            }
-          },
-          
-          {
-            "density" : 1,
-            "filter-categoryBits" : 2,
-            "friction" : 0.2,
-            "id" : 40,
-            "name" : "fixture10",
-            "shapes" : 
-            [
-              
-              {
-                "type" : "polygon"
-              }
-            ],
-            "vertices" : 
-            {
-              "x" : 
-              [
-                81.33229827880859,
-                68.40487670898438,
-                64.40396118164062,
-                64.42356109619141
-              ],
-              "y" : 
-              [
-                -12.49730014801025,
-                1.308938503265381,
-                1.340358495712280,
-                0.8932815194129944
-              ]
-            }
-          },
-          
-          {
-            "density" : 1,
-            "filter-categoryBits" : 2,
-            "friction" : 0.2,
-            "id" : 41,
-            "name" : "fixture10",
-            "shapes" : 
-            [
-              
-              {
-                "type" : "polygon"
-              }
-            ],
-            "vertices" : 
-            {
-              "x" : 
-              [
-                81.33229827880859,
-                64.42356109619141,
-                60.73404693603516,
-                60.75354766845703
-              ],
-              "y" : 
-              [
-                -12.49730014801025,
-                0.8932815194129944,
-                0.9091010093688965,
-                0.4760569930076599
-              ]
-            }
-          },
-          
-          {
-            "density" : 1,
-            "filter-categoryBits" : 2,
-            "friction" : 0.2,
-            "id" : 42,
-            "name" : "fixture10",
-            "shapes" : 
-            [
-              
-              {
-                "type" : "polygon"
-              }
-            ],
-            "vertices" : 
-            {
-              "x" : 
-              [
-                81.33229827880859,
-                60.75354766845703,
-                56.50875854492188,
-                56.50875854492188
-              ],
-              "y" : 
-              [
-                -12.49730014801025,
-                0.4760569930076599,
-                0.4659749865531921,
-                0.02814739942550659
-              ]
-            }
-          },
-          
-          {
-            "density" : 1,
-            "filter-categoryBits" : 2,
-            "friction" : 0.2,
-            "id" : 43,
-            "name" : "fixture10",
-            "shapes" : 
-            [
-              
-              {
-                "type" : "polygon"
-              }
-            ],
-            "vertices" : 
-            {
-              "x" : 
-              [
-                81.33229827880859,
-                56.50875854492188,
-                8.762249946594238,
-                -53.22965240478516
-              ],
-              "y" : 
-              [
-                -12.49730014801025,
-                0.02814739942550659,
-                0.03076379932463169,
-                -12.48530006408691
-              ]
-            }
-          },
-          
-          {
-            "density" : 1,
-            "filter-categoryBits" : 2,
-            "friction" : 0.2,
             "id" : 44,
             "name" : "fixture10",
             "shapes" : 
@@ -1691,30 +1509,18 @@
             ],
             "vertices" : 
             {
-              "x" : 
-              [
-                8.762249946594238,
-                8.726260185241699,
-                -53.23080444335938,
-                -53.22965240478516
-              ],
-              "y" : 
-              [
-                0.03076379932463169,
-                0.5423280000686646,
-                0.5423793792724609,
-                -12.48530006408691
-              ]
+              "x" : [ 25.0, 0.0, 0.0, 25.0 ],
+              "y" : [ 0.0, 0.0, -30.0, -30.0 ]
             }
           }
         ],
         "id" : 16,
         "linearVelocity" : 0,
-        "name" : "ground",
+        "name" : "ground_1",
         "position" : 
         {
-          "x" : 44.31319808959961,
-          "y" : -21.15488624572754
+          "x" : 0,
+          "y" : -20.0
         },
         "type" : "static"
       },
@@ -1731,6 +1537,263 @@
         {
           "x" : 17.69307327270508,
           "y" : -11.61737823486328
+        },
+        "type" : "dynamic"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 0.02058310434222221,
+            "filter-categoryBits" : 2,
+            "friction" : 0.2,
+            "id" : 42,
+            "name" : "fixture10",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : [ 1.5, 0.0, 0.0, 1 ],
+              "y" : [ 0.0, 0.0, -3.25, -3.25 ]
+            }
+          }
+        ],
+        "id" : 19,
+        "linearVelocity" : 0,
+        "massData-I" : 0.3102608323097229,
+        "massData-center" : 
+        {
+          "x" : 0.6333333253860474,
+          "y" : -1.516666650772095
+        },
+        "massData-mass" : 0.08361886441707611,
+        "name" : "decor_2",
+        "position" : 
+        {
+          "x" : 30.43026161193848,
+          "y" : -16.66440010070801
+        },
+        "type" : "dynamic"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "filter-categoryBits" : 2,
+            "friction" : 0.2,
+            "id" : 39,
+            "name" : "fixture10",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : [ 10, 0.0, 0.0, 10 ],
+              "y" : [ 0.0, 0.0, -20.0, -20.0 ]
+            }
+          }
+        ],
+        "gravityScale" : 0,
+        "id" : 20,
+        "linearVelocity" : 0,
+        "massData-I" : 33333.33593750,
+        "massData-center" : 
+        {
+          "x" : 5,
+          "y" : -10
+        },
+        "massData-mass" : 200.0,
+        "name" : "lift_1",
+        "position" : 
+        {
+          "x" : 25.0,
+          "y" : -20.0
+        },
+        "type" : "dynamic"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "filter-categoryBits" : 2,
+            "friction" : 0.2,
+            "id" : 40,
+            "name" : "fixture10",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : [ 25.0, 0.0, 0.0, 25.0 ],
+              "y" : [ 0.0, 0.0, -20.0, -20.0 ]
+            }
+          }
+        ],
+        "id" : 21,
+        "linearVelocity" : 0,
+        "name" : "ground_2",
+        "position" : 
+        {
+          "x" : 35.09999847412109,
+          "y" : -30.0
+        },
+        "type" : "static"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 1,
+            "filter-categoryBits" : 2,
+            "friction" : 0.2,
+            "id" : 41,
+            "name" : "fixture10",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : [ 25.0, 0.0, 0.0, 25.0 ],
+              "y" : [ 0.0, 0.0, -10, -10 ]
+            }
+          }
+        ],
+        "id" : 22,
+        "linearVelocity" : 0,
+        "name" : "ground_3",
+        "position" : 
+        {
+          "x" : 25.0,
+          "y" : -50.0
+        },
+        "type" : "static"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 0.02058310434222221,
+            "filter-categoryBits" : 2,
+            "friction" : 0.2,
+            "id" : 45,
+            "name" : "fixture10",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : [ 1.5, 0.0, 0.0, 1 ],
+              "y" : [ 0.0, 0.0, -3.25, -3.25 ]
+            }
+          }
+        ],
+        "id" : 24,
+        "linearVelocity" : 0,
+        "massData-I" : 0.3102608323097229,
+        "massData-center" : 
+        {
+          "x" : 0.6333333253860474,
+          "y" : -1.516666650772095
+        },
+        "massData-mass" : 0.08361886441707611,
+        "name" : "decor_1",
+        "position" : 
+        {
+          "x" : 28.81584358215332,
+          "y" : -16.65497779846191
+        },
+        "type" : "dynamic"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 0.02058310434222221,
+            "filter-categoryBits" : 2,
+            "friction" : 0.2,
+            "id" : 46,
+            "name" : "fixture10",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : [ 1.5, 0.0, 0.0, 1 ],
+              "y" : [ 0.0, 0.0, -3.25, -3.25 ]
+            }
+          }
+        ],
+        "id" : 25,
+        "linearVelocity" : 0,
+        "massData-I" : 0.3102608323097229,
+        "massData-center" : 
+        {
+          "x" : 0.6333333253860474,
+          "y" : -1.516666650772095
+        },
+        "massData-mass" : 0.08361886441707611,
+        "name" : "decor_3",
+        "position" : 
+        {
+          "x" : 32.24674224853516,
+          "y" : -16.67382240295410
         },
         "type" : "dynamic"
       }
