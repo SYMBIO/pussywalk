@@ -161,9 +161,6 @@ export default class Renderer {
     this.context.lineWidth = 1 / this.scale;
 
     this.context.scale(1, -1);
-    // this.context.rect(this.bodies.lift_1.GetPosition().get_x(),
-    //   this.bodies.lift_1.GetPosition().get_y(), 10, 10);
-    // this.context.stroke();
     this.world.DrawDebugData();
   }
 

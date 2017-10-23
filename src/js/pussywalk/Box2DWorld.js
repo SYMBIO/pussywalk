@@ -11,7 +11,7 @@ export default class Box2DWorld {
     this.timeStep = 1 / 60;
     this.velocityIterations = 10;
     this.positionIterations = 8;
-    this.lives = 1
+    this.lives = 5
 
     var gravity = new Box2D.b2Vec2(0.0, -10.0);
     this.world = new Box2D.b2World(gravity);
@@ -23,10 +23,10 @@ export default class Box2DWorld {
       y: -14.7
     }, {
       x: 80,
-      y: -24.7
+      y: -14.7
     }, {
       x: 30,
-      y: -24.7
+      y: -14.7
     }]
     this.progressPoints = [{
       x: 100,
@@ -162,6 +162,7 @@ export default class Box2DWorld {
             that.death(false)
           } else {
             that.resetPlayer()
+            that.finish = false
           }
         }, 1000);
       }
@@ -185,8 +186,6 @@ export default class Box2DWorld {
   }
 
   death(didWin) {
-
-    console.log(">>>" + new Date());
 
     let joints = ['tendon_rf', 'knee_r', 'ankle_r', 'tendon_lf', 'knee_l', 'ankle_l', 'joint26', 'joint8']
     joints.forEach((j) => {
@@ -365,7 +364,7 @@ export default class Box2DWorld {
     this.world = null;
 
     $('body').off('keydown keyup');
-    $('.game__key').off('touchstart touchend touchcancel');
+    $('.game__key').off('touchstart touchend touchcancel mousedown mouseup');
   }
 
   resetPlayer() {

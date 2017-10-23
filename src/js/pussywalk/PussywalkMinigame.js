@@ -93,7 +93,9 @@ const gameEndListener = (didWin) => {
     _canvas.remove()
   }
 
-  initGame()
+  if (!didWin) {
+    initGame()
+  }
 }
 
 const start = () => {
