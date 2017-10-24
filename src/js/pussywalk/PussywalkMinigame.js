@@ -32,6 +32,8 @@ const resizeCanvas = () => {
     htmlCanvas.height = window.innerHeight * dpr / bsr;
     htmlCanvas.style.width = window.innerWidth + "px";
     htmlCanvas.style.height = window.innerHeight + "px";
+
+    _renderer.scale = dpr / bsr;
   }
 }
 

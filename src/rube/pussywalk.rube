@@ -656,8 +656,8 @@
         "massData-I" : 0.1196009293198586,
         "massData-center" : 
         {
-          "x" : 0.007761078886687756,
-          "y" : -0.03876791521906853
+          "x" : 0.007761077489703894,
+          "y" : -0.03876790404319763
         },
         "massData-mass" : 0.6776448488235474,
         "name" : "hand_front_top",
@@ -1378,10 +1378,10 @@
         "massData-I" : 0.2868023216724396,
         "massData-center" : 
         {
-          "x" : 0.006862461101263762,
+          "x" : 0.006862462963908911,
           "y" : 0.07951408624649048
         },
-        "massData-mass" : 0.8560815453529358,
+        "massData-mass" : 0.8560814857482910,
         "name" : "hand_back_bottom",
         "position" : 
         {
@@ -1507,6 +1507,52 @@
         {
           "x" : 17.69309997558594,
           "y" : -13.29800033569336
+        },
+        "type" : "dynamic"
+      },
+      
+      {
+        "angle" : -0.1865739673376083,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 0.09593086689710617,
+            "filter-categoryBits" : 2,
+            "filter-maskBits" : 65533,
+            "friction" : 0.2,
+            "id" : 43,
+            "name" : "fixture0",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : [ 0.02994084358215332, 0.08448678255081177, 0.5435686707496643 ],
+              "y" : [ -0.04319173097610474, -0.3572875261306763, -0.3339775204658508 ]
+            }
+          }
+        ],
+        "id" : 18,
+        "linearVelocity" : 0,
+        "massData-I" : 0.0008820290095172822,
+        "massData-center" : 
+        {
+          "x" : 0.2193320989608765,
+          "y" : -0.2448189109563828
+        },
+        "massData-mass" : 0.006977395620197058,
+        "name" : "johnson",
+        "position" : 
+        {
+          "x" : 20.97317314147949,
+          "y" : -17.41677474975586
         },
         "type" : "dynamic"
       },
@@ -2370,6 +2416,23 @@
       
       {
         "aspectScale" : 1,
+        "body" : 18,
+        "center" : 
+        {
+          "x" : 0.01840309984982014,
+          "y" : 0.1128330007195473
+        },
+        "file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_head.png",
+        "filter" : 1,
+        "flip" : false,
+        "id" : 14,
+        "name" : "image4",
+        "opacity" : 0.5,
+        "scale" : 2.102461576461792
+      },
+      
+      {
+        "aspectScale" : 1,
         "center" : 
         {
           "x" : 91.60619354248047,
@@ -2710,8 +2773,8 @@
       {
         "anchorA" : 
         {
-          "x" : -0.6316989064216614,
-          "y" : -0.4306057691574097
+          "x" : -0.6316990256309509,
+          "y" : -0.4306060075759888
         },
         "anchorB" : 
         {
@@ -2965,6 +3028,28 @@
         "referenceAngle" : 0,
         "type" : "revolute",
         "upperLimit" : 1.570796370506287
+      },
+      
+      {
+        "anchorA" : 0,
+        "anchorB" : 
+        {
+          "x" : 0.787597656250,
+          "y" : -1.246303558349609
+        },
+        "bodyA" : 18,
+        "bodyB" : 3,
+        "collideConnected" : false,
+        "enableLimit" : true,
+        "enableMotor" : false,
+        "id" : 33,
+        "lowerLimit" : -0.1745329201221466,
+        "maxMotorTorque" : 0,
+        "motorSpeed" : 0,
+        "name" : "joint0",
+        "referenceAngle" : 0,
+        "type" : "revolute",
+        "upperLimit" : 0.5235987901687622
       }
     ],
     "positionIterations" : 3,

@@ -2,6 +2,8 @@ import $ from 'jquery';
 import Rube2Box2D from './Rube2Box2D';
 import Box2Debug from './Box2Debug';
 import Constants from './Constants';
+import Recorder from './Recorder';
+import { TweenMax, Cubic } from 'gsap'
 
 export default class Box2DWorld {
 
@@ -11,22 +13,26 @@ export default class Box2DWorld {
     this.timeStep = 1 / 60;
     this.velocityIterations = 10;
     this.positionIterations = 8;
-    this.lives = 5
+    this.lives = 3
+    this.record = false
 
     var gravity = new Box2D.b2Vec2(0.0, -10.0);
     this.world = new Box2D.b2World(gravity);
 
     this.step = this.step.bind(this)
+    this.stepBack = this.stepBack.bind(this)
+    this.stepBackComplete = this.stepBackComplete.bind(this)
+    this.resetPlayer = this.resetPlayer.bind(this)
 
     this.checkpoints = [{
-      x: 20,
+      x: 23,
       y: -14.7
     }, {
       x: 80,
       y: -14.7
     }, {
-      x: 30,
-      y: -14.7
+      x: 50,
+      y: -15.7
     }]
     this.progressPoints = [{
       x: 100,
@@ -37,6 +43,8 @@ export default class Box2DWorld {
     }]
     this.lastCheckpoint = this.checkpoints[0]
     this.startState = []
+    this.gameHistory = []
+    this.recorder = new Recorder(this.world)
 
     this.debug();
 
@@ -136,13 +144,15 @@ export default class Box2DWorld {
             fixture.SetFilterData(filterData)
             fixture = fixture.GetNext()
           } while (fixture.e != 0)
+
+          that.recorder.addDecor(decor.name)
         }, 100)
       }
 
     };
     contactListener.BeginContact = function(contactPtr) {
 
-      if (that.finish) return;
+      if (that.inactive) return;
 
       let contact = Box2D.wrapPointer(contactPtr, Box2D.b2Contact),
         bA = contact.GetFixtureA().GetBody(),
@@ -152,17 +162,15 @@ export default class Box2DWorld {
 
       if ((_floor.indexOf(bA.name) != -1 && _end.indexOf(bB.name) >= 0) ||
         (_floor.indexOf(bB.name) != -1 && _end.indexOf(bA.name) >= 0)) {
-        that.finish = true;
+        that.inactive = true;
 
         setTimeout(() => {
           that.lives -= 1
 
           if (that.lives <= 0) {
-            debugger
             that.death(false)
           } else {
             that.resetPlayer()
-            that.finish = false
           }
         }, 1000);
       }
@@ -186,16 +194,8 @@ export default class Box2DWorld {
   }
 
   death(didWin) {
-
-    let joints = ['tendon_rf', 'knee_r', 'ankle_r', 'tendon_lf', 'knee_l', 'ankle_l', 'joint26', 'joint8']
-    joints.forEach((j) => {
-      this.world.DestroyJoint(this.joints[j]);
-      delete this.joints[j];
-    });
-
-    let that = this;
     setTimeout(() => {
-      that.EndListener(didWin);
+      this.EndListener(didWin);
     }, 1000);
   }
 
@@ -240,8 +240,8 @@ export default class Box2DWorld {
     this.progress = this.bodies["body"].GetPosition().get_x()
 
     if (this.progress >= 100) {
-      if (!this.finish) {
-        this.finish = true
+      if (!this.inactive) {
+        this.inactive = true
         this.keymap = {}
         this.death(true)
       }
@@ -260,17 +260,24 @@ export default class Box2DWorld {
     if (this.RenderListener != null) {
       this.RenderListener(this.bodies)
     }
+
+    if (this.record) {
+      console.log(">>");
+      this.recorder.snap()
+    }
   }
 
   onProgress(value) {
     if (this.checkpoints.indexOf(value) != -1) {
       this.lastCheckpoint = value
+      this.gameHistory.push(this.recorder)
+      this.recorder = new Recorder(this.world)
     }
   }
 
   update() {
 
-    if (this.finish) return;
+    if (this.inactive) return;
 
     let bend = this.bodies['body'].GetAngle();
     if (bend < -0.3)
@@ -367,13 +374,73 @@ export default class Box2DWorld {
     $('.game__key').off('touchstart touchend touchcancel mousedown mouseup');
   }
 
-  resetPlayer() {
+  stepBack() {
+
+    let percent = Math.min(1, this.recorder.currentFrame / 100)
+    let moment = this.recorder.frames[Math.floor(this.recorder.currentFrame)]
+    var x
+    var y
+    var angle;
+
+    for (var bodyName in moment) {
+      if (this.startState[bodyName]) {
+        x = moment[bodyName].x * percent + (this.lastCheckpoint.x + this.startState[bodyName].x) * (1 - percent)
+        y = moment[bodyName].y * percent + (this.lastCheckpoint.y + this.startState[bodyName].y) * (1 - percent)
+        angle = moment[bodyName].angle * percent + this.startState[bodyName].angle * (1 - percent)
+      } else {
+        x = moment[bodyName].x
+        y = moment[bodyName].y
+        angle = moment[bodyName].angle
+      }
+      this.bodies[bodyName].SetTransform(new Box2D.b2Vec2(x, y), angle)
+    }
+  }
+
+  stepBackComplete() {
+    this.record = true
+    this.inactive = false
+
+    for (var index in this.recorder.touchedDecor) {
+      let bodyName = this.recorder.touchedDecor[index]
+      let fixture = this.bodies[bodyName].GetFixtureList()
+
+      do {
+        let filterData = fixture.GetFilterData()
+        filterData.set_maskBits(65535)
+        fixture.SetFilterData(filterData)
+        fixture = fixture.GetNext()
+      } while (fixture.e != 0)
+    }
+
+    this.gameHistory.push(this.recorder)
+    this.recorder = new Recorder(this.world)
+
     for (var bodyName in this.startState) {
-      let state = this.startState[bodyName]
-      this.bodies[bodyName].SetType(Box2D.b2_staticBody)
-      this.bodies[bodyName].SetTransform(new Box2D.b2Vec2(state.x + this.lastCheckpoint.x, state.y + this.lastCheckpoint.y), state.angle)
       this.bodies[bodyName].SetType(Box2D.b2_dynamicBody)
     }
+  }
+
+  resetPlayer() {
+
+    if (this.recorder.currentFrame == 0) {
+      this.record = true
+      this.inactive = false
+      return
+    }
+
+    this.record = false
+    this.inactive = true
+
+    for (var bodyName in this.startState) {
+      this.bodies[bodyName].SetType(Box2D.b2_kineticBody)
+    }
+
+    TweenMax.to(this.recorder, this.recorder.frames.length / 200, {
+      ease: Cubic.easeInOut,
+      currentFrame: 0,
+      onUpdate: this.stepBack,
+      onComplete: this.stepBackComplete
+    })
   }
 }
 ;

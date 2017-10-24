@@ -12,22 +12,23 @@ export default class Renderer {
     this.textures = {}
     this.scoreboard = []
 
-    this.scale = 64
+    this.physicsScale = 64
+    this.scale = 1
 
     this.render = this.render.bind(this)
 
     var walk_texture = new Image();
     walk_texture.src = "images/walk_texture.png";
 
-    this.walk_spritesheet = SpriteSheet.new(walk_texture, {
-      frames: [100, 100, 100], //Each frame defined by the amount of time it will be rendered before moving on
-      x: 0, //Start coordinates of the sequence
-      y: 0,
-      width: 48, //Size of each frame. Only supports one frame size for all
-      height: 48,
-      restart: true, //Loops the sequence
-      autoPlay: true, //Starts the
-    });
+    // this.walk_spritesheet = SpriteSheet.new(walk_texture, {
+    //   frames: [100, 100, 100], //Each frame defined by the amount of time it will be rendered before moving on
+    //   x: 0, //Start coordinates of the sequence
+    //   y: 0,
+    //   width: 48, //Size of each frame. Only supports one frame size for all
+    //   height: 48,
+    //   restart: true, //Loops the sequence
+    //   autoPlay: true, //Starts the
+    // });
 
     for (var i = 0; i < 4; i++) {
       let image = new Image()
@@ -55,8 +56,8 @@ export default class Renderer {
     // Graphics
 
     var canvasOffset = {
-      x: -this.bodies['body'].GetPosition().get_x() * this.scale + this.canvas.width / 2 + 10,
-      y: this.bodies['body'].GetPosition().get_y() * this.scale + this.canvas.height / 2 + 10
+      x: -this.bodies['body'].GetPosition().get_x() * this.physicsScale + this.canvas.width / 2 + 10,
+      y: this.bodies['body'].GetPosition().get_y() * this.physicsScale + this.canvas.height / 2 + 10
     };
 
     canvasOffset.x = Math.min(0, Math.round(canvasOffset.x))
@@ -87,7 +88,7 @@ export default class Renderer {
         }
       }
       var image = new Image();
-      let percent = (this.bodies['body'].GetPosition().get_x() * this.scale - (offset.eye1.x + offset.eye2.x) / 2) / 500
+      let percent = (this.bodies['body'].GetPosition().get_x() * this.physicsScale - (offset.eye1.x + offset.eye2.x) / 2) / 500
       percent = Math.min(1, Math.max(-1, percent))
 
       image.src = "images/eyeball.png";
@@ -117,8 +118,8 @@ export default class Renderer {
       let body = this.bodies[textureName.body];
 
       let position = {
-        x: body.GetPosition().get_x() * this.scale,
-        y: -body.GetPosition().get_y() * this.scale
+        x: body.GetPosition().get_x() * this.physicsScale,
+        y: -body.GetPosition().get_y() * this.physicsScale
       }
 
       let offset = {
@@ -138,16 +139,16 @@ export default class Renderer {
         0,
         texture.naturalWidth,
         texture.naturalHeight,
-        offset.x,
-        offset.y,
-        texture.naturalWidth,
-        texture.naturalHeight
+        offset.x / this.scale,
+        offset.y / this.scale,
+        texture.naturalWidth / this.scale,
+        texture.naturalHeight / this.scale
       )
 
-      if (body.name == 'head') {
-        this.walk_spritesheet.tick();
-        this.walk_spritesheet.draw(this.context);
-      }
+      // if (body.name == 'head') {
+      //   this.walk_spritesheet.tick();
+      //   this.walk_spritesheet.draw(this.context);
+      // }
 
       this.context.rotate(body.GetAngle())
       this.context.translate(-position.x, -position.y);
@@ -155,13 +156,13 @@ export default class Renderer {
 
     // Debug draw
 
-    this.context.setTransform(1, 0, 0, 1, 0, 0);
-    this.context.translate(canvasOffset.x, canvasOffset.y);
-    this.context.scale(this.scale, this.scale);
-    this.context.lineWidth = 1 / this.scale;
-
-    this.context.scale(1, -1);
-    this.world.DrawDebugData();
+  // this.context.setTransform(1, 0, 0, 1, 0, 0);
+  // this.context.translate(canvasOffset.x, canvasOffset.y);
+  // this.context.scale(this.physicsScale, this.physicsScale);
+  // this.context.lineWidth = 1 / this.physicsScale;
+  //
+  // this.context.scale(1, -1);
+  // this.world.DrawDebugData();
   }
 
   dispose() {
