@@ -7,6 +7,7 @@ import Renderer from './Renderer';
 var _json = null;
 var _enterFrame = null;
 var _world;
+var _worldCount = 0;
 var _renderer;
 var _canvas;
 var _ctx;
@@ -64,7 +65,7 @@ const initGame = () => {
   $('.game__scene').prepend(_canvas);
   _ctx = _canvas[0].getContext('2d');
 
-  _world = new Box2dWorld(_canvas[0], _json);
+  _world = new Box2dWorld(_canvas[0], _json, _worldCount);
   _renderer = new Renderer(_world.world, _canvas[0], _world.bodies)
 
   _world.addEndListener(gameEndListener)
@@ -95,9 +96,16 @@ const gameEndListener = (didWin) => {
     _canvas.remove()
   }
 
-  if (!didWin) {
-    initGame()
+  if (_enterFrame) {
+    window.cancelAnimationFrame(_enterFrame);
+    _enterFrame = null;
   }
+
+  // if (!didWin) {
+  debugger;
+  _worldCount++
+  initGame()
+// }
 }
 
 const start = () => {

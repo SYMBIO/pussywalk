@@ -7,7 +7,7 @@ import { TweenMax, Cubic } from 'gsap'
 
 export default class Box2DWorld {
 
-  constructor(canvas, json) {
+  constructor(canvas, json, worldID) {
 
     this.canvas = canvas;
     this.timeStep = 1 / 60;
@@ -15,6 +15,7 @@ export default class Box2DWorld {
     this.positionIterations = 8;
     this.lives = 3
     this.record = false
+    this.worldID = worldID
 
     var gravity = new Box2D.b2Vec2(0.0, -10.0);
     this.world = new Box2D.b2World(gravity);
@@ -41,7 +42,11 @@ export default class Box2DWorld {
       x: 10,
       y: 0
     }]
-    this.lastCheckpoint = this.checkpoints[0]
+    this.lastCheckpoint = {
+      x: 63,
+      y: -14.7
+    }
+    // this.lastCheckpoint = this.checkpoints[0]
     this.startState = []
     this.gameHistory = []
     this.recorder = new Recorder(this.world)
@@ -194,6 +199,13 @@ export default class Box2DWorld {
   }
 
   death(didWin) {
+
+    let joints = ['tendon_rf', 'knee_r', 'ankle_r', 'tendon_lf', 'knee_l', 'ankle_l', 'joint26', 'joint8']
+    joints.forEach((j) => {
+      this.world.DestroyJoint(this.joints[j]);
+      delete this.joints[j];
+    });
+
     setTimeout(() => {
       this.EndListener(didWin);
     }, 1000);
@@ -218,7 +230,6 @@ export default class Box2DWorld {
 
     this.world.SetDebugDraw(deb);
   }
-
 
   step() {
 
@@ -262,7 +273,10 @@ export default class Box2DWorld {
     }
 
     if (this.record) {
-      console.log(">>");
+      let newTime = new Date().getTime()
+      console.log(">>" + this.worldID);
+      console.log("<<" + (newTime - this.lastDate));
+      this.lastDate = newTime
       this.recorder.snap()
     }
   }

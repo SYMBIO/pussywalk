@@ -99,8 +99,8 @@ exports.offsets = {
     y: 5
   },
   "leg_shoe_front": {
-    x: 10,
-    y: 10
+    x: 18,
+    y: 13
   },
   "leg_front_tie": {
     x: -25,
