@@ -7,14 +7,13 @@ import Renderer from './Renderer';
 var _json = null;
 var _enterFrame = null;
 var _world;
-var _worldCount = 0;
 var _renderer;
 var _canvas;
 var _ctx;
 var _keymap = {};
 var _loaderPromise;
 var _paused = false;
-var _scoreboard = []
+var _callbacks;
 
 const resizeCanvas = () => {
   let htmlCanvas = $('canvas')[0]
@@ -65,47 +64,17 @@ const initGame = () => {
   $('.game__scene').prepend(_canvas);
   _ctx = _canvas[0].getContext('2d');
 
-  _world = new Box2dWorld(_canvas[0], _json, _worldCount);
+  _world = new Box2dWorld(_canvas[0], _json);
   _renderer = new Renderer(_world.world, _canvas[0], _world.bodies)
 
-  _world.addEndListener(gameEndListener)
+  _world.addEndListener(_callbacks.onGameEnd)
   _world.addRenderListener(_renderer.render)
-
-  _renderer.scoreboard = _scoreboard
 
   resizeCanvas()
 
   if (!_paused) {
     start();
   }
-}
-
-const gameEndListener = (didWin) => {
-
-  if (_world) {
-    _world.dispose();
-    _world = null;
-  }
-
-  if (_renderer) {
-    _renderer.dispose();
-    _renderer = null;
-  }
-
-  if (_canvas) {
-    _canvas.remove()
-  }
-
-  if (_enterFrame) {
-    window.cancelAnimationFrame(_enterFrame);
-    _enterFrame = null;
-  }
-
-  // if (!didWin) {
-  debugger;
-  _worldCount++
-  initGame()
-// }
 }
 
 const start = () => {
@@ -163,10 +132,18 @@ const playLoader = () => {
 
 export default class PussywalkMinigame {
 
-  constructor() {
+  constructor(callbacks) {
+    _callbacks = callbacks;
+
+    this.startTime = new Date().getTime()
+
     $(window).resize(resizeCanvas)
 
     loadJSON();
+  }
+
+  playTime() {
+    return new Date().getTime() - this.startTime;
   }
 
   init() {}
@@ -190,6 +167,8 @@ export default class PussywalkMinigame {
 
   dispose() {
 
+    $(window).off("resize");
+
     if (_enterFrame) {
       window.cancelAnimationFrame(_enterFrame);
       _enterFrame = null;
@@ -198,6 +177,11 @@ export default class PussywalkMinigame {
     if (_world) {
       _world.dispose();
       _world = null;
+    }
+
+    if (_renderer) {
+      _renderer.dispose();
+      _renderer = null;
     }
 
     if (_canvas) {
@@ -217,12 +201,5 @@ export default class PussywalkMinigame {
     }
 
   }
-
-  setScoreboard(scoreboard) {
-    console.log(scoreboard);
-    _scoreboard = scoreboard
-    _renderer.scoreboard = scoreboard
-  }
-
 }
 ;

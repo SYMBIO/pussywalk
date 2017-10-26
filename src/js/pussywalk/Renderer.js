@@ -10,7 +10,6 @@ export default class Renderer {
     this.bodies = bodies
     this.levelTextures = []
     this.textures = {}
-    this.scoreboard = []
 
     this.physicsScale = 64
     this.scale = 1
@@ -98,14 +97,6 @@ export default class Renderer {
       this.context.drawImage(image, offset.eye2.x + percent * 10, offset.eye2.y)
     }
 
-    // Scoreboard
-
-    this.context.font = '48px serif';
-    this.context.fillStyle = "#F00"
-    for (var i = 0; i < this.scoreboard.length; i++) {
-      this.context.fillText(this.scoreboard[i], 1000, 500 + 50 * i);
-    }
-
     // Draw figure
     for (var i in Constants.textureNames) {
 
@@ -172,6 +163,5 @@ export default class Renderer {
     this.bodies = null
     this.levelTextures = null
     this.textures = null
-    this.scoreboard = null
   }
 }

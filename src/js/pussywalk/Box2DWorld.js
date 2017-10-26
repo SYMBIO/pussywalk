@@ -7,7 +7,7 @@ import { TweenMax, Cubic } from 'gsap'
 
 export default class Box2DWorld {
 
-  constructor(canvas, json, worldID) {
+  constructor(canvas, json) {
 
     this.canvas = canvas;
     this.timeStep = 1 / 60;
@@ -15,7 +15,6 @@ export default class Box2DWorld {
     this.positionIterations = 8;
     this.lives = 3
     this.record = false
-    this.worldID = worldID
 
     var gravity = new Box2D.b2Vec2(0.0, -10.0);
     this.world = new Box2D.b2World(gravity);
@@ -250,7 +249,7 @@ export default class Box2DWorld {
 
     this.progress = this.bodies["body"].GetPosition().get_x()
 
-    if (this.progress >= 100) {
+    if (this.progress >= 30) {
       if (!this.inactive) {
         this.inactive = true
         this.keymap = {}
@@ -273,10 +272,6 @@ export default class Box2DWorld {
     }
 
     if (this.record) {
-      let newTime = new Date().getTime()
-      console.log(">>" + this.worldID);
-      console.log("<<" + (newTime - this.lastDate));
-      this.lastDate = newTime
       this.recorder.snap()
     }
   }

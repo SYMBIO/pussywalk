@@ -22,7 +22,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <style>
-      html, body {
+      html, body, #app {
         width: 100%;
         height: 100%;
         margin: 0px;
@@ -45,6 +45,89 @@
         flex-basis: 100%;
         margin: 10px;
       }
+
+      /* Scoreboard */
+
+      #scoreboard {
+        background: red;
+        position: absolute;
+        top: 2em;
+        left: 2em;
+        bottom: 2em;
+        right: 2em;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: stretch;
+      }
+      #scoreboard li {
+        display: flex;
+        background: yellow;
+      }
+
+      #scoreboard_top3 {
+        background: green;
+        display: flex;
+        flex-direction: row;
+        flex-grow: 0;
+        margin: 0;
+        padding: 0;
+        justify-content: space-around;
+      }
+      #scoreboard_top3 li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      #scoreboard_top3 span {
+        display: flex;
+      }
+      #scoreboard_list {
+        background: blue;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        margin: 0;
+        padding: 0;
+        overflow: scroll;
+        flex-shrink: 100;
+      }
+      #scoreboard_list li {
+        min-height: 2em;
+        display: flex;
+        flex-direction: row;
+      }
+      #scoreboard_list .username {
+        flex-grow: 1;
+      }
+
+      /* Name dialogue */
+      #name_dialogue {
+        background: red;
+        position: absolute;
+        top: 2em;
+        left: 2em;
+        bottom: 2em;
+        right: 2em;
+        min-width: 30em;
+        min-height: 20em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #name_dialogue p, #name_dialogue input {
+        font-size: 2em;
+        margin: 0.5em;
+        text-align: center;
+      }
+
+      .buttons_container button {
+        font-size: 2em;
+        flex-direction: row;
+        margin: 1em;
+      }
     </style>
 
 	<!-- <link rel="shortcut icon" href="/img/16x16px-icon.jpg">
@@ -59,6 +142,129 @@
 </head>
 <body>
     <div id="app">
+      <div id="name_dialogue">
+        <p>What's your name, player?</p>
+        <input id="name_input" type="text" />
+        <div class="buttons_container">
+          <button id="cancel_send_name" type="button">NO</button>
+          <button id="send_name" type="button">SEND</button>
+        </div>
+      </div>
+      <div id="scoreboard">
+        <button id="scoreboard_close">X</button>
+        <ul id="scoreboard_top3">
+          <li>
+            <span class="username">Username_TOP</span>
+            <span class="time">3:41</span>
+          </li>
+          <li>
+            <span class="username">Username_TOP@@2</span>
+            <span class="time">3:41</span>
+          </li>
+          <li>
+            <span class="username">Username TOP3</span>
+            <span class="time">3:41</span>
+          </li>
+        </ul>
+        <ul id="scoreboard_list">
+          <li>
+            <span class="username">Username</span>
+            <span class="time">3:41</span>
+          </li>
+          <li>
+            <span class="username">Username</span>
+            <span class="time">3:41</span>
+          </li>
+          <li>
+            <span class="username">Username</span>
+            <span class="time">3:41</span>
+          </li>
+            <li>
+              <span class="username">Username</span>
+              <span class="time">3:41</span>
+            </li>
+            <li>
+              <span class="username">Username</span>
+              <span class="time">3:41</span>
+            </li>
+            <li>
+              <span class="username">Username</span>
+              <span class="time">3:41</span>
+            </li>
+              <li>
+                <span class="username">Username</span>
+                <span class="time">3:41</span>
+              </li>
+              <li>
+                <span class="username">Username</span>
+                <span class="time">3:41</span>
+              </li>
+              <li>
+                <span class="username">Username</span>
+                <span class="time">3:41</span>
+              </li>
+                <li>
+                  <span class="username">Username</span>
+                  <span class="time">3:41</span>
+                </li>
+                <li>
+                  <span class="username">Username</span>
+                  <span class="time">3:41</span>
+                </li>
+                <li>
+                  <span class="username">Username</span>
+                  <span class="time">3:41</span>
+                </li>
+                  <li>
+                    <span class="username">Username</span>
+                    <span class="time">3:41</span>
+                  </li>
+                  <li>
+                    <span class="username">Username</span>
+                    <span class="time">3:41</span>
+                  </li>
+                  <li>
+                    <span class="username">Username</span>
+                    <span class="time">3:41</span>
+                  </li>
+                    <li>
+                      <span class="username">Username</span>
+                      <span class="time">3:41</span>
+                    </li>
+                    <li>
+                      <span class="username">Username</span>
+                      <span class="time">3:41</span>
+                    </li>
+                    <li>
+                      <span class="username">Username</span>
+                      <span class="time">3:41</span>
+                    </li>
+                      <li>
+                        <span class="username">Username</span>
+                        <span class="time">3:41</span>
+                      </li>
+                      <li>
+                        <span class="username">Username</span>
+                        <span class="time">3:41</span>
+                      </li>
+                      <li>
+                        <span class="username">Username</span>
+                        <span class="time">3:41</span>
+                      </li>
+                        <li>
+                          <span class="username">Username</span>
+                          <span class="time">3:41</span>
+                        </li>
+                        <li>
+                          <span class="username">Username</span>
+                          <span class="time">3:41</span>
+                        </li>
+                        <li>
+                          <span class="username">Username</span>
+                          <span class="time">3:41</span>
+                        </li>
+        </ul>
+      </div>
       <div id="game_controls">
         <button class="game__key game__key--left" />
         <button class="game__key game__key--right" />
