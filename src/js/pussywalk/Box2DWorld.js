@@ -41,11 +41,12 @@ export default class Box2DWorld {
       x: 10,
       y: 0
     }]
-    this.lastCheckpoint = {
-      x: 63,
-      y: -14.7
-    }
-    // this.lastCheckpoint = this.checkpoints[0]
+
+    this.lastCheckpoint = this.checkpoints[0]
+    // this.lastCheckpoint = {
+    //   x: 85,
+    //   y: -15
+    // }
     this.startState = []
     this.gameHistory = []
     this.recorder = new Recorder(this.world)
@@ -59,7 +60,6 @@ export default class Box2DWorld {
     let body
     let loadedBodies = [];
     var _floor = []
-
 
     bodiesJson.forEach((b) => {
       body = Rube2Box2D.loadBodyFromRUBE(b, this.world);
@@ -101,6 +101,9 @@ export default class Box2DWorld {
       this.joints[joint.name] = joint;
     });
 
+    // Build toilet chain
+
+    this.bodies['chain_holder']
     this.keymap = {};
     $('body').on('keydown keyup', (e) => {
       this.handleArrows(e.keyCode, e.type == 'keydown');
@@ -121,7 +124,11 @@ export default class Box2DWorld {
     let contactListener = new Box2D.JSContactListener();
     contactListener.PostSolve = function() {};
     contactListener.PreSolve = function() {};
-    contactListener.EndContact = function(contactPtr, impulse) {
+    contactListener.EndContact = function() {};
+    contactListener.BeginContact = function(contactPtr) {
+
+      if (that.inactive) return;
+
       let contact = Box2D.wrapPointer(contactPtr, Box2D.b2Contact),
         bA = contact.GetFixtureA().GetBody(),
         bB = contact.GetFixtureB().GetBody();
@@ -153,15 +160,6 @@ export default class Box2DWorld {
         }, 100)
       }
 
-    };
-    contactListener.BeginContact = function(contactPtr) {
-
-      if (that.inactive) return;
-
-      let contact = Box2D.wrapPointer(contactPtr, Box2D.b2Contact),
-        bA = contact.GetFixtureA().GetBody(),
-        bB = contact.GetFixtureB().GetBody();
-
       // Check for body to floor collision
 
       if ((_floor.indexOf(bA.name) != -1 && _end.indexOf(bB.name) >= 0) ||
@@ -171,7 +169,7 @@ export default class Box2DWorld {
         setTimeout(() => {
           that.lives -= 1
 
-          if (that.lives <= 0) {
+          if (that.lives < 0) {
             that.death(false)
           } else {
             that.resetPlayer()
@@ -249,7 +247,7 @@ export default class Box2DWorld {
 
     this.progress = this.bodies["body"].GetPosition().get_x()
 
-    if (this.progress >= 30) {
+    if (this.progress >= 150) {
       if (!this.inactive) {
         this.inactive = true
         this.keymap = {}
@@ -429,6 +427,20 @@ export default class Box2DWorld {
     }
   }
 
+  resetPlayerToCheckpoint() {
+    var x
+    var y
+    var angle;
+
+    for (var bodyName in this.startState) {
+      x = this.startState[bodyName].x + this.lastCheckpoint.x
+      y = this.startState[bodyName].y + this.lastCheckpoint.y
+      angle = this.startState[bodyName].angle
+      this.bodies[bodyName].SetTransform(new Box2D.b2Vec2(x, y), angle)
+    }
+  }
+
+
   resetPlayer() {
 
     if (this.recorder.currentFrame == 0) {
@@ -442,9 +454,11 @@ export default class Box2DWorld {
 
     for (var bodyName in this.startState) {
       this.bodies[bodyName].SetType(Box2D.b2_kineticBody)
+      this.bodies[bodyName].SetLinearVelocity(new Box2D.b2Vec2(0, 0))
+      this.bodies[bodyName].SetAngularVelocity(new Box2D.b2Vec2(0, 0))
     }
 
-    TweenMax.to(this.recorder, this.recorder.frames.length / 200, {
+    TweenMax.to(this.recorder, this.recorder.frames.length / 500, {
       ease: Cubic.easeInOut,
       currentFrame: 0,
       onUpdate: this.stepBack,

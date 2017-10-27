@@ -147,13 +147,13 @@ export default class Renderer {
 
     // Debug draw
 
-    this.context.setTransform(1, 0, 0, 1, 0, 0);
-    this.context.translate(canvasOffset.x, canvasOffset.y);
-    this.context.scale(this.physicsScale, this.physicsScale);
-    this.context.lineWidth = 1 / this.physicsScale;
-
-    this.context.scale(1, -1);
-    this.world.DrawDebugData();
+  // this.context.setTransform(1, 0, 0, 1, 0, 0);
+  // this.context.translate(canvasOffset.x, canvasOffset.y);
+  // this.context.scale(this.physicsScale, this.physicsScale);
+  // this.context.lineWidth = 1 / this.physicsScale;
+  //
+  // this.context.scale(1, -1);
+  // this.world.DrawDebugData();
   }
 
   dispose() {

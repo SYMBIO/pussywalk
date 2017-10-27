@@ -5,6 +5,26 @@ exports.textureNames = [
     asset: "elements/hospital_table.png"
   },
   {
+    body: "decor_5",
+    asset: "elements/hospital_table_cup.png"
+  },
+  {
+    body: "decor_6",
+    asset: "elements/hospital_table_drugs_01.png"
+  },
+  {
+    body: "decor_7",
+    asset: "elements/hospital_table_drugs_02.png"
+  },
+  {
+    body: "decor_9",
+    asset: "elements/hospital_table_radio.png"
+  },
+  {
+    body: "decor_8",
+    asset: "elements/hospital_table_temperature.png"
+  },
+  {
     body: "decor_2",
     asset: "elements/hospital_table.png"
   },
