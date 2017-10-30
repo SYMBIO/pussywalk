@@ -75,7 +75,6 @@ export default class Renderer {
     // Draw level
     let startIndex = Math.max(0, Math.floor(canvasOffset.x / 3000))
     let endIndex = Math.min(3, Math.ceil((canvasOffset.x + this.canvas.width / this.scale) / 3000))
-    console.log(canvasOffset.x * this.scale);
     for (var i = startIndex; i < endIndex; i++) {
       let texture = this.levelTextures[i]
       this.context.drawImage(texture,

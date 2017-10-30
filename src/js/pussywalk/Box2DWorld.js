@@ -286,6 +286,7 @@ export default class Box2DWorld {
 
     if (this.inactive) return;
 
+    let thighAngle;
     let bend = this.bodies['body'].GetAngle();
     if (bend < -0.3)
       bend = -1;
@@ -297,6 +298,8 @@ export default class Box2DWorld {
       k,
       a;
 
+    thighAngle = this.bodies['leg_front_tie'].GetAngle()
+
     // right
     j = this.joints["tendon_rf"];
     k = this.joints["knee_r"];
@@ -307,12 +310,25 @@ export default class Box2DWorld {
 
       if (k.data.bend != bend) {
 
-
         if (bend == -1) {
-          this.joints[j.name] = j.SetLength(0.1);
-          this.joints[k.name] = k.SetLength(0.8);
+          // Leaning fwd
+          if (thighAngle > 0) {
+            // Thigh pointing fwd -> Leg in the air -> Needs landing pos
+            this.joints[j.name] = j.SetLength(0.1);
+            this.joints[k.name] = k.SetLength(0.8);
+          } else {
+            // Thigh pointing back
+            this.joints[j.name] = j.SetLength(0.1);
+            this.joints[k.name] = k.SetLength(0.1);
+          }
         } else if (bend == 1) {
-          this.joints[k.name] = k.SetLength(0.65);
+          // Leaning back
+          if (thighAngle > 0) {
+            // Thigh pointing fwd -> Leg in the air -> Needs balancing
+            this.joints[k.name] = k.SetLength(0.65);
+          } else {
+            // Thigh pointing back -> ?
+          }
         } else {
           this.joints[j.name] = j.SetLength(0.1);
           this.joints[k.name] = k.SetLength(0.1);
@@ -330,20 +346,35 @@ export default class Box2DWorld {
     }
 
     // left
+
+    thighAngle = this.bodies['leg_back_tie'].GetAngle()
+
     j = this.joints["tendon_lf"];
     k = this.joints["knee_l"];
     a = this.joints["ankle_l"];
     if (this.keymap[37]) {
-      let bend = 2;
 
       if (k.data.bend != bend) {
 
-
         if (bend == -1) {
-          this.joints[j.name] = j.SetLength(0.1);
-          this.joints[k.name] = k.SetLength(0.8);
+          // Leaning fwd
+          if (thighAngle > 0) {
+            // Thigh pointing fwd -> Leg in the air -> Needs landing pos
+            this.joints[j.name] = j.SetLength(0.1);
+            this.joints[k.name] = k.SetLength(0.8);
+          } else {
+            // Thigh pointing back
+            this.joints[j.name] = j.SetLength(0.1);
+            this.joints[k.name] = k.SetLength(0.1);
+          }
         } else if (bend == 1) {
-          this.joints[k.name] = k.SetLength(0.65);
+          // Leaning back
+          if (thighAngle > 0) {
+            // Thigh pointing fwd -> Leg in the air -> Needs balancing
+            this.joints[k.name] = k.SetLength(0.65);
+          } else {
+            // Thigh pointing back -> ?
+          }
         } else {
           this.joints[j.name] = j.SetLength(0.1);
           this.joints[k.name] = k.SetLength(0.1);
