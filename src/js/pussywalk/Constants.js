@@ -1,8 +1,41 @@
 exports.textureNames = [
-
+  // Toilet papers
   {
-    body: "decor_1",
-    asset: "elements/hospital_table.png"
+    body: "decor_tp_1",
+    asset: "elements/paper_03.png"
+  },
+  {
+    body: "decor_tp_2",
+    asset: "elements/paper_01.png"
+  },
+  {
+    body: "decor_tp_3",
+    asset: "elements/paper_01.png"
+  },
+  {
+    body: "decor_tp_4",
+    asset: "elements/paper_01.png"
+  },
+  {
+    body: "decor_tp_5",
+    asset: "elements/paper_01.png"
+  },
+  {
+    body: "decor_tp_6",
+    asset: "elements/paper_01.png"
+  },
+  {
+    body: "decor_tp_7",
+    asset: "elements/paper_02.png"
+  },
+  {
+    body: "decor_tp_8",
+    asset: "elements/paper_04.png"
+  },
+  // Hospital table
+  {
+    body: "decor_9",
+    asset: "elements/hospital_table_radio.png"
   },
   {
     body: "decor_5",
@@ -17,16 +50,12 @@ exports.textureNames = [
     asset: "elements/hospital_table_drugs_02.png"
   },
   {
-    body: "decor_9",
-    asset: "elements/hospital_table_radio.png"
-  },
-  {
     body: "decor_8",
     asset: "elements/hospital_table_temperature.png"
   },
   {
-    body: "decor_2",
-    asset: "elements/hospital_table.png"
+    body: "lift_1",
+    asset: "elements/poll_elevator.png"
   },
   {
     body: "decor_3",
@@ -141,5 +170,9 @@ exports.offsets = {
   "body": {
     x: 0,
     y: -15
+  },
+  "lift_1": {
+    x: 7,
+    y: -385
   }
 }

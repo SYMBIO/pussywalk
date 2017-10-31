@@ -54,48 +54,65 @@ export default class Renderer {
 
     // Graphics
 
-    var canvasOffset = {
-      x: -this.bodies['body'].GetPosition().get_x() * this.physicsScale + this.canvas.width / 2 + 10,
-      y: this.bodies['body'].GetPosition().get_y() * this.physicsScale + this.canvas.height / 2 + 10
+    // x: [0...3000] * scale
+    let bodyOffset = {
+      x: this.bodies['body'].GetPosition().get_x() * this.physicsScale * this.scale,
+      y: this.bodies['body'].GetPosition().get_y() * this.physicsScale * this.scale
     };
 
-    canvasOffset.x = Math.min(0, Math.round(canvasOffset.x))
+    let canvasOffset = {
+      x: bodyOffset.x - this.canvas.width / 2,
+      y: bodyOffset.y + this.canvas.height / 2
+    }
+
+    canvasOffset.x = Math.max(0, Math.round(canvasOffset.x))
     canvasOffset.y = Math.min(0, Math.round(canvasOffset.y))
 
     this.context.setTransform(1, 0, 0, 1, 0, 0);
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.context.translate(canvasOffset.x, canvasOffset.y);
+    this.context.translate(-canvasOffset.x, canvasOffset.y);
 
     // Draw level
-    let startIndex = Math.max(1, Math.ceil(-(canvasOffset.x) / 3000))
-    let endIndex = Math.min(4, startIndex + 2)
+    let startIndex = Math.max(0, Math.floor(canvasOffset.x / 3000))
+    let endIndex = Math.min(3, Math.ceil((canvasOffset.x + this.canvas.width / this.scale) / 3000))
+    console.log(canvasOffset.x * this.scale);
     for (var i = startIndex; i < endIndex; i++) {
-      this.context.drawImage(this.levelTextures[i - 1], (i - 1) * 3000, 0)
+      let texture = this.levelTextures[i]
+      this.context.drawImage(texture,
+        0,
+        0,
+        texture.naturalWidth,
+        texture.naturalHeight,
+        i * 3000 * this.scale,
+        0,
+        texture.naturalWidth * this.scale,
+        texture.naturalHeight * this.scale
+      )
     }
 
-    // Putin's face:
-    if (startIndex == 1) {
-      // Offset 1500
-      let offset = {
-        eye1: {
-          x: 1870,
-          y: 650
-        },
-        eye2: {
-          x: 1920,
-          y: 650
-        }
-      }
-      var image = new Image();
-      let percent = (this.bodies['body'].GetPosition().get_x() * this.physicsScale - (offset.eye1.x + offset.eye2.x) / 2) / 500
-      percent = Math.min(1, Math.max(-1, percent))
-
-      image.src = "images/eyeball.png";
-      this.context.drawImage(image, offset.eye1.x + percent * 10, offset.eye1.y)
-
-      image.src = "images/eyeball.png";
-      this.context.drawImage(image, offset.eye2.x + percent * 10, offset.eye2.y)
-    }
+    // // Putin's face:
+    // if (startIndex == 1) {
+    //   // Offset 1500
+    //   let offset = {
+    //     eye1: {
+    //       x: 1870,
+    //       y: 650
+    //     },
+    //     eye2: {
+    //       x: 1920,
+    //       y: 650
+    //     }
+    //   }
+    //   var image = new Image();
+    //   let percent = (this.bodies['body'].GetPosition().get_x() * this.physicsScale - (offset.eye1.x + offset.eye2.x) / 2) / 500
+    //   percent = Math.min(1, Math.max(-1, percent))
+    //
+    //   image.src = "images/eyeball.png";
+    //   this.context.drawImage(image, offset.eye1.x + percent * 10, offset.eye1.y)
+    //
+    //   image.src = "images/eyeball.png";
+    //   this.context.drawImage(image, offset.eye2.x + percent * 10, offset.eye2.y)
+    // }
 
     // Draw figure
     for (var i in Constants.textureNames) {
@@ -109,18 +126,18 @@ export default class Renderer {
       let body = this.bodies[textureName.body];
 
       let position = {
-        x: body.GetPosition().get_x() * this.physicsScale,
-        y: -body.GetPosition().get_y() * this.physicsScale
+        x: body.GetPosition().get_x() * this.physicsScale * this.scale,
+        y: -body.GetPosition().get_y() * this.physicsScale * this.scale
       }
 
       let offset = {
-        x: -texture.naturalWidth / 2,
-        y: -texture.naturalHeight / 2
+        x: -texture.naturalWidth / 4 * this.scale,
+        y: -texture.naturalHeight / 4 * this.scale,
       }
 
       if (Constants.offsets[textureName.body]) {
-        offset.x += Constants.offsets[textureName.body].x
-        offset.y += Constants.offsets[textureName.body].y
+        offset.x += Constants.offsets[textureName.body].x * this.scale
+        offset.y += Constants.offsets[textureName.body].y * this.scale
       }
 
       this.context.translate(position.x, position.y);
@@ -130,10 +147,10 @@ export default class Renderer {
         0,
         texture.naturalWidth,
         texture.naturalHeight,
-        offset.x / this.scale,
-        offset.y / this.scale,
-        texture.naturalWidth / this.scale,
-        texture.naturalHeight / this.scale
+        offset.x,
+        offset.y,
+        texture.naturalWidth / 2 * this.scale,
+        texture.naturalHeight / 2 * this.scale
       )
 
       // if (body.name == 'head') {
@@ -147,13 +164,13 @@ export default class Renderer {
 
     // Debug draw
 
-  // this.context.setTransform(1, 0, 0, 1, 0, 0);
-  // this.context.translate(canvasOffset.x, canvasOffset.y);
-  // this.context.scale(this.physicsScale, this.physicsScale);
-  // this.context.lineWidth = 1 / this.physicsScale;
-  //
-  // this.context.scale(1, -1);
-  // this.world.DrawDebugData();
+    this.context.setTransform(1, 0, 0, 1, 0, 0);
+    // this.context.translate(canvasOffset.x, canvasOffset.y);
+    this.context.scale(this.physicsScale, this.physicsScale);
+    this.context.lineWidth = 1 / this.physicsScale;
+
+    this.context.scale(1, -1);
+    this.world.DrawDebugData();
   }
 
   dispose() {

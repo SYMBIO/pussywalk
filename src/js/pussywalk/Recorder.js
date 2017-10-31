@@ -20,7 +20,6 @@ export default class Recorder {
       body = body.GetNext()
     }
     this.frames.push(state)
-
     this.currentFrame = this.frames.length
   }
 

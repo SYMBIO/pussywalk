@@ -28,7 +28,7 @@ export default class Box2DWorld {
       x: 23,
       y: -14.7
     }, {
-      x: 80,
+      x: 92,
       y: -14.7
     }, {
       x: 50,
@@ -454,8 +454,11 @@ export default class Box2DWorld {
 
     for (var bodyName in this.startState) {
       this.bodies[bodyName].SetType(Box2D.b2_kineticBody)
+    }
+
+    for (var bodyName in this.bodies) {
       this.bodies[bodyName].SetLinearVelocity(new Box2D.b2Vec2(0, 0))
-      this.bodies[bodyName].SetAngularVelocity(new Box2D.b2Vec2(0, 0))
+      this.bodies[bodyName].SetAngularVelocity(0)
     }
 
     TweenMax.to(this.recorder, this.recorder.frames.length / 500, {
