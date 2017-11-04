@@ -15,6 +15,7 @@ export default class Renderer {
     this.scale = 1
 
     this.render = this.render.bind(this)
+    this.drawTexture = this.drawTexture.bind(this)
 
     var walk_texture = new Image();
     walk_texture.src = "images/walk_texture.png";
@@ -73,8 +74,10 @@ export default class Renderer {
     this.context.translate(-canvasOffset.x, canvasOffset.y);
 
     // Draw level
-    let startIndex = Math.max(0, Math.floor(canvasOffset.x / 3000))
-    let endIndex = Math.min(3, Math.ceil((canvasOffset.x + this.canvas.width / this.scale) / 3000))
+    // let startIndex = Math.max(0, Math.floor(canvasOffset.x / 3000))
+    let startIndex = 0
+    // let endIndex = Math.min(3, Math.ceil((canvasOffset.x + this.canvas.width / this.scale) / 3000))
+    let endIndex = 4
     for (var i = startIndex; i < endIndex; i++) {
       let texture = this.levelTextures[i]
       this.context.drawImage(texture,
@@ -89,87 +92,103 @@ export default class Renderer {
       )
     }
 
-    // // Putin's face:
-    // if (startIndex == 1) {
-    //   // Offset 1500
-    //   let offset = {
-    //     eye1: {
-    //       x: 1870,
-    //       y: 650
-    //     },
-    //     eye2: {
-    //       x: 1920,
-    //       y: 650
-    //     }
-    //   }
-    //   var image = new Image();
-    //   let percent = (this.bodies['body'].GetPosition().get_x() * this.physicsScale - (offset.eye1.x + offset.eye2.x) / 2) / 500
-    //   percent = Math.min(1, Math.max(-1, percent))
-    //
-    //   image.src = "images/eyeball.png";
-    //   this.context.drawImage(image, offset.eye1.x + percent * 10, offset.eye1.y)
-    //
-    //   image.src = "images/eyeball.png";
-    //   this.context.drawImage(image, offset.eye2.x + percent * 10, offset.eye2.y)
-    // }
-
-    // Draw figure
-    for (var i in Constants.textureNames) {
-
-      let textureName = Constants.textureNames[i]
-      if (this.bodies[textureName.body] == null) {
-        continue;
-      }
-
-      let texture = this.textures[textureName.body]
-      let body = this.bodies[textureName.body];
-
-      let position = {
-        x: body.GetPosition().get_x() * this.physicsScale * this.scale,
-        y: -body.GetPosition().get_y() * this.physicsScale * this.scale
-      }
-
+    // Putin's face:
+    if (startIndex == 0) {
       let offset = {
-        x: -texture.naturalWidth / 4 * this.scale,
-        y: -texture.naturalHeight / 4 * this.scale,
+        eye1: {
+          x: 1780,
+          y: 650
+        },
+        eye2: {
+          x: 1850,
+          y: 650
+        }
       }
+      var image = new Image();
+      let percent = (this.bodies['body'].GetPosition().get_x() * this.physicsScale - (offset.eye1.x + offset.eye2.x) / 2) / 500
+      percent = Math.min(1, Math.max(-1, percent))
 
-      if (Constants.offsets[textureName.body]) {
-        offset.x += Constants.offsets[textureName.body].x * this.scale
-        offset.y += Constants.offsets[textureName.body].y * this.scale
+      let position;
+
+      position = {
+        x: (offset.eye1.x + percent * 10) * this.scale,
+        y: offset.eye1.y * this.scale
       }
-
       this.context.translate(position.x, position.y);
-      this.context.rotate(-body.GetAngle())
-      this.context.drawImage(texture,
-        0,
-        0,
-        texture.naturalWidth,
-        texture.naturalHeight,
-        offset.x,
-        offset.y,
-        texture.naturalWidth / 2 * this.scale,
-        texture.naturalHeight / 2 * this.scale
-      )
+      image.src = "images/eyeball.png";
+      this.context.drawImage(image, percent * 10, 0)
+      this.context.translate(-position.x, -position.y);
 
-      // if (body.name == 'head') {
-      //   this.walk_spritesheet.tick();
-      //   this.walk_spritesheet.draw(this.context);
-      // }
-
-      this.context.rotate(body.GetAngle())
+      position = {
+        x: (offset.eye2.x + percent * 10) * this.scale,
+        y: offset.eye2.y * this.scale
+      }
+      this.context.translate(position.x, position.y);
+      image.src = "images/eyeball.png";
+      this.context.drawImage(image, percent * 10, 0)
       this.context.translate(-position.x, -position.y);
     }
 
-    // Debug draw
+    // Draw elements incl. figure
+    for (var i in Constants.textureNames) {
+      this.drawTexture(Constants.textureNames[i])
+    }
 
-    this.context.setTransform(1, 0, 0, 1, 0, 0);
-    // this.context.translate(canvasOffset.x, canvasOffset.y);
-    this.context.scale(this.physicsScale, this.physicsScale);
-    this.context.lineWidth = 1 / this.physicsScale;
+  // // Debug draw
+  //
+  // this.context.setTransform(1, 0, 0, 1, 0, 0);
+  // // this.context.translate(canvasOffset.x, canvasOffset.y);
+  // this.context.scale(this.physicsScale, this.physicsScale);
+  // this.context.lineWidth = 1 / this.physicsScale;
+  //
+  // this.context.scale(1, -1);
+  // this.world.DrawDebugData();
+  }
 
-    this.context.scale(1, -1);
-    this.world.DrawDebugData();
+  drawTexture(textureName) {
+    if (this.bodies[textureName.body] == null) {
+      return
+    }
+
+    let texture = this.textures[textureName.body]
+    let body = this.bodies[textureName.body];
+
+    let position = {
+      x: body.GetPosition().get_x() * this.physicsScale * this.scale,
+      y: -body.GetPosition().get_y() * this.physicsScale * this.scale
+    }
+
+    let offset = {
+      x: -texture.naturalWidth / 4 * this.scale,
+      y: -texture.naturalHeight / 4 * this.scale,
+    }
+
+    if (Constants.offsets[texture.body]) {
+      offset.x += Constants.offsets[textureName.body].x * this.scale
+      offset.y += Constants.offsets[textureName.body].y * this.scale
+    }
+
+    this.context.translate(position.x, position.y);
+    this.context.rotate(-body.GetAngle())
+    this.context.drawImage(texture,
+      0,
+      0,
+      texture.naturalWidth,
+      texture.naturalHeight,
+      offset.x,
+      offset.y,
+      texture.naturalWidth / 2 * this.scale,
+      texture.naturalHeight / 2 * this.scale
+    )
+
+    // if (body.name == 'head') {
+    //   this.walk_spritesheet.tick();
+    //   this.walk_spritesheet.draw(this.context);
+    // }
+
+    this.context.rotate(body.GetAngle())
+    this.context.translate(-position.x, -position.y);
+
   }
 
   dispose() {

@@ -1,4 +1,125 @@
 exports.textureNames = [
+  // Chain
+  {
+    body: "decor_chain_0",
+    asset: "elements/flusher_chain_part.png"
+  },
+  {
+    body: "decor_chain_1",
+    asset: "elements/flusher_chain_part.png"
+  },
+  {
+    body: "decor_chain_2",
+    asset: "elements/flusher_chain_part.png"
+  },
+  {
+    body: "decor_chain_3",
+    asset: "elements/flusher_chain_part.png"
+  },
+  {
+    body: "decor_chain_4",
+    asset: "elements/flusher_chain_part.png"
+  },
+  {
+    body: "decor_chain_5",
+    asset: "elements/flusher_chain_part.png"
+  },
+  {
+    body: "decor_chain_6",
+    asset: "elements/flusher_chain_part.png"
+  },
+  {
+    body: "decor_chain_7",
+    asset: "elements/flusher_chain_part.png"
+  },
+  {
+    body: "decor_chain_8",
+    asset: "elements/flusher_chain_part.png"
+  },
+  {
+    body: "decor_chain_9",
+    asset: "elements/flusher_chain_part.png"
+  },
+  {
+    body: "decor_chain_10",
+    asset: "elements/flusher_chain_part.png"
+  },
+  {
+    body: "decor_chain_11",
+    asset: "elements/flusher_chain_part.png"
+  },
+  {
+    body: "decor_chain_12",
+    asset: "elements/flusher_chain_part.png"
+  },
+  {
+    body: "decor_chain_13",
+    asset: "elements/flusher_chain_part.png"
+  },
+  {
+    body: "decor_chain_14",
+    asset: "elements/flusher_chain_part.png"
+  },
+  {
+    body: "decor_chain_15",
+    asset: "elements/flusher_chain_part.png"
+  },
+  {
+    body: "decor_chain_16",
+    asset: "elements/flusher_chain_part.png"
+  },
+  {
+    body: "decor_chain_17",
+    asset: "elements/flusher_chain_part.png"
+  },
+  {
+    body: "decor_chain_18",
+    asset: "elements/flusher_chain_part.png"
+  },
+  {
+    body: "decor_chain_19",
+    asset: "elements/flusher_chain_part.png"
+  },
+  {
+    body: "decor_chain_20",
+    asset: "elements/flusher_chain_part.png"
+  },
+  {
+    body: "decor_chain_21",
+    asset: "elements/flusher_chain_part.png"
+  },
+  {
+    body: "decor_chain_22",
+    asset: "elements/flusher_chain_part.png"
+  },
+  {
+    body: "decor_chain_23",
+    asset: "elements/flusher_chain_part.png"
+  },
+  {
+    body: "decor_chain_24",
+    asset: "elements/flusher_chain_part.png"
+  },,
+  {
+    body: "decor_chain_25",
+    asset: "elements/flusher_chain_part.png"
+  },
+  {
+    body: "decor_chain_26",
+    asset: "elements/flusher_chain_part.png"
+  },
+  {
+    body: "decor_chain_27",
+    asset: "elements/flusher_chain_part.png"
+  },
+  {
+    body: "decor_chain_28",
+    asset: "elements/flusher_chain_part.png"
+  },
+  {
+    body: "decor_chain_29",
+    asset: "elements/flusher_chain_part.png"
+  },
   // Toilet papers
   {
     body: "decor_tp_1",

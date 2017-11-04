@@ -1,8 +1,9 @@
 import $ from 'jquery';
-import Rube2Box2D from './Rube2Box2D';
 import Box2Debug from './Box2Debug';
+import Chain from './Chain';
 import Constants from './Constants';
 import Recorder from './Recorder';
+import Rube2Box2D from './Rube2Box2D';
 import { TweenMax, Cubic } from 'gsap'
 
 export default class Box2DWorld {
@@ -101,9 +102,6 @@ export default class Box2DWorld {
       this.joints[joint.name] = joint;
     });
 
-    // Build toilet chain
-
-    this.bodies['chain_holder']
     this.keymap = {};
     $('body').on('keydown keyup', (e) => {
       this.handleArrows(e.keyCode, e.type == 'keydown');
@@ -184,6 +182,9 @@ export default class Box2DWorld {
       time: 0
     };
 
+    this.chain = new Chain(this.world, this.bodies.chain_base)
+
+    this.bodies = Object.assign({}, this.bodies, this.chain.bodies)
     this.resetPlayer()
   }
 
@@ -221,9 +222,7 @@ export default class Box2DWorld {
   debug() {
     let deb = Box2Debug.getCanvasDebugDraw(this.canvas);
 
-    var e_shapeBit = 0x0001;
-    var e_jointBit = 0x0002;
-    deb.SetFlags(e_shapeBit | e_jointBit);
+    deb.SetFlags(0b11);
 
     this.world.SetDebugDraw(deb);
   }
@@ -237,12 +236,13 @@ export default class Box2DWorld {
 
     this.fps.time = now;
 
-    if (this.fps.dt > this.timeStep)
+    if (this.fps.dt > this.timeStep) {
       this.fps.dt = this.timeStep;
+    }
 
     this.update();
 
-    this.world.Step(this.fps.dt, this.velocityIterations, this.positionIterations);
+    this.world.Step(this.fps.dt * 1.3, this.velocityIterations, this.positionIterations);
     this.world.ClearForces();
 
     this.progress = this.bodies["body"].GetPosition().get_x()
@@ -287,11 +287,6 @@ export default class Box2DWorld {
     if (this.inactive) return;
 
     let thighAngle;
-    let bend = this.bodies['body'].GetAngle();
-    if (bend < -0.3)
-      bend = -1;
-    if (bend > 0.3)
-      bend = 1;
 
 
     let j,
@@ -306,7 +301,12 @@ export default class Box2DWorld {
     a = this.joints["ankle_r"];
     if (this.keymap[39]) {
 
-      //let bend = 2;
+      let bend = this.bodies['body'].GetAngle();
+      if (bend < -0.3)
+        bend = -1;
+      if (bend > 0.3)
+        bend = 1;
+
 
       if (k.data.bend != bend) {
 
@@ -353,6 +353,13 @@ export default class Box2DWorld {
     k = this.joints["knee_l"];
     a = this.joints["ankle_l"];
     if (this.keymap[37]) {
+
+      let bend = this.bodies['body'].GetAngle();
+      if (bend < -0.35)
+        bend = -1;
+      if (bend > 0.4)
+        bend = 1;
+
 
       if (k.data.bend != bend) {
 
