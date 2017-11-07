@@ -1,8 +1,9 @@
 
 {
-  "collisionbitplanes" : 
+  "activeScript" : "tyyb",
+  "collisionbitplanes" :
   {
-    "names" : 
+    "names" :
     [
       " f",
       "bitplane2",
@@ -38,12 +39,12 @@
       "bitplane32"
     ]
   },
-  "metaworld" : 
+  "metaworld" :
   {
     "allowSleep" : true,
     "autoClearForces" : true,
     "continuousPhysics" : true,
-    "exportOptions" : 
+    "exportOptions" :
     {
       "compactCommonFloats" : true,
       "compactZeroVecs" : true,
@@ -52,21 +53,21 @@
       "useHumanReadableFloats" : true,
       "usePrettyPrint" : true
     },
-    "gravity" : 
+    "gravity" :
     {
       "x" : 0,
       "y" : -10
     },
-    "metabody" : 
+    "metabody" :
     [
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
@@ -74,20 +75,20 @@
             "friction" : 0.2,
             "id" : 1,
             "name" : "fixture8",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
               "x" : [ 0.2859739959239960, -0.2301550060510635, -0.2978569865226746 ],
               "y" : [ 0.4987820088863373, 0.7067580223083496, 0.1660200059413910 ]
             }
           },
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
@@ -95,20 +96,20 @@
             "friction" : 0.2,
             "id" : 2,
             "name" : "fixture8",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
               "x" : [ 0.2859739959239960, -0.2978569865226746, -0.2324939966201782 ],
               "y" : [ 0.4987820088863373, 0.1660200059413910, 0.01534929964691401 ]
             }
           },
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
@@ -116,20 +117,20 @@
             "friction" : 0.2,
             "id" : 3,
             "name" : "fixture8",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
               "x" : [ 0.2859739959239960, -0.2324939966201782, 0.2681469917297363 ],
               "y" : [ 0.4987820088863373, 0.01534929964691401, -0.252047985792160 ]
             }
           },
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
@@ -137,20 +138,20 @@
             "friction" : 0.2,
             "id" : 4,
             "name" : "fixture8",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
               "x" : [ 0.2681469917297363, -0.2324939966201782, -0.1730719953775406 ],
               "y" : [ -0.252047985792160, 0.01534929964691401, -0.7127000093460083 ]
             }
           },
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
@@ -158,20 +159,20 @@
             "friction" : 0.2,
             "id" : 5,
             "name" : "fixture8",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
               "x" : [ 0.2681469917297363, -0.1730719953775406, 0.202783003449440 ],
               "y" : [ -0.252047985792160, -0.7127000093460083, -0.7245839834213257 ]
             }
           },
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
@@ -179,14 +180,14 @@
             "friction" : 0.2,
             "id" : 6,
             "name" : "fixture8",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
               "x" : [ 0.202783003449440, -0.1730719953775406, 0.007531169801950455 ],
               "y" : [ -0.7245839834213257, -0.7127000093460083, -0.8374860286712646 ]
@@ -196,28 +197,28 @@
         "id" : 1,
         "linearVelocity" : 0,
         "massData-I" : 0.1196009293198586,
-        "massData-center" : 
+        "massData-center" :
         {
           "x" : 0.007761077489703894,
-          "y" : -0.03876791149377823
+          "y" : -0.03876790404319763
         },
         "massData-mass" : 0.6776448488235474,
         "name" : "hand_back_top",
-        "position" : 
+        "position" :
         {
           "x" : 20.29000091552734,
           "y" : -15.72780036926270
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
@@ -225,23 +226,23 @@
             "friction" : 0.2,
             "id" : 7,
             "name" : "fixture7",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 0.2731580138206482,
                 0.2731580138206482,
                 -0.2731589972972870,
                 -0.2731589972972870
               ],
-              "y" : 
+              "y" :
               [
                 -0.03130580112338066,
                 0.03130570054054260,
@@ -254,28 +255,28 @@
         "id" : 2,
         "linearVelocity" : 0,
         "massData-I" : 0.0008619342697784305,
-        "massData-center" : 
+        "massData-center" :
         {
           "x" : -4.917383193969727e-07,
           "y" : -5.029142258194952e-08
         },
         "massData-mass" : 0.03420572727918625,
         "name" : "cigarette",
-        "position" : 
+        "position" :
         {
           "x" : 21.43429946899414,
           "y" : -15.37059974670410
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 0.6995531916618347,
             "filter-categoryBits" : 2,
@@ -283,20 +284,20 @@
             "friction" : 0.2,
             "id" : 8,
             "name" : "fixture1",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
               "x" : [ 0.1650069952011108, -0.6766139864921570, -0.7168459892272949 ],
               "y" : [ -1.335430026054382, -0.7908939719200134, -1.299960017204285 ]
             }
           },
-          
+
           {
             "density" : 0.6995531916618347,
             "filter-categoryBits" : 2,
@@ -304,16 +305,16 @@
             "friction" : 0.2,
             "id" : 9,
             "name" : "fixture1",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 1.185680031776428,
                 1.092180013656616,
@@ -321,7 +322,7 @@
                 0.1650069952011108,
                 0.8947849869728088
               ],
-              "y" : 
+              "y" :
               [
                 -0.8726819753646851,
                 -0.3740069866180420,
@@ -331,7 +332,7 @@
               ]
             }
           },
-          
+
           {
             "density" : 0.6995531916618347,
             "filter-categoryBits" : 2,
@@ -339,16 +340,16 @@
             "friction" : 0.2,
             "id" : 10,
             "name" : "fixture1",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 0.7597270011901855,
                 0.7285590171813965,
@@ -356,7 +357,7 @@
                 -0.05194519832730293,
                 -0.6454470157623291
               ],
-              "y" : 
+              "y" :
               [
                 -0.07272379845380783,
                 0.4584439992904663,
@@ -366,7 +367,7 @@
               ]
             }
           },
-          
+
           {
             "density" : 0.6995531916618347,
             "filter-categoryBits" : 2,
@@ -374,16 +375,16 @@
             "friction" : 0.2,
             "id" : 11,
             "name" : "fixture1",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 0.7597270011901855,
                 -0.6454470157623291,
@@ -392,7 +393,7 @@
                 -0.6766139864921570,
                 0.1650069952011108
               ],
-              "y" : 
+              "y" :
               [
                 -0.07272379845380783,
                 1.071400046348572,
@@ -403,7 +404,7 @@
               ]
             }
           },
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
@@ -412,23 +413,23 @@
             "id" : 12,
             "name" : "fixture12",
             "restitution" : 1,
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 1.896749973297119,
                 1.896749973297119,
                 -1.505570054054260,
                 -1.505570054054260
               ],
-              "y" : 
+              "y" :
               [
                 -0.8192600011825562,
                 -0.6764019727706909,
@@ -441,28 +442,28 @@
         "id" : 3,
         "linearVelocity" : 0,
         "massData-I" : 3.137815237045288,
-        "massData-center" : 
+        "massData-center" :
         {
           "x" : 0.06104796752333641,
           "y" : -0.1635658740997314
         },
         "massData-mass" : 3.486048698425293,
         "name" : "body",
-        "position" : 
+        "position" :
         {
           "x" : 19.92429924011230,
           "y" : -16.18910026550293
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
@@ -470,16 +471,16 @@
             "friction" : 0.2,
             "id" : 13,
             "name" : "fixture4",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 0.3997170031070709,
                 0.1970240026712418,
@@ -488,7 +489,7 @@
                 -0.2660059928894043,
                 0.1100109964609146
               ],
-              "y" : 
+              "y" :
               [
                 0.7562789916992188,
                 0.9197880029678345,
@@ -503,28 +504,28 @@
         "id" : 4,
         "linearVelocity" : 0,
         "massData-I" : 0.3356370925903320,
-        "massData-center" : 
+        "massData-center" :
         {
           "x" : 0.02233618870377541,
           "y" : -0.06945642828941345
         },
         "massData-mass" : 0.9823121428489685,
         "name" : "leg_front_calf",
-        "position" : 
+        "position" :
         {
           "x" : 20.00760078430176,
           "y" : -20.15570068359375
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
@@ -532,20 +533,20 @@
             "friction" : 0.2,
             "id" : 14,
             "name" : "fixture8",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
               "x" : [ 0.2859739959239960, -0.2301550060510635, -0.2978569865226746 ],
               "y" : [ 0.4987820088863373, 0.7067580223083496, 0.1660200059413910 ]
             }
           },
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
@@ -553,20 +554,20 @@
             "friction" : 0.2,
             "id" : 15,
             "name" : "fixture8",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
               "x" : [ 0.2859739959239960, -0.2978569865226746, -0.2324939966201782 ],
               "y" : [ 0.4987820088863373, 0.1660200059413910, 0.01534929964691401 ]
             }
           },
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
@@ -574,20 +575,20 @@
             "friction" : 0.2,
             "id" : 16,
             "name" : "fixture8",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
               "x" : [ 0.2859739959239960, -0.2324939966201782, 0.2681469917297363 ],
               "y" : [ 0.4987820088863373, 0.01534929964691401, -0.252047985792160 ]
             }
           },
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
@@ -595,20 +596,20 @@
             "friction" : 0.2,
             "id" : 17,
             "name" : "fixture8",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
               "x" : [ 0.2681469917297363, -0.2324939966201782, -0.1730719953775406 ],
               "y" : [ -0.252047985792160, 0.01534929964691401, -0.7127000093460083 ]
             }
           },
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
@@ -616,20 +617,20 @@
             "friction" : 0.2,
             "id" : 18,
             "name" : "fixture8",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
               "x" : [ 0.2681469917297363, -0.1730719953775406, 0.202783003449440 ],
               "y" : [ -0.252047985792160, -0.7127000093460083, -0.7245839834213257 ]
             }
           },
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
@@ -637,14 +638,14 @@
             "friction" : 0.2,
             "id" : 19,
             "name" : "fixture8",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
               "x" : [ 0.202783003449440, -0.1730719953775406, 0.007531169801950455 ],
               "y" : [ -0.7245839834213257, -0.7127000093460083, -0.8374860286712646 ]
@@ -654,28 +655,28 @@
         "id" : 5,
         "linearVelocity" : 0,
         "massData-I" : 0.1196009293198586,
-        "massData-center" : 
+        "massData-center" :
         {
-          "x" : 0.007761077489703894,
-          "y" : -0.03876790404319763
+          "x" : 0.007761078886687756,
+          "y" : -0.03876791521906853
         },
         "massData-mass" : 0.6776448488235474,
         "name" : "hand_front_top",
-        "position" : 
+        "position" :
         {
           "x" : 20.03319931030273,
           "y" : -15.75800037384033
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : -0.1865739673376083,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 0.09593086689710617,
             "filter-categoryBits" : 2,
@@ -683,16 +684,16 @@
             "friction" : 0.2,
             "id" : 20,
             "name" : "fixture0",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 0.4480539858341217,
                 0.03891839832067490,
@@ -702,7 +703,7 @@
                 -0.03180589899420738,
                 0.4272759854793549
               ],
-              "y" : 
+              "y" :
               [
                 0.8843950033187866,
                 1.111400008201599,
@@ -718,28 +719,28 @@
         "id" : 6,
         "linearVelocity" : 0,
         "massData-I" : 0.08505692332983017,
-        "massData-center" : 
+        "massData-center" :
         {
           "x" : -0.1106041669845581,
           "y" : 0.1319872736930847
         },
         "massData-mass" : 0.2,
         "name" : "head",
-        "position" : 
+        "position" :
         {
           "x" : 20.92989921569824,
           "y" : -14.89820003509521
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 12.50,
             "filter-categoryBits" : 2,
@@ -747,16 +748,16 @@
             "friction" : 1.5,
             "id" : 21,
             "name" : "fixture1",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 0.7311869859695435,
                 0.2128590047359467,
@@ -764,7 +765,7 @@
                 -0.4384700059890747,
                 0.6467009782791138
               ],
-              "y" : 
+              "y" :
               [
                 -0.08893740177154541,
                 0.2538790106773376,
@@ -778,28 +779,28 @@
         "id" : 7,
         "linearVelocity" : 0,
         "massData-I" : 0.6377421021461487,
-        "massData-center" : 
+        "massData-center" :
         {
           "x" : 0.07097874581813812,
           "y" : -0.005575490649789572
         },
         "massData-mass" : 5.782446861267090,
         "name" : "leg_shoe_back",
-        "position" : 
+        "position" :
         {
           "x" : 20.30800056457520,
           "y" : -21.27969932556152
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
@@ -807,16 +808,16 @@
             "friction" : 0.2,
             "id" : 22,
             "name" : "fixture3",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 0.3869799971580505,
                 -0.4321179986000061,
@@ -826,7 +827,7 @@
                 0.1719029992818832,
                 0.2342180013656616
               ],
-              "y" : 
+              "y" :
               [
                 0.7499589920043945,
                 0.2058439999818802,
@@ -838,7 +839,7 @@
               ]
             }
           },
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
@@ -846,16 +847,16 @@
             "friction" : 0.2,
             "id" : 23,
             "name" : "fixture3",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 0.3876720070838928,
                 0.1226669996976852,
@@ -863,7 +864,7 @@
                 -0.6589490175247192,
                 0.3869799971580505
               ],
-              "y" : 
+              "y" :
               [
                 1.210379958152771,
                 1.417610049247742,
@@ -873,7 +874,7 @@
               ]
             }
           },
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
@@ -881,16 +882,16 @@
             "friction" : 0.2,
             "id" : 24,
             "name" : "fixture3",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 0.3869799971580505,
                 -0.6589490175247192,
@@ -899,7 +900,7 @@
                 -0.5869449973106384,
                 -0.4321179986000061
               ],
-              "y" : 
+              "y" :
               [
                 0.7499589920043945,
                 1.331910014152527,
@@ -914,28 +915,28 @@
         "id" : 8,
         "linearVelocity" : 0,
         "massData-I" : 1.692405462265015,
-        "massData-center" : 
+        "massData-center" :
         {
           "x" : -0.1278745085000992,
           "y" : 0.2286261767148972
         },
         "massData-mass" : 2.308866977691650,
         "name" : "leg_front_tie",
-        "position" : 
+        "position" :
         {
           "x" : 20.23030090332031,
           "y" : -18.15579986572266
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
@@ -943,16 +944,16 @@
             "friction" : 0.2,
             "id" : 25,
             "name" : "fixture5",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 0.3871949911117554,
                 0.1433060020208359,
@@ -963,7 +964,7 @@
                 0.03256019949913025,
                 0.2333689928054810
               ],
-              "y" : 
+              "y" :
               [
                 1.135810017585754,
                 1.208719968795776,
@@ -980,28 +981,28 @@
         "id" : 9,
         "linearVelocity" : 0,
         "massData-I" : 0.6441230773925781,
-        "massData-center" : 
+        "massData-center" :
         {
           "x" : -0.01201473176479340,
           "y" : 0.05337204411625862
         },
         "massData-mass" : 1.455695152282715,
         "name" : "leg_back_tie",
-        "position" : 
+        "position" :
         {
           "x" : 20.48579978942871,
           "y" : -18.45450019836426
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
@@ -1009,15 +1010,15 @@
             "friction" : 0.1,
             "id" : 26,
             "name" : "fixture13",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "radius" : 0.5,
                 "type" : "circle"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
               "x" : [ 0.0 ],
               "y" : [ 0.0 ]
@@ -1029,21 +1030,21 @@
         "massData-I" : 0.09817477315664291,
         "massData-mass" : 0.7853981852531433,
         "name" : "back_weight",
-        "position" : 
+        "position" :
         {
           "x" : 18.10370063781738,
           "y" : -15.68220043182373
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
@@ -1051,20 +1052,20 @@
             "friction" : 0.2,
             "id" : 27,
             "name" : "fixture9",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
               "x" : [ 0.2095589935779572, -0.08186119794845581, -0.06293919682502747 ],
               "y" : [ -0.2514570057392120, -0.2727960050106049, -0.5362930297851562 ]
             }
           },
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
@@ -1072,23 +1073,23 @@
             "friction" : 0.2,
             "id" : 28,
             "name" : "fixture9",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 0.2095589935779572,
                 -0.06293919682502747,
                 -0.2955049872398376,
                 0.03707240149378777
               ],
-              "y" : 
+              "y" :
               [
                 -0.2514570057392120,
                 -0.5362930297851562,
@@ -1097,7 +1098,7 @@
               ]
             }
           },
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
@@ -1105,23 +1106,23 @@
             "friction" : 0.2,
             "id" : 29,
             "name" : "fixture9",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 0.2095589935779572,
                 -0.1791220009326935,
                 -0.2979660034179688,
                 -0.08186119794845581
               ],
-              "y" : 
+              "y" :
               [
                 -0.2514570057392120,
                 0.9159520268440247,
@@ -1130,7 +1131,7 @@
               ]
             }
           },
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
@@ -1138,16 +1139,16 @@
             "friction" : 0.2,
             "id" : 30,
             "name" : "fixture9",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 0.3157919943332672,
                 0.2028910070657730,
@@ -1155,7 +1156,7 @@
                 -0.1791220009326935,
                 0.2095589935779572
               ],
-              "y" : 
+              "y" :
               [
                 -0.2504290044307709,
                 1.005079984664917,
@@ -1169,28 +1170,28 @@
         "id" : 11,
         "linearVelocity" : 0,
         "massData-I" : 0.2868023216724396,
-        "massData-center" : 
+        "massData-center" :
         {
-          "x" : 0.006862460169941187,
-          "y" : 0.07951407879590988
+          "x" : 0.006862461101263762,
+          "y" : 0.07951408624649048
         },
         "massData-mass" : 0.8560815453529358,
         "name" : "hand_front_bottom",
-        "position" : 
+        "position" :
         {
           "x" : 20.02129936218262,
           "y" : -17.46339988708496
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 12.50,
             "filter-categoryBits" : 2,
@@ -1198,16 +1199,16 @@
             "friction" : 1.5,
             "id" : 31,
             "name" : "fixture2",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 0.8652660250663757,
                 0.3640449941158295,
@@ -1215,7 +1216,7 @@
                 -0.3560479879379272,
                 0.7841560244560242
               ],
-              "y" : 
+              "y" :
               [
                 -0.1946759968996048,
                 0.1801059991121292,
@@ -1229,28 +1230,28 @@
         "id" : 12,
         "linearVelocity" : 0,
         "massData-I" : 0.9114626049995422,
-        "massData-center" : 
+        "massData-center" :
         {
           "x" : 0.1845354288816452,
           "y" : -0.08472205698490143
         },
         "massData-mass" : 6.028298854827881,
         "name" : "leg_shoe_front",
-        "position" : 
+        "position" :
         {
           "x" : 19.94770050048828,
           "y" : -21.19890022277832
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
@@ -1258,20 +1259,20 @@
             "friction" : 0.2,
             "id" : 32,
             "name" : "fixture9",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
               "x" : [ 0.2095589935779572, -0.08186119794845581, -0.06293919682502747 ],
               "y" : [ -0.2514570057392120, -0.2727960050106049, -0.5362930297851562 ]
             }
           },
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
@@ -1279,23 +1280,23 @@
             "friction" : 0.2,
             "id" : 33,
             "name" : "fixture9",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 0.2095589935779572,
                 -0.06293919682502747,
                 -0.2955049872398376,
                 0.03707240149378777
               ],
-              "y" : 
+              "y" :
               [
                 -0.2514570057392120,
                 -0.5362930297851562,
@@ -1304,7 +1305,7 @@
               ]
             }
           },
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
@@ -1312,23 +1313,23 @@
             "friction" : 0.2,
             "id" : 34,
             "name" : "fixture9",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 0.2095589935779572,
                 -0.1791220009326935,
                 -0.2979660034179688,
                 -0.08186119794845581
               ],
-              "y" : 
+              "y" :
               [
                 -0.2514570057392120,
                 0.9159520268440247,
@@ -1337,7 +1338,7 @@
               ]
             }
           },
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
@@ -1345,16 +1346,16 @@
             "friction" : 0.2,
             "id" : 35,
             "name" : "fixture9",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 0.3157919943332672,
                 0.2028910070657730,
@@ -1362,7 +1363,7 @@
                 -0.1791220009326935,
                 0.2095589935779572
               ],
-              "y" : 
+              "y" :
               [
                 -0.2504290044307709,
                 1.005079984664917,
@@ -1375,29 +1376,29 @@
         ],
         "id" : 13,
         "linearVelocity" : 0,
-        "massData-I" : 0.2868023514747620,
-        "massData-center" : 
+        "massData-I" : 0.2868023216724396,
+        "massData-center" :
         {
-          "x" : 0.006862460635602474,
-          "y" : 0.07951407879590988
+          "x" : 0.006862461101263762,
+          "y" : 0.07951407134532928
         },
-        "massData-mass" : 0.8560814857482910,
+        "massData-mass" : 0.8560815453529358,
         "name" : "hand_back_bottom",
-        "position" : 
+        "position" :
         {
           "x" : 20.27809906005859,
           "y" : -17.43320083618164
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
@@ -1405,16 +1406,16 @@
             "friction" : 0.2,
             "id" : 36,
             "name" : "fixture6",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 0.4117340147495270,
                 0.1845899969339371,
@@ -1423,7 +1424,7 @@
                 -0.2168879956007004,
                 0.1348479986190796
               ],
-              "y" : 
+              "y" :
               [
                 0.7996659874916077,
                 1.004770040512085,
@@ -1438,28 +1439,28 @@
         "id" : 14,
         "linearVelocity" : 0,
         "massData-I" : 0.2994293570518494,
-        "massData-center" : 
+        "massData-center" :
         {
           "x" : 0.04210663214325905,
           "y" : 0.03764066100120544
         },
         "massData-mass" : 0.9387871026992798,
         "name" : "leg_back_calf",
-        "position" : 
+        "position" :
         {
           "x" : 20.26910018920898,
           "y" : -20.29120063781738
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 5,
             "filter-categoryBits" : 2,
@@ -1467,15 +1468,15 @@
             "friction" : 0.1,
             "id" : 37,
             "name" : "fixture11",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "radius" : 0.5,
                 "type" : "circle"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
               "x" : [ 0.0 ],
               "y" : [ 0.0 ]
@@ -1487,43 +1488,43 @@
         "massData-I" : 0.4908738732337952,
         "massData-mass" : 3.926990985870361,
         "name" : "front_weight",
-        "position" : 
+        "position" :
         {
           "x" : 21.94989967346191,
           "y" : -16.94529914855957
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 0.02058310434222221,
             "friction" : 0.2,
             "id" : 38,
             "name" : "fixture10",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 -0.4139728546142578,
                 0.4041042327880859,
                 0.3987007141113281,
                 -0.4233455657958984
               ],
-              "y" : 
+              "y" :
               [
                 -0.4089231491088867,
                 -0.3936414718627930,
@@ -1536,21 +1537,21 @@
         "id" : 16,
         "linearVelocity" : 0,
         "massData-I" : 0.001235988223925233,
-        "massData-center" : 
+        "massData-center" :
         {
           "x" : -0.009559456259012222,
           "y" : -0.03951927274465561
         },
         "massData-mass" : 0.01220508012920618,
         "name" : "decor_9",
-        "position" : 
+        "position" :
         {
           "x" : 35.20899963378906,
           "y" : -18.61510086059570
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
@@ -1559,21 +1560,21 @@
         "linearVelocity" : 0,
         "massData-mass" : 1,
         "name" : "body0",
-        "position" : 
+        "position" :
         {
           "x" : 17.69309997558594,
           "y" : -13.29800033569336
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : -0.1865739673376083,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 0.09593086689710617,
             "filter-categoryBits" : 2,
@@ -1581,14 +1582,14 @@
             "friction" : 0.2,
             "id" : 43,
             "name" : "fixture0",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
               "x" : [ 0.02994084358215332, 0.08448678255081177, 0.5435686707496643 ],
               "y" : [ -0.04319173097610474, -0.3572875261306763, -0.3339775204658508 ]
@@ -1598,41 +1599,41 @@
         "id" : 18,
         "linearVelocity" : 0,
         "massData-I" : 0.0008820290095172822,
-        "massData-center" : 
+        "massData-center" :
         {
           "x" : 0.2193320989608765,
           "y" : -0.2448189109563828
         },
         "massData-mass" : 0.006977395620197058,
         "name" : "johnson",
-        "position" : 
+        "position" :
         {
           "x" : 20.43545913696289,
           "y" : -17.40221405029297
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 0.02058310434222221,
             "friction" : 0.2,
             "id" : 42,
             "name" : "fixture10",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
               "x" : [ 1.5, 0.0, 0.0, 1 ],
               "y" : [ 0.0, 0.0, -3.25, -3.25 ]
@@ -1642,50 +1643,50 @@
         "id" : 19,
         "linearVelocity" : 0,
         "massData-I" : 0.3102608323097229,
-        "massData-center" : 
+        "massData-center" :
         {
           "x" : 0.6333333253860474,
           "y" : -1.516666650772095
         },
         "massData-mass" : 0.08361886441707611,
         "name" : "decor_chair_2",
-        "position" : 
+        "position" :
         {
           "x" : 107.139160156250,
           "y" : -26.58472824096680
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 1,
             "friction" : 1,
             "id" : 39,
             "name" : "fixture10",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 2.684956550598145,
                 -2.676193237304688,
                 -2.676193237304688,
                 2.667486667633057
               ],
-              "y" : 
+              "y" :
               [
                 9.994487762451172,
                 9.994487762451172,
@@ -1700,43 +1701,43 @@
         "linearDamping" : 1,
         "linearVelocity" : 0,
         "massData-I" : 3823.838134765625,
-        "massData-center" : 
+        "massData-center" :
         {
           "x" : 1.639529364183545e-05,
           "y" : -7.258169353008270e-05
         },
         "massData-mass" : 107.0482940673828,
         "name" : "lift_1",
-        "position" : 
+        "position" :
         {
           "x" : 97.97503662109375,
           "y" : -32.17532348632812
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 1,
             "friction" : 0.2,
             "id" : 40,
             "name" : "fixture10",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 82.39412689208984,
                 52.64886474609375,
@@ -1749,7 +1750,7 @@
                 0.0,
                 82.36400604248047
               ],
-              "y" : 
+              "y" :
               [
                 1.422407150268555,
                 1.337615966796875,
@@ -1768,35 +1769,35 @@
         "id" : 21,
         "linearVelocity" : 0,
         "name" : "ground_2",
-        "position" : 
+        "position" :
         {
           "x" : 100.6770324707031,
           "y" : -29.98545455932617
         },
         "type" : "static"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 1,
             "filter-categoryBits" : 2,
             "friction" : 0.2,
             "id" : 41,
             "name" : "fixture10",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
               "x" : [ 3.341909885406494, 0.0, 0.0, 3.341909885406494 ],
               "y" : [ -0.0, 0.0, -10, -10 ]
@@ -1806,43 +1807,43 @@
         "id" : 22,
         "linearVelocity" : 0,
         "name" : "ground_3",
-        "position" : 
+        "position" :
         {
           "x" : 97.12912750244141,
           "y" : -50.01264953613281
         },
         "type" : "static"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 0.02058310434222221,
             "friction" : 0.2,
             "id" : 44,
             "name" : "fixture10",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 -0.4139728546142578,
                 0.4041042327880859,
                 0.3987007141113281,
                 -0.4233455657958984
               ],
-              "y" : 
+              "y" :
               [
                 -0.4921083450317383,
                 -0.4768266677856445,
@@ -1855,41 +1856,41 @@
         "id" : 23,
         "linearVelocity" : 0,
         "massData-I" : 0.001812608446925879,
-        "massData-center" : 
+        "massData-center" :
         {
           "x" : -0.009396081790328026,
           "y" : -0.04539722204208374
         },
         "massData-mass" : 0.01481270883232355,
         "name" : "decor_tp_1",
-        "position" : 
+        "position" :
         {
           "x" : 46.06752014160156,
           "y" : -21.48798942565918
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 0.02058310434222221,
             "friction" : 0.2,
             "id" : 45,
             "name" : "fixture10",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
               "x" : [ 1.5, 0.0, 0.0, 1, 1.5 ],
               "y" : [ 0.0, 0.0, -3.25, -3.25, -2.7 ]
@@ -1899,41 +1900,41 @@
         "id" : 24,
         "linearVelocity" : 0,
         "massData-I" : 0.3968121111392975,
-        "massData-center" : 
+        "massData-center" :
         {
           "x" : 0.7330694794654846,
           "y" : -1.583157420158386
         },
         "massData-mass" : 0.09751245379447937,
         "name" : "decor_chair_1",
-        "position" : 
+        "position" :
         {
           "x" : 104.7078552246094,
           "y" : -26.59638595581055
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 0.02058310434222221,
             "friction" : 0.2,
             "id" : 46,
             "name" : "fixture10",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
               "x" : [ 1.5, 0.0, 0.0, 1 ],
               "y" : [ 0.0, 0.0, -3.25, -3.25 ]
@@ -1943,43 +1944,43 @@
         "id" : 25,
         "linearVelocity" : 0,
         "massData-I" : 0.3102608323097229,
-        "massData-center" : 
+        "massData-center" :
         {
           "x" : 0.6333333253860474,
           "y" : -1.516666650772095
         },
         "massData-mass" : 0.08361886441707611,
         "name" : "decor_chair_3",
-        "position" : 
+        "position" :
         {
           "x" : 108.9556427001953,
           "y" : -26.59415054321289
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 1,
             "friction" : 0.2,
             "id" : 47,
             "name" : "fixture10",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 95.250,
                 89.90146636962891,
@@ -1996,7 +1997,7 @@
                 0.0,
                 95.250
               ],
-              "y" : 
+              "y" :
               [
                 -0.2510659992694855,
                 -0.2359832525253296,
@@ -2019,43 +2020,43 @@
         "id" : 26,
         "linearVelocity" : 0,
         "name" : "ground_1",
-        "position" : 
+        "position" :
         {
           "x" : 0,
           "y" : -21.60046005249023
         },
         "type" : "static"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 0.02058310434222221,
             "friction" : 0.2,
             "id" : 48,
             "name" : "fixture10",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 -0.4139728546142578,
                 0.4041042327880859,
                 0.3987007141113281,
                 -0.4233455657958984
               ],
-              "y" : 
+              "y" :
               [
                 -0.4089231491088867,
                 -0.3936414718627930,
@@ -2068,43 +2069,43 @@
         "id" : 27,
         "linearVelocity" : 0,
         "massData-I" : 0.001235988223925233,
-        "massData-center" : 
+        "massData-center" :
         {
           "x" : -0.009559456259012222,
           "y" : -0.03951927274465561
         },
         "massData-mass" : 0.01220508012920618,
         "name" : "decor_tp_2",
-        "position" : 
+        "position" :
         {
           "x" : 47.10862731933594,
           "y" : -21.55802154541016
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 0.02058310434222221,
             "friction" : 0.2,
             "id" : 49,
             "name" : "fixture10",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 -1.210229873657227,
                 -1.061025977134705,
@@ -2119,7 +2120,7 @@
                 1.191944360733032,
                 -1.201776504516602
               ],
-              "y" : 
+              "y" :
               [
                 -1.931409835815430,
                 -1.931411266326904,
@@ -2140,50 +2141,50 @@
         "id" : 28,
         "linearVelocity" : 0,
         "massData-I" : 0.1143694221973419,
-        "massData-center" : 
+        "massData-center" :
         {
           "x" : -0.05506192520260811,
           "y" : -0.03466350212693214
         },
         "massData-mass" : 0.09354712069034576,
         "name" : "decor_4",
-        "position" : 
+        "position" :
         {
           "x" : 35.71376037597656,
           "y" : -19.62116241455078
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 0.02058310434222221,
             "friction" : 0.2,
             "id" : 50,
             "name" : "fixture10",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 -0.3239192962646484,
                 0.3236255645751953,
                 0.3314552307128906,
                 -0.3200588226318359
               ],
-              "y" : 
+              "y" :
               [
                 -0.1045808792114258,
                 -0.08929920196533203,
@@ -2196,50 +2197,50 @@
         "id" : 29,
         "linearVelocity" : 0,
         "massData-I" : 0.0001018753318930976,
-        "massData-center" : 
+        "massData-center" :
         {
           "x" : 9.320211393060163e-05,
           "y" : 0.002272518118843436
         },
         "massData-mass" : 0.002649812726303935,
         "name" : "decor_8",
-        "position" : 
+        "position" :
         {
           "x" : 35.08974456787109,
           "y" : -17.51308631896973
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 0.02058310434222221,
             "friction" : 0.2,
             "id" : 51,
             "name" : "fixture10",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 -0.2142887115478516,
                 0.2174053192138672,
                 0.2188873291015625,
                 -0.2167758941650391
               ],
-              "y" : 
+              "y" :
               [
                 -0.1336393356323242,
                 -0.1183576583862305,
@@ -2252,50 +2253,50 @@
         "id" : 30,
         "linearVelocity" : 0,
         "massData-I" : 5.005335697205737e-05,
-        "massData-center" : 
+        "massData-center" :
         {
           "x" : -5.532579962164164e-05,
           "y" : 0.005057796835899353
         },
         "massData-mass" : 0.002336878562346101,
         "name" : "decor_7",
-        "position" : 
+        "position" :
         {
           "x" : 35.68093109130859,
           "y" : -17.47131347656250
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 0.02,
             "friction" : 0.2,
             "id" : 52,
             "name" : "fixture10",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 -0.1448879241943359,
                 0.1344394683837891,
                 0.1422691345214844,
                 -0.1410274505615234
               ],
-              "y" : 
+              "y" :
               [
                 -0.2102613449096680,
                 -0.2013292312622070,
@@ -2308,43 +2309,43 @@
         "id" : 31,
         "linearVelocity" : 0,
         "massData-I" : 4.870092379860580e-05,
-        "massData-center" : 
+        "massData-center" :
         {
           "x" : -0.002850993536412716,
           "y" : 0.001774239237420261
         },
         "massData-mass" : 0.002329617738723755,
         "name" : "decor_6",
-        "position" : 
+        "position" :
         {
           "x" : 36.28841781616211,
           "y" : -17.41590118408203
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 0.02058310434222221,
             "friction" : 0.2,
             "id" : 53,
             "name" : "fixture10",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 -0.2142848968505859,
                 0.1348781585693359,
@@ -2355,7 +2356,7 @@
                 0.1363601684570312,
                 -0.2167720794677734
               ],
-              "y" : 
+              "y" :
               [
                 -0.2266225814819336,
                 -0.2240381240844727,
@@ -2372,50 +2373,50 @@
         "id" : 32,
         "linearVelocity" : 0,
         "massData-I" : 0.000129911262774840,
-        "massData-center" : 
+        "massData-center" :
         {
           "x" : -0.002943320199847221,
           "y" : 0.001200940110720694
         },
         "massData-mass" : 0.003990133292973042,
         "name" : "decor_5",
-        "position" : 
+        "position" :
         {
           "x" : 36.00758743286133,
           "y" : -18.77796173095703
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 0.02058310434222221,
             "friction" : 0.2,
             "id" : 54,
             "name" : "fixture10",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 -0.4139728546142578,
                 0.4041042327880859,
                 0.3987007141113281,
                 -0.4233455657958984
               ],
-              "y" : 
+              "y" :
               [
                 -0.4089231491088867,
                 -0.3936414718627930,
@@ -2428,50 +2429,50 @@
         "id" : 33,
         "linearVelocity" : 0,
         "massData-I" : 0.001235988223925233,
-        "massData-center" : 
+        "massData-center" :
         {
           "x" : -0.009559456259012222,
           "y" : -0.03951927274465561
         },
         "massData-mass" : 0.01220508012920618,
         "name" : "decor_tp_3",
-        "position" : 
+        "position" :
         {
           "x" : 47.94823837280273,
           "y" : -21.55802154541016
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 0.02058310434222221,
             "friction" : 0.2,
             "id" : 55,
             "name" : "fixture10",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 -0.4139728546142578,
                 0.4041042327880859,
                 0.3987007141113281,
                 -0.4233455657958984
               ],
-              "y" : 
+              "y" :
               [
                 -0.4089231491088867,
                 -0.3936414718627930,
@@ -2484,50 +2485,50 @@
         "id" : 34,
         "linearVelocity" : 0,
         "massData-I" : 0.001235988223925233,
-        "massData-center" : 
+        "massData-center" :
         {
           "x" : -0.009559456259012222,
           "y" : -0.03951927274465561
         },
         "massData-mass" : 0.01220508012920618,
         "name" : "decor_tp_4",
-        "position" : 
+        "position" :
         {
           "x" : 48.78785324096680,
           "y" : -21.56826019287109
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 0.02058310434222221,
             "friction" : 0.2,
             "id" : 56,
             "name" : "fixture10",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 -0.4139728546142578,
                 0.4041042327880859,
                 0.3987007141113281,
                 -0.4233455657958984
               ],
-              "y" : 
+              "y" :
               [
                 -0.4089231491088867,
                 -0.3936414718627930,
@@ -2540,50 +2541,50 @@
         "id" : 35,
         "linearVelocity" : 0,
         "massData-I" : 0.001235988223925233,
-        "massData-center" : 
+        "massData-center" :
         {
           "x" : -0.009559456259012222,
           "y" : -0.03951927274465561
         },
         "massData-mass" : 0.01220508012920618,
         "name" : "decor_tp_6",
-        "position" : 
+        "position" :
         {
           "x" : 48.35780715942383,
           "y" : -20.83103942871094
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 0.02058310434222221,
             "friction" : 0.2,
             "id" : 57,
             "name" : "fixture10",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 -0.4139728546142578,
                 0.4041042327880859,
                 0.3987007141113281,
                 -0.4233455657958984
               ],
-              "y" : 
+              "y" :
               [
                 -0.4089231491088867,
                 -0.3936414718627930,
@@ -2596,51 +2597,51 @@
         "id" : 36,
         "linearVelocity" : 0,
         "massData-I" : 0.001235988223925233,
-        "massData-center" : 
+        "massData-center" :
         {
           "x" : -0.009559456259012222,
           "y" : -0.03951927274465561
         },
         "massData-mass" : 0.01220508012920618,
         "name" : "decor_tp_5",
-        "position" : 
+        "position" :
         {
           "x" : 47.51819229125977,
           "y" : -20.820800781250
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 0.02058310434222221,
             "filter-categoryBits" : 0,
             "friction" : 0.2,
             "id" : 58,
             "name" : "fixture10",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 -0.4139728546142578,
                 0.4041042327880859,
                 0.3987007141113281,
                 -0.4233455657958984
               ],
-              "y" : 
+              "y" :
               [
                 0.2270622253417969,
                 0.2423439025878906,
@@ -2653,43 +2654,43 @@
         "id" : 37,
         "linearVelocity" : 0,
         "name" : "chain_base",
-        "position" : 
+        "position" :
         {
           "x" : 52.95520019531250,
           "y" : -7.611169815063477
         },
         "type" : "static"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 0.02058310434222221,
             "friction" : 0.2,
             "id" : 59,
             "name" : "fixture10",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 -0.4196109771728516,
                 0.3984661102294922,
                 0.3987007141113281,
                 -0.4233455657958984
               ],
-              "y" : 
+              "y" :
               [
                 -0.3863801956176758,
                 -0.3710985183715820,
@@ -2702,50 +2703,50 @@
         "id" : 38,
         "linearVelocity" : 0,
         "massData-I" : 0.0009239345090463758,
-        "massData-center" : 
+        "massData-center" :
         {
           "x" : -0.01257920172065496,
           "y" : -0.08183820545673370
         },
         "massData-mass" : 0.01001587510108948,
         "name" : "decor_tp_8",
-        "position" : 
+        "position" :
         {
           "x" : 49.66140747070312,
           "y" : -21.60207366943359
         },
         "type" : "dynamic"
       },
-      
+
       {
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
-        "fixture" : 
+        "fixture" :
         [
-          
+
           {
             "density" : 0.02058310434222221,
             "friction" : 0.2,
             "id" : 60,
             "name" : "fixture10",
-            "shapes" : 
+            "shapes" :
             [
-              
+
               {
                 "type" : "polygon"
               }
             ],
-            "vertices" : 
+            "vertices" :
             {
-              "x" : 
+              "x" :
               [
                 -0.4139728546142578,
                 0.4041042327880859,
                 0.3987007141113281,
                 -0.4233455657958984
               ],
-              "y" : 
+              "y" :
               [
                 -0.4089231491088867,
                 -0.3936414718627930,
@@ -2758,248 +2759,147 @@
         "id" : 39,
         "linearVelocity" : 0,
         "massData-I" : 0.001235988223925233,
-        "massData-center" : 
+        "massData-center" :
         {
           "x" : -0.009559456259012222,
           "y" : -0.03951927274465561
         },
         "massData-mass" : 0.01220508012920618,
         "name" : "decor_tp_7",
-        "position" : 
+        "position" :
         {
           "x" : 47.98545837402344,
           "y" : -20.02428245544434
         },
         "type" : "dynamic"
+      },
+
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" :
+        [
+
+          {
+            "density" : 12.50,
+            "filter-categoryBits" : 2,
+            "filter-maskBits" : 65533,
+            "friction" : 1.5,
+            "id" : 62,
+            "name" : "fixture2",
+            "shapes" :
+            [
+
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" :
+            {
+              "x" :
+              [
+                0.8652660250663757,
+                0.3640449941158295,
+                -0.2600800096988678,
+                -0.3560479879379272,
+                0.7841560244560242
+              ],
+              "y" :
+              [
+                -0.1946759968996048,
+                0.1801059991121292,
+                0.2040980011224747,
+                -0.3078820109367371,
+                -0.3071779906749725
+              ]
+            }
+          }
+        ],
+        "id" : 41,
+        "linearVelocity" : 0,
+        "massData-I" : 0.9114626049995422,
+        "massData-center" :
+        {
+          "x" : 0.1845354288816452,
+          "y" : -0.08472205698490143
+        },
+        "massData-mass" : 6.028298854827881,
+        "name" : "flipflop_front",
+        "position" :
+        {
+          "x" : 19.96265411376953,
+          "y" : -22.33122444152832
+        },
+        "type" : "dynamic"
+      },
+
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" :
+        [
+
+          {
+            "density" : 12.50,
+            "filter-categoryBits" : 2,
+            "filter-maskBits" : 65533,
+            "friction" : 1.5,
+            "id" : 63,
+            "name" : "fixture1",
+            "shapes" :
+            [
+
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" :
+            {
+              "x" :
+              [
+                0.7311869859695435,
+                0.2128590047359467,
+                -0.3769400119781494,
+                -0.4384700059890747,
+                0.6467009782791138
+              ],
+              "y" :
+              [
+                -0.08893740177154541,
+                0.2538790106773376,
+                0.2846440076828003,
+                -0.2260240018367767,
+                -0.2271450012922287
+              ]
+            }
+          }
+        ],
+        "id" : 42,
+        "linearVelocity" : 0,
+        "massData-I" : 0.6377421021461487,
+        "massData-center" :
+        {
+          "x" : 0.07097874581813812,
+          "y" : -0.005575490649789572
+        },
+        "massData-mass" : 5.782446861267090,
+        "name" : "flipflop_back",
+        "position" :
+        {
+          "x" : 20.32295417785645,
+          "y" : -22.41202354431152
+        },
+        "type" : "dynamic"
       }
     ],
-    "metaimage" : 
+    "metaimage" :
     [
-      
+
       {
         "aspectScale" : 1,
-        "body" : 7,
-        "center" : 
-        {
-          "x" : 0.1813929975032806,
-          "y" : 0.02582979947328568
-        },
-        "file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_leg_shoe_02.png",
-        "filter" : 1,
-        "flip" : false,
-        "id" : 1,
-        "name" : "image8",
-        "opacity" : 0.5,
-        "scale" : 0.5219489932060242
-      },
-      
-      {
-        "aspectScale" : 1,
-        "body" : 1,
-        "center" : 
-        {
-          "x" : -0.03073430061340332,
-          "y" : -0.1430550068616867
-        },
-        "file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_arm_top_01.png",
-        "filter" : 1,
-        "flip" : false,
-        "id" : 2,
-        "name" : "image10",
-        "opacity" : 0.5,
-        "scale" : 1.426770806312561
-      },
-      
-      {
-        "aspectScale" : 1,
-        "body" : 8,
-        "center" : 
-        {
-          "x" : -0.2327619940042496,
-          "y" : 0.06277559697628021
-        },
-        "file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_leg_tie_01.png",
-        "filter" : 1,
-        "flip" : false,
-        "id" : 3,
-        "name" : "image1",
-        "opacity" : 0.5,
-        "scale" : 2.996304273605347
-      },
-      
-      {
-        "aspectScale" : 1,
-        "body" : 12,
-        "center" : 
-        {
-          "x" : 0.3104090094566345,
-          "y" : -0.06487110257148743
-        },
-        "file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_leg_shoe_01.png",
-        "filter" : 1,
-        "flip" : false,
-        "id" : 4,
-        "name" : "image2",
-        "opacity" : 0.5,
-        "scale" : 0.5665780901908875
-      },
-      
-      {
-        "aspectScale" : 1,
-        "body" : 5,
-        "center" : 
-        {
-          "x" : -0.03073430061340332,
-          "y" : -0.1430550068616867
-        },
-        "file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_arm_top_01.png",
-        "filter" : 1,
-        "flip" : false,
-        "id" : 5,
-        "name" : "image10",
-        "opacity" : 0.5,
-        "scale" : 1.426770806312561
-      },
-      
-      {
-        "aspectScale" : 1,
-        "body" : 11,
-        "center" : 
-        {
-          "x" : 0.006496429909020662,
-          "y" : -0.01349639985710382
-        },
-        "file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_arm_bottom_01.png",
-        "filter" : 1,
-        "flip" : false,
-        "id" : 6,
-        "name" : "image11",
-        "opacity" : 0.5,
-        "scale" : 2.316968441009521
-      },
-      
-      {
-        "aspectScale" : 1,
-        "body" : 13,
-        "center" : 
-        {
-          "x" : 0.006496429909020662,
-          "y" : -0.01349639985710382
-        },
-        "file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_arm_bottom_01.png",
-        "filter" : 1,
-        "flip" : false,
-        "id" : 7,
-        "name" : "image11",
-        "opacity" : 0.5,
-        "scale" : 2.316968441009521
-      },
-      
-      {
-        "aspectScale" : 1,
-        "body" : 14,
-        "center" : 
-        {
-          "x" : 0.08099889755249023,
-          "y" : -0.04775090143084526
-        },
-        "file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_leg_calf_02.png",
-        "filter" : 1,
-        "flip" : false,
-        "id" : 8,
-        "name" : "image9",
-        "opacity" : 0.5,
-        "scale" : 2.153207778930664
-      },
-      
-      {
-        "aspectScale" : 1,
-        "body" : 3,
-        "center" : 
-        {
-          "x" : 0.1178610026836395,
-          "y" : 0.1310900002717972
-        },
-        "file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_body.png",
-        "filter" : 1,
-        "flip" : false,
-        "id" : 9,
-        "name" : "image5",
-        "opacity" : 0.5,
-        "scale" : 3.068437337875366
-      },
-      
-      {
-        "aspectScale" : 1,
-        "body" : 4,
-        "center" : 
-        {
-          "x" : 0.04918960109353065,
-          "y" : -0.1292169988155365
-        },
-        "file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_leg_calf_01.png",
-        "filter" : 1,
-        "flip" : false,
-        "id" : 10,
-        "name" : "image3",
-        "opacity" : 0.5,
-        "scale" : 2.162195682525635
-      },
-      
-      {
-        "aspectScale" : 1,
-        "body" : 6,
-        "center" : 
-        {
-          "x" : 0.01840309984982014,
-          "y" : 0.1128330007195473
-        },
-        "file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_head.png",
-        "filter" : 1,
-        "flip" : false,
-        "id" : 11,
-        "name" : "image4",
-        "opacity" : 0.5,
-        "scale" : 2.102461576461792
-      },
-      
-      {
-        "aspectScale" : 1,
-        "body" : 9,
-        "center" : 
-        {
-          "x" : 0.004886149894446135,
-          "y" : 0.008920909836888313
-        },
-        "file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_leg_tie_02.png",
-        "filter" : 1,
-        "flip" : false,
-        "id" : 12,
-        "name" : "image6",
-        "opacity" : 0.5,
-        "scale" : 2.457573175430298
-      },
-      
-      {
-        "aspectScale" : 1,
-        "body" : 18,
-        "center" : 
-        {
-          "x" : 0.01840309984982014,
-          "y" : 0.1128330007195473
-        },
-        "file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_head.png",
-        "filter" : 1,
-        "flip" : false,
-        "id" : 14,
-        "name" : "image4",
-        "opacity" : 0.5,
-        "scale" : 2.102461576461792
-      },
-      
-      {
-        "aspectScale" : 1,
-        "center" : 
+        "center" :
         {
           "x" : 91.60619354248047,
           "y" : -20.83558464050293
@@ -3013,16 +2913,16 @@
         "scale" : 41.67110061645508
       }
     ],
-    "metajoint" : 
+    "metajoint" :
     [
-      
+
       {
-        "anchorA" : 
+        "anchorA" :
         {
           "x" : 0.7894105911254883,
           "y" : -0.1349418163299561
         },
-        "anchorB" : 
+        "anchorB" :
         {
           "x" : 0.2027392685413361,
           "y" : -0.8711889982223511
@@ -3037,14 +2937,14 @@
         "name" : "joint9",
         "type" : "distance"
       },
-      
+
       {
-        "anchorA" : 
+        "anchorA" :
         {
           "x" : 0.6354975700378418,
           "y" : -1.179354190826416
         },
-        "anchorB" : 
+        "anchorB" :
         {
           "x" : 0.07398891448974609,
           "y" : 1.086312294006348
@@ -3063,14 +2963,14 @@
         "type" : "revolute",
         "upperLimit" : 1.483529806137085
       },
-      
+
       {
-        "anchorA" : 
+        "anchorA" :
         {
           "x" : -0.3382205963134766,
           "y" : -0.4981899261474609
         },
-        "anchorB" : 
+        "anchorB" :
         {
           "x" : -0.2169523239135742,
           "y" : 0.4116921424865723
@@ -3085,14 +2985,14 @@
         "name" : "knee_l",
         "type" : "distance"
       },
-      
+
       {
-        "anchorA" : 
+        "anchorA" :
         {
           "x" : -0.03021526336669922,
           "y" : -0.9460105895996094
         },
-        "anchorB" : 
+        "anchorB" :
         {
           "x" : -0.08414173126220703,
           "y" : 0.06054306030273438
@@ -3111,9 +3011,9 @@
         "type" : "revolute",
         "upperLimit" : 0.6981316804885864
       },
-      
+
       {
-        "anchorA" : 
+        "anchorA" :
         {
           "x" : -0.05987262725830078,
           "y" : -1.043210029602051
@@ -3133,14 +3033,14 @@
         "type" : "revolute",
         "upperLimit" : 0.6981316804885864
       },
-      
+
       {
-        "anchorA" : 
+        "anchorA" :
         {
           "x" : -0.1550292968750,
           "y" : -1.907348632812500e-05
         },
-        "anchorB" : 
+        "anchorB" :
         {
           "x" : -0.1065478324890137,
           "y" : 0.1288230717182159
@@ -3155,14 +3055,14 @@
         "name" : "cigaretteJoint2",
         "type" : "distance"
       },
-      
+
       {
-        "anchorA" : 
+        "anchorA" :
         {
           "x" : -0.3854250907897949,
           "y" : -0.7744951248168945
         },
-        "anchorB" : 
+        "anchorB" :
         {
           "x" : -0.2367720603942871,
           "y" : 0.3124651908874512
@@ -3177,14 +3077,14 @@
         "name" : "knee_r",
         "type" : "distance"
       },
-      
+
       {
-        "anchorA" : 
+        "anchorA" :
         {
           "x" : -1.39627218246460,
           "y" : -0.7389149665832520
         },
-        "anchorB" : 
+        "anchorB" :
         {
           "x" : -0.3762741088867188,
           "y" : -0.4336190223693848
@@ -3199,14 +3099,14 @@
         "name" : "tendon_rb",
         "type" : "distance"
       },
-      
+
       {
-        "anchorA" : 
+        "anchorA" :
         {
           "x" : 1.309525012969971,
           "y" : -0.7520227432250977
         },
-        "anchorB" : 
+        "anchorB" :
         {
           "x" : 0.2891268730163574,
           "y" : -0.1681637763977051
@@ -3221,14 +3121,14 @@
         "name" : "tendon_lf",
         "type" : "distance"
       },
-      
+
       {
-        "anchorA" : 
+        "anchorA" :
         {
           "x" : 1.032795429229736,
           "y" : -0.7558298110961914
         },
-        "anchorB" : 
+        "anchorB" :
         {
           "x" : 0.2494139671325684,
           "y" : -0.4395217895507812
@@ -3243,14 +3143,14 @@
         "name" : "tendon_rf",
         "type" : "distance"
       },
-      
+
       {
-        "anchorA" : 
+        "anchorA" :
         {
           "x" : -1.096644401550293,
           "y" : -0.7402076721191406
         },
-        "anchorB" : 
+        "anchorB" :
         {
           "x" : -0.3306589126586914,
           "y" : -0.1622610092163086
@@ -3265,14 +3165,14 @@
         "name" : "tendon_lb",
         "type" : "distance"
       },
-      
+
       {
-        "anchorA" : 
+        "anchorA" :
         {
           "x" : 0.2683353424072266,
           "y" : -0.008385658264160156
         },
-        "anchorB" : 
+        "anchorB" :
         {
           "x" : 0.6246628761291504,
           "y" : -0.02353477478027344
@@ -3287,14 +3187,14 @@
         "name" : "ankle_r",
         "type" : "distance"
       },
-      
+
       {
-        "anchorA" : 
+        "anchorA" :
         {
           "x" : 0.2934918403625488,
           "y" : 0.09224081039428711
         },
-        "anchorB" : 
+        "anchorB" :
         {
           "x" : 0.4687099456787109,
           "y" : 0.0553283691406250
@@ -3309,14 +3209,14 @@
         "name" : "ankle_l",
         "type" : "distance"
       },
-      
+
       {
-        "anchorA" : 
+        "anchorA" :
         {
           "x" : 1.518899917602539,
           "y" : -0.7400121688842773
         },
-        "anchorB" : 
+        "anchorB" :
         {
           "x" : -0.5067644119262695,
           "y" : 0.01623964309692383
@@ -3335,14 +3235,14 @@
         "type" : "revolute",
         "upperLimit" : 0
       },
-      
+
       {
-        "anchorA" : 
+        "anchorA" :
         {
           "x" : -0.6316990256309509,
           "y" : -0.4306060075759888
         },
-        "anchorB" : 
+        "anchorB" :
         {
           "x" : 0.3056182861328125,
           "y" : 0.9843266010284424
@@ -3361,14 +3261,14 @@
         "type" : "revolute",
         "upperLimit" : 0.5235987901687622
       },
-      
+
       {
-        "anchorA" : 
+        "anchorA" :
         {
           "x" : -0.05136442184448242,
           "y" : -1.005726814270020
         },
-        "anchorB" : 
+        "anchorB" :
         {
           "x" : 0.1653847694396973,
           "y" : 0.8309597969055176
@@ -3387,14 +3287,14 @@
         "type" : "revolute",
         "upperLimit" : 0
       },
-      
+
       {
-        "anchorA" : 
+        "anchorA" :
         {
           "x" : -1.142940044403076,
           "y" : 0.4801440238952637
         },
-        "anchorB" : 
+        "anchorB" :
         {
           "x" : 0.6775860786437988,
           "y" : -0.02674698829650879
@@ -3413,14 +3313,14 @@
         "type" : "revolute",
         "upperLimit" : 0
       },
-      
+
       {
-        "anchorA" : 
+        "anchorA" :
         {
           "x" : -0.001827239990234375,
           "y" : -0.0002193450927734375
         },
-        "anchorB" : 
+        "anchorB" :
         {
           "x" : 0.5815401673316956,
           "y" : -0.3711928725242615
@@ -3439,14 +3339,14 @@
         "type" : "revolute",
         "upperLimit" : 0.7853981852531433
       },
-      
+
       {
-        "anchorA" : 
+        "anchorA" :
         {
           "x" : 0.09614944458007812,
           "y" : -1.156846523284912
         },
-        "anchorB" : 
+        "anchorB" :
         {
           "x" : -0.2050151824951172,
           "y" : 0.8124461174011230
@@ -3465,14 +3365,14 @@
         "type" : "revolute",
         "upperLimit" : 1.483529806137085
       },
-      
+
       {
-        "anchorA" : 
+        "anchorA" :
         {
           "x" : -0.06011486053466797,
           "y" : -1.268777847290039
         },
-        "anchorB" : 
+        "anchorB" :
         {
           "x" : 0.1623659133911133,
           "y" : 0.7311477661132812
@@ -3491,14 +3391,14 @@
         "type" : "revolute",
         "upperLimit" : 0
       },
-      
+
       {
-        "anchorA" : 
+        "anchorA" :
         {
           "x" : 0.3876199722290039,
           "y" : 0.7911319732666016
         },
-        "anchorB" : 
+        "anchorB" :
         {
           "x" : 0.02189064025878906,
           "y" : 0.3299050331115723
@@ -3517,14 +3417,14 @@
         "type" : "revolute",
         "upperLimit" : 1.396263360977173
       },
-      
+
       {
-        "anchorA" : 
+        "anchorA" :
         {
           "x" : -0.1053709983825684,
           "y" : -0.7511911392211914
         },
-        "anchorB" : 
+        "anchorB" :
         {
           "x" : -0.09348630905151367,
           "y" : 0.9542131423950195
@@ -3543,14 +3443,14 @@
         "type" : "revolute",
         "upperLimit" : 1.570796370506287
       },
-      
+
       {
-        "anchorA" : 
+        "anchorA" :
         {
           "x" : 0.1152057647705078,
           "y" : 0.7433400154113770
         },
-        "anchorB" : 
+        "anchorB" :
         {
           "x" : 0.006273746490478516,
           "y" : 0.3123250007629395
@@ -3569,14 +3469,14 @@
         "type" : "revolute",
         "upperLimit" : 1.396263360977173
       },
-      
+
       {
-        "anchorA" : 
+        "anchorA" :
         {
           "x" : -0.1053709983825684,
           "y" : -0.7511911392211914
         },
-        "anchorB" : 
+        "anchorB" :
         {
           "x" : -0.09348630905151367,
           "y" : 0.9542131423950195
@@ -3595,14 +3495,68 @@
         "type" : "revolute",
         "upperLimit" : 1.570796370506287
       },
-      
+
       {
-        "anchorA" : 
+        "anchorA" :
+        {
+          "x" : 0,
+          "y" : 0
+        },
+        "anchorB" :
+        {
+          "x" : 0,
+          "y" : 0
+        },
+        "bodyA" : 12,
+        "bodyB" : 41,
+        "collideConnected" : false,
+        "enableLimit" : true,
+        "enableMotor" : false,
+        "id" : 280,
+        "lowerLimit" : 0,
+        "maxMotorTorque" : 0,
+        "motorSpeed" : 0,
+        "name" : "joint50",
+        "referenceAngle" : 0,
+        "type" : "revolute",
+        "upperLimit" : 0
+      },
+
+      {
+        "anchorA" : 0,
+        "anchorB" : 0,
+        "bodyA" : 12,
+        "bodyB" : 41,
+        "collideConnected" : false,
+        "dampingRatio" : 10,
+        "frequency" : 6.5,
+        "id" : 27,
+        "length" : 0,
+        "name" : "joint_flipflop_front",
+        "type" : "distance"
+      },
+
+      {
+        "anchorA" : 0,
+        "anchorB" : 0,
+        "bodyA" : 7,
+        "bodyB" : 42,
+        "collideConnected" : false,
+        "dampingRatio" : 10,
+        "frequency" : 6.5,
+        "id" : 30,
+        "length" : 0,
+        "name" : "joint_flipflop_back",
+        "type" : "distance"
+      },
+
+      {
+        "anchorA" :
         {
           "x" : -0.07981423288583755,
           "y" : -0.03620046377182007
         },
-        "anchorB" : 
+        "anchorB" :
         {
           "x" : 0.4325847625732422,
           "y" : -1.233846664428711

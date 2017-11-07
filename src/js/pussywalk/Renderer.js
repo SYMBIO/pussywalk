@@ -163,7 +163,7 @@ export default class Renderer {
       y: -texture.naturalHeight / 4 * this.scale,
     }
 
-    if (Constants.offsets[texture.body]) {
+    if (Constants.offsets[textureName.body]) {
       offset.x += Constants.offsets[textureName.body].x * this.scale
       offset.y += Constants.offsets[textureName.body].y * this.scale
     }

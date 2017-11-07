@@ -1,5 +1,6 @@
 
 {
+  "activeScript" : "tyyb",
   "collisionbitplanes" : 
   {
     "names" : 
@@ -195,13 +196,13 @@
         ],
         "id" : 1,
         "linearVelocity" : 0,
-        "massData-I" : 0.1196009293198586,
+        "massData-I" : 0.1196009367704391,
         "massData-center" : 
         {
-          "x" : 0.007761077489703894,
+          "x" : 0.007761078421026468,
           "y" : -0.03876791149377823
         },
-        "massData-mass" : 0.6776448488235474,
+        "massData-mass" : 0.6776449084281921,
         "name" : "hand_back_top",
         "position" : 
         {
@@ -444,7 +445,7 @@
         "massData-center" : 
         {
           "x" : 0.06104796752333641,
-          "y" : -0.1635658740997314
+          "y" : -0.1635658591985703
         },
         "massData-mass" : 3.486048698425293,
         "name" : "body",
@@ -653,11 +654,11 @@
         ],
         "id" : 5,
         "linearVelocity" : 0,
-        "massData-I" : 0.1196009293198586,
+        "massData-I" : 0.1196009218692780,
         "massData-center" : 
         {
           "x" : 0.007761077489703894,
-          "y" : -0.03876790404319763
+          "y" : -0.03876791149377823
         },
         "massData-mass" : 0.6776448488235474,
         "name" : "hand_front_top",
@@ -1168,10 +1169,10 @@
         ],
         "id" : 11,
         "linearVelocity" : 0,
-        "massData-I" : 0.2868023216724396,
+        "massData-I" : 0.2868022918701172,
         "massData-center" : 
         {
-          "x" : 0.006862460169941187,
+          "x" : 0.006862461101263762,
           "y" : 0.07951407879590988
         },
         "massData-mass" : 0.8560815453529358,
@@ -1375,13 +1376,13 @@
         ],
         "id" : 13,
         "linearVelocity" : 0,
-        "massData-I" : 0.2868023514747620,
+        "massData-I" : 0.2868023216724396,
         "massData-center" : 
         {
-          "x" : 0.006862460635602474,
-          "y" : 0.07951407879590988
+          "x" : 0.006862461101263762,
+          "y" : 0.07951407134532928
         },
-        "massData-mass" : 0.8560814857482910,
+        "massData-mass" : 0.8560815453529358,
         "name" : "hand_back_bottom",
         "position" : 
         {
@@ -2655,8 +2656,8 @@
         "name" : "chain_base",
         "position" : 
         {
-          "x" : 30.63268661499023,
-          "y" : -7.464515686035156
+          "x" : 52.95520019531250,
+          "y" : -7.611169815063477
         },
         "type" : "static"
       },
@@ -2715,231 +2716,186 @@
           "y" : -21.60207366943359
         },
         "type" : "dynamic"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 0.02058310434222221,
+            "friction" : 0.2,
+            "id" : 60,
+            "name" : "fixture10",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : 
+              [
+                -0.4139728546142578,
+                0.4041042327880859,
+                0.3987007141113281,
+                -0.4233455657958984
+              ],
+              "y" : 
+              [
+                -0.4089231491088867,
+                -0.3936414718627930,
+                0.3244543671607971,
+                0.3189433813095093
+              ]
+            }
+          }
+        ],
+        "id" : 39,
+        "linearVelocity" : 0,
+        "massData-I" : 0.001235988223925233,
+        "massData-center" : 
+        {
+          "x" : -0.009559456259012222,
+          "y" : -0.03951927274465561
+        },
+        "massData-mass" : 0.01220508012920618,
+        "name" : "decor_tp_7",
+        "position" : 
+        {
+          "x" : 47.98545837402344,
+          "y" : -20.02428245544434
+        },
+        "type" : "dynamic"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 12.50,
+            "filter-categoryBits" : 2,
+            "filter-maskBits" : 65533,
+            "friction" : 1.5,
+            "id" : 62,
+            "name" : "fixture2",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : 
+              [
+                0.8652660250663757,
+                0.3640449941158295,
+                -0.2600800096988678,
+                -0.3560479879379272,
+                0.7841560244560242
+              ],
+              "y" : 
+              [
+                -0.1946759968996048,
+                0.1801059991121292,
+                0.2040980011224747,
+                -0.3078820109367371,
+                -0.3071779906749725
+              ]
+            }
+          }
+        ],
+        "id" : 41,
+        "linearVelocity" : 0,
+        "massData-I" : 0.9114626049995422,
+        "massData-center" : 
+        {
+          "x" : 0.1845354288816452,
+          "y" : -0.08472205698490143
+        },
+        "massData-mass" : 6.028298854827881,
+        "name" : "flipflop_front",
+        "position" : 
+        {
+          "x" : 19.96265411376953,
+          "y" : -22.33122444152832
+        },
+        "type" : "dynamic"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 12.50,
+            "filter-categoryBits" : 2,
+            "filter-maskBits" : 65533,
+            "friction" : 1.5,
+            "id" : 63,
+            "name" : "fixture1",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : 
+              [
+                0.7311869859695435,
+                0.2128590047359467,
+                -0.3769400119781494,
+                -0.4384700059890747,
+                0.6467009782791138
+              ],
+              "y" : 
+              [
+                -0.08893740177154541,
+                0.2538790106773376,
+                0.2846440076828003,
+                -0.2260240018367767,
+                -0.2271450012922287
+              ]
+            }
+          }
+        ],
+        "id" : 42,
+        "linearVelocity" : 0,
+        "massData-I" : 0.6377421021461487,
+        "massData-center" : 
+        {
+          "x" : 0.07097874581813812,
+          "y" : -0.005575490649789572
+        },
+        "massData-mass" : 5.782446861267090,
+        "name" : "flipflop_back",
+        "position" : 
+        {
+          "x" : 20.32295417785645,
+          "y" : -22.41202354431152
+        },
+        "type" : "dynamic"
       }
     ],
     "metaimage" : 
     [
-      
-      {
-        "aspectScale" : 1,
-        "body" : 7,
-        "center" : 
-        {
-          "x" : 0.1813929975032806,
-          "y" : 0.02582979947328568
-        },
-        "file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_leg_shoe_02.png",
-        "filter" : 1,
-        "flip" : false,
-        "id" : 1,
-        "name" : "image8",
-        "opacity" : 0.5,
-        "scale" : 0.5219489932060242
-      },
-      
-      {
-        "aspectScale" : 1,
-        "body" : 1,
-        "center" : 
-        {
-          "x" : -0.03073430061340332,
-          "y" : -0.1430550068616867
-        },
-        "file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_arm_top_01.png",
-        "filter" : 1,
-        "flip" : false,
-        "id" : 2,
-        "name" : "image10",
-        "opacity" : 0.5,
-        "scale" : 1.426770806312561
-      },
-      
-      {
-        "aspectScale" : 1,
-        "body" : 8,
-        "center" : 
-        {
-          "x" : -0.2327619940042496,
-          "y" : 0.06277559697628021
-        },
-        "file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_leg_tie_01.png",
-        "filter" : 1,
-        "flip" : false,
-        "id" : 3,
-        "name" : "image1",
-        "opacity" : 0.5,
-        "scale" : 2.996304273605347
-      },
-      
-      {
-        "aspectScale" : 1,
-        "body" : 12,
-        "center" : 
-        {
-          "x" : 0.3104090094566345,
-          "y" : -0.06487110257148743
-        },
-        "file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_leg_shoe_01.png",
-        "filter" : 1,
-        "flip" : false,
-        "id" : 4,
-        "name" : "image2",
-        "opacity" : 0.5,
-        "scale" : 0.5665780901908875
-      },
-      
-      {
-        "aspectScale" : 1,
-        "body" : 5,
-        "center" : 
-        {
-          "x" : -0.03073430061340332,
-          "y" : -0.1430550068616867
-        },
-        "file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_arm_top_01.png",
-        "filter" : 1,
-        "flip" : false,
-        "id" : 5,
-        "name" : "image10",
-        "opacity" : 0.5,
-        "scale" : 1.426770806312561
-      },
-      
-      {
-        "aspectScale" : 1,
-        "body" : 11,
-        "center" : 
-        {
-          "x" : 0.006496429909020662,
-          "y" : -0.01349639985710382
-        },
-        "file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_arm_bottom_01.png",
-        "filter" : 1,
-        "flip" : false,
-        "id" : 6,
-        "name" : "image11",
-        "opacity" : 0.5,
-        "scale" : 2.316968441009521
-      },
-      
-      {
-        "aspectScale" : 1,
-        "body" : 13,
-        "center" : 
-        {
-          "x" : 0.006496429909020662,
-          "y" : -0.01349639985710382
-        },
-        "file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_arm_bottom_01.png",
-        "filter" : 1,
-        "flip" : false,
-        "id" : 7,
-        "name" : "image11",
-        "opacity" : 0.5,
-        "scale" : 2.316968441009521
-      },
-      
-      {
-        "aspectScale" : 1,
-        "body" : 14,
-        "center" : 
-        {
-          "x" : 0.08099889755249023,
-          "y" : -0.04775090143084526
-        },
-        "file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_leg_calf_02.png",
-        "filter" : 1,
-        "flip" : false,
-        "id" : 8,
-        "name" : "image9",
-        "opacity" : 0.5,
-        "scale" : 2.153207778930664
-      },
-      
-      {
-        "aspectScale" : 1,
-        "body" : 3,
-        "center" : 
-        {
-          "x" : 0.1178610026836395,
-          "y" : 0.1310900002717972
-        },
-        "file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_body.png",
-        "filter" : 1,
-        "flip" : false,
-        "id" : 9,
-        "name" : "image5",
-        "opacity" : 0.5,
-        "scale" : 3.068437337875366
-      },
-      
-      {
-        "aspectScale" : 1,
-        "body" : 4,
-        "center" : 
-        {
-          "x" : 0.04918960109353065,
-          "y" : -0.1292169988155365
-        },
-        "file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_leg_calf_01.png",
-        "filter" : 1,
-        "flip" : false,
-        "id" : 10,
-        "name" : "image3",
-        "opacity" : 0.5,
-        "scale" : 2.162195682525635
-      },
-      
-      {
-        "aspectScale" : 1,
-        "body" : 6,
-        "center" : 
-        {
-          "x" : 0.01840309984982014,
-          "y" : 0.1128330007195473
-        },
-        "file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_head.png",
-        "filter" : 1,
-        "flip" : false,
-        "id" : 11,
-        "name" : "image4",
-        "opacity" : 0.5,
-        "scale" : 2.102461576461792
-      },
-      
-      {
-        "aspectScale" : 1,
-        "body" : 9,
-        "center" : 
-        {
-          "x" : 0.004886149894446135,
-          "y" : 0.008920909836888313
-        },
-        "file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_leg_tie_02.png",
-        "filter" : 1,
-        "flip" : false,
-        "id" : 12,
-        "name" : "image6",
-        "opacity" : 0.5,
-        "scale" : 2.457573175430298
-      },
-      
-      {
-        "aspectScale" : 1,
-        "body" : 18,
-        "center" : 
-        {
-          "x" : 0.01840309984982014,
-          "y" : 0.1128330007195473
-        },
-        "file" : "../../web/Projects/FlashWorkspace/Bohemia-Jewels/Rube-Box2D/images/z_head.png",
-        "filter" : 1,
-        "flip" : false,
-        "id" : 14,
-        "name" : "image4",
-        "opacity" : 0.5,
-        "scale" : 2.102461576461792
-      },
       
       {
         "aspectScale" : 1,
@@ -3541,6 +3497,34 @@
       },
       
       {
+        "anchorA" : 0,
+        "anchorB" : 0,
+        "bodyA" : 12,
+        "bodyB" : 41,
+        "collideConnected" : false,
+        "dampingRatio" : 10,
+        "frequency" : 6.5,
+        "id" : 27,
+        "length" : 0,
+        "name" : "joint_flipflop_front",
+        "type" : "distance"
+      },
+      
+      {
+        "anchorA" : 0,
+        "anchorB" : 0,
+        "bodyA" : 7,
+        "bodyB" : 42,
+        "collideConnected" : false,
+        "dampingRatio" : 10,
+        "frequency" : 6.5,
+        "id" : 30,
+        "length" : 0,
+        "name" : "joint_flipflop_back",
+        "type" : "distance"
+      },
+      
+      {
         "anchorA" : 
         {
           "x" : -0.07981423288583755,
@@ -3564,6 +3548,58 @@
         "referenceAngle" : 0,
         "type" : "revolute",
         "upperLimit" : 0.5235987901687622
+      },
+      
+      {
+        "anchorA" : 
+        {
+          "x" : 0.1,
+          "y" : 0.1
+        },
+        "anchorB" : 
+        {
+          "x" : 0.1,
+          "y" : 0.1
+        },
+        "bodyA" : 12,
+        "bodyB" : 41,
+        "collideConnected" : false,
+        "enableLimit" : true,
+        "enableMotor" : false,
+        "id" : 280,
+        "lowerLimit" : 0,
+        "maxMotorTorque" : 0,
+        "motorSpeed" : 0,
+        "name" : "rjoint_flipflop_front",
+        "referenceAngle" : 0,
+        "type" : "revolute",
+        "upperLimit" : 0
+      },
+      
+      {
+        "anchorA" : 
+        {
+          "x" : 0.1,
+          "y" : 0.1
+        },
+        "anchorB" : 
+        {
+          "x" : 0.1,
+          "y" : 0.1
+        },
+        "bodyA" : 7,
+        "bodyB" : 42,
+        "collideConnected" : false,
+        "enableLimit" : true,
+        "enableMotor" : false,
+        "id" : 281,
+        "lowerLimit" : 0,
+        "maxMotorTorque" : 0,
+        "motorSpeed" : 0,
+        "name" : "rjoint_flipflop_back",
+        "referenceAngle" : 0,
+        "type" : "revolute",
+        "upperLimit" : 0
       }
     ],
     "positionIterations" : 3,

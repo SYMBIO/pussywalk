@@ -99,7 +99,7 @@ exports.textureNames = [
   {
     body: "decor_chain_24",
     asset: "elements/flusher_chain_part.png"
-  },,
+  },
   {
     body: "decor_chain_25",
     asset: "elements/flusher_chain_part.png"
@@ -207,6 +207,10 @@ exports.textureNames = [
     asset: "figure/leg_heel_back.png"
   },
   {
+    body: "flipflop_back",
+    asset: "figure/slipper_back.png"
+  },
+  {
     body: "johnson",
     asset: "figure/johnson.png"
   },
@@ -221,6 +225,10 @@ exports.textureNames = [
   {
     body: "leg_shoe_front",
     asset: "figure/leg_heel_top.png"
+  },
+  {
+    body: "flipflop_front",
+    asset: "figure/slipper_top.png"
   },
   {
     body: "shoulder",
@@ -295,5 +303,9 @@ exports.offsets = {
   "lift_1": {
     x: 7,
     y: -385
+  },
+  "flipflop_front": {
+    x: 15,
+    y: 10
   }
 }
