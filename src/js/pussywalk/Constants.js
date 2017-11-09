@@ -268,7 +268,9 @@ exports.bodyparts = [
   "front_weight",
   "back_weight",
   "cigarette",
-  "body"
+  "body",
+  "flipflop_front",
+  "flipflop_back"
 ]
 
 exports.offsets = {

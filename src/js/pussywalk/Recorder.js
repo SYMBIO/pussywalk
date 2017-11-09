@@ -1,10 +1,14 @@
 export default class Recorder {
 
-  constructor(world) {
+  constructor(world, initialState) {
     this.world = world
+    this.initialState = initialState
     this.frames = []
     this.touchedDecor = []
     this.currentFrame = 0
+
+    this.removedFrontSlipper = false
+    this.removedBackSlipper = false
   }
 
   snap() {
