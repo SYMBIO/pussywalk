@@ -6,14 +6,16 @@ export default class Chain {
     this.world = world;
     this.links = 10;
     this.bodies = {};
+    this.joints = [];
 
     var shapeDef;
     var fixtureDef;
     var bodyDef;
     var body;
     var link;
+    var joint;
 
-    var joint = new Box2D.b2RevoluteJointDef();
+    var jointDef = new Box2D.b2RevoluteJointDef();
 
     var pos = {
       x: base.GetPosition().get_x(),
@@ -30,8 +32,9 @@ export default class Chain {
       body.SetTransform(new Box2D.b2Vec2(pos.x, pos.y - i / distanceDivider), 0)
       body.name = "decor_chain_" + i
       // joint
-      joint.Initialize(link, body, new Box2D.b2Vec2(pos.x, pos.y - i / distanceDivider + 0.1));
-      this.world.CreateJoint(joint);
+      jointDef.Initialize(link, body, new Box2D.b2Vec2(pos.x, pos.y - i / distanceDivider + 0.1));
+      joint = this.world.CreateJoint(jointDef);
+      this.joints.push(joint);
       // saving the reference of the last placed link
       link = body;
       this.bodies[body.name] = body
@@ -42,8 +45,9 @@ export default class Chain {
     body.name = "decor_chain_" + i
     this.bodies[body.name] = body
 
-    joint.Initialize(link, body, new Box2D.b2Vec2(pos.x, pos.y - i / distanceDivider + 0.1));
-    this.world.CreateJoint(joint);
+    jointDef.Initialize(link, body, new Box2D.b2Vec2(pos.x, pos.y - i / distanceDivider + 0.1));
+    joint = this.world.CreateJoint(jointDef);
+    this.joints.push(joint);
   // body.SetMassFromShapes();
   }
 
@@ -94,5 +98,12 @@ export default class Chain {
     var fixture = body.CreateFixture(fd);
 
     return body;
+  }
+
+  reset() {
+    for (var bodyName in this.bodies) {
+      this.bodies[bodyName].SetLinearVelocity(new Box2D.b2Vec2(0, 0))
+      this.bodies[bodyName].SetAngularVelocity(0)
+    }
   }
 }

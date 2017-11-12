@@ -16,6 +16,7 @@ export default class Box2DWorld {
     this.positionIterations = 8;
     this.lives = 3
     this.record = false
+    this.pausePhysics = false
 
     var gravity = new Box2D.b2Vec2(0.0, -10.0);
     this.world = new Box2D.b2World(gravity);
@@ -43,6 +44,9 @@ export default class Box2DWorld {
     }, {
       x: 50,
       y: -15.7
+    }, {
+      x: 140,
+      y: -20.7
     }]
     this.progressPoints = [
       this.frontSlipperDropPoint,
@@ -66,8 +70,8 @@ export default class Box2DWorld {
     let bodiesJson = json.body;
     let body
     var _floor = []
-    this.frontSlipperJointDefs = {}
-    this.backSlipperJointDefs = {}
+    this.frontSlipperJointDef = null
+    this.backSlipperJointDef = null
 
     bodiesJson.forEach((b) => {
       body = Rube2Box2D.loadBodyFromRUBE(b, this.world);
@@ -107,16 +111,10 @@ export default class Box2DWorld {
     jointsJson.forEach((j) => {
       switch (j.name) {
         case "rjoint_flipflop_front":
-          this.frontSlipperJointDefs["revolute"] = j
-          break
-        case "joint_flipflop_front":
-          this.frontSlipperJointDefs["distance"] = j
+          this.frontSlipperJointDef = j
           break
         case "rjoint_flipflop_back":
-          this.backSlipperJointDefs["revolute"] = j
-          break
-        case "joint_flipflop_back":
-          this.backSlipperJointDefs["distance"] = j
+          this.backSlipperJointDef = j
           break
       }
       joint = Rube2Box2D.loadJointFromRUBE(j, this.world, this.loadedBodies);
@@ -214,6 +212,9 @@ export default class Box2DWorld {
     })
 
     this.resetPlayer()
+
+    this.lastCheckpoint = this.checkpoints[3]
+    this.resetPlayerToCheckpoint()
   }
 
   addEndListener(callback) {
@@ -259,38 +260,40 @@ export default class Box2DWorld {
 
     // Phyics
 
-    let now = new Date().getTime();
-    this.fps.dt = (now - this.fps.time) / 1000;
+    if (!this.pausePhysics) {
+      let now = new Date().getTime();
+      this.fps.dt = (now - this.fps.time) / 1000;
 
-    this.fps.time = now;
+      this.fps.time = now;
 
-    if (this.fps.dt > this.timeStep) {
-      this.fps.dt = this.timeStep;
-    }
-
-    this.update();
-
-    this.world.Step(this.fps.dt * 1.3, this.velocityIterations, this.positionIterations);
-    this.world.ClearForces();
-
-    this.progress = this.bodies["body"].GetPosition().get_x()
-
-    // Level end
-    if (this.progress >= 150) {
-      if (!this.inactive) {
-        this.inactive = true
-        this.keymap = {}
-        this.death(true)
+      if (this.fps.dt > this.timeStep) {
+        this.fps.dt = this.timeStep;
       }
-    }
 
-    let numProgressPoints = this.progressPoints.length
-    for (var i = 0; i < numProgressPoints; i++) {
-      if (this.progressPoints[i].x < this.progress) {
-        numProgressPoints--;
-        this.onProgress(this.progressPoints.shift())
-      } else {
-        i = numProgressPoints
+      this.update();
+
+      this.world.Step(this.fps.dt * 1.3, this.velocityIterations, this.positionIterations);
+      this.world.ClearForces();
+
+      this.progress = this.bodies["body"].GetPosition().get_x()
+
+      // Level end
+      if (this.progress >= 150) {
+        if (!this.inactive) {
+          this.inactive = true
+          this.keymap = {}
+          this.death(true)
+        }
+      }
+
+      let numProgressPoints = this.progressPoints.length
+      for (var i = 0; i < numProgressPoints; i++) {
+        if (this.progressPoints[i].x < this.progress) {
+          numProgressPoints--;
+          this.onProgress(this.progressPoints.shift())
+        } else {
+          i = numProgressPoints
+        }
       }
     }
 
@@ -306,24 +309,18 @@ export default class Box2DWorld {
   onProgress(value) {
     if (value == this.frontSlipperDropPoint) {
       var j
-      j = this.joints["joint_flipflop_front"]
-      this.world.DestroyJoint(j);
       j = this.joints["rjoint_flipflop_front"]
       this.world.DestroyJoint(j);
 
-      this.joints["joint_flipflop_front"] = null
       this.joints["rjoint_flipflop_front"] = null
 
       this.recorder.removedFrontSlipper = true
     }
     if (value == this.backSlipperDropPoint) {
       var j
-      j = this.joints["joint_flipflop_back"]
-      this.world.DestroyJoint(j);
       j = this.joints["rjoint_flipflop_back"]
       this.world.DestroyJoint(j);
 
-      this.joints["joint_flipflop_back"] = null
       this.joints["rjoint_flipflop_back"] = null
 
       this.recorder.removedBackSlipper = true
@@ -514,24 +511,19 @@ export default class Box2DWorld {
   stepBackComplete() {
     this.record = true
     this.inactive = false
+    this.pausePhysics = false
 
     if (this.recorder.removedFrontSlipper) {
       var joint
 
-      joint = Rube2Box2D.loadJointFromRUBE(this.frontSlipperJointDefs.revolute, this.world, this.loadedBodies);
-      this.joints[joint.name] = joint;
-
-      joint = Rube2Box2D.loadJointFromRUBE(this.frontSlipperJointDefs.distance, this.world, this.loadedBodies);
+      joint = Rube2Box2D.loadJointFromRUBE(this.frontSlipperJointDef, this.world, this.loadedBodies);
       this.joints[joint.name] = joint;
     }
 
     if (this.recorder.removedBackSlipper) {
       var joint
 
-      joint = Rube2Box2D.loadJointFromRUBE(this.backSlipperJointDefs.revolute, this.world, this.loadedBodies);
-      this.joints[joint.name] = joint;
-
-      joint = Rube2Box2D.loadJointFromRUBE(this.backSlipperJointDefs.distance, this.world, this.loadedBodies);
+      joint = Rube2Box2D.loadJointFromRUBE(this.backSlipperJointDef, this.world, this.loadedBodies);
       this.joints[joint.name] = joint;
     }
 
@@ -546,6 +538,8 @@ export default class Box2DWorld {
         fixture = fixture.GetNext()
       } while (fixture.e != 0)
     }
+
+    this.chain.reset()
 
     this.progressPoints = this.recorder.initialState.progressPoints
     this.progress = this.recorder.initialState.progress
@@ -568,22 +562,23 @@ export default class Box2DWorld {
     if (this.recorder.currentFrame == 0) {
       this.record = true
       this.inactive = false
+      this.pausePhysics = false
       return
     }
 
     this.record = false
     this.inactive = true
+    this.pausePhysics = true
 
     for (var bodyName in this.startState) {
       this.bodies[bodyName].SetType(Box2D.b2_kineticBody)
-    }
 
-    for (var bodyName in this.bodies) {
       this.bodies[bodyName].SetLinearVelocity(new Box2D.b2Vec2(0, 0))
       this.bodies[bodyName].SetAngularVelocity(0)
     }
 
-    TweenMax.to(this.recorder, this.recorder.frames.length / 300, {
+    TweenMax.to(this.recorder, Math.max(2, this.recorder.frames.length / 300), {
+      // TweenMax.to(this.recorder, this.recorder.frames.length / 300, {
       ease: Cubic.easeInOut,
       currentFrame: 0,
       onUpdate: this.stepBack,
