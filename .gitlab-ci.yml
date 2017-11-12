@@ -1,0 +1,30 @@
+##
+# BASIC DEPLOY SCRIPT
+# Requires tools/remote-deploy.sh script (see snippet http://gitlab.symbiodigital.com/snippets/4)
+#
+# Script requires these variables being set:
+# - TEST_SSH_PRIVATE_KEY
+# - TEST_REMOTE_PATH - realpath where is test instance placed
+# - TEST_DOMAIN
+# - PROD_SSH_PRIVATE_KEY
+# - PROD_REMOTE_PATH - realpath where is production instance placed
+# - PROD_DOMAIN
+##
+before_script:
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+  - eval $(ssh-agent -s)
+  - mkdir -p ~/.ssh
+  - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+
+stages:
+  - deploy
+
+deploy_production:
+  stage: deploy
+  script:
+    - ssh-add <(echo "$PROD_SSH_PRIVATE_KEY")
+    - DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+    - ssh symbio@symbio-main.cloud.symbio.agency 'bash -s' < $DIR/tools/remote-deploy.sh $PROD_REMOTE_PATH master
+  only:
+    - master
+  when: on_success
