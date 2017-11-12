@@ -338,7 +338,7 @@ export default class Box2DWorld {
     }
     if (this.checkpoints.indexOf(value) != -1) {
       this.lastCheckpoint = value
-      this.gameHistory.push(this.recorder)
+      // this.gameHistory.push(this.recorder)
       this.recorder = new Recorder(this.world, {
         removedFrontSlipper: this.recorder.removedFrontSlipper || this.recorder.initialState.removedFrontSlipper,
         removedBackSlipper: this.recorder.removedBackSlipper || this.recorder.initialState.removedBackSlipper,
@@ -353,7 +353,6 @@ export default class Box2DWorld {
     if (this.inactive) return;
 
     let thighAngle;
-
 
     let j,
       k,
@@ -555,7 +554,7 @@ export default class Box2DWorld {
     this.progressPoints = this.recorder.initialState.progressPoints
     this.progress = this.recorder.initialState.progress
 
-    this.gameHistory.push(this.recorder)
+    // this.gameHistory.push(this.recorder)
     this.recorder = new Recorder(this.world, {
       removedFrontSlipper: this.recorder.initialState.removedFrontSlipper,
       removedBackSlipper: this.recorder.initialState.removedBackSlipper,
@@ -581,11 +580,16 @@ export default class Box2DWorld {
     this.inactive = true
     this.pausePhysics = true
 
-    for (var bodyName in this.startState) {
-      this.bodies[bodyName].SetType(Box2D.b2_kineticBody)
-
+    for (var bodyName in this.bodies) {
+      let type = this.bodies[bodyName].GetType()
       this.bodies[bodyName].SetLinearVelocity(new Box2D.b2Vec2(0, 0))
       this.bodies[bodyName].SetAngularVelocity(0)
+      this.bodies[bodyName].SetType(type)
+
+    }
+
+    for (var bodyName in this.startState) {
+      this.bodies[bodyName].SetType(Box2D.b2_kineticBody)
     }
 
     TweenMax.to(this.recorder, this.recorder.frames.length / 300, {

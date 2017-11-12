@@ -51,8 +51,8 @@
 			"name" : "sheep_head",
 			"position" : 
 			{
-				"x" : 19.97213363647461,
-				"y" : -13.22244453430176
+				"x" : 19.97209930419922,
+				"y" : -13.22239971160889
 			},
 			"type" : 2
 		},
@@ -131,8 +131,8 @@
 			"name" : "flipflop_back",
 			"position" : 
 			{
-				"x" : 20.32295417785645,
-				"y" : -21.28068542480469
+				"x" : 20.32299995422363,
+				"y" : -21.28070068359375
 			},
 			"type" : 2
 		},
@@ -211,8 +211,8 @@
 			"name" : "flipflop_front",
 			"position" : 
 			{
-				"x" : 19.96265411376953,
-				"y" : -21.19988632202148
+				"x" : 19.96269989013672,
+				"y" : -21.19989967346191
 			},
 			"type" : 2
 		},
@@ -269,8 +269,8 @@
 			"name" : "sheep_body",
 			"position" : 
 			{
-				"x" : 19.21377754211426,
-				"y" : -14.42771053314209
+				"x" : 19.21380043029785,
+				"y" : -14.42770004272461
 			},
 			"type" : 2
 		},
@@ -1495,8 +1495,8 @@
 			"name" : "lift_1",
 			"position" : 
 			{
-				"x" : 97.97503662109375,
-				"y" : -32.17532348632812
+				"x" : 97.97499847412109,
+				"y" : -32.17530059814453
 			},
 			"type" : 2
 		},
@@ -1573,8 +1573,8 @@
 			"name" : "johnson",
 			"position" : 
 			{
-				"x" : 20.49317741394043,
-				"y" : -17.72543334960938
+				"x" : 20.49320030212402,
+				"y" : -17.72540092468262
 			},
 			"type" : 2
 		},
@@ -1852,7 +1852,7 @@
 			"name" : "hand_back_bottom",
 			"position" : 
 			{
-				"x" : 20.27809906005859,
+				"x" : 20.12649917602539,
 				"y" : -17.43320083618164
 			},
 			"type" : 2
@@ -2032,7 +2032,7 @@
 			"name" : "hand_front_bottom",
 			"position" : 
 			{
-				"x" : 20.02129936218262,
+				"x" : 19.86969947814941,
 				"y" : -17.46339988708496
 			},
 			"type" : 2
@@ -2356,8 +2356,8 @@
 			"name" : "head",
 			"position" : 
 			{
-				"x" : 20.92989921569824,
-				"y" : -14.89820003509521
+				"x" : 20.81550025939941,
+				"y" : -14.54109954833984
 			},
 			"type" : 2
 		},
@@ -2476,7 +2476,7 @@
 			"name" : "hand_front_top",
 			"position" : 
 			{
-				"x" : 20.03319931030273,
+				"x" : 19.88159942626953,
 				"y" : -15.75800037384033
 			},
 			"type" : 2
@@ -2745,8 +2745,8 @@
 			"name" : "cigarette",
 			"position" : 
 			{
-				"x" : 21.43429946899414,
-				"y" : -15.37059974670410
+				"x" : 21.20800018310547,
+				"y" : -15.09539985656738
 			},
 			"type" : 2
 		},
@@ -2865,7 +2865,7 @@
 			"name" : "hand_back_top",
 			"position" : 
 			{
-				"x" : 20.29000091552734,
+				"x" : 20.13839912414551,
 				"y" : -15.72780036926270
 			},
 			"type" : 2
@@ -2959,6 +2959,101 @@
 	],
 	"joint" : 
 	[
+		
+		{
+			"anchorA" : 
+			{
+				"x" : 0.2374954223632812,
+				"y" : 0.7930421829223633
+			},
+			"anchorB" : 
+			{
+				"x" : 0.02189064025878906,
+				"y" : 0.3299045562744141
+			},
+			"bodyA" : 40,
+			"bodyB" : 42,
+			"enableLimit" : true,
+			"enableMotor" : false,
+			"jointSpeed" : 0,
+			"lowerLimit" : -2.443460941314697,
+			"maxMotorTorque" : 0,
+			"motorSpeed" : 0,
+			"name" : "joint10",
+			"refAngle" : 0,
+			"type" : "revolute",
+			"upperLimit" : 1.396263360977173
+		},
+		
+		{
+			"anchorA" : 
+			{
+				"x" : -0.03725624084472656,
+				"y" : 0.7436332702636719
+			},
+			"anchorB" : 
+			{
+				"x" : 0.006273269653320312,
+				"y" : 0.3123254776000977
+			},
+			"bodyA" : 40,
+			"bodyB" : 38,
+			"enableLimit" : true,
+			"enableMotor" : false,
+			"jointSpeed" : 0,
+			"lowerLimit" : -2.443460941314697,
+			"maxMotorTorque" : 0,
+			"motorSpeed" : 0,
+			"name" : "joint11",
+			"refAngle" : 0,
+			"type" : "revolute",
+			"upperLimit" : 1.396263360977173
+		},
+		
+		{
+			"anchorA" : 
+			{
+				"x" : -0.5031002759933472,
+				"y" : -0.4701000452041626
+			},
+			"anchorB" : 
+			{
+				"x" : 0.3130245208740234,
+				"y" : 1.280578613281250
+			},
+			"bodyA" : 37,
+			"bodyB" : 40,
+			"enableLimit" : true,
+			"enableMotor" : false,
+			"jointSpeed" : 0,
+			"lowerLimit" : -0.1745329201221466,
+			"maxMotorTorque" : 0,
+			"motorSpeed" : 0,
+			"name" : "joint0",
+			"refAngle" : 0,
+			"type" : "revolute",
+			"upperLimit" : 0.5235987901687622
+		},
+		
+		{
+			"anchorA" : 
+			{
+				"x" : 0.7894115447998047,
+				"y" : -0.1349411010742188
+			},
+			"anchorB" : 
+			{
+				"x" : 0.3583519458770752,
+				"y" : -0.8418141007423401
+			},
+			"bodyA" : 40,
+			"bodyB" : 37,
+			"dampingRatio" : 0,
+			"frequency" : 2,
+			"length" : 1,
+			"name" : "joint9",
+			"type" : "distance"
+		},
 		
 		{
 			"anchorA" : 
@@ -3058,101 +3153,6 @@
 			"refAngle" : 0,
 			"type" : "revolute",
 			"upperLimit" : 0.5235987901687622
-		},
-		
-		{
-			"anchorA" : 
-			{
-				"x" : -0.6316993832588196,
-				"y" : -0.4306058585643768
-			},
-			"anchorB" : 
-			{
-				"x" : 0.3056182861328125,
-				"y" : 0.9843273162841797
-			},
-			"bodyA" : 37,
-			"bodyB" : 40,
-			"enableLimit" : true,
-			"enableMotor" : false,
-			"jointSpeed" : 0,
-			"lowerLimit" : -0.1745329201221466,
-			"maxMotorTorque" : 0,
-			"motorSpeed" : 0,
-			"name" : "joint0",
-			"refAngle" : 0,
-			"type" : "revolute",
-			"upperLimit" : 0.5235987901687622
-		},
-		
-		{
-			"anchorA" : 
-			{
-				"x" : 0.7894115447998047,
-				"y" : -0.1349411010742188
-			},
-			"anchorB" : 
-			{
-				"x" : 0.2027387917041779,
-				"y" : -0.8711890578269958
-			},
-			"bodyA" : 40,
-			"bodyB" : 37,
-			"dampingRatio" : 0,
-			"frequency" : 2,
-			"length" : 0.6,
-			"name" : "joint9",
-			"type" : "distance"
-		},
-		
-		{
-			"anchorA" : 
-			{
-				"x" : 0.3876209259033203,
-				"y" : 0.7911319732666016
-			},
-			"anchorB" : 
-			{
-				"x" : 0.02189064025878906,
-				"y" : 0.3299045562744141
-			},
-			"bodyA" : 40,
-			"bodyB" : 42,
-			"enableLimit" : true,
-			"enableMotor" : false,
-			"jointSpeed" : 0,
-			"lowerLimit" : -2.443460941314697,
-			"maxMotorTorque" : 0,
-			"motorSpeed" : 0,
-			"name" : "joint10",
-			"refAngle" : 0,
-			"type" : "revolute",
-			"upperLimit" : 1.396263360977173
-		},
-		
-		{
-			"anchorA" : 
-			{
-				"x" : 0.1152057647705078,
-				"y" : 0.7433395385742188
-			},
-			"anchorB" : 
-			{
-				"x" : 0.006273269653320312,
-				"y" : 0.3123254776000977
-			},
-			"bodyA" : 40,
-			"bodyB" : 38,
-			"enableLimit" : true,
-			"enableMotor" : false,
-			"jointSpeed" : 0,
-			"lowerLimit" : -2.443460941314697,
-			"maxMotorTorque" : 0,
-			"motorSpeed" : 0,
-			"name" : "joint11",
-			"refAngle" : 0,
-			"type" : "revolute",
-			"upperLimit" : 1.396263360977173
 		},
 		
 		{

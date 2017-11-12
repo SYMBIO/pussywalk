@@ -1,4 +1,5 @@
 import Constants from './Constants'
+import FlashTexture from './FlashTexture'
 import SpriteSheet from 'spritesheet-canvas'
 
 export default class Renderer {
@@ -15,13 +16,16 @@ export default class Renderer {
     this.scale = 1
     this.state = {}
 
+    this.vignette = new Image()
+    this.vignette.src = "images/misc/vignette.png"
+
     this.render = this.render.bind(this)
     this.drawTexture = this.drawTexture.bind(this)
     this.setState = this.setState.bind(this)
 
-    var walk_texture = new Image();
-    walk_texture.src = "images/walk_texture.png";
-
+    // var walk_texture = new Image();
+    // walk_texture.src = "images/walk_texture.png";
+    //
     // this.walk_spritesheet = SpriteSheet.new(walk_texture, {
     //   frames: [100, 100, 100], //Each frame defined by the amount of time it will be rendered before moving on
     //   x: 0, //Start coordinates of the sequence
@@ -51,6 +55,18 @@ export default class Renderer {
   setState(state) {
     for (let key in state) {
       this.state[key] = state[key]
+      if (key == "sheep" && state[key]) {
+        let body = this.bodies.body
+        let flashTexture = new FlashTexture(
+          body.GetPosition().get_x() * this.physicsScale * this.scale,
+          -body.GetPosition().get_y() * this.physicsScale * this.scale
+        )
+        this.texturesConfig["flash"] = flashTexture
+        let that = this
+        flashTexture.completionBlock = function() {
+          delete that.texturesConfig["flash"]
+        }
+      }
     }
   }
 
@@ -66,7 +82,7 @@ export default class Renderer {
 
     let canvasOffset = {
       x: bodyOffset.x - this.canvas.width / 2,
-      y: bodyOffset.y + this.canvas.height / 2
+      y: bodyOffset.y + this.canvas.height / 2 - 100
     }
 
     canvasOffset.x = Math.max(0, Math.round(canvasOffset.x))
@@ -133,54 +149,110 @@ export default class Renderer {
     }
 
     // Draw elements incl. figure
-    for (var i in Constants.texturesConfig) {
-      let textureConfig = Constants.texturesConfig[i]
+    for (var i in this.texturesConfig) {
+      let textureConfig = this.texturesConfig[i]
       if (!this.state.sheep && textureConfig.body.indexOf("sheep_") == 0) {
         continue
       }
+
       this.drawTexture(textureConfig)
     }
 
-    // Debug draw
+    this.context.drawImage(this.vignette,
+      0,
+      0,
+      300,
+      300,
+      canvasOffset.x,
+      -canvasOffset.y,
+      this.context.canvas.width,
+      this.context.canvas.height
+    )
 
-  // this.context.setTransform(1, 0, 0, 1, 0, 0);
+    // Lift number
+
+    let x = this.bodies.lift_1.GetPosition().get_x()
+    let y = this.bodies.lift_1.GetPosition().get_y()
+    let percentage = Math.max(0, (y + 39.8187) / (-32.1753 + 39.8187) * 18)
+
+    x = (x * this.physicsScale - 30) * this.scale
+    y = -(y * this.physicsScale + 500) * this.scale
+
+    this.context.font = Math.round(48 * this.scale) + 'px serif';
+    this.context.fillStyle = "#FFF"
+    this.context.fillText(Math.round(percentage) + '%', x, y);
+
+  // Debug draw
+  //
   // this.context.scale(this.physicsScale * this.scale, this.physicsScale * this.scale);
   // this.context.lineWidth = 1 / this.physicsScale;
-  //
   // this.context.scale(1, -1);
   // this.world.DrawDebugData();
   }
 
   drawTexture(textureConfig) {
 
-    if (this.bodies[textureConfig.body] == null) {
-      return
+    let angle
+    let position
+    let offset
+    let image
+    let alpha
+    let scale
+    let compositeOperation
+
+    if (textureConfig.isFixed) {
+
+      angle = 0
+      position = {
+        x: textureConfig.x,
+        y: textureConfig.y
+      }
+      offset = {
+        x: textureConfig.offsetX * this.scale,
+        y: textureConfig.offsetY * this.scale
+      }
+      image = textureConfig.image
+      alpha = textureConfig.alpha
+      scale = textureConfig.scale
+
+      compositeOperation = "screen"
+
+    } else {
+      if (this.bodies[textureConfig.body] == null) {
+        return
+      }
+
+      image = textureConfig.image
+
+      let name = textureConfig.name ? textureConfig.name : textureConfig.body
+      let body = this.bodies[textureConfig.body];
+
+      position = {
+        x: body.GetPosition().get_x() * this.physicsScale * this.scale,
+        y: -body.GetPosition().get_y() * this.physicsScale * this.scale
+      }
+
+      offset = {
+        x: -image.naturalWidth / 4 * this.scale,
+        y: -image.naturalHeight / 4 * this.scale,
+      }
+
+      if (textureConfig.offset) {
+        offset.x += textureConfig.offset.x * this.scale
+        offset.y += textureConfig.offset.y * this.scale
+      }
+
+      angle = textureConfig.fixedAngle ? 0 : -body.GetAngle()
+      alpha = 1
+      scale = 1
     }
-
-    let name = textureConfig.name ? textureConfig.name : textureConfig.body
-
-    let image = textureConfig.image
-    let body = this.bodies[textureConfig.body];
-
-    let position = {
-      x: body.GetPosition().get_x() * this.physicsScale * this.scale,
-      y: -body.GetPosition().get_y() * this.physicsScale * this.scale
-    }
-
-    let offset = {
-      x: -image.naturalWidth / 4 * this.scale,
-      y: -image.naturalHeight / 4 * this.scale,
-    }
-
-    if (textureConfig.offset) {
-      offset.x += textureConfig.offset.x * this.scale
-      offset.y += textureConfig.offset.y * this.scale
-    }
-
-    let angle = textureConfig.fixedAngle ? 0 : -body.GetAngle()
 
     this.context.translate(position.x, position.y);
     this.context.rotate(angle)
+    this.context.globalAlpha = alpha;
+    if (compositeOperation) {
+      this.context.globalCompositeOperation = compositeOperation
+    }
     this.context.drawImage(image,
       0,
       0,
@@ -188,15 +260,18 @@ export default class Renderer {
       image.naturalHeight,
       offset.x,
       offset.y,
-      image.naturalWidth / 2 * this.scale,
-      image.naturalHeight / 2 * this.scale
+      image.naturalWidth / 2 * this.scale * scale,
+      image.naturalHeight / 2 * this.scale * scale
     )
 
     // if (body.name == 'head') {
     //   this.walk_spritesheet.tick();
     //   this.walk_spritesheet.draw(this.context);
     // }
-
+    if (compositeOperation) {
+      this.context.globalCompositeOperation = "source-over"
+    }
+    this.context.globalAlpha = 1
     this.context.rotate(-angle)
     this.context.translate(-position.x, -position.y);
 

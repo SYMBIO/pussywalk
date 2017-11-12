@@ -215,13 +215,17 @@ exports.texturesConfig = [
     asset: "figure/outlines/out_leg_heel.png",
     offset: {
       x: 5,
-      y: 5
+      y: 0
     }
   },
   {
     name: "outline_flipflop_back",
     body: "flipflop_back",
-    asset: "figure/outlines/out_slipper.png"
+    asset: "figure/outlines/out_slipper.png",
+    offset: {
+      x: 5,
+      y: -3
+    }
   },
   {
     name: "outline_leg_front_calf",
@@ -246,7 +250,7 @@ exports.texturesConfig = [
     body: "leg_shoe_front",
     asset: "figure/outlines/out_leg_heel.png",
     offset: {
-      x: 18,
+      x: 13,
       y: 5
     }
   },
@@ -256,7 +260,7 @@ exports.texturesConfig = [
     asset: "figure/outlines/out_slipper.png",
     offset: {
       x: 15,
-      y: 10
+      y: 3
     }
   },
   {
@@ -299,12 +303,16 @@ exports.texturesConfig = [
     asset: "figure/leg_heel_back.png",
     offset: {
       x: 5,
-      y: 5
+      y: 0
     }
   },
   {
     body: "flipflop_back",
-    asset: "figure/slipper_back.png"
+    asset: "figure/slipper_back.png",
+    offset: {
+      x: 5,
+      y: -3
+    }
   },
   {
     body: "leg_front_calf",
@@ -326,7 +334,7 @@ exports.texturesConfig = [
     body: "leg_shoe_front",
     asset: "figure/leg_heel_top.png",
     offset: {
-      x: 18,
+      x: 13,
       y: 5
     }
   },
@@ -335,7 +343,7 @@ exports.texturesConfig = [
     asset: "figure/slipper_top.png",
     offset: {
       x: 15,
-      y: 10
+      y: 3
     }
   },
   {
