@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import Box2dWorld from './Box2dWorld';
+import Box2dWorld from './Box2DWorld';
 import Renderer from './Renderer';
 
 // https://github.com/kripken/box2d.js
