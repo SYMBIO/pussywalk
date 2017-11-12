@@ -10,6 +10,8 @@
 # - PROD_REMOTE_PATH - realpath where is production instance placed
 # - PROD_DOMAIN
 ##
+image: node:9
+
 before_script:
   - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
   - eval $(ssh-agent -s)
