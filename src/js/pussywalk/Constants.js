@@ -1,4 +1,4 @@
-exports.textureNames = [
+exports.texturesConfig = [
   // Chain
   {
     body: "decor_chain_0",
@@ -176,7 +176,11 @@ exports.textureNames = [
   },
   {
     body: "lift_1",
-    asset: "elements/poll_elevator.png"
+    asset: "elements/poll_elevator.png",
+    offset: {
+      x: 7,
+      y: -385
+    }
   },
   {
     body: "decor_3",
@@ -186,6 +190,86 @@ exports.textureNames = [
     body: "decor_4",
     asset: "elements/hospital_table.png"
   },
+  // Body - Outlines
+  {
+    name: "outline_leg_back_calf",
+    body: "leg_back_calf",
+    asset: "figure/outlines/out_leg_calf.png",
+    offset: {
+      x: 0,
+      y: 10
+    }
+  },
+  {
+    name: "outline_leg_back_tie",
+    body: "leg_back_tie",
+    asset: "figure/outlines/out_leg_thigh.png",
+    offset: {
+      x: -25,
+      y: -5
+    }
+  },
+  {
+    name: "outline_leg_shoe_back",
+    body: "leg_shoe_back",
+    asset: "figure/outlines/out_leg_heel.png",
+    offset: {
+      x: 5,
+      y: 5
+    }
+  },
+  {
+    name: "outline_flipflop_back",
+    body: "flipflop_back",
+    asset: "figure/outlines/out_slipper.png"
+  },
+  {
+    name: "outline_leg_front_calf",
+    body: "leg_front_calf",
+    asset: "figure/outlines/out_leg_calf.png",
+    offset: {
+      x: 0,
+      y: 15
+    }
+  },
+  {
+    name: "outline_leg_front_tie",
+    body: "leg_front_tie",
+    asset: "figure/outlines/out_leg_thigh.png",
+    offset: {
+      x: -25,
+      y: 0
+    }
+  },
+  {
+    name: "outline_leg_shoe_front",
+    body: "leg_shoe_front",
+    asset: "figure/outlines/out_leg_heel.png",
+    offset: {
+      x: 18,
+      y: 5
+    }
+  },
+  {
+    name: "outline_flipflop_front",
+    body: "flipflop_front",
+    asset: "figure/outlines/out_slipper.png",
+    offset: {
+      x: 15,
+      y: 10
+    }
+  },
+  {
+    name: "outline_body",
+    body: "body",
+    asset: "figure/outlines/out_torso.png",
+    offset: {
+      x: 0,
+      y: -15
+    }
+  },
+
+  // Body - Elements
   {
     body: "hand_back_bottom",
     asset: "figure/hand_lower_back.png"
@@ -196,47 +280,71 @@ exports.textureNames = [
   },
   {
     body: "leg_back_calf",
-    asset: "figure/leg_calf_back.png"
+    asset: "figure/leg_calf_back.png",
+    offset: {
+      x: 0,
+      y: 10
+    }
   },
   {
     body: "leg_back_tie",
-    asset: "figure/leg_thigh_back.png"
+    asset: "figure/leg_thigh_back.png",
+    offset: {
+      x: -25,
+      y: -5
+    }
   },
   {
     body: "leg_shoe_back",
-    asset: "figure/leg_heel_back.png"
+    asset: "figure/leg_heel_back.png",
+    offset: {
+      x: 5,
+      y: 5
+    }
   },
   {
     body: "flipflop_back",
     asset: "figure/slipper_back.png"
   },
   {
-    body: "johnson",
-    asset: "figure/johnson.png"
-  },
-  {
     body: "leg_front_calf",
-    asset: "figure/leg_calf_top.png"
+    asset: "figure/leg_calf_top.png",
+    offset: {
+      x: 0,
+      y: 15
+    }
   },
   {
     body: "leg_front_tie",
-    asset: "figure/leg_thigh_top.png"
+    asset: "figure/leg_thigh_top.png",
+    offset: {
+      x: -25,
+      y: 0
+    }
   },
   {
     body: "leg_shoe_front",
-    asset: "figure/leg_heel_top.png"
+    asset: "figure/leg_heel_top.png",
+    offset: {
+      x: 18,
+      y: 5
+    }
   },
   {
     body: "flipflop_front",
-    asset: "figure/slipper_top.png"
-  },
-  {
-    body: "shoulder",
-    asset: "figure/shoulder.png"
+    asset: "figure/slipper_top.png",
+    offset: {
+      x: 15,
+      y: 10
+    }
   },
   {
     body: "body",
-    asset: "figure/torso.png"
+    asset: "figure/torso.png",
+    offset: {
+      x: 0,
+      y: -15
+    }
   },
   {
     body: "head",
@@ -244,11 +352,33 @@ exports.textureNames = [
   },
   {
     body: "hand_front_top",
-    asset: "figure/hand_upper_top.png"
+    asset: "figure/hand_upper_top.png",
+    offset: {
+      x: -10,
+      y: 0
+    }
   },
   {
     body: "hand_front_bottom",
-    asset: "figure/hand_lower_top.png"
+    asset: "figure/hand_lower_top.png",
+    offset: {
+      x: -10,
+      y: 0
+    }
+  },
+  {
+    body: "johnson",
+    asset: "figure/penis_square.png",
+    fixedAngle: true
+  },
+  // Sheep
+  {
+    body: "sheep_body",
+    asset: "figure/sheep_body.png"
+  },
+  {
+    body: "sheep_head",
+    asset: "figure/sheep_head.png"
   }
 ]
 
@@ -270,44 +400,7 @@ exports.bodyparts = [
   "cigarette",
   "body",
   "flipflop_front",
-  "flipflop_back"
+  "flipflop_back",
+  "sheep_body",
+  "sheep_head"
 ]
-
-exports.offsets = {
-  "leg_shoe_back": {
-    x: 5,
-    y: 5
-  },
-  "leg_shoe_front": {
-    x: 18,
-    y: 13
-  },
-  "leg_front_tie": {
-    x: -25,
-    y: 0
-  },
-  "leg_front_calf": {
-    x: 0,
-    y: 10
-  },
-  "leg_back_tie": {
-    x: -25,
-    y: -5
-  },
-  "leg_back_calf": {
-    x: 0,
-    y: 2
-  },
-  "body": {
-    x: 0,
-    y: -15
-  },
-  "lift_1": {
-    x: 7,
-    y: -385
-  },
-  "flipflop_front": {
-    x: 15,
-    y: 10
-  }
-}

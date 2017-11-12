@@ -1572,6 +1572,7 @@
         "angle" : 0,
         "angularVelocity" : 0,
         "awake" : true,
+        "fixedRotation" : true,
         "fixture" : 
         [
           
@@ -1598,7 +1599,7 @@
         ],
         "id" : 18,
         "linearVelocity" : 0,
-        "massData-I" : 0.0008820290095172822,
+        "massData-I" : 0.0007538578356616199,
         "massData-center" : 
         {
           "x" : 0.2193320989608765,

@@ -34,13 +34,17 @@ export default class Box2DWorld {
       x: 38,
       y: 0
     }
+    this.sheepPickupPoint = {
+      x: 23,
+      y: 0
+    }
 
     this.checkpoints = [{
       x: 23,
-      y: -14.7
+      y: -15.7
     }, {
       x: 92,
-      y: -14.7
+      y: -15.7
     }, {
       x: 50,
       y: -15.7
@@ -50,7 +54,8 @@ export default class Box2DWorld {
     }]
     this.progressPoints = [
       this.frontSlipperDropPoint,
-      this.backSlipperDropPoint
+      this.backSlipperDropPoint,
+      this.sheepPickupPoint
     ]
 
     this.lastCheckpoint = this.checkpoints[0]
@@ -137,7 +142,7 @@ export default class Box2DWorld {
     });
 
     let that = this;
-    var _end = ["hand_front_top", "hand_back_top", "leg_front_tie", "leg_back_tie", "body", "head"];
+    var _end = ["hand_front_top", "hand_back_top", "leg_front_tie", "leg_back_tie", "body", "head", "sheep_body"];
     let contactListener = new Box2D.JSContactListener();
     contactListener.PostSolve = function() {};
     contactListener.PreSolve = function() {};
@@ -212,9 +217,6 @@ export default class Box2DWorld {
     })
 
     this.resetPlayer()
-
-    this.lastCheckpoint = this.checkpoints[3]
-    this.resetPlayerToCheckpoint()
   }
 
   addEndListener(callback) {
@@ -223,6 +225,10 @@ export default class Box2DWorld {
 
   addRenderListener(callback) {
     this.RenderListener = callback;
+  }
+
+  addStateListener(callback) {
+    this.StateListener = callback;
   }
 
   death(didWin) {
@@ -324,6 +330,11 @@ export default class Box2DWorld {
       this.joints["rjoint_flipflop_back"] = null
 
       this.recorder.removedBackSlipper = true
+    }
+    if (value == this.sheepPickupPoint && this.StateListener != null) {
+      this.StateListener({
+        sheep: true
+      })
     }
     if (this.checkpoints.indexOf(value) != -1) {
       this.lastCheckpoint = value
@@ -488,11 +499,11 @@ export default class Box2DWorld {
     for (var bodyName in moment) {
 
       if (this.recorder.initialState.removedFrontSlipper && bodyName == "flipflop_front") {
-        break
+        continue
       }
 
       if (this.recorder.initialState.removedBackSlipper && bodyName == "flipflop_back") {
-        break
+        continue
       }
 
       if (this.startState[bodyName]) {
@@ -577,8 +588,7 @@ export default class Box2DWorld {
       this.bodies[bodyName].SetAngularVelocity(0)
     }
 
-    TweenMax.to(this.recorder, Math.max(2, this.recorder.frames.length / 300), {
-      // TweenMax.to(this.recorder, this.recorder.frames.length / 300, {
+    TweenMax.to(this.recorder, this.recorder.frames.length / 300, {
       ease: Cubic.easeInOut,
       currentFrame: 0,
       onUpdate: this.stepBack,

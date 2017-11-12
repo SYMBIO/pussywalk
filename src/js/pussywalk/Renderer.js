@@ -9,13 +9,15 @@ export default class Renderer {
     this.context = this.canvas.getContext('2d')
     this.bodies = bodies
     this.levelTextures = []
-    this.textures = {}
+    this.texturesConfig = {}
 
     this.physicsScale = 64
     this.scale = 1
+    this.state = {}
 
     this.render = this.render.bind(this)
     this.drawTexture = this.drawTexture.bind(this)
+    this.setState = this.setState.bind(this)
 
     var walk_texture = new Image();
     walk_texture.src = "images/walk_texture.png";
@@ -36,18 +38,19 @@ export default class Renderer {
       this.levelTextures.push(image)
     }
 
-    let mappedTextureNames = Constants.textureNames.map(function(textureName) {
-      return textureName.body
-    })
+    for (let key in Constants.texturesConfig) {
+      let textureConfig = Constants.texturesConfig[key]
+      let name = textureConfig.name ? textureConfig.name : textureConfig.body
+      let image = new Image()
+      image.src = "images/" + textureConfig.asset
+      textureConfig.image = image
+      this.texturesConfig[name] = textureConfig
+    }
+  }
 
-    for (var key in bodies) {
-      let body = bodies[key]
-      let index = mappedTextureNames.indexOf(body.name)
-      if (index != -1) {
-        let image = new Image()
-        image.src = "images/" + Constants.textureNames[index].asset
-        this.textures[body.name] = image
-      }
+  setState(state) {
+    for (let key in state) {
+      this.state[key] = state[key]
     }
   }
 
@@ -130,28 +133,34 @@ export default class Renderer {
     }
 
     // Draw elements incl. figure
-    for (var i in Constants.textureNames) {
-      this.drawTexture(Constants.textureNames[i])
+    for (var i in Constants.texturesConfig) {
+      let textureConfig = Constants.texturesConfig[i]
+      if (!this.state.sheep && textureConfig.body.indexOf("sheep_") == 0) {
+        continue
+      }
+      this.drawTexture(textureConfig)
     }
 
-  // // Debug draw
-  //
+    // Debug draw
+
   // this.context.setTransform(1, 0, 0, 1, 0, 0);
-  // // this.context.translate(canvasOffset.x, canvasOffset.y);
-  // this.context.scale(this.physicsScale, this.physicsScale);
+  // this.context.scale(this.physicsScale * this.scale, this.physicsScale * this.scale);
   // this.context.lineWidth = 1 / this.physicsScale;
   //
   // this.context.scale(1, -1);
   // this.world.DrawDebugData();
   }
 
-  drawTexture(textureName) {
-    if (this.bodies[textureName.body] == null) {
+  drawTexture(textureConfig) {
+
+    if (this.bodies[textureConfig.body] == null) {
       return
     }
 
-    let texture = this.textures[textureName.body]
-    let body = this.bodies[textureName.body];
+    let name = textureConfig.name ? textureConfig.name : textureConfig.body
+
+    let image = textureConfig.image
+    let body = this.bodies[textureConfig.body];
 
     let position = {
       x: body.GetPosition().get_x() * this.physicsScale * this.scale,
@@ -159,26 +168,28 @@ export default class Renderer {
     }
 
     let offset = {
-      x: -texture.naturalWidth / 4 * this.scale,
-      y: -texture.naturalHeight / 4 * this.scale,
+      x: -image.naturalWidth / 4 * this.scale,
+      y: -image.naturalHeight / 4 * this.scale,
     }
 
-    if (Constants.offsets[textureName.body]) {
-      offset.x += Constants.offsets[textureName.body].x * this.scale
-      offset.y += Constants.offsets[textureName.body].y * this.scale
+    if (textureConfig.offset) {
+      offset.x += textureConfig.offset.x * this.scale
+      offset.y += textureConfig.offset.y * this.scale
     }
+
+    let angle = textureConfig.fixedAngle ? 0 : -body.GetAngle()
 
     this.context.translate(position.x, position.y);
-    this.context.rotate(-body.GetAngle())
-    this.context.drawImage(texture,
+    this.context.rotate(angle)
+    this.context.drawImage(image,
       0,
       0,
-      texture.naturalWidth,
-      texture.naturalHeight,
+      image.naturalWidth,
+      image.naturalHeight,
       offset.x,
       offset.y,
-      texture.naturalWidth / 2 * this.scale,
-      texture.naturalHeight / 2 * this.scale
+      image.naturalWidth / 2 * this.scale,
+      image.naturalHeight / 2 * this.scale
     )
 
     // if (body.name == 'head') {
@@ -186,7 +197,7 @@ export default class Renderer {
     //   this.walk_spritesheet.draw(this.context);
     // }
 
-    this.context.rotate(body.GetAngle())
+    this.context.rotate(-angle)
     this.context.translate(-position.x, -position.y);
 
   }
@@ -197,6 +208,6 @@ export default class Renderer {
     this.context = null
     this.bodies = null
     this.levelTextures = null
-    this.textures = null
+    this.texturesConfig = null
   }
 }

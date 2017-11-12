@@ -70,6 +70,7 @@ const initGame = () => {
 
   _world.addEndListener(_callbacks.onGameEnd)
   _world.addRenderListener(_renderer.render)
+  _world.addStateListener(_renderer.setState)
 
   resizeCanvas()
 
