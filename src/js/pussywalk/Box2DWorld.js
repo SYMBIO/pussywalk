@@ -356,7 +356,8 @@ export default class Box2DWorld {
 
     let j,
       k,
-      a;
+      a,
+      foot;
 
     thighAngle = this.bodies['leg_front_tie'].GetAngle()
 
@@ -364,6 +365,7 @@ export default class Box2DWorld {
     j = this.joints["tendon_rf"];
     k = this.joints["knee_r"];
     a = this.joints["ankle_r"];
+    foot = this.bodies["leg_shoe_front"]
     if (this.keymap[39]) {
 
       let bend = this.bodies['body'].GetAngle();
@@ -390,6 +392,10 @@ export default class Box2DWorld {
           // Leaning back
           if (thighAngle > 0) {
             // Thigh pointing fwd -> Leg in the air -> Needs balancing
+            var fixture = foot.GetFixtureList()
+            fixture.SetDensity(24)
+            foot.ResetMassData()
+
             this.joints[k.name] = k.SetLength(0.65);
           } else {
             // Thigh pointing back -> ?
@@ -407,6 +413,10 @@ export default class Box2DWorld {
         this.joints[j.name] = j.SetLength(j.data.length);
         this.joints[k.name] = k.SetLength(k.data.length);
         this.joints[a.name] = a.SetLength(a.data.length);
+
+        var fixture = foot.GetFixtureList()
+        fixture.SetDensity(12)
+        foot.ResetMassData()
       }
     }
 
@@ -417,6 +427,7 @@ export default class Box2DWorld {
     j = this.joints["tendon_lf"];
     k = this.joints["knee_l"];
     a = this.joints["ankle_l"];
+    foot = this.bodies["leg_shoe_back"]
     if (this.keymap[37]) {
 
       let bend = this.bodies['body'].GetAngle();
@@ -443,6 +454,10 @@ export default class Box2DWorld {
           // Leaning back
           if (thighAngle > 0) {
             // Thigh pointing fwd -> Leg in the air -> Needs balancing
+            var fixture = foot.GetFixtureList()
+            fixture.SetDensity(24)
+            foot.ResetMassData()
+
             this.joints[k.name] = k.SetLength(0.65);
           } else {
             // Thigh pointing back -> ?
@@ -460,6 +475,10 @@ export default class Box2DWorld {
         this.joints[j.name] = j.SetLength(j.data.length);
         this.joints[k.name] = k.SetLength(k.data.length);
         this.joints[a.name] = a.SetLength(a.data.length);
+
+        var fixture = foot.GetFixtureList()
+        fixture.SetDensity(12)
+        foot.ResetMassData()
       }
     }
   }
