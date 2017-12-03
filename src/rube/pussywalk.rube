@@ -1,6 +1,5 @@
 
 {
-  "activeScript" : "xzxxxtyyb",
   "collisionbitplanes" : 
   {
     "names" : 
@@ -199,8 +198,8 @@
         "massData-I" : 0.1196009293198586,
         "massData-center" : 
         {
-          "x" : 0.007761077489703894,
-          "y" : -0.03876790404319763
+          "x" : 0.007761078886687756,
+          "y" : -0.03876791521906853
         },
         "massData-mass" : 0.6776448488235474,
         "name" : "hand_back_top",
@@ -444,7 +443,7 @@
         "massData-I" : 3.137815237045288,
         "massData-center" : 
         {
-          "x" : 0.06104796752333641,
+          "x" : 0.06104796379804611,
           "y" : -0.1635658740997314
         },
         "massData-mass" : 3.486048698425293,
@@ -465,7 +464,7 @@
         [
           
           {
-            "density" : 1,
+            "density" : 0.9556910991668701,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
             "friction" : 0.2,
@@ -503,13 +502,13 @@
         ],
         "id" : 4,
         "linearVelocity" : 0,
-        "massData-I" : 0.3356370925903320,
+        "massData-I" : 0.3207653760910034,
         "massData-center" : 
         {
-          "x" : 0.02233618870377541,
+          "x" : 0.02233619056642056,
           "y" : -0.06945642828941345
         },
-        "massData-mass" : 0.9823121428489685,
+        "massData-mass" : 0.9387869834899902,
         "name" : "leg_front_calf",
         "position" : 
         {
@@ -654,11 +653,11 @@
         ],
         "id" : 5,
         "linearVelocity" : 0,
-        "massData-I" : 0.1196009218692780,
+        "massData-I" : 0.1196009293198586,
         "massData-center" : 
         {
-          "x" : 0.007761077489703894,
-          "y" : -0.03876791149377823
+          "x" : 0.007761078886687756,
+          "y" : -0.03876791521906853
         },
         "massData-mass" : 0.6776448488235474,
         "name" : "hand_front_top",
@@ -742,7 +741,7 @@
         [
           
           {
-            "density" : 12.50,
+            "density" : 12.50000762939453,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
             "friction" : 1.5,
@@ -778,13 +777,13 @@
         ],
         "id" : 7,
         "linearVelocity" : 0,
-        "massData-I" : 0.6377421021461487,
+        "massData-I" : 0.6377425193786621,
         "massData-center" : 
         {
-          "x" : 0.07097874581813812,
+          "x" : 0.07097873836755753,
           "y" : -0.005575490649789572
         },
-        "massData-mass" : 5.782446861267090,
+        "massData-mass" : 5.782450675964355,
         "name" : "leg_shoe_back",
         "position" : 
         {
@@ -802,7 +801,7 @@
         [
           
           {
-            "density" : 1,
+            "density" : 0.6304824352264404,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
             "friction" : 0.2,
@@ -841,7 +840,7 @@
           },
           
           {
-            "density" : 1,
+            "density" : 0.6304824352264404,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
             "friction" : 0.2,
@@ -876,7 +875,7 @@
           },
           
           {
-            "density" : 1,
+            "density" : 0.6304824352264404,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
             "friction" : 0.2,
@@ -914,13 +913,13 @@
         ],
         "id" : 8,
         "linearVelocity" : 0,
-        "massData-I" : 1.692405462265015,
+        "massData-I" : 1.067031979560852,
         "massData-center" : 
         {
-          "x" : -0.1278745085000992,
-          "y" : 0.2286261767148972
+          "x" : -0.1278745234012604,
+          "y" : 0.2286262363195419
         },
-        "massData-mass" : 2.308866977691650,
+        "massData-mass" : 1.455700039863586,
         "name" : "leg_front_tie",
         "position" : 
         {
@@ -938,7 +937,7 @@
         [
           
           {
-            "density" : 1,
+            "density" : 1.000003337860107,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
             "friction" : 0.2,
@@ -980,13 +979,13 @@
         ],
         "id" : 9,
         "linearVelocity" : 0,
-        "massData-I" : 0.6441230773925781,
+        "massData-I" : 0.644125223159790,
         "massData-center" : 
         {
           "x" : -0.01201473176479340,
           "y" : 0.05337204411625862
         },
-        "massData-mass" : 1.455695152282715,
+        "massData-mass" : 1.455700039863586,
         "name" : "leg_back_tie",
         "position" : 
         {
@@ -1169,13 +1168,13 @@
         ],
         "id" : 11,
         "linearVelocity" : 0,
-        "massData-I" : 0.2868023216724396,
+        "massData-I" : 0.2868023514747620,
         "massData-center" : 
         {
-          "x" : 0.006862461101263762,
-          "y" : 0.07951408624649048
+          "x" : 0.006862460635602474,
+          "y" : 0.07951407879590988
         },
-        "massData-mass" : 0.8560815453529358,
+        "massData-mass" : 0.8560814857482910,
         "name" : "hand_front_bottom",
         "position" : 
         {
@@ -1193,7 +1192,7 @@
         [
           
           {
-            "density" : 12.50,
+            "density" : 11.99021911621094,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
             "friction" : 1.5,
@@ -1229,13 +1228,13 @@
         ],
         "id" : 12,
         "linearVelocity" : 0,
-        "massData-I" : 0.9114626049995422,
+        "massData-I" : 0.8742909431457520,
         "massData-center" : 
         {
           "x" : 0.1845354288816452,
           "y" : -0.08472205698490143
         },
-        "massData-mass" : 6.028298854827881,
+        "massData-mass" : 5.782449722290039,
         "name" : "leg_shoe_front",
         "position" : 
         {
@@ -1379,10 +1378,10 @@
         "massData-I" : 0.2868023216724396,
         "massData-center" : 
         {
-          "x" : 0.006862461101263762,
+          "x" : 0.006862462963908911,
           "y" : 0.07951408624649048
         },
-        "massData-mass" : 0.8560815453529358,
+        "massData-mass" : 0.8560814857482910,
         "name" : "hand_back_bottom",
         "position" : 
         {
@@ -1438,13 +1437,13 @@
         ],
         "id" : 14,
         "linearVelocity" : 0,
-        "massData-I" : 0.2994293570518494,
+        "massData-I" : 0.2994293272495270,
         "massData-center" : 
         {
-          "x" : 0.04210663214325905,
+          "x" : 0.04210663586854935,
           "y" : 0.03764066100120544
         },
-        "massData-mass" : 0.9387871026992798,
+        "massData-mass" : 0.9387869834899902,
         "name" : "leg_back_calf",
         "position" : 
         {
@@ -3240,8 +3239,8 @@
         "bodyA" : 3,
         "bodyB" : 9,
         "collideConnected" : false,
-        "dampingRatio" : 10,
-        "frequency" : 7,
+        "dampingRatio" : 7,
+        "frequency" : 9,
         "id" : 9,
         "length" : 1.75,
         "name" : "tendon_lf",
@@ -3262,8 +3261,8 @@
         "bodyA" : 3,
         "bodyB" : 8,
         "collideConnected" : false,
-        "dampingRatio" : 10,
-        "frequency" : 7,
+        "dampingRatio" : 7,
+        "frequency" : 9,
         "id" : 10,
         "length" : 1.72,
         "name" : "tendon_rf",
