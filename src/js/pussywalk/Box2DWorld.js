@@ -19,9 +19,8 @@ export default class Box2DWorld {
     this.record = false
     this.pausePhysics = false
 
-    this.stats = new Stats();
-    this.stats.showPanel(1); // 0: fps, 1: ms, 2: mb, 3+: custom
-    document.body.appendChild(this.stats.dom);
+    this.renderer = null
+    this.audioPlayer = null
 
     var gravity = new Box2D.b2Vec2(0.0, -10.0);
     this.world = new Box2D.b2World(gravity);
@@ -187,6 +186,20 @@ export default class Box2DWorld {
         }, 100)
       }
 
+      var impact = 0;
+
+      if (_floor.indexOf(bA.name) != -1 && bB.name.indexOf("leg_shoe_") == 0) {
+        impact = bB.GetLinearVelocity().Length()
+      }
+
+      // if (_floor.indexOf(bB.name) != -1 && bA.name.indexOf("leg_shoe_") == 0) {
+      //   impact = bA.GetLinearVelocity().Length()
+      // }
+
+      if (impact > 3) {
+        that.audioPlayer.playStep(impact / 20)
+      }
+
       // Check for body to floor collision
 
       if ((_floor.indexOf(bA.name) != -1 && _end.indexOf(bB.name) >= 0) ||
@@ -228,14 +241,6 @@ export default class Box2DWorld {
     this.EndListener = callback;
   }
 
-  addRenderListener(callback) {
-    this.RenderListener = callback;
-  }
-
-  addStateListener(callback) {
-    this.StateListener = callback;
-  }
-
   death(didWin) {
 
     let joints = ['tendon_rf', 'knee_r', 'ankle_r', 'tendon_lf', 'knee_l', 'ankle_l', 'joint26', 'joint8']
@@ -270,8 +275,6 @@ export default class Box2DWorld {
   step() {
 
     // Phyics
-
-    this.stats.begin()
 
     if (!this.pausePhysics) {
       let now = new Date().getTime();
@@ -310,15 +313,13 @@ export default class Box2DWorld {
       }
     }
 
-    if (this.RenderListener != null) {
-      this.RenderListener(this.bodies)
+    if (this.renderer) {
+      this.renderer.render(this.bodies)
     }
 
     if (this.record) {
       this.recorder.snap()
     }
-
-    this.stats.end()
   }
 
   onProgress(value) {
@@ -340,8 +341,8 @@ export default class Box2DWorld {
 
       this.recorder.removedBackSlipper = true
     }
-    if (value == this.sheepPickupPoint && this.StateListener != null) {
-      this.StateListener({
+    if (value == this.sheepPickupPoint) {
+      this.renderer.setState({
         sheep: true
       })
     }

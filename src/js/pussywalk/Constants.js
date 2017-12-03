@@ -1,3 +1,17 @@
+exports.sounds = {
+  largeSteps: [
+    "audio/step_big_01.wav",
+    "audio/step_big_02.wav",
+    "audio/step_big_03.wav",
+    "audio/step_big_04.wav"
+  ],
+  smallSteps: [
+    "audio/step_small_01.wav",
+    "audio/step_small_02.wav",
+    "audio/step_small_03.wav",
+    "audio/step_small_04.wav"
+  ]
+}
 exports.texturesConfig = [
   // Chain
   {
@@ -201,6 +215,15 @@ exports.texturesConfig = [
     }
   },
   {
+    name: "outline_head",
+    body: "head",
+    asset: "figure/outlines/out_head.png",
+    offset: {
+      x: -12,
+      y: 0
+    }
+  },
+  {
     name: "outline_leg_back_tie",
     body: "leg_back_tie",
     asset: "figure/outlines/out_leg_thigh.png",
@@ -271,6 +294,23 @@ exports.texturesConfig = [
       x: 0,
       y: -15
     }
+  },
+
+  // Sheep outlines
+  {
+    name: "outline_sheep_body",
+    body: "sheep_body",
+    asset: "figure/sheep/sheep_body_outline.png"
+  },
+  {
+    name: "outline_sheep_head",
+    body: "sheep_head",
+    asset: "figure/sheep/sheep_head_outline.png"
+  },
+  {
+    name: "outline_sheep_leg",
+    body: "sheep_leg",
+    asset: "figure/sheep/sheep_leg_outline.png"
   },
 
   // Body - Elements
@@ -346,6 +386,17 @@ exports.texturesConfig = [
       y: 3
     }
   },
+  // Sheep
+  {
+    body: "sheep_body",
+    asset: "figure/sheep/sheep_body.png"
+  },
+
+  // Other body parts
+  {
+    body: "sheep_udder",
+    asset: "figure/sheep/sheep_udder.png"
+  },
   {
     body: "body",
     asset: "figure/torso.png",
@@ -381,13 +432,21 @@ exports.texturesConfig = [
   },
   // Sheep
   {
-    body: "sheep_body",
-    asset: "figure/sheep_body.png"
+    body: "sheep_head",
+    asset: "figure/sheep/sheep_head.png"
   },
   {
-    body: "sheep_head",
-    asset: "figure/sheep_head.png"
-  }
+    body: "sheep_leg",
+    asset: "figure/sheep/sheep_leg.png"
+  },
+  {
+    body: "sheep_chain",
+    asset: "figure/sheep/sheep_chain.png"
+  },
+  {
+    body: "sheep_arm",
+    asset: "figure/sheep/sheep_arm.png"
+  },
 ]
 
 exports.bodyparts = [
@@ -409,6 +468,10 @@ exports.bodyparts = [
   "body",
   "flipflop_front",
   "flipflop_back",
+  "sheep_head",
   "sheep_body",
-  "sheep_head"
+  "sheep_arm",
+  "sheep_leg",
+  "sheep_udder",
+  "sheep_chain"
 ]

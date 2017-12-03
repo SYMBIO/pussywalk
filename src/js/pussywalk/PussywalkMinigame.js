@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import AudioPlayer from './AudioPlayer';
 import Box2dWorld from './Box2DWorld';
 import Renderer from './Renderer';
 
@@ -8,6 +9,7 @@ var _json = null;
 var _enterFrame = null;
 var _world;
 var _renderer;
+var _audioPlayer;
 var _canvas;
 var _ctx;
 var _keymap = {};
@@ -67,10 +69,11 @@ const initGame = () => {
 
   _world = new Box2dWorld(_canvas[0], _json);
   _renderer = new Renderer(_world.world, _canvas[0], _world.bodies)
+  _audioPlayer = new AudioPlayer()
 
   _world.addEndListener(_callbacks.onGameEnd)
-  _world.addRenderListener(_renderer.render)
-  _world.addStateListener(_renderer.setState)
+  _world.renderer = _renderer
+  _world.audioPlayer = _audioPlayer
 
   resizeCanvas()
 

@@ -151,8 +151,14 @@ export default class Renderer {
     // Draw elements incl. figure
     for (var i in this.texturesConfig) {
       let textureConfig = this.texturesConfig[i]
-      if (!this.state.sheep && textureConfig.body.indexOf("sheep_") == 0) {
-        continue
+      if (!this.state.sheep) {
+        if (textureConfig.body.indexOf("sheep_") == 0) {
+          continue
+        } else {
+          if (textureConfig.body == "body") {
+
+          }
+        }
       }
 
       this.drawTexture(textureConfig)
@@ -215,7 +221,7 @@ export default class Renderer {
       alpha = textureConfig.alpha
       scale = textureConfig.scale
 
-      compositeOperation = "screen"
+      // compositeOperation = "screen"
 
     } else {
       if (this.bodies[textureConfig.body] == null) {
@@ -249,10 +255,10 @@ export default class Renderer {
 
     this.context.translate(position.x, position.y);
     this.context.rotate(angle)
-    this.context.globalAlpha = alpha;
-    if (compositeOperation) {
-      this.context.globalCompositeOperation = compositeOperation
-    }
+    // this.context.globalAlpha = alpha;
+    // if (compositeOperation) {
+    //   this.context.globalCompositeOperation = compositeOperation
+    // }
     this.context.drawImage(image,
       0,
       0,
@@ -268,10 +274,10 @@ export default class Renderer {
     //   this.walk_spritesheet.tick();
     //   this.walk_spritesheet.draw(this.context);
     // }
-    if (compositeOperation) {
-      this.context.globalCompositeOperation = "source-over"
-    }
-    this.context.globalAlpha = 1
+    // if (compositeOperation) {
+    //   this.context.globalCompositeOperation = "source-over"
+    // }
+    // this.context.globalAlpha = 1
     this.context.rotate(-angle)
     this.context.translate(-position.x, -position.y);
 
