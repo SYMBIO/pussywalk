@@ -369,6 +369,23 @@ export default class Box2DWorld {
       a,
       foot;
 
+    let backBall = this.bodies['back_weight']
+    let frontBall = this.bodies['front_weight']
+    let bend = this.bodies['body'].GetAngle();
+
+    if (bend > 0) {
+      // Leaning back
+      backBall.GetFixtureList().SetDensity(1)
+      frontBall.GetFixtureList().SetDensity(10)
+    } else {
+      // Leaning fwd
+      backBall.GetFixtureList().SetDensity(5)
+      frontBall.GetFixtureList().SetDensity(5)
+    }
+
+    backBall.ResetMassData()
+    frontBall.ResetMassData()
+
     thighAngle = this.bodies['leg_front_tie'].GetAngle()
 
     // right

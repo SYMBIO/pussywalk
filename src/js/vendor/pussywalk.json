@@ -15,7 +15,7 @@
 				{
 					"density" : 4.727318286895752,
 					"filter-categoryBits" : 2,
-					"filter-maskBits" : 65533,
+					"filter-maskBits" : 65532,
 					"friction" : 0.2,
 					"name" : "fixture6",
 					"polygon" : 
@@ -36,7 +36,7 @@
 				"y" : 0.006285707466304302
 			},
 			"massData-mass" : 0.5,
-			"name" : "shaking_balance_back",
+			"name" : "shaking_balance_front",
 			"position" : 
 			{
 				"x" : 19.94042968750,
@@ -55,7 +55,7 @@
 				{
 					"density" : 4.727318286895752,
 					"filter-categoryBits" : 2,
-					"filter-maskBits" : 65533,
+					"filter-maskBits" : 65532,
 					"friction" : 0.2,
 					"name" : "fixture6",
 					"polygon" : 
@@ -86,7 +86,8 @@
 		},
 		
 		{
-			"angle" : -0.1248172521591187,
+			"angle" : 0,
+			"angularDamping" : 100.0,
 			"angularVelocity" : 0,
 			"awake" : true,
 			"fixture" : 
@@ -102,39 +103,25 @@
 					{
 						"vertices" : 
 						{
-							"x" : 
-							[
-								0.2715922594070435,
-								0.2277532368898392,
-								-0.05278313159942627,
-								-0.2972424328327179,
-								-0.2130004018545151
-							],
-							"y" : 
-							[
-								-0.2284466624259949,
-								0.3381111323833466,
-								0.3922187387943268,
-								0.1454911977052689,
-								-0.2513731122016907
-							]
+							"x" : [ 0.2517412304878235, -0.03647080063819885, -0.2333829998970032 ],
+							"y" : [ -0.3129957914352417, 0.1210117638111115, -0.3162395358085632 ]
 						}
 					}
 				}
 			],
 			"linearVelocity" : 0,
-			"massData-I" : 0.0002818564826156944,
+			"massData-I" : 9.913826943375170e-05,
 			"massData-center" : 
 			{
-				"x" : 0.003079487010836601,
-				"y" : 0.04881227761507034
+				"x" : -0.006037521641701460,
+				"y" : -0.1694078594446182
 			},
-			"massData-mass" : 0.005550713744014502,
+			"massData-mass" : 0.002014976926147938,
 			"name" : "sheep_udder",
 			"position" : 
 			{
-				"x" : 19.54068565368652,
-				"y" : -13.86327171325684
+				"x" : 19.66308975219727,
+				"y" : -13.82232284545898
 			},
 			"type" : 2
 		},
@@ -3652,6 +3639,31 @@
 		{
 			"anchorA" : 
 			{
+				"x" : -0.03209114074707031,
+				"y" : 0.1672945022583008
+			},
+			"anchorB" : 
+			{
+				"x" : 0.2452526092529297,
+				"y" : 0.1409626007080078
+			},
+			"bodyA" : 2,
+			"bodyB" : 9,
+			"enableLimit" : true,
+			"enableMotor" : false,
+			"jointSpeed" : 0,
+			"lowerLimit" : -0.6981316804885864,
+			"maxMotorTorque" : 0,
+			"motorSpeed" : 0,
+			"name" : "joint700",
+			"refAngle" : 0,
+			"type" : "revolute",
+			"upperLimit" : -0.4363323152065277
+		},
+		
+		{
+			"anchorA" : 
+			{
 				"x" : -0.1390247344970703,
 				"y" : -0.8936500549316406
 			},
@@ -3792,31 +3804,6 @@
 			"refAngle" : 0,
 			"type" : "revolute",
 			"upperLimit" : -0.5235987901687622
-		},
-		
-		{
-			"anchorA" : 
-			{
-				"x" : -0.03209171444177628,
-				"y" : 0.1672949045896530
-			},
-			"anchorB" : 
-			{
-				"x" : 0.1515731811523438,
-				"y" : 0.09837913513183594
-			},
-			"bodyA" : 2,
-			"bodyB" : 9,
-			"enableLimit" : true,
-			"enableMotor" : false,
-			"jointSpeed" : 0,
-			"lowerLimit" : 0.1745329201221466,
-			"maxMotorTorque" : 0,
-			"motorSpeed" : 0,
-			"name" : "joint700",
-			"refAngle" : 0,
-			"type" : "revolute",
-			"upperLimit" : 0.5235990285873413
 		},
 		
 		{

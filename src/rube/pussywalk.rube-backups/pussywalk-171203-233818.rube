@@ -1552,7 +1552,8 @@
       },
       
       {
-        "angle" : -0.1248172521591187,
+        "angle" : 0,
+        "angularDamping" : 100.0,
         "angularVelocity" : 0,
         "awake" : true,
         "fixture" : 
@@ -1574,39 +1575,25 @@
             ],
             "vertices" : 
             {
-              "x" : 
-              [
-                0.2277532368898392,
-                -0.05278313159942627,
-                -0.2972424328327179,
-                -0.2130004018545151,
-                0.2715922594070435
-              ],
-              "y" : 
-              [
-                0.3381111323833466,
-                0.3922187387943268,
-                0.1454911977052689,
-                -0.2513731122016907,
-                -0.2284466624259949
-              ]
+              "x" : [ -0.03647080063819885, -0.2333829998970032, 0.2517412304878235 ],
+              "y" : [ 0.1210117638111115, -0.3162395358085632, -0.3129957914352417 ]
             }
           }
         ],
         "id" : 17,
         "linearVelocity" : 0,
-        "massData-I" : 0.0002818564826156944,
+        "massData-I" : 9.913826943375170e-05,
         "massData-center" : 
         {
-          "x" : 0.003079487010836601,
-          "y" : 0.04881227761507034
+          "x" : -0.006037521641701460,
+          "y" : -0.1694078594446182
         },
-        "massData-mass" : 0.005550713744014502,
+        "massData-mass" : 0.002014976926147938,
         "name" : "sheep_udder",
         "position" : 
         {
-          "x" : 19.54068565368652,
-          "y" : -13.86327171325684
+          "x" : 19.66308975219727,
+          "y" : -13.82232284545898
         },
         "type" : "dynamic"
       },
@@ -3088,9 +3075,9 @@
         [
           
           {
-            "density" : 9.454635620117188,
+            "density" : 4.727318286895752,
             "filter-categoryBits" : 2,
-            "filter-maskBits" : 65533,
+            "filter-maskBits" : 65532,
             "friction" : 0.2,
             "id" : 66,
             "name" : "fixture6",
@@ -3110,17 +3097,63 @@
         ],
         "id" : 44,
         "linearVelocity" : 0,
-        "massData-I" : 0.02064838260412216,
+        "massData-I" : 0.01032419223338366,
         "massData-center" : 
         {
           "x" : -0.005047175567597151,
-          "y" : 0.006285707931965590
+          "y" : 0.006285707466304302
         },
-        "massData-mass" : 1,
+        "massData-mass" : 0.5,
         "name" : "shaking_balance_back",
         "position" : 
         {
-          "x" : 20.54206848144531,
+          "x" : 20.24455451965332,
+          "y" : -19.56145095825195
+        },
+        "type" : "dynamic"
+      },
+      
+      {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 4.727318286895752,
+            "filter-categoryBits" : 2,
+            "filter-maskBits" : 65532,
+            "friction" : 0.2,
+            "id" : 67,
+            "name" : "fixture6",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : [ 0.2396511137485504, 0.03162826597690582, -0.2864209115505219 ],
+              "y" : [ -0.1659101843833923, 0.2686364650726318, -0.08386915922164917 ]
+            }
+          }
+        ],
+        "id" : 45,
+        "linearVelocity" : 0,
+        "massData-I" : 0.01032419223338366,
+        "massData-center" : 
+        {
+          "x" : -0.005047175567597151,
+          "y" : 0.006285707466304302
+        },
+        "massData-mass" : 0.5,
+        "name" : "shaking_balance_front",
+        "position" : 
+        {
+          "x" : 19.94042968750,
           "y" : -19.56145095825195
         },
         "type" : "dynamic"
@@ -4072,8 +4105,8 @@
         },
         "anchorB" : 
         {
-          "x" : 0.1515731811523438,
-          "y" : 0.09837913513183594
+          "x" : 0.2452524304389954,
+          "y" : 0.1409625709056854
         },
         "bodyA" : 17,
         "bodyB" : 40,
@@ -4081,13 +4114,13 @@
         "enableLimit" : true,
         "enableMotor" : false,
         "id" : 26,
-        "lowerLimit" : 0.1745329201221466,
+        "lowerLimit" : -0.8726646304130554,
         "maxMotorTorque" : 0,
         "motorSpeed" : 0,
         "name" : "joint700",
         "referenceAngle" : 0,
         "type" : "revolute",
-        "upperLimit" : 0.5235990285873413
+        "upperLimit" : -0.5235987901687622
       },
       
       {
@@ -4145,8 +4178,8 @@
       {
         "anchorA" : 
         {
-          "x" : 0.1579976081848145,
-          "y" : -0.8900270462036133
+          "x" : -0.1390242576599121,
+          "y" : -0.8936491012573242
         },
         "anchorB" : 
         {
@@ -4159,9 +4192,9 @@
         "enableLimit" : false,
         "enableMotor" : true,
         "id" : 32,
-        "lowerLimit" : -2.094395160675049,
-        "maxMotorTorque" : 0,
-        "motorSpeed" : 12.56637096405029,
+        "lowerLimit" : 0,
+        "maxMotorTorque" : 100.0,
+        "motorSpeed" : 25.13274192810059,
         "name" : "joint4",
         "referenceAngle" : 0,
         "type" : "revolute",
@@ -4192,6 +4225,32 @@
         "referenceAngle" : 0,
         "type" : "revolute",
         "upperLimit" : 0.5235987901687622
+      },
+      
+      {
+        "anchorA" : 
+        {
+          "x" : -0.1794772148132324,
+          "y" : -1.193049430847168
+        },
+        "anchorB" : 
+        {
+          "x" : 0.03866624832153320,
+          "y" : 0.2689900398254395
+        },
+        "bodyA" : 8,
+        "bodyB" : 45,
+        "collideConnected" : false,
+        "enableLimit" : false,
+        "enableMotor" : true,
+        "id" : 34,
+        "lowerLimit" : 0,
+        "maxMotorTorque" : 100.0,
+        "motorSpeed" : 17.45329284667969,
+        "name" : "joint4",
+        "referenceAngle" : -3.141592741012573,
+        "type" : "revolute",
+        "upperLimit" : 0
       },
       
       {

@@ -473,5 +473,7 @@ exports.bodyparts = [
   "sheep_arm",
   "sheep_leg",
   "sheep_udder",
-  "sheep_chain"
+  "sheep_chain",
+  "shaking_balance_back",
+  "shaking_balance_front"
 ]
