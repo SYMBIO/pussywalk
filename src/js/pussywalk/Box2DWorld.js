@@ -4,6 +4,7 @@ import Chain from './Chain';
 import Constants from './Constants';
 import Recorder from './Recorder';
 import Rube2Box2D from './Rube2Box2D';
+import Stats from 'stats.js'
 import { TweenMax, Cubic } from 'gsap'
 
 export default class Box2DWorld {
@@ -17,6 +18,10 @@ export default class Box2DWorld {
     this.lives = 3
     this.record = false
     this.pausePhysics = false
+
+    this.stats = new Stats();
+    this.stats.showPanel(1); // 0: fps, 1: ms, 2: mb, 3+: custom
+    document.body.appendChild(this.stats.dom);
 
     var gravity = new Box2D.b2Vec2(0.0, -10.0);
     this.world = new Box2D.b2World(gravity);
@@ -266,6 +271,8 @@ export default class Box2DWorld {
 
     // Phyics
 
+    this.stats.begin()
+
     if (!this.pausePhysics) {
       let now = new Date().getTime();
       this.fps.dt = (now - this.fps.time) / 1000;
@@ -310,6 +317,8 @@ export default class Box2DWorld {
     if (this.record) {
       this.recorder.snap()
     }
+
+    this.stats.end()
   }
 
   onProgress(value) {

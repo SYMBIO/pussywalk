@@ -20,7 +20,8 @@
     "firebase": "^4.6.0",
     "gsap": "^1.20.3",
     "jquery": "^3.2.1",
-    "spritesheet-canvas": "^1.0.2"
+    "spritesheet-canvas": "^1.0.2",
+    "stats.js": "^0.17.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
