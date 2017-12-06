@@ -63,10 +63,6 @@ export default class Box2DWorld {
     ]
 
     this.lastCheckpoint = this.checkpoints[0]
-    // this.lastCheckpoint = {
-    //   x: 85,
-    //   y: -15
-    // }
     this.startState = []
     this.gameHistory = []
 

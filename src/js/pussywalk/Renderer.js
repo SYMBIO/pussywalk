@@ -73,19 +73,8 @@ export default class Renderer {
       this.texturesConfig[name] = textureConfig
     }
 
-    this.texturesConfig["body_mod"].visible = false
-    this.texturesConfig["head_mod"].visible = false
-
-    this.texturesConfig["sheep_body"].visible = false
-    this.texturesConfig["sheep_arm"].visible = false
-    this.texturesConfig["sheep_leg"].visible = false
-    this.texturesConfig["sheep_chain"].visible = false
-    this.texturesConfig["sheep_udder"].visible = false
-    this.texturesConfig["sheep_head"].visible = false
-
-    this.texturesConfig["outline_sheep_body"].visible = false
-    this.texturesConfig["outline_sheep_head"].visible = false
-    this.texturesConfig["outline_sheep_leg"].visible = false
+    debugger
+    this.showBodyMod(false)
   }
 
   setState(state) {
@@ -94,23 +83,28 @@ export default class Renderer {
       if (key == "sheep" && state[key]) {
         this.flash()
 
-        this.texturesConfig["head"].visible = false
-        this.texturesConfig["body"].visible = false
-        this.texturesConfig["body_mod"].visible = true
-        this.texturesConfig["head_mod"].visible = true
-
-        this.texturesConfig["sheep_body"].visible = true
-        this.texturesConfig["sheep_arm"].visible = true
-        this.texturesConfig["sheep_leg"].visible = true
-        this.texturesConfig["sheep_chain"].visible = true
-        this.texturesConfig["sheep_udder"].visible = true
-        this.texturesConfig["sheep_head"].visible = true
-
-        this.texturesConfig["outline_sheep_body"].visible = true
-        this.texturesConfig["outline_sheep_head"].visible = true
-        this.texturesConfig["outline_sheep_leg"].visible = true
+        this.showBodyMod(true)
       }
     }
+  }
+
+  showBodyMod(show) {
+    this.texturesConfig["head"].visible = !show
+    this.texturesConfig["body"].visible = !show
+    this.texturesConfig["body_mod"].visible = show
+    this.texturesConfig["head_mod"].visible = show
+
+    this.texturesConfig["sheep_body"].visible = show
+    this.texturesConfig["sheep_arm"].visible = show
+    this.texturesConfig["sheep_leg"].visible = show
+    this.texturesConfig["sheep_chain"].visible = show
+    this.texturesConfig["sheep_udder"].visible = show
+    this.texturesConfig["sheep_head"].visible = show
+
+    this.texturesConfig["outline_sheep_body"].visible = show
+    this.texturesConfig["outline_sheep_head"].visible = show
+    this.texturesConfig["outline_sheep_leg"].visible = show
+
   }
 
   flash() {
@@ -306,10 +300,10 @@ export default class Renderer {
 
     this.context.translate(position.x, position.y);
     this.context.rotate(angle)
-    // this.context.globalAlpha = alpha;
-    // if (compositeOperation) {
-    //   this.context.globalCompositeOperation = compositeOperation
-    // }
+    this.context.globalAlpha = alpha;
+    if (compositeOperation) {
+      this.context.globalCompositeOperation = compositeOperation
+    }
 
     this.context.drawImage(textureConfig.image,
       frame.x,
@@ -322,14 +316,10 @@ export default class Renderer {
       frame.h / 2 * this.scale * scale
     )
 
-    // if (body.name == 'head') {
-    //   this.walk_spritesheet.tick();
-    //   this.walk_spritesheet.draw(this.context);
-    // }
-    // if (compositeOperation) {
-    //   this.context.globalCompositeOperation = "source-over"
-    // }
-    // this.context.globalAlpha = 1
+    if (compositeOperation) {
+      this.context.globalCompositeOperation = "source-over"
+    }
+    this.context.globalAlpha = 1
     this.context.rotate(-angle)
     this.context.translate(-position.x, -position.y);
 
