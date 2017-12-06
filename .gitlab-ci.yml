@@ -28,7 +28,7 @@ deploy_production:
     - DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
     - yarn
     - yarn build
-    - scp -r build/ symbio@symbio-main.cloud.symbio.agency:/var/www/pussywalk.com/web/
+    - scp -r build/* symbio@symbio-main.cloud.symbio.agency:/var/www/pussywalk.com/web/
 #    - ssh symbio@symbio-main.cloud.symbio.agency 'bash -s' < $DIR/tools/remote-deploy.sh $PROD_REMOTE_PATH master
   only:
     - master
