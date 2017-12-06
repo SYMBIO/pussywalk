@@ -386,6 +386,10 @@ export default class Box2DWorld {
     backBall.ResetMassData()
     frontBall.ResetMassData()
 
+    // var fixture = foot.GetFixtureList()
+    // fixture.SetDensity(12)
+    // foot.ResetMassData()
+
     thighAngle = this.bodies['leg_front_tie'].GetAngle()
 
     // right
