@@ -25,6 +25,10 @@ export default class Renderer {
     this.drawTexture = this.drawTexture.bind(this)
     this.setState = this.setState.bind(this)
 
+    this.prepareTextures()
+  }
+
+  prepareTextures() {
     for (var i = 0; i < 4; i++) {
       let image = new Image()
       image.src = "images/level/level_" + (i + 1) + ".jpg"
@@ -45,7 +49,6 @@ export default class Renderer {
       }
 
       // Went through OK
-
       image = new Image()
       image.src = 'images/spritesheet-' + i + '.png'
 
@@ -66,30 +69,60 @@ export default class Renderer {
         textureConfig.frame = combinedConfig[textureConfig.asset].frame
       }
 
-      if (combinedConfig[textureConfig.asset] == null || combinedConfig[textureConfig.asset].image == null) {
-        debugger
-      }
-
       textureConfig.image = combinedConfig[textureConfig.asset].image
       this.texturesConfig[name] = textureConfig
     }
+
+    this.texturesConfig["body_mod"].visible = false
+    this.texturesConfig["head_mod"].visible = false
+
+    this.texturesConfig["sheep_body"].visible = false
+    this.texturesConfig["sheep_arm"].visible = false
+    this.texturesConfig["sheep_leg"].visible = false
+    this.texturesConfig["sheep_chain"].visible = false
+    this.texturesConfig["sheep_udder"].visible = false
+    this.texturesConfig["sheep_head"].visible = false
+
+    this.texturesConfig["outline_sheep_body"].visible = false
+    this.texturesConfig["outline_sheep_head"].visible = false
+    this.texturesConfig["outline_sheep_leg"].visible = false
   }
 
   setState(state) {
     for (let key in state) {
       this.state[key] = state[key]
       if (key == "sheep" && state[key]) {
-        let body = this.bodies.body
-        let flashTexture = new FlashTexture(
-          body.GetPosition().get_x() * this.physicsScale * this.scale,
-          -body.GetPosition().get_y() * this.physicsScale * this.scale
-        )
-        this.texturesConfig["flash"] = flashTexture
-        let that = this
-        flashTexture.completionBlock = function() {
-          delete that.texturesConfig["flash"]
-        }
+        this.flash()
+
+        this.texturesConfig["head"].visible = false
+        this.texturesConfig["body"].visible = false
+        this.texturesConfig["body_mod"].visible = true
+        this.texturesConfig["head_mod"].visible = true
+
+        this.texturesConfig["sheep_body"].visible = true
+        this.texturesConfig["sheep_arm"].visible = true
+        this.texturesConfig["sheep_leg"].visible = true
+        this.texturesConfig["sheep_chain"].visible = true
+        this.texturesConfig["sheep_udder"].visible = true
+        this.texturesConfig["sheep_head"].visible = true
+
+        this.texturesConfig["outline_sheep_body"].visible = true
+        this.texturesConfig["outline_sheep_head"].visible = true
+        this.texturesConfig["outline_sheep_leg"].visible = true
       }
+    }
+  }
+
+  flash() {
+    let body = this.bodies.body
+    let flashTexture = new FlashTexture(
+      body.GetPosition().get_x() * this.physicsScale * this.scale,
+      -body.GetPosition().get_y() * this.physicsScale * this.scale
+    )
+    this.texturesConfig["flash"] = flashTexture
+    let that = this
+    flashTexture.completionBlock = function() {
+      delete that.texturesConfig["flash"]
     }
   }
 
@@ -174,31 +207,11 @@ export default class Renderer {
     // Draw elements incl. figure
     for (var i in this.texturesConfig) {
       let textureConfig = this.texturesConfig[i]
-      if (!this.state.sheep) {
-        if (textureConfig.body.indexOf("sheep_") == 0) {
-          continue
-        } else {
-          if (textureConfig.body == "body") {
-
-          }
-        }
+      if (textureConfig.visible == false) {
+        continue
       }
-
-
       this.drawTexture(textureConfig)
     }
-
-
-    this.context.drawImage(this.vignette,
-      0,
-      0,
-      300,
-      300,
-      canvasOffset.x,
-      -canvasOffset.y,
-      this.context.canvas.width,
-      this.context.canvas.height
-    )
 
     // Lift number
 
@@ -213,7 +226,17 @@ export default class Renderer {
     this.context.fillStyle = "#FFF"
     this.context.fillText(Math.round(percentage) + '%', x, y);
 
-    // Debug draw
+    this.context.drawImage(this.vignette,
+      0,
+      0,
+      300,
+      300,
+      canvasOffset.x,
+      -canvasOffset.y,
+      this.context.canvas.width,
+      this.context.canvas.height)
+
+      // Debug draw
 
   // this.context.scale(this.physicsScale * this.scale, this.physicsScale * this.scale);
   // this.context.lineWidth = 1 / this.physicsScale;
@@ -287,8 +310,6 @@ export default class Renderer {
     // if (compositeOperation) {
     //   this.context.globalCompositeOperation = compositeOperation
     // }
-
-    debugger
 
     this.context.drawImage(textureConfig.image,
       frame.x,

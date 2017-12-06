@@ -398,6 +398,15 @@ exports.texturesConfig = [
     asset: "figure/sheep/sheep_udder.png"
   },
   {
+    name: "body_mod",
+    body: "body",
+    asset: "figure/mod/torso.png",
+    offset: {
+      x: 0,
+      y: -15
+    }
+  },
+  {
     body: "body",
     asset: "figure/torso.png",
     offset: {
@@ -408,6 +417,11 @@ exports.texturesConfig = [
   {
     body: "head",
     asset: "figure/head.png"
+  },
+  {
+    name: "head_mod",
+    body: "head",
+    asset: "figure/mod/head.png"
   },
   {
     body: "hand_front_top",
