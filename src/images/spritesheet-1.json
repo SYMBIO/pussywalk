@@ -1,0 +1,84 @@
+{"frames": {
+
+"elements/hospital_table.png":
+{
+	"frame": {"x":271,"y":385,"w":308,"h":484},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":308,"h":484},
+	"sourceSize": {"w":308,"h":484},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"figure/leg_thigh_back.png":
+{
+	"frame": {"x":1,"y":1,"w":150,"h":328},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":328},
+	"sourceSize": {"w":150,"h":328},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"figure/leg_thigh_top.png":
+{
+	"frame": {"x":153,"y":1,"w":150,"h":328},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":328},
+	"sourceSize": {"w":150,"h":328},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"figure/mod/torso.png":
+{
+	"frame": {"x":727,"y":1,"w":250,"h":382},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":382},
+	"sourceSize": {"w":250,"h":382},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"figure/outlines/out_leg_thigh.png":
+{
+	"frame": {"x":305,"y":1,"w":170,"h":348},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":170,"h":348},
+	"sourceSize": {"w":170,"h":348},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"figure/outlines/out_torso.png":
+{
+	"frame": {"x":1,"y":385,"w":268,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":268,"h":400},
+	"sourceSize": {"w":268,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"figure/sheep/sheep_body_outline.png":
+{
+	"frame": {"x":581,"y":385,"w":366,"h":318},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":366,"h":318},
+	"sourceSize": {"w":366,"h":318},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"figure/torso.png":
+{
+	"frame": {"x":477,"y":1,"w":248,"h":380},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":248,"h":380},
+	"sourceSize": {"w":248,"h":380},
+	"pivot": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "spritesheet-1.png",
+	"format": "RGBA4444",
+	"size": {"w":978,"h":870},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:48195b85e1c175a674852e6eba103b14:d6b3ac9fe17037f3300f4980fbf27b12:304ddd70ff3de2db50c592ad4187c36f$"
+}
+}
