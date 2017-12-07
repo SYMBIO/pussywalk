@@ -1,8 +1,17 @@
 {"frames": {
 
+"elements/eyeball.png":
+{
+	"frame": {"x":819,"y":1,"w":69,"h":69},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":69,"h":69},
+	"sourceSize": {"w":69,"h":69},
+	"pivot": {"x":0.5,"y":0.5}
+},
 "elements/flusher_chain_part.png":
 {
-	"frame": {"x":225,"y":1,"w":18,"h":42},
+	"frame": {"x":145,"y":1,"w":18,"h":42},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":42},
@@ -11,7 +20,7 @@
 },
 "elements/hospital_table_cup.png":
 {
-	"frame": {"x":831,"y":1,"w":66,"h":68},
+	"frame": {"x":751,"y":1,"w":66,"h":68},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":66,"h":68},
@@ -20,7 +29,7 @@
 },
 "elements/hospital_table_drugs_01.png":
 {
-	"frame": {"x":645,"y":1,"w":40,"h":58},
+	"frame": {"x":565,"y":1,"w":40,"h":58},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":40,"h":58},
@@ -29,7 +38,7 @@
 },
 "elements/hospital_table_drugs_02.png":
 {
-	"frame": {"x":167,"y":1,"w":56,"h":36},
+	"frame": {"x":87,"y":1,"w":56,"h":36},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":36},
@@ -47,7 +56,7 @@
 },
 "elements/hospital_table_temperature.png":
 {
-	"frame": {"x":13,"y":1,"w":84,"h":26},
+	"frame": {"x":1,"y":1,"w":84,"h":26},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":84,"h":26},
@@ -56,7 +65,7 @@
 },
 "elements/paper_01.png":
 {
-	"frame": {"x":685,"y":81,"w":108,"h":100},
+	"frame": {"x":537,"y":81,"w":108,"h":100},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":100},
@@ -65,7 +74,7 @@
 },
 "elements/paper_02.png":
 {
-	"frame": {"x":537,"y":81,"w":146,"h":100},
+	"frame": {"x":647,"y":81,"w":146,"h":100},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":146,"h":100},
@@ -90,36 +99,9 @@
 	"sourceSize": {"w":102,"h":80},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"eyeball.png":
-{
-	"frame": {"x":1,"y":1,"w":10,"h":10},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":10,"h":10},
-	"sourceSize": {"w":10,"h":10},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"favicon.ico":
-{
-	"frame": {"x":99,"y":1,"w":32,"h":32},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
-	"sourceSize": {"w":32,"h":32},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"favicon.png":
-{
-	"frame": {"x":133,"y":1,"w":32,"h":32},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":32},
-	"sourceSize": {"w":32,"h":32},
-	"pivot": {"x":0.5,"y":0.5}
-},
 "figure/hand_lower_back.png":
 {
-	"frame": {"x":901,"y":404,"w":80,"h":276},
+	"frame": {"x":819,"y":404,"w":80,"h":276},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":80,"h":276},
@@ -128,7 +110,7 @@
 },
 "figure/hand_lower_top.png":
 {
-	"frame": {"x":819,"y":404,"w":80,"h":276},
+	"frame": {"x":901,"y":404,"w":80,"h":276},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":80,"h":276},
@@ -182,7 +164,7 @@
 },
 "figure/leg_heel_back.png":
 {
-	"frame": {"x":687,"y":1,"w":142,"h":58},
+	"frame": {"x":607,"y":1,"w":142,"h":58},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":142,"h":58},
@@ -191,7 +173,7 @@
 },
 "figure/leg_heel_top.png":
 {
-	"frame": {"x":501,"y":1,"w":142,"h":58},
+	"frame": {"x":421,"y":1,"w":142,"h":58},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":142,"h":58},
@@ -227,7 +209,7 @@
 },
 "figure/outlines/out_leg_heel.png":
 {
-	"frame": {"x":899,"y":1,"w":162,"h":78},
+	"frame": {"x":890,"y":1,"w":162,"h":78},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":162,"h":78},
@@ -272,7 +254,7 @@
 },
 "figure/sheep/sheep_chain.png":
 {
-	"frame": {"x":245,"y":1,"w":254,"h":42},
+	"frame": {"x":165,"y":1,"w":254,"h":42},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":254,"h":42},
@@ -326,7 +308,7 @@
 },
 "figure/slipper_back.png":
 {
-	"frame": {"x":105,"y":81,"w":164,"h":84},
+	"frame": {"x":271,"y":81,"w":164,"h":84},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":164,"h":84},
@@ -335,7 +317,7 @@
 },
 "figure/slipper_top.png":
 {
-	"frame": {"x":271,"y":81,"w":164,"h":84},
+	"frame": {"x":105,"y":81,"w":164,"h":84},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":164,"h":84},
@@ -349,6 +331,6 @@
 	"format": "RGBA4444",
 	"size": {"w":1074,"h":993},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:48195b85e1c175a674852e6eba103b14:d6b3ac9fe17037f3300f4980fbf27b12:304ddd70ff3de2db50c592ad4187c36f$"
+	"smartupdate": "$TexturePacker:SmartUpdate:b2929b026cc1421e230816e7250ed269:d54edbfbab24901511f708470a832e05:304ddd70ff3de2db50c592ad4187c36f$"
 }
 }

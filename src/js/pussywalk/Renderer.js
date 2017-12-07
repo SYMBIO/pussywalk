@@ -13,6 +13,7 @@ export default class Renderer {
     this.bodies = bodies
     this.levelTextures = []
     this.texturesConfig = {}
+    this.imagesConfig = {}
 
     this.physicsScale = 64
     this.scale = 1
@@ -26,6 +27,8 @@ export default class Renderer {
     this.setState = this.setState.bind(this)
 
     this.prepareTextures()
+
+    this.eyeball = this.imagesConfig["elements/eyeball.png"]
   }
 
   prepareTextures() {
@@ -35,14 +38,13 @@ export default class Renderer {
       this.levelTextures.push(image)
     }
 
-    var combinedConfig = {}
     // Sprite
     var i = 0
     while (true) {
       let config
       let image
       try {
-        config = require('../../images/spritesheet-' + i + '.json')
+        config = require('images/spritesheet-' + i + '.json')
       } catch (e) {
         // statements to handle any exceptions
         break
@@ -52,11 +54,10 @@ export default class Renderer {
       image = new Image()
       image.src = 'images/spritesheet-' + i + '.png'
 
-      for (let key in config.frames) {
-        let frame = config.frames[key]
-        frame.src = key
+      for (let path in config.frames) {
+        let frame = config.frames[path]
         frame.image = image
-        combinedConfig[key] = frame
+        this.imagesConfig[path] = frame
       }
 
       i++
@@ -64,16 +65,23 @@ export default class Renderer {
 
     for (let key in Constants.texturesConfig) {
       let textureConfig = Constants.texturesConfig[key]
-      let name = textureConfig.name ? textureConfig.name : textureConfig.body
-      if (combinedConfig[textureConfig.asset]) {
-        textureConfig.frame = combinedConfig[textureConfig.asset].frame
+      let name
+      if (textureConfig.name) {
+        name = textureConfig.name
+      } else {
+        if (textureConfig.body) {
+          name = textureConfig.body
+        } else {
+          name = textureConfig.asset
+        }
       }
 
-      textureConfig.image = combinedConfig[textureConfig.asset].image
+      textureConfig.frame = this.imagesConfig[textureConfig.asset].frame
+      textureConfig.image = this.imagesConfig[textureConfig.asset].image
+
       this.texturesConfig[name] = textureConfig
     }
 
-    debugger
     this.showBodyMod(false)
   }
 
@@ -104,7 +112,6 @@ export default class Renderer {
     this.texturesConfig["outline_sheep_body"].visible = show
     this.texturesConfig["outline_sheep_head"].visible = show
     this.texturesConfig["outline_sheep_leg"].visible = show
-
   }
 
   flash() {
@@ -161,46 +168,67 @@ export default class Renderer {
       )
     }
 
-    // // Putin's face:
-    // if (startIndex == 0) {
-    //   let offset = {
-    //     eye1: {
-    //       x: 1780,
-    //       y: 650
-    //     },
-    //     eye2: {
-    //       x: 1850,
-    //       y: 650
-    //     }
-    //   }
-    //   var image = new Image();
-    //   let percent = (this.bodies['body'].GetPosition().get_x() * this.physicsScale - (offset.eye1.x + offset.eye2.x) / 2) / 500
-    //   percent = Math.min(1, Math.max(-1, percent))
-    //
-    //   let position;
-    //
-    //   position = {
-    //     x: (offset.eye1.x + percent * 10) * this.scale,
-    //     y: offset.eye1.y * this.scale
-    //   }
-    //   this.context.translate(position.x, position.y);
-    //   image.src = "images/eyeball.png";
-    //   this.context.drawImage(image, percent * 10, 0)
-    //   this.context.translate(-position.x, -position.y);
-    //
-    //   position = {
-    //     x: (offset.eye2.x + percent * 10) * this.scale,
-    //     y: offset.eye2.y * this.scale
-    //   }
-    //   this.context.translate(position.x, position.y);
-    //   image.src = "images/eyeball.png";
-    //   this.context.drawImage(image, percent * 10, 0)
-    //   this.context.translate(-position.x, -position.y);
-    // }
+    // Mr P
+    if (startIndex == 0) {
+      let offset = {
+        eye1: {
+          x: 1863,
+          y: 666
+        },
+        eye2: {
+          x: 1900,
+          y: 670
+        }
+      }
+      var image = new Image();
+      let percent = (this.bodies['body'].GetPosition().get_x() * this.physicsScale - (offset.eye1.x + offset.eye2.x) / 2) / 500
+      percent = Math.min(1, Math.max(-1, percent))
+
+      let position;
+
+      position = {
+        x: (offset.eye1.x + percent * 5) * this.scale,
+        y: offset.eye1.y * this.scale
+      }
+      this.context.translate(position.x, position.y);
+      this.context.drawImage(this.eyeball.image,
+        this.eyeball.frame.x,
+        this.eyeball.frame.y,
+        this.eyeball.frame.w,
+        this.eyeball.frame.h,
+        0,
+        0,
+        this.eyeball.frame.w,
+        this.eyeball.frame.h
+      )
+      this.context.translate(-position.x, -position.y);
+
+      position = {
+        x: (offset.eye2.x + percent * 5) * this.scale,
+        y: offset.eye2.y * this.scale
+      }
+      this.context.translate(position.x, position.y);
+
+      this.context.drawImage(this.eyeball.image,
+        this.eyeball.frame.x,
+        this.eyeball.frame.y,
+        this.eyeball.frame.w,
+        this.eyeball.frame.h,
+        0,
+        0,
+        this.eyeball.frame.w,
+        this.eyeball.frame.h
+      )
+      // this.context.drawImage(this.eyeball, percent * 10, 0)
+      this.context.translate(-position.x, -position.y);
+    }
 
     // Draw elements incl. figure
     for (var i in this.texturesConfig) {
       let textureConfig = this.texturesConfig[i]
+      if (textureConfig == null) {
+        debugger
+      }
       if (textureConfig.visible == false) {
         continue
       }
@@ -228,9 +256,10 @@ export default class Renderer {
       canvasOffset.x,
       -canvasOffset.y,
       this.context.canvas.width,
-      this.context.canvas.height)
+      this.context.canvas.height
+    )
 
-      // Debug draw
+    // Debug draw
 
   // this.context.scale(this.physicsScale * this.scale, this.physicsScale * this.scale);
   // this.context.lineWidth = 1 / this.physicsScale;

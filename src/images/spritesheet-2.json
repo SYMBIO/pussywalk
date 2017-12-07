@@ -1,8 +1,17 @@
 {"frames": {
 
+"elements/mr_p.png":
+{
+	"frame": {"x":1,"y":1,"w":346,"h":542},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":346,"h":542},
+	"sourceSize": {"w":346,"h":542},
+	"pivot": {"x":0.5,"y":0.5}
+},
 "elements/poll_elevator.png":
 {
-	"frame": {"x":1,"y":1,"w":690,"h":1042},
+	"frame": {"x":349,"y":1,"w":690,"h":1042},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":690,"h":1042},
@@ -14,8 +23,8 @@
 	"version": "1.0",
 	"image": "spritesheet-2.png",
 	"format": "RGBA4444",
-	"size": {"w":692,"h":1044},
+	"size": {"w":1040,"h":1044},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:48195b85e1c175a674852e6eba103b14:d6b3ac9fe17037f3300f4980fbf27b12:304ddd70ff3de2db50c592ad4187c36f$"
+	"smartupdate": "$TexturePacker:SmartUpdate:b2929b026cc1421e230816e7250ed269:d54edbfbab24901511f708470a832e05:304ddd70ff3de2db50c592ad4187c36f$"
 }
 }

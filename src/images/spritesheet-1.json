@@ -11,7 +11,7 @@
 },
 "figure/leg_thigh_back.png":
 {
-	"frame": {"x":1,"y":1,"w":150,"h":328},
+	"frame": {"x":153,"y":1,"w":150,"h":328},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":328},
@@ -20,7 +20,7 @@
 },
 "figure/leg_thigh_top.png":
 {
-	"frame": {"x":153,"y":1,"w":150,"h":328},
+	"frame": {"x":1,"y":1,"w":150,"h":328},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":328},
@@ -79,6 +79,6 @@
 	"format": "RGBA4444",
 	"size": {"w":978,"h":870},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:48195b85e1c175a674852e6eba103b14:d6b3ac9fe17037f3300f4980fbf27b12:304ddd70ff3de2db50c592ad4187c36f$"
+	"smartupdate": "$TexturePacker:SmartUpdate:b2929b026cc1421e230816e7250ed269:d54edbfbab24901511f708470a832e05:304ddd70ff3de2db50c592ad4187c36f$"
 }
 }

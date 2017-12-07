@@ -15,6 +15,10 @@ exports.sounds = {
 exports.texturesConfig = [
   // Chain
   {
+    body: "mr_p_anchor",
+    asset: "elements/mr_p.png"
+  },
+  {
     body: "decor_chain_0",
     asset: "elements/flusher_chain_part.png"
   },

@@ -745,7 +745,7 @@
             "density" : 12.50000667572021,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
-            "friction" : 20.0,
+            "friction" : 10,
             "id" : 21,
             "name" : "fixture1",
             "shapes" : 
@@ -1196,7 +1196,7 @@
             "density" : 11.99021911621094,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
-            "friction" : 20.0,
+            "friction" : 10,
             "id" : 31,
             "name" : "fixture2",
             "shapes" : 
@@ -2014,7 +2014,7 @@
           
           {
             "density" : 1,
-            "friction" : 0.01,
+            "friction" : 0.001000000047497451,
             "id" : 47,
             "name" : "fixture10",
             "shapes" : 
@@ -3218,6 +3218,56 @@
       },
       
       {
+        "angle" : 0,
+        "angularVelocity" : 0,
+        "awake" : true,
+        "fixture" : 
+        [
+          
+          {
+            "density" : 0.02058310434222221,
+            "filter-categoryBits" : 0,
+            "friction" : 0.2,
+            "id" : 69,
+            "name" : "fixture10",
+            "shapes" : 
+            [
+              
+              {
+                "type" : "polygon"
+              }
+            ],
+            "vertices" : 
+            {
+              "x" : 
+              [
+                0.008674621582031250,
+                0.8267517089843750,
+                0.8213481903076172,
+                -0.0006980895996093750
+              ],
+              "y" : 
+              [
+                -0.7328472137451172,
+                -0.7175655364990234,
+                0.0005303025245666504,
+                -0.004980683326721191
+              ]
+            }
+          }
+        ],
+        "id" : 47,
+        "linearVelocity" : 0,
+        "name" : "mr_p_anchor",
+        "position" : 
+        {
+          "x" : 28.76578330993652,
+          "y" : -8.711208343505859
+        },
+        "type" : "static"
+      },
+      
+      {
         "angle" : -0.1248172521591187,
         "angularVelocity" : 0,
         "awake" : true,
@@ -3516,10 +3566,10 @@
         "aspectScale" : 1,
         "center" : 
         {
-          "x" : 91.60619354248047,
-          "y" : -20.83558464050293
+          "x" : 23.45351409912109,
+          "y" : -20.83559989929199
         },
-        "file" : "../../../../Downloads/level_03-01.jpg",
+        "file" : "../images/level/level_1.jpg",
         "filter" : 1,
         "flip" : false,
         "id" : 15,
