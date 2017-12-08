@@ -2,6 +2,6 @@
 <Files />
 AuthName "Prompt"
 AuthType Basic
-AuthUserFile ./.htpasswd
+AuthUserFile /var/www/pussywalk.com/web/.htpasswd
 Require valid-user
 </Files>
