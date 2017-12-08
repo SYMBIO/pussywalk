@@ -76,6 +76,10 @@ export default class Renderer {
         }
       }
 
+      if (this.imagesConfig[textureConfig.asset] == null) {
+        console.log("Can't find imagesConfig element " + textureConfig.asset);
+      }
+
       textureConfig.frame = this.imagesConfig[textureConfig.asset].frame
       textureConfig.image = this.imagesConfig[textureConfig.asset].image
 
@@ -261,10 +265,10 @@ export default class Renderer {
 
     // Debug draw
 
-    this.context.scale(this.physicsScale * this.scale, this.physicsScale * this.scale);
-    this.context.lineWidth = 1 / this.physicsScale;
-    this.context.scale(1, -1);
-    this.world.DrawDebugData();
+  // this.context.scale(this.physicsScale * this.scale, this.physicsScale * this.scale);
+  // this.context.lineWidth = 1 / this.physicsScale;
+  // this.context.scale(1, -1);
+  // this.world.DrawDebugData();
   }
 
   drawTexture(textureConfig) {

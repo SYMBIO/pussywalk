@@ -44,7 +44,7 @@ export default class Box2DWorld {
       y: -16
     }
     this.sheepPickupPoint = {
-      x: 30,
+      x: 77,
       y: -15
     }
 
@@ -257,6 +257,10 @@ export default class Box2DWorld {
 
   handleArrows(keyCode, state) {
     this.keymap[keyCode] = state;
+
+    if (keyCode == 80 && state) {
+      this.softReset()
+    }
 
     if (keyCode === 39) {
       $('.game__controls').toggleClass('game--arrow--right', state);

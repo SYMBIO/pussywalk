@@ -13,11 +13,336 @@ exports.sounds = {
   ]
 }
 exports.texturesConfig = [
-  // Chain
+  {
+    body: "decor_bear",
+    asset: "elements/bear.png"
+  },
+  {
+    body: "decor_becherovka_0",
+    asset: "elements/becherovka.png"
+  },
+  {
+    body: "decor_becherovka_1",
+    asset: "elements/becherovka.png"
+  },
+  {
+    body: "decor_becherovka_2",
+    asset: "elements/becherovka.png"
+  },
+  {
+    body: "decor_becherovka_3",
+    asset: "elements/becherovka.png"
+  },
+  // Hospital table
+  {
+    body: "decor_table_0",
+    asset: "elements/hospital_table.png"
+  },
+  {
+    body: "decor_monitor",
+    asset: "elements/screen.png"
+  },
+  {
+    body: "decor_cup_0",
+    asset: "elements/hospital_table_cup.png"
+  },
+  {
+    body: "decor_drugs_0",
+    asset: "elements/hospital_table_drugs_01.png"
+  },
+  {
+    body: "decor_drugs_1",
+    asset: "elements/hospital_table_drugs_02.png"
+  },
+  {
+    body: "decor_temperature",
+    asset: "elements/hospital_table_temperature.png"
+  },
+  // Toilet papers
+  {
+    body: "decor_tp_1",
+    asset: "elements/paper_03.png"
+  },
+  {
+    body: "decor_tp_2",
+    asset: "elements/paper_01.png"
+  },
+  {
+    body: "decor_tp_3",
+    asset: "elements/paper_01.png"
+  },
+  {
+    body: "decor_tp_4",
+    asset: "elements/paper_01.png"
+  },
+  {
+    body: "decor_tp_5",
+    asset: "elements/paper_01.png"
+  },
+  {
+    body: "decor_tp_6",
+    asset: "elements/paper_01.png"
+  },
+  {
+    body: "decor_tp_7",
+    asset: "elements/paper_02.png"
+  },
+  {
+    body: "decor_tp_8",
+    asset: "elements/paper_04.png"
+  },
+  // Trash bin & papers
+  {
+    body: "decor_paper_0",
+    asset: "elements/crumbled_paper_0.png"
+  },
+  {
+    body: "decor_paper_1",
+    asset: "elements/crumbled_paper_1.png"
+  },
+  {
+    body: "decor_paper_2",
+    asset: "elements/crumbled_paper_2.png"
+  },
+  {
+    body: "decor_paper_3",
+    asset: "elements/crumbled_paper_3.png"
+  },
+  {
+    body: "decor_paper_4",
+    asset: "elements/crumbled_paper_4.png"
+  },
+  {
+    body: "decor_paper_5",
+    asset: "elements/crumbled_paper_0.png"
+  },
+  {
+    body: "decor_paper_6",
+    asset: "elements/crumbled_paper_1.png"
+  },
+  {
+    body: "decor_paper_7",
+    asset: "elements/crumbled_paper_2.png"
+  },
+  {
+    body: "decor_paper_8",
+    asset: "elements/crumbled_paper_3.png"
+  },
+  {
+    body: "decor_paper_9",
+    asset: "elements/crumbled_paper_4.png"
+  },
+  {
+    body: "decor_paper_10",
+    asset: "elements/crumbled_paper_0.png"
+  },
+  {
+    body: "decor_paper_11",
+    asset: "elements/crumbled_paper_1.png"
+  },
+  {
+    body: "decor_paper_12",
+    asset: "elements/crumbled_paper_2.png"
+  },
+  {
+    body: "decor_paper_13",
+    asset: "elements/crumbled_paper_3.png"
+  },
+  {
+    body: "decor_paper_14",
+    asset: "elements/crumbled_paper_4.png"
+  },
+  {
+    body: "decor_paper_15",
+    asset: "elements/crumbled_paper_0.png"
+  },
+  {
+    body: "decor_paper_16",
+    asset: "elements/crumbled_paper_1.png"
+  },
+  {
+    body: "decor_paper_17",
+    asset: "elements/crumbled_paper_2.png"
+  },
+  {
+    body: "decor_trashbin",
+    asset: "elements/trash_bin.png"
+  },
+  //
+  {
+    body: "decor_umbrella",
+    asset: "elements/umbrella.png"
+  },
+  {
+    body: "decor_stick",
+    asset: "elements/walking_stick.png"
+  },
+  // Classroom
+
+  {
+    body: "decor_chair_0",
+    asset: "elements/chair_2.png"
+  },
+  {
+    body: "decor_chair_1",
+    asset: "elements/chair_1.png"
+  },
+  {
+    body: "decor_chair_2",
+    asset: "elements/chair_0.png"
+  },
+  {
+    body: "decor_chair_3",
+    asset: "elements/chair_2.png"
+  },
+  {
+    body: "decor_table_1",
+    asset: "elements/table_1.png"
+  },
+  {
+    body: "decor_table_2",
+    asset: "elements/table_1.png"
+  },
+  {
+    body: "decor_table_3",
+    asset: "elements/table_0.png"
+  },
+  {
+    body: "decor_table_4",
+    asset: "elements/table_1.png"
+  },
+  {
+    body: "decor_vaze",
+    asset: "elements/vaze.png"
+  },
+
+  // Pencils
+  {
+    body: "decor_pencil_0",
+    asset: "elements/pencil_0.png"
+  },
+  {
+    body: "decor_pencil_1",
+    asset: "elements/pencil_1.png"
+  },
+  {
+    body: "decor_pencil_2",
+    asset: "elements/pencil_2.png"
+  },
+  {
+    body: "decor_pencil_3",
+    asset: "elements/pencil_3.png"
+  },
+  {
+    body: "decor_pencil_4",
+    asset: "elements/pencil_3.png"
+  },
+  {
+    body: "decor_pencil_5",
+    asset: "elements/pencil_2.png"
+  },
+  {
+    body: "decor_pencil_6",
+    asset: "elements/pencil_1.png"
+  },
+  {
+    body: "decor_pencil_7",
+    asset: "elements/pencil_0.png"
+  },
+  {
+    body: "decor_pencil_8",
+    asset: "elements/pencil_0.png"
+  },
+  {
+    body: "decor_pencil_9",
+    asset: "elements/pencil_1.png"
+  },
+  {
+    body: "decor_pencil_10",
+    asset: "elements/pencil_2.png"
+  },
+  {
+    body: "decor_pencil_11",
+    asset: "elements/pencil_3.png"
+  },
+  {
+    body: "decor_pencil_12",
+    asset: "elements/pencil_0.png"
+  },
+  {
+    body: "decor_pencil_13",
+    asset: "elements/pencil_1.png"
+  },
+  {
+    body: "decor_pencil_14",
+    asset: "elements/pencil_2.png"
+  },
+  {
+    body: "decor_pencil_15",
+    asset: "elements/pencil_3.png"
+  },
+
+  // Pencil holders
+
+  {
+    body: "decor_pencil_holder_0",
+    asset: "elements/pencil_holder_0.png"
+  },
+  {
+    body: "decor_pencil_holder_1",
+    asset: "elements/pencil_holder_1.png"
+  },
+  {
+    body: "decor_pencil_holder_2",
+    asset: "elements/cup.png"
+  },
+  {
+    body: "decor_pencil_holder_3",
+    asset: "elements/pencil_holder_0.png"
+  },
+
+
+  {
+    body: "decor_car_0",
+    asset: "elements/toy_car_0.png"
+  },
+  {
+    body: "decor_car_1",
+    asset: "elements/toy_car_1.png"
+  },
+  {
+    body: "decor_pen",
+    asset: "elements/pen.png"
+  },
+  {
+    body: "decor_book_0",
+    asset: "elements/book_0.png"
+  },
+  {
+    body: "decor_book_1",
+    asset: "elements/book_1.png"
+  },
+  {
+    body: "decor_book_2",
+    asset: "elements/book_2.png"
+  },
+
+  // Lift
+  {
+    body: "lift_1",
+    asset: "elements/poll_elevator.png",
+    offset: {
+      x: 7,
+      y: -385
+    }
+  },
+
+  // Mr P
   {
     body: "mr_p_anchor",
     asset: "elements/mr_p.png"
   },
+  // Chain
   {
     body: "decor_chain_0",
     asset: "elements/flusher_chain_part.png"
@@ -137,76 +462,6 @@ exports.texturesConfig = [
   {
     body: "decor_chain_29",
     asset: "elements/flusher_chain_part.png"
-  },
-  // Toilet papers
-  {
-    body: "decor_tp_1",
-    asset: "elements/paper_03.png"
-  },
-  {
-    body: "decor_tp_2",
-    asset: "elements/paper_01.png"
-  },
-  {
-    body: "decor_tp_3",
-    asset: "elements/paper_01.png"
-  },
-  {
-    body: "decor_tp_4",
-    asset: "elements/paper_01.png"
-  },
-  {
-    body: "decor_tp_5",
-    asset: "elements/paper_01.png"
-  },
-  {
-    body: "decor_tp_6",
-    asset: "elements/paper_01.png"
-  },
-  {
-    body: "decor_tp_7",
-    asset: "elements/paper_02.png"
-  },
-  {
-    body: "decor_tp_8",
-    asset: "elements/paper_04.png"
-  },
-  // Hospital table
-  {
-    body: "decor_9",
-    asset: "elements/hospital_table_radio.png"
-  },
-  {
-    body: "decor_5",
-    asset: "elements/hospital_table_cup.png"
-  },
-  {
-    body: "decor_6",
-    asset: "elements/hospital_table_drugs_01.png"
-  },
-  {
-    body: "decor_7",
-    asset: "elements/hospital_table_drugs_02.png"
-  },
-  {
-    body: "decor_8",
-    asset: "elements/hospital_table_temperature.png"
-  },
-  {
-    body: "lift_1",
-    asset: "elements/poll_elevator.png",
-    offset: {
-      x: 7,
-      y: -385
-    }
-  },
-  {
-    body: "decor_3",
-    asset: "elements/hospital_table.png"
-  },
-  {
-    body: "decor_4",
-    asset: "elements/hospital_table.png"
   },
   // Body - Outlines
   {
