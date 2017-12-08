@@ -18,6 +18,7 @@ export default class Box2DWorld {
     this.lives = 3
     this.record = false
     this.pausePhysics = false
+    this.paused = false
 
     this.renderer = null
     this.audioPlayer = null
@@ -274,8 +275,11 @@ export default class Box2DWorld {
 
   step() {
 
-    // Phyics
+    if (this.paused) {
+      return
+    }
 
+    // Phyics
     if (!this.pausePhysics) {
       let now = new Date().getTime();
       this.fps.dt = (now - this.fps.time) / 1000;
@@ -674,6 +678,14 @@ export default class Box2DWorld {
     this.lastCheckpoint = resetPoint
     this.resetPlayerToCheckpoint()
     this.onResetComplete()
+  }
+
+  pause() {
+    this.paused = true
+  }
+
+  resume() {
+    this.paused = false
   }
 }
 ;
