@@ -27,7 +27,7 @@ export default class Box2DWorld {
 
     this.step = this.step.bind(this)
     this.stepBack = this.stepBack.bind(this)
-    this.stepBackComplete = this.stepBackComplete.bind(this)
+    this.onResetComplete = this.onResetComplete.bind(this)
     this.resetPlayer = this.resetPlayer.bind(this)
 
     this.frontSlipperDropPoint = {
@@ -38,9 +38,13 @@ export default class Box2DWorld {
       x: 38,
       y: 0
     }
+    this.startPoint = {
+      x: 19,
+      y: -16
+    }
     this.sheepPickupPoint = {
-      x: 23,
-      y: 0
+      x: 30,
+      y: -15
     }
 
     this.checkpoints = [{
@@ -564,7 +568,7 @@ export default class Box2DWorld {
     }
   }
 
-  stepBackComplete() {
+  onResetComplete() {
     this.record = true
     this.inactive = false
     this.pausePhysics = false
@@ -613,8 +617,7 @@ export default class Box2DWorld {
     }
   }
 
-  resetPlayer() {
-
+  prepareForReset() {
     if (this.recorder.currentFrame == 0) {
       this.record = true
       this.inactive = false
@@ -637,12 +640,17 @@ export default class Box2DWorld {
     for (var bodyName in this.startState) {
       this.bodies[bodyName].SetType(Box2D.b2_kineticBody)
     }
+  }
+
+  resetPlayer() {
+
+    this.prepareForReset()
 
     TweenMax.to(this.recorder, this.recorder.frames.length / 300, {
       ease: Cubic.easeInOut,
       currentFrame: 0,
       onUpdate: this.stepBack,
-      onComplete: this.stepBackComplete
+      onComplete: this.onResetComplete
     })
   }
 
@@ -658,6 +666,14 @@ export default class Box2DWorld {
       angle = this.startState[bodyName].angle
       this.bodies[bodyName].SetTransform(new Box2D.b2Vec2(x, y), angle)
     }
+  }
+
+  softReset() {
+    let resetPoint = this.sheepPickupPoint.x < this.progress ? this.sheepPickupPoint : this.startPoint
+    this.prepareForReset()
+    this.lastCheckpoint = resetPoint
+    this.resetPlayerToCheckpoint()
+    this.onResetComplete()
   }
 }
 ;
