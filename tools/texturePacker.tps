@@ -199,6 +199,177 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">../images/spritesheet_sources/elements/bear.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>37,44,74,87</rect>
+                <key>scale9Paddings</key>
+                <rect>37,44,74,87</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/becherovka.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>16,38,31,76</rect>
+                <key>scale9Paddings</key>
+                <rect>16,38,31,76</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/book_0.png</key>
+            <key type="filename">../images/spritesheet_sources/elements/book_1.png</key>
+            <key type="filename">../images/spritesheet_sources/elements/book_2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>24,5,48,10</rect>
+                <key>scale9Paddings</key>
+                <rect>24,5,48,10</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/chair_0.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>57,114,113,227</rect>
+                <key>scale9Paddings</key>
+                <rect>57,114,113,227</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/chair_1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>57,114,114,227</rect>
+                <key>scale9Paddings</key>
+                <rect>57,114,114,227</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/chair_2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>59,115,118,229</rect>
+                <key>scale9Paddings</key>
+                <rect>59,115,118,229</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/crumbled_paper_0.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>9,9,18,17</rect>
+                <key>scale9Paddings</key>
+                <rect>9,9,18,17</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/crumbled_paper_1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>13,12,26,24</rect>
+                <key>scale9Paddings</key>
+                <rect>13,12,26,24</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/crumbled_paper_2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>10,11,20,21</rect>
+                <key>scale9Paddings</key>
+                <rect>10,11,20,21</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/crumbled_paper_3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>11,11,21,21</rect>
+                <key>scale9Paddings</key>
+                <rect>11,11,21,21</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/crumbled_paper_4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>11,9,21,18</rect>
+                <key>scale9Paddings</key>
+                <rect>11,9,21,18</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/cup.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>16,16,32,31</rect>
+                <key>scale9Paddings</key>
+                <rect>16,16,32,31</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/eyeball.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>17,17,35,35</rect>
+                <key>scale9Paddings</key>
+                <rect>17,17,35,35</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../images/spritesheet_sources/elements/flusher_chain_part.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -355,6 +526,61 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../images/spritesheet_sources/elements/pen.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>4,27,7,54</rect>
+                <key>scale9Paddings</key>
+                <rect>4,27,7,54</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/pencil_0.png</key>
+            <key type="filename">../images/spritesheet_sources/elements/pencil_1.png</key>
+            <key type="filename">../images/spritesheet_sources/elements/pencil_2.png</key>
+            <key type="filename">../images/spritesheet_sources/elements/pencil_3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>2,24,4,48</rect>
+                <key>scale9Paddings</key>
+                <rect>2,24,4,48</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/pencil_holder_0.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>14,19,27,37</rect>
+                <key>scale9Paddings</key>
+                <rect>14,19,27,37</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/pencil_holder_1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>14,18,27,36</rect>
+                <key>scale9Paddings</key>
+                <rect>14,18,27,36</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../images/spritesheet_sources/elements/poll_elevator.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -368,16 +594,108 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../images/spritesheet_sources/eyeball.png</key>
+            <key type="filename">../images/spritesheet_sources/elements/screen.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>3,3,5,5</rect>
+                <rect>68,61,135,122</rect>
                 <key>scale9Paddings</key>
-                <rect>3,3,5,5</rect>
+                <rect>68,61,135,122</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/table_0.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>71,83,141,166</rect>
+                <key>scale9Paddings</key>
+                <rect>71,83,141,166</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/table_1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>81,83,162,166</rect>
+                <key>scale9Paddings</key>
+                <rect>81,83,162,166</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/toy_car_0.png</key>
+            <key type="filename">../images/spritesheet_sources/elements/toy_car_1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>35,14,69,28</rect>
+                <key>scale9Paddings</key>
+                <rect>35,14,69,28</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/trash_bin.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>49,77,98,154</rect>
+                <key>scale9Paddings</key>
+                <rect>49,77,98,154</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/umbrella.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>21,95,42,189</rect>
+                <key>scale9Paddings</key>
+                <rect>21,95,42,189</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/vaze.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>22,66,44,131</rect>
+                <key>scale9Paddings</key>
+                <rect>22,66,44,131</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/walking_stick.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>24,129,48,258</rect>
+                <key>scale9Paddings</key>
+                <rect>24,129,48,258</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

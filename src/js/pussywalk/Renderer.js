@@ -261,10 +261,10 @@ export default class Renderer {
 
     // Debug draw
 
-  // this.context.scale(this.physicsScale * this.scale, this.physicsScale * this.scale);
-  // this.context.lineWidth = 1 / this.physicsScale;
-  // this.context.scale(1, -1);
-  // this.world.DrawDebugData();
+    this.context.scale(this.physicsScale * this.scale, this.physicsScale * this.scale);
+    this.context.lineWidth = 1 / this.physicsScale;
+    this.context.scale(1, -1);
+    this.world.DrawDebugData();
   }
 
   drawTexture(textureConfig) {
