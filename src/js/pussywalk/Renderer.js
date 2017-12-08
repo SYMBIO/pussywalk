@@ -172,12 +172,12 @@ export default class Renderer {
     if (startIndex == 0) {
       let offset = {
         eye1: {
-          x: 1863,
-          y: 666
+          x: 1864,
+          y: 665
         },
         eye2: {
-          x: 1900,
-          y: 670
+          x: 1902,
+          y: 669
         }
       }
       var image = new Image();
@@ -187,7 +187,7 @@ export default class Renderer {
       let position;
 
       position = {
-        x: (offset.eye1.x + percent * 5) * this.scale,
+        x: (offset.eye1.x + percent * 4) * this.scale,
         y: offset.eye1.y * this.scale
       }
       this.context.translate(position.x, position.y);
@@ -204,7 +204,7 @@ export default class Renderer {
       this.context.translate(-position.x, -position.y);
 
       position = {
-        x: (offset.eye2.x + percent * 5) * this.scale,
+        x: (offset.eye2.x + percent * 4) * this.scale,
         y: offset.eye2.y * this.scale
       }
       this.context.translate(position.x, position.y);
