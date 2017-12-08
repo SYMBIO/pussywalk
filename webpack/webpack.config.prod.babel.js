@@ -91,6 +91,10 @@ module.exports = {
         from: `${SRC}images`,
         to: `${BUILD}images`
       },
+      {
+        from: `${SRC}audio`,
+        to: `${BUILD}audio`
+      },
     ]),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
