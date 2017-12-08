@@ -30,6 +30,7 @@ export default class Box2DWorld {
     this.stepBack = this.stepBack.bind(this)
     this.onResetComplete = this.onResetComplete.bind(this)
     this.resetPlayer = this.resetPlayer.bind(this)
+    this.prepareForReset = this.prepareForReset.bind(this)
 
     this.frontSlipperDropPoint = {
       x: 34,
@@ -43,24 +44,30 @@ export default class Box2DWorld {
       x: 19,
       y: -16
     }
+    this.endPoint = {
+      x: 165,
+      y: 0
+    }
     this.sheepPickupPoint = {
       x: 77,
       y: -15
     }
 
-    this.checkpoints = [{
-      x: 23,
-      y: -15.7
-    }, {
-      x: 92,
-      y: -15.7
-    }, {
-      x: 50,
-      y: -15.7
-    }, {
-      x: 140,
-      y: -20.7
-    }]
+    this.checkpoints = [
+      this.startPoint,
+      {
+        x: 50,
+        y: -15.7
+      }, {
+        x: 77,
+        y: -15
+      }, {
+        x: 92,
+        y: -15.7
+      }, {
+        x: 140,
+        y: -20.7
+      }]
     this.progressPoints = [
       this.frontSlipperDropPoint,
       this.backSlipperDropPoint,
@@ -302,7 +309,7 @@ export default class Box2DWorld {
       this.progress = this.bodies["body"].GetPosition().get_x()
 
       // Level end
-      if (this.progress >= 150) {
+      if (this.progress >= this.endPoint.x) {
         if (!this.inactive) {
           this.inactive = true
           this.keymap = {}
@@ -642,7 +649,6 @@ export default class Box2DWorld {
       this.bodies[bodyName].SetLinearVelocity(new Box2D.b2Vec2(0, 0))
       this.bodies[bodyName].SetAngularVelocity(0)
       this.bodies[bodyName].SetType(type)
-
     }
 
     for (var bodyName in this.startState) {
@@ -654,7 +660,7 @@ export default class Box2DWorld {
 
     this.prepareForReset()
 
-    TweenMax.to(this.recorder, this.recorder.frames.length / 300, {
+    TweenMax.to(this.recorder, Math.min(3, this.recorder.frames.length / 300), {
       ease: Cubic.easeInOut,
       currentFrame: 0,
       onUpdate: this.stepBack,

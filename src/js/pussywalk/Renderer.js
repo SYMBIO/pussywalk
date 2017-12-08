@@ -29,6 +29,8 @@ export default class Renderer {
     this.prepareTextures()
 
     this.eyeball = this.imagesConfig["elements/eyeball.png"]
+    this.furniceWall = new Image()
+    this.furniceWall.src = "images/level/furnice_wall.jpg"
   }
 
   prepareTextures() {
@@ -262,6 +264,19 @@ export default class Renderer {
       this.context.canvas.width,
       this.context.canvas.height
     )
+
+    this.context.drawImage(this.furniceWall,
+      0,
+      0,
+      1042,
+      938,
+      10438 * this.scale,
+      1086 * this.scale,
+      1042 * this.scale,
+      938 * this.scale
+    )
+
+
 
     // Debug draw
 
