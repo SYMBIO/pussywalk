@@ -15,7 +15,7 @@ export default class Box2DWorld {
     this.timeStep = 1 / 60;
     this.velocityIterations = 10;
     this.positionIterations = 8;
-    this.lives = 3
+    this.lives = 3000
     this.record = false
     this.pausePhysics = false
     this.paused = false
