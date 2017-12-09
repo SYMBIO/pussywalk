@@ -144,18 +144,9 @@
 	"sourceSize": {"w":186,"h":172},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"shower/shower_2.png":
+"shower/shower_5.png":
 {
 	"frame": {"x":811,"y":1,"w":160,"h":150},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":160,"h":150},
-	"sourceSize": {"w":160,"h":150},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"shower/shower_4.png":
-{
-	"frame": {"x":1,"y":153,"w":160,"h":150},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":160,"h":150},
@@ -174,6 +165,15 @@
 "shower/shower_9.png":
 {
 	"frame": {"x":1,"y":1,"w":160,"h":150},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":160,"h":150},
+	"sourceSize": {"w":160,"h":150},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"shower/shower_19.png":
+{
+	"frame": {"x":1,"y":153,"w":160,"h":150},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":160,"h":150},
@@ -214,6 +214,6 @@
 	"format": "RGBA4444",
 	"size": {"w":1016,"h":944},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:f69bade3a1cb84efcd85ac9622ecc9bd:654519b3d0fd7c71a8f7387d60e6f95a:5c062e2031ec4b4ae19fd922ec239988$"
+	"smartupdate": "$TexturePacker:SmartUpdate:2b11d79b8f88ddc2d023b74b1b72b85c:94fa84b2829806aa02c1f1903fcdf7f2:5c062e2031ec4b4ae19fd922ec239988$"
 }
 }

@@ -576,7 +576,11 @@ exports.texturesConfig = [
   },
   {
     body: "decor_chain_29",
-    asset: "elements/flusher_chain_part.png"
+    asset: "elements/flusher_handle.png",
+    offset: {
+      x: 0,
+      y: 15
+    }
   },
   // Body - Outlines
   {

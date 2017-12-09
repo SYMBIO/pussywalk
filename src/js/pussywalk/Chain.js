@@ -28,7 +28,7 @@ export default class Chain {
     // rope
     for (var i:int = 0; i <= 30; i++) {
       // rope segment
-      body = this.createLink()
+      body = this.createLink(false)
       body.SetTransform(new Box2D.b2Vec2(pos.x, pos.y - i / distanceDivider), 0)
       body.name = "decor_chain_" + i
       // joint
@@ -40,7 +40,7 @@ export default class Chain {
       this.bodies[body.name] = body
     }
     // final body
-    body = this.createLink()
+    body = this.createLink(true)
     body.SetTransform(new Box2D.b2Vec2(pos.x, pos.y - i / distanceDivider), 0)
     body.name = "decor_chain_" + i
     this.bodies[body.name] = body
@@ -51,7 +51,7 @@ export default class Chain {
   // body.SetMassFromShapes();
   }
 
-  createLink() {
+  createLink(isLast) {
     var bd = new Box2D.b2BodyDef();
     bd.set_type(Box2D.b2_dynamicBody);
     bd.set_angle(0);
@@ -68,7 +68,7 @@ export default class Chain {
     var body = this.world.CreateBody(bd);
 
     var md = new Box2D.b2MassData();
-    md.set_mass(0);
+    md.set_mass(isLast ? 1 : 0);
     md.set_center(new Box2D.b2Vec2(0, 0));
     md.set_I(0);
 
