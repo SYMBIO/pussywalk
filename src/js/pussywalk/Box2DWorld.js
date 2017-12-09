@@ -15,20 +15,23 @@ export default class Box2DWorld {
     this.timeStep = 1 / 60;
     this.velocityIterations = 10;
     this.positionIterations = 8;
-    this.lives = 3
+    this.lives = 3000
     this.record = false
     this.pausePhysics = false
+    this.paused = false
 
     this.renderer = null
     this.audioPlayer = null
+    this.jointsToDestroy = []
 
     var gravity = new Box2D.b2Vec2(0.0, -10.0);
     this.world = new Box2D.b2World(gravity);
 
     this.step = this.step.bind(this)
     this.stepBack = this.stepBack.bind(this)
-    this.stepBackComplete = this.stepBackComplete.bind(this)
+    this.onResetComplete = this.onResetComplete.bind(this)
     this.resetPlayer = this.resetPlayer.bind(this)
+    this.prepareForReset = this.prepareForReset.bind(this)
 
     this.frontSlipperDropPoint = {
       x: 34,
@@ -38,24 +41,34 @@ export default class Box2DWorld {
       x: 38,
       y: 0
     }
-    this.sheepPickupPoint = {
-      x: 23,
+    this.startPoint = {
+      x: 19,
+      y: -16
+    }
+    this.endPoint = {
+      x: 165,
       y: 0
     }
+    this.sheepPickupPoint = {
+      x: 77,
+      y: -15
+    }
 
-    this.checkpoints = [{
-      x: 23,
-      y: -15.7
-    }, {
-      x: 92,
-      y: -15.7
-    }, {
-      x: 50,
-      y: -15.7
-    }, {
-      x: 140,
-      y: -20.7
-    }]
+    this.checkpoints = [
+      this.startPoint,
+      {
+        x: 50,
+        y: -15.7
+      }, {
+        x: 77,
+        y: -15
+      }, {
+        x: 92,
+        y: -15.7
+      }, {
+        x: 140,
+        y: -20.7
+      }]
     this.progressPoints = [
       this.frontSlipperDropPoint,
       this.backSlipperDropPoint,
@@ -144,8 +157,36 @@ export default class Box2DWorld {
     let that = this;
     var _end = ["hand_front_top", "hand_back_top", "leg_front_tie", "leg_back_tie", "body", "head", "sheep_body"];
     let contactListener = new Box2D.JSContactListener();
+    contactListener.PreSolve = function(contactPtr) {
+
+      let contact = Box2D.wrapPointer(contactPtr, Box2D.b2Contact),
+        bA = contact.GetFixtureA().GetBody(),
+        bB = contact.GetFixtureB().GetBody();
+      var bottle = null
+
+      if (bA.name.indexOf("decor_becherovka_") == 0) {
+        bottle = bA
+      }
+
+      if (bB.name.indexOf("decor_becherovka_") == 0) {
+        bottle = bB
+      }
+
+      if (bottle && bottle.GetLinearVelocity().Length() > 7) {
+        let i = Math.floor(Math.random() * 8)
+        let components = bA.name.split("_")
+        components.pop()
+        components.push("j" + i)
+        let jointName = components.join("_")
+
+        if (that.joints[jointName]) {
+          // that.world.DestroyJoint(that.joints[jointName]);
+          that.jointsToDestroy = [that.joints[jointName]]
+          delete that.joints[jointName]
+        }
+      }
+    };
     contactListener.PostSolve = function() {};
-    contactListener.PreSolve = function() {};
     contactListener.EndContact = function() {};
     contactListener.BeginContact = function(contactPtr) {
 
@@ -188,9 +229,9 @@ export default class Box2DWorld {
         impact = bB.GetLinearVelocity().Length()
       }
 
-      // if (_floor.indexOf(bB.name) != -1 && bA.name.indexOf("leg_shoe_") == 0) {
-      //   impact = bA.GetLinearVelocity().Length()
-      // }
+      if (_floor.indexOf(bB.name) != -1 && bA.name.indexOf("leg_shoe_") == 0) {
+        impact = bA.GetLinearVelocity().Length()
+      }
 
       if (impact > 3) {
         that.audioPlayer.playStep(impact / 20)
@@ -253,6 +294,10 @@ export default class Box2DWorld {
   handleArrows(keyCode, state) {
     this.keymap[keyCode] = state;
 
+    if (keyCode == 80 && state) {
+      this.softReset()
+    }
+
     if (keyCode === 39) {
       $('.game__controls').toggleClass('game--arrow--right', state);
     } else {
@@ -270,9 +315,21 @@ export default class Box2DWorld {
 
   step() {
 
-    // Phyics
+    if (this.paused) {
+      return
+    }
 
+    // Phyics
     if (!this.pausePhysics) {
+
+      if (this.jointsToDestroy) {
+        for (var i = 0; i < this.jointsToDestroy.length; i++) {
+          this.world.DestroyJoint(this.jointsToDestroy[i])
+        }
+
+        this.jointsToDestroy = null
+      }
+
       let now = new Date().getTime();
       this.fps.dt = (now - this.fps.time) / 1000;
 
@@ -290,7 +347,7 @@ export default class Box2DWorld {
       this.progress = this.bodies["body"].GetPosition().get_x()
 
       // Level end
-      if (this.progress >= 150) {
+      if (this.progress >= this.endPoint.x) {
         if (!this.inactive) {
           this.inactive = true
           this.keymap = {}
@@ -564,7 +621,7 @@ export default class Box2DWorld {
     }
   }
 
-  stepBackComplete() {
+  onResetComplete() {
     this.record = true
     this.inactive = false
     this.pausePhysics = false
@@ -613,8 +670,7 @@ export default class Box2DWorld {
     }
   }
 
-  resetPlayer() {
-
+  prepareForReset() {
     if (this.recorder.currentFrame == 0) {
       this.record = true
       this.inactive = false
@@ -631,18 +687,22 @@ export default class Box2DWorld {
       this.bodies[bodyName].SetLinearVelocity(new Box2D.b2Vec2(0, 0))
       this.bodies[bodyName].SetAngularVelocity(0)
       this.bodies[bodyName].SetType(type)
-
     }
 
     for (var bodyName in this.startState) {
       this.bodies[bodyName].SetType(Box2D.b2_kineticBody)
     }
+  }
 
-    TweenMax.to(this.recorder, this.recorder.frames.length / 300, {
+  resetPlayer() {
+
+    this.prepareForReset()
+
+    TweenMax.to(this.recorder, Math.min(3, this.recorder.frames.length / 300), {
       ease: Cubic.easeInOut,
       currentFrame: 0,
       onUpdate: this.stepBack,
-      onComplete: this.stepBackComplete
+      onComplete: this.onResetComplete
     })
   }
 
@@ -658,6 +718,26 @@ export default class Box2DWorld {
       angle = this.startState[bodyName].angle
       this.bodies[bodyName].SetTransform(new Box2D.b2Vec2(x, y), angle)
     }
+  }
+
+  softReset() {
+    let resetPoint = {
+      x: 160,
+      y: -16
+    }
+    // let resetPoint = this.sheepPickupPoint.x < this.progress ? this.sheepPickupPoint : this.startPoint
+    this.prepareForReset()
+    this.lastCheckpoint = resetPoint
+    this.resetPlayerToCheckpoint()
+    this.onResetComplete()
+  }
+
+  pause() {
+    this.paused = true
+  }
+
+  resume() {
+    this.paused = false
   }
 }
 ;

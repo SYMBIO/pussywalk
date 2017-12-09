@@ -13,10 +13,12 @@ export default class Renderer {
     this.bodies = bodies
     this.levelTextures = []
     this.texturesConfig = {}
+    this.imagesConfig = {}
 
     this.physicsScale = 64
     this.scale = 1
     this.state = {}
+    this.frameCounter = 0
 
     this.vignette = new Image()
     this.vignette.src = "images/misc/vignette.png"
@@ -25,7 +27,41 @@ export default class Renderer {
     this.drawTexture = this.drawTexture.bind(this)
     this.setState = this.setState.bind(this)
 
+    this.prepareLights()
     this.prepareTextures()
+
+    this.eyeball = this.imagesConfig["elements/eyeball.png"]
+    this.furniceWall = new Image()
+    this.furniceWall.src = "images/level/furnice_wall.jpg"
+  }
+
+  prepareLights() {
+    var image
+    this.lights = []
+
+    image = new Image()
+    image.src = "images/level/lights/fluorescent_bathroom.jpg"
+    this.lights.push(image)
+
+    image = new Image()
+    image.src = "images/level/lights/fluorescent_general.jpg"
+    this.lights.push(image)
+
+    image = new Image()
+    image.src = "images/level/lights/furnice.jpg"
+    this.lights.push(image)
+
+    image = new Image()
+    image.src = "images/level/lights/general_lightbulb.jpg"
+    this.lights.push(image)
+
+    image = new Image()
+    image.src = "images/level/lights/ovcacek_room_light.jpg"
+    this.lights.push(image)
+
+    image = new Image()
+    image.src = "images/level/lights/warm_bathroom.jpg"
+    this.lights.push(image)
   }
 
   prepareTextures() {
@@ -35,14 +71,13 @@ export default class Renderer {
       this.levelTextures.push(image)
     }
 
-    var combinedConfig = {}
     // Sprite
     var i = 0
     while (true) {
       let config
       let image
       try {
-        config = require('../../images/spritesheet-' + i + '.json')
+        config = require('images/spritesheet-' + i + '.json')
       } catch (e) {
         // statements to handle any exceptions
         break
@@ -52,11 +87,10 @@ export default class Renderer {
       image = new Image()
       image.src = 'images/spritesheet-' + i + '.png'
 
-      for (let key in config.frames) {
-        let frame = config.frames[key]
-        frame.src = key
+      for (let path in config.frames) {
+        let frame = config.frames[path]
         frame.image = image
-        combinedConfig[key] = frame
+        this.imagesConfig[path] = frame
       }
 
       i++
@@ -64,16 +98,27 @@ export default class Renderer {
 
     for (let key in Constants.texturesConfig) {
       let textureConfig = Constants.texturesConfig[key]
-      let name = textureConfig.name ? textureConfig.name : textureConfig.body
-      if (combinedConfig[textureConfig.asset]) {
-        textureConfig.frame = combinedConfig[textureConfig.asset].frame
+      let name
+      if (textureConfig.name) {
+        name = textureConfig.name
+      } else {
+        if (textureConfig.body) {
+          name = textureConfig.body
+        } else {
+          name = textureConfig.asset
+        }
       }
 
-      textureConfig.image = combinedConfig[textureConfig.asset].image
+      if (this.imagesConfig[textureConfig.asset] == null) {
+        console.log("Can't find imagesConfig element " + textureConfig.asset);
+      }
+
+      textureConfig.frame = this.imagesConfig[textureConfig.asset].frame
+      textureConfig.image = this.imagesConfig[textureConfig.asset].image
+
       this.texturesConfig[name] = textureConfig
     }
 
-    //debugger
     this.showBodyMod(false)
   }
 
@@ -104,7 +149,6 @@ export default class Renderer {
     this.texturesConfig["outline_sheep_body"].visible = show
     this.texturesConfig["outline_sheep_head"].visible = show
     this.texturesConfig["outline_sheep_leg"].visible = show
-
   }
 
   flash() {
@@ -138,6 +182,8 @@ export default class Renderer {
     canvasOffset.x = Math.max(0, Math.round(canvasOffset.x))
     canvasOffset.y = Math.min(0, Math.round(canvasOffset.y))
 
+    canvasOffset.x = Math.min(canvasOffset.x, 11736 * this.scale - this.canvas.width)
+
     this.context.setTransform(1, 0, 0, 1, 0, 0);
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.context.translate(-canvasOffset.x, canvasOffset.y);
@@ -161,46 +207,104 @@ export default class Renderer {
       )
     }
 
-    // // Putin's face:
-    // if (startIndex == 0) {
-    //   let offset = {
-    //     eye1: {
-    //       x: 1780,
-    //       y: 650
-    //     },
-    //     eye2: {
-    //       x: 1850,
-    //       y: 650
-    //     }
-    //   }
-    //   var image = new Image();
-    //   let percent = (this.bodies['body'].GetPosition().get_x() * this.physicsScale - (offset.eye1.x + offset.eye2.x) / 2) / 500
-    //   percent = Math.min(1, Math.max(-1, percent))
-    //
-    //   let position;
-    //
-    //   position = {
-    //     x: (offset.eye1.x + percent * 10) * this.scale,
-    //     y: offset.eye1.y * this.scale
-    //   }
-    //   this.context.translate(position.x, position.y);
-    //   image.src = "images/eyeball.png";
-    //   this.context.drawImage(image, percent * 10, 0)
-    //   this.context.translate(-position.x, -position.y);
-    //
-    //   position = {
-    //     x: (offset.eye2.x + percent * 10) * this.scale,
-    //     y: offset.eye2.y * this.scale
-    //   }
-    //   this.context.translate(position.x, position.y);
-    //   image.src = "images/eyeball.png";
-    //   this.context.drawImage(image, percent * 10, 0)
-    //   this.context.translate(-position.x, -position.y);
-    // }
+    // Shower
+
+    let idx = Math.floor(this.frameCounter)
+    let showerImage = this.imagesConfig['shower/shower_' + idx + '.png']
+    if (showerImage) {
+      this.context.drawImage(showerImage.image,
+        showerImage.frame.x,
+        showerImage.frame.y,
+        showerImage.frame.w,
+        showerImage.frame.h,
+        800 * this.scale,
+        700 * this.scale,
+        showerImage.frame.w * this.scale * 4,
+        showerImage.frame.h * this.scale * 4
+      )
+    } else {
+      console.log('shower/shower_' + idx + '.png');
+    }
+
+    // Furnace
+
+    let furnaceImage = this.imagesConfig['furnace/furnace_' + idx + '.jpg']
+    if (furnaceImage) {
+      this.context.drawImage(furnaceImage.image,
+        furnaceImage.frame.x,
+        furnaceImage.frame.y,
+        furnaceImage.frame.w,
+        furnaceImage.frame.h,
+        10158 * this.scale,
+        917 * this.scale,
+        furnaceImage.frame.w * this.scale,
+        furnaceImage.frame.h * this.scale
+      )
+    } else {
+      console.log('furnace/furnace_' + idx + '.png');
+    }
+
+    // Mr P
+    if (startIndex == 0) {
+      let offset = {
+        eye1: {
+          x: 1864,
+          y: 665
+        },
+        eye2: {
+          x: 1902,
+          y: 669
+        }
+      }
+      var image = new Image();
+      let percent = (this.bodies['body'].GetPosition().get_x() * this.physicsScale - (offset.eye1.x + offset.eye2.x) / 2) / 500
+      percent = Math.min(1, Math.max(-1, percent))
+
+      let position;
+
+      position = {
+        x: (offset.eye1.x + percent * 4) * this.scale,
+        y: offset.eye1.y * this.scale
+      }
+      this.context.translate(position.x, position.y);
+      this.context.drawImage(this.eyeball.image,
+        this.eyeball.frame.x,
+        this.eyeball.frame.y,
+        this.eyeball.frame.w,
+        this.eyeball.frame.h,
+        0,
+        0,
+        this.eyeball.frame.w,
+        this.eyeball.frame.h
+      )
+      this.context.translate(-position.x, -position.y);
+
+      position = {
+        x: (offset.eye2.x + percent * 4) * this.scale,
+        y: offset.eye2.y * this.scale
+      }
+      this.context.translate(position.x, position.y);
+
+      this.context.drawImage(this.eyeball.image,
+        this.eyeball.frame.x,
+        this.eyeball.frame.y,
+        this.eyeball.frame.w,
+        this.eyeball.frame.h,
+        0,
+        0,
+        this.eyeball.frame.w,
+        this.eyeball.frame.h
+      )
+      // this.context.drawImage(this.eyeball, percent * 10, 0)
+      this.context.translate(-position.x, -position.y);
+    }
 
     // Draw elements incl. figure
     for (var i in this.texturesConfig) {
       let textureConfig = this.texturesConfig[i]
+      if (textureConfig == null) {
+        debugger
+      }
       if (textureConfig.visible == false) {
         continue
       }
@@ -220,6 +324,115 @@ export default class Renderer {
     this.context.fillStyle = "#FFF"
     this.context.fillText(Math.round(percentage) + '%', x, y);
 
+    this.context.drawImage(this.furniceWall,
+      0,
+      0,
+      1042,
+      938,
+      10438 * this.scale,
+      1086 * this.scale,
+      1042 * this.scale,
+      938 * this.scale
+    )
+
+    // Lights
+
+    this.context.globalCompositeOperation = "screen"
+
+    this.context.drawImage(this.lights[0],
+      0,
+      0,
+      588,
+      603,
+      2397 * this.scale,
+      305 * this.scale,
+      588 * this.scale * 2,
+      603 * this.scale * 2,
+    )
+
+    this.context.drawImage(this.lights[1],
+      0,
+      0,
+      1433,
+      1323,
+      301 * this.scale,
+      104 * this.scale,
+      1433 * this.scale * 2,
+      1323 * this.scale * 2,
+    )
+
+    this.context.drawImage(this.lights[1],
+      0,
+      0,
+      977,
+      921,
+      6422 * this.scale,
+      511 * this.scale,
+      977 * this.scale * 2,
+      921 * this.scale * 2,
+    )
+
+    this.context.drawImage(this.lights[1],
+      0,
+      0,
+      977,
+      921,
+      7793 * this.scale,
+      511 * this.scale,
+      977 * this.scale * 2,
+      921 * this.scale * 2,
+    )
+
+    this.context.drawImage(this.lights[2],
+      0,
+      0,
+      461,
+      487,
+      9530 * this.scale,
+      881 * this.scale,
+      461 * this.scale * 2,
+      487 * this.scale * 2,
+    )
+
+    this.context.drawImage(this.lights[3],
+      0,
+      0,
+      977,
+      921,
+      5449 * this.scale,
+      333 * this.scale,
+      977 * this.scale * 2,
+      921 * this.scale * 2,
+    )
+
+    this.context.drawImage(this.lights[4],
+      0,
+      0,
+      1369,
+      1667,
+      4125 * this.scale,
+      22 * this.scale,
+      1369 * this.scale * 2,
+      1667 * this.scale * 2,
+    )
+
+    this.context.drawImage(this.lights[5],
+      0,
+      0,
+      879,
+      831,
+      3562 * this.scale,
+      353 * this.scale,
+      879 * this.scale * 2,
+      831 * this.scale * 2,
+    )
+
+
+
+
+    this.context.globalCompositeOperation = "source-over"
+
+
     this.context.drawImage(this.vignette,
       0,
       0,
@@ -228,9 +441,16 @@ export default class Renderer {
       canvasOffset.x,
       -canvasOffset.y,
       this.context.canvas.width,
-      this.context.canvas.height)
+      this.context.canvas.height
+    )
 
-      // Debug draw
+    this.frameCounter += 0.5
+
+    if (this.frameCounter == 30) {
+      this.frameCounter = 0
+    }
+
+    // Debug draw
 
   // this.context.scale(this.physicsScale * this.scale, this.physicsScale * this.scale);
   // this.context.lineWidth = 1 / this.physicsScale;
@@ -268,8 +488,6 @@ export default class Renderer {
       alpha = textureConfig.alpha
       scale = textureConfig.scale
 
-      // compositeOperation = "screen"
-
     } else {
       if (this.bodies[textureConfig.body] == null) {
         return
@@ -301,9 +519,6 @@ export default class Renderer {
     this.context.translate(position.x, position.y);
     this.context.rotate(angle)
     this.context.globalAlpha = alpha;
-    if (compositeOperation) {
-      this.context.globalCompositeOperation = compositeOperation
-    }
 
     this.context.drawImage(textureConfig.image,
       frame.x,
@@ -316,9 +531,6 @@ export default class Renderer {
       frame.h / 2 * this.scale * scale
     )
 
-    if (compositeOperation) {
-      this.context.globalCompositeOperation = "source-over"
-    }
     this.context.globalAlpha = 1
     this.context.rotate(-angle)
     this.context.translate(-position.x, -position.y);
