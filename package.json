@@ -13,13 +13,15 @@
   "license": "LGPL-3.0+",
   "scripts": {
     "dev": "babel-node ./webpack/server.js",
-    "build": "rm -rf build && webpack --config ./webpack/webpack.config.prod.babel.js",
+    "build": "rm -rf build && npm run ss_compress && webpack --config ./webpack/webpack.config.prod.babel.js",
+    "ss_compress": "tinypng -r -k dY76SanOkUE8SaPaTDZP-vZlJsbtEARu src/images/spritesheet-*.png",
     "test": ""
   },
   "dependencies": {
     "firebase": "^4.6.0",
     "gsap": "^1.20.3",
     "jquery": "^3.2.1",
+    "node-tinypng": "0.0.4",
     "spritesheet-canvas": "^1.0.2",
     "stats.js": "^0.17.0"
   },
