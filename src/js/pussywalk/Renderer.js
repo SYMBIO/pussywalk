@@ -73,7 +73,7 @@ export default class Renderer {
       this.texturesConfig[name] = textureConfig
     }
 
-    debugger
+    //debugger
     this.showBodyMod(false)
   }
 

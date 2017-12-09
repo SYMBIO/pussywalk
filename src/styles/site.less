@@ -1,0 +1,574 @@
+* {
+	box-sizing: border-box;
+}
+html, body {
+	height: 100%;
+}
+html {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-size: 62.5%;
+}
+body {
+	background: @white;
+	color: @black;
+	.font(@barlow);
+	overflow: hidden;
+
+	&:before {
+		background: url(../images/layout/top-bg.png) repeat-x 0 0;
+		content: '';
+		display: block;
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
+}
+
+.test__layers {
+	background: white;
+	left: 100%;
+	position: absolute !important;
+	top: 0;
+
+	a {
+		display: block;
+		padding: 5px;
+	}
+
+	li {
+		margin-top: 15px;
+
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+}
+
+a {
+
+}
+a:focus, a:active {
+}
+
+// LAYOUT
+// ---------
+#app {
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+
+.logo {
+	background: url(../images/layout/logo-pussywalk-2.png) no-repeat 50% 0;
+	background-size: contain;
+	height: 100px;
+	left: 50%;
+	overflow: hidden;
+	position: absolute;
+	text-indent: 100%;
+	top: 15px;
+	transform: translateX(-50%);
+	width: 255px;
+	white-space: nowrap;
+
+	@media @phoneLand {
+		top: 20px;
+		width: 150px;
+	}	
+}
+
+.nav-link {
+	background: rgba(61, 55, 76, .8);
+	cursor: pointer;
+	filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, .4));
+	height: 35px;
+	left: 25px;
+		margin-left: -3px;
+		margin-top: -1px;
+	position: absolute;
+	top: 30px;
+	width: 50px;
+	z-index: 2;
+
+	&:before, &:after {
+		content: '';
+		display: block;
+		filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, .3));
+		position: absolute;
+	}
+	&:before {
+		border-bottom: 3px @white solid;
+		border-top: 3px @white solid;
+		bottom: 8px;
+		left: 9px;
+		right: 9px;
+		top: 8px;
+	}
+	&:after {
+		background: @white;
+		height: 3px;
+		left: 9px;
+		right: 9px;
+		top: 16px;
+	}
+}
+.nav {
+	color: @white;
+	left: 15px;
+		margin-left: -3px;
+		margin-top: -1px;
+	padding: 50px 15px 25px;
+	position: absolute;
+	top: 15px;
+	transform: translateX(-200%);
+
+	&:before {
+		background: rgba(63, 52, 77, .8);
+		mix-blend-mode: multiply;
+		content: '';
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 1;
+	}
+
+	> * {
+		position: relative;
+		z-index: 2;
+	}
+	
+	.btn {
+		margin-left: 4px;
+	}
+
+	&.is-active {
+		transform: translateX(0%);
+	}
+}
+.nav__list {
+	font-size: 20px;
+	line-height: 20px;
+	margin-bottom: 20px;
+	text-transform: uppercase;
+
+	li {
+		margin-top: 17px;
+
+		a {
+			color: @white;
+			display: block;
+			padding: 5px 15px 5px 50px;
+			text-decoration: none;
+
+			&:hover {
+			}
+		}
+	}	
+}
+
+.time-counter {
+	color: @white;
+	font-size: 50px;
+	line-height: 50px;
+	position: absolute;
+	right: 25px;
+	top: 25px;
+
+	@media @phoneLand {
+		font-size: 40px;
+		line-height: 40px;
+		top: 30px;
+	}
+}
+
+// layers
+.layer {
+	font-size: 0;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	text-align: center;
+	top: 0;
+	transform: translateX(-100%);
+	width: 100%;
+	z-index: 5;
+
+	&:before {
+		content: '';
+		display: inline-block;
+		height: 100%;
+		vertical-align: middle;
+		width: 0;
+	}
+
+	&.is-visible {
+		transform: translateX(0);
+	}
+}
+.layer__center {
+	display: inline-block;
+	font-size: 20px;
+	line-height: 20px;
+	max-width: 375px;
+	position: relative;
+	vertical-align: middle;
+	z-index: 2;
+}
+.layer__close {
+	background: transparent;
+	border: 0;
+	height: 22px;
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	width: 22px;
+
+	&:before, &:after {
+		background: @white;
+		content: '';
+		display: block;
+		height: 4px;
+		left: 0;
+		margin-top: -2px;
+		position: absolute;
+		top: 50%;
+		transform-origin: 11px 2px;
+		width: 22px;
+	}
+	&:before {
+		transform: rotate(-45deg);
+	}
+	&:after {
+		transform: rotate(45deg);
+	}
+}
+
+.layer--finish {
+	color: @white;
+	width: 100%;
+
+	&:after {
+		background: rgba(63, 52, 77, .67);
+		content: '';
+		display: block;
+		height: 100%;
+		left: 0;
+		mix-blend-mode: multiply;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 1;
+	}	
+}
+.finish__time {
+	color: @white;
+	font-size: 22px;
+	line-height: 22px;
+	height: 240px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	padding-top: 95px;
+	text-transform: uppercase;
+	width: 240px;
+
+	&:before {
+		background: rgba(61, 55, 76, .8);
+		border-radius: 240px;
+		mix-blend-mode: multiply;
+		content: '';
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: -1;
+	}
+	 &:after {
+		background: url(../images/layout/mission-ico.png) no-repeat 50% 50%;
+		background-size: contain;
+		content: '';
+		display: block;
+		height: 200px;
+		left: 50%;
+		position: absolute;
+		top: -70px;
+		transform: translateX(-50%);
+		width: 200px;
+	}
+
+	strong {
+		display: block;
+		font-size: 29px;
+		font-weight: normal;
+		line-height: 29px;
+		margin-bottom: 1px;
+	}
+
+	> span {
+		display: block;
+		font-size: 18px;
+		line-height: 18px;
+		margin-top: 13px;
+		text-transform: none;
+	}
+}
+.finish__form {
+	margin-top: 25px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 260px;
+
+	label {
+		font-size: 20px;
+		font-weight: normal;
+		line-height: 20px;
+		margin-bottom: 35px;
+		text-align: left;
+	}
+
+	input[type=text] {
+		width: 100%;
+	}
+
+	.btn {
+		margin-top: 17px;
+		width: 100%;
+	}
+}
+
+.layer--scoreboard {
+	color: @white;
+	width: 100%;
+
+	.layer__center {
+		max-width: 380px;
+		padding: 50px 25px 25px;
+
+		&:after {
+			background: rgba(63, 52, 77, .67);
+			content: '';
+			display: block;
+			height: 100%;
+			left: 0;
+			mix-blend-mode: multiply;
+			position: absolute;
+			top: 0;
+			width: 100%;
+			z-index: -1;
+		}
+	}
+}
+.scoreboard__list {
+	li {
+		display: flex;
+		flex-flow: row;
+		justify-content: space-between;
+	}
+
+	.username {
+		padding-right: 7px;
+	}
+
+	.time {
+		padding-left: 7px;
+		text-align: right;
+	}
+}
+
+.layer--mission {
+	p {
+		color: #3e384d;
+		color: @white;
+		font-size: 20px;
+		line-height: 22px;
+		position: absolute;
+		right: 125px;
+		text-align: right;
+		top: 30%;
+
+		strong {
+			display: block;
+		}
+
+		&:before, &:after {
+			content: '';
+			display: block;
+			height: 98px;
+			margin-left: 7px;
+			left: 100%;
+			position: absolute;
+			top: 50%;
+			width: 98px;
+		}
+		&:before {
+			background: rgba(63, 52, 77, .8);
+			border-radius: 98px 98px 0 98px;
+			mix-blend-mode: multiply;
+			transform: translateY(-50%) rotate(-45deg);
+		}
+		&:after {
+			background: url(../images/layout/mission-ico.png) no-repeat 50% 50%;
+			background-size: contain;
+			transform: translateY(-50%);
+		}
+	}
+}
+
+.layer--tutorial {
+	&:after {
+		background: rgba(63, 52, 77, .8);
+		mix-blend-mode: multiply;
+		content: '';
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 1;
+	}
+}
+.tutorial__info {
+	align-items: center;
+	bottom: 25%;
+	display: flex;
+	justify-content: center;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 2;
+
+	p {
+		color: @white;
+		font-size: 20px;
+		line-height: 28px;
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 375px;
+		text-align: center;
+
+		&:before {
+			background: url(../images/layout/tutorial-keys.png) no-repeat 50% 50%;
+			background-size: contain;
+			content: '';
+			display: block;
+			height: 105px;
+			margin-bottom: 40px;
+			margin-left: auto;
+			margin-right: auto;
+			width: 165px;
+		}
+	}
+}
+.tutorial__buttons {
+	z-index: 2;
+}
+
+// game
+#game_controls, .tutorial__buttons {
+	bottom: 0;
+	display: flex;
+	flex-flow: row;
+	height: 25%;
+	left: 0;
+	position: absolute;
+	width: 100%;
+
+	@media @phoneLand {
+		height: 22%;
+	}	
+}
+.game__key, .tutorial__button {
+	background: transparent;
+	display: block;
+	border: 0;
+	height: 100%;
+	padding-bottom: 3%;
+	padding-top: 3%;
+	position: relative;
+	width: 50%;
+
+	span {
+		border-radius: 25px;
+		color: @white;
+		display: block;
+		height: 100%;
+		margin-left: auto;
+		margin-right: auto;
+		position: relative;
+		text-align: center;
+		width: 20%;
+
+		&:after {
+			font-family: @barlow;
+			font-size: 30px;
+			left: 0;
+			position: absolute;
+			right: 0;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+	}
+
+	@media @phoneLand {
+		padding-bottom: 8%;
+		padding-top: 8%;
+
+		span {
+			border-radius: 15px;
+			width: 35%;
+		}
+	}	
+}
+.game__key {
+	span {
+		background-color: rgb(42, 37, 55);
+		box-shadow: 0 30px 90px rgba(0, 0, 0, .5);
+
+		&:before {
+			border-radius: 25px;
+			background-color: rgb(61, 55, 76);
+			bottom: 5%;
+			box-shadow: inset 0px 1px 2px 0px rgba(255, 255, 255, .5);
+			content: '';
+			display: block;
+			left: 0;
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
+	}
+
+	@media @phoneLand {
+		span {
+			&:before {
+				border-radius: 15px;
+			}
+		}
+	}	
+}
+.tutorial__button {
+	span {
+		border: 2px @white solid;
+	}
+}
+.game__key--left, .tutorial__button--left {
+	span {
+		&:after {
+			content: 'L';
+		}
+	}
+}
+.game__key--right, .tutorial__button--right {
+	span {
+		&:after {
+			content: 'R';
+		}
+	}
+}

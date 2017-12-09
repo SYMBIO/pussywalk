@@ -1,0 +1,32 @@
+// Buttons
+.btn {
+	background: @pink !important;
+	border: 0;
+	border-radius: 4px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .13), inset 0 -4px 0 0 #a13a42;
+	color: @white !important;
+	display: inline-block;
+	font-family: @barlow;
+	font-size: 15px;
+	line-height: 15px;
+	padding: 10px 23px 14px;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+.btn--pussy {
+	&:before {
+		background: url(../images/layout/logo-pussywalk-2.png) no-repeat 50% 50%;
+		background-size: contain;
+		content: '';
+		display: inline-block;
+		height: 25px;
+		margin-left: -14px;
+		margin-bottom: -4px;
+		margin-right: 9px;
+		margin-top: -6px;
+		vertical-align: top;
+		width: 60px;
+	}
+}

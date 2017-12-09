@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import * as firebase from 'firebase';
-import styles from '../styles/index.less';
+import styles from '../styles/app.less';
 import PussywalkMinigame from './pussywalk/PussywalkMinigame';
 
 let _game;
@@ -17,9 +17,22 @@ window.onload = function() {
   startGame()
 }
 
+
+function toggleLayer(layer) {
+  $(layer).togleClass('is-visible');
+}
+
+function showLayer(layer) {
+  $(layer).addClass('is-visible');
+}
+
+function hideLayer(layer) {
+  $(layer).removeClass('is-visible');
+}
+
 function initializeElements() {
   $('#name_dialogue').hide()
-  $('#scoreboard').hide()
+  //$('#scoreboard').hide()
   $('#game_controls').show()
   $('#send_name').attr("disabled", true);
 
@@ -30,7 +43,8 @@ function initializeElements() {
       username: $("#name_input").val(),
       time: _game.playTime()
     }, function(error) {
-      $('#scoreboard').show()
+      //$('#scoreboard').show()
+      showLayer('.layer--scoreboard')
     });
   })
   $('#cancel_send_name').on('click', function() {
@@ -43,10 +57,26 @@ function initializeElements() {
 
   $('#scoreboard_close').on('click', function() {
     $('#name_dialogue').hide()
-    $('#scoreboard').hide()
+    //$('#scoreboard').hide()
+    hideLayer('.layer--scoreboard');
     $('#game_controls').show()
     startGame()
   })
+
+  $('.nav-link').on('click', function(e){
+    e.preventDefault();
+
+    $('.nav').toggleClass('is-active');
+  });
+
+  $('.test__layers a').on('click', function(e){
+    e.preventDefault();
+
+    var link = $(this);
+
+    $('.nav').removeClass('is-active');
+    showLayer('.layer--' + link.data('layer'))
+  });
 }
 
 function initializeFirebase() {

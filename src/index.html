@@ -1,139 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>PussyWalk</title>
-    <meta name="title" content="PussyWalk" />
-    <meta name="description" content="PussyWalk" />
-    <meta name="keywords" content="PussyWalk, Zeman, Prasident" />
-    <meta name="author" content="" />
-    <link rel="icon" type="image/png" href="favicon.png">
-    <!--[if IE]><link rel="shortcut icon" href="favicon.ico"/><![endif]-->
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>PussyWalk</title>
+		<meta name="title" content="PussyWalk" />
+		<meta name="description" content="PussyWalk" />
+		<meta name="keywords" content="PussyWalk, Zeman, Prasident" />
+		<meta name="author" content="" />
+		<link rel="icon" type="image/png" href="favicon.png">
+		<!--[if IE]><link rel="shortcut icon" href="favicon.ico"/><![endif]-->
 
-    <meta property="og:title" content="PussyWalk – How far east can you go?">
-    <meta property="og:type" content="website">
-    <meta property="og:name" content="PussyWalk">
-    <meta property="og:url" content="http://pussywalk.com">
-    <meta property="og:description" content="Walk up straight to the crown jewels, dodge the spilled Rusoil & beware of the dangerous pussy!">
-    <meta property="og:image" content="http://pussywalk.com/img/fb-share.jpg">
+		<meta property="og:title" content="PussyWalk – How far east can you go?">
+		<meta property="og:type" content="website">
+		<meta property="og:name" content="PussyWalk">
+		<meta property="og:url" content="http://pussywalk.com">
+		<meta property="og:description" content="Walk up straight to the crown jewels, dodge the spilled Rusoil & beware of the dangerous pussy!">
+		<meta property="og:image" content="http://pussywalk.com/img/fb-share.jpg">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	
+		<!--
+		<style>
+			html, body, #app {
+				width: 100%;
+				height: 100%;
+				margin: 0px;
+				border: 0;
+				overflow: hidden;
+				display: block;
+			}
+			#game_controls {
+				position: absolute;
+				height: 100px;
+				width: 100%;
+				z-index: 1;
+				bottom: 0;
+				display: flex;
+				flex-flow: row;
+				margin: 0;
+				padding: 0;
+			}
+			#game_controls button {
+				flex-basis: 100%;
+				margin: 10px;
+			}
 
-    <style>
-      html, body, #app {
-        width: 100%;
-        height: 100%;
-        margin: 0px;
-        border: 0;
-        overflow: hidden;
-        display: block;
-      }
-      #game_controls {
-        position: absolute;
-        height: 100px;
-        width: 100%;
-        z-index: 1;
-        bottom: 0;
-        display: flex;
-        flex-flow: row;
-        margin: 0;
-        padding: 0;
-      }
-      #game_controls button {
-        flex-basis: 100%;
-        margin: 10px;
-      }
+			/* Scoreboard */
 
-      /* Scoreboard */
+			#scoreboard {
+				background: red;
+				position: absolute;
+				top: 2em;
+				left: 2em;
+				bottom: 2em;
+				right: 2em;
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-end;
+				align-items: stretch;
+			}
+			#scoreboard li {
+				display: flex;
+				background: yellow;
+			}
 
-      #scoreboard {
-        background: red;
-        position: absolute;
-        top: 2em;
-        left: 2em;
-        bottom: 2em;
-        right: 2em;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        align-items: stretch;
-      }
-      #scoreboard li {
-        display: flex;
-        background: yellow;
-      }
+			#scoreboard_top3 {
+				background: green;
+				display: flex;
+				flex-direction: row;
+				flex-grow: 0;
+				margin: 0;
+				padding: 0;
+				justify-content: space-around;
+			}
+			#scoreboard_top3 li {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			#scoreboard_top3 span {
+				display: flex;
+			}
+			#scoreboard_list {
+				background: blue;
+				display: flex;
+				flex-direction: column;
+				flex-grow: 1;
+				margin: 0;
+				padding: 0;
+				overflow: scroll;
+				flex-shrink: 100;
+			}
+			#scoreboard_list li {
+				min-height: 2em;
+				display: flex;
+				flex-direction: row;
+			}
+			#scoreboard_list .username {
+				flex-grow: 1;
+			}
 
-      #scoreboard_top3 {
-        background: green;
-        display: flex;
-        flex-direction: row;
-        flex-grow: 0;
-        margin: 0;
-        padding: 0;
-        justify-content: space-around;
-      }
-      #scoreboard_top3 li {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      #scoreboard_top3 span {
-        display: flex;
-      }
-      #scoreboard_list {
-        background: blue;
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-        margin: 0;
-        padding: 0;
-        overflow: scroll;
-        flex-shrink: 100;
-      }
-      #scoreboard_list li {
-        min-height: 2em;
-        display: flex;
-        flex-direction: row;
-      }
-      #scoreboard_list .username {
-        flex-grow: 1;
-      }
+			/* Name dialogue */
+			#name_dialogue {
+				background: red;
+				position: absolute;
+				top: 2em;
+				left: 2em;
+				bottom: 2em;
+				right: 2em;
+				min-width: 30em;
+				min-height: 20em;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
 
-      /* Name dialogue */
-      #name_dialogue {
-        background: red;
-        position: absolute;
-        top: 2em;
-        left: 2em;
-        bottom: 2em;
-        right: 2em;
-        min-width: 30em;
-        min-height: 20em;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
+			#name_dialogue p, #name_dialogue input {
+				font-size: 2em;
+				margin: 0.5em;
+				text-align: center;
+			}
 
-      #name_dialogue p, #name_dialogue input {
-        font-size: 2em;
-        margin: 0.5em;
-        text-align: center;
-      }
-
-      .buttons_container button {
-        font-size: 2em;
-        flex-direction: row;
-        margin: 1em;
-      }
-    </style>
+			.buttons_container button {
+				font-size: 2em;
+				flex-direction: row;
+				margin: 1em;
+			}
+		</style>
+		-->
 
 	<!-- <link rel="shortcut icon" href="/img/16x16px-icon.jpg">
 	<script type="text/javascript">
 		function share(){
-        	ga('send', 'event', { eventCategory: 'Facebook', eventAction: 'Share', eventLabel: 'item'});
+					ga('send', 'event', { eventCategory: 'Facebook', eventAction: 'Share', eventLabel: 'item'});
 			var shareUrl = "http://www.facebook.com/sharer/sharer.php?u=www.pussywalk.com/cs";
 			window.open(shareUrl, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=585,height=368');
 		}
@@ -141,135 +143,200 @@
 
 </head>
 <body>
-    <div id="app">
-      <div id="name_dialogue">
-        <p>What's your name, player?</p>
-        <input id="name_input" type="text" />
-        <div class="buttons_container">
-          <button id="cancel_send_name" type="button">NO</button>
-          <button id="send_name" type="button">SEND</button>
-        </div>
-      </div>
-      <div id="scoreboard">
-        <button id="scoreboard_close">X</button>
-        <ul id="scoreboard_top3">
-          <li>
-            <span class="username">Username_TOP</span>
-            <span class="time">3:41</span>
-          </li>
-          <li>
-            <span class="username">Username_TOP@@2</span>
-            <span class="time">3:41</span>
-          </li>
-          <li>
-            <span class="username">Username TOP3</span>
-            <span class="time">3:41</span>
-          </li>
-        </ul>
-        <ul id="scoreboard_list">
-          <li>
-            <span class="username">Username</span>
-            <span class="time">3:41</span>
-          </li>
-          <li>
-            <span class="username">Username</span>
-            <span class="time">3:41</span>
-          </li>
-          <li>
-            <span class="username">Username</span>
-            <span class="time">3:41</span>
-          </li>
-            <li>
-              <span class="username">Username</span>
-              <span class="time">3:41</span>
-            </li>
-            <li>
-              <span class="username">Username</span>
-              <span class="time">3:41</span>
-            </li>
-            <li>
-              <span class="username">Username</span>
-              <span class="time">3:41</span>
-            </li>
-              <li>
-                <span class="username">Username</span>
-                <span class="time">3:41</span>
-              </li>
-              <li>
-                <span class="username">Username</span>
-                <span class="time">3:41</span>
-              </li>
-              <li>
-                <span class="username">Username</span>
-                <span class="time">3:41</span>
-              </li>
-                <li>
-                  <span class="username">Username</span>
-                  <span class="time">3:41</span>
-                </li>
-                <li>
-                  <span class="username">Username</span>
-                  <span class="time">3:41</span>
-                </li>
-                <li>
-                  <span class="username">Username</span>
-                  <span class="time">3:41</span>
-                </li>
-                  <li>
-                    <span class="username">Username</span>
-                    <span class="time">3:41</span>
-                  </li>
-                  <li>
-                    <span class="username">Username</span>
-                    <span class="time">3:41</span>
-                  </li>
-                  <li>
-                    <span class="username">Username</span>
-                    <span class="time">3:41</span>
-                  </li>
-                    <li>
-                      <span class="username">Username</span>
-                      <span class="time">3:41</span>
-                    </li>
-                    <li>
-                      <span class="username">Username</span>
-                      <span class="time">3:41</span>
-                    </li>
-                    <li>
-                      <span class="username">Username</span>
-                      <span class="time">3:41</span>
-                    </li>
-                      <li>
-                        <span class="username">Username</span>
-                        <span class="time">3:41</span>
-                      </li>
-                      <li>
-                        <span class="username">Username</span>
-                        <span class="time">3:41</span>
-                      </li>
-                      <li>
-                        <span class="username">Username</span>
-                        <span class="time">3:41</span>
-                      </li>
-                        <li>
-                          <span class="username">Username</span>
-                          <span class="time">3:41</span>
-                        </li>
-                        <li>
-                          <span class="username">Username</span>
-                          <span class="time">3:41</span>
-                        </li>
-                        <li>
-                          <span class="username">Username</span>
-                          <span class="time">3:41</span>
-                        </li>
-        </ul>
-      </div>
-      <div id="game_controls">
-        <button class="game__key game__key--left">Left leg - merge branch</button>
-        <button class="game__key game__key--right">Right leg - merge branch</button>
-      </div>
-      <div class="game__scene" />
-    </div>
+	<div id="app">
+		<div id="name_dialogue">
+			<p>What's your name, player?</p>
+			<input id="name_input" type="text" />
+			<div class="buttons_container">
+				<button id="cancel_send_name" type="button">NO</button>
+				<button id="send_name" type="button">SEND</button>
+			</div>
+		</div>
+
+		<h1 class="logo">PUSSYWALK 2</h1>
+
+		<div class="nav-link"></div>
+		<div class="nav">
+			<ul class="nav__list">
+				<li><a Href="">Restart</a></li>
+				<li><a Href="">Sdílej</a></li>
+				<li><a Href="">Zvuk ON</a></li>
+				<li><a Href="">Žebříček</a></li>
+				<li><a Href="">Koho zabít?</a></li>
+				<li><a Href="">PUSSYWALK 1.</a></li>
+			</ul>
+
+			<a href="" class="btn btn--pussy">MERCH</a>
+
+			<ul class="test__layers">
+				<li><a href="" data-layer="tutorial">tutorial</a></li>
+				<li><a href="" data-layer="finish">finish</a></li>
+				<li><a href="" data-layer="scoreboard">score</a></li>
+			</ul>
+		</div>
+
+		<div id="time" class="time-counter">0:65</div>
+
+		<div id="game_controls">
+			<button class="game__key game__key--left"><span></span></button>
+			<button class="game__key game__key--right"><span></span></button>
+		</div>
+
+		<div class="layer layer--tutorial">
+			<div class="tutorial__info">
+				<p>Na desktopu použijte k chůzi směrové klávesy.<br>Na device virtuální L a R klávesy</p>
+			</div>
+
+			<div class="tutorial__buttons">
+				<span class="tutorial__button tutorial__button--left"><span></span></span>
+				<span class="tutorial__button tutorial__button--right"><span></span></span>
+			</div>
+		</div>
+
+		<div class="layer layer--mission">
+			<p><strong>MISE 2.</strong> DOJDI K URNĚ</p>
+		</div>
+
+		<div class="layer layer--finish">
+			<div class="layer__center">
+				<p class="finish__time">
+					<strong>Gratulujeme</strong> došel jsi k urně!
+
+					<span>v čase 5min. a 36s.</span>
+				</p>
+
+				<div class="finish__form">
+					<label for="">Níže vyplň své jméno a budeš zapsán do tabulky výtezů. Za odměnu tě pak čeká skladké překvapení...</label>
+
+					<input type="text">
+
+					<button class="btn">Pokračuj ></button>
+				</div>
+			</div>
+		</div>
+
+		<div class="layer layer--scoreboard">
+			<div class="layer__center">
+				<button id="scoreboard_close" class="layer__close"></button>
+
+				<div id="scoreboard">
+					<ul id="scoreboard_top3" class="scoreboard__list">
+						<li>
+							<span class="username">Username_TOP</span>
+							<span class="time">3:41</span>
+						</li>
+						<li>
+							<span class="username">Username_TOP@@2</span>
+							<span class="time">3:41</span>
+						</li>
+						<li>
+							<span class="username">Username TOP3</span>
+							<span class="time">3:41</span>
+						</li>
+					</ul>
+					<ul id="scoreboard_list" class="scoreboard__list">
+						<li>
+							<span class="username">Username</span>
+							<span class="time">3:41</span>
+						</li>
+						<li>
+							<span class="username">Username</span>
+							<span class="time">3:41</span>
+						</li>
+						<li>
+							<span class="username">Username</span>
+							<span class="time">3:41</span>
+						</li>
+							<li>
+								<span class="username">Username</span>
+								<span class="time">3:41</span>
+							</li>
+							<li>
+								<span class="username">Username</span>
+								<span class="time">3:41</span>
+							</li>
+							<li>
+								<span class="username">Username</span>
+								<span class="time">3:41</span>
+							</li>
+								<li>
+									<span class="username">Username</span>
+									<span class="time">3:41</span>
+								</li>
+								<li>
+									<span class="username">Username</span>
+									<span class="time">3:41</span>
+								</li>
+								<li>
+									<span class="username">Username</span>
+									<span class="time">3:41</span>
+								</li>
+									<li>
+										<span class="username">Username</span>
+										<span class="time">3:41</span>
+									</li>
+									<li>
+										<span class="username">Username</span>
+										<span class="time">3:41</span>
+									</li>
+									<li>
+										<span class="username">Username</span>
+										<span class="time">3:41</span>
+									</li>
+										<li>
+											<span class="username">Username</span>
+											<span class="time">3:41</span>
+										</li>
+										<li>
+											<span class="username">Username</span>
+											<span class="time">3:41</span>
+										</li>
+										<li>
+											<span class="username">Username</span>
+											<span class="time">3:41</span>
+										</li>
+											<li>
+												<span class="username">Username</span>
+												<span class="time">3:41</span>
+											</li>
+											<li>
+												<span class="username">Username</span>
+												<span class="time">3:41</span>
+											</li>
+											<li>
+												<span class="username">Username</span>
+												<span class="time">3:41</span>
+											</li>
+												<li>
+													<span class="username">Username</span>
+													<span class="time">3:41</span>
+												</li>
+												<li>
+													<span class="username">Username</span>
+													<span class="time">3:41</span>
+												</li>
+												<li>
+													<span class="username">Username</span>
+													<span class="time">3:41</span>
+												</li>
+													<li>
+														<span class="username">Username</span>
+														<span class="time">3:41</span>
+													</li>
+													<li>
+														<span class="username">Username</span>
+														<span class="time">3:41</span>
+													</li>
+													<li>
+														<span class="username">Username</span>
+														<span class="time">3:41</span>
+													</li>
+					</ul>
+				</div>				
+			</div>			
+		</div>
+
+		<div class="game__scene"></div>
+	</div>
 </body>
 </html>
