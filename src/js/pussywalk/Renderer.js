@@ -182,6 +182,8 @@ export default class Renderer {
     canvasOffset.x = Math.max(0, Math.round(canvasOffset.x))
     canvasOffset.y = Math.min(0, Math.round(canvasOffset.y))
 
+    canvasOffset.x = Math.min(canvasOffset.x, 11736 * this.scale - this.canvas.width)
+
     this.context.setTransform(1, 0, 0, 1, 0, 0);
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.context.translate(-canvasOffset.x, canvasOffset.y);
