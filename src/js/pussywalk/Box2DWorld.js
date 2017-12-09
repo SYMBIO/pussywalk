@@ -22,6 +22,7 @@ export default class Box2DWorld {
 
     this.renderer = null
     this.audioPlayer = null
+    this.jointsToDestroy = []
 
     var gravity = new Box2D.b2Vec2(0.0, -10.0);
     this.world = new Box2D.b2World(gravity);
@@ -156,8 +157,36 @@ export default class Box2DWorld {
     let that = this;
     var _end = ["hand_front_top", "hand_back_top", "leg_front_tie", "leg_back_tie", "body", "head", "sheep_body"];
     let contactListener = new Box2D.JSContactListener();
+    contactListener.PreSolve = function(contactPtr) {
+
+      let contact = Box2D.wrapPointer(contactPtr, Box2D.b2Contact),
+        bA = contact.GetFixtureA().GetBody(),
+        bB = contact.GetFixtureB().GetBody();
+      var bottle = null
+
+      if (bA.name.indexOf("decor_becherovka_") == 0) {
+        bottle = bA
+      }
+
+      if (bB.name.indexOf("decor_becherovka_") == 0) {
+        bottle = bB
+      }
+
+      if (bottle && bottle.GetLinearVelocity().Length() > 7) {
+        let i = Math.floor(Math.random() * 8)
+        let components = bA.name.split("_")
+        components.pop()
+        components.push("j" + i)
+        let jointName = components.join("_")
+
+        if (that.joints[jointName]) {
+          // that.world.DestroyJoint(that.joints[jointName]);
+          that.jointsToDestroy = [that.joints[jointName]]
+          delete that.joints[jointName]
+        }
+      }
+    };
     contactListener.PostSolve = function() {};
-    contactListener.PreSolve = function() {};
     contactListener.EndContact = function() {};
     contactListener.BeginContact = function(contactPtr) {
 
@@ -200,9 +229,9 @@ export default class Box2DWorld {
         impact = bB.GetLinearVelocity().Length()
       }
 
-      // if (_floor.indexOf(bB.name) != -1 && bA.name.indexOf("leg_shoe_") == 0) {
-      //   impact = bA.GetLinearVelocity().Length()
-      // }
+      if (_floor.indexOf(bB.name) != -1 && bA.name.indexOf("leg_shoe_") == 0) {
+        impact = bA.GetLinearVelocity().Length()
+      }
 
       if (impact > 3) {
         that.audioPlayer.playStep(impact / 20)
@@ -292,6 +321,15 @@ export default class Box2DWorld {
 
     // Phyics
     if (!this.pausePhysics) {
+
+      if (this.jointsToDestroy) {
+        for (var i = 0; i < this.jointsToDestroy.length; i++) {
+          this.world.DestroyJoint(this.jointsToDestroy[i])
+        }
+
+        this.jointsToDestroy = null
+      }
+
       let now = new Date().getTime();
       this.fps.dt = (now - this.fps.time) / 1000;
 

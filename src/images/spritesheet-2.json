@@ -2,7 +2,7 @@
 
 "elements/chair_0.png":
 {
-	"frame": {"x":271,"y":1,"w":226,"h":454},
+	"frame": {"x":501,"y":1,"w":226,"h":454},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":226,"h":454},
@@ -11,7 +11,7 @@
 },
 "elements/chair_1.png":
 {
-	"frame": {"x":499,"y":1,"w":228,"h":454},
+	"frame": {"x":271,"y":1,"w":228,"h":454},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":228,"h":454},
@@ -70,6 +70,6 @@
 	"format": "RGBA4444",
 	"size": {"w":966,"h":1004},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:631c080cd5ba6738097c509bef118c84:0b5be578f08b2514fe7393b2490c3b08:437812c7aaf83c13766b896da552d169$"
+	"smartupdate": "$TexturePacker:SmartUpdate:a6d28509d803813cba46c5a47a8523af:3ee1c2a86ad8692868005b041725d302:437812c7aaf83c13766b896da552d169$"
 }
 }

@@ -254,17 +254,6 @@ export default class Renderer {
     this.context.fillStyle = "#FFF"
     this.context.fillText(Math.round(percentage) + '%', x, y);
 
-    this.context.drawImage(this.vignette,
-      0,
-      0,
-      300,
-      300,
-      canvasOffset.x,
-      -canvasOffset.y,
-      this.context.canvas.width,
-      this.context.canvas.height
-    )
-
     this.context.drawImage(this.furniceWall,
       0,
       0,
@@ -276,7 +265,16 @@ export default class Renderer {
       938 * this.scale
     )
 
-
+    this.context.drawImage(this.vignette,
+      0,
+      0,
+      300,
+      300,
+      canvasOffset.x,
+      -canvasOffset.y,
+      this.context.canvas.width,
+      this.context.canvas.height
+    )
 
     // Debug draw
 

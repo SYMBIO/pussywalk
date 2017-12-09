@@ -17,22 +17,141 @@ exports.texturesConfig = [
     body: "decor_bear",
     asset: "elements/bear.png"
   },
+  // Bottles
+
+
   {
-    body: "decor_becherovka_0",
-    asset: "elements/becherovka.png"
+    body: "decor_becherovka_0_p0",
+    asset: "elements/bottle/bottle_piece_01.png"
   },
   {
-    body: "decor_becherovka_1",
-    asset: "elements/becherovka.png"
+    body: "decor_becherovka_0_p1",
+    asset: "elements/bottle/bottle_piece_02.png"
   },
   {
-    body: "decor_becherovka_2",
-    asset: "elements/becherovka.png"
+    body: "decor_becherovka_0_p2",
+    asset: "elements/bottle/bottle_piece_03.png"
   },
   {
-    body: "decor_becherovka_3",
-    asset: "elements/becherovka.png"
+    body: "decor_becherovka_0_p4",
+    asset: "elements/bottle/bottle_piece_04.png"
   },
+  {
+    body: "decor_becherovka_0_p3",
+    asset: "elements/bottle/bottle_piece_05.png"
+  },
+  {
+    body: "decor_becherovka_0_p5",
+    asset: "elements/bottle/bottle_piece_07.png"
+  },
+  {
+    body: "decor_becherovka_0_p6",
+    asset: "elements/bottle/bottle_piece_08.png"
+  },
+  {
+    body: "decor_becherovka_0_p7",
+    asset: "elements/bottle/bottle_piece_09.png"
+  },
+
+  {
+    body: "decor_becherovka_1_p0",
+    asset: "elements/bottle/bottle_piece_01.png"
+  },
+  {
+    body: "decor_becherovka_1_p1",
+    asset: "elements/bottle/bottle_piece_02.png"
+  },
+  {
+    body: "decor_becherovka_1_p2",
+    asset: "elements/bottle/bottle_piece_03.png"
+  },
+  {
+    body: "decor_becherovka_1_p4",
+    asset: "elements/bottle/bottle_piece_04.png"
+  },
+  {
+    body: "decor_becherovka_1_p3",
+    asset: "elements/bottle/bottle_piece_05.png"
+  },
+  {
+    body: "decor_becherovka_1_p5",
+    asset: "elements/bottle/bottle_piece_07.png"
+  },
+  {
+    body: "decor_becherovka_1_p6",
+    asset: "elements/bottle/bottle_piece_08.png"
+  },
+  {
+    body: "decor_becherovka_1_p7",
+    asset: "elements/bottle/bottle_piece_09.png"
+  },
+
+  {
+    body: "decor_becherovka_2_p0",
+    asset: "elements/bottle/bottle_piece_01.png"
+  },
+  {
+    body: "decor_becherovka_2_p1",
+    asset: "elements/bottle/bottle_piece_02.png"
+  },
+  {
+    body: "decor_becherovka_2_p2",
+    asset: "elements/bottle/bottle_piece_03.png"
+  },
+  {
+    body: "decor_becherovka_2_p4",
+    asset: "elements/bottle/bottle_piece_04.png"
+  },
+  {
+    body: "decor_becherovka_2_p3",
+    asset: "elements/bottle/bottle_piece_05.png"
+  },
+  {
+    body: "decor_becherovka_2_p5",
+    asset: "elements/bottle/bottle_piece_07.png"
+  },
+  {
+    body: "decor_becherovka_2_p6",
+    asset: "elements/bottle/bottle_piece_08.png"
+  },
+  {
+    body: "decor_becherovka_2_p7",
+    asset: "elements/bottle/bottle_piece_09.png"
+  },
+
+  {
+    body: "decor_becherovka_3_p0",
+    asset: "elements/bottle/bottle_piece_01.png"
+  },
+  {
+    body: "decor_becherovka_3_p1",
+    asset: "elements/bottle/bottle_piece_02.png"
+  },
+  {
+    body: "decor_becherovka_3_p2",
+    asset: "elements/bottle/bottle_piece_03.png"
+  },
+  {
+    body: "decor_becherovka_3_p4",
+    asset: "elements/bottle/bottle_piece_04.png"
+  },
+  {
+    body: "decor_becherovka_3_p3",
+    asset: "elements/bottle/bottle_piece_05.png"
+  },
+  {
+    body: "decor_becherovka_3_p5",
+    asset: "elements/bottle/bottle_piece_07.png"
+  },
+  {
+    body: "decor_becherovka_3_p6",
+    asset: "elements/bottle/bottle_piece_08.png"
+  },
+  {
+    body: "decor_becherovka_3_p7",
+    asset: "elements/bottle/bottle_piece_09.png"
+  },
+
   // Hospital table
   {
     body: "decor_table_0",
