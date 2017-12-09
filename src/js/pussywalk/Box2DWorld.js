@@ -146,12 +146,12 @@ export default class Box2DWorld {
 
     $('.game__key').on('touchstart mousedown', (e) => {
       e.preventDefault();
-      this.handleArrows($(e.target).hasClass('game__key--right') ? 39 : 37, true);
+      this.handleArrows($(e.target).hasClass('game__key--right') || $(e.target).parent().hasClass('game__key--right') ? 39 : 37, true);
     });
 
     $('.game__key').on('touchend touchcancel mouseup', (e) => {
       e.preventDefault();
-      this.handleArrows($(e.target).hasClass('game__key--right') ? 39 : 37, false);
+      this.handleArrows($(e.target).hasClass('game__key--right') || $(e.target).parent().hasClass('game__key--right') ? 39 : 37, false);
     });
 
     let that = this;
