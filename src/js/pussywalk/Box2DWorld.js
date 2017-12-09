@@ -162,17 +162,20 @@ export default class Box2DWorld {
       let contact = Box2D.wrapPointer(contactPtr, Box2D.b2Contact),
         bA = contact.GetFixtureA().GetBody(),
         bB = contact.GetFixtureB().GetBody();
-      var bottle = null
+      var bottle
+      var otherObject
 
       if (bA.name.indexOf("decor_becherovka_") == 0) {
         bottle = bA
+        otherObject = bB
       }
 
       if (bB.name.indexOf("decor_becherovka_") == 0) {
         bottle = bB
+        otherObject = bA
       }
 
-      if (bottle && bottle.GetLinearVelocity().Length() > 7) {
+      if (bottle && (bottle.GetLinearVelocity().Length() - otherObject.GetLinearVelocity().Length()) > 7) {
         let i = Math.floor(Math.random() * 8)
         let components = bA.name.split("_")
         components.pop()
