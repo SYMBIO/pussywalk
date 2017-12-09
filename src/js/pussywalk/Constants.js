@@ -330,10 +330,6 @@ exports.texturesConfig = [
     body: "decor_table_4",
     asset: "elements/table_1.png"
   },
-  {
-    body: "decor_vaze",
-    asset: "elements/vaze.png"
-  },
 
   // Pencils
   {

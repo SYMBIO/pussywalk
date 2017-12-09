@@ -165,6 +165,18 @@ export default class Box2DWorld {
       var bottle
       var otherObject
 
+      if (bA.name == "decor_monitor" && Constants.bodyparts.indexOf(bB.name) != -1) {
+        that.renderer.setState({
+          renderPorn: false
+        })
+      }
+
+      if (bB.name == "decor_monitor" && Constants.bodyparts.indexOf(bA.name) != -1) {
+        that.renderer.setState({
+          renderPorn: false
+        })
+      }
+
       if (bA.name.indexOf("decor_becherovka_") == 0) {
         bottle = bA
         otherObject = bB

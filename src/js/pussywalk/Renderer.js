@@ -19,6 +19,7 @@ export default class Renderer {
     this.scale = 1
     this.state = {}
     this.frameCounter = 0
+    this.renderPorn = true
 
     this.vignette = new Image()
     this.vignette.src = "images/misc/vignette.png"
@@ -130,6 +131,10 @@ export default class Renderer {
 
         this.showBodyMod(true)
       }
+      if (key == "renderPorn") {
+        this.renderPorn = state[key]
+      }
+
     }
   }
 
@@ -324,6 +329,41 @@ export default class Renderer {
     this.context.fillStyle = "#FFF"
     this.context.fillText(Math.round(percentage) + '%', x, y);
 
+    // Porn
+    if (this.renderPorn) {
+      let body = this.bodies["decor_monitor"];
+      let index = Math.floor(this.frameCounter / 8) + 1
+      console.log(index);
+      let imageConfig = this.imagesConfig["porn/porn_0" + index + ".png"]
+      let position = {
+        x: body.GetPosition().get_x() * this.physicsScale * this.scale,
+        y: -body.GetPosition().get_y() * this.physicsScale * this.scale
+      }
+
+      let offset = {
+        x: -imageConfig.frame.w / 4 * this.scale - 17,
+        y: -imageConfig.frame.h / 4 * this.scale - 40,
+      }
+      let angle = -body.GetAngle()
+
+      this.context.translate(position.x, position.y);
+      this.context.rotate(angle)
+
+      this.context.drawImage(imageConfig.image,
+        imageConfig.frame.x,
+        imageConfig.frame.y,
+        imageConfig.frame.w,
+        imageConfig.frame.h,
+        offset.x,
+        offset.y,
+        imageConfig.frame.w * this.scale,
+        imageConfig.frame.h * this.scale
+      )
+
+      this.context.rotate(-angle)
+      this.context.translate(-position.x, -position.y);
+    }
+
     this.context.drawImage(this.furniceWall,
       0,
       0,
@@ -426,9 +466,6 @@ export default class Renderer {
       879 * this.scale * 2,
       831 * this.scale * 2,
     )
-
-
-
 
     this.context.globalCompositeOperation = "source-over"
 

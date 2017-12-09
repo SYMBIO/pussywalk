@@ -751,19 +751,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../images/spritesheet_sources/elements/vaze.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>22,66,44,131</rect>
-                <key>scale9Paddings</key>
-                <rect>22,66,44,131</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">../images/spritesheet_sources/elements/walking_stick.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -1160,6 +1147,22 @@
                 <rect>75,105,150,210</rect>
                 <key>scale9Paddings</key>
                 <rect>75,105,150,210</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/porn/porn_01.png</key>
+            <key type="filename">../images/spritesheet_sources/porn/porn_02.png</key>
+            <key type="filename">../images/spritesheet_sources/porn/porn_03.png</key>
+            <key type="filename">../images/spritesheet_sources/porn/porn_04.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>34,36,69,71</rect>
+                <key>scale9Paddings</key>
+                <rect>34,36,69,71</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
