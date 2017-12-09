@@ -721,7 +721,11 @@ export default class Box2DWorld {
   }
 
   softReset() {
-    let resetPoint = this.sheepPickupPoint.x < this.progress ? this.sheepPickupPoint : this.startPoint
+    let resetPoint = {
+      x: 160,
+      y: -16
+    }
+    // let resetPoint = this.sheepPickupPoint.x < this.progress ? this.sheepPickupPoint : this.startPoint
     this.prepareForReset()
     this.lastCheckpoint = resetPoint
     this.resetPlayerToCheckpoint()

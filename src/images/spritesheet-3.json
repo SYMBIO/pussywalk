@@ -1,12 +1,57 @@
 {"frames": {
 
-"elements/poll_elevator.png":
+"figure/outlines/out_torso.png":
 {
-	"frame": {"x":1,"y":1,"w":690,"h":1042},
+	"frame": {"x":1,"y":1,"w":268,"h":400},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":690,"h":1042},
-	"sourceSize": {"w":690,"h":1042},
+	"spriteSourceSize": {"x":0,"y":0,"w":268,"h":400},
+	"sourceSize": {"w":268,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"furnace/furnace_0.jpg":
+{
+	"frame": {"x":271,"y":1,"w":300,"h":420},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":420},
+	"sourceSize": {"w":300,"h":420},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"furnace/furnace_1.jpg":
+{
+	"frame": {"x":573,"y":1,"w":300,"h":420},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":420},
+	"sourceSize": {"w":300,"h":420},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"furnace/furnace_7.jpg":
+{
+	"frame": {"x":1,"y":423,"w":300,"h":420},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":420},
+	"sourceSize": {"w":300,"h":420},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"furnace/furnace_8.jpg":
+{
+	"frame": {"x":303,"y":423,"w":300,"h":420},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":420},
+	"sourceSize": {"w":300,"h":420},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"furnace/furnace_9.jpg":
+{
+	"frame": {"x":605,"y":423,"w":300,"h":420},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":420},
+	"sourceSize": {"w":300,"h":420},
 	"pivot": {"x":0.5,"y":0.5}
 }},
 "meta": {
@@ -14,8 +59,8 @@
 	"version": "1.0",
 	"image": "spritesheet-3.png",
 	"format": "RGBA4444",
-	"size": {"w":692,"h":1044},
+	"size": {"w":906,"h":844},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:a6d28509d803813cba46c5a47a8523af:3ee1c2a86ad8692868005b041725d302:437812c7aaf83c13766b896da552d169$"
+	"smartupdate": "$TexturePacker:SmartUpdate:2691e6545097c6addc19e9e305fe8474:e2b9a6e5fb77b09fdb87c571e2af749a:5c062e2031ec4b4ae19fd922ec239988$"
 }
 }

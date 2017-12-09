@@ -36,7 +36,7 @@ const resizeCanvas = () => {
     htmlCanvas.style.height = window.innerHeight + "px";
 
     // (pixel density) * (figure to scene ratio) * (default graphics in 2x res.)
-    _renderer.scale = (dpr / bsr) * (window.innerHeight / 500) / 2;
+    _renderer.scale = (dpr / bsr) * (window.innerHeight / 500) / 3;
   }
 }
 

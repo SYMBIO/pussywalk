@@ -212,19 +212,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../images/spritesheet_sources/elements/becherovka.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>16,38,31,76</rect>
-                <key>scale9Paddings</key>
-                <rect>16,38,31,76</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
             <key type="filename">../images/spritesheet_sources/elements/book_0.png</key>
             <key type="filename">../images/spritesheet_sources/elements/book_1.png</key>
             <key type="filename">../images/spritesheet_sources/elements/book_2.png</key>
@@ -237,6 +224,110 @@
                 <rect>24,5,48,10</rect>
                 <key>scale9Paddings</key>
                 <rect>24,5,48,10</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/bottle/bottle_piece_01.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>6,10,13,21</rect>
+                <key>scale9Paddings</key>
+                <rect>6,10,13,21</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/bottle/bottle_piece_02.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>11,10,22,20</rect>
+                <key>scale9Paddings</key>
+                <rect>11,10,22,20</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/bottle/bottle_piece_03.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>12,12,24,24</rect>
+                <key>scale9Paddings</key>
+                <rect>12,12,24,24</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/bottle/bottle_piece_04.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>8,14,17,27</rect>
+                <key>scale9Paddings</key>
+                <rect>8,14,17,27</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/bottle/bottle_piece_05.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>10,14,20,29</rect>
+                <key>scale9Paddings</key>
+                <rect>10,14,20,29</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/bottle/bottle_piece_07.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>11,11,21,23</rect>
+                <key>scale9Paddings</key>
+                <rect>11,11,21,23</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/bottle/bottle_piece_08.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>9,9,19,18</rect>
+                <key>scale9Paddings</key>
+                <rect>9,9,19,18</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/bottle/bottle_piece_09.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>8,11,16,22</rect>
+                <key>scale9Paddings</key>
+                <rect>8,11,16,22</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -1027,6 +1118,102 @@
                 <rect>62,95,124,190</rect>
                 <key>scale9Paddings</key>
                 <rect>62,95,124,190</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_0.jpg</key>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_1.jpg</key>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_10.jpg</key>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_11.jpg</key>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_12.jpg</key>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_13.jpg</key>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_14.jpg</key>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_15.jpg</key>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_16.jpg</key>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_17.jpg</key>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_18.jpg</key>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_19.jpg</key>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_2.jpg</key>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_20.jpg</key>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_21.jpg</key>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_22.jpg</key>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_23.jpg</key>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_24.jpg</key>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_25.jpg</key>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_26.jpg</key>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_27.jpg</key>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_28.jpg</key>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_29.jpg</key>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_3.jpg</key>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_4.jpg</key>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_5.jpg</key>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_6.jpg</key>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_7.jpg</key>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_8.jpg</key>
+            <key type="filename">../images/spritesheet_sources/furnace/furnace_9.jpg</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>75,105,150,210</rect>
+                <key>scale9Paddings</key>
+                <rect>75,105,150,210</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/shower/shower_0.png</key>
+            <key type="filename">../images/spritesheet_sources/shower/shower_10.png</key>
+            <key type="filename">../images/spritesheet_sources/shower/shower_12.png</key>
+            <key type="filename">../images/spritesheet_sources/shower/shower_14.png</key>
+            <key type="filename">../images/spritesheet_sources/shower/shower_16.png</key>
+            <key type="filename">../images/spritesheet_sources/shower/shower_18.png</key>
+            <key type="filename">../images/spritesheet_sources/shower/shower_2.png</key>
+            <key type="filename">../images/spritesheet_sources/shower/shower_20.png</key>
+            <key type="filename">../images/spritesheet_sources/shower/shower_22.png</key>
+            <key type="filename">../images/spritesheet_sources/shower/shower_24.png</key>
+            <key type="filename">../images/spritesheet_sources/shower/shower_26.png</key>
+            <key type="filename">../images/spritesheet_sources/shower/shower_28.png</key>
+            <key type="filename">../images/spritesheet_sources/shower/shower_4.png</key>
+            <key type="filename">../images/spritesheet_sources/shower/shower_6.png</key>
+            <key type="filename">../images/spritesheet_sources/shower/shower_8.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>80,75,160,150</rect>
+                <key>scale9Paddings</key>
+                <rect>80,75,160,150</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/shower/shower_1.png</key>
+            <key type="filename">../images/spritesheet_sources/shower/shower_11.png</key>
+            <key type="filename">../images/spritesheet_sources/shower/shower_13.png</key>
+            <key type="filename">../images/spritesheet_sources/shower/shower_15.png</key>
+            <key type="filename">../images/spritesheet_sources/shower/shower_17.png</key>
+            <key type="filename">../images/spritesheet_sources/shower/shower_19.png</key>
+            <key type="filename">../images/spritesheet_sources/shower/shower_21.png</key>
+            <key type="filename">../images/spritesheet_sources/shower/shower_23.png</key>
+            <key type="filename">../images/spritesheet_sources/shower/shower_25.png</key>
+            <key type="filename">../images/spritesheet_sources/shower/shower_27.png</key>
+            <key type="filename">../images/spritesheet_sources/shower/shower_29.png</key>
+            <key type="filename">../images/spritesheet_sources/shower/shower_3.png</key>
+            <key type="filename">../images/spritesheet_sources/shower/shower_5.png</key>
+            <key type="filename">../images/spritesheet_sources/shower/shower_7.png</key>
+            <key type="filename">../images/spritesheet_sources/shower/shower_9.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>40,38,80,75</rect>
+                <key>scale9Paddings</key>
+                <rect>40,38,80,75</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
