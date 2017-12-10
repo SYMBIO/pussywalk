@@ -118,7 +118,6 @@
 				flex-direction: column;
 				justify-content: center;
 				align-items: center;
-				z-index: 999;
 			}
 
 			#name_dialogue p, #name_dialogue input {
@@ -152,6 +151,18 @@
 			<div class="buttons_container">
 				<button id="cancel_send_name" type="button">NO</button>
 				<button id="send_name" type="button">SEND</button>
+			</div>
+		</div>
+
+		<div class="layer layer--loading is-visible">
+			<div class="layer__center">
+				<img class="loading__logo" src="/images/layout/logo-pussywalk-2-pink.png" alt="PUSSYWALK 2">
+
+				<div class="loading__loader"><div class="loader__bar"></div></div>
+
+				<p class="loading__info"><span>Všichni jeho voliči</span> <span>k urně dojdou</span> <span>...</span></p>
+
+				<p class="loading__q">Co ty?</p>
 			</div>
 		</div>
 
