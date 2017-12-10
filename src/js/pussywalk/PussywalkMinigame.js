@@ -75,6 +75,8 @@ const initGame = () => {
   _world.renderer = _renderer
   _world.audioPlayer = _audioPlayer
 
+  _world.syncRenderer()
+
   resizeCanvas()
 
   if (!_paused) {
@@ -140,15 +142,15 @@ export default class PussywalkMinigame {
   constructor(callbacks) {
     _callbacks = callbacks;
 
-    this.startTime = new Date().getTime()
-
     $(window).resize(resizeCanvas)
 
-    loadJSON();
-  }
+    this.onTick = this.onTick.bind(this)
 
-  playTime() {
-    return new Date().getTime() - this.startTime;
+    this.updateInterval = setInterval(this.onTick, 1000)
+    this.lastTickTime = new Date()
+    this.playTime = 0
+
+    loadJSON();
   }
 
   init() {}
@@ -170,9 +172,28 @@ export default class PussywalkMinigame {
     }
   }
 
+  onTick() {
+    let now = new Date().getTime()
+    let delta = now - this.lastTickTime
+    this.lastTickTime = now
+    if (!_paused) {
+      this.playTime += delta
+
+      console.log(this.playTime);
+
+      if (_callbacks.onTick) {
+        _callbacks.onTick(this.playTime)
+      }
+    }
+  }
+
   dispose() {
 
     $(window).off("resize");
+
+    if (this.updateInterval) {
+      clearInterval(this.updateInterval)
+    }
 
     if (_enterFrame) {
       window.cancelAnimationFrame(_enterFrame);

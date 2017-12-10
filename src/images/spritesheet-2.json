@@ -2,7 +2,7 @@
 
 "elements/table_0.png":
 {
-	"frame": {"x":327,"y":331,"w":282,"h":332},
+	"frame": {"x":153,"y":331,"w":282,"h":332},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":282,"h":332},
@@ -11,7 +11,7 @@
 },
 "elements/table_1.png":
 {
-	"frame": {"x":1,"y":331,"w":324,"h":332},
+	"frame": {"x":437,"y":331,"w":324,"h":332},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":324,"h":332},
@@ -20,7 +20,7 @@
 },
 "elements/umbrella.png":
 {
-	"frame": {"x":260,"y":696,"w":84,"h":378},
+	"frame": {"x":1,"y":683,"w":84,"h":378},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":84,"h":378},
@@ -38,7 +38,7 @@
 },
 "figure/dressed/leg_thigh_back.png":
 {
-	"frame": {"x":611,"y":331,"w":115,"h":350},
+	"frame": {"x":763,"y":331,"w":115,"h":350},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":115,"h":350},
@@ -56,20 +56,11 @@
 },
 "figure/dressed/mod/torso.png":
 {
-	"frame": {"x":1,"y":696,"w":257,"h":363},
+	"frame": {"x":337,"y":683,"w":264,"h":381},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":257,"h":363},
-	"sourceSize": {"w":257,"h":363},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"figure/dressed/torso.png":
-{
-	"frame": {"x":728,"y":331,"w":257,"h":363},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":257,"h":363},
-	"sourceSize": {"w":257,"h":363},
+	"spriteSourceSize": {"x":0,"y":0,"w":264,"h":381},
+	"sourceSize": {"w":264,"h":381},
 	"pivot": {"x":0.5,"y":0.5}
 },
 "figure/naked/leg_thigh_back.png":
@@ -83,7 +74,7 @@
 },
 "figure/naked/leg_thigh_top.png":
 {
-	"frame": {"x":798,"y":1,"w":150,"h":328},
+	"frame": {"x":1,"y":331,"w":150,"h":328},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":328},
@@ -92,7 +83,7 @@
 },
 "figure/naked/mod/torso.png":
 {
-	"frame": {"x":596,"y":696,"w":250,"h":382},
+	"frame": {"x":603,"y":683,"w":250,"h":382},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":382},
@@ -101,7 +92,7 @@
 },
 "figure/naked/torso.png":
 {
-	"frame": {"x":346,"y":696,"w":248,"h":380},
+	"frame": {"x":87,"y":683,"w":248,"h":380},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":248,"h":380},
@@ -122,8 +113,8 @@
 	"version": "1.0",
 	"image": "spritesheet-2.png",
 	"format": "RGBA4444",
-	"size": {"w":986,"h":1079},
+	"size": {"w":879,"h":1066},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:42c5f16f1c331e9efd92e86890136a63:38215eb7ad1206b3be5a6122ab9505bf:5c062e2031ec4b4ae19fd922ec239988$"
+	"smartupdate": "$TexturePacker:SmartUpdate:6eaf6a218c0f6913315a79a1fb1916bb:e65e4f8d10cae5ff1a25fadcc4d8fd1e:5c062e2031ec4b4ae19fd922ec239988$"
 }
 }

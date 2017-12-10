@@ -97,6 +97,8 @@ export default class Box2DWorld {
       y: 27.7
     }]
 
+    this.visibleLifes = this.lifePickupPoints
+
     this.progressPoints = this.progressPoints.concat(this.lifePickupPoints)
 
     this.lastCheckpoint = this.checkpoints[0]
@@ -313,6 +315,12 @@ export default class Box2DWorld {
     this.resetPlayer()
   }
 
+  syncRenderer() {
+    this.renderer.setState({
+      visibleLifes: this.visibleLifes
+    })
+  }
+
   addEndListener(callback) {
     this.EndListener = callback;
   }
@@ -439,11 +447,21 @@ export default class Box2DWorld {
 
       this.recorder.removedBackSlipper = true
     }
+
     if (value == this.sheepPickupPoint) {
       this.renderer.setState({
         sheep: true
       })
     }
+
+    if (this.visibleLifes.indexOf(value) != -1) {
+      let idx = this.visibleLifes.indexOf(value)
+      this.visibleLifes.splice(idx, 1)
+      this.renderer.setState({
+        visibleLifes: this.visibleLifes
+      })
+    }
+
     if (this.checkpoints.indexOf(value) != -1) {
       this.lastCheckpoint = value
       // this.gameHistory.push(this.recorder)

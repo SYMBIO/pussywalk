@@ -22,9 +22,13 @@ export default class Renderer {
     this.frameCounter = 0
     this.renderPorn = true
     this.isShowingBodyMod = false
+    this.visibleLifes = []
 
     this.vignette = new Image()
     this.vignette.src = "images/misc/vignette.png"
+
+    this.furniceWall = new Image()
+    this.furniceWall.src = "images/level/furnice_wall.jpg"
 
     this.render = this.render.bind(this)
     this.drawTexture = this.drawTexture.bind(this)
@@ -35,8 +39,7 @@ export default class Renderer {
     this.prepareTextures()
 
     this.eyeball = this.imagesConfig["elements/eyeball.png"]
-    this.furniceWall = new Image()
-    this.furniceWall.src = "images/level/furnice_wall.jpg"
+    this.pillbottle = this.imagesConfig["elements/pill_bottle.png"]
   }
 
   prepareLights() {
@@ -155,8 +158,6 @@ export default class Renderer {
 
   setState(state) {
     for (let key in state) {
-      // this.state[key] = state[key]
-
       switch (key) {
         case "sheep":
           this.flash()
@@ -168,6 +169,10 @@ export default class Renderer {
         case "naked":
           this.showNakedBody(state[key])
           break;
+        case "visibleLifes":
+          this.visibleLifes = state[key]
+          this.flash()
+          break
       }
 
     }
@@ -211,8 +216,6 @@ export default class Renderer {
       "body_collar_mod"
     ]
 
-    debugger
-
     for (var idx in normalPartNames) {
       if (this.figureConfig[this.figurePrefix + normalPartNames[idx]]) {
         this.figureConfig[this.figurePrefix + normalPartNames[idx]].visible = !show
@@ -232,10 +235,10 @@ export default class Renderer {
       body.GetPosition().get_x() * this.physicsScale * this.scale,
       -body.GetPosition().get_y() * this.physicsScale * this.scale
     )
-    this.texturesConfig["flash"] = flashTexture
+    this.flashTexture = flashTexture
     let that = this
     flashTexture.completionBlock = function() {
-      delete that.texturesConfig["flash"]
+      that.flashTexture = null
     }
   }
 
@@ -284,7 +287,7 @@ export default class Renderer {
 
     // Shower
 
-    let idx = Math.floor(this.frameCounter)
+    let idx = (this.frameCounter % 30)
     let showerImage = this.imagesConfig['shower/shower_' + idx + '.png']
     if (showerImage) {
       this.context.drawImage(showerImage.image,
@@ -370,7 +373,6 @@ export default class Renderer {
         this.eyeball.frame.w,
         this.eyeball.frame.h
       )
-      // this.context.drawImage(this.eyeball, percent * 10, 0)
       this.context.translate(-position.x, -position.y);
     }
 
@@ -402,7 +404,7 @@ export default class Renderer {
     // Porn
     if (this.renderPorn) {
       let body = this.bodies["decor_monitor"];
-      let index = Math.floor(this.frameCounter / 8) + 1
+      let index = Math.floor((this.frameCounter / 20) % 4) + 1
       let imageConfig = this.imagesConfig["porn/porn_0" + index + ".png"]
       let position = {
         x: body.GetPosition().get_x() * this.physicsScale * this.scale,
@@ -433,6 +435,21 @@ export default class Renderer {
       this.context.translate(-position.x, -position.y);
     }
 
+    // Draw the pills
+    let delta = Math.sin(this.frameCounter / 10) * 10
+    for (var i in this.visibleLifes) {
+      this.context.drawImage(this.pillbottle.image,
+        this.pillbottle.frame.x,
+        this.pillbottle.frame.y,
+        this.pillbottle.frame.w,
+        this.pillbottle.frame.h,
+        (this.visibleLifes[i].x * this.physicsScale) * this.scale,
+        (-this.visibleLifes[i].y * this.physicsScale + delta) * this.scale,
+        this.pillbottle.frame.w * this.scale / 2,
+        this.pillbottle.frame.h * this.scale / 2
+      )
+    }
+
     // Draw figure
     for (var i in this.activeFigureConfig) {
       let figureConfig = this.activeFigureConfig[i]
@@ -443,6 +460,10 @@ export default class Renderer {
         continue
       }
       this.drawTexture(figureConfig)
+    }
+
+    if (this.flashTexture) {
+      this.drawTexture(this.flashTexture)
     }
 
     this.context.drawImage(this.furniceWall,
@@ -562,11 +583,7 @@ export default class Renderer {
       this.context.canvas.height
     )
 
-    this.frameCounter += 0.5
-
-    if (this.frameCounter == 30) {
-      this.frameCounter = 0
-    }
+    this.frameCounter += 1
 
     // Debug draw
 
