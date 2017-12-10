@@ -81,8 +81,23 @@ export default class Box2DWorld {
     this.progressPoints = [
       this.frontSlipperDropPoint,
       this.backSlipperDropPoint,
-      this.sheepPickupPoint
+      this.sheepPickupPoint,
     ]
+    this.lifePickupPoints = [{
+      x: 42,
+      y: -19
+    }, {
+      x: 68,
+      y: -18
+    }, {
+      x: 91.6,
+      y: -19.5
+    }, {
+      x: 127,
+      y: 27.7
+    }]
+
+    this.progressPoints = this.progressPoints.concat(this.lifePickupPoints)
 
     this.lastCheckpoint = this.checkpoints[0]
     this.startState = []

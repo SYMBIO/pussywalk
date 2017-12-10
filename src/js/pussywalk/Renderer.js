@@ -194,7 +194,11 @@ export default class Renderer {
 
     this.isShowingBodyMod = show
 
-    let normalPartNames = ["head", "body"]
+    let normalPartNames = [
+      "head",
+      "body",
+      "body_collar"
+    ]
     let moddedPartNames = [
       "body_mod",
       "head_mod",
@@ -204,17 +208,21 @@ export default class Renderer {
       "sheep_chain",
       "sheep_udder",
       "sheep_head",
-      "outline_sheep_body",
-      "outline_sheep_head",
-      "outline_sheep_leg"
+      "body_collar_mod"
     ]
 
+    debugger
+
     for (var idx in normalPartNames) {
-      this.figureConfig[this.figurePrefix + normalPartNames[idx]].visible = !show
+      if (this.figureConfig[this.figurePrefix + normalPartNames[idx]]) {
+        this.figureConfig[this.figurePrefix + normalPartNames[idx]].visible = !show
+      }
     }
 
     for (var idx in moddedPartNames) {
-      this.figureConfig[this.figurePrefix + moddedPartNames[idx]].visible = show
+      if (this.figureConfig[this.figurePrefix + moddedPartNames[idx]]) {
+        this.figureConfig[this.figurePrefix + moddedPartNames[idx]].visible = show
+      }
     }
   }
 
