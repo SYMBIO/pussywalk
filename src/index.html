@@ -94,28 +94,10 @@
 				<p><strong>MISE 2.</strong> DOJDI K URNĚ</p>
 			</div>
 		</div>
-
-		<div class="layer layer--name">
-			<div class="layer__content">
-				<div class="layer__center">
-					<div id="name_dialogue">
-						<label for="name_input">What's your name, player?</label>
-
-						<input id="name_input" type="text" />
-
-						<div class="buttons_container">
-							<button id="send_name" type="button" class="btn">SEND</button>
-
-							<div><button id="cancel_send_name" type="button">NO</button></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
+		
 		<div class="layer layer--finish">
 			<div class="layer__content">
-				<div class="layer__center">
+				<div id="name_dialogue" class="layer__center">
 					<p class="finish__time">
 						<strong>Gratulujeme</strong> došel jsi k urně!
 
@@ -123,11 +105,13 @@
 					</p>
 
 					<div class="finish__form">
-						<label for="">Níže vyplň své jméno a budeš zapsán do tabulky výtezů. Za odměnu tě pak čeká skladké překvapení...</label>
+						<label for="name_input">Níže vyplň své jméno a budeš zapsán do tabulky výtezů. Za odměnu tě pak čeká skladké překvapení...</label>
 
-						<input type="text">
+						<input id="name_input" type="text">
 
-						<button class="btn">Pokračuj ></button>
+						<button id="send_name" class="btn">Pokračuj ></button>
+
+						<div><button id="cancel_send_name" type="button">NO</button></div>
 					</div>
 				</div>
 			</div>

@@ -67,7 +67,6 @@ let loader = assetsLoader({
   })
   .on('progress', function(progress) {
     let percentage = (progress * 100).toFixed() + '%';
-    console.log(percentage);
     $('.loader__bar').css({
       'transform': 'translateX(' + percentage + ')'
     })
@@ -94,12 +93,8 @@ window.onload = function() {
   startGame()
 }
 
-
-function toggleLayer(layer) {
-  $(layer).togleClass('is-visible');
-}
-
 function showLayer(layer) {
+  $('.layer').removeClass('is-visible');
   $(layer).addClass('is-visible');
 }
 
@@ -115,7 +110,7 @@ function initializeElements() {
 
   $('#send_name').on('click', function() {
     //$('#name_dialogue').hide()
-    hideLayer('.layer--name');
+    hideLayer('.layer--finish');
 
     firebase.database().ref('scoreboard').push({
       username: $("#name_input").val(),
@@ -127,7 +122,7 @@ function initializeElements() {
   })
   $('#cancel_send_name').on('click', function() {
     //$('#name_dialogue').hide()
-    hideLayer('.layer--name');
+    hideLayer('.layer--finish');
     startGame()
   })
   $('#name_input').on('input', function() {
@@ -136,7 +131,7 @@ function initializeElements() {
 
   $('#scoreboard_close').on('click', function() {
     //$('#name_dialogue').hide()
-    hideLayer('.layer--name');
+    hideLayer('.layer--finish');
     //$('#scoreboard').hide()
     hideLayer('.layer--scoreboard');
     $('#game_controls').show()
@@ -222,15 +217,13 @@ function onTick(time) {
     time = spanWrap(hours) + ':' + spanWrap(minutes) + ':' + spanWrap(seconds);
   }
 
-  console.log(time)
-
   $('#time').html(time);
 }
 
 function onGameEnd(didWin) {
   if (didWin) {
     //$('#name_dialogue').show()
-    showLayer('.layer--name');
+    showLayer('.layer--finish');
     $('#game_controls').hide()
   } else {
     startGame()
