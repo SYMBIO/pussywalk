@@ -839,19 +839,137 @@ a:focus, a:active {
 	z-index: 2;
 }
 
+/*
+1:1
+5:4
+4:3
+3:2
+16:9
+3:1
+*/
+/*
+body {
+	&:after {
+		background: white;
+		color: black;
+		content: 'nic';
+		display: block;
+		font-size: 20px;
+		line-height: 20px;
+		left: 20px;
+		padding: 20px;
+		position: absolute;
+		top: 20px;
+		z-index: 1000;
+	}
+
+	@media screen and (min-aspect-ratio: 1/1) {
+		&:after {
+			content: '1:1';
+		}
+	}
+
+	@media screen and (min-aspect-ratio: 5/4) {
+		&:after {
+			content: '5:4';
+		}
+	}
+
+	@media screen and (min-aspect-ratio: 4/3) {
+		&:after {
+			content: '4:3';
+		}
+	}
+
+	@media screen and (min-aspect-ratio: 3/2) {
+		&:after {
+			content: '3:2';
+		}
+	}
+
+	@media screen and (min-aspect-ratio: 16/9) {
+		&:after {
+			content: '16:9';
+		}
+	}
+
+	@media screen and (min-aspect-ratio: 3/1) {
+		&:after {
+			content: '3:1';
+		}
+	}
+
+	@media screen and (max-aspect-ratio: 3/4) {
+		&:after {
+			content: '3:4';
+		}
+	}
+
+	@media screen and (max-aspect-ratio: 2/3) {
+		&:after {
+			content: '2:3';
+		}
+	}
+
+	@media screen and (max-aspect-ratio: 9/16) {
+		&:after {
+			content: '16:9';
+		}
+	}
+}
+*/
+
 // game
 #game_controls, .tutorial__buttons {
+	//outline: 10px red solid;
 	bottom: 0;
 	display: flex;
 	flex-flow: row;
-	height: 25%;
+	height: 37%;
 	left: 0;
 	position: absolute;
 	width: 100%;
 
+	@media screen and (min-aspect-ratio: 1/1) {
+		height: 30%;
+	}
+
+	@media screen and (min-aspect-ratio: 5/4) {
+	}
+
+	@media screen and (min-aspect-ratio: 4/3) {
+		height: 32%;
+	}
+
+	@media screen and (min-aspect-ratio: 3/2) {
+		height: 30%;
+	}
+
+	@media screen and (min-aspect-ratio: 16/9) {
+		height: 35%;
+	}
+
+	@media screen and (min-aspect-ratio: 3/1) {
+		height: 55%;
+	}
+
+	@media screen and (max-aspect-ratio: 3/4) {
+		height: 31%;
+	}
+
+	@media screen and (max-aspect-ratio: 2/3) {
+		height: 30%;
+	}
+
+	@media screen and (max-aspect-ratio: 9/16) {
+		height: 33%;
+	}
+
+	/*
 	@media @phoneLand {
 		height: 22%;
-	}	
+	}
+	*/	
 }
 .game__key, .tutorial__button {
 	background: transparent;
@@ -885,6 +1003,73 @@ a:focus, a:active {
 		}
 	}
 
+
+	@media screen and (min-aspect-ratio: 1/1) {
+		span {
+			width: 30%;
+		}
+	}
+
+	@media screen and (min-aspect-ratio: 5/4) {
+		span {
+			width: 25%;
+		}
+	}
+
+	@media screen and (min-aspect-ratio: 4/3) {
+		span {
+			width: 23%;
+		}
+	}
+
+	@media screen and (min-aspect-ratio: 3/2) {
+		span {
+			width: 20%;
+		}
+	}
+
+	@media screen and (min-aspect-ratio: 16/9) {
+		span {
+			width: 18%;
+		}
+	}
+
+	@media screen and (min-aspect-ratio: 3/1) {
+		span {
+			border-radius: 15px;
+			width: 14%;
+		}
+	}
+
+	@media screen and (max-aspect-ratio: 3/4) {
+		padding-bottom: 8%;
+		padding-top: 8%;
+
+		span {
+			width: 35%;
+		}
+	}
+
+	@media screen and (max-aspect-ratio: 2/3) {
+		padding-bottom: 10%;
+		padding-top: 10%;
+
+		span {
+			border-radius: 15px;
+			width: 42%;
+		}
+	}
+
+	@media screen and (max-aspect-ratio: 9/16) {
+		padding-bottom: 10%;
+		padding-top: 10%;
+
+		span {
+			width: 55%;
+		}
+	}
+
+	/*
 	@media @phoneLand {
 		padding-bottom: 8%;
 		padding-top: 8%;
@@ -893,7 +1078,8 @@ a:focus, a:active {
 			border-radius: 15px;
 			width: 35%;
 		}
-	}	
+	}
+	*/
 }
 .game__key {
 	cursor: pointer;
@@ -915,7 +1101,24 @@ a:focus, a:active {
 			top: 0;
 		}
 	}
+	
+	@media screen and (min-aspect-ratio: 3/1) {
+		span {
+			&:before {
+				border-radius: 15px;
+			}
+		}
+	}
 
+	@media screen and (max-aspect-ratio: 2/3) {
+		span {
+			&:before {
+				border-radius: 15px;
+			}
+		}
+	}
+
+	/*
 	@media @phoneLand {
 		span {
 			&:before {
@@ -923,6 +1126,7 @@ a:focus, a:active {
 			}
 		}
 	}	
+	*/
 }
 .tutorial__button {
 	span {
