@@ -309,6 +309,12 @@ export default class Box2DWorld {
   handleArrows(keyCode, state) {
     this.keymap[keyCode] = state;
 
+    if (keyCode == 78 && state) {
+      this.renderer.setState({
+        naked: !this.renderer.isNaked()
+      })
+    }
+
     if (keyCode == 80 && state) {
       this.softReset()
     }

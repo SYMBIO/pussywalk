@@ -1,62 +1,53 @@
 {"frames": {
 
-"elements/chair_0.png":
-{
-	"frame": {"x":533,"y":1,"w":226,"h":454},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":226,"h":454},
-	"sourceSize": {"w":226,"h":454},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"elements/chair_1.png":
-{
-	"frame": {"x":303,"y":1,"w":228,"h":454},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":228,"h":454},
-	"sourceSize": {"w":228,"h":454},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"elements/chair_2.png":
-{
-	"frame": {"x":761,"y":1,"w":236,"h":458},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":236,"h":458},
-	"sourceSize": {"w":236,"h":458},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"elements/hospital_table.png":
-{
-	"frame": {"x":1,"y":461,"w":314,"h":514},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":314,"h":514},
-	"sourceSize": {"w":314,"h":514},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"elements/mr_p.png":
-{
-	"frame": {"x":414,"y":461,"w":346,"h":542},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":346,"h":542},
-	"sourceSize": {"w":346,"h":542},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"elements/walking_stick.png":
-{
-	"frame": {"x":317,"y":461,"w":95,"h":515},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":95,"h":515},
-	"sourceSize": {"w":95,"h":515},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"furnace/furnace_3.jpg":
+"furnace/furnace_9.jpg":
 {
 	"frame": {"x":1,"y":1,"w":300,"h":420},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":420},
+	"sourceSize": {"w":300,"h":420},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"furnace/furnace_22.jpg":
+{
+	"frame": {"x":303,"y":1,"w":300,"h":420},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":420},
+	"sourceSize": {"w":300,"h":420},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"furnace/furnace_23.jpg":
+{
+	"frame": {"x":605,"y":1,"w":300,"h":420},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":420},
+	"sourceSize": {"w":300,"h":420},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"furnace/furnace_24.jpg":
+{
+	"frame": {"x":1,"y":423,"w":300,"h":420},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":420},
+	"sourceSize": {"w":300,"h":420},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"furnace/furnace_27.jpg":
+{
+	"frame": {"x":303,"y":423,"w":300,"h":420},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":420},
+	"sourceSize": {"w":300,"h":420},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"furnace/furnace_28.jpg":
+{
+	"frame": {"x":605,"y":423,"w":300,"h":420},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":420},
@@ -68,8 +59,8 @@
 	"version": "1.0",
 	"image": "spritesheet-8.png",
 	"format": "RGBA4444",
-	"size": {"w":998,"h":1004},
+	"size": {"w":906,"h":844},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:2b11d79b8f88ddc2d023b74b1b72b85c:94fa84b2829806aa02c1f1903fcdf7f2:5c062e2031ec4b4ae19fd922ec239988$"
+	"smartupdate": "$TexturePacker:SmartUpdate:020ab6510ffbe66c39c029db61c47b92:790ec602b370993ab3de659253b9c2cb:a4494b6b450e444f7292d27a016d4f9e$"
 }
 }

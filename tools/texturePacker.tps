@@ -474,6 +474,19 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../images/spritesheet_sources/elements/flusher_handle.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>5,14,9,27</rect>
+                <key>scale9Paddings</key>
+                <rect>5,14,9,27</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../images/spritesheet_sources/elements/hospital_table.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -764,8 +777,293 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../images/spritesheet_sources/figure/hand_lower_back.png</key>
-            <key type="filename">../images/spritesheet_sources/figure/hand_lower_top.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/dressed/hand_lower_back.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>19,69,38,138</rect>
+                <key>scale9Paddings</key>
+                <rect>19,69,38,138</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/figure/dressed/hand_lower_top.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>38,82,76,164</rect>
+                <key>scale9Paddings</key>
+                <rect>38,82,76,164</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/figure/dressed/hand_upper_top.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>26,53,52,106</rect>
+                <key>scale9Paddings</key>
+                <rect>26,53,52,106</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/figure/dressed/head.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>47,74,94,148</rect>
+                <key>scale9Paddings</key>
+                <rect>47,74,94,148</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/figure/dressed/jacket_mask.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/dressed/mod/jacket_mask.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>38,48,76,97</rect>
+                <key>scale9Paddings</key>
+                <rect>38,48,76,97</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/figure/dressed/leg_calf_back.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>20,58,40,116</rect>
+                <key>scale9Paddings</key>
+                <rect>20,58,40,116</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/figure/dressed/leg_calf_top.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>20,57,40,113</rect>
+                <key>scale9Paddings</key>
+                <rect>20,57,40,113</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/figure/dressed/leg_heel_top.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>36,15,72,30</rect>
+                <key>scale9Paddings</key>
+                <rect>36,15,72,30</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/figure/dressed/leg_thigh_back.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>22,88,45,175</rect>
+                <key>scale9Paddings</key>
+                <rect>22,88,45,175</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/figure/dressed/leg_thigh_top.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>36,81,72,161</rect>
+                <key>scale9Paddings</key>
+                <rect>36,81,72,161</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/figure/dressed/mod/torso.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/dressed/torso.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>64,91,129,182</rect>
+                <key>scale9Paddings</key>
+                <rect>64,91,129,182</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/figure/dressed/outlines/out_hand_lower_back.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/outlines/outline_hand_lower_back.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>22,72,44,144</rect>
+                <key>scale9Paddings</key>
+                <rect>22,72,44,144</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/figure/dressed/outlines/out_hand_lower_top.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/outlines/outline_hand_lower_top.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>41,85,82,170</rect>
+                <key>scale9Paddings</key>
+                <rect>41,85,82,170</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/figure/dressed/outlines/out_hand_upper_top.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/outlines/outline_hand_upper_top.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>29,56,58,112</rect>
+                <key>scale9Paddings</key>
+                <rect>29,56,58,112</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/figure/dressed/outlines/out_head.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/outlines/outline_head.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>50,77,100,154</rect>
+                <key>scale9Paddings</key>
+                <rect>50,77,100,154</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/figure/dressed/outlines/out_leg_calf_back.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/outlines/outline_leg_calf_back.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>23,61,46,122</rect>
+                <key>scale9Paddings</key>
+                <rect>23,61,46,122</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/figure/dressed/outlines/out_leg_calf_top.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/outlines/outline_leg_calf_top.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>23,60,46,119</rect>
+                <key>scale9Paddings</key>
+                <rect>23,60,46,119</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/figure/dressed/outlines/out_leg_heel_top.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/outlines/outline_leg_heel_top.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>39,18,78,36</rect>
+                <key>scale9Paddings</key>
+                <rect>39,18,78,36</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/figure/dressed/outlines/out_leg_thigh_back.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/outlines/outline_leg_thigh_back.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>25,91,51,182</rect>
+                <key>scale9Paddings</key>
+                <rect>25,91,51,182</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/figure/dressed/outlines/out_leg_thigh_top.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/outlines/outline_leg_thigh_top.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>39,84,78,167</rect>
+                <key>scale9Paddings</key>
+                <rect>39,84,78,167</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/figure/dressed/outlines/out_torso.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/outlines/outline_torso.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>68,94,135,188</rect>
+                <key>scale9Paddings</key>
+                <rect>68,94,135,188</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/figure/naked/hand_lower_back.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/hand_lower_top.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -778,8 +1076,8 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../images/spritesheet_sources/figure/hand_upper_back.png</key>
-            <key type="filename">../images/spritesheet_sources/figure/hand_upper_top.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/hand_upper_back.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/hand_upper_top.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -792,7 +1090,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../images/spritesheet_sources/figure/head.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/head.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -805,8 +1103,8 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../images/spritesheet_sources/figure/leg_calf_back.png</key>
-            <key type="filename">../images/spritesheet_sources/figure/leg_calf_top.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/leg_calf_back.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/leg_calf_top.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -819,8 +1117,8 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../images/spritesheet_sources/figure/leg_heel_back.png</key>
-            <key type="filename">../images/spritesheet_sources/figure/leg_heel_top.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/leg_heel_back.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/leg_heel_top.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -833,8 +1131,8 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../images/spritesheet_sources/figure/leg_thigh_back.png</key>
-            <key type="filename">../images/spritesheet_sources/figure/leg_thigh_top.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/leg_thigh_back.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/leg_thigh_top.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -847,7 +1145,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../images/spritesheet_sources/figure/mod/head.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/mod/head.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -860,7 +1158,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../images/spritesheet_sources/figure/mod/torso.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/mod/torso.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -873,7 +1171,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../images/spritesheet_sources/figure/outlines/out_head.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/outlines/out_head.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -886,7 +1184,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../images/spritesheet_sources/figure/outlines/out_leg_calf.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/outlines/out_leg_calf.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -899,7 +1197,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../images/spritesheet_sources/figure/outlines/out_leg_heel.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/outlines/out_leg_heel.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -912,7 +1210,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../images/spritesheet_sources/figure/outlines/out_leg_thigh.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/outlines/out_leg_thigh.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -925,7 +1223,8 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../images/spritesheet_sources/figure/outlines/out_slipper.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/outlines/out_slipper.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/outlines/outline_slipper.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -938,7 +1237,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../images/spritesheet_sources/figure/outlines/out_torso.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/outlines/out_torso.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -951,7 +1250,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../images/spritesheet_sources/figure/penis_square.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/penis_square.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -961,6 +1260,33 @@
                 <rect>35,26,70,52</rect>
                 <key>scale9Paddings</key>
                 <rect>35,26,70,52</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/figure/naked/slipper_back.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/slipper_top.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>41,21,82,42</rect>
+                <key>scale9Paddings</key>
+                <rect>41,21,82,42</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/figure/naked/torso.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>62,95,124,190</rect>
+                <key>scale9Paddings</key>
+                <rect>62,95,124,190</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -1078,33 +1404,6 @@
                 <rect>29,32,58,64</rect>
                 <key>scale9Paddings</key>
                 <rect>29,32,58,64</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../images/spritesheet_sources/figure/slipper_back.png</key>
-            <key type="filename">../images/spritesheet_sources/figure/slipper_top.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>41,21,82,42</rect>
-                <key>scale9Paddings</key>
-                <rect>41,21,82,42</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../images/spritesheet_sources/figure/torso.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>62,95,124,190</rect>
-                <key>scale9Paddings</key>
-                <rect>62,95,124,190</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

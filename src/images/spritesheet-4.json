@@ -1,33 +1,33 @@
 {"frames": {
 
-"furnace/furnace_12.jpg":
+"figure/naked/mod/torso.png":
 {
-	"frame": {"x":1,"y":1,"w":300,"h":420},
+	"frame": {"x":1,"y":1,"w":250,"h":382},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":250,"h":382},
+	"sourceSize": {"w":250,"h":382},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"figure/naked/outlines/out_torso.png":
+{
+	"frame": {"x":253,"y":1,"w":268,"h":400},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":268,"h":400},
+	"sourceSize": {"w":268,"h":400},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"furnace/furnace_5.jpg":
+{
+	"frame": {"x":523,"y":1,"w":300,"h":420},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":420},
 	"sourceSize": {"w":300,"h":420},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_14.jpg":
-{
-	"frame": {"x":303,"y":1,"w":300,"h":420},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":420},
-	"sourceSize": {"w":300,"h":420},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"furnace/furnace_20.jpg":
-{
-	"frame": {"x":605,"y":1,"w":300,"h":420},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":420},
-	"sourceSize": {"w":300,"h":420},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"furnace/furnace_22.jpg":
+"furnace/furnace_16.jpg":
 {
 	"frame": {"x":1,"y":423,"w":300,"h":420},
 	"rotated": false,
@@ -36,7 +36,7 @@
 	"sourceSize": {"w":300,"h":420},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_23.jpg":
+"furnace/furnace_18.jpg":
 {
 	"frame": {"x":303,"y":423,"w":300,"h":420},
 	"rotated": false,
@@ -45,7 +45,7 @@
 	"sourceSize": {"w":300,"h":420},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_24.jpg":
+"furnace/furnace_19.jpg":
 {
 	"frame": {"x":605,"y":423,"w":300,"h":420},
 	"rotated": false,
@@ -61,6 +61,6 @@
 	"format": "RGBA4444",
 	"size": {"w":906,"h":844},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:2b11d79b8f88ddc2d023b74b1b72b85c:94fa84b2829806aa02c1f1903fcdf7f2:5c062e2031ec4b4ae19fd922ec239988$"
+	"smartupdate": "$TexturePacker:SmartUpdate:020ab6510ffbe66c39c029db61c47b92:790ec602b370993ab3de659253b9c2cb:a4494b6b450e444f7292d27a016d4f9e$"
 }
 }

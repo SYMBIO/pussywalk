@@ -13,6 +13,7 @@ export default class Renderer {
     this.bodies = bodies
     this.levelTextures = []
     this.texturesConfig = {}
+    this.figureConfig = {}
     this.imagesConfig = {}
 
     this.physicsScale = 64
@@ -20,6 +21,7 @@ export default class Renderer {
     this.state = {}
     this.frameCounter = 0
     this.renderPorn = true
+    this.isShowingBodyMod = false
 
     this.vignette = new Image()
     this.vignette.src = "images/misc/vignette.png"
@@ -27,6 +29,7 @@ export default class Renderer {
     this.render = this.render.bind(this)
     this.drawTexture = this.drawTexture.bind(this)
     this.setState = this.setState.bind(this)
+    this.isNaked = this.isNaked.bind(this)
 
     this.prepareLights()
     this.prepareTextures()
@@ -72,7 +75,7 @@ export default class Renderer {
       this.levelTextures.push(image)
     }
 
-    // Sprite
+    // Load spritesheets
     var i = 0
     while (true) {
       let config
@@ -97,6 +100,7 @@ export default class Renderer {
       i++
     }
 
+    // Map texture configs
     for (let key in Constants.texturesConfig) {
       let textureConfig = Constants.texturesConfig[key]
       let name
@@ -120,40 +124,98 @@ export default class Renderer {
       this.texturesConfig[name] = textureConfig
     }
 
+    // Map naked body configs
+    let bodyTexturesConfig = Constants.nakedBodyTexturesConfig.concat(Constants.dressedBodyTexturesConfig)
+    for (let key in bodyTexturesConfig) {
+      let textureConfig = bodyTexturesConfig[key]
+      let name
+      if (textureConfig.name) {
+        name = textureConfig.name
+      } else {
+        if (textureConfig.body) {
+          name = textureConfig.body
+        } else {
+          name = textureConfig.asset
+        }
+      }
+
+      if (this.imagesConfig[textureConfig.asset] == null) {
+        console.log("Can't find imagesConfig element " + textureConfig.asset);
+      }
+
+      textureConfig.frame = this.imagesConfig[textureConfig.asset].frame
+      textureConfig.image = this.imagesConfig[textureConfig.asset].image
+
+      this.figureConfig[name] = textureConfig
+    }
+
+    this.showNakedBody(false)
     this.showBodyMod(false)
   }
 
   setState(state) {
     for (let key in state) {
-      this.state[key] = state[key]
-      if (key == "sheep" && state[key]) {
-        this.flash()
+      // this.state[key] = state[key]
 
-        this.showBodyMod(true)
-      }
-      if (key == "renderPorn") {
-        this.renderPorn = state[key]
+      switch (key) {
+        case "sheep":
+          this.flash()
+          this.showBodyMod(state[key])
+          break;
+        case "renderPorn":
+          this.renderPorn = state[key]
+          break;
+        case "naked":
+          this.showNakedBody(state[key])
+          break;
       }
 
     }
   }
 
+  isNaked() {
+    return this.figurePrefix == "naked_"
+  }
+
+  showNakedBody(show) {
+    this.figurePrefix = show ? "naked_" : "dressed_"
+    this.activeFigureConfig = {}
+    for (var key in this.figureConfig) {
+      let figureConfig = this.figureConfig[key]
+      if (figureConfig.name.indexOf(this.figurePrefix) == 0) {
+        this.activeFigureConfig[key] = figureConfig;
+      }
+    }
+
+    this.showBodyMod(this.isShowingBodyMod)
+  }
+
   showBodyMod(show) {
-    this.texturesConfig["head"].visible = !show
-    this.texturesConfig["body"].visible = !show
-    this.texturesConfig["body_mod"].visible = show
-    this.texturesConfig["head_mod"].visible = show
 
-    this.texturesConfig["sheep_body"].visible = show
-    this.texturesConfig["sheep_arm"].visible = show
-    this.texturesConfig["sheep_leg"].visible = show
-    this.texturesConfig["sheep_chain"].visible = show
-    this.texturesConfig["sheep_udder"].visible = show
-    this.texturesConfig["sheep_head"].visible = show
+    this.isShowingBodyMod = show
 
-    this.texturesConfig["outline_sheep_body"].visible = show
-    this.texturesConfig["outline_sheep_head"].visible = show
-    this.texturesConfig["outline_sheep_leg"].visible = show
+    let normalPartNames = ["head", "body"]
+    let moddedPartNames = [
+      "body_mod",
+      "head_mod",
+      "sheep_body",
+      "sheep_arm",
+      "sheep_leg",
+      "sheep_chain",
+      "sheep_udder",
+      "sheep_head",
+      "outline_sheep_body",
+      "outline_sheep_head",
+      "outline_sheep_leg"
+    ]
+
+    for (var idx in normalPartNames) {
+      this.figureConfig[this.figurePrefix + normalPartNames[idx]].visible = !show
+    }
+
+    for (var idx in moddedPartNames) {
+      this.figureConfig[this.figurePrefix + moddedPartNames[idx]].visible = show
+    }
   }
 
   flash() {
@@ -304,7 +366,7 @@ export default class Renderer {
       this.context.translate(-position.x, -position.y);
     }
 
-    // Draw elements incl. figure
+    // Draw elements
     for (var i in this.texturesConfig) {
       let textureConfig = this.texturesConfig[i]
       if (textureConfig == null) {
@@ -333,7 +395,6 @@ export default class Renderer {
     if (this.renderPorn) {
       let body = this.bodies["decor_monitor"];
       let index = Math.floor(this.frameCounter / 8) + 1
-      console.log(index);
       let imageConfig = this.imagesConfig["porn/porn_0" + index + ".png"]
       let position = {
         x: body.GetPosition().get_x() * this.physicsScale * this.scale,
@@ -362,6 +423,18 @@ export default class Renderer {
 
       this.context.rotate(-angle)
       this.context.translate(-position.x, -position.y);
+    }
+
+    // Draw figure
+    for (var i in this.activeFigureConfig) {
+      let figureConfig = this.activeFigureConfig[i]
+      if (figureConfig == null) {
+        debugger
+      }
+      if (figureConfig.visible == false) {
+        continue
+      }
+      this.drawTexture(figureConfig)
     }
 
     this.context.drawImage(this.furniceWall,
@@ -575,11 +648,12 @@ export default class Renderer {
   }
 
   dispose() {
-    this.world = null
-    this.canvas = null
-    this.context = null
-    this.bodies = null
-    this.levelTextures = null
-    this.texturesConfig = null
+    delete this.world
+    delete this.canvas
+    delete this.context
+    delete this.bodies
+    delete this.levelTextures
+    delete this.texturesConfig
+    delete this.figureConfig
   }
 }

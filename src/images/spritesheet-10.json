@@ -1,0 +1,21 @@
+{"frames": {
+
+"elements/poll_elevator.png":
+{
+	"frame": {"x":1,"y":1,"w":690,"h":1042},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":690,"h":1042},
+	"sourceSize": {"w":690,"h":1042},
+	"pivot": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "spritesheet-10.png",
+	"format": "RGBA4444",
+	"size": {"w":692,"h":1044},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:020ab6510ffbe66c39c029db61c47b92:790ec602b370993ab3de659253b9c2cb:a4494b6b450e444f7292d27a016d4f9e$"
+}
+}

@@ -582,92 +582,96 @@ exports.texturesConfig = [
       y: 15
     }
   },
+]
+
+exports.nakedBodyTexturesConfig = [
+
   // Body - Outlines
   {
-    name: "outline_leg_back_calf",
+    name: "naked_outline_leg_back_calf",
     body: "leg_back_calf",
-    asset: "figure/outlines/out_leg_calf.png",
+    asset: "figure/naked/outlines/out_leg_calf.png",
     offset: {
       x: 0,
       y: 10
     }
   },
   {
-    name: "outline_head",
+    name: "naked_outline_head",
     body: "head",
-    asset: "figure/outlines/out_head.png",
+    asset: "figure/naked/outlines/out_head.png",
     offset: {
       x: -12,
       y: 0
     }
   },
   {
-    name: "outline_leg_back_tie",
+    name: "naked_outline_leg_back_tie",
     body: "leg_back_tie",
-    asset: "figure/outlines/out_leg_thigh.png",
+    asset: "figure/naked/outlines/out_leg_thigh.png",
     offset: {
       x: -25,
       y: -5
     }
   },
   {
-    name: "outline_leg_shoe_back",
+    name: "naked_outline_leg_shoe_back",
     body: "leg_shoe_back",
-    asset: "figure/outlines/out_leg_heel.png",
+    asset: "figure/naked/outlines/out_leg_heel.png",
     offset: {
       x: 5,
       y: 0
     }
   },
   {
-    name: "outline_flipflop_back",
+    name: "naked_outline_flipflop_back",
     body: "flipflop_back",
-    asset: "figure/outlines/out_slipper.png",
+    asset: "figure/naked/outlines/out_slipper.png",
     offset: {
       x: 5,
       y: -3
     }
   },
   {
-    name: "outline_leg_front_calf",
+    name: "naked_outline_leg_front_calf",
     body: "leg_front_calf",
-    asset: "figure/outlines/out_leg_calf.png",
+    asset: "figure/naked/outlines/out_leg_calf.png",
     offset: {
       x: 0,
       y: 15
     }
   },
   {
-    name: "outline_leg_front_tie",
+    name: "naked_outline_leg_front_tie",
     body: "leg_front_tie",
-    asset: "figure/outlines/out_leg_thigh.png",
+    asset: "figure/naked/outlines/out_leg_thigh.png",
     offset: {
       x: -25,
       y: 0
     }
   },
   {
-    name: "outline_leg_shoe_front",
+    name: "naked_outline_leg_shoe_front",
     body: "leg_shoe_front",
-    asset: "figure/outlines/out_leg_heel.png",
+    asset: "figure/naked/outlines/out_leg_heel.png",
     offset: {
       x: 13,
       y: 5
     }
   },
   {
-    name: "outline_flipflop_front",
+    name: "naked_outline_flipflop_front",
     body: "flipflop_front",
-    asset: "figure/outlines/out_slipper.png",
+    asset: "figure/naked/outlines/out_slipper.png",
     offset: {
       x: 15,
       y: 3
     }
   },
   {
-    name: "outline_body",
+    name: "naked_outline_body",
     body: "body",
-    asset: "figure/outlines/out_torso.png",
+    asset: "figure/naked/outlines/out_torso.png",
     offset: {
       x: 0,
       y: -15
@@ -676,89 +680,99 @@ exports.texturesConfig = [
 
   // Sheep outlines
   {
-    name: "outline_sheep_body",
+    name: "naked_outline_sheep_body",
     body: "sheep_body",
     asset: "figure/sheep/sheep_body_outline.png"
   },
   {
-    name: "outline_sheep_head",
+    name: "naked_outline_sheep_head",
     body: "sheep_head",
     asset: "figure/sheep/sheep_head_outline.png"
   },
   {
-    name: "outline_sheep_leg",
+    name: "naked_outline_sheep_leg",
     body: "sheep_leg",
     asset: "figure/sheep/sheep_leg_outline.png"
   },
 
   // Body - Elements
   {
+    name: "naked_hand_back_bottom",
     body: "hand_back_bottom",
-    asset: "figure/hand_lower_back.png"
+    asset: "figure/naked/hand_lower_back.png"
   },
   {
+    name: "naked_hand_back_top",
     body: "hand_back_top",
-    asset: "figure/hand_upper_back.png"
+    asset: "figure/naked/hand_upper_back.png"
   },
   {
+    name: "naked_leg_back_calf",
     body: "leg_back_calf",
-    asset: "figure/leg_calf_back.png",
+    asset: "figure/naked/leg_calf_back.png",
     offset: {
       x: 0,
       y: 10
     }
   },
   {
+    name: "naked_leg_back_tie",
     body: "leg_back_tie",
-    asset: "figure/leg_thigh_back.png",
+    asset: "figure/naked/leg_thigh_back.png",
     offset: {
       x: -25,
       y: -5
     }
   },
   {
+    name: "naked_leg_shoe_back",
     body: "leg_shoe_back",
-    asset: "figure/leg_heel_back.png",
+    asset: "figure/naked/leg_heel_back.png",
     offset: {
       x: 5,
       y: 0
     }
   },
   {
+    name: "naked_flipflop_back",
     body: "flipflop_back",
-    asset: "figure/slipper_back.png",
+    asset: "figure/naked/slipper_back.png",
     offset: {
       x: 5,
       y: -3
     }
   },
   {
+    name: "naked_leg_front_calf",
     body: "leg_front_calf",
-    asset: "figure/leg_calf_top.png",
+    asset: "figure/naked/leg_calf_top.png",
     offset: {
       x: 0,
       y: 15
     }
   },
   {
+    name: "naked_leg_front_tie",
     body: "leg_front_tie",
-    asset: "figure/leg_thigh_top.png",
+    asset: "figure/naked/leg_thigh_top.png",
     offset: {
       x: -25,
       y: 0
     }
   },
   {
+    name: "naked_leg_shoe_front",
     body: "leg_shoe_front",
-    asset: "figure/leg_heel_top.png",
+    asset: "figure/naked/leg_heel_top.png",
     offset: {
       x: 13,
       y: 5
     }
   },
   {
+    name: "naked_flipflop_front",
     body: "flipflop_front",
-    asset: "figure/slipper_top.png",
+    asset: "figure/naked/slipper_top.png",
     offset: {
       x: 15,
       y: 3
@@ -766,76 +780,352 @@ exports.texturesConfig = [
   },
   // Sheep
   {
+    name: "naked_sheep_body",
     body: "sheep_body",
     asset: "figure/sheep/sheep_body.png"
   },
 
   // Other body parts
   {
+    name: "naked_sheep_udder",
     body: "sheep_udder",
     asset: "figure/sheep/sheep_udder.png"
   },
   {
-    name: "body_mod",
+    name: "naked_body_mod",
     body: "body",
-    asset: "figure/mod/torso.png",
+    asset: "figure/naked/mod/torso.png",
     offset: {
       x: 0,
       y: -15
     }
   },
   {
+    name: "naked_body",
     body: "body",
-    asset: "figure/torso.png",
+    asset: "figure/naked/torso.png",
     offset: {
       x: 0,
       y: -15
     }
   },
   {
+    name: "naked_head",
     body: "head",
-    asset: "figure/head.png"
+    asset: "figure/naked/head.png"
   },
   {
-    name: "head_mod",
+    name: "naked_head_mod",
     body: "head",
-    asset: "figure/mod/head.png"
+    asset: "figure/naked/mod/head.png"
   },
   {
+    name: "naked_hand_front_top",
     body: "hand_front_top",
-    asset: "figure/hand_upper_top.png",
+    asset: "figure/naked/hand_upper_top.png",
     offset: {
       x: -10,
       y: 0
     }
   },
   {
+    name: "naked_hand_front_bottom",
     body: "hand_front_bottom",
-    asset: "figure/hand_lower_top.png",
+    asset: "figure/naked/hand_lower_top.png",
     offset: {
       x: -10,
       y: 0
     }
   },
   {
+    name: "naked_johnson",
     body: "johnson",
-    asset: "figure/penis_square.png",
+    asset: "figure/naked/penis_square.png",
     fixedAngle: true
   },
   // Sheep
   {
+    name: "naked_sheep_head",
     body: "sheep_head",
     asset: "figure/sheep/sheep_head.png"
   },
   {
+    name: "naked_sheep_leg",
     body: "sheep_leg",
     asset: "figure/sheep/sheep_leg.png"
   },
   {
+    name: "naked_sheep_chain",
     body: "sheep_chain",
     asset: "figure/sheep/sheep_chain.png"
   },
   {
+    name: "naked_sheep_arm",
+    body: "sheep_arm",
+    asset: "figure/sheep/sheep_arm.png"
+  },
+]
+
+exports.dressedBodyTexturesConfig = [
+
+  // Body - Outlines
+  {
+    name: "dressed_outline_leg_back_calf",
+    body: "leg_back_calf",
+    asset: "figure/dressed/outlines/out_leg_calf_back.png",
+    offset: {
+      x: 0,
+      y: 10
+    }
+  },
+  {
+    name: "dressed_outline_head",
+    body: "head",
+    asset: "figure/dressed/outlines/out_head.png",
+    offset: {
+      x: -12,
+      y: 0
+    }
+  },
+  {
+    name: "dressed_outline_leg_back_tie",
+    body: "leg_back_tie",
+    asset: "figure/dressed/outlines/out_leg_thigh_back.png",
+    offset: {
+      x: 0,
+      y: -15
+    }
+  },
+  {
+    name: "dressed_outline_leg_shoe_back",
+    body: "leg_shoe_back",
+    asset: "figure/dressed/outlines/out_leg_heel_top.png",
+    offset: {
+      x: 5,
+      y: 0
+    }
+  },
+  {
+    name: "dressed_outline_leg_front_calf",
+    body: "leg_front_calf",
+    asset: "figure/dressed/outlines/out_leg_calf_top.png",
+    offset: {
+      x: 0,
+      y: 15
+    }
+  },
+  {
+    name: "dressed_outline_leg_front_tie",
+    body: "leg_front_tie",
+    asset: "figure/dressed/outlines/out_leg_thigh_top.png",
+    offset: {
+      x: -15,
+      y: 0
+    }
+  },
+  {
+    name: "dressed_outline_leg_shoe_front",
+    body: "leg_shoe_front",
+    asset: "figure/dressed/outlines/out_leg_heel_top.png",
+    offset: {
+      x: 13,
+      y: 5
+    }
+  },
+  {
+    name: "dressed_outline_body",
+    body: "body",
+    asset: "figure/dressed/outlines/out_torso.png",
+    offset: {
+      x: 0,
+      y: -15
+    }
+  },
+
+  // Sheep outlines
+  {
+    name: "dressed_outline_sheep_body",
+    body: "sheep_body",
+    asset: "figure/sheep/sheep_body_outline.png"
+  },
+  {
+    name: "dressed_outline_sheep_head",
+    body: "sheep_head",
+    asset: "figure/sheep/sheep_head_outline.png"
+  },
+  {
+    name: "dressed_outline_sheep_leg",
+    body: "sheep_leg",
+    asset: "figure/sheep/sheep_leg_outline.png"
+  },
+
+  // Body - Elements
+  {
+    name: "dressed_hand_back_bottom",
+    body: "hand_back_bottom",
+    asset: "figure/dressed/hand_lower_back.png"
+  },
+  {
+    name: "dressed_hand_back_top",
+    body: "hand_back_top",
+    asset: "figure/dressed/hand_upper_top.png"
+  },
+  {
+    name: "dressed_leg_back_calf",
+    body: "leg_back_calf",
+    asset: "figure/dressed/leg_calf_back.png",
+    offset: {
+      x: 0,
+      y: 10
+    }
+  },
+  {
+    name: "dressed_leg_back_tie",
+    body: "leg_back_tie",
+    asset: "figure/dressed/leg_thigh_back.png",
+    offset: {
+      x: 0,
+      y: -15
+    }
+  },
+  {
+    name: "dressed_leg_shoe_back",
+    body: "leg_shoe_back",
+    asset: "figure/dressed/leg_heel_top.png",
+    offset: {
+      x: 5,
+      y: 0
+    }
+  },
+  {
+    name: "dressed_leg_front_calf",
+    body: "leg_front_calf",
+    asset: "figure/dressed/leg_calf_top.png",
+    offset: {
+      x: 0,
+      y: 15
+    }
+  },
+  {
+    name: "dressed_leg_front_tie",
+    body: "leg_front_tie",
+    asset: "figure/dressed/leg_thigh_top.png",
+    offset: {
+      x: -15,
+      y: 0
+    }
+  },
+  {
+    name: "dressed_leg_shoe_front",
+    body: "leg_shoe_front",
+    asset: "figure/dressed/leg_heel_top.png",
+    offset: {
+      x: 13,
+      y: 5
+    }
+  },
+  // Sheep
+  {
+    name: "dressed_sheep_body",
+    body: "sheep_body",
+    asset: "figure/sheep/sheep_body.png"
+  },
+
+  // Other body parts
+  {
+    name: "dressed_sheep_udder",
+    body: "sheep_udder",
+    asset: "figure/sheep/sheep_udder.png"
+  },
+  {
+    name: "dressed_body_mod",
+    body: "body",
+    asset: "figure/dressed/mod/torso.png",
+    offset: {
+      x: 0,
+      y: -15
+    }
+  },
+  {
+    name: "dressed_body",
+    body: "body",
+    asset: "figure/dressed/torso.png",
+    offset: {
+      x: 0,
+      y: -15
+    }
+  },
+  {
+    name: "dressed_head",
+    body: "head",
+    asset: "figure/naked/head.png",
+    offset: {
+      x: -12,
+      y: 0
+    }
+  },
+  {
+    name: "dressed_dressed_head_mod",
+    name: "dressed_head_mod",
+    body: "head",
+    asset: "figure/naked/mod/head.png",
+  },
+
+  {
+    name: "dressed_body_collar",
+    body: "body",
+    asset: "figure/dressed/jacket_mask.png",
+    offset: {
+      x: 0,
+      y: -50
+    }
+  },
+  {
+    name: "dressed_body_collar_mod",
+    body: "body",
+    asset: "figure/dressed/mod/jacket_mask.png",
+    offset: {
+      x: 0,
+      y: -50
+    }
+  },
+
+  {
+    name: "dressed_hand_front_top",
+    body: "hand_front_top",
+    asset: "figure/dressed/hand_upper_top.png",
+    offset: {
+      x: -10,
+      y: 0
+    }
+  },
+  {
+    name: "dressed_hand_front_bottom",
+    body: "hand_front_bottom",
+    asset: "figure/dressed/hand_lower_top.png",
+    offset: {
+      x: -10,
+      y: 0
+    }
+  },
+  // Sheep
+  {
+    name: "dressed_sheep_head",
+    body: "sheep_head",
+    asset: "figure/sheep/sheep_head.png"
+  },
+  {
+    name: "dressed_sheep_leg",
+    body: "sheep_leg",
+    asset: "figure/sheep/sheep_leg.png"
+  },
+  {
+    name: "dressed_sheep_chain",
+    body: "sheep_chain",
+    asset: "figure/sheep/sheep_chain.png"
+  },
+  {
+    name: "dressed_sheep_arm",
     body: "sheep_arm",
     asset: "figure/sheep/sheep_arm.png"
   },
