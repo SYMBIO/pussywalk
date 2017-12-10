@@ -247,6 +247,10 @@ a:focus, a:active {
 	&:after {
 		transform: rotate(45deg);
 	}
+
+	&:hover {
+		outline: 0;
+	}
 }
 
 .layer--finish {
@@ -528,6 +532,36 @@ a:focus, a:active {
 }
 #scoreboard_list {
 	margin-top: 15px;
+}
+
+.layer--merch {
+	color: @white;
+	width: 100%;
+
+	.layer__center {
+		max-width: none;
+		padding: 52px 25px 25px 25px;
+		text-align: left;
+		width: 330px;
+
+		&:after {
+			background: rgba(63, 52, 77, .67);
+			content: '';
+			display: block;
+			height: 100%;
+			left: 0;
+			mix-blend-mode: multiply;
+			position: absolute;
+			top: 0;
+			width: 100%;
+			z-index: -1;
+		}
+	}
+
+	p {
+		font-size: 20px;
+		line-height: 20px;
+	}
 }
 
 .layer--mission {

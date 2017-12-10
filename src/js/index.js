@@ -145,7 +145,13 @@ function initializeElements() {
     $('.nav').toggleClass('is-active');
   });
 
-  $('.test__layers a').on('click', function(e){
+  $('.layer__close').on('click', function(e){
+    e.preventDefault();
+
+    hideLayer($(this).parents('.layer').eq(0));
+  });
+
+  $('.js-show-layer').on('click', function(e){
     e.preventDefault();
 
     var link = $(this);
