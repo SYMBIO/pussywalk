@@ -107,13 +107,14 @@ function hideLayer(layer) {
 }
 
 function initializeElements() {
-  $('#name_dialogue').hide()
+  //$('#name_dialogue').hide()
   //$('#scoreboard').hide()
   $('#game_controls').show()
   $('#send_name').attr("disabled", true);
 
   $('#send_name').on('click', function() {
-    $('#name_dialogue').hide()
+    //$('#name_dialogue').hide()
+    hideLayer('.layer--name');
 
     firebase.database().ref('scoreboard').push({
       username: $("#name_input").val(),
@@ -124,7 +125,8 @@ function initializeElements() {
     });
   })
   $('#cancel_send_name').on('click', function() {
-    $('#name_dialogue').hide()
+    //$('#name_dialogue').hide()
+    hideLayer('.layer--name');
     startGame()
   })
   $('#name_input').on('input', function() {
@@ -132,7 +134,8 @@ function initializeElements() {
   })
 
   $('#scoreboard_close').on('click', function() {
-    $('#name_dialogue').hide()
+    //$('#name_dialogue').hide()
+    hideLayer('.layer--name');
     //$('#scoreboard').hide()
     hideLayer('.layer--scoreboard');
     $('#game_controls').show()
@@ -200,7 +203,8 @@ function initializeFirebase() {
 
 function onGameEnd(didWin) {
   if (didWin) {
-    $('#name_dialogue').show()
+    //$('#name_dialogue').show()
+    showLayer('.layer--name');
     $('#game_controls').hide()
   } else {
     startGame()

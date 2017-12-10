@@ -20,118 +20,6 @@
 		<meta property="og:image" content="http://pussywalk.com/img/fb-share.jpg">
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	
-		<style>
-			/*
-			html, body, #app {
-				width: 100%;
-				height: 100%;
-				margin: 0px;
-				border: 0;
-				overflow: hidden;
-				display: block;
-			}
-			#game_controls {
-				position: absolute;
-				height: 100px;
-				width: 100%;
-				z-index: 1;
-				bottom: 0;
-				display: flex;
-				flex-flow: row;
-				margin: 0;
-				padding: 0;
-			}
-			#game_controls button {
-				flex-basis: 100%;
-				margin: 10px;
-			}
-			*/
-
-			/* Scoreboard */
-			/*
-			#scoreboard {
-				background: red;
-				position: absolute;
-				top: 2em;
-				left: 2em;
-				bottom: 2em;
-				right: 2em;
-				display: flex;
-				flex-direction: column;
-				justify-content: flex-end;
-				align-items: stretch;
-			}
-			#scoreboard li {
-				display: flex;
-				background: yellow;
-			}
-
-			#scoreboard_top3 {
-				background: green;
-				display: flex;
-				flex-direction: row;
-				flex-grow: 0;
-				margin: 0;
-				padding: 0;
-				justify-content: space-around;
-			}
-			#scoreboard_top3 li {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-			}
-			#scoreboard_top3 span {
-				display: flex;
-			}
-			#scoreboard_list {
-				background: blue;
-				display: flex;
-				flex-direction: column;
-				flex-grow: 1;
-				margin: 0;
-				padding: 0;
-				overflow: scroll;
-				flex-shrink: 100;
-			}
-			#scoreboard_list li {
-				min-height: 2em;
-				display: flex;
-				flex-direction: row;
-			}
-			#scoreboard_list .username {
-				flex-grow: 1;
-			}
-			*/
-
-			/* Name dialogue */
-			#name_dialogue {
-				background: red;
-				position: absolute;
-				top: 2em;
-				left: 2em;
-				bottom: 2em;
-				right: 2em;
-				min-width: 30em;
-				min-height: 20em;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-			}
-
-			#name_dialogue p, #name_dialogue input {
-				font-size: 2em;
-				margin: 0.5em;
-				text-align: center;
-			}
-
-			.buttons_container button {
-				font-size: 2em;
-				flex-direction: row;
-				margin: 1em;
-			}
-		</style>
 
 	<!-- <link rel="shortcut icon" href="/img/16x16px-icon.jpg">
 	<script type="text/javascript">
@@ -145,24 +33,17 @@
 </head>
 <body>
 	<div id="app">
-		<div id="name_dialogue">
-			<p>What's your name, player?</p>
-			<input id="name_input" type="text" />
-			<div class="buttons_container">
-				<button id="cancel_send_name" type="button">NO</button>
-				<button id="send_name" type="button">SEND</button>
-			</div>
-		</div>
-
 		<div class="layer layer--loading is-visible">
-			<div class="layer__center">
-				<img class="loading__logo" src="/images/layout/logo-pussywalk-2-pink.png" alt="PUSSYWALK 2">
+			<div class="layer__content">
+				<div class="layer__center">
+					<img class="loading__logo" src="/images/layout/logo-pussywalk-2-pink.png" alt="PUSSYWALK 2">
 
-				<div class="loading__loader"><div class="loader__bar"></div></div>
+					<div class="loading__loader"><div class="loader__bar"></div></div>
 
-				<p class="loading__info"><span>Všichni jeho voliči</span> <span>k urně dojdou</span> <span>...</span></p>
+					<p class="loading__info"><span>Všichni jeho voliči</span> <span>k urně dojdou</span> <span>...</span></p>
 
-				<p class="loading__q">Co ty?</p>
+					<p class="loading__q">Co ty?</p>
+				</div>
 			</div>
 		</div>
 
@@ -171,12 +52,12 @@
 		<div class="nav-link"></div>
 		<div class="nav">
 			<ul class="nav__list">
-				<li><a Href="">Restart</a></li>
-				<li><a Href="">Sdílej</a></li>
-				<li><a Href="">Zvuk ON</a></li>
-				<li><a Href="" data-layer="scoreboard" class="js-show-layer">Žebříček</a></li>
-				<li><a Href="">Koho zabít?</a></li>
-				<li><a Href="">PUSSYWALK 1.</a></li>
+				<li><a href="" class="nav__restart">Restart</a></li>
+				<li><a href="" class="nav__share">Sdílej</a></li>
+				<li><a href="" class="nav__sound">Zvuk ON</a></li>
+				<li><a href="" data-layer="scoreboard" class="nav__score js-show-layer">Žebříček</a></li>
+				<li><a href="" class="nav__kill">Koho zabít?</a></li>
+				<li><a href="" class="nav__game">PUSSYWALK 1.</a></li>
 			</ul>
 
 			<a href="" data-layer="merch" class="btn btn--pussy js-show-layer">MERCH</a>
@@ -196,91 +77,103 @@
 		</div>
 
 		<div class="layer layer--tutorial">
-			<div class="tutorial__info">
-				<p>Na desktopu použijte k chůzi směrové klávesy.<br>Na device virtuální L a R klávesy</p>
-			</div>
+			<div class="layer__content">
+				<div class="tutorial__info">
+					<p>Na desktopu použijte k chůzi směrové klávesy.<br>Na device virtuální L a R klávesy</p>
+				</div>
 
-			<div class="tutorial__buttons">
-				<span class="tutorial__button tutorial__button--left"><span></span></span>
-				<span class="tutorial__button tutorial__button--right"><span></span></span>
+				<div class="tutorial__buttons">
+					<span class="tutorial__button tutorial__button--left"><span></span></span>
+					<span class="tutorial__button tutorial__button--right"><span></span></span>
+				</div>
 			</div>
 		</div>
 
 		<div class="layer layer--mission">
-			<p><strong>MISE 2.</strong> DOJDI K URNĚ</p>
+			<div class="layer__content">
+				<p><strong>MISE 2.</strong> DOJDI K URNĚ</p>
+			</div>
+		</div>
+
+		<div class="layer layer--name">
+			<div class="layer__content">
+				<div class="layer__center">
+					<div id="name_dialogue">
+						<label for="name_input">What's your name, player?</label>
+
+						<input id="name_input" type="text" />
+
+						<div class="buttons_container">
+							<button id="send_name" type="button" class="btn">SEND</button>
+
+							<div><button id="cancel_send_name" type="button">NO</button></div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<div class="layer layer--finish">
-			<div class="layer__center">
-				<p class="finish__time">
-					<strong>Gratulujeme</strong> došel jsi k urně!
+			<div class="layer__content">
+				<div class="layer__center">
+					<p class="finish__time">
+						<strong>Gratulujeme</strong> došel jsi k urně!
 
-					<span>v čase 5min. a 36s.</span>
-				</p>
+						<span>v čase 5min. a 36s.</span>
+					</p>
 
-				<div class="finish__form">
-					<label for="">Níže vyplň své jméno a budeš zapsán do tabulky výtezů. Za odměnu tě pak čeká skladké překvapení...</label>
+					<div class="finish__form">
+						<label for="">Níže vyplň své jméno a budeš zapsán do tabulky výtezů. Za odměnu tě pak čeká skladké překvapení...</label>
 
-					<input type="text">
+						<input type="text">
 
-					<button class="btn">Pokračuj ></button>
+						<button class="btn">Pokračuj ></button>
+					</div>
 				</div>
 			</div>
 		</div>
 
 		<div class="layer layer--merch">
-			<div class="layer__center">
-				<button class="layer__close"></button>
+			<div class="layer__content">
+				<div class="layer__center">
+					<button class="layer__close"></button>
 
-				<p>Veškerý výdělek z této hry jde na podporu neziskové organizace Cesta domů pečující o umírající a jejich blízké.</p>
+					<p>Veškerý výdělek z této hry jde na podporu neziskové organizace Cesta domů pečující o umírající a jejich blízké.</p>
+				</div>
 			</div>
 		</div>
 
 		<div class="layer layer--scoreboard">
-			<div class="layer__center">
-				<button id="scoreboard_close" class="layer__close"></button>
+			<div class="layer__content">
+				<div class="layer__center">
+					<button id="scoreboard_close" class="layer__close"></button>
 
-				<div id="scoreboard">
-					<ul id="scoreboard_top3" class="scoreboard__list">
-						<li>
-							<span class="position">1.</span>
-							<span class="username">Username_TOP Username_TOP <span class="scoreboard__nude">NUDE</span></span>
-							<span class="time">3:41</span>
-						</li>
-						<li>
-							<span class="position">2.</span>
-							<span class="username">Username_TOP <span class="scoreboard__nude">NUDE</span></span>
-							<span class="time">3:41</span>
-						</li>
-						<li>
-							<span class="position">3.</span>
-							<span class="username">Username TOP3</span>
-							<span class="time">3:41</span>
-						</li>
-					</ul>
-					<ul id="scoreboard_list" class="scoreboard__list">
-						<li>
-							<span class="position">235.</span>
-							<span class="username">Username</span>
-							<span class="time">3:41</span>
-							<span class="share"><span></span>
-								<a href="" class="btn btn--fb">Sdílej svoje score na</a>
-							</span>
-						</li>
-						<li>
-							<span class="position">235.</span>
-							<span class="username">Username</span>
-							<span class="time">3:41</span>
-						</li>
-						<li>
-							<span class="position">235.</span>
-							<span class="username">Username</span>
-							<span class="time">3:41</span>
-						</li>
+					<div id="scoreboard">
+						<ul id="scoreboard_top3" class="scoreboard__list">
+							<li>
+								<span class="position">1.</span>
+								<span class="username">Username_TOP Username_TOP <span class="scoreboard__nude">NUDE</span></span>
+								<span class="time">3:41</span>
+							</li>
+							<li>
+								<span class="position">2.</span>
+								<span class="username">Username_TOP <span class="scoreboard__nude">NUDE</span></span>
+								<span class="time">3:41</span>
+							</li>
+							<li>
+								<span class="position">3.</span>
+								<span class="username">Username TOP3</span>
+								<span class="time">3:41</span>
+							</li>
+						</ul>
+						<ul id="scoreboard_list" class="scoreboard__list">
 							<li>
 								<span class="position">235.</span>
 								<span class="username">Username</span>
 								<span class="time">3:41</span>
+								<span class="share"><span></span>
+									<a href="" class="btn btn--fb">Sdílej svoje score na</a>
+								</span>
 							</li>
 							<li>
 								<span class="position">235.</span>
@@ -382,9 +275,25 @@
 														<span class="username">Username</span>
 														<span class="time">3:41</span>
 													</li>
-					</ul>
-				</div>				
-			</div>			
+														<li>
+															<span class="position">235.</span>
+															<span class="username">Username</span>
+															<span class="time">3:41</span>
+														</li>
+														<li>
+															<span class="position">235.</span>
+															<span class="username">Username</span>
+															<span class="time">3:41</span>
+														</li>
+														<li>
+															<span class="position">235.</span>
+															<span class="username">Username</span>
+															<span class="time">3:41</span>
+														</li>
+						</ul>
+					</div>				
+				</div>
+			</div>	
 		</div>
 
 		<div class="game__scene"></div>
