@@ -1,17 +1,17 @@
 {"frames": {
 
-"elements/table_1.png":
+"elements/table_0.png":
 {
-	"frame": {"x":1,"y":1,"w":324,"h":332},
+	"frame": {"x":1,"y":1,"w":282,"h":332},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":324,"h":332},
-	"sourceSize": {"w":324,"h":332},
+	"spriteSourceSize": {"x":0,"y":0,"w":282,"h":332},
+	"sourceSize": {"w":282,"h":332},
 	"pivot": {"x":0.5,"y":0.5}
 },
 "elements/umbrella.png":
 {
-	"frame": {"x":545,"y":707,"w":84,"h":378},
+	"frame": {"x":648,"y":707,"w":84,"h":378},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":84,"h":378},
@@ -29,7 +29,7 @@
 },
 "figure/dressed/mod/torso.png":
 {
-	"frame": {"x":264,"y":342,"w":257,"h":363},
+	"frame": {"x":626,"y":342,"w":257,"h":363},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":257,"h":363},
@@ -38,7 +38,7 @@
 },
 "figure/dressed/outlines/out_hand_lower_top.png":
 {
-	"frame": {"x":641,"y":1,"w":164,"h":339},
+	"frame": {"x":765,"y":1,"w":164,"h":339},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":164,"h":339},
@@ -47,7 +47,7 @@
 },
 "figure/dressed/outlines/out_leg_thigh_back.png":
 {
-	"frame": {"x":523,"y":342,"w":101,"h":363},
+	"frame": {"x":1,"y":707,"w":101,"h":363},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":101,"h":363},
@@ -56,7 +56,7 @@
 },
 "figure/dressed/outlines/out_leg_thigh_top.png":
 {
-	"frame": {"x":327,"y":1,"w":155,"h":334},
+	"frame": {"x":285,"y":1,"w":155,"h":334},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":155,"h":334},
@@ -65,7 +65,7 @@
 },
 "figure/dressed/outlines/out_torso.png":
 {
-	"frame": {"x":273,"y":707,"w":270,"h":375},
+	"frame": {"x":376,"y":707,"w":270,"h":375},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":270,"h":375},
@@ -74,7 +74,7 @@
 },
 "figure/dressed/torso.png":
 {
-	"frame": {"x":729,"y":342,"w":257,"h":363},
+	"frame": {"x":367,"y":342,"w":257,"h":363},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":257,"h":363},
@@ -92,7 +92,7 @@
 },
 "figure/naked/outlines/outline_hand_lower_top.png":
 {
-	"frame": {"x":807,"y":1,"w":164,"h":339},
+	"frame": {"x":599,"y":1,"w":164,"h":339},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":164,"h":339},
@@ -101,7 +101,7 @@
 },
 "figure/naked/outlines/outline_leg_thigh_back.png":
 {
-	"frame": {"x":626,"y":342,"w":101,"h":363},
+	"frame": {"x":264,"y":342,"w":101,"h":363},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":101,"h":363},
@@ -110,7 +110,7 @@
 },
 "figure/naked/outlines/outline_leg_thigh_top.png":
 {
-	"frame": {"x":484,"y":1,"w":155,"h":334},
+	"frame": {"x":442,"y":1,"w":155,"h":334},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":155,"h":334},
@@ -119,7 +119,7 @@
 },
 "figure/naked/outlines/outline_torso.png":
 {
-	"frame": {"x":1,"y":707,"w":270,"h":375},
+	"frame": {"x":104,"y":707,"w":270,"h":375},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":270,"h":375},
@@ -128,7 +128,7 @@
 },
 "figure/naked/torso.png":
 {
-	"frame": {"x":631,"y":707,"w":248,"h":380},
+	"frame": {"x":734,"y":707,"w":248,"h":380},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":248,"h":380},
@@ -140,8 +140,8 @@
 	"version": "1.0",
 	"image": "spritesheet-3.png",
 	"format": "RGBA4444",
-	"size": {"w":987,"h":1088},
+	"size": {"w":983,"h":1088},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:020ab6510ffbe66c39c029db61c47b92:790ec602b370993ab3de659253b9c2cb:a4494b6b450e444f7292d27a016d4f9e$"
+	"smartupdate": "$TexturePacker:SmartUpdate:f3dc292bfdb2f2b0d19c315443abc607:8c4140821b2d41d314fe33a1852d3d60:a4494b6b450e444f7292d27a016d4f9e$"
 }
 }

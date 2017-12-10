@@ -57,8 +57,14 @@ export default class Box2DWorld {
     this.checkpoints = [
       this.startPoint,
       {
+        x: 33,
+        y: -15.7
+      }, {
         x: 50,
         y: -15.7
+      }, {
+        x: 65,
+        y: -15
       }, {
         x: 77,
         y: -15
@@ -66,8 +72,11 @@ export default class Box2DWorld {
         x: 92,
         y: -15.7
       }, {
-        x: 140,
-        y: -20.7
+        x: 112,
+        y: -23.7
+      }, {
+        x: 137,
+        y: -23.7
       }]
     this.progressPoints = [
       this.frontSlipperDropPoint,
@@ -743,7 +752,7 @@ export default class Box2DWorld {
 
   softReset() {
     let resetPoint = {
-      x: 100,
+      x: 130,
       y: -16
     }
     // let resetPoint = this.sheepPickupPoint.x < this.progress ? this.sheepPickupPoint : this.startPoint

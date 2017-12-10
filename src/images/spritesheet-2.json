@@ -1,26 +1,17 @@
 {"frames": {
 
-"elements/table_0.png":
+"elements/table_1.png":
 {
-	"frame": {"x":1,"y":641,"w":282,"h":332},
+	"frame": {"x":604,"y":623,"w":324,"h":332},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":282,"h":332},
-	"sourceSize": {"w":282,"h":332},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"elements/trash_bin.png":
-{
-	"frame": {"x":191,"y":331,"w":196,"h":308},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":196,"h":308},
-	"sourceSize": {"w":196,"h":308},
+	"spriteSourceSize": {"x":0,"y":0,"w":324,"h":332},
+	"sourceSize": {"w":324,"h":332},
 	"pivot": {"x":0.5,"y":0.5}
 },
 "figure/dressed/hand_lower_top.png":
 {
-	"frame": {"x":562,"y":1,"w":152,"h":327},
+	"frame": {"x":146,"y":623,"w":152,"h":327},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":152,"h":327},
@@ -29,7 +20,7 @@
 },
 "figure/dressed/head.png":
 {
-	"frame": {"x":1,"y":331,"w":188,"h":296},
+	"frame": {"x":211,"y":1,"w":188,"h":296},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":188,"h":296},
@@ -38,7 +29,7 @@
 },
 "figure/dressed/leg_thigh_top.png":
 {
-	"frame": {"x":113,"y":1,"w":143,"h":322},
+	"frame": {"x":1,"y":623,"w":143,"h":322},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":143,"h":322},
@@ -47,7 +38,7 @@
 },
 "figure/dressed/outlines/out_head.png":
 {
-	"frame": {"x":389,"y":331,"w":200,"h":308},
+	"frame": {"x":229,"y":303,"w":200,"h":308},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":200,"h":308},
@@ -56,7 +47,7 @@
 },
 "figure/naked/head.png":
 {
-	"frame": {"x":716,"y":1,"w":188,"h":296},
+	"frame": {"x":401,"y":1,"w":188,"h":296},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":188,"h":296},
@@ -65,7 +56,7 @@
 },
 "figure/naked/leg_thigh_back.png":
 {
-	"frame": {"x":410,"y":1,"w":150,"h":328},
+	"frame": {"x":452,"y":623,"w":150,"h":328},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":328},
@@ -74,16 +65,25 @@
 },
 "figure/naked/leg_thigh_top.png":
 {
-	"frame": {"x":258,"y":1,"w":150,"h":328},
+	"frame": {"x":300,"y":623,"w":150,"h":328},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":328},
 	"sourceSize": {"w":150,"h":328},
 	"pivot": {"x":0.5,"y":0.5}
 },
+"figure/naked/mod/head.png":
+{
+	"frame": {"x":1,"y":1,"w":208,"h":288},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":208,"h":288},
+	"sourceSize": {"w":208,"h":288},
+	"pivot": {"x":0.5,"y":0.5}
+},
 "figure/naked/outlines/out_head.png":
 {
-	"frame": {"x":793,"y":331,"w":226,"h":306},
+	"frame": {"x":1,"y":303,"w":226,"h":306},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":226,"h":306},
@@ -92,7 +92,7 @@
 },
 "figure/naked/outlines/out_leg_calf.png":
 {
-	"frame": {"x":1,"y":1,"w":110,"h":300},
+	"frame": {"x":937,"y":1,"w":110,"h":300},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":110,"h":300},
@@ -101,7 +101,7 @@
 },
 "figure/naked/outlines/outline_head.png":
 {
-	"frame": {"x":591,"y":331,"w":200,"h":308},
+	"frame": {"x":431,"y":303,"w":200,"h":308},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":200,"h":308},
@@ -110,7 +110,7 @@
 },
 "figure/sheep/sheep_body.png":
 {
-	"frame": {"x":285,"y":641,"w":344,"h":298},
+	"frame": {"x":591,"y":1,"w":344,"h":298},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":344,"h":298},
@@ -119,7 +119,7 @@
 },
 "figure/sheep/sheep_body_outline.png":
 {
-	"frame": {"x":631,"y":641,"w":366,"h":318},
+	"frame": {"x":633,"y":303,"w":366,"h":318},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":366,"h":318},
@@ -131,8 +131,8 @@
 	"version": "1.0",
 	"image": "spritesheet-2.png",
 	"format": "RGBA4444",
-	"size": {"w":1020,"h":974},
+	"size": {"w":1048,"h":956},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:020ab6510ffbe66c39c029db61c47b92:790ec602b370993ab3de659253b9c2cb:a4494b6b450e444f7292d27a016d4f9e$"
+	"smartupdate": "$TexturePacker:SmartUpdate:f3dc292bfdb2f2b0d19c315443abc607:8c4140821b2d41d314fe33a1852d3d60:a4494b6b450e444f7292d27a016d4f9e$"
 }
 }

@@ -284,8 +284,12 @@ exports.texturesConfig = [
     asset: "elements/crumbled_paper_2.png"
   },
   {
+    body: "decor_trashbin_top",
+    asset: "elements/bin_top.png"
+  },
+  {
     body: "decor_trashbin",
-    asset: "elements/trash_bin.png"
+    asset: "elements/bin_bottom.png"
   },
   //
   {
