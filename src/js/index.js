@@ -203,7 +203,26 @@ function initializeFirebase() {
 }
 
 function onTick(time) {
-  // 
+  var spanWrap = function(what) {
+        return what.replace(/(\d)/g, '<span>$1</span>');
+      },
+      totalSeconds = time / 1000,
+      hours = Math.floor(totalSeconds / 3600);
+  
+  totalSeconds %= 3600;
+  var minutes = ('0' + Math.floor(totalSeconds / 60)).slice(-2),
+      seconds = ('0' + Math.floor(totalSeconds % 60)).slice(-2),
+      time = '0:' + spanWrap(seconds);
+
+  if(minutes > 0) {
+    time = spanWrap(minutes) + ':' + spanWrap(seconds);
+  }
+
+  if(hours > 0) {
+    time = spanWrap(hours) + ':' + spanWrap(minutes) + ':' + spanWrap(seconds);
+  }
+
+  $('#time').html(time);
 }
 
 function onGameEnd(didWin) {
