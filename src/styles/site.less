@@ -366,7 +366,23 @@ a:focus, a:active {
 		top: 0;
 		width: 100%;
 		z-index: 1;
-	}	
+	}
+
+	.layer__center {
+		&:before {
+			background: url(../images/layout/finish-star.png) no-repeat 50% 50%;
+			background-size: contain;
+			border-radius: 240px;
+			mix-blend-mode: multiply;
+			content: '';
+			height: 240px;
+			left: 50%;
+			margin-left: -120px;
+			position: absolute;
+			top: 0;
+			width: 240px;
+		}
+	}
 
 	&.is-visible {
 		&:after {
@@ -385,20 +401,8 @@ a:focus, a:active {
 	padding-top: 95px;
 	text-transform: uppercase;
 	width: 240px;
+	z-index: 2;
 
-	&:before {
-		background: url(../images/layout/finish-star.png) no-repeat 50% 50%;
-		background-size: contain;
-		border-radius: 240px;
-		mix-blend-mode: multiply;
-		content: '';
-		height: 100%;
-		left: 0;
-		position: absolute;
-		top: 0;
-		width: 100%;
-		z-index: -1;
-	}
 	 &:after {
 		background: url(../images/layout/mission-ico.png) no-repeat 50% 50%;
 		background-size: contain;
@@ -432,7 +436,9 @@ a:focus, a:active {
 	margin-top: 25px;
 	margin-left: auto;
 	margin-right: auto;
+	position: relative;
 	width: 260px;
+	z-index: 2;
 
 	label {
 		font-size: 20px;
@@ -926,14 +932,6 @@ body {
 */
 
 // game
-.game__scene, .game__scene canvas {
-	height: 100%;
-	left: 0;
-	position: absolute;
-	top: 0;
-	width: 100%;
-}
-
 #game_controls, .tutorial__buttons {
 	//outline: 10px red solid;
 	bottom: 0;

@@ -222,6 +222,8 @@ function onTick(time) {
     time = spanWrap(hours) + ':' + spanWrap(minutes) + ':' + spanWrap(seconds);
   }
 
+  console.log(time)
+
   $('#time').html(time);
 }
 
