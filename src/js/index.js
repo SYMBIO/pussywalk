@@ -87,7 +87,8 @@ window.onload = function() {
   initializeFirebase()
 
   _callbacks = {
-    onGameEnd: onGameEnd
+    onGameEnd: onGameEnd,
+    onTick: onTick
   }
 
   startGame()
@@ -199,6 +200,10 @@ function initializeFirebase() {
       i++;
     })
   });
+}
+
+function onTick(time) {
+  // 
 }
 
 function onGameEnd(didWin) {

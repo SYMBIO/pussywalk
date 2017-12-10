@@ -57,8 +57,14 @@ export default class Box2DWorld {
     this.checkpoints = [
       this.startPoint,
       {
+        x: 33,
+        y: -15.7
+      }, {
         x: 50,
         y: -15.7
+      }, {
+        x: 65,
+        y: -15
       }, {
         x: 77,
         y: -15
@@ -66,14 +72,34 @@ export default class Box2DWorld {
         x: 92,
         y: -15.7
       }, {
-        x: 140,
-        y: -20.7
+        x: 112,
+        y: -23.7
+      }, {
+        x: 137,
+        y: -23.7
       }]
     this.progressPoints = [
       this.frontSlipperDropPoint,
       this.backSlipperDropPoint,
-      this.sheepPickupPoint
+      this.sheepPickupPoint,
     ]
+    this.lifePickupPoints = [{
+      x: 42,
+      y: -19
+    }, {
+      x: 68,
+      y: -18
+    }, {
+      x: 91.6,
+      y: -19.5
+    }, {
+      x: 127,
+      y: 27.7
+    }]
+
+    this.visibleLifes = this.lifePickupPoints
+
+    this.progressPoints = this.progressPoints.concat(this.lifePickupPoints)
 
     this.lastCheckpoint = this.checkpoints[0]
     this.startState = []
@@ -289,6 +315,12 @@ export default class Box2DWorld {
     this.resetPlayer()
   }
 
+  syncRenderer() {
+    this.renderer.setState({
+      visibleLifes: this.visibleLifes
+    })
+  }
+
   addEndListener(callback) {
     this.EndListener = callback;
   }
@@ -308,6 +340,12 @@ export default class Box2DWorld {
 
   handleArrows(keyCode, state) {
     this.keymap[keyCode] = state;
+
+    if (keyCode == 78 && state) {
+      this.renderer.setState({
+        naked: !this.renderer.isNaked()
+      })
+    }
 
     if (keyCode == 80 && state) {
       this.softReset()
@@ -409,11 +447,21 @@ export default class Box2DWorld {
 
       this.recorder.removedBackSlipper = true
     }
+
     if (value == this.sheepPickupPoint) {
       this.renderer.setState({
         sheep: true
       })
     }
+
+    if (this.visibleLifes.indexOf(value) != -1) {
+      let idx = this.visibleLifes.indexOf(value)
+      this.visibleLifes.splice(idx, 1)
+      this.renderer.setState({
+        visibleLifes: this.visibleLifes
+      })
+    }
+
     if (this.checkpoints.indexOf(value) != -1) {
       this.lastCheckpoint = value
       // this.gameHistory.push(this.recorder)
@@ -737,7 +785,7 @@ export default class Box2DWorld {
 
   softReset() {
     let resetPoint = {
-      x: 160,
+      x: 130,
       y: -16
     }
     // let resetPoint = this.sheepPickupPoint.x < this.progress ? this.sheepPickupPoint : this.startPoint
