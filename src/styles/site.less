@@ -222,6 +222,7 @@ a:focus, a:active {
 .layer__close {
 	background: transparent;
 	border: 0;
+	cursor: pointer;
 	height: 22px;
 	position: absolute;
 	right: 20px;
@@ -347,8 +348,9 @@ a:focus, a:active {
 	width: 100%;
 
 	.layer__center {
-		max-width: 380px;
-		padding: 50px 25px 25px;
+		max-width: none;
+		padding: 52px 25px 25px 25px;
+		width: 330px;
 
 		&:after {
 			background: rgba(63, 52, 77, .67);
@@ -364,21 +366,90 @@ a:focus, a:active {
 		}
 	}
 }
+#scoreboard {
+	max-height: 500px;
+	overflow-x: hidden;
+	overflow-y: auto;
+
+	&::-webkit-scrollbar {
+		width: 12px;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: #fff;
+		border-radius: 11px;
+	}
+}
 .scoreboard__list {
+	font-size: 20px;
+	line-height: 20px;
+
 	li {
 		display: flex;
 		flex-flow: row;
 		justify-content: space-between;
+		margin-top: 13px;
+
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+
+	.position {
+		min-width: 36px;
+		padding-right: 7px;
+		padding-top: 5px;
+		text-align: left;
 	}
 
 	.username {
+		flex: 100%;
+		overflow: hidden;
 		padding-right: 7px;
+		padding-top: 5px;
+		position: relative;
+		text-align: left;
+
+		&:after {
+			content: '. . . . . . . . . . . . . . . . . . . . . . . . ';
+			bottom: 0;
+			display: inline-block;
+			margin-left: 8px;
+			position: absolute;
+			white-space: nowrap;
+		}
 	}
 
 	.time {
+		align-self: flex-end;
 		padding-left: 7px;
+		padding-right: 20px;
+		padding-top: 5px;
 		text-align: right;
 	}
+}
+.scoreboard__nude {
+	background: @pink;
+	display: inline-block;
+	font-size: 17px;
+	line-height: 17px;
+	margin-top: 2px;
+	padding: 4px 7px 2px 7px;
+	vertical-align: bottom;
+
+	&:after {
+		background: url(../images/layout/ico-naked.png) no-repeat 0 50%;
+		background-size: contain;
+		content: '';
+		display: inline-block;
+		height: 14px;
+		margin-left: 4px;
+		margin-top: 1px;
+		vertical-align: top;
+		width: 13px;
+	}
+}
+#scoreboard_list {
+	margin-top: 15px;
 }
 
 .layer--mission {
