@@ -100,6 +100,7 @@ function showLayer(layer) {
 
 function hideLayer(layer) {
   $(layer).removeClass('is-visible');
+  continueGame()
 }
 
 function initializeElements() {
@@ -135,13 +136,19 @@ function initializeElements() {
     //$('#scoreboard').hide()
     hideLayer('.layer--scoreboard');
     $('#game_controls').show()
-    startGame()
+    //startGame()
   })
 
   $('.nav-link').on('click', function(e){
     e.preventDefault();
 
-    $('.nav').toggleClass('is-active');
+    if(!$('.nav').hasClass('is-active')) {
+      $('.nav').addClass('is-active');
+      pauseGame()
+    } else {
+      $('.nav').removeClass('is-active');
+      continueGame()
+    }
   });
 
   $('.layer__close').on('click', function(e){
@@ -261,4 +268,17 @@ function startGame() {
     _game.dispose()
   }
   _game = new PussywalkMinigame(_callbacks);
+}
+
+function pauseGame() {
+  if (_game) {
+    _game.pause()
+  }
+}
+
+function continueGame() {
+  if (_game) {
+    _game.pause()
+    _game.play()
+  }
 }
