@@ -171,27 +171,6 @@ function initializeElements() {
   });
 }
 
-function niceTime() {
-var spanWrap = function(what) {
-        return what.replace(/(\d)/g, '<span>$1</span>');
-      },
-      totalSeconds = time / 1000,
-      hours = Math.floor(totalSeconds / 3600);
-  
-  totalSeconds %= 3600;
-  var minutes = ('0' + Math.floor(totalSeconds / 60)).slice(-2),
-      seconds = ('0' + Math.floor(totalSeconds % 60)).slice(-2),
-      time = '0:' + spanWrap(seconds);
-
-  if(minutes > 0) {
-    time = spanWrap(minutes) + ':' + spanWrap(seconds);
-  }
-
-  if(hours > 0) {
-    time = spanWrap(hours) + ':' + spanWrap(minutes) + ':' + spanWrap(seconds);
-  }
-}
-
 function initializeFirebase() {
 
   var config = {
@@ -229,7 +208,7 @@ function initializeFirebase() {
   });
 }
 
-function niceTime (time) {
+function niceTime(time, nicer) {
   var spanWrap = function(what) {
         return what.replace(/(\d)/g, '<span>$1</span>');
       },
@@ -242,15 +221,29 @@ function niceTime (time) {
       seconds = ('0' + Math.floor(totalSeconds % 60)).slice(-2),
       time = '0:' + seconds;
 
-  if(minutes > 0) {
-    time = minutes + ':' + seconds;
-  }
+  if(nicer) {
+    time = seconds + ' s.';
 
-  if(hours > 0) {
-    time = hours + ':' + minutes + ':' + seconds;
-  }
+    if(minutes > 0) {
+      time = minutes + ' min. a ' + seconds + ' s.';
+    }
 
-  return spanWrap(time);
+    if(hours > 0) {
+      time = hours + ' hod., ' + minutes + ' min. a ' + seconds + ' s.';
+    }
+
+    return time;
+  } else {
+    if(minutes > 0) {
+      time = minutes + ':' + seconds;
+    }
+
+    if(hours > 0) {
+      time = hours + ':' + minutes + ':' + seconds;
+    }
+
+    return spanWrap(time);
+  }
 }
 
 function onTick(time) {
