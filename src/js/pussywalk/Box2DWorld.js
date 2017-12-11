@@ -347,6 +347,12 @@ export default class Box2DWorld {
       })
     }
 
+    if (keyCode == 79 && state) {
+      this.renderer.setState({
+        drawDebug: !this.renderer.drawDebug
+      })
+    }
+
     if (keyCode == 80 && state) {
       this.softReset()
     }
@@ -785,7 +791,7 @@ export default class Box2DWorld {
 
   softReset() {
     let resetPoint = {
-      x: 130,
+      x: 90,
       y: -16
     }
     // let resetPoint = this.sheepPickupPoint.x < this.progress ? this.sheepPickupPoint : this.startPoint

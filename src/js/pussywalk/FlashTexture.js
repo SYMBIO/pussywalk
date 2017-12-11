@@ -10,8 +10,8 @@ export default class FlashTexture {
     this.y = y
     this.alpha = 1
     this.scale = 5
-    this.offsetX = -550
-    this.offsetY = -550
+    this.offsetX = -1100
+    this.offsetY = -1100
 
     this.onComplete = this.onComplete.bind(this)
 

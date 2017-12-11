@@ -23,6 +23,7 @@ export default class Renderer {
     this.renderPorn = true
     this.isShowingBodyMod = false
     this.visibleLifes = []
+    this.drawDebug = false
 
     this.vignette = new Image()
     this.vignette.src = "images/misc/vignette.png"
@@ -39,6 +40,7 @@ export default class Renderer {
     this.prepareTextures()
 
     this.eyeball = this.imagesConfig["elements/eyeball.png"]
+    this.mrP = this.imagesConfig["elements/mr_p.png"]
     this.pillbottle = this.imagesConfig["elements/pill_bottle.png"]
   }
 
@@ -166,6 +168,9 @@ export default class Renderer {
         case "renderPorn":
           this.renderPorn = state[key]
           break;
+        case "drawDebug":
+          this.drawDebug = state[key]
+          break;
         case "naked":
           this.showNakedBody(state[key])
           break;
@@ -174,7 +179,6 @@ export default class Renderer {
           this.flash()
           break
       }
-
     }
   }
 
@@ -287,7 +291,7 @@ export default class Renderer {
 
     // Shower
 
-    let idx = (this.frameCounter % 30)
+    let idx = Math.floor((this.frameCounter % 60) / 2)
     let showerImage = this.imagesConfig['shower/shower_' + idx + '.png']
     if (showerImage) {
       this.context.drawImage(showerImage.image,
@@ -297,8 +301,8 @@ export default class Renderer {
         showerImage.frame.h,
         800 * this.scale,
         700 * this.scale,
-        showerImage.frame.w * this.scale * 4,
-        showerImage.frame.h * this.scale * 4
+        showerImage.frame.w * this.scale * 8,
+        showerImage.frame.h * this.scale * 8
       )
     } else {
       console.log('shower/shower_' + idx + '.png');
@@ -315,8 +319,8 @@ export default class Renderer {
         furnaceImage.frame.h,
         10158 * this.scale,
         917 * this.scale,
-        furnaceImage.frame.w * this.scale,
-        furnaceImage.frame.h * this.scale
+        furnaceImage.frame.w * this.scale * 2,
+        furnaceImage.frame.h * this.scale * 2
       )
     } else {
       console.log('furnace/furnace_' + idx + '.png');
@@ -326,12 +330,12 @@ export default class Renderer {
     if (startIndex == 0) {
       let offset = {
         eye1: {
-          x: 1864,
-          y: 665
+          x: 1867,
+          y: 668
         },
         eye2: {
-          x: 1902,
-          y: 669
+          x: 1905,
+          y: 672
         }
       }
       var image = new Image();
@@ -376,6 +380,17 @@ export default class Renderer {
       this.context.translate(-position.x, -position.y);
     }
 
+    this.context.drawImage(this.mrP.image,
+      this.mrP.frame.x,
+      this.mrP.frame.y,
+      this.mrP.frame.w,
+      this.mrP.frame.h,
+      1840 * this.scale,
+      520 * this.scale,
+      this.mrP.frame.w * this.scale,
+      this.mrP.frame.h * this.scale
+    )
+
     // Draw elements
     for (var i in this.texturesConfig) {
       let textureConfig = this.texturesConfig[i]
@@ -392,10 +407,12 @@ export default class Renderer {
 
     let x = this.bodies.lift_1.GetPosition().get_x()
     let y = this.bodies.lift_1.GetPosition().get_y()
-    let percentage = Math.max(0, (y + 39.8187) / (-32.1753 + 39.8187) * 18)
+    console.log(this.bodies.lift_1.GetPosition().get_y());
+    // 27.117166 34.85
+    let percentage = Math.max(0, (y + 34.85) / (-27.117166 + 34.85) * 18)
 
-    x = (x * this.physicsScale - 30) * this.scale
-    y = -(y * this.physicsScale + 500) * this.scale
+    x = (x * this.physicsScale + 30) * this.scale
+    y = -(y * this.physicsScale + 220) * this.scale
 
     this.context.font = Math.round(48 * this.scale) + 'px serif';
     this.context.fillStyle = "#FFF"
@@ -412,8 +429,8 @@ export default class Renderer {
       }
 
       let offset = {
-        x: -imageConfig.frame.w / 4 * this.scale - 17,
-        y: -imageConfig.frame.h / 4 * this.scale - 40,
+        x: (-imageConfig.frame.w / 2 + 14) * this.scale,
+        y: (-imageConfig.frame.h / 2 - 12) * this.scale,
       }
       let angle = -body.GetAngle()
 
@@ -427,8 +444,8 @@ export default class Renderer {
         imageConfig.frame.h,
         offset.x,
         offset.y,
-        imageConfig.frame.w * this.scale,
-        imageConfig.frame.h * this.scale
+        imageConfig.frame.w * this.scale * 2,
+        imageConfig.frame.h * this.scale * 2
       )
 
       this.context.rotate(-angle)
@@ -445,8 +462,8 @@ export default class Renderer {
         this.pillbottle.frame.h,
         (this.visibleLifes[i].x * this.physicsScale) * this.scale,
         (-this.visibleLifes[i].y * this.physicsScale + delta) * this.scale,
-        this.pillbottle.frame.w * this.scale / 2,
-        this.pillbottle.frame.h * this.scale / 2
+        this.pillbottle.frame.w * this.scale,
+        this.pillbottle.frame.h * this.scale
       )
     }
 
@@ -473,8 +490,8 @@ export default class Renderer {
       938,
       10438 * this.scale,
       1086 * this.scale,
-      1042 * this.scale,
-      938 * this.scale
+      1042 * this.scale * 2,
+      938 * this.scale * 2
     )
 
     // Lights
@@ -488,8 +505,8 @@ export default class Renderer {
       603,
       2397 * this.scale,
       305 * this.scale,
-      588 * this.scale * 2,
-      603 * this.scale * 2,
+      588 * this.scale * 4,
+      603 * this.scale * 4,
     )
 
     this.context.drawImage(this.lights[1],
@@ -499,8 +516,8 @@ export default class Renderer {
       1323,
       301 * this.scale,
       104 * this.scale,
-      1433 * this.scale * 2,
-      1323 * this.scale * 2,
+      1433 * this.scale * 4,
+      1323 * this.scale * 4,
     )
 
     this.context.drawImage(this.lights[1],
@@ -510,8 +527,8 @@ export default class Renderer {
       921,
       6422 * this.scale,
       511 * this.scale,
-      977 * this.scale * 2,
-      921 * this.scale * 2,
+      977 * this.scale * 4,
+      921 * this.scale * 4,
     )
 
     this.context.drawImage(this.lights[1],
@@ -521,8 +538,8 @@ export default class Renderer {
       921,
       7793 * this.scale,
       511 * this.scale,
-      977 * this.scale * 2,
-      921 * this.scale * 2,
+      977 * this.scale * 4,
+      921 * this.scale * 4,
     )
 
     this.context.drawImage(this.lights[2],
@@ -532,8 +549,8 @@ export default class Renderer {
       487,
       9530 * this.scale,
       881 * this.scale,
-      461 * this.scale * 2,
-      487 * this.scale * 2,
+      461 * this.scale * 4,
+      487 * this.scale * 4,
     )
 
     this.context.drawImage(this.lights[3],
@@ -543,8 +560,8 @@ export default class Renderer {
       921,
       5449 * this.scale,
       333 * this.scale,
-      977 * this.scale * 2,
-      921 * this.scale * 2,
+      977 * this.scale * 4,
+      921 * this.scale * 4,
     )
 
     this.context.drawImage(this.lights[4],
@@ -554,8 +571,8 @@ export default class Renderer {
       1667,
       4125 * this.scale,
       22 * this.scale,
-      1369 * this.scale * 2,
-      1667 * this.scale * 2,
+      1369 * this.scale * 4,
+      1667 * this.scale * 4,
     )
 
     this.context.drawImage(this.lights[5],
@@ -565,8 +582,8 @@ export default class Renderer {
       831,
       3562 * this.scale,
       353 * this.scale,
-      879 * this.scale * 2,
-      831 * this.scale * 2,
+      879 * this.scale * 4,
+      831 * this.scale * 4,
     )
 
     this.context.globalCompositeOperation = "source-over"
@@ -587,10 +604,12 @@ export default class Renderer {
 
     // Debug draw
 
-  // this.context.scale(this.physicsScale * this.scale, this.physicsScale * this.scale);
-  // this.context.lineWidth = 1 / this.physicsScale;
-  // this.context.scale(1, -1);
-  // this.world.DrawDebugData();
+    if (this.drawDebug) {
+      this.context.scale(this.physicsScale * this.scale, this.physicsScale * this.scale);
+      this.context.lineWidth = 1 / this.physicsScale;
+      this.context.scale(1, -1);
+      this.world.DrawDebugData();
+    }
   }
 
   drawTexture(textureConfig) {
@@ -662,8 +681,8 @@ export default class Renderer {
       frame.h,
       offset.x,
       offset.y,
-      frame.w / 2 * this.scale * scale,
-      frame.h / 2 * this.scale * scale
+      frame.w * this.scale * scale,
+      frame.h * this.scale * scale
     )
 
     this.context.globalAlpha = 1
