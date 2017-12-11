@@ -179,7 +179,7 @@ export default class PussywalkMinigame {
     if (!_paused) {
       this.playTime += delta
 
-      console.log(this.playTime);
+      //console.log(this.playTime);
 
       if (_callbacks.onTick) {
         _callbacks.onTick(this.playTime)

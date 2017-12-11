@@ -80,6 +80,7 @@ let loader = assetsLoader({
 
 let _game;
 let _callbacks;
+let finished = false;
 
 window.onload = function() {
   initializeElements()
@@ -106,19 +107,20 @@ function hideLayer(layer) {
 function initializeElements() {
   //$('#name_dialogue').hide()
   //$('#scoreboard').hide()
-  $('#game_controls').show()
+  $('#game_controls, #game_lives').show()
   $('#send_name').attr("disabled", true);
 
   $('#send_name').on('click', function() {
     //$('#name_dialogue').hide()
     hideLayer('.layer--finish');
-
+    pauseGame();
+    finished = true;
     firebase.database().ref('scoreboard').push({
       username: $("#name_input").val(),
-      time: _game.playTime()
+      time: _game.playTime
     }, function(error) {
       //$('#scoreboard').show()
-      showLayer('.layer--scoreboard')
+      showLayer('.layer--scoreboard');
     });
   })
   $('#cancel_send_name').on('click', function() {
@@ -135,8 +137,10 @@ function initializeElements() {
     hideLayer('.layer--finish');
     //$('#scoreboard').hide()
     hideLayer('.layer--scoreboard');
-    $('#game_controls').show()
-    //startGame()
+    $('#game_controls, #game_lives').show()
+    if(finished) {
+      startGame()
+    }
   })
 
   $('.nav-link').on('click', function(e){
@@ -256,14 +260,18 @@ function onTick(time) {
 function onGameEnd(didWin) {
   if (didWin) {
     //$('#name_dialogue').show()
+    pauseGame();
+    $('#finish_time').html(niceTime(_game.playTime));
     showLayer('.layer--finish');
-    $('#game_controls').hide()
+    $('#game_controls, #game_lives').hide()
   } else {
     startGame()
   }
 }
 
 function startGame() {
+  finished = false;
+
   if (_game) {
     _game.dispose()
   }
