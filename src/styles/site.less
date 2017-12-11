@@ -74,10 +74,15 @@ a:focus, a:active {
 	width: 255px;
 	white-space: nowrap;
 
+	@media only screen and (max-width: 768px) and (orientation: landscape) {
+		top: 20px;
+		width: 120px;
+	}
+
 	@media @phoneLand {
 		top: 20px;
 		width: 150px;
-	}	
+	}
 }
 
 .nav-link {
@@ -86,8 +91,8 @@ a:focus, a:active {
 	filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, .4));
 	height: 35px;
 	left: 25px;
-		margin-left: -3px;
-		margin-top: -1px;
+	margin-left: -3px;
+	margin-top: -1px;
 	position: absolute;
 	top: 30px;
 	width: 50px;
@@ -114,6 +119,10 @@ a:focus, a:active {
 		right: 9px;
 		top: 16px;
 	}
+
+	@media only screen and (max-width: 768px) and (orientation: landscape) {
+		top: 20px;
+	}	
 }
 .nav {
 	color: @white;
@@ -150,6 +159,10 @@ a:focus, a:active {
 		display: block;
 		//transform: translateX(0%);
 	}
+
+	@media only screen and (max-width: 768px) and (orientation: landscape) {
+		top: 10px;
+	}		
 }
 .nav__list {
 	font-size: 20px;
@@ -182,6 +195,12 @@ a:focus, a:active {
 
 			&:hover {
 			}
+		}
+	}	
+
+	@media only screen and (max-width: 768px) and (orientation: landscape) {
+		li {
+			margin-top: 5px;
 		}
 	}	
 }
@@ -234,6 +253,16 @@ a:focus, a:active {
 		font-size: 40px;
 		line-height: 40px;
 		top: 30px;
+	}
+
+	@media only screen and (max-width: 768px) and (orientation: landscape) {
+		font-size: 40px;
+		line-height: 40px;
+		top: 20px;
+
+		span {
+			min-width: 18px;
+		}
 	}
 }
 
@@ -504,6 +533,13 @@ a:focus, a:active {
 		padding-right: 20px;
 		padding-top: 5px;
 		text-align: right;
+		white-space: nowrap;
+
+		span {
+			display: inline-block;
+			min-width: 8px;
+			text-align: center;
+		}
 	}
 
 	.share {
@@ -1036,6 +1072,12 @@ body {
 		}
 	}
 
+	@media only screen and (max-width: 768px) and (orientation: landscape) {
+		span {
+			border-radius: 15px;
+		}
+	}
+
 	/*
 	@media @phoneLand {
 		padding-bottom: 8%;
@@ -1052,12 +1094,12 @@ body {
 	cursor: pointer;
 	
 	span {
-		background-color: rgb(42, 37, 55);
+		background-color: #201a33;
 		box-shadow: 0 30px 90px rgba(0, 0, 0, .5);
 
 		&:before {
 			border-radius: 25px;
-			background-color: rgb(61, 55, 76);
+			background-color: #342c4a;
 			bottom: 5%;
 			box-shadow: inset 0px 1px 2px 0px rgba(255, 255, 255, .5);
 			content: '';
@@ -1068,7 +1110,19 @@ body {
 			top: 0;
 		}
 	}
-	
+
+	&:active {
+		span {
+			background-color: #1f1932;
+			box-shadow: 0 30px 90px rgba(0, 0, 0, .5);
+
+			&:before {
+				background-color: #2b233e;
+				bottom: 4%;
+			}
+		}		
+	}
+
 	@media screen and (min-aspect-ratio: 3/1) {
 		span {
 			&:before {
@@ -1078,6 +1132,14 @@ body {
 	}
 
 	@media screen and (max-aspect-ratio: 2/3) {
+		span {
+			&:before {
+				border-radius: 15px;
+			}
+		}
+	}
+
+	@media only screen and (max-width: 768px) and (orientation: landscape) {
 		span {
 			&:before {
 				border-radius: 15px;
@@ -1112,5 +1174,42 @@ body {
 		&:after {
 			content: 'R';
 		}
+	}
+}
+
+#game_lives {
+	bottom: 15%;
+	color: #ce5f6f;
+	font-size: 20px;
+	font-weight: bold;
+	height: 44px;
+	left: 50%;
+	line-height: 48px;
+	position: absolute;
+	text-align: center;
+	transform: translate(-50%, 50%);
+	width: 52px;
+
+	&:before, &:after {
+		background: @white;
+		bottom: 0;
+		content: '';
+		display: block;
+		height: 24px;
+		position: absolute;
+		width: 44px;
+		z-index: -1;
+	}
+	&:before {
+		border-radius: 12px 0 0 12px;
+		right: 50%;
+		transform: rotate(45deg);
+		transform-origin: 44px 24px;
+	}
+	&:after {
+		border-radius: 0 12px 12px 0;
+		left: 50%;
+		transform: rotate(-45deg);
+		transform-origin: 0 24px;
 	}
 }

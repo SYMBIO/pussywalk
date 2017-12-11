@@ -160,6 +160,27 @@ function initializeElements() {
   });
 }
 
+function niceTime() {
+var spanWrap = function(what) {
+        return what.replace(/(\d)/g, '<span>$1</span>');
+      },
+      totalSeconds = time / 1000,
+      hours = Math.floor(totalSeconds / 3600);
+  
+  totalSeconds %= 3600;
+  var minutes = ('0' + Math.floor(totalSeconds / 60)).slice(-2),
+      seconds = ('0' + Math.floor(totalSeconds % 60)).slice(-2),
+      time = '0:' + spanWrap(seconds);
+
+  if(minutes > 0) {
+    time = spanWrap(minutes) + ':' + spanWrap(seconds);
+  }
+
+  if(hours > 0) {
+    time = spanWrap(hours) + ':' + spanWrap(minutes) + ':' + spanWrap(seconds);
+  }
+}
+
 function initializeFirebase() {
 
   var config = {
@@ -184,7 +205,7 @@ function initializeFirebase() {
       let nameSpan = $("<span class=\"username\" />")
       let timeSpan = $("<span class=\"time\" />")
       nameSpan.append(snapshot.val().username)
-      timeSpan.append(snapshot.val().time)
+      timeSpan.append(niceTime(snapshot.val().time))
       listItem.append(nameSpan)
       listItem.append(timeSpan)
       if (i > 2) {
@@ -197,7 +218,7 @@ function initializeFirebase() {
   });
 }
 
-function onTick(time) {
+function niceTime (time) {
   var spanWrap = function(what) {
         return what.replace(/(\d)/g, '<span>$1</span>');
       },
@@ -205,19 +226,24 @@ function onTick(time) {
       hours = Math.floor(totalSeconds / 3600);
   
   totalSeconds %= 3600;
+
   var minutes = ('0' + Math.floor(totalSeconds / 60)).slice(-2),
       seconds = ('0' + Math.floor(totalSeconds % 60)).slice(-2),
-      time = '0:' + spanWrap(seconds);
+      time = '0:' + seconds;
 
   if(minutes > 0) {
-    time = spanWrap(minutes) + ':' + spanWrap(seconds);
+    time = minutes + ':' + seconds;
   }
 
   if(hours > 0) {
-    time = spanWrap(hours) + ':' + spanWrap(minutes) + ':' + spanWrap(seconds);
+    time = hours + ':' + minutes + ':' + seconds;
   }
 
-  $('#time').html(time);
+  return spanWrap(time);
+}
+
+function onTick(time) {
+  $('#time').html(niceTime(time));
 }
 
 function onGameEnd(didWin) {
