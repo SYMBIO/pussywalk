@@ -74,7 +74,7 @@ export default class Renderer {
   }
 
   prepareTextures() {
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 8; i++) {
       let image = new Image()
       image.src = "images/level/level_" + (i + 1) + ".jpg"
       this.levelTextures.push(image)
@@ -271,26 +271,21 @@ export default class Renderer {
     this.context.translate(-canvasOffset.x, canvasOffset.y);
 
     // Draw level
-    // let startIndex = Math.max(0, Math.floor(canvasOffset.x / 3000))
-    let startIndex = 0
-    // let endIndex = Math.min(3, Math.ceil((canvasOffset.x + this.canvas.width / this.scale) / 3000))
-    let endIndex = 4
-    for (var i = startIndex; i < endIndex; i++) {
+    for (var i = 0; i < 8; i++) {
       let texture = this.levelTextures[i]
       this.context.drawImage(texture,
         0,
         0,
         texture.naturalWidth,
         texture.naturalHeight,
-        i * 3000 * this.scale,
+        i * 1500 * this.scale,
         0,
-        texture.naturalWidth * this.scale,
-        texture.naturalHeight * this.scale
+        texture.naturalWidth * this.scale * 2,
+        texture.naturalHeight * this.scale * 2
       )
     }
 
     // Shower
-
     let idx = Math.floor((this.frameCounter % 60) / 2)
     let showerImage = this.imagesConfig['shower/shower_' + idx + '.png']
     if (showerImage) {
@@ -309,7 +304,6 @@ export default class Renderer {
     }
 
     // Furnace
-
     let furnaceImage = this.imagesConfig['furnace/furnace_' + idx + '.jpg']
     if (furnaceImage) {
       this.context.drawImage(furnaceImage.image,
@@ -327,58 +321,57 @@ export default class Renderer {
     }
 
     // Mr P
-    if (startIndex == 0) {
-      let offset = {
-        eye1: {
-          x: 1867,
-          y: 668
-        },
-        eye2: {
-          x: 1905,
-          y: 672
-        }
+    let offset = {
+      eye1: {
+        x: 1867,
+        y: 668
+      },
+      eye2: {
+        x: 1905,
+        y: 672
       }
-      var image = new Image();
-      let percent = (this.bodies['body'].GetPosition().get_x() * this.physicsScale - (offset.eye1.x + offset.eye2.x) / 2) / 500
-      percent = Math.min(1, Math.max(-1, percent))
-
-      let position;
-
-      position = {
-        x: (offset.eye1.x + percent * 4) * this.scale,
-        y: offset.eye1.y * this.scale
-      }
-      this.context.translate(position.x, position.y);
-      this.context.drawImage(this.eyeball.image,
-        this.eyeball.frame.x,
-        this.eyeball.frame.y,
-        this.eyeball.frame.w,
-        this.eyeball.frame.h,
-        0,
-        0,
-        this.eyeball.frame.w,
-        this.eyeball.frame.h
-      )
-      this.context.translate(-position.x, -position.y);
-
-      position = {
-        x: (offset.eye2.x + percent * 4) * this.scale,
-        y: offset.eye2.y * this.scale
-      }
-      this.context.translate(position.x, position.y);
-
-      this.context.drawImage(this.eyeball.image,
-        this.eyeball.frame.x,
-        this.eyeball.frame.y,
-        this.eyeball.frame.w,
-        this.eyeball.frame.h,
-        0,
-        0,
-        this.eyeball.frame.w,
-        this.eyeball.frame.h
-      )
-      this.context.translate(-position.x, -position.y);
     }
+    var image = new Image();
+    let percent = (this.bodies['body'].GetPosition().get_x() * this.physicsScale - (offset.eye1.x + offset.eye2.x) / 2) / 500
+    percent = Math.min(1, Math.max(-1, percent))
+
+    let position;
+
+    position = {
+      x: (offset.eye1.x + percent * 4) * this.scale,
+      y: offset.eye1.y * this.scale
+    }
+    this.context.translate(position.x, position.y);
+    this.context.drawImage(this.eyeball.image,
+      this.eyeball.frame.x,
+      this.eyeball.frame.y,
+      this.eyeball.frame.w,
+      this.eyeball.frame.h,
+      0,
+      0,
+      this.eyeball.frame.w,
+      this.eyeball.frame.h
+    )
+    this.context.translate(-position.x, -position.y);
+
+    position = {
+      x: (offset.eye2.x + percent * 4) * this.scale,
+      y: offset.eye2.y * this.scale
+    }
+    this.context.translate(position.x, position.y);
+
+    this.context.drawImage(this.eyeball.image,
+      this.eyeball.frame.x,
+      this.eyeball.frame.y,
+      this.eyeball.frame.w,
+      this.eyeball.frame.h,
+      0,
+      0,
+      this.eyeball.frame.w,
+      this.eyeball.frame.h
+    )
+    this.context.translate(-position.x, -position.y);
+
 
     this.context.drawImage(this.mrP.image,
       this.mrP.frame.x,
@@ -407,7 +400,6 @@ export default class Renderer {
 
     let x = this.bodies.lift_1.GetPosition().get_x()
     let y = this.bodies.lift_1.GetPosition().get_y()
-    console.log(this.bodies.lift_1.GetPosition().get_y());
     // 27.117166 34.85
     let percentage = Math.max(0, (y + 34.85) / (-27.117166 + 34.85) * 18)
 
