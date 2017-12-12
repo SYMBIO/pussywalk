@@ -53,10 +53,6 @@ export default class Box2DWorld {
       x: 77,
       y: -15
     }
-    this.sliderPoint = {
-      x: 157,
-      y: 0
-    }
 
     this.checkpoints = [
       this.startPoint,
@@ -86,7 +82,6 @@ export default class Box2DWorld {
       this.frontSlipperDropPoint,
       this.backSlipperDropPoint,
       this.sheepPickupPoint,
-      this.sliderPoint
     ]
     this.lifePickupPoints = [{
       x: 42,
@@ -460,10 +455,6 @@ export default class Box2DWorld {
       this.renderer.setState({
         sheep: true
       })
-    }
-
-    if (value == this.sliderPoint) {
-      this.world.DestroyBody(this.bodies["slide_blocker"]);
     }
 
     if (this.visibleLifes.indexOf(value) != -1) {
