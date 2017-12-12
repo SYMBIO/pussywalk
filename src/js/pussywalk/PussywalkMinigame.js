@@ -71,7 +71,7 @@ const initGame = () => {
   _renderer = new Renderer(_world.world, _canvas[0], _world.bodies)
   _audioPlayer = new AudioPlayer()
 
-  _world.addEndListener(_callbacks.onGameEnd)
+  _world.callbacks = _callbacls
   _world.renderer = _renderer
   _world.audioPlayer = _audioPlayer
 

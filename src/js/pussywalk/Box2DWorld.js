@@ -15,7 +15,7 @@ export default class Box2DWorld {
     this.timeStep = 1 / 60;
     this.velocityIterations = 10;
     this.positionIterations = 8;
-    this.lives = 3000
+    this.lifes = 3000
     this.record = false
     this.pausePhysics = false
     this.paused = false
@@ -85,16 +85,16 @@ export default class Box2DWorld {
     ]
     this.lifePickupPoints = [{
       x: 42,
-      y: -19
+      y: -16
     }, {
       x: 68,
-      y: -18
+      y: -15
     }, {
       x: 91.6,
-      y: -19.5
+      y: -16.5
     }, {
       x: 127,
-      y: 27.7
+      y: 24.7
     }]
 
     this.visibleLifes = this.lifePickupPoints
@@ -285,9 +285,10 @@ export default class Box2DWorld {
         that.inactive = true;
 
         setTimeout(() => {
-          that.lives -= 1
+          that.lifes -= 1
+          that.callbacks.onLifesUpdate(that.lifes)
 
-          if (that.lives < 0) {
+          if (that.lifes < 0) {
             that.death(false)
           } else {
             that.resetPlayer()
@@ -321,10 +322,6 @@ export default class Box2DWorld {
     })
   }
 
-  addEndListener(callback) {
-    this.EndListener = callback;
-  }
-
   death(didWin) {
 
     let joints = ['tendon_rf', 'knee_r', 'ankle_r', 'tendon_lf', 'knee_l', 'ankle_l', 'joint26', 'joint8']
@@ -334,7 +331,7 @@ export default class Box2DWorld {
     });
 
     setTimeout(() => {
-      this.EndListener(didWin);
+      this.callbacks.EndListener(didWin);
     }, 1000);
   }
 
@@ -463,6 +460,10 @@ export default class Box2DWorld {
     if (this.visibleLifes.indexOf(value) != -1) {
       let idx = this.visibleLifes.indexOf(value)
       this.visibleLifes.splice(idx, 1)
+
+      this.lifes += 1
+      this.callbacks.onLifesUpdate(this.lifes)
+
       this.renderer.setState({
         visibleLifes: this.visibleLifes
       })

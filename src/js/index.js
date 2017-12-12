@@ -61,7 +61,7 @@ let loader = assetsLoader({
     '/audio/step_small_03.wav',
     '/audio/step_small_04.wav',
   ]
-  })
+})
   .on('error', function(error) {
     console.error(error);
   })
@@ -72,7 +72,7 @@ let loader = assetsLoader({
     })
   })
   .on('complete', function(assets) {
-    setTimeout(function(){
+    setTimeout(function() {
       hideLayer('.layer--loading');
     }, 500)
   })
@@ -88,7 +88,8 @@ window.onload = function() {
 
   _callbacks = {
     onGameEnd: onGameEnd,
-    onTick: onTick
+    onTick: onTick,
+    onLifesUpdate: onLifesUpdate,
   }
 
   startGame()
@@ -138,15 +139,15 @@ function initializeElements() {
     //$('#scoreboard').hide()
     hideLayer('.layer--scoreboard');
     $('#game_controls, #game_lives').show()
-    if(finished) {
+    if (finished) {
       startGame()
     }
   })
 
-  $('.nav-link').on('click', function(e){
+  $('.nav-link').on('click', function(e) {
     e.preventDefault();
 
-    if(!$('.nav').hasClass('is-active')) {
+    if (!$('.nav').hasClass('is-active')) {
       $('.nav').addClass('is-active');
       pauseGame()
     } else {
@@ -155,13 +156,13 @@ function initializeElements() {
     }
   });
 
-  $('.layer__close').on('click', function(e){
+  $('.layer__close').on('click', function(e) {
     e.preventDefault();
 
     hideLayer($(this).parents('.layer').eq(0));
   });
 
-  $('.js-show-layer').on('click', function(e){
+  $('.js-show-layer').on('click', function(e) {
     e.preventDefault();
 
     var link = $(this);
@@ -210,35 +211,35 @@ function initializeFirebase() {
 
 function niceTime(time, nicer) {
   var spanWrap = function(what) {
-        return what.replace(/(\d)/g, '<span>$1</span>');
-      },
-      totalSeconds = time / 1000,
-      hours = Math.floor(totalSeconds / 3600);
-  
+      return what.replace(/(\d)/g, '<span>$1</span>');
+    },
+    totalSeconds = time / 1000,
+    hours = Math.floor(totalSeconds / 3600);
+
   totalSeconds %= 3600;
 
   var minutes = ('0' + Math.floor(totalSeconds / 60)).slice(-2),
-      seconds = ('0' + Math.floor(totalSeconds % 60)).slice(-2),
-      time = '0:' + seconds;
+    seconds = ('0' + Math.floor(totalSeconds % 60)).slice(-2),
+    time = '0:' + seconds;
 
-  if(nicer) {
+  if (nicer) {
     time = seconds + ' s.';
 
-    if(minutes > 0) {
+    if (minutes > 0) {
       time = minutes + ' min. a ' + seconds + ' s.';
     }
 
-    if(hours > 0) {
+    if (hours > 0) {
       time = hours + ' hod., ' + minutes + ' min. a ' + seconds + ' s.';
     }
 
     return time;
   } else {
-    if(minutes > 0) {
+    if (minutes > 0) {
       time = minutes + ':' + seconds;
     }
 
-    if(hours > 0) {
+    if (hours > 0) {
       time = hours + ':' + minutes + ':' + seconds;
     }
 
@@ -248,6 +249,10 @@ function niceTime(time, nicer) {
 
 function onTick(time) {
   $('#time').html(niceTime(time));
+}
+
+function onLifesUpdate(numberOfLifes) {
+  //
 }
 
 function onGameEnd(didWin) {
