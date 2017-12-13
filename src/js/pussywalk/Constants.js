@@ -26,6 +26,11 @@ exports.sounds = {
     "audio/hospital_table_02.mp3",
     "audio/hospital_table_03.mp3"
   ],
+  music: [
+    // "audio/health.mp3",
+    // "audio/health_lower.mp3",
+    // "audio/mrO.mp3"
+  ],
   health: "audio/health.mp3",
   loseHealth: "audio/health_lower.mp3",
   sheep: "audio/mrO.mp3",

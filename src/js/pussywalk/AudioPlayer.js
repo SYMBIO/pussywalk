@@ -38,6 +38,12 @@ export default class AudioPlayer {
       sound.load();
       return sound
     })
+    this.music = Constants.sounds.music.map(function(name) {
+      let sound = new Audio(name);
+      sound.preload = 'auto';
+      sound.load();
+      return sound
+    })
 
     this.health = new Audio("audio/health.mp3");
     this.health.preload = 'auto';
@@ -51,17 +57,35 @@ export default class AudioPlayer {
     this.sheep.preload = 'auto';
     this.sheep.load();
 
-    this.allSounds = [
-      this.health,
-      this.loseHealth,
-      this.sheep
-    ].concat(this.smallSteppingSounds)
-      .concat(this.largeSteppingSounds)
-      .concat(this.bottleBreakingSounds)
-      .concat(this.bottleImpactSounds)
-      .concat(this.thumps)
-  // + music
+    this.onMusicEnded = this.onMusicEnded.bind(this)
+
+  // let that = this
+  // this.music.forEach(function(music) {
+  //   music.onended = that.onMusicEnded
+  // })
+  // this.musicIndex = 0
+  //
+  // this.music[this.musicIndex].play()
   }
+
+  setMute(mute) {
+    this.isMute = mute
+
+    this.music.forEach(function(music) {
+      music.volume = mute ? 0 : 1
+    })
+  }
+
+  onMusicEnded() {
+    this.musicIndex++
+    if (this.musicIndex == this.music.length) {
+      this.musicIndex = 0
+    }
+
+    this.music[this.musicIndex].play()
+  }
+
+  //
 
   playStep(volume) {
 
@@ -144,14 +168,5 @@ export default class AudioPlayer {
     }
 
     this.sheep.play()
-  }
-
-  setMute(mute) {
-    this.isMute = mute
-
-    this.music.forEach(function(music) {
-      music.volume = mute ? 0 : 1
-    })
-
   }
 }
