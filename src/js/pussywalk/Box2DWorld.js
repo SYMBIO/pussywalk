@@ -214,17 +214,27 @@ export default class Box2DWorld {
         otherObject = bA
       }
 
-      if (bottle && (bottle.GetLinearVelocity().Length() - otherObject.GetLinearVelocity().Length()) > 7) {
-        let i = Math.floor(Math.random() * 8)
-        let components = bA.name.split("_")
-        components.pop()
-        components.push("j" + i)
-        let jointName = components.join("_")
+      if (bottle) {
+        let impact = (bottle.GetLinearVelocity().Length() - otherObject.GetLinearVelocity().Length())
+        if (impact > 7) {
+          let i = Math.floor(Math.random() * 8)
+          let components = bA.name.split("_")
+          components.pop()
+          components.push("j" + i)
+          let jointName = components.join("_")
 
-        if (that.joints[jointName]) {
-          // that.world.DestroyJoint(that.joints[jointName]);
-          that.jointsToDestroy = [that.joints[jointName]]
-          delete that.joints[jointName]
+          if (that.joints[jointName]) {
+            // that.world.DestroyJoint(that.joints[jointName]);
+            that.jointsToDestroy = [that.joints[jointName]]
+            delete that.joints[jointName]
+          }
+          if (that.audioPlayer) {
+            that.audioPlayer.playBottleBreak()
+          }
+        } else if (impact > 4) {
+          if (that.audioPlayer) {
+            that.audioPlayer.playBottleImpact()
+          }
         }
       }
     };
@@ -251,6 +261,9 @@ export default class Box2DWorld {
       }
 
       if (decor) {
+        if (decor.name.indexOf("decor_table") == 0 || decor.name.indexOf("decor_chair") == 0) {
+          that.audioPlayer.playThump()
+        }
         setTimeout(() => {
           let fixture = decor.GetFixtureList()
 
@@ -293,6 +306,7 @@ export default class Box2DWorld {
             that.death(false)
           } else {
             that.resetPlayer()
+            that.audioPlayer.playLoseHealth()
           }
         }, 1000);
       }
@@ -456,6 +470,7 @@ export default class Box2DWorld {
       this.renderer.setState({
         sheep: true
       })
+      this.audioPlayer.playSheep()
     }
 
     if (this.visibleLifes.indexOf(value) != -1) {
@@ -468,6 +483,8 @@ export default class Box2DWorld {
       this.renderer.setState({
         visibleLifes: this.visibleLifes
       })
+
+      this.audioPlayer.playHealth()
     }
 
     if (this.checkpoints.indexOf(value) != -1) {

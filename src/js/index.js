@@ -277,3 +277,9 @@ function continueGame() {
     _game.play()
   }
 }
+
+function setMute(mute) {
+  if (_game) {
+    _game.setMute(mute)
+  }
+}

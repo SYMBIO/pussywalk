@@ -1,16 +1,34 @@
 exports.sounds = {
   largeSteps: [
-    "audio/step_big_01.wav",
-    "audio/step_big_02.wav",
-    "audio/step_big_03.wav",
-    "audio/step_big_04.wav"
+    "audio/step_big_01.mp3",
+    "audio/step_big_02.mp3",
+    "audio/step_big_03.mp3",
+    "audio/step_big_04.mp3"
   ],
   smallSteps: [
-    "audio/step_small_01.wav",
-    "audio/step_small_02.wav",
-    "audio/step_small_03.wav",
-    "audio/step_small_04.wav"
-  ]
+    "audio/step_small_01.mp3",
+    "audio/step_small_02.mp3",
+    "audio/step_small_03.mp3",
+    "audio/step_small_04.mp3"
+  ],
+  bottlesImpact: [
+    "audio/bottle_impact_01.mp3",
+    "audio/bottle_impact_02.mp3",
+    "audio/bottle_impact_03.mp3"
+  ],
+  bottlesBreak: [
+    "audio/bottle_break_01.mp3",
+    "audio/bottle_break_02.mp3",
+    "audio/bottle_break_03.mp3"
+  ],
+  thumps: [
+    "audio/hospital_table_01.mp3",
+    "audio/hospital_table_02.mp3",
+    "audio/hospital_table_03.mp3"
+  ],
+  health: "audio/health.mp3",
+  loseHealth: "audio/health_lower.mp3",
+  sheep: "audio/mrO.mp3",
 }
 exports.texturesConfig = [
   {

@@ -190,6 +190,12 @@ export default class PussywalkMinigame {
     }
   }
 
+  setMute(mute) {
+    if (this.audioPlayer) {
+      this.audioPlayer.setMute(mute)
+    }
+  }
+
   dispose() {
 
     $(window).off("resize");
@@ -228,7 +234,6 @@ export default class PussywalkMinigame {
       _preloaderEF = null;
       _preloader = null;
     }
-
   }
 }
 ;
