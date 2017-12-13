@@ -177,7 +177,7 @@
         <key>globalSpriteSettings</key>
         <struct type="SpriteSettings">
             <key>scale</key>
-            <double>1</double>
+            <double>0.5</double>
             <key>scaleMode</key>
             <enum type="ScaleMode">Smooth</enum>
             <key>extrude</key>
@@ -976,6 +976,51 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../images/spritesheet_sources/figure/naked/head_anim/head_anim_0_0.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/head_anim/head_anim_0_1.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/head_anim/head_anim_0_2.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/head_anim/head_anim_0_3.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/head_anim/head_anim_0_4.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/head_anim/head_anim_0_5.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/head_anim/head_anim_1_0.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/head_anim/head_anim_1_1.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/head_anim/head_anim_1_2.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/head_anim/head_anim_2_0.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/head_anim/head_anim_2_1.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/head_anim/head_anim_2_2.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/head_anim/head_anim_2_3.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/head_anim/head_anim_2_4.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/head_anim/head_anim_3_0.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/head_anim/head_anim_3_1.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/head_anim/head_anim_3_2.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/head_anim/head_anim_3_3.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/mod/head.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/mod/head_anim/head_anim_0_0.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/mod/head_anim/head_anim_0_1.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/mod/head_anim/head_anim_0_2.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/mod/head_anim/head_anim_0_3.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/mod/head_anim/head_anim_1_0.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/mod/head_anim/head_anim_1_1.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/mod/head_anim/head_anim_1_2.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/mod/head_anim/head_anim_2_0.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/mod/head_anim/head_anim_2_1.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/mod/head_anim/head_anim_2_2.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/mod/head_anim/head_anim_3_0.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/mod/head_anim/head_anim_3_1.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/mod/head_anim/head_anim_3_2.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/naked/mod/head_anim/head_anim_3_3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>56,96,113,193</rect>
+                <key>scale9Paddings</key>
+                <rect>56,96,113,193</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../images/spritesheet_sources/figure/naked/leg_calf_back.png</key>
             <key type="filename">../images/spritesheet_sources/figure/naked/leg_calf_top.png</key>
             <struct type="IndividualSpriteSettings">
@@ -1015,19 +1060,6 @@
                 <rect>38,82,75,164</rect>
                 <key>scale9Paddings</key>
                 <rect>38,82,75,164</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../images/spritesheet_sources/figure/naked/mod/head.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>52,72,104,144</rect>
-                <key>scale9Paddings</key>
-                <rect>52,72,104,144</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

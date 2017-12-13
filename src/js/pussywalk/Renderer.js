@@ -1,5 +1,6 @@
 import Constants from './Constants'
 import FlashTexture from './FlashTexture'
+import HeadAnimator from './HeadAnimator'
 import SpriteSheet from 'spritesheet-canvas'
 // import SpriteSheet0 from '../../images/spritesheet-0.json'
 // import SpriteSheet1 from '../../images/spritesheet-1.json'
@@ -42,6 +43,7 @@ export default class Renderer {
     this.eyeball = this.imagesConfig["elements/eyeball.png"]
     this.mrP = this.imagesConfig["elements/mr_p.png"]
     this.pillbottle = this.imagesConfig["elements/pill_bottle.png"]
+    this.headAnimator = new HeadAnimator(this.imagesConfig)
   }
 
   prepareLights() {
@@ -155,7 +157,7 @@ export default class Renderer {
     }
 
     this.showNakedBody(false)
-    this.showBodyMod(false)
+    this.setModded(false)
   }
 
   setState(state) {
@@ -163,7 +165,7 @@ export default class Renderer {
       switch (key) {
         case "sheep":
           this.flash()
-          this.showBodyMod(state[key])
+          this.setModded(state[key])
           break;
         case "renderPorn":
           this.renderPorn = state[key]
@@ -196,21 +198,19 @@ export default class Renderer {
       }
     }
 
-    this.showBodyMod(this.isShowingBodyMod)
+    this.setModded(this.isShowingBodyMod)
   }
 
-  showBodyMod(show) {
+  setModded(show) {
 
     this.isShowingBodyMod = show
 
     let normalPartNames = [
-      "head",
       "body",
       "body_collar"
     ]
     let moddedPartNames = [
       "body_mod",
-      "head_mod",
       "sheep_body",
       "sheep_arm",
       "sheep_leg",
@@ -230,6 +230,10 @@ export default class Renderer {
       if (this.figureConfig[this.figurePrefix + moddedPartNames[idx]]) {
         this.figureConfig[this.figurePrefix + moddedPartNames[idx]].visible = show
       }
+    }
+
+    if (this.headAnimator) {
+      this.headAnimator.setModded(show)
     }
   }
 
@@ -468,6 +472,12 @@ export default class Renderer {
       if (figureConfig.visible == false) {
         continue
       }
+
+      if (figureConfig.name == "dressed_head" || figureConfig.name == "naked_head") {
+        this.drawTexture(this.headAnimator.headTexture)
+        continue
+      }
+
       this.drawTexture(figureConfig)
     }
 
@@ -681,6 +691,11 @@ export default class Renderer {
     this.context.rotate(-angle)
     this.context.translate(-position.x, -position.y);
 
+  }
+
+  playScare(scare) {
+    console.log(">> " + scare);
+    this.headAnimator.playScare(scare)
   }
 
   dispose() {

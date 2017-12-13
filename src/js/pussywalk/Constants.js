@@ -886,16 +886,16 @@ exports.dressedBodyTexturesConfig = [
       y: -35
     }
   },
-  {
-    name: "dressed_dressed_head_mod",
-    name: "dressed_head_mod",
-    body: "head",
-    asset: "figure/naked/mod/head.png",
-    offset: {
-      x: -35,
-      y: -35
-    }
-  },
+  // {
+  //   name: "dressed_dressed_head_mod",
+  //   name: "dressed_head_mod",
+  //   body: "head",
+  //   asset: "figure/naked/mod/head.png",
+  //   offset: {
+  //     x: -35,
+  //     y: -35
+  //   }
+  // },
 
   {
     name: "dressed_body_collar",

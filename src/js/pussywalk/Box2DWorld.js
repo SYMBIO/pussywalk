@@ -23,6 +23,7 @@ export default class Box2DWorld {
     this.renderer = null
     this.audioPlayer = null
     this.jointsToDestroy = []
+    this.bodyAngle = 0
 
     var gravity = new Box2D.b2Vec2(0.0, -10.0);
     this.world = new Box2D.b2World(gravity);
@@ -495,6 +496,17 @@ export default class Box2DWorld {
     let backBall = this.bodies['back_weight']
     let frontBall = this.bodies['front_weight']
     let bend = this.bodies['body'].GetAngle();
+
+    if ((bend < -0.3 && this.bodyAngle > -0.3) || (bend > 0.3 && this.bodyAngle < 0.3)) {
+      this.renderer.playScare(0)
+    } else {
+      if ((bend < -0.5 && this.bodyAngle > -0.5) || ((bend > 0.5 && this.bodyAngle < 0.5))) {
+        this.renderer.playScare(1)
+      } else if ((bend < -0.7 && this.bodyAngle > -0.7) || (bend > 0.7 && this.bodyAngle < 0.7)) {
+        this.renderer.playScare(2)
+      }
+    }
+    this.bodyAngle = bend
 
     if (bend > 0) {
       // Leaning back
