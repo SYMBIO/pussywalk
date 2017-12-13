@@ -708,15 +708,6 @@ exports.nakedBodyTexturesConfig = [
     }
   },
   {
-    name: "naked_head_mod",
-    body: "head",
-    asset: "figure/naked/mod/head.png",
-    offset: {
-      x: -25,
-      y: -30
-    }
-  },
-  {
     name: "naked_hand_front_top",
     body: "hand_front_top",
     asset: "figure/naked/hand_upper_top.png",
@@ -865,7 +856,7 @@ exports.dressedBodyTexturesConfig = [
     asset: "figure/dressed/mod/torso.png",
     offset: {
       x: -30,
-      y: -50
+      y: -60
     }
   },
   {
@@ -874,7 +865,7 @@ exports.dressedBodyTexturesConfig = [
     asset: "figure/dressed/torso.png",
     offset: {
       x: -30,
-      y: -50
+      y: -60
     }
   },
   {
@@ -886,16 +877,6 @@ exports.dressedBodyTexturesConfig = [
       y: -35
     }
   },
-  // {
-  //   name: "dressed_dressed_head_mod",
-  //   name: "dressed_head_mod",
-  //   body: "head",
-  //   asset: "figure/naked/mod/head.png",
-  //   offset: {
-  //     x: -35,
-  //     y: -35
-  //   }
-  // },
 
   {
     name: "dressed_body_collar",

@@ -15,7 +15,11 @@ export default class HeadAnimator {
   }
 
   setModded(show) {
+    clearInterval(this.interval)
     this.isModded = show
+
+    let path = this.isModded ? "figure/naked/mod/head.png" : "figure/naked/head.png"
+    this.setHeadTexture(this.imagesConfig[path])
   }
 
   playScare(scare) {
@@ -25,7 +29,7 @@ export default class HeadAnimator {
     this.frames = []
 
     while (true) {
-      name = "figure/naked/head_anim/head_anim_" + scare + "_" + i + ".png"
+      name = this.isModded ? "figure/naked/mod/head_anim/head_anim_" + scare + "_" + i + ".png" : "figure/naked/head_anim/head_anim_" + scare + "_" + i + ".png"
       if (this.imagesConfig[name]) {
         this.frames.push(this.imagesConfig[name])
         i++
@@ -34,7 +38,8 @@ export default class HeadAnimator {
       }
     }
 
-    this.frames.push(this.imagesConfig["figure/naked/head.png"])
+    let path = this.isModded ? "figure/naked/mod/head.png" : "figure/naked/head.png"
+    this.frames.push(this.imagesConfig[path])
 
     if (this.frames.length > 0) {
       clearInterval(this.interval)
@@ -54,8 +59,8 @@ export default class HeadAnimator {
     console.log(texture.name);
     texture.body = "head"
     texture.offset = {
-      x: -35,
-      y: -35
+      x: -30,
+      y: -50
     }
 
     this.headTexture = texture
