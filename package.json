@@ -13,9 +13,13 @@
   "license": "LGPL-3.0+",
   "scripts": {
     "dev": "babel-node ./webpack/server.js",
-    "build": "rm -rf build && npm run ss_compress && webpack --config ./webpack/webpack.config.prod.babel.js",
-    "ss_compress": "tinypng -r -k dY76SanOkUE8SaPaTDZP-vZlJsbtEARu src/images/spritesheet-*.png",
-    "test": ""
+    "build": "rm -rf build && npm run compress_ss && webpack --config ./webpack/webpack.config.prod.babel.js && npm run app_assets",
+
+    "compress_ss": "tinypng -r -k dY76SanOkUE8SaPaTDZP-vZlJsbtEARu src/images/*/*",
+
+    "app_assets": "npm run app_build_zip && npm run app_timestamp",
+    "app_build_zip": "mkdir build/app && zip -r build/app/build.zip build/",
+    "app_timestamp": "echo \"$(git rev-parse HEAD)\" >> build/app/update"
   },
   "dependencies": {
     "assets-loader": "^0.5.1",

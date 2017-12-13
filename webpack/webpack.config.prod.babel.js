@@ -67,16 +67,6 @@ module.exports = {
     new CopyWebpackPlugin([
       //{from: `${SRC}/app/robots.txt`},
       {
-        from: `${SRC}.htaccess`,
-        to: `${BUILD}.htaccess`,
-        toType: 'file'
-      },
-      {
-        from: `${SRC}.htpasswd`,
-        to: `${BUILD}.htpasswd`,
-        toType: 'file'
-      },
-      {
         from: `${SRC}js/vendor`,
         to: `${BUILD}js/vendor`
       },
