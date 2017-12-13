@@ -56,7 +56,6 @@ export default class HeadAnimator {
   }
 
   setHeadTexture(texture) {
-    console.log(texture.name);
     texture.body = "head"
     texture.offset = {
       x: -30,

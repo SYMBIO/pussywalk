@@ -410,7 +410,7 @@ export default class Renderer {
     x = (x * this.physicsScale + 30) * this.scale
     y = -(y * this.physicsScale + 220) * this.scale
 
-    this.context.font = Math.round(48 * this.scale) + 'px serif';
+    this.context.font = 'italic ' + Math.round(60 * this.scale) + 'px "barlow", Arial, Helvetica, sans-serif';
     this.context.fillStyle = "#FFF"
     this.context.fillText(Math.round(percentage) + '%', x, y);
 
@@ -694,7 +694,6 @@ export default class Renderer {
   }
 
   playScare(scare) {
-    console.log(">> " + scare);
     this.headAnimator.playScare(scare)
   }
 

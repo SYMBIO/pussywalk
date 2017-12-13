@@ -14,20 +14,6 @@ let loader = assetsLoader({
     '/images/spritesheet-1.png',
     '/images/spritesheet-2.json',
     '/images/spritesheet-2.png',
-    '/images/spritesheet-3.json',
-    '/images/spritesheet-3.png',
-    '/images/spritesheet-4.json',
-    '/images/spritesheet-4.png',
-    '/images/spritesheet-5.json',
-    '/images/spritesheet-5.png',
-    '/images/spritesheet-6.json',
-    '/images/spritesheet-6.png',
-    '/images/spritesheet-7.json',
-    '/images/spritesheet-7.png',
-    '/images/spritesheet-8.json',
-    '/images/spritesheet-8.png',
-    '/images/spritesheet-9.json',
-    '/images/spritesheet-9.png',
     '/images/layout/loading-bg.jpg',
     '/images/layout/loading-ico.png',
     '/images/layout/logo-pussywalk-2.png',
@@ -41,6 +27,10 @@ let loader = assetsLoader({
     '/images/level/level_2.jpg',
     '/images/level/level_3.jpg',
     '/images/level/level_4.jpg',
+    '/images/level/level_5.jpg',
+    '/images/level/level_6.jpg',
+    '/images/level/level_7.jpg',
+    '/images/level/level_8.jpg',
     '/images/level/lights/fluorescent_bathroom.jpg',
     '/images/level/lights/fluorescent_general.jpg',
     '/images/level/lights/furnice.jpg',
@@ -48,18 +38,17 @@ let loader = assetsLoader({
     '/images/level/lights/ovcacek_room_light.jpg',
     '/images/level/lights/warm_bathroom.jpg',
     '/images/misc/flash.png',
-    '/images/misc/light.jpg',
     '/images/misc/vignette.png',
 
     // audio
-    '/audio/step_big_01.wav',
-    '/audio/step_big_02.wav',
-    '/audio/step_big_03.wav',
-    '/audio/step_big_04.wav',
-    '/audio/step_small_01.wav',
-    '/audio/step_small_02.wav',
-    '/audio/step_small_03.wav',
-    '/audio/step_small_04.wav',
+    '/audio/step_big_01.mp3',
+    '/audio/step_big_02.mp3',
+    '/audio/step_big_03.mp3',
+    '/audio/step_big_04.mp3',
+    '/audio/step_small_01.mp3',
+    '/audio/step_small_02.mp3',
+    '/audio/step_small_03.mp3',
+    '/audio/step_small_04.mp3',
   ]
 })
   .on('error', function(error) {
@@ -92,7 +81,7 @@ window.onload = function() {
     onLifesUpdate: onLifesUpdate,
   }
 
-  startGame()
+  startGame(true)
 }
 
 function showLayer(layer) {
@@ -267,13 +256,13 @@ function onGameEnd(didWin) {
   }
 }
 
-function startGame() {
+function startGame(naked) {
   finished = false;
 
   if (_game) {
     _game.dispose()
   }
-  _game = new PussywalkMinigame(_callbacks);
+  _game = new PussywalkMinigame(_callbacks, naked);
 }
 
 function pauseGame() {

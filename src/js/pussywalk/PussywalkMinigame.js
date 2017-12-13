@@ -40,7 +40,7 @@ const resizeCanvas = () => {
   }
 }
 
-const loadJSON = () => {
+const loadJSON = (config) => {
 
   enableLoader(true);
 
@@ -56,12 +56,12 @@ const loadJSON = () => {
     _loaderPromise
   ).done((dn) => {
     _loaderPromise = null;
-    initGame();
+    initGame(config);
   });
 
 }
 
-const initGame = () => {
+const initGame = (config) => {
 
   _canvas = $('<canvas />');
   $('.game__scene').prepend(_canvas);
@@ -76,6 +76,7 @@ const initGame = () => {
   _world.audioPlayer = _audioPlayer
 
   _world.syncRenderer()
+  _renderer.showNakedBody(config.startNaked)
 
   resizeCanvas()
 
@@ -139,7 +140,7 @@ const playLoader = () => {
 
 export default class PussywalkMinigame {
 
-  constructor(callbacks) {
+  constructor(callbacks, naked) {
     _callbacks = callbacks;
 
     $(window).resize(resizeCanvas)
@@ -150,7 +151,9 @@ export default class PussywalkMinigame {
     this.lastTickTime = new Date()
     this.playTime = 0
 
-    loadJSON();
+    loadJSON({
+      startNaked: naked
+    });
   }
 
   init() {}
