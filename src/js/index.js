@@ -173,8 +173,11 @@ function initializeFirebase() {
   };
   firebase.initializeApp(config);
 
+  // Nacte vysledky jen jednou (viz .once), takze je potreba tohle pustit:
+  // 1) kdyz se pusti hra (aby bylo aspon neco v scoreboardu)
+  // 2) kdyz to otevre scoreboard
   var scoreboardListener = firebase.database().ref('scoreboard');
-  scoreboardListener.orderByChild("time").on('value', function(snapshot) {
+  scoreboardListener.orderByChild("time").once('value', function(snapshot) {
     let scoreboard = $('#scoreboard_list')
     let scoreboardTop3 = $('#scoreboard_top3')
     var i = 0

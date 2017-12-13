@@ -346,7 +346,7 @@ export default class Box2DWorld {
     });
 
     setTimeout(() => {
-      this.callbacks.EndListener(didWin);
+      this.callbacks.onGameEnd(didWin);
     }, 1000);
   }
 
