@@ -18,7 +18,7 @@
     "compress_ss": "tinypng -r -k dY76SanOkUE8SaPaTDZP-vZlJsbtEARu src/images/*/*",
 
     "app_assets": "npm run app_build_zip && npm run app_timestamp",
-    "app_build_zip": "mkdir build/app && zip -r build/app/build.zip build/",
+    "app_build_zip": "mkdir build/app && tar -zcvf build/build.zip build/",
     "app_timestamp": "echo \"$(git rev-parse HEAD)\" >> build/app/update"
   },
   "dependencies": {
