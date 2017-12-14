@@ -81,7 +81,7 @@ window.onload = function() {
     onLifesUpdate: onLifesUpdate,
   }
 
-  startGame(true)
+  startGame()
 }
 
 function showLayer(layer) {
