@@ -71,10 +71,10 @@ module.exports = {
         to: `${BUILD}js/vendor`
       },
       {
-        from: `${SRC}images/favicon.ico`
+        from: `${SRC}favicon.ico`
       },
       {
-        from: `${SRC}images/favicon.png`
+        from: `${SRC}favicon.png`
       },
       //{ from: `${SRC}config.json` },
       {
