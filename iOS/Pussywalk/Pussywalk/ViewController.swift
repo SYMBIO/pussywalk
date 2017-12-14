@@ -14,30 +14,34 @@ class ViewController: UIViewController {
 
   private let webView: WKWebView
   private let assetsPath: String
+  private let updater: Updater
 
   required init?(coder aDecoder: NSCoder) {
     self.assetsPath = Bundle.main.bundlePath + "/build"
     self.webView = WKWebView()
+    self.updater = Updater()
 
     super.init(coder: aDecoder)
+
+    self.updater.start()
   }
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    self.initWebServer()
-
-    self.webView.translatesAutoresizingMaskIntoConstraints = false
-    self.view.addSubview(self.webView)
-    self.view.topAnchor.constraint(equalTo: self.webView.topAnchor).isActive = true
-    self.view.trailingAnchor.constraint(equalTo: self.webView.trailingAnchor).isActive = true
-    self.view.bottomAnchor.constraint(equalTo: self.webView.bottomAnchor).isActive = true
-    self.view.leadingAnchor.constraint(equalTo: self.webView.leadingAnchor).isActive = true
-
-    if let url = URL(string: "http://localhost:8080/") {
-      let request = URLRequest(url: url)
-      self.webView.load(request)
-    }
+//    self.initWebServer()
+//
+//    self.webView.translatesAutoresizingMaskIntoConstraints = false
+//    self.view.addSubview(self.webView)
+//    self.view.topAnchor.constraint(equalTo: self.webView.topAnchor).isActive = true
+//    self.view.trailingAnchor.constraint(equalTo: self.webView.trailingAnchor).isActive = true
+//    self.view.bottomAnchor.constraint(equalTo: self.webView.bottomAnchor).isActive = true
+//    self.view.leadingAnchor.constraint(equalTo: self.webView.leadingAnchor).isActive = true
+//
+//    if let url = URL(string: "http://localhost:8080/") {
+//      let request = URLRequest(url: url)
+//      self.webView.load(request)
+//    }
   }
 
   func initWebServer() {

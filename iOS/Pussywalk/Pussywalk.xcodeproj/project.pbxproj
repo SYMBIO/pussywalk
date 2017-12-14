@@ -14,6 +14,7 @@
 		95328E891FD6EBD0004319DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95328E881FD6EBD0004319DF /* Assets.xcassets */; };
 		95328E8C1FD6EBD0004319DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95328E8A1FD6EBD0004319DF /* LaunchScreen.storyboard */; };
 		95573FC11FD6EFEF00A97946 /* build in Resources */ = {isa = PBXBuildFile; fileRef = 95573FC01FD6EFEF00A97946 /* build */; };
+		95A70BD91FE30D40001A2365 /* Updater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A70BD81FE30D40001A2365 /* Updater.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		95328E8B1FD6EBD0004319DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		95328E8D1FD6EBD0004319DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95573FC01FD6EFEF00A97946 /* build */ = {isa = PBXFileReference; lastKnownFileType = folder; name = build; path = ../../build; sourceTree = "<group>"; };
+		95A70BD81FE30D40001A2365 /* Updater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Updater.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				95328E881FD6EBD0004319DF /* Assets.xcassets */,
 				95328E8A1FD6EBD0004319DF /* LaunchScreen.storyboard */,
 				95328E8D1FD6EBD0004319DF /* Info.plist */,
+				95A70BD81FE30D40001A2365 /* Updater.swift */,
 			);
 			path = Pussywalk;
 			sourceTree = "<group>";
@@ -179,10 +182,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Pussywalk/Pods-Pussywalk-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GCDWebServer/GCDWebServer.framework",
+				"${BUILT_PRODUCTS_DIR}/SSZipArchive/SSZipArchive.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GCDWebServer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SSZipArchive.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -231,6 +236,7 @@
 			files = (
 				95328E841FD6EBD0004319DF /* ViewController.swift in Sources */,
 				95328E821FD6EBD0004319DF /* AppDelegate.swift in Sources */,
+				95A70BD91FE30D40001A2365 /* Updater.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
