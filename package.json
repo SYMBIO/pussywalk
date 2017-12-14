@@ -13,10 +13,10 @@
   "license": "LGPL-3.0+",
   "scripts": {
     "dev": "babel-node ./webpack/server.js",
-    "build": "rm -rf build && npm run compress && webpack --config ./webpack/webpack.config.prod.babel.js && npm run app_assets",
+    "build": "rm -rf build && webpack --config ./webpack/webpack.config.prod.babel.js && npm run app_assets",
     "compress": "tinify-cli --key dY76SanOkUE8SaPaTDZP-vZlJsbtEARu \"src/images/**/*.{jpg,png}\"",
     "app_assets": "npm run app_build_zip && npm run app_timestamp",
-    "app_build_zip": "tar -zcvf build.zip build/ && mkdir build/app && cp build.zip build/app",
+    "app_build_zip": "bestzip build.zip build/ && mkdir build/app && cp build.zip build/app",
     "app_timestamp": "echo \"$(git rev-parse HEAD)\" >> build/app/update"
   },
   "dependencies": {
@@ -37,6 +37,7 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.0",
     "babel-runtime": "^6.26.0",
+    "bestzip": "^1.1.4",
     "copy-webpack-plugin": "^4.2.3",
     "css-loader": "^0.28.4",
     "express": "^4.15.3",
