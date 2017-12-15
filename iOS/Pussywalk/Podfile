@@ -3,6 +3,6 @@ use_frameworks!
 
 target 'Pussywalk' do
   pod 'GCDWebServer', '~> 3.4'
-  pod 'SSZipArchive', '~> 2.1'
+  pod 'Zip', '~> 1.1'
 end
 

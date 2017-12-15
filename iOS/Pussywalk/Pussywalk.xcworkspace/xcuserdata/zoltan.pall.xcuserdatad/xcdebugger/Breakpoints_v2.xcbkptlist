@@ -6,31 +6,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pussywalk/ViewController.swift"
-            timestampString = "534981463.616423"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "initWebServer()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pussywalk/Updater.swift"
-            timestampString = "534981463.616499"
+            timestampString = "534989274.247898"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
             landmarkName = "unpack(_:)"
             landmarkType = "7">
             <Locations>
@@ -70,31 +54,31 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pussywalk/Updater.swift"
-            timestampString = "534981463.616554"
+            filePath = "Pods/SSZipArchive/SSZipArchive/SSZipArchive.m"
+            timestampString = "534986635.455106"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "unpack(_:)"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
+            landmarkName = "+unzipFileAtPath:toDestination:preserveAttributes:overwrite:nestedZipLevel:password:error:delegate:progressHandler:completionHandler:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pussywalk/Updater.swift"
-            timestampString = "534981463.616603"
+            timestampString = "534989274.248835"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
             landmarkName = "unpack(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -105,13 +89,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pods/SSZipArchive/SSZipArchive/SSZipArchive.m"
-            timestampString = "534981463.616651"
+            filePath = "Pussywalk/Updater.swift"
+            timestampString = "534989274.249261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
-            landmarkName = "+unzipFileAtPath:toDestination:preserveAttributes:overwrite:nestedZipLevel:password:error:delegate:progressHandler:completionHandler:"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "start()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pussywalk/Updater.swift"
+            timestampString = "534989274.250136"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "unpack(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

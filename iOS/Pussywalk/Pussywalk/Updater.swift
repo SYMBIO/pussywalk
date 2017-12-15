@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import SSZipArchive
+import Zip
 
 class UpdaterRequestError: Error {
   let message: String
@@ -32,14 +32,16 @@ class UpdaterRequest {
   }
 
   func load() {
-    do {
-      try self.load(urlString: UpdaterRequestBasePaths.domain.rawValue + self.relativeURL)
-    } catch {
+    DispatchQueue.global(qos: .default).async {
       do {
-        print("Error thrown when loading \(UpdaterRequestBasePaths.domain.rawValue + self.relativeURL)")
-        try self.load(urlString: UpdaterRequestBasePaths.subdomain.rawValue + self.relativeURL)
+        try self.load(urlString: UpdaterRequestBasePaths.domain.rawValue + self.relativeURL)
       } catch {
-        print("Error thrown when loading \(UpdaterRequestBasePaths.subdomain.rawValue + self.relativeURL)")
+        do {
+          print("Error thrown when loading \(UpdaterRequestBasePaths.domain.rawValue + self.relativeURL)")
+          try self.load(urlString: UpdaterRequestBasePaths.subdomain.rawValue + self.relativeURL)
+        } catch {
+          print("Error thrown when loading \(UpdaterRequestBasePaths.subdomain.rawValue + self.relativeURL)")
+        }
       }
     }
   }
@@ -56,13 +58,11 @@ class UpdaterRequest {
 class Updater {
   private var newUpdateHash: String?
 
-  private let fileManager: FileManager
   private let documentsURL: URL
   private let bundleURL: URL
 
   init() {
-    self.fileManager = FileManager()
-    self.documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    self.documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     self.bundleURL = Bundle.main.bundleURL
   }
 
@@ -76,20 +76,27 @@ class Updater {
     sourceURL = self.bundleURL.appendingPathComponent("build")
     updateURL = self.documentsURL.appendingPathComponent("update")
 
-    if !self.fileManager.fileExists(atPath: destURL.absoluteString) {
+    print("\(destURL.path)")
+
+    if !FileManager.default.fileExists(atPath: destURL.path) {
       // Copy from Bundle to Documents
       do {
-        if self.fileManager.fileExists(atPath: destURL.absoluteString) {
-          try self.fileManager.removeItem(at: destURL)
+        if FileManager.default.fileExists(atPath: destURL.path) {
+          try FileManager.default.removeItem(at: destURL)
         }
-        try self.fileManager.copyItem(at: sourceURL, to: destURL)
+        try FileManager.default.copyItem(at: sourceURL, to: destURL)
       } catch {
         print("Error copying from Bundle/build to Documents/build")
       }
-    } else if self.fileManager.fileExists(atPath: updateURL.absoluteString) {
+    } else if FileManager.default.fileExists(atPath: updateURL.appendingPathComponent("build").path) {
       do {
-        try self.fileManager.removeItem(at: destURL)
-        try self.fileManager.copyItem(at: updateURL, to: destURL)
+        let hash = try String(contentsOf: updateURL.appendingPathComponent("update.hash"))
+        try FileManager.default.removeItem(at: destURL)
+        try FileManager.default.copyItem(at: updateURL.appendingPathComponent("build"), to: destURL)
+
+        UserDefaults.standard.set(hash, forKey: "updateHash")
+
+        try FileManager.default.removeItem(at: updateURL)
       } catch {
         print("Error copying from Documents/update to Documents/build")
       }
@@ -121,23 +128,23 @@ class Updater {
 
   func unpack(_ data: Data) {
     do {
-      let fileURL: URL
+      var fileURL: URL
       let updateURL: URL
 
       fileURL = self.documentsURL.appendingPathComponent("update.zip")
       updateURL = self.documentsURL.appendingPathComponent("update")
 
-      if self.fileManager.fileExists(atPath: updateURL.absoluteString) {
-        try self.fileManager.removeItem(at: updateURL)
+      if FileManager.default.fileExists(atPath: updateURL.path) {
+        try FileManager.default.removeItem(at: updateURL)
       }
-      try self.fileManager.createDirectory(at: updateURL, withIntermediateDirectories: true, attributes: nil)
+      try FileManager.default.createDirectory(at: updateURL, withIntermediateDirectories: true, attributes: nil)
 
       try data.write(to: fileURL)
-//      try Zip.unzipFile(filePath, destination: updateURL, overwrite: true, password: nil)
-      SSZipArchive.unzipFile(atPath: fileURL.absoluteString, toDestination: updateURL.absoluteString)
+      try Zip.unzipFile(fileURL, destination: updateURL, overwrite: true, password: nil)
 
-      //
+      fileURL = updateURL.appendingPathComponent("update.hash")
 
+      try self.newUpdateHash?.write(to: fileURL, atomically: true, encoding: .utf8)
     } catch {
       print("Error unzipping. \(self.newUpdateHash ?? "" )")
     }
