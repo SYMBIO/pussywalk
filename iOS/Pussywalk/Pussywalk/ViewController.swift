@@ -13,11 +13,9 @@ import GCDWebServer
 class ViewController: UIViewController {
 
   private let webView: WKWebView
-  private let assetsPath: String
   private let updater: Updater
 
   required init?(coder aDecoder: NSCoder) {
-    self.assetsPath = Bundle.main.bundlePath + "/build"
     self.webView = WKWebView()
     self.updater = Updater()
 
@@ -31,6 +29,12 @@ class ViewController: UIViewController {
 
     self.initWebServer()
 
+    if #available(iOS 11.0, *) {
+      self.webView.scrollView.contentInsetAdjustmentBehavior = .never
+    } else {
+      // Fallback on earlier versions
+    }
+
     self.webView.translatesAutoresizingMaskIntoConstraints = false
     self.view.addSubview(self.webView)
     self.view.topAnchor.constraint(equalTo: self.webView.topAnchor).isActive = true
@@ -39,7 +43,7 @@ class ViewController: UIViewController {
     self.view.leadingAnchor.constraint(equalTo: self.webView.leadingAnchor).isActive = true
 
     if let url = URL(string: "http://localhost:8080/") {
-      let request = URLRequest(url: url)
+      let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
       self.webView.load(request)
     }
   }
@@ -50,7 +54,7 @@ class ViewController: UIViewController {
     webServer.addDefaultHandler(forMethod: "GET",
                                 request: GCDWebServerRequest.self,
                                 processBlock: { (request) -> GCDWebServerResponse? in
-                                  let path = self.assetsPath + (request.path == "/" ? "/index.html" : request.path)
+                                  let path = self.updater.buildPath + (request.path == "/" ? "/index.html" : request.path)
                                   let fm = FileManager()
 
                                   if fm.fileExists(atPath: path) {
@@ -60,6 +64,10 @@ class ViewController: UIViewController {
                                   }
     })
     webServer.start(withPort: 8080, bonjourName: "Pussywalk Server")
+  }
+
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
   }
 
 }

@@ -61,6 +61,10 @@ class Updater {
   private let documentsURL: URL
   private let bundleURL: URL
 
+  public var buildPath: String {
+    return self.documentsURL.appendingPathComponent("build").path
+  }
+
   init() {
     self.documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     self.bundleURL = Bundle.main.bundleURL
@@ -141,6 +145,7 @@ class Updater {
 
       try data.write(to: fileURL)
       try Zip.unzipFile(fileURL, destination: updateURL, overwrite: true, password: nil)
+      try FileManager.default.removeItem(at: fileURL)
 
       fileURL = updateURL.appendingPathComponent("update.hash")
 
