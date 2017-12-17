@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>4</int>
         <key>texturePackerVersion</key>
-        <string>4.5.0</string>
+        <string>4.4.0</string>
         <key>fileName</key>
         <string>/Users/zoltan.pall/Work/pussywalk2/tools/texturePacker.tps</string>
         <key>autoSDSettings</key>
@@ -461,6 +461,19 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../images/spritesheet_sources/elements/ctveracek.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>56,53,113,107</rect>
+                <key>scale9Paddings</key>
+                <rect>56,53,113,107</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../images/spritesheet_sources/elements/cup.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -471,6 +484,19 @@
                 <rect>16,16,32,31</rect>
                 <key>scale9Paddings</key>
                 <rect>16,16,32,31</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/dira.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>46,46,92,92</rect>
+                <key>scale9Paddings</key>
+                <rect>46,46,92,92</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -787,6 +813,19 @@
                 <rect>21,95,42,189</rect>
                 <key>scale9Paddings</key>
                 <rect>21,95,42,189</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/elements/vetrak.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>32,32,64,64</rect>
+                <key>scale9Paddings</key>
+                <rect>32,32,64,64</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

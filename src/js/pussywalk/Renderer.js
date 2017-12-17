@@ -44,6 +44,9 @@ export default class Renderer {
     this.mrP = this.imagesConfig["elements/mr_p.png"]
     this.pillbottle = this.imagesConfig["elements/pill_bottle.png"]
     this.headAnimator = new HeadAnimator(this.imagesConfig)
+    this.sheep = this.imagesConfig["elements/ctveracek.png"]
+    this.fanBackground = this.imagesConfig["elements/dira.png"]
+    this.fan = this.imagesConfig["elements/vetrak.png"]
   }
 
   prepareLights() {
@@ -318,8 +321,9 @@ export default class Renderer {
       }
     }
 
-    // Furnace
     if (this.endIndex == 7) {
+      // Furnace
+
       let furnaceImage = this.imagesConfig['furnace/furnace_' + idx + '.jpg']
       if (furnaceImage) {
         this.context.drawImage(furnaceImage.image,
@@ -327,7 +331,7 @@ export default class Renderer {
           furnaceImage.frame.y,
           furnaceImage.frame.w,
           furnaceImage.frame.h,
-          10158 * this.scale,
+          1000 * this.scale,
           917 * this.scale,
           furnaceImage.frame.w * this.scale * 2,
           furnaceImage.frame.h * this.scale * 2
@@ -335,7 +339,42 @@ export default class Renderer {
       } else {
         console.log('furnace/furnace_' + idx + '.png');
       }
+
+    // Fan
     }
+
+    this.context.drawImage(this.fanBackground.image,
+      this.fanBackground.frame.x,
+      this.fanBackground.frame.y,
+      this.fanBackground.frame.w,
+      this.fanBackground.frame.h,
+      9800 * this.scale,
+      1200 * this.scale,
+      this.fanBackground.frame.w * this.scale * 2,
+      this.fanBackground.frame.h * this.scale * 2
+    )
+
+    let position = {
+      x: (9825 + this.fan.frame.w) * this.scale,
+      y: (1230 + this.fan.frame.h) * this.scale
+    }
+
+    this.context.translate(position.x, position.y);
+    this.context.rotate(this.frameCounter / 10)
+
+    this.context.drawImage(this.fan.image,
+      this.fan.frame.x,
+      this.fan.frame.y,
+      this.fan.frame.w,
+      this.fan.frame.h,
+      -this.fan.frame.w * this.scale,
+      -this.fan.frame.h * this.scale,
+      this.fan.frame.w * this.scale * 2,
+      this.fan.frame.h * this.scale * 2
+    )
+    this.context.rotate(-this.frameCounter / 10)
+    this.context.translate(-position.x, -position.y);
+
 
     // Mr P
     if (this.startIndex < 2) {
@@ -349,7 +388,6 @@ export default class Renderer {
           y: 672
         }
       }
-
 
       var image = new Image();
       let percent = (this.bodies['body'].GetPosition().get_x() * this.physicsScale - (offset.eye1.x + offset.eye2.x) / 2) / 500
@@ -415,6 +453,21 @@ export default class Renderer {
         continue
       }
       this.drawTexture(textureConfig)
+    }
+
+    if (!this.isShowingBodyMod) {
+      let imageConfig = this.sheep
+      this.context.drawImage(imageConfig.image,
+        imageConfig.frame.x,
+        imageConfig.frame.y,
+        imageConfig.frame.w,
+        imageConfig.frame.h,
+        4600,
+        980,
+        imageConfig.frame.w * this.scale * 2,
+        imageConfig.frame.h * this.scale * 2
+      )
+
     }
 
     // Lift number

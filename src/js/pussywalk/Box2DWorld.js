@@ -51,7 +51,7 @@ export default class Box2DWorld {
       y: 0
     }
     this.sheepPickupPoint = {
-      x: 77,
+      x: 75,
       y: -15
     }
 
@@ -824,7 +824,7 @@ export default class Box2DWorld {
 
   softReset() {
     let resetPoint = {
-      x: 90,
+      x: 150,
       y: -16
     }
     // let resetPoint = this.sheepPickupPoint.x < this.progress ? this.sheepPickupPoint : this.startPoint
