@@ -454,7 +454,11 @@ function onTick(time) {
 }
 
 function onSheepPickup() {
-  console.log("picked up sheep");
+  showLayer('.layer--mission-2');
+
+  setTimeout(function() {
+    hideLayer('.layer--mission-2');
+  }, 7500);
 }
 
 function onLifesUpdate(numberOfLifes, delta) {
