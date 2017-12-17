@@ -15,7 +15,22 @@ export default class AudioPlayer {
       sound.load();
       return sound
     })
+
     this.largeSteppingSounds = Constants.sounds.largeSteps.map(function(name) {
+      let sound = new Audio(name);
+      sound.preload = 'auto';
+      sound.load();
+      return sound
+    })
+
+    this.smallTiltSounds = Constants.sounds.smallTilts.map(function(name) {
+      let sound = new Audio(name);
+      sound.preload = 'auto';
+      sound.load();
+      return sound
+    })
+
+    this.largeTiltSounds = Constants.sounds.largeTilts.map(function(name) {
       let sound = new Audio(name);
       sound.preload = 'auto';
       sound.load();
@@ -28,19 +43,64 @@ export default class AudioPlayer {
       sound.load();
       return sound
     })
+
     this.bottleImpactSounds = Constants.sounds.bottlesImpact.map(function(name) {
       let sound = new Audio(name);
       sound.preload = 'auto';
       sound.load();
       return sound
     })
+
     this.thumps = Constants.sounds.thumps.map(function(name) {
       let sound = new Audio(name);
       sound.preload = 'auto';
       sound.load();
       return sound
     })
+
     this.music = Constants.sounds.music.map(function(name) {
+      let sound = new Audio(name);
+      sound.preload = 'auto';
+      sound.load();
+      return sound
+    })
+
+    this.cane = Constants.sounds.cane.map(function(name) {
+      let sound = new Audio(name);
+      sound.preload = 'auto';
+      sound.load();
+      return sound
+    })
+
+    this.chairs = Constants.sounds.chairs.map(function(name) {
+      let sound = new Audio(name);
+      sound.preload = 'auto';
+      sound.load();
+      return sound
+    })
+
+    this.cups = Constants.sounds.cups.map(function(name) {
+      let sound = new Audio(name);
+      sound.preload = 'auto';
+      sound.load();
+      return sound
+    })
+
+    this.tvLarge = Constants.sounds.tvLargeCollide.map(function(name) {
+      let sound = new Audio(name);
+      sound.preload = 'auto';
+      sound.load();
+      return sound
+    })
+
+    this.tvSmall = Constants.sounds.tvSmallCollide.map(function(name) {
+      let sound = new Audio(name);
+      sound.preload = 'auto';
+      sound.load();
+      return sound
+    })
+
+    this.bin = Constants.sounds.bin.map(function(name) {
       let sound = new Audio(name);
       sound.preload = 'auto';
       sound.load();
@@ -60,20 +120,33 @@ export default class AudioPlayer {
     this.sheep.preload = 'auto';
     this.sheep.load();
 
+    this.tvOff = new Audio("audio/tv_porn_off.mp3");
+    this.tvOff.preload = 'auto';
+    this.tvOff.load();
+
+    this.end = new Audio("audio/END.mp3");
+    this.end.preload = 'auto';
+    this.end.load();
+
+    this.rewind = new Audio("audio/rewind.mp3");
+    this.rewind.preload = 'auto';
+    this.rewind.load();
+
     let that = this
     this.music.forEach(function(music) {
+      music.volume = 0.5
       music.onended = that.onMusicEnded
     })
     this.musicIndex = 0
 
-    this.music[this.musicIndex].play()
+    this.playRandom(this.music)
   }
 
   setMute(mute) {
     this.isMute = mute
 
     this.music.forEach(function(music) {
-      music.volume = mute ? 0 : 1
+      music.volume = mute ? 0 : 0.5
     })
   }
 
@@ -87,19 +160,12 @@ export default class AudioPlayer {
   }
 
   onLoseHealthEnded() {
-    this.music[this.musicIndex].play()
     TweenMax.to(this.music[this.musicIndex], 0.5, {
-      volume: 1
+      volume: 0.5
     })
   }
 
-  //
-
   playStep(volume) {
-
-    if (this.isMute) {
-      return
-    }
 
     var index = Math.floor(Math.random() * (this.smallSteppingSounds.length))
     let sound
@@ -108,81 +174,105 @@ export default class AudioPlayer {
     } else {
       sound = this.smallSteppingSounds[index];
     }
-    sound.volume = Math.min(volume, 1);
-    sound.play();
+    sound.volume = Math.min(volume, 0.5);
+    this.play(sound)
   }
 
   playBottleBreak() {
-
-    if (this.isMute) {
-      return
-    }
-
-    var index = Math.floor(Math.random() * (this.bottleBreakingSounds.length))
-    let sound
-
-    sound = this.bottleBreakingSounds[index];
-    sound.play();
+    this.playRandom(this.bottleBreakingSounds)
   }
 
   playBottleImpact() {
-
-    if (this.isMute) {
-      return
-    }
-
-    var index = Math.floor(Math.random() * (this.bottleImpactSounds.length))
-    let sound
-
-    sound = this.bottleImpactSounds[index];
-    sound.play();
+    this.playRandom(this.bottleImpactSounds)
   }
 
   playHealth() {
-
-    if (this.isMute) {
-      return
-    }
-
-    this.health.play()
+    this.play(this.health)
   }
 
   playLoseHealth() {
-
-    if (this.isMute) {
-      return
-    }
-
     TweenMax.to(this.music[this.musicIndex], 0.5, {
       volume: 0.1
     })
-    this.loseHealth.play()
+    this.play(this.loseHealth)
   }
 
   playThump() {
-
-    if (this.isMute) {
-      return
-    }
-
-    var index = Math.floor(Math.random() * (this.thumps.length))
-    let sound
-
-    sound = this.thumps[index];
-    sound.play();
+    this.playRandom(this.thumps)
   }
 
   playSheep() {
+    this.play(this.sheep)
+  }
 
+  playTVOff(name) {
     if (this.isMute) {
       return
     }
 
-    this.sheep.play()
+    this.play(this.tvOff)
+  }
+
+  playCane() {
+    this.playRandom(this.cane)
+  }
+
+  playChair() {
+    this.playRandom(this.chairs)
+  }
+
+  playCup() {
+    this.playRandom(this.cups)
+  }
+
+  playEnd() {
+    this.play(this.end)
+  }
+
+  playRewind() {
+    this.play(this.rewind)
+  }
+
+  playBin() {
+    this.playRandom(this.bin)
+  }
+
+  playTilt(tilt) {
+    if (tilt > 0.5) {
+      this.playRandom(this.largeTiltSounds)
+    } else {
+      this.playRandom(this.smallTiltSounds)
+    }
+  }
+
+  playTV(impact) {
+    if (impact > 0.5) {
+      this.playRandom(this.tvLarge)
+    } else {
+      this.playRandom(this.tvSmall)
+    }
+  }
+
+  playRandom(soundsArray) {
+    var index = Math.floor(Math.random() * soundsArray.length)
+
+    let sound
+
+    sound = soundsArray[index];
+    sound.play();
+
+    this.play(sound)
+  }
+
+  play(sound) {
+    if (this.isMute) {
+      return
+    } else {
+      sound.play()
+    }
   }
 
   stop() {
-
     this.smallSteppingSounds.forEach(function(sound) {
       sound.pause()
     })
