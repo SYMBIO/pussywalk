@@ -23,7 +23,7 @@ export default class Renderer {
     this.renderPorn = true
     this.isShowingBodyMod = false
     this.visibleLifes = []
-    this.rewindFrame = -1
+    this.showRewind = false
     this.drawDebug = false
 
     this.vignette = new Image()
@@ -36,7 +36,8 @@ export default class Renderer {
     this.drawTexture = this.drawTexture.bind(this)
     this.setState = this.setState.bind(this)
     this.isNaked = this.isNaked.bind(this)
-    this.playReset = this.playReset.bind(this)
+    this.playRewind = this.playRewind.bind(this)
+    this.stopRewind = this.stopRewind.bind(this)
 
     this.prepareLights()
     this.prepareTextures()
@@ -675,9 +676,8 @@ export default class Renderer {
       this.context.canvas.height
     )
 
-    if (this.rewindFrame != -1) {
-
-      let imageConfig = this.imagesConfig["rewind/rewind_" + Math.ceil(this.rewindFrame) + ".png"]
+    if (this.showRewind) {
+      let imageConfig = this.imagesConfig["rewind/rewind_" + Math.floor((this.frameCounter / 2) % 10) + ".png"]
       this.context.drawImage(imageConfig.image,
         imageConfig.frame.x,
         imageConfig.frame.y,
@@ -787,12 +787,16 @@ export default class Renderer {
     this.headAnimator.playScare(scare)
   }
 
-  playReset() {
-    this.rewindFrame = 10
-    TweenMax.to(this, 0.5, {
-      rewindFrame: -1,
-      ease: Linear.easeInOut
+  playRewind() {
+    this.showRewind = true
+    TweenMax.to(this, 2, {
+      showRewind: true,
+      onComplete: this.stopRewind
     })
+  }
+
+  stopRewind() {
+    this.showRewind = false
   }
 
   dispose() {

@@ -27,9 +27,9 @@ exports.sounds = {
     "audio/hospital_table_03.mp3"
   ],
   music: [
-    // "audio/health.mp3",
-    // "audio/health_lower.mp3",
-    // "audio/mrO.mp3"
+    "audio/music/BubbleBum.mp3",
+    "audio/music/Google.mp3",
+    "audio/music/Vravoram.mp3"
   ],
   health: "audio/health.mp3",
   loseHealth: "audio/health_lower.mp3",

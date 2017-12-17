@@ -799,12 +799,12 @@ export default class Box2DWorld {
   resetPlayer() {
 
     if (this.renderer) {
-      this.renderer.playReset()
+      this.renderer.playRewind()
     }
 
     this.prepareForReset()
 
-    TweenMax.to(this.recorder, 1, {
+    TweenMax.to(this.recorder, 2, {
       ease: Cubic.easeInOut,
       currentFrame: 0,
       onUpdate: this.stepBack,

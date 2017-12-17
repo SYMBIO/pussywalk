@@ -5,7 +5,9 @@ import SpriteSheet from 'spritesheet-canvas'
 export default class AudioPlayer {
 
   constructor() {
-    // this.isMute = true
+
+    this.onMusicEnded = this.onMusicEnded.bind(this)
+    this.onLoseHealthEnded = this.onLoseHealthEnded.bind(this)
 
     this.smallSteppingSounds = Constants.sounds.smallSteps.map(function(name) {
       let sound = new Audio(name);
@@ -52,20 +54,19 @@ export default class AudioPlayer {
     this.loseHealth = new Audio("audio/health_lower.mp3");
     this.loseHealth.preload = 'auto';
     this.loseHealth.load();
+    this.loseHealth.onended = this.onLoseHealthEnded
 
     this.sheep = new Audio("audio/mrO.mp3");
     this.sheep.preload = 'auto';
     this.sheep.load();
 
-    this.onMusicEnded = this.onMusicEnded.bind(this)
+    let that = this
+    this.music.forEach(function(music) {
+      music.onended = that.onMusicEnded
+    })
+    this.musicIndex = 0
 
-  // let that = this
-  // this.music.forEach(function(music) {
-  //   music.onended = that.onMusicEnded
-  // })
-  // this.musicIndex = 0
-  //
-  // this.music[this.musicIndex].play()
+    this.music[this.musicIndex].play()
   }
 
   setMute(mute) {
@@ -83,6 +84,13 @@ export default class AudioPlayer {
     }
 
     this.music[this.musicIndex].play()
+  }
+
+  onLoseHealthEnded() {
+    this.music[this.musicIndex].play()
+    TweenMax.to(this.music[this.musicIndex], 0.5, {
+      volume: 1
+    })
   }
 
   //
@@ -145,6 +153,9 @@ export default class AudioPlayer {
       return
     }
 
+    TweenMax.to(this.music[this.musicIndex], 0.5, {
+      volume: 0.1
+    })
     this.loseHealth.play()
   }
 
