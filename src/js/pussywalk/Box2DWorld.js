@@ -366,7 +366,7 @@ export default class Box2DWorld {
     }
 
     if (keyCode == 80 && state) {
-      this.softReset()
+      this.cheatReset()
     }
 
     if (keyCode === 39) {
@@ -798,9 +798,13 @@ export default class Box2DWorld {
 
   resetPlayer() {
 
+    if (this.renderer) {
+      this.renderer.playReset()
+    }
+
     this.prepareForReset()
 
-    TweenMax.to(this.recorder, Math.min(3, this.recorder.frames.length / 300), {
+    TweenMax.to(this.recorder, 1, {
       ease: Cubic.easeInOut,
       currentFrame: 0,
       onUpdate: this.stepBack,
@@ -823,11 +827,18 @@ export default class Box2DWorld {
   }
 
   softReset() {
+    let resetPoint = this.sheepPickupPoint.x < this.progress ? this.sheepPickupPoint : this.startPoint
+    this.prepareForReset()
+    this.lastCheckpoint = resetPoint
+    this.resetPlayerToCheckpoint()
+    this.onResetComplete()
+  }
+
+  cheatReset() {
     let resetPoint = {
-      x: 150,
-      y: -16
+      x: 60,
+      y: 0
     }
-    // let resetPoint = this.sheepPickupPoint.x < this.progress ? this.sheepPickupPoint : this.startPoint
     this.prepareForReset()
     this.lastCheckpoint = resetPoint
     this.resetPlayerToCheckpoint()

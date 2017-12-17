@@ -2,8 +2,7 @@ import Constants from './Constants'
 import FlashTexture from './FlashTexture'
 import HeadAnimator from './HeadAnimator'
 import SpriteSheet from 'spritesheet-canvas'
-// import SpriteSheet0 from '../../images/spritesheet-0.json'
-// import SpriteSheet1 from '../../images/spritesheet-1.json'
+import { TweenMax, Linear } from 'gsap'
 
 export default class Renderer {
 
@@ -24,6 +23,7 @@ export default class Renderer {
     this.renderPorn = true
     this.isShowingBodyMod = false
     this.visibleLifes = []
+    this.rewindFrame = -1
     this.drawDebug = false
 
     this.vignette = new Image()
@@ -36,6 +36,7 @@ export default class Renderer {
     this.drawTexture = this.drawTexture.bind(this)
     this.setState = this.setState.bind(this)
     this.isNaked = this.isNaked.bind(this)
+    this.playReset = this.playReset.bind(this)
 
     this.prepareLights()
     this.prepareTextures()
@@ -462,8 +463,8 @@ export default class Renderer {
         imageConfig.frame.y,
         imageConfig.frame.w,
         imageConfig.frame.h,
-        4600,
-        980,
+        4840 * this.scale,
+        1030 * this.scale,
         imageConfig.frame.w * this.scale * 2,
         imageConfig.frame.h * this.scale * 2
       )
@@ -488,7 +489,7 @@ export default class Renderer {
     // Porn
     if (this.renderPorn) {
       let body = this.bodies["decor_monitor"];
-      let index = Math.floor((this.frameCounter / 20) % 4) + 1
+      let index = Math.floor((this.frameCounter / 20) % 3) + 1
       let imageConfig = this.imagesConfig["porn/porn_0" + index + ".png"]
       let position = {
         x: body.GetPosition().get_x() * this.physicsScale * this.scale,
@@ -674,16 +675,31 @@ export default class Renderer {
       this.context.canvas.height
     )
 
+    if (this.rewindFrame != -1) {
+
+      let imageConfig = this.imagesConfig["rewind/rewind_" + Math.ceil(this.rewindFrame) + ".png"]
+      this.context.drawImage(imageConfig.image,
+        imageConfig.frame.x,
+        imageConfig.frame.y,
+        128,
+        128,
+        canvasOffset.x,
+        -canvasOffset.y,
+        this.context.canvas.width,
+        this.context.canvas.height
+      )
+    }
+
     this.frameCounter += 1
 
     // Debug draw
 
-  // if (this.drawDebug) {
-  //   this.context.scale(this.physicsScale * this.scale, this.physicsScale * this.scale);
-  //   this.context.lineWidth = 1 / this.physicsScale;
-  //   this.context.scale(1, -1);
-  //   this.world.DrawDebugData();
-  // }
+    if (this.drawDebug) {
+      this.context.scale(this.physicsScale * this.scale, this.physicsScale * this.scale);
+      this.context.lineWidth = 1 / this.physicsScale;
+      this.context.scale(1, -1);
+      this.world.DrawDebugData();
+    }
   }
 
   drawTexture(textureConfig) {
@@ -769,6 +785,14 @@ export default class Renderer {
 
   playScare(scare) {
     this.headAnimator.playScare(scare)
+  }
+
+  playReset() {
+    this.rewindFrame = 10
+    TweenMax.to(this, 0.5, {
+      rewindFrame: -1,
+      ease: Linear.easeInOut
+    })
   }
 
   dispose() {

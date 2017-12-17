@@ -1278,7 +1278,6 @@
             <key type="filename">../images/spritesheet_sources/porn/porn_01.png</key>
             <key type="filename">../images/spritesheet_sources/porn/porn_02.png</key>
             <key type="filename">../images/spritesheet_sources/porn/porn_03.png</key>
-            <key type="filename">../images/spritesheet_sources/porn/porn_04.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
