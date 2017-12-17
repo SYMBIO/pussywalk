@@ -83,9 +83,6 @@ module.exports = {
       {
         from: `${SRC}browserconfig.xml`
       },
-      {
-        from: `${SRC}favicon.png`
-      },
       //{ from: `${SRC}config.json` },
       {
         from: `${SRC}images`,
