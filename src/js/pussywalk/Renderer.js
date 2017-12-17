@@ -262,7 +262,7 @@ export default class Renderer {
 
     let canvasOffset = {
       x: bodyOffset.x - this.canvas.width / 2,
-      y: bodyOffset.y + this.canvas.height / 2 - 100
+      y: bodyOffset.y + this.canvas.height / 2
     }
 
     canvasOffset.x = Math.max(0, Math.round(canvasOffset.x))
