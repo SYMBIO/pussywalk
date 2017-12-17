@@ -136,22 +136,37 @@ function initializeElements() {
     }
   })
 
+  var openNav = function() {
+    $('.nav').addClass('is-active');
+  }
+  var closeNav = function() {
+    $('.nav').removeClass('is-active');
+  }
+
   $('.nav-link').on('click', function(e) {
     e.preventDefault();
 
     if (!$('.nav').hasClass('is-active')) {
-      $('.nav').addClass('is-active');
+      openNav()
       pauseGame()
       gtag('event', 'navigation', {
         'status': 'on'
       });
     } else {
-      $('.nav').removeClass('is-active');
+      closeNav();
       gtag('event', 'navigation', {
         'status': 'off'
       });
       continueGame()
     }
+  });
+
+  $('.nav__restart').on('click', function(e) {
+    e.preventDefault();
+
+    closeNav();
+    startGame();
+    continueGame()
   });
 
   var mute = false;
