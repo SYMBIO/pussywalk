@@ -73,10 +73,10 @@ let loader = assetsLoader({
   .on('complete', function(assets) {
     setTimeout(function() {
       hideLayer('.layer--loading');
+      showLayer('.layer--mission-1');
 
       if (tutorial) {
         showLayer('.layer--tutorial');
-        showLayer('.layer--mission-1');
         pauseGame();
       } else {
         continueGame();
