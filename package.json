@@ -13,7 +13,7 @@
   "license": "LGPL-3.0+",
   "scripts": {
     "dev": "babel-node ./webpack/server.js",
-    "build": "rm -rf build && webpack --config ./webpack/webpack.config.prod.babel.js && npm run app_assets",
+    "build": "rm -rf build && compress && webpack --config ./webpack/webpack.config.prod.babel.js && npm run app_assets",
     "compress": "tinify-cli --key dY76SanOkUE8SaPaTDZP-vZlJsbtEARu \"src/images/**/*.{jpg,png}\"",
     "app_assets": "npm run app_build_zip && npm run app_timestamp",
     "app_build_zip": "bestzip build.zip build/ && mkdir build/app && cp build.zip build/app",

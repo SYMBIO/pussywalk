@@ -75,9 +75,6 @@ module.exports = {
         to: `${BUILD}icons`
       },
       {
-        from: `${SRC}favicon.ico`
-      },
-      {
         from: `${SRC}manifest.json`
       },
       {
