@@ -1218,4 +1218,35 @@ body {
 		transform: rotate(-45deg);
 		transform-origin: 0 24px;
 	}
+
+	&.has-change {
+		.game__live {
+			transition: transform 300ms cubic-bezier(.25,.1,.67,1.62), opacity 300ms;
+		}
+		.game__live--new {
+			opacity: 1;
+			transform: translateY(0);
+		}
+		.game__live--old {
+			opacity: 0;
+			transform: scale(.5) translateY(100%);
+		}
+	}
+}
+.game__live {
+	left: 0;
+	position: absolute;
+	text-align: center;
+	top: 0;
+	transform-origin: 50% 100%;
+	width: 100%;
+	will-change: transform;
+}
+.game__live--new {
+	opacity: 0;
+	transform: scale(0.5) translateY(-200%);
+}
+.game__live--old {
+	opacity: 1;
+	transform: translateY(0);
 }

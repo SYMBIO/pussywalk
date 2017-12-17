@@ -244,6 +244,31 @@ function initializeFirebase() {
   });
 }
 
+function live(stats) {
+  var cont = $('#game_lives'),
+      oldCont = $('.game__live--old'),
+      newCont = $('.game__live--new'),
+      oldLive = oldCont.html(),
+      newLive;
+
+  if(stats) {
+    newLive = oldLive + 1;
+  } else {
+    newLive = oldLive - 1;
+  }
+
+  newCont.html(newLive);
+
+  cont.addClass('has-change');
+
+  newCont[0].addEventListener('transitionend', function() {
+
+    oldCont.html(newLive);
+    cont.removeClass('has-change');
+
+  });
+}
+
 function niceTime(time, nicer) {
   var spanWrap = function(what) {
       return what.replace(/(\d)/g, '<span>$1</span>');
