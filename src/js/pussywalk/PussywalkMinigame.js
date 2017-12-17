@@ -191,8 +191,8 @@ export default class PussywalkMinigame {
   }
 
   setMute(mute) {
-    if (this.audioPlayer) {
-      this.audioPlayer.setMute(mute)
+    if (_audioPlayer) {
+      _audioPlayer.setMute(mute)
     }
   }
 
