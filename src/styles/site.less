@@ -449,6 +449,13 @@ a:focus, a:active {
 		}
 	}
 
+	h3 {
+		color: @white;
+		margin-bottom: 30px;
+		position: relative;
+		z-index: 2;
+	}
+
 	&.is-visible {
 		.layer__center {
 			&:after {
@@ -708,6 +715,20 @@ a:focus, a:active {
 			transform: translateY(-50%);
 		}
 	}
+}
+.layer--mission-1 {
+	p {
+		&:after {
+			background: url(../images/layout/mission-ico.png) no-repeat 50% 50%;
+		}
+	}	
+}
+.layer--mission-2 {
+	p {
+		&:after {
+			background: url(../images/layout/mission-sheep.png) no-repeat 50% 50%;
+		}
+	}	
 }
 
 // todo import styles to head, images to base64
