@@ -473,6 +473,7 @@ export default class Box2DWorld {
         sheep: true
       })
       this.audioPlayer.playSheep()
+      this.callbacks.onSheepPickup()
     }
 
     if (this.visibleLifes.indexOf(value) != -1) {
