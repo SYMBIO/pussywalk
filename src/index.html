@@ -30,6 +30,14 @@
 		}
 	</script> -->
 
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162303-20"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-162303-20');
+	</script>
 </head>
 <body>
 	<div id="app">
@@ -54,7 +62,7 @@
 			<ul class="nav__list">
 				<li><a href="" class="nav__restart">Restart</a></li>
 				<li><a href="" class="nav__share">Sdílej</a></li>
-				<li><a href="" class="nav__sound">Zvuk ON</a></li>
+				<li><a href="" class="nav__sound" data-on="Zvuk ON" data-off="Zvuk OFF">Zvuk OFF</a></li>
 				<li><a href="" data-layer="scoreboard" class="nav__score js-show-layer">Žebříček</a></li>
 				<li><a href="" class="nav__kill">Koho zabít?</a></li>
 				<li><a href="" class="nav__game">PUSSYWALK 1.</a></li>
@@ -136,6 +144,7 @@
 
 					<div id="scoreboard">
 						<ul id="scoreboard_top3" class="scoreboard__list">
+							<!--
 							<li>
 								<span class="position">1.</span>
 								<span class="username">Username_TOP Username_TOP <span class="scoreboard__nude">NUDE</span></span>
@@ -151,131 +160,19 @@
 								<span class="username">Username TOP3</span>
 								<span class="time">3:41</span>
 							</li>
+							-->
 						</ul>
 						<ul id="scoreboard_list" class="scoreboard__list">
+							<!--
 							<li>
 								<span class="position">235.</span>
 								<span class="username">Username</span>
 								<span class="time">3:41</span>
 								<span class="share"><span></span>
-									<a href="" class="btn btn--fb">Sdílej svoje score na</a>
+								<a href="" class="btn btn--fb">Sdílej svoje score na</a>
 								</span>
 							</li>
-							<li>
-								<span class="position">235.</span>
-								<span class="username">Username</span>
-								<span class="time">3:41</span>
-							</li>
-							<li>
-								<span class="position">235.</span>
-								<span class="username">Username</span>
-								<span class="time">3:41</span>
-							</li>
-								<li>
-									<span class="position">235.</span>
-									<span class="username">Username</span>
-									<span class="time">3:41</span>
-								</li>
-								<li>
-									<span class="position">235.</span>
-									<span class="username">Username</span>
-									<span class="time">3:41</span>
-								</li>
-								<li>
-									<span class="position">235.</span>
-									<span class="username">Username</span>
-									<span class="time">3:41</span>
-								</li>
-									<li>
-										<span class="position">235.</span>
-										<span class="username">Username</span>
-										<span class="time">3:41</span>
-									</li>
-									<li>
-										<span class="position">235.</span>
-										<span class="username">Username</span>
-										<span class="time">3:41</span>
-									</li>
-									<li>
-										<span class="position">235.</span>
-										<span class="username">Username</span>
-										<span class="time">3:41</span>
-									</li>
-										<li>
-											<span class="position">235.</span>
-											<span class="username">Username</span>
-											<span class="time">3:41</span>
-										</li>
-										<li>
-											<span class="position">235.</span>
-											<span class="username">Username</span>
-											<span class="time">3:41</span>
-										</li>
-										<li>
-											<span class="position">235.</span>
-											<span class="username">Username</span>
-											<span class="time">3:41</span>
-										</li>
-											<li>
-												<span class="position">235.</span>
-												<span class="username">Username</span>
-												<span class="time">3:41</span>
-											</li>
-											<li>
-												<span class="position">235.</span>
-												<span class="username">Username</span>
-												<span class="time">3:41</span>
-											</li>
-											<li>
-												<span class="position">235.</span>
-												<span class="username">Username</span>
-												<span class="time">3:41</span>
-											</li>
-												<li>
-													<span class="position">235.</span>
-													<span class="username">Username</span>
-													<span class="time">3:41</span>
-												</li>
-												<li>
-													<span class="position">235.</span>
-													<span class="username">Username</span>
-													<span class="time">3:41</span>
-												</li>
-												<li>
-													<span class="position">235.</span>
-													<span class="username">Username</span>
-													<span class="time">3:41</span>
-												</li>
-													<li>
-														<span class="position">235.</span>
-														<span class="username">Username</span>
-														<span class="time">3:41</span>
-													</li>
-													<li>
-														<span class="position">235.</span>
-														<span class="username">Username</span>
-														<span class="time">3:41</span>
-													</li>
-													<li>
-														<span class="position">235.</span>
-														<span class="username">Username</span>
-														<span class="time">3:41</span>
-													</li>
-														<li>
-															<span class="position">235.</span>
-															<span class="username">Username</span>
-															<span class="time">3:41</span>
-														</li>
-														<li>
-															<span class="position">235.</span>
-															<span class="username">Username</span>
-															<span class="time">3:41</span>
-														</li>
-														<li>
-															<span class="position">235.</span>
-															<span class="username">Username</span>
-															<span class="time">3:41</span>
-														</li>
+							-->
 						</ul>
 					</div>				
 				</div>

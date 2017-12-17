@@ -87,6 +87,9 @@ window.onload = function() {
 function showLayer(layer) {
   $('.layer').removeClass('is-visible');
   $(layer).addClass('is-visible');
+  gtag('event', 'layer', {
+    'name': $(layer).data('layer')
+  });
 }
 
 function hideLayer(layer) {
@@ -139,9 +142,34 @@ function initializeElements() {
     if (!$('.nav').hasClass('is-active')) {
       $('.nav').addClass('is-active');
       pauseGame()
+      gtag('event', 'navigation', {
+        'status': 'on'
+      });
     } else {
       $('.nav').removeClass('is-active');
+      gtag('event', 'navigation', {
+        'status': 'off'
+      });
       continueGame()
+    }
+  });
+
+  var mute = false;
+  $('.nav__sound').on('click', function(e) {
+    e.preventDefault();
+
+    var link = $(this);
+
+    if(mute) {
+      setMute(false);
+      link.removeClass('is-muted');
+      link.html(link.data('off'))
+      mute = false;
+    } else {
+      setMute(true);
+      link.addClass('is-muted');
+      link.html(link.data('on'))
+      mute = true;
     }
   });
 
@@ -251,11 +279,11 @@ function onGameEnd(didWin) {
   if (didWin) {
     //$('#name_dialogue').show()
     pauseGame();
-    $('#finish_time').html(niceTime(_game.playTime));
+    $('#finish_time').html(niceTime(_game.playTime, true));
     showLayer('.layer--finish');
     $('#game_controls, #game_lives').hide()
   } else {
-    startGame()
+    startGame(true)
   }
 }
 
