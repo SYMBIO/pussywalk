@@ -2,7 +2,7 @@
 
 "elements/chair_0.png":
 {
-	"frame": {"x":725,"y":228,"w":113,"h":227},
+	"frame": {"x":609,"y":228,"w":113,"h":227},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":113,"h":227},
@@ -11,7 +11,7 @@
 },
 "elements/chair_1.png":
 {
-	"frame": {"x":609,"y":228,"w":114,"h":227},
+	"frame": {"x":724,"y":228,"w":114,"h":227},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":114,"h":227},
@@ -65,7 +65,16 @@
 },
 "fireball/fireball_1.png":
 {
-	"frame": {"x":305,"y":228,"w":150,"h":225},
+	"frame": {"x":457,"y":228,"w":150,"h":225},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":225},
+	"sourceSize": {"w":150,"h":225},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"fireball/fireball_4.png":
+{
+	"frame": {"x":1,"y":1,"w":150,"h":225},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":225},
@@ -119,7 +128,7 @@
 },
 "fireball/fireball_10.png":
 {
-	"frame": {"x":457,"y":228,"w":150,"h":225},
+	"frame": {"x":153,"y":228,"w":150,"h":225},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":225},
@@ -128,7 +137,7 @@
 },
 "fireball/fireball_11.png":
 {
-	"frame": {"x":153,"y":228,"w":150,"h":225},
+	"frame": {"x":305,"y":228,"w":150,"h":225},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":225},
@@ -137,7 +146,7 @@
 },
 "fireball/fireball_12.png":
 {
-	"frame": {"x":1,"y":1,"w":150,"h":225},
+	"frame": {"x":761,"y":1,"w":150,"h":225},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":225},
@@ -149,8 +158,8 @@
 	"version": "1.0",
 	"image": "spritesheet-3.png",
 	"format": "RGBA4444",
-	"size": {"w":851,"h":979},
+	"size": {"w":912,"h":979},
 	"scale": "0.5",
-	"smartupdate": "$TexturePacker:SmartUpdate:5709b6bc18e7b832d7eaf2521fac399f:06deb4f38894e54b9a3b8a1904b8513e:437812c7aaf83c13766b896da552d169$"
+	"smartupdate": "$TexturePacker:SmartUpdate:ec721e5b065f4020a244775411e61951:079d6a4f26dc3a8824e64112c39021ef:437812c7aaf83c13766b896da552d169$"
 }
 }

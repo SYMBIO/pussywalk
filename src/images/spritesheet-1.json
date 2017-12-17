@@ -162,7 +162,7 @@
 	"sourceSize": {"w":113,"h":193},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"figure/naked/mod/head_anim/head_anim_1_0.png":
+"figure/naked/mod/head_anim/head_anim_1_1.png":
 {
 	"frame": {"x":1,"y":391,"w":113,"h":193},
 	"rotated": false,
@@ -171,7 +171,7 @@
 	"sourceSize": {"w":113,"h":193},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"figure/naked/mod/head_anim/head_anim_1_1.png":
+"figure/naked/mod/head_anim/head_anim_1_2.png":
 {
 	"frame": {"x":116,"y":391,"w":113,"h":193},
 	"rotated": false,
@@ -180,7 +180,7 @@
 	"sourceSize": {"w":113,"h":193},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"figure/naked/mod/head_anim/head_anim_1_2.png":
+"figure/naked/mod/head_anim/head_anim_2_0.png":
 {
 	"frame": {"x":231,"y":391,"w":113,"h":193},
 	"rotated": false,
@@ -189,7 +189,7 @@
 	"sourceSize": {"w":113,"h":193},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"figure/naked/mod/head_anim/head_anim_2_0.png":
+"figure/naked/mod/head_anim/head_anim_2_1.png":
 {
 	"frame": {"x":346,"y":391,"w":113,"h":193},
 	"rotated": false,
@@ -198,7 +198,7 @@
 	"sourceSize": {"w":113,"h":193},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"figure/naked/mod/head_anim/head_anim_2_1.png":
+"figure/naked/mod/head_anim/head_anim_2_2.png":
 {
 	"frame": {"x":461,"y":391,"w":113,"h":193},
 	"rotated": false,
@@ -243,7 +243,7 @@
 	"sourceSize": {"w":113,"h":193},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_0.jpg":
+"furnace/furnace_3.jpg":
 {
 	"frame": {"x":1,"y":586,"w":150,"h":210},
 	"rotated": false,
@@ -252,7 +252,7 @@
 	"sourceSize": {"w":150,"h":210},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_3.jpg":
+"furnace/furnace_4.jpg":
 {
 	"frame": {"x":153,"y":586,"w":150,"h":210},
 	"rotated": false,
@@ -261,7 +261,7 @@
 	"sourceSize": {"w":150,"h":210},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_4.jpg":
+"furnace/furnace_5.jpg":
 {
 	"frame": {"x":305,"y":586,"w":150,"h":210},
 	"rotated": false,
@@ -270,7 +270,7 @@
 	"sourceSize": {"w":150,"h":210},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_5.jpg":
+"furnace/furnace_6.jpg":
 {
 	"frame": {"x":457,"y":586,"w":150,"h":210},
 	"rotated": false,
@@ -279,7 +279,7 @@
 	"sourceSize": {"w":150,"h":210},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_6.jpg":
+"furnace/furnace_7.jpg":
 {
 	"frame": {"x":609,"y":586,"w":150,"h":210},
 	"rotated": false,
@@ -288,7 +288,7 @@
 	"sourceSize": {"w":150,"h":210},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_7.jpg":
+"furnace/furnace_8.jpg":
 {
 	"frame": {"x":761,"y":586,"w":150,"h":210},
 	"rotated": false,
@@ -297,7 +297,7 @@
 	"sourceSize": {"w":150,"h":210},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_8.jpg":
+"furnace/furnace_13.jpg":
 {
 	"frame": {"x":913,"y":586,"w":150,"h":210},
 	"rotated": false,
@@ -306,7 +306,7 @@
 	"sourceSize": {"w":150,"h":210},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_13.jpg":
+"furnace/furnace_14.jpg":
 {
 	"frame": {"x":1,"y":798,"w":150,"h":210},
 	"rotated": false,
@@ -315,7 +315,7 @@
 	"sourceSize": {"w":150,"h":210},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_14.jpg":
+"furnace/furnace_15.jpg":
 {
 	"frame": {"x":153,"y":798,"w":150,"h":210},
 	"rotated": false,
@@ -324,7 +324,7 @@
 	"sourceSize": {"w":150,"h":210},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_15.jpg":
+"furnace/furnace_16.jpg":
 {
 	"frame": {"x":305,"y":798,"w":150,"h":210},
 	"rotated": false,
@@ -333,7 +333,7 @@
 	"sourceSize": {"w":150,"h":210},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_16.jpg":
+"furnace/furnace_17.jpg":
 {
 	"frame": {"x":457,"y":798,"w":150,"h":210},
 	"rotated": false,
@@ -342,7 +342,7 @@
 	"sourceSize": {"w":150,"h":210},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_17.jpg":
+"furnace/furnace_22.jpg":
 {
 	"frame": {"x":609,"y":798,"w":150,"h":210},
 	"rotated": false,
@@ -351,7 +351,7 @@
 	"sourceSize": {"w":150,"h":210},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_23.jpg":
+"furnace/furnace_28.jpg":
 {
 	"frame": {"x":761,"y":798,"w":150,"h":210},
 	"rotated": false,
@@ -376,6 +376,6 @@
 	"format": "RGBA4444",
 	"size": {"w":1064,"h":1009},
 	"scale": "0.5",
-	"smartupdate": "$TexturePacker:SmartUpdate:5709b6bc18e7b832d7eaf2521fac399f:06deb4f38894e54b9a3b8a1904b8513e:437812c7aaf83c13766b896da552d169$"
+	"smartupdate": "$TexturePacker:SmartUpdate:ec721e5b065f4020a244775411e61951:079d6a4f26dc3a8824e64112c39021ef:437812c7aaf83c13766b896da552d169$"
 }
 }

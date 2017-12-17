@@ -36,7 +36,7 @@
 	"sourceSize": {"w":150,"h":225},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"fireball/fireball_4.png":
+"fireball/fireball_13.png":
 {
 	"frame": {"x":591,"y":1,"w":150,"h":225},
 	"rotated": false,
@@ -45,7 +45,7 @@
 	"sourceSize": {"w":150,"h":225},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"fireball/fireball_13.png":
+"fireball/fireball_14.png":
 {
 	"frame": {"x":743,"y":1,"w":150,"h":225},
 	"rotated": false,
@@ -54,7 +54,7 @@
 	"sourceSize": {"w":150,"h":225},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"fireball/fireball_14.png":
+"fireball/fireball_15.png":
 {
 	"frame": {"x":895,"y":1,"w":150,"h":225},
 	"rotated": false,
@@ -63,7 +63,7 @@
 	"sourceSize": {"w":150,"h":225},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"fireball/fireball_15.png":
+"fireball/fireball_16.png":
 {
 	"frame": {"x":1,"y":228,"w":150,"h":225},
 	"rotated": false,
@@ -72,7 +72,7 @@
 	"sourceSize": {"w":150,"h":225},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"fireball/fireball_16.png":
+"fireball/fireball_17.png":
 {
 	"frame": {"x":153,"y":228,"w":150,"h":225},
 	"rotated": false,
@@ -81,7 +81,7 @@
 	"sourceSize": {"w":150,"h":225},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"fireball/fireball_17.png":
+"fireball/fireball_18.png":
 {
 	"frame": {"x":305,"y":228,"w":150,"h":225},
 	"rotated": false,
@@ -90,7 +90,7 @@
 	"sourceSize": {"w":150,"h":225},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"fireball/fireball_18.png":
+"fireball/fireball_19.png":
 {
 	"frame": {"x":457,"y":228,"w":150,"h":225},
 	"rotated": false,
@@ -99,7 +99,7 @@
 	"sourceSize": {"w":150,"h":225},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"fireball/fireball_19.png":
+"fireball/fireball_20.png":
 {
 	"frame": {"x":609,"y":228,"w":150,"h":225},
 	"rotated": false,
@@ -108,7 +108,7 @@
 	"sourceSize": {"w":150,"h":225},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_1.jpg":
+"furnace/furnace_0.jpg":
 {
 	"frame": {"x":761,"y":228,"w":150,"h":210},
 	"rotated": false,
@@ -117,7 +117,7 @@
 	"sourceSize": {"w":150,"h":210},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_2.jpg":
+"furnace/furnace_1.jpg":
 {
 	"frame": {"x":913,"y":228,"w":150,"h":210},
 	"rotated": false,
@@ -126,7 +126,7 @@
 	"sourceSize": {"w":150,"h":210},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_9.jpg":
+"furnace/furnace_2.jpg":
 {
 	"frame": {"x":1,"y":455,"w":150,"h":210},
 	"rotated": false,
@@ -135,7 +135,7 @@
 	"sourceSize": {"w":150,"h":210},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_10.jpg":
+"furnace/furnace_9.jpg":
 {
 	"frame": {"x":153,"y":455,"w":150,"h":210},
 	"rotated": false,
@@ -144,7 +144,7 @@
 	"sourceSize": {"w":150,"h":210},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_11.jpg":
+"furnace/furnace_10.jpg":
 {
 	"frame": {"x":305,"y":455,"w":150,"h":210},
 	"rotated": false,
@@ -153,7 +153,7 @@
 	"sourceSize": {"w":150,"h":210},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_12.jpg":
+"furnace/furnace_11.jpg":
 {
 	"frame": {"x":457,"y":455,"w":150,"h":210},
 	"rotated": false,
@@ -162,7 +162,7 @@
 	"sourceSize": {"w":150,"h":210},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_18.jpg":
+"furnace/furnace_12.jpg":
 {
 	"frame": {"x":609,"y":455,"w":150,"h":210},
 	"rotated": false,
@@ -171,7 +171,7 @@
 	"sourceSize": {"w":150,"h":210},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_19.jpg":
+"furnace/furnace_18.jpg":
 {
 	"frame": {"x":761,"y":455,"w":150,"h":210},
 	"rotated": false,
@@ -180,7 +180,7 @@
 	"sourceSize": {"w":150,"h":210},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_20.jpg":
+"furnace/furnace_19.jpg":
 {
 	"frame": {"x":913,"y":455,"w":150,"h":210},
 	"rotated": false,
@@ -189,7 +189,7 @@
 	"sourceSize": {"w":150,"h":210},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_21.jpg":
+"furnace/furnace_20.jpg":
 {
 	"frame": {"x":1,"y":667,"w":150,"h":210},
 	"rotated": false,
@@ -198,7 +198,7 @@
 	"sourceSize": {"w":150,"h":210},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_22.jpg":
+"furnace/furnace_21.jpg":
 {
 	"frame": {"x":153,"y":667,"w":150,"h":210},
 	"rotated": false,
@@ -207,7 +207,7 @@
 	"sourceSize": {"w":150,"h":210},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_24.jpg":
+"furnace/furnace_23.jpg":
 {
 	"frame": {"x":305,"y":667,"w":150,"h":210},
 	"rotated": false,
@@ -216,7 +216,7 @@
 	"sourceSize": {"w":150,"h":210},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_25.jpg":
+"furnace/furnace_24.jpg":
 {
 	"frame": {"x":457,"y":667,"w":150,"h":210},
 	"rotated": false,
@@ -225,7 +225,7 @@
 	"sourceSize": {"w":150,"h":210},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_26.jpg":
+"furnace/furnace_25.jpg":
 {
 	"frame": {"x":609,"y":667,"w":150,"h":210},
 	"rotated": false,
@@ -234,7 +234,7 @@
 	"sourceSize": {"w":150,"h":210},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_27.jpg":
+"furnace/furnace_26.jpg":
 {
 	"frame": {"x":761,"y":667,"w":150,"h":210},
 	"rotated": false,
@@ -243,7 +243,7 @@
 	"sourceSize": {"w":150,"h":210},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"furnace/furnace_28.jpg":
+"furnace/furnace_27.jpg":
 {
 	"frame": {"x":913,"y":667,"w":150,"h":210},
 	"rotated": false,
@@ -259,6 +259,6 @@
 	"format": "RGBA4444",
 	"size": {"w":1064,"h":878},
 	"scale": "0.5",
-	"smartupdate": "$TexturePacker:SmartUpdate:5709b6bc18e7b832d7eaf2521fac399f:06deb4f38894e54b9a3b8a1904b8513e:437812c7aaf83c13766b896da552d169$"
+	"smartupdate": "$TexturePacker:SmartUpdate:ec721e5b065f4020a244775411e61951:079d6a4f26dc3a8824e64112c39021ef:437812c7aaf83c13766b896da552d169$"
 }
 }
