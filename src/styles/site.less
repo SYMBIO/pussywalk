@@ -118,8 +118,9 @@ a:focus, a:active {
 	//transform: translateX(-200%);
 
 	&:before {
-		background: rgba(63, 52, 77, .8);
-		mix-blend-mode: multiply;
+		//background: rgba(63, 52, 77, .8);
+		//mix-blend-mode: multiply;
+		background: rgba(0, 0, 77, 0.67);
 		content: '';
 		height: 100%;
 		left: 0;
@@ -263,11 +264,15 @@ a:focus, a:active {
 // layers
 .layer {
 	//transform: translateX(-100%);
-	display: none;
+	//display: none;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 300ms;
+	will-change: oapcity;
 
 	&.is-visible {
-		//transform: translateX(0);
-		display: block;
+		opacity: 1;
+		pointer-events: all;
 	}
 }
 .layer__content {
@@ -325,7 +330,7 @@ a:focus, a:active {
 		transform: rotate(45deg);
 	}
 
-	&:hover {
+	&:hover, &:focus {
 		outline: 0;
 	}
 }
@@ -335,7 +340,7 @@ a:focus, a:active {
 	width: 100%;
 
 	&:after {
-		background: rgba(63, 52, 77, .67);
+		background: rgba(0, 0, 77, 0.67);
 		content: '';
 		display: block;
 		height: 100%;
@@ -358,7 +363,7 @@ a:focus, a:active {
 			background: url(../images/layout/finish-star.png) no-repeat 50% 50%;
 			background-size: contain;
 			border-radius: 240px;
-			mix-blend-mode: multiply;
+			//mix-blend-mode: multiply;
 			content: '';
 			height: 240px;
 			left: 50%;
@@ -369,11 +374,13 @@ a:focus, a:active {
 		}
 	}
 
+	/*
 	&.is-visible {
 		&:after {
 			mix-blend-mode: multiply;
 		}
 	}
+	*/
 }
 .finish__time {
 	color: @white;
@@ -453,7 +460,7 @@ a:focus, a:active {
 		width: 330px;
 
 		&:after {
-			background: rgba(63, 52, 77, .67);
+			background: rgba(0, 0, 77, 0.67);
 			content: '';
 			display: block;
 			height: 100%;
@@ -471,6 +478,7 @@ a:focus, a:active {
 		z-index: 2;
 	}
 
+	/*
 	&.is-visible {
 		.layer__center {
 			&:after {
@@ -478,6 +486,7 @@ a:focus, a:active {
 			}
 		}
 	}
+	*/
 	
 	@media @phoneLand {
 		.layer__center {
@@ -682,7 +691,7 @@ a:focus, a:active {
 		width: 330px;
 
 		&:after {
-			background: rgba(63, 52, 77, .67);
+			background: rgba(0, 0, 77, 0.67);
 			content: '';
 			display: block;
 			height: 100%;
@@ -700,13 +709,15 @@ a:focus, a:active {
 		z-index: 2;
 	}
 
+	/*
 	&.is-visible {
 		.layer__center {
 			&:after {
 				mix-blend-mode: multiply;
 			}
 		}
-	}	
+	}
+	*/	
 
 	@media @phoneLand {
 		.layer__center {
@@ -726,7 +737,7 @@ a:focus, a:active {
 		width: 350px;
 
 		&:after {
-			background: rgba(63, 52, 77, .67);
+			background: rgba(0, 0, 77, 0.67);
 			content: '';
 			display: block;
 			height: 100%;
@@ -741,7 +752,8 @@ a:focus, a:active {
 		position: relative;
 		z-index: 2;
 	}
-
+	
+	/*
 	&.is-visible {
 		.layer__center {
 			&:after {
@@ -749,6 +761,7 @@ a:focus, a:active {
 			}
 		}
 	}
+	*/
 
 	@media @phoneLand {
 		.layer__center {
