@@ -124,7 +124,7 @@ export default class AudioPlayer {
     this.tvOff.preload = 'auto';
     this.tvOff.load();
 
-    this.end = new Audio("audio/END.mp3");
+    this.end = new Audio("audio/finish.mp3");
     this.end.preload = 'auto';
     this.end.load();
 
@@ -137,9 +137,8 @@ export default class AudioPlayer {
       music.volume = 0.5
       music.onended = that.onMusicEnded
     })
-    this.musicIndex = 0
 
-    this.playRandom(this.music)
+    this.musicIndex = this.playRandom(this.music)
   }
 
   setMute(mute) {
@@ -191,10 +190,14 @@ export default class AudioPlayer {
   }
 
   playLoseHealth() {
+    this.silenceMusic()
+    this.play(this.loseHealth)
+  }
+
+  silenceMusic() {
     TweenMax.to(this.music[this.musicIndex], 0.5, {
       volume: 0.1
     })
-    this.play(this.loseHealth)
   }
 
   playThump() {
@@ -262,6 +265,8 @@ export default class AudioPlayer {
     sound.play();
 
     this.play(sound)
+
+    return index
   }
 
   play(sound) {

@@ -1699,9 +1699,6 @@
                 46.53023910522461,
                 40.77836227416992,
                 40.53374862670898,
-                15.15346527099609,
-                15.15315246582031,
-                14.37326049804688,
                 0.0,
                 0.0,
                 82.36399841308594
@@ -1716,9 +1713,6 @@
                 0.9518280029296875,
                 0.4819393157958984,
                 0.5021858215332031,
-                0.0,
-                0.0,
-                -0.04144859313964844,
                 0.0,
                 0.0,
                 -11.65924453735352,
@@ -1856,8 +1850,6 @@
           
           {
             "density" : 1.3,
-            "filter-categoryBits" : 16,
-            "filter-maskBits" : 65523,
             "friction" : 0.2,
             "id" : 45,
             "name" : "fixture10",
@@ -4977,8 +4969,6 @@
           
           {
             "density" : 1.3,
-            "filter-categoryBits" : 16,
-            "filter-maskBits" : 65523,
             "friction" : 0.2,
             "id" : 106,
             "name" : "fixture10",
@@ -5039,8 +5029,6 @@
           
           {
             "density" : 1.3,
-            "filter-categoryBits" : 16,
-            "filter-maskBits" : 65523,
             "friction" : 0.2,
             "id" : 107,
             "name" : "fixture10",
@@ -5101,8 +5089,6 @@
           
           {
             "density" : 1.3,
-            "filter-categoryBits" : 16,
-            "filter-maskBits" : 65523,
             "friction" : 0.2,
             "id" : 108,
             "name" : "fixture10",
@@ -5165,8 +5151,6 @@
           
           {
             "density" : 1.3,
-            "filter-categoryBits" : 32,
-            "filter-maskBits" : 65519,
             "friction" : 0.2,
             "id" : 109,
             "name" : "fixture10",
@@ -5223,8 +5207,6 @@
           
           {
             "density" : 1.3,
-            "filter-categoryBits" : 32,
-            "filter-maskBits" : 65519,
             "friction" : 0.2,
             "id" : 110,
             "name" : "fixture10",
@@ -5287,8 +5269,6 @@
           
           {
             "density" : 1.3,
-            "filter-categoryBits" : 32,
-            "filter-maskBits" : 65519,
             "friction" : 0.2,
             "id" : 111,
             "name" : "fixture10",
@@ -5349,8 +5329,6 @@
           
           {
             "density" : 1.3,
-            "filter-categoryBits" : 32,
-            "filter-maskBits" : 65519,
             "friction" : 0.2,
             "id" : 112,
             "name" : "fixture10",

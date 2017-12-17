@@ -80,7 +80,7 @@ exports.sounds = {
   health: "audio/health.mp3",
   loseHealth: "audio/health_lower.mp3",
   sheep: "audio/mrO.mp3",
-  end: "audio/END.mp3",
+  end: "audio/finish.mp3",
 }
 exports.texturesConfig = [
   {

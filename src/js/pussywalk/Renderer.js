@@ -24,6 +24,7 @@ export default class Renderer {
     this.isShowingBodyMod = false
     this.visibleLifes = []
     this.showRewind = false
+    this.fireballIndex = -1
     this.drawDebug = false
 
     this.vignette = new Image()
@@ -323,9 +324,7 @@ export default class Renderer {
       }
     }
 
-    if (this.endIndex == 7) {
-      // Furnace
-
+    if (this.endIndex >= 7) {
       let furnaceImage = this.imagesConfig['furnace/furnace_' + idx + '.jpg']
       if (furnaceImage) {
         this.context.drawImage(furnaceImage.image,
@@ -333,7 +332,7 @@ export default class Renderer {
           furnaceImage.frame.y,
           furnaceImage.frame.w,
           furnaceImage.frame.h,
-          1000 * this.scale,
+          10158 * this.scale,
           917 * this.scale,
           furnaceImage.frame.w * this.scale * 2,
           furnaceImage.frame.h * this.scale * 2
@@ -342,41 +341,66 @@ export default class Renderer {
         console.log('furnace/furnace_' + idx + '.png');
       }
 
-    // Fan
+      // Fireball
+      // this.fireballIndex = 8
+
+      if (this.fireballIndex != -1) {
+
+        this.context.globalCompositeOperation = "screen"
+
+        let fireballImage = this.imagesConfig['fireball/fireball_' + Math.floor(this.fireballIndex / 4) + '.png']
+        if (fireballImage) {
+          this.context.drawImage(fireballImage.image,
+            fireballImage.frame.x,
+            fireballImage.frame.y,
+            fireballImage.frame.w,
+            fireballImage.frame.h,
+            9840 * this.scale,
+            1020 * this.scale,
+            fireballImage.frame.w * this.scale * 4,
+            fireballImage.frame.h * this.scale * 4
+          )
+
+          this.fireballIndex++
+        }
+
+        this.context.globalCompositeOperation = "source-over"
+      }
+
+
+      // Fan
+      this.context.drawImage(this.fanBackground.image,
+        this.fanBackground.frame.x,
+        this.fanBackground.frame.y,
+        this.fanBackground.frame.w,
+        this.fanBackground.frame.h,
+        9800 * this.scale,
+        1200 * this.scale,
+        this.fanBackground.frame.w * this.scale * 2,
+        this.fanBackground.frame.h * this.scale * 2
+      )
+
+      let position = {
+        x: (9825 + this.fan.frame.w) * this.scale,
+        y: (1230 + this.fan.frame.h) * this.scale
+      }
+
+      this.context.translate(position.x, position.y);
+      this.context.rotate(this.frameCounter / 10)
+
+      this.context.drawImage(this.fan.image,
+        this.fan.frame.x,
+        this.fan.frame.y,
+        this.fan.frame.w,
+        this.fan.frame.h,
+        -this.fan.frame.w * this.scale,
+        -this.fan.frame.h * this.scale,
+        this.fan.frame.w * this.scale * 2,
+        this.fan.frame.h * this.scale * 2
+      )
+      this.context.rotate(-this.frameCounter / 10)
+      this.context.translate(-position.x, -position.y);
     }
-
-    this.context.drawImage(this.fanBackground.image,
-      this.fanBackground.frame.x,
-      this.fanBackground.frame.y,
-      this.fanBackground.frame.w,
-      this.fanBackground.frame.h,
-      9800 * this.scale,
-      1200 * this.scale,
-      this.fanBackground.frame.w * this.scale * 2,
-      this.fanBackground.frame.h * this.scale * 2
-    )
-
-    let position = {
-      x: (9825 + this.fan.frame.w) * this.scale,
-      y: (1230 + this.fan.frame.h) * this.scale
-    }
-
-    this.context.translate(position.x, position.y);
-    this.context.rotate(this.frameCounter / 10)
-
-    this.context.drawImage(this.fan.image,
-      this.fan.frame.x,
-      this.fan.frame.y,
-      this.fan.frame.w,
-      this.fan.frame.h,
-      -this.fan.frame.w * this.scale,
-      -this.fan.frame.h * this.scale,
-      this.fan.frame.w * this.scale * 2,
-      this.fan.frame.h * this.scale * 2
-    )
-    this.context.rotate(-this.frameCounter / 10)
-    this.context.translate(-position.x, -position.y);
-
 
     // Mr P
     if (this.startIndex < 2) {
@@ -804,6 +828,10 @@ export default class Renderer {
 
   stopRewind() {
     this.showRewind = false
+  }
+
+  didFinish() {
+    this.fireballIndex = 0
   }
 
   dispose() {

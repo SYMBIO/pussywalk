@@ -384,10 +384,13 @@ export default class Box2DWorld {
       delete this.joints[j];
     });
 
+    this.audioPlayer.silenceMusic()
+
+    this.renderer.didFinish()
+    this.audioPlayer.playEnd()
     setTimeout(() => {
       this.callbacks.onGameEnd(didWin);
-      this.audioPlayer.playEnd()
-    }, 1000);
+    }, 2000)
   }
 
   handleArrows(keyCode, state) {
@@ -882,7 +885,7 @@ export default class Box2DWorld {
   cheatReset() {
     let resetPoint = {
       x: 150,
-      y: 0
+      y: -20
     }
     this.prepareForReset()
     this.lastCheckpoint = resetPoint
