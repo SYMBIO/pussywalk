@@ -382,11 +382,11 @@ export default class Renderer {
     if (this.startIndex < 2) {
       let offset = {
         eye1: {
-          x: 1868,
+          x: 1866,
           y: 666
         },
         eye2: {
-          x: 1905,
+          x: 1904,
           y: 670
         }
       }
@@ -415,7 +415,7 @@ export default class Renderer {
       this.context.translate(-position.x, -position.y);
 
       position = {
-        x: (offset.eye2.x + percent * 4) * this.scale,
+        x: (offset.eye2.x + percent * 2) * this.scale,
         y: offset.eye2.y * this.scale
       }
       this.context.translate(position.x, position.y);
