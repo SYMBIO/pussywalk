@@ -687,6 +687,7 @@ a:focus, a:active {
 		position: absolute;
 		right: 125px;
 		text-align: right;
+		text-transform: uppercase;
 		top: 30%;
 
 		strong {
@@ -710,7 +711,8 @@ a:focus, a:active {
 			transform: translateY(-50%) rotate(-45deg);
 		}
 		&:after {
-			background: url(../images/layout/mission-ico.png) no-repeat 50% 50%;
+			background-position: 50% 50%;
+			background-repeat: no-repeat;
 			background-size: contain;
 			transform: translateY(-50%);
 		}
@@ -719,14 +721,14 @@ a:focus, a:active {
 .layer--mission-1 {
 	p {
 		&:after {
-			background: url(../images/layout/mission-ico.png) no-repeat 50% 50%;
+			background-image: url(../images/layout/mission-ico.png);
 		}
 	}	
 }
 .layer--mission-2 {
 	p {
 		&:after {
-			background: url(../images/layout/mission-sheep.png) no-repeat 50% 50%;
+			background-image: url(../images/layout/mission-sheep.png);
 		}
 	}	
 }

@@ -475,6 +475,10 @@ function startGame(naked) {
     _game.dispose()
   }
   _game = new PussywalkMinigame(_callbacks, naked);
+
+  setTimeout(function(){
+    hideLayer('.layer--mission-1');
+  }, 7500);
 }
 
 function pauseGame() {
