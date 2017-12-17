@@ -994,13 +994,11 @@ a:focus, a:active {
 	display: none;
 }
 .touch {
-	@media @desktop {
-		.tutorial__desktop {
-			display: none;
-		}
-		.tutorial__mobile {
-			display: block;
-		}
+	.tutorial__desktop {
+		display: none;
+	}
+	.tutorial__mobile {
+		display: block;
 	}
 }
 .tutorial__buttons {
@@ -1141,11 +1139,9 @@ body {
 	*/	
 }
 .touch {
-	@media @desktop {
-		#game_controls, .tutorial__buttons {
-			transform: translateX(0%);
-		}
-	}	
+	#game_controls, .tutorial__buttons {
+		transform: translateX(0%);
+	}
 }
 .game__key, .tutorial__button {
 	background: transparent;
