@@ -2,8 +2,7 @@ import Constants from './Constants'
 import FlashTexture from './FlashTexture'
 import HeadAnimator from './HeadAnimator'
 import SpriteSheet from 'spritesheet-canvas'
-// import SpriteSheet0 from '../../images/spritesheet-0.json'
-// import SpriteSheet1 from '../../images/spritesheet-1.json'
+import { TweenMax, Linear } from 'gsap'
 
 export default class Renderer {
 
@@ -24,6 +23,7 @@ export default class Renderer {
     this.renderPorn = true
     this.isShowingBodyMod = false
     this.visibleLifes = []
+    this.showRewind = false
     this.drawDebug = false
 
     this.vignette = new Image()
@@ -36,6 +36,8 @@ export default class Renderer {
     this.drawTexture = this.drawTexture.bind(this)
     this.setState = this.setState.bind(this)
     this.isNaked = this.isNaked.bind(this)
+    this.playRewind = this.playRewind.bind(this)
+    this.stopRewind = this.stopRewind.bind(this)
 
     this.prepareLights()
     this.prepareTextures()
@@ -44,6 +46,9 @@ export default class Renderer {
     this.mrP = this.imagesConfig["elements/mr_p.png"]
     this.pillbottle = this.imagesConfig["elements/pill_bottle.png"]
     this.headAnimator = new HeadAnimator(this.imagesConfig)
+    this.sheep = this.imagesConfig["elements/ctveracek.png"]
+    this.fanBackground = this.imagesConfig["elements/dira.png"]
+    this.fan = this.imagesConfig["elements/vetrak.png"]
   }
 
   prepareLights() {
@@ -318,8 +323,9 @@ export default class Renderer {
       }
     }
 
-    // Furnace
     if (this.endIndex == 7) {
+      // Furnace
+
       let furnaceImage = this.imagesConfig['furnace/furnace_' + idx + '.jpg']
       if (furnaceImage) {
         this.context.drawImage(furnaceImage.image,
@@ -327,7 +333,7 @@ export default class Renderer {
           furnaceImage.frame.y,
           furnaceImage.frame.w,
           furnaceImage.frame.h,
-          10158 * this.scale,
+          1000 * this.scale,
           917 * this.scale,
           furnaceImage.frame.w * this.scale * 2,
           furnaceImage.frame.h * this.scale * 2
@@ -335,7 +341,42 @@ export default class Renderer {
       } else {
         console.log('furnace/furnace_' + idx + '.png');
       }
+
+    // Fan
     }
+
+    this.context.drawImage(this.fanBackground.image,
+      this.fanBackground.frame.x,
+      this.fanBackground.frame.y,
+      this.fanBackground.frame.w,
+      this.fanBackground.frame.h,
+      9800 * this.scale,
+      1200 * this.scale,
+      this.fanBackground.frame.w * this.scale * 2,
+      this.fanBackground.frame.h * this.scale * 2
+    )
+
+    let position = {
+      x: (9825 + this.fan.frame.w) * this.scale,
+      y: (1230 + this.fan.frame.h) * this.scale
+    }
+
+    this.context.translate(position.x, position.y);
+    this.context.rotate(this.frameCounter / 10)
+
+    this.context.drawImage(this.fan.image,
+      this.fan.frame.x,
+      this.fan.frame.y,
+      this.fan.frame.w,
+      this.fan.frame.h,
+      -this.fan.frame.w * this.scale,
+      -this.fan.frame.h * this.scale,
+      this.fan.frame.w * this.scale * 2,
+      this.fan.frame.h * this.scale * 2
+    )
+    this.context.rotate(-this.frameCounter / 10)
+    this.context.translate(-position.x, -position.y);
+
 
     // Mr P
     if (this.startIndex < 2) {
@@ -349,7 +390,6 @@ export default class Renderer {
           y: 672
         }
       }
-
 
       var image = new Image();
       let percent = (this.bodies['body'].GetPosition().get_x() * this.physicsScale - (offset.eye1.x + offset.eye2.x) / 2) / 500
@@ -417,6 +457,21 @@ export default class Renderer {
       this.drawTexture(textureConfig)
     }
 
+    if (!this.isShowingBodyMod) {
+      let imageConfig = this.sheep
+      this.context.drawImage(imageConfig.image,
+        imageConfig.frame.x,
+        imageConfig.frame.y,
+        imageConfig.frame.w,
+        imageConfig.frame.h,
+        4840 * this.scale,
+        1030 * this.scale,
+        imageConfig.frame.w * this.scale * 2,
+        imageConfig.frame.h * this.scale * 2
+      )
+
+    }
+
     // Lift number
     if (this.startIndex < 4 && this.endIndex > 4) {
       let x = this.bodies.lift_1.GetPosition().get_x()
@@ -435,7 +490,7 @@ export default class Renderer {
     // Porn
     if (this.renderPorn) {
       let body = this.bodies["decor_monitor"];
-      let index = Math.floor((this.frameCounter / 20) % 4) + 1
+      let index = Math.floor((this.frameCounter / 20) % 3) + 1
       let imageConfig = this.imagesConfig["porn/porn_0" + index + ".png"]
       let position = {
         x: body.GetPosition().get_x() * this.physicsScale * this.scale,
@@ -621,16 +676,30 @@ export default class Renderer {
       this.context.canvas.height
     )
 
+    if (this.showRewind) {
+      let imageConfig = this.imagesConfig["rewind/rewind_" + Math.floor((this.frameCounter / 2) % 10) + ".png"]
+      this.context.drawImage(imageConfig.image,
+        imageConfig.frame.x,
+        imageConfig.frame.y,
+        128,
+        128,
+        canvasOffset.x,
+        -canvasOffset.y,
+        this.context.canvas.width,
+        this.context.canvas.height
+      )
+    }
+
     this.frameCounter += 1
 
     // Debug draw
 
-  // if (this.drawDebug) {
-  //   this.context.scale(this.physicsScale * this.scale, this.physicsScale * this.scale);
-  //   this.context.lineWidth = 1 / this.physicsScale;
-  //   this.context.scale(1, -1);
-  //   this.world.DrawDebugData();
-  // }
+    if (this.drawDebug) {
+      this.context.scale(this.physicsScale * this.scale, this.physicsScale * this.scale);
+      this.context.lineWidth = 1 / this.physicsScale;
+      this.context.scale(1, -1);
+      this.world.DrawDebugData();
+    }
   }
 
   drawTexture(textureConfig) {
@@ -716,6 +785,18 @@ export default class Renderer {
 
   playScare(scare) {
     this.headAnimator.playScare(scare)
+  }
+
+  playRewind() {
+    this.showRewind = true
+    TweenMax.to(this, 2, {
+      showRewind: true,
+      onComplete: this.stopRewind
+    })
+  }
+
+  stopRewind() {
+    this.showRewind = false
   }
 
   dispose() {
