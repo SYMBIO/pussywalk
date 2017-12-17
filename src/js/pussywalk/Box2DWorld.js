@@ -13,7 +13,7 @@ export default class Box2DWorld {
 
     this.canvas = canvas;
     this.timeStep = 1 / 60;
-    this.velocityIterations = 5;
+    this.velocityIterations = 10;
     this.positionIterations = 4;
     this.lifes = 3000
     this.record = false
