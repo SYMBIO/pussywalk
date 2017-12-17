@@ -15,7 +15,7 @@ export default class Box2DWorld {
     this.timeStep = 1 / 60;
     this.velocityIterations = 10;
     this.positionIterations = 6;
-    this.lifes = 100
+    this.lifes = 3
     this.record = false
     this.pausePhysics = false
     this.paused = false
@@ -331,10 +331,12 @@ export default class Box2DWorld {
     this.resetPlayer()
   }
 
-  syncRenderer() {
+  sync() {
     this.renderer.setState({
       visibleLifes: this.visibleLifes
     })
+
+    this.callbacks.onLifesUpdate(this.lifes, 0)
   }
 
   death(didWin) {

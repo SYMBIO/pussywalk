@@ -75,7 +75,7 @@ const initGame = (config) => {
   _world.renderer = _renderer
   _world.audioPlayer = _audioPlayer
 
-  _world.syncRenderer()
+  _world.sync()
   _renderer.showNakedBody(config.startNaked)
 
   resizeCanvas()
