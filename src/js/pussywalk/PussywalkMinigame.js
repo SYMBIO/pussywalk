@@ -75,7 +75,7 @@ const initGame = (config) => {
   _world.renderer = _renderer
   _world.audioPlayer = _audioPlayer
 
-  _world.syncRenderer()
+  _world.sync()
   _renderer.showNakedBody(config.startNaked)
 
   resizeCanvas()
@@ -227,6 +227,11 @@ export default class PussywalkMinigame {
     if (_loaderPromise) {
       _loaderPromise.reject();
       _loaderPromise = null;
+    }
+
+    if (_audioPlayer) {
+      _audioPlayer.stop()
+      _audioPlayer = null
     }
 
     if (_preloaderEF) {

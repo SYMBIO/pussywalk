@@ -6,7 +6,7 @@ import PussywalkMinigame from './pussywalk/PussywalkMinigame';
 
 // tutorial
 var tutorial = true;
-if(getCookie('tutorial') == 1) {
+if (getCookie('tutorial') == 1) {
   tutorial = false;
 }
 
@@ -70,7 +70,7 @@ let loader = assetsLoader({
     setTimeout(function() {
       hideLayer('.layer--loading');
 
-      if(tutorial) {
+      if (tutorial) {
         showLayer('.layer--tutorial');
         pauseGame();
       } else {
@@ -92,6 +92,7 @@ window.onload = function() {
     onGameEnd: onGameEnd,
     onTick: onTick,
     onLifesUpdate: onLifesUpdate,
+    onSheepPickup: onSheepPickup
   }
 
   startGame()
@@ -192,7 +193,7 @@ function initializeElements() {
 
     var link = $(this);
 
-    if(mute) {
+    if (mute) {
       setMute(false);
       link.removeClass('is-muted');
       link.html(link.data('off'))
@@ -215,7 +216,7 @@ function initializeElements() {
     e.preventDefault();
 
     var link = $(this),
-        layer = link.data('layer');
+      layer = link.data('layer');
 
     $('.nav').removeClass('is-active');
     showLayer('.layer--' + layer);
@@ -246,12 +247,12 @@ function initializeElements() {
   });
 }
 
-function setCookie(name,value,days) {
+function setCookie(name, value, days) {
   var expires = "";
   if (days) {
-      var date = new Date();
-      date.setTime(date.getTime() + (days*24*60*60*1000));
-      expires = "; expires=" + date.toUTCString();
+    var date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    expires = "; expires=" + date.toUTCString();
   }
   document.cookie = name + "=" + value + expires + "; path=/";
 }
@@ -259,26 +260,26 @@ function setCookie(name,value,days) {
 function getCookie(name) {
   var nameEQ = name + "=";
   var ca = document.cookie.split(';');
-  for(var i=0;i < ca.length;i++) {
-      var c = ca[i];
-      while (c.charAt(0)==' ') c = c.substring(1,c.length);
-      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
   }
   return null;
 }
 
 function closeTutorial() {
-  if(tutorial) {
+  if (tutorial) {
     hideLayer('.layer--tutorial');
     tutorial = false;
     setCookie('tutorial', '1', 365);
-    continueGame();    
+    continueGame();
   }
 }
 
-if(tutorial) {
+if (tutorial) {
   $(document).keydown(function(e) {
-    if(e.keyCode == 37 || e.keyCode == 39 || e.keyCode == 13 || e.keyCode == 27) {
+    if (e.keyCode == 37 || e.keyCode == 39 || e.keyCode == 13 || e.keyCode == 27) {
       closeTutorial();
     }
   });
@@ -295,8 +296,8 @@ function initializeFirebase() {
     messagingSenderId: "597701981219"
   };
   firebase.initializeApp(config);
-  
-  //scoreUpdate();
+
+//scoreUpdate();
 }
 
 function scoreUpdate(time) {
@@ -317,25 +318,25 @@ function scoreUpdate(time) {
     scoreboard.empty()
     scoreboardTop3.empty()
 
-    if(!isNaN(parseFloat(time)) && isFinite(time)) {
+    if (!isNaN(parseFloat(time)) && isFinite(time)) {
 
       var score = [];
 
       snapshot.forEach(function(snapshot) {
         score.push([j, snapshot.val().username, snapshot.val().time]);
 
-        if(snapshot.val().username == $("#name_input").val() && snapshot.val().time == time) {
+        if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time) {
           t = j;
         }
 
         j++;
-      });  
+      });
 
       var plusminus = 35;
 
       snapshot.forEach(function(snapshot) {
         let listItem = $("<li />");
-        if(snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
+        if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
           listItem = $("<li class='chosen-one' />");
         }
         let posSpan = $("<span class=\"position\" />")
@@ -350,15 +351,14 @@ function scoreUpdate(time) {
         listItem.append(nameSpan)
         listItem.append(timeSpan)
 
-        if(snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
-          listItem.append('<span class="share"><span></span><a href="http://www.pussywalk.com/share.php?n='+snapshot.val().username+'&t='+niceTime(snapshot.val().time, true, true)+'" class="btn btn--fb js-share">Sdílej svoje score na</a></span>')
-          
+        if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
+          listItem.append('<span class="share"><span></span><a href="" class="btn btn--fb">Sdílej svoje score na</a></span>')
           k = 1;
         }
 
-        if(t < 3) {
+        if (t < 3) {
 
-          if(i < 15) {
+          if (i < 15) {
             scoreboardTop3.append(listItem)
           }
 
@@ -367,8 +367,8 @@ function scoreUpdate(time) {
           if (i < 3) {
             scoreboardTop3.append(listItem)
           }
- 
-          if(i > 3 && i > t - plusminus && i < t + plusminus + 2) {
+
+          if (i > 3 && i > t - plusminus && i < t + plusminus + 2) {
             scoreboard.append(listItem)
           }
 
@@ -404,7 +404,7 @@ function scoreUpdate(time) {
 
     }
 
-  });  
+  });
 }
 
 function niceTime(time, nicer, nospan) {
@@ -453,12 +453,16 @@ function onTick(time) {
   $('#time').html(niceTime(time));
 }
 
+function onSheepPickup() {
+  console.log("picked up sheep");
+}
+
 function onLifesUpdate(numberOfLifes, delta) {
   var cont = $('#game_lives'),
-      oldCont = $('.game__live--old'),
-      newCont = $('.game__live--new'),
-      oldLive,
-      newLive = numberOfLifes;
+    oldCont = $('.game__live--old'),
+    newCont = $('.game__live--new'),
+    oldLive,
+    newLive = numberOfLifes;
 
   newCont.html(newLive);
 
@@ -492,10 +496,8 @@ function startGame(naked) {
   }
   _game = new PussywalkMinigame(_callbacks, naked);
 
-  setTimeout(function(){
-    //if($('.layer.is-visible').length) {
-      hideLayer('.layer--mission-1');
-    //}
+  setTimeout(function() {
+    hideLayer('.layer--mission-1');
   }, 7500);
 }
 

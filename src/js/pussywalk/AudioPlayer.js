@@ -180,4 +180,30 @@ export default class AudioPlayer {
 
     this.sheep.play()
   }
+
+  stop() {
+
+    this.smallSteppingSounds.forEach(function(sound) {
+      sound.pause()
+    })
+    this.largeSteppingSounds.forEach(function(sound) {
+      sound.pause()
+    })
+    this.bottleBreakingSounds.forEach(function(sound) {
+      sound.pause()
+    })
+    this.bottleImpactSounds.forEach(function(sound) {
+      sound.pause()
+    })
+    this.thumps.forEach(function(sound) {
+      sound.pause()
+    })
+    this.music.forEach(function(sound) {
+      sound.pause()
+    })
+
+    this.health.pause()
+    this.loseHealth.pause()
+    this.sheep.pause()
+  }
 }
