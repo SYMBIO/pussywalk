@@ -445,18 +445,6 @@ export default class Renderer {
       )
     }
 
-    // Draw elements
-    for (var i in this.texturesConfig) {
-      let textureConfig = this.texturesConfig[i]
-      if (textureConfig == null) {
-        debugger
-      }
-      if (textureConfig.visible == false) {
-        continue
-      }
-      this.drawTexture(textureConfig)
-    }
-
     if (!this.isShowingBodyMod) {
       let imageConfig = this.sheep
       this.context.drawImage(imageConfig.image,
@@ -469,7 +457,18 @@ export default class Renderer {
         imageConfig.frame.w * this.scale * 2,
         imageConfig.frame.h * this.scale * 2
       )
+    }
 
+    // Draw elements
+    for (var i in this.texturesConfig) {
+      let textureConfig = this.texturesConfig[i]
+      if (textureConfig == null) {
+        debugger
+      }
+      if (textureConfig.visible == false) {
+        continue
+      }
+      this.drawTexture(textureConfig)
     }
 
     // Lift number

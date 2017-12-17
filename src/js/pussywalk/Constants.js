@@ -1,4 +1,9 @@
 exports.sounds = {
+  music: [
+    "audio/music/BubbleBum.mp3",
+    "audio/music/Google.mp3",
+    "audio/music/Vravoram.mp3"
+  ],
   largeSteps: [
     "audio/step_big_01.mp3",
     "audio/step_big_02.mp3",
@@ -10,6 +15,33 @@ exports.sounds = {
     "audio/step_small_02.mp3",
     "audio/step_small_03.mp3",
     "audio/step_small_04.mp3"
+  ],
+  tvLargeCollide: [
+    "audio/tv_colide_big_01.mp3",
+    "audio/tv_colide_big_02.mp3"
+  ],
+  tvSmallCollide: [
+    "audio/tv_colide_small_01.mp3",
+    "audio/tv_colide_small_02.mp3"
+  ],
+  bin: [
+    "audio/bin_01.mp3",
+    "audio/bin_02.mp3",
+    "audio/bin_03.mp3"
+  ],
+  largeTilts: [
+    "audio/tilt_big_01.mp3",
+    "audio/tilt_big_02.mp3",
+    "audio/tilt_big_03.mp3",
+    "audio/tilt_big_04.mp3"
+  ],
+  smallTilts: [
+    "audio/tilt_small_01.mp3",
+    "audio/tilt_small_02.mp3",
+    "audio/tilt_small_03.mp3",
+    "audio/tilt_small_04.mp3",
+    "audio/tilt_small_05.mp3",
+    "audio/tilt_small_06.mp3"
   ],
   bottlesImpact: [
     "audio/bottle_impact_01.mp3",
@@ -26,14 +58,29 @@ exports.sounds = {
     "audio/hospital_table_02.mp3",
     "audio/hospital_table_03.mp3"
   ],
-  music: [
-    "audio/music/BubbleBum.mp3",
-    "audio/music/Google.mp3",
-    "audio/music/Vravoram.mp3"
+  cane: [
+    "audio/cane_01.mp3",
+    "audio/cane_02.mp3",
+    "audio/cane_03.mp3"
+  ],
+  chairs: [
+    "audio/chairs_01.mp3",
+    "audio/chairs_02.mp3",
+    "audio/chairs_03.mp3",
+    "audio/chairs_04.mp3",
+    "audio/chairs_05.mp3",
+    "audio/chairs_06.mp3",
+    "audio/chairs_07.mp3",
+    "audio/chairs_08.mp3"
+  ],
+  cups: [
+    "audio/cup_01.mp3",
+    "audio/cup_02.mp3"
   ],
   health: "audio/health.mp3",
   loseHealth: "audio/health_lower.mp3",
   sheep: "audio/mrO.mp3",
+  end: "audio/END.mp3",
 }
 exports.texturesConfig = [
   {

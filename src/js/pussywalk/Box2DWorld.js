@@ -192,18 +192,52 @@ export default class Box2DWorld {
       var bottle
       var otherObject
 
+      // Cane
+      if ((bA.name == "decor_stick" || bB.name == "decor_stick") && (bA.GetLinearVelocity().Length() - bB.GetLinearVelocity().Length()) > 3) {
+        that.audioPlayer.playCane()
+        return
+      }
+
+      if ((bA.name.indexOf("decor_chair") == 0 || bB.name.indexOf("decor_chair") == 0) && (bA.GetLinearVelocity().Length() - bB.GetLinearVelocity().Length()) > 3) {
+        that.audioPlayer.playChair()
+        return
+      }
+
+      if ((bA.name.indexOf("decor_cup") == 0 || bB.name.indexOf("decor_cup") == 0 || bA.name.indexOf("decor_pencil_holder") == 0 || bB.name.indexOf("decor_pencil_holder") == 0) && (bA.GetLinearVelocity().Length() - bB.GetLinearVelocity().Length()) > 3) {
+        that.audioPlayer.playCup()
+        return
+      }
+
+
+      if ((bA.name.indexOf("decor_trashbin_top") == 0 || bB.name.indexOf("decor_trashbin_top") == 0 || bA.name.indexOf("decor_trashbin") == 0 || bB.name.indexOf("decor_trashbin") == 0) && (bA.GetLinearVelocity().Length() - bB.GetLinearVelocity().Length()) > 3) {
+        that.audioPlayer.playBin()
+        return
+      }
+
+      // Monitor
       if (bA.name == "decor_monitor" && Constants.bodyparts.indexOf(bB.name) != -1) {
+        let impact = (bA.GetLinearVelocity().Length() - bB.GetLinearVelocity().Length())
+        that.audioPlayer.playTV(impact / 5)
+
+        that.audioPlayer.playTVOff()
         that.renderer.setState({
           renderPorn: false
         })
+        return
       }
 
       if (bB.name == "decor_monitor" && Constants.bodyparts.indexOf(bA.name) != -1) {
+        let impact = (bA.GetLinearVelocity().Length() - bB.GetLinearVelocity().Length())
+        that.audioPlayer.playTV(impact / 5)
+
+        that.audioPlayer.playTVOff()
         that.renderer.setState({
           renderPorn: false
         })
+        return
       }
 
+      // Bottles
       if (bA.name.indexOf("decor_becherovka_") == 0) {
         bottle = bA
         otherObject = bB
@@ -236,6 +270,7 @@ export default class Box2DWorld {
             that.audioPlayer.playBottleImpact()
           }
         }
+        return
       }
     };
     contactListener.PostSolve = function() {};
@@ -351,6 +386,7 @@ export default class Box2DWorld {
 
     setTimeout(() => {
       this.callbacks.onGameEnd(didWin);
+      this.audioPlayer.playEnd()
     }, 1000);
   }
 
@@ -521,8 +557,12 @@ export default class Box2DWorld {
 
     if ((bend < -0.3 && this.bodyAngle > -0.3) || (bend > 0.3 && this.bodyAngle < 0.3)) {
       this.renderer.playScare(0)
+      if (Math.random() < 0.5) {
+        this.audioPlayer.playTilt(0)
+      }
     } else if ((bend < -0.9 && this.bodyAngle > -0.9) || ((bend > 0.9 && this.bodyAngle < 0.9))) {
       this.renderer.playScare(1)
+      this.audioPlayer.playTilt(1)
     } else if ((bend > -0.3 && this.bodyAngle < -0.3) || (bend < 0.3 && this.bodyAngle > 0.3)) {
       this.renderer.removeScare()
     }
@@ -803,6 +843,10 @@ export default class Box2DWorld {
       this.renderer.playRewind()
     }
 
+    if (this.audioPlayer) {
+      this.audioPlayer.playRewind()
+    }
+
     this.prepareForReset()
 
     this.rewindTween = TweenMax.to(this.recorder, 1, {
@@ -837,7 +881,7 @@ export default class Box2DWorld {
 
   cheatReset() {
     let resetPoint = {
-      x: 60,
+      x: 150,
       y: 0
     }
     this.prepareForReset()
