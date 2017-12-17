@@ -262,7 +262,7 @@ export default class Renderer {
 
     let canvasOffset = {
       x: bodyOffset.x - this.canvas.width / 2,
-      y: bodyOffset.y + this.canvas.height / 2 - 100
+      y: bodyOffset.y + this.canvas.height / 2
     }
 
     canvasOffset.x = Math.max(0, Math.round(canvasOffset.x))
@@ -274,8 +274,16 @@ export default class Renderer {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.context.translate(-canvasOffset.x, canvasOffset.y);
 
+    if (this.frameCounter % 2 == 0) {
+      this.startPixel = canvasOffset.x
+      this.endPixel = canvasOffset.x + this.canvas.width
+
+      this.startIndex = Math.floor(this.startPixel / (1500 * this.scale))
+      this.endIndex = Math.ceil(this.endPixel / (1500 * this.scale))
+    }
+
     // Draw level
-    for (var i = 0; i < 8; i++) {
+    for (var i = this.startIndex; i < this.endIndex; i++) {
       let texture = this.levelTextures[i]
       this.context.drawImage(texture,
         0,
@@ -289,104 +297,113 @@ export default class Renderer {
       )
     }
 
-    // Shower
     let idx = Math.floor((this.frameCounter % 60) / 2)
-    let showerImage = this.imagesConfig['shower/shower_' + idx + '.png']
-    if (showerImage) {
-      this.context.drawImage(showerImage.image,
-        showerImage.frame.x,
-        showerImage.frame.y,
-        showerImage.frame.w,
-        showerImage.frame.h,
-        800 * this.scale,
-        700 * this.scale,
-        showerImage.frame.w * this.scale * 8,
-        showerImage.frame.h * this.scale * 8
-      )
-    } else {
-      console.log('shower/shower_' + idx + '.png');
+
+    // Shower
+    if (this.startIndex == 0) {
+      let showerImage = this.imagesConfig['shower/shower_' + idx + '.png']
+      if (showerImage) {
+        this.context.drawImage(showerImage.image,
+          showerImage.frame.x,
+          showerImage.frame.y,
+          showerImage.frame.w,
+          showerImage.frame.h,
+          800 * this.scale,
+          700 * this.scale,
+          showerImage.frame.w * this.scale * 8,
+          showerImage.frame.h * this.scale * 8
+        )
+      } else {
+        console.log('shower/shower_' + idx + '.png');
+      }
     }
 
     // Furnace
-    let furnaceImage = this.imagesConfig['furnace/furnace_' + idx + '.jpg']
-    if (furnaceImage) {
-      this.context.drawImage(furnaceImage.image,
-        furnaceImage.frame.x,
-        furnaceImage.frame.y,
-        furnaceImage.frame.w,
-        furnaceImage.frame.h,
-        10158 * this.scale,
-        917 * this.scale,
-        furnaceImage.frame.w * this.scale * 2,
-        furnaceImage.frame.h * this.scale * 2
-      )
-    } else {
-      console.log('furnace/furnace_' + idx + '.png');
+    if (this.endIndex == 7) {
+      let furnaceImage = this.imagesConfig['furnace/furnace_' + idx + '.jpg']
+      if (furnaceImage) {
+        this.context.drawImage(furnaceImage.image,
+          furnaceImage.frame.x,
+          furnaceImage.frame.y,
+          furnaceImage.frame.w,
+          furnaceImage.frame.h,
+          10158 * this.scale,
+          917 * this.scale,
+          furnaceImage.frame.w * this.scale * 2,
+          furnaceImage.frame.h * this.scale * 2
+        )
+      } else {
+        console.log('furnace/furnace_' + idx + '.png');
+      }
     }
 
     // Mr P
-    let offset = {
-      eye1: {
-        x: 1867,
-        y: 668
-      },
-      eye2: {
-        x: 1905,
-        y: 672
+    if (this.startIndex < 2) {
+      let offset = {
+        eye1: {
+          x: 1867,
+          y: 668
+        },
+        eye2: {
+          x: 1905,
+          y: 672
+        }
       }
+
+
+      var image = new Image();
+      let percent = (this.bodies['body'].GetPosition().get_x() * this.physicsScale - (offset.eye1.x + offset.eye2.x) / 2) / 500
+      percent = Math.min(1, Math.max(-1, percent))
+
+      let position;
+
+      position = {
+        x: (offset.eye1.x + percent * 4) * this.scale,
+        y: offset.eye1.y * this.scale
+      }
+      this.context.translate(position.x, position.y);
+      this.context.drawImage(this.eyeball.image,
+        this.eyeball.frame.x,
+        this.eyeball.frame.y,
+        this.eyeball.frame.w,
+        this.eyeball.frame.h,
+        0,
+        0,
+        this.eyeball.frame.w,
+        this.eyeball.frame.h
+      )
+      this.context.translate(-position.x, -position.y);
+
+      position = {
+        x: (offset.eye2.x + percent * 4) * this.scale,
+        y: offset.eye2.y * this.scale
+      }
+      this.context.translate(position.x, position.y);
+
+      this.context.drawImage(this.eyeball.image,
+        this.eyeball.frame.x,
+        this.eyeball.frame.y,
+        this.eyeball.frame.w,
+        this.eyeball.frame.h,
+        0,
+        0,
+        this.eyeball.frame.w,
+        this.eyeball.frame.h
+      )
+      this.context.translate(-position.x, -position.y);
+
+
+      this.context.drawImage(this.mrP.image,
+        this.mrP.frame.x,
+        this.mrP.frame.y,
+        this.mrP.frame.w,
+        this.mrP.frame.h,
+        1840 * this.scale,
+        520 * this.scale,
+        this.mrP.frame.w * this.scale,
+        this.mrP.frame.h * this.scale
+      )
     }
-    var image = new Image();
-    let percent = (this.bodies['body'].GetPosition().get_x() * this.physicsScale - (offset.eye1.x + offset.eye2.x) / 2) / 500
-    percent = Math.min(1, Math.max(-1, percent))
-
-    let position;
-
-    position = {
-      x: (offset.eye1.x + percent * 4) * this.scale,
-      y: offset.eye1.y * this.scale
-    }
-    this.context.translate(position.x, position.y);
-    this.context.drawImage(this.eyeball.image,
-      this.eyeball.frame.x,
-      this.eyeball.frame.y,
-      this.eyeball.frame.w,
-      this.eyeball.frame.h,
-      0,
-      0,
-      this.eyeball.frame.w,
-      this.eyeball.frame.h
-    )
-    this.context.translate(-position.x, -position.y);
-
-    position = {
-      x: (offset.eye2.x + percent * 4) * this.scale,
-      y: offset.eye2.y * this.scale
-    }
-    this.context.translate(position.x, position.y);
-
-    this.context.drawImage(this.eyeball.image,
-      this.eyeball.frame.x,
-      this.eyeball.frame.y,
-      this.eyeball.frame.w,
-      this.eyeball.frame.h,
-      0,
-      0,
-      this.eyeball.frame.w,
-      this.eyeball.frame.h
-    )
-    this.context.translate(-position.x, -position.y);
-
-
-    this.context.drawImage(this.mrP.image,
-      this.mrP.frame.x,
-      this.mrP.frame.y,
-      this.mrP.frame.w,
-      this.mrP.frame.h,
-      1840 * this.scale,
-      520 * this.scale,
-      this.mrP.frame.w * this.scale,
-      this.mrP.frame.h * this.scale
-    )
 
     // Draw elements
     for (var i in this.texturesConfig) {
@@ -401,18 +418,19 @@ export default class Renderer {
     }
 
     // Lift number
+    if (this.startIndex < 4 && this.endIndex > 4) {
+      let x = this.bodies.lift_1.GetPosition().get_x()
+      let y = this.bodies.lift_1.GetPosition().get_y()
+      // 27.117166 34.85
+      let percentage = Math.max(0, (y + 34.85) / (-27.117166 + 34.85) * 18)
 
-    let x = this.bodies.lift_1.GetPosition().get_x()
-    let y = this.bodies.lift_1.GetPosition().get_y()
-    // 27.117166 34.85
-    let percentage = Math.max(0, (y + 34.85) / (-27.117166 + 34.85) * 18)
+      x = (x * this.physicsScale + 30) * this.scale
+      y = -(y * this.physicsScale + 220) * this.scale
 
-    x = (x * this.physicsScale + 30) * this.scale
-    y = -(y * this.physicsScale + 220) * this.scale
-
-    this.context.font = 'italic ' + Math.round(60 * this.scale) + 'px "barlow", Arial, Helvetica, sans-serif';
-    this.context.fillStyle = "#FFF"
-    this.context.fillText(Math.round(percentage) + '%', x, y);
+      this.context.font = 'italic ' + Math.round(60 * this.scale) + 'px "barlow", Arial, Helvetica, sans-serif';
+      this.context.fillStyle = "#FFF"
+      this.context.fillText(Math.round(percentage) + '%', x, y);
+    }
 
     // Porn
     if (this.renderPorn) {
@@ -485,16 +503,18 @@ export default class Renderer {
       this.drawTexture(this.flashTexture)
     }
 
-    this.context.drawImage(this.furniceWall,
-      0,
-      0,
-      1042,
-      938,
-      10438 * this.scale,
-      1086 * this.scale,
-      1042 * this.scale * 2,
-      938 * this.scale * 2
-    )
+    if (this.endIndex == 8) {
+      this.context.drawImage(this.furniceWall,
+        0,
+        0,
+        1042,
+        938,
+        10438 * this.scale,
+        1086 * this.scale,
+        1042 * this.scale * 2,
+        938 * this.scale * 2
+      )
+    }
 
     // Lights
 
@@ -590,7 +610,6 @@ export default class Renderer {
 
     this.context.globalCompositeOperation = "source-over"
 
-
     this.context.drawImage(this.vignette,
       0,
       0,
@@ -606,16 +625,15 @@ export default class Renderer {
 
     // Debug draw
 
-    if (this.drawDebug) {
-      this.context.scale(this.physicsScale * this.scale, this.physicsScale * this.scale);
-      this.context.lineWidth = 1 / this.physicsScale;
-      this.context.scale(1, -1);
-      this.world.DrawDebugData();
-    }
+  // if (this.drawDebug) {
+  //   this.context.scale(this.physicsScale * this.scale, this.physicsScale * this.scale);
+  //   this.context.lineWidth = 1 / this.physicsScale;
+  //   this.context.scale(1, -1);
+  //   this.world.DrawDebugData();
+  // }
   }
 
   drawTexture(textureConfig) {
-
     let angle
     let position
     let offset
@@ -672,6 +690,10 @@ export default class Renderer {
       scale = 1
     }
 
+    if (position.x < this.startPixel - 500 || position.x > this.endPixel + 500) {
+      return
+    }
+
     this.context.translate(position.x, position.y);
     this.context.rotate(angle)
     this.context.globalAlpha = alpha;
@@ -690,7 +712,6 @@ export default class Renderer {
     this.context.globalAlpha = 1
     this.context.rotate(-angle)
     this.context.translate(-position.x, -position.y);
-
   }
 
   playScare(scare) {

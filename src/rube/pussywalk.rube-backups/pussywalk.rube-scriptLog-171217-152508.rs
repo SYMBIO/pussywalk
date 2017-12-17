@@ -1,0 +1,118 @@
+//Started script log at Wed Dec 13 23:43:42 2017
+
+getBody(29).select();
+getBody(29).deselect();
+getBody(28).select();
+getBody(28).deselect();
+getBody(89).select();
+getBody(89).deselect();
+getBody(86).select();
+getBody(86).deselect();
+getBody(24).select();
+getBody(24).deselect();
+getBody(84).select();
+getBody(84).deselect();
+getBody(86).select();
+getFixture(167).select();
+getFixture(167).deselect();
+getFixture(79).select();
+getFixture(79).deselect();
+getFixture(63).select();
+{
+	fixture _rube_redoFixture = getFixture(63);
+	_rube_redoFixture.setVertex(0,0.668354,0.583635);
+	_rube_redoFixture.setVertex(1,0.239862,0.792212);
+	_rube_redoFixture.setVertex(2,0.138142,0.550694);
+	_rube_redoFixture.setVertex(3,-0.356836,0.531767);
+	_rube_redoFixture.setVertex(4,-0.374298,0.442242);
+	_rube_redoFixture.setVertex(5,0.602606,0.445274);
+}
+getFixture(63).deselect();
+getFixture(21).select();
+{
+	fixture _rube_redoFixture = getFixture(21);
+	_rube_redoFixture.setVertex(0,0.237544,0.345985);
+	_rube_redoFixture.setVertex(1,-0.352255,0.37675);
+	_rube_redoFixture.setVertex(2,-0.391685,0.0944525);
+	_rube_redoFixture.setVertex(3,0.554969,0.0924954);
+	_rube_redoFixture.setVertex(4,0.605001,0.170928);
+}
+getFixture(21).deselect();
+getFixture(79).select();
+getFixture(79).deselect();
+getFixture(21).select();
+getFixture(21).deselect();
+getFixture(79).select();
+getFixture(79).deselect();
+getFixture(167).select();
+getFixture(167).deselect();
+getFixture(21).select();
+getFixture(21).deselect();
+getFixture(79).select();
+getFixture(79).deselect();
+getFixture(167).select();
+getFixture(167).deselect();
+getFixture(79).select();
+getFixture(79).deselect();getFixture(167).select();
+getFixture(167).deselect();getFixture(79).select();
+getFixture(79).deselect();getFixture(21).select();
+getFixture(21).deselect();getFixture(167).select();
+getFixture(167).deselect();getFixture(79).select();
+getFixture(79).deselect();getFixture(21).select();
+getFixture(21).deselect();getFixture(79).select();
+getFixture(79).deselect();getFixture(21).select();
+{
+	fixture _rube_undoFixture = getFixture(21);
+	_rube_undoFixture.setVertex(0,0.190759,0.0255083);
+	_rube_undoFixture.setVertex(1,-0.39904,0.0562733);
+	_rube_undoFixture.setVertex(2,-0.43847,-0.226024);
+	_rube_undoFixture.setVertex(3,0.508183,-0.227981);
+	_rube_undoFixture.setVertex(4,0.558215,-0.149548);
+}
+getFixture(21).deselect();getFixture(63).select();
+{
+	fixture _rube_undoFixture = getFixture(63);
+	_rube_undoFixture.setVertex(0,0.647301,-0.0877266);
+	_rube_undoFixture.setVertex(1,0.218809,0.12085);
+	_rube_undoFixture.setVertex(2,0.117088,-0.120668);
+	_rube_undoFixture.setVertex(3,-0.377889,-0.139595);
+	_rube_undoFixture.setVertex(4,-0.395351,-0.22912);
+	_rube_undoFixture.setVertex(5,0.581553,-0.226088);
+}
+getFixture(63).deselect();
+getFixture(79).select();
+getFixture(79).deselect();
+getFixture(79).delete();
+getFixture(21).select();
+getFixture(21).deselect();
+getFixture(62).select();
+getFixture(62).deselect();
+getFixture(167).select();
+getFixture(167).deselect();
+getFixture(21).select();
+getFixture(21).deselect();
+getFixture(62).select();
+getFixture(62).deselect();
+getFixture(63).select();
+getFixture(63).deselect();
+getFixture(62).select();
+getFixture(62).deselect();
+getFixture(167).select();
+getFixture(167).deselect();
+getFixture(21).select();
+getBody(7).select();
+getBody(7).deselect();
+getBody(12).select();
+getBody(12).deselect();getBody(7).select();
+getBody(7).deselect();
+getFixture(21).deselect();getFixture(167).select();
+getFixture(167).deselect();getFixture(62).select();
+getFixture(62).deselect();getFixture(63).select();
+getFixture(63).deselect();getFixture(62).select();
+getFixture(62).deselect();getFixture(21).select();
+getFixture(21).deselect();getFixture(167).select();
+getFixture(167).deselect();getFixture(62).select();
+getFixture(62).deselect();getFixture(21).select();
+getFixture(21).deselect();
+getBody(7).addFixture(79, '{"density":15.85961151123047,"filter-categoryBits":2,"filter-maskBits":65533,"friction":10,"name":"fixture1","shapes":[{"type":"polygon"}],"vertices":{"x":[0.1907590031623840,-0.3990400135517120,-0.4384700059890747,0.5582152605056763],"y":[0.02550829946994781,0.05627330020070076,-0.2260240018367767,-0.1495483517646790]}}');getFixture(79).select();
+getFixture(79).deselect();getFixture(63).select();
