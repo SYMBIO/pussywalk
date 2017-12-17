@@ -302,7 +302,7 @@ export default class Box2DWorld {
           that.lifes -= 1
           that.callbacks.onLifesUpdate(that.lifes, -1)
 
-          if (that.lifes < 0) {
+          if (that.lifes <= 0) {
             that.death(false)
           } else {
             that.resetPlayer()
