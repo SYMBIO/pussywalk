@@ -418,7 +418,7 @@ export default class Renderer {
     }
 
     // Lift number
-    if (this.startIndex < 5 && this.endIndex > 5) {
+    if (this.startIndex < 4 && this.endIndex > 4) {
       let x = this.bodies.lift_1.GetPosition().get_x()
       let y = this.bodies.lift_1.GetPosition().get_y()
       // 27.117166 34.85
