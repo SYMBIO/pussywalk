@@ -125,12 +125,14 @@ function initializeElements() {
       //$('#scoreboard').show()
       scoreUpdate();
     });
-  })
+  });
+
   $('#cancel_send_name').on('click', function() {
     //$('#name_dialogue').hide()
     hideLayer('.layer--finish');
     startGame()
   })
+
   $('#name_input').on('input', function() {
     $('#send_name').attr("disabled", $("#name_input").val().length == 0);
   })
@@ -285,38 +287,111 @@ function initializeFirebase() {
   //scoreUpdate();
 }
 
-function scoreUpdate() {
+function scoreUpdate(time) {
 
   $('#scoreboard_top3').html('<div class="lds-css ng-scope"><div style="width:100%;height:100%" class="lds-pacman"><div><div></div><div></div><div></div></div><div><div></div><div></div></div></div>');
   $('#scoreboard_list').html('');
 
   showLayer('.layer--scoreboard');
 
-  // Nacte vysledky jen jednou (viz .once), takze je potreba tohle pustit:
-  // 1) kdyz se pusti hra (aby bylo aspon neco v scoreboardu)
-  // 2) kdyz to otevre scoreboard
   var scoreboardListener = firebase.database().ref('scoreboard');
   scoreboardListener.orderByChild("time").once('value', function(snapshot) {
     let scoreboard = $('#scoreboard_list')
     let scoreboardTop3 = $('#scoreboard_top3')
     var i = 0
+    var j = 0
+    var k = 0
+    var t = 0
     scoreboard.empty()
     scoreboardTop3.empty()
-    snapshot.forEach(function(snapshot) {
-      let listItem = $("<li />")
-      let nameSpan = $("<span class=\"username\" />")
-      let timeSpan = $("<span class=\"time\" />")
-      nameSpan.append(snapshot.val().username)
-      timeSpan.append(niceTime(snapshot.val().time))
-      listItem.append(nameSpan)
-      listItem.append(timeSpan)
-      if (i > 2) {
-        scoreboard.append(listItem)
-      } else {
-        scoreboardTop3.append(listItem)
-      }
-      i++;
-    })
+
+    if(!isNaN(parseFloat(time)) && isFinite(time)) {
+
+      var score = [];
+
+      snapshot.forEach(function(snapshot) {
+        score.push([j, snapshot.val().username, snapshot.val().time]);
+
+        if(snapshot.val().username == $("#name_input").val() && snapshot.val().time == time) {
+          t = j;
+        }
+
+        j++;
+      });  
+
+      var plusminus = 35;
+
+      snapshot.forEach(function(snapshot) {
+        let listItem = $("<li />");
+        if(snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
+          listItem = $("<li class='chosen-one' />");
+        }
+        let posSpan = $("<span class=\"position\" />")
+        let nameSpan = $("<span class=\"username\" />")
+        let timeSpan = $("<span class=\"time\" />")
+
+        posSpan.append(i + 1 + '.')
+        nameSpan.append(snapshot.val().username)
+        timeSpan.append(niceTime(snapshot.val().time))
+
+        listItem.append(posSpan)
+        listItem.append(nameSpan)
+        listItem.append(timeSpan)
+
+        if(snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
+          listItem.append('<span class="share"><span></span><a href="" class="btn btn--fb">Sdílej svoje score na</a></span>')
+          
+          k = 1;
+        }
+
+        if(t < 3) {
+
+          if(i < 15) {
+            scoreboardTop3.append(listItem)
+          }
+
+        } else {
+
+          if (i < 3) {
+            scoreboardTop3.append(listItem)
+          }
+ 
+          if(i > 3 && i > t - plusminus && i < t + plusminus + 2) {
+            scoreboard.append(listItem)
+          }
+
+        }
+
+        i++;
+      })
+
+      $('#scoreboard').animate({
+        scrollTop: $('.chosen-one').position().top - $('#scoreboard').height() / 3
+      }, 500);
+
+    } else {
+
+      snapshot.forEach(function(snapshot) {
+        let listItem = $("<li />")
+        let posSpan = $("<span class=\"position\" />")
+        let nameSpan = $("<span class=\"username\" />")
+        let timeSpan = $("<span class=\"time\" />")
+        posSpan.append(i + 1 + '.')
+        nameSpan.append(snapshot.val().username)
+        timeSpan.append(niceTime(snapshot.val().time))
+        listItem.append(posSpan)
+        listItem.append(nameSpan)
+        listItem.append(timeSpan)
+
+        if (i < 100) {
+          scoreboardTop3.append(listItem)
+        }
+
+        i++;
+      })
+
+    }
+
   });  
 }
 
