@@ -787,9 +787,17 @@ export default class Renderer {
     this.headAnimator.playScare(scare)
   }
 
+  removeScare() {
+    this.headAnimator.removeScare()
+  }
+
+  playDeath() {
+    this.headAnimator.playDeath()
+  }
+
   playRewind() {
     this.showRewind = true
-    TweenMax.to(this, 2, {
+    TweenMax.to(this, 1, {
       showRewind: true,
       onComplete: this.stopRewind
     })

@@ -298,6 +298,8 @@ export default class Box2DWorld {
         (_floor.indexOf(bB.name) != -1 && _end.indexOf(bA.name) >= 0)) {
         that.inactive = true;
 
+        that.renderer.playDeath()
+
         setTimeout(() => {
           that.lifes -= 1
           that.callbacks.onLifesUpdate(that.lifes, -1)
@@ -519,12 +521,10 @@ export default class Box2DWorld {
 
     if ((bend < -0.3 && this.bodyAngle > -0.3) || (bend > 0.3 && this.bodyAngle < 0.3)) {
       this.renderer.playScare(0)
-    } else {
-      if ((bend < -0.5 && this.bodyAngle > -0.5) || ((bend > 0.5 && this.bodyAngle < 0.5))) {
-        this.renderer.playScare(1)
-      } else if ((bend < -0.7 && this.bodyAngle > -0.7) || (bend > 0.7 && this.bodyAngle < 0.7)) {
-        this.renderer.playScare(2)
-      }
+    } else if ((bend < -0.9 && this.bodyAngle > -0.9) || ((bend > 0.9 && this.bodyAngle < 0.9))) {
+      this.renderer.playScare(1)
+    } else if ((bend > -0.3 && this.bodyAngle < -0.3) || (bend < 0.3 && this.bodyAngle > 0.3)) {
+      this.renderer.removeScare()
     }
     this.bodyAngle = bend
 
@@ -534,16 +534,12 @@ export default class Box2DWorld {
       frontBall.GetFixtureList().SetDensity(10)
     } else {
       // Leaning fwd
-      backBall.GetFixtureList().SetDensity(5)
-      frontBall.GetFixtureList().SetDensity(5)
+      backBall.GetFixtureList().SetDensity(10)
+      frontBall.GetFixtureList().SetDensity(1)
     }
 
     backBall.ResetMassData()
     frontBall.ResetMassData()
-
-    // var fixture = foot.GetFixtureList()
-    // fixture.SetDensity(12)
-    // foot.ResetMassData()
 
     thighAngle = this.bodies['leg_front_tie'].GetAngle()
 
@@ -809,7 +805,7 @@ export default class Box2DWorld {
 
     this.prepareForReset()
 
-    this.rewindTween = TweenMax.to(this.recorder, 2, {
+    this.rewindTween = TweenMax.to(this.recorder, 1, {
       ease: Cubic.easeInOut,
       currentFrame: 0,
       onUpdate: this.stepBack,
