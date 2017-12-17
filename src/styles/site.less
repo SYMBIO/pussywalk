@@ -462,6 +462,7 @@ a:focus, a:active {
 	overflow-x: hidden;
 	overflow-y: auto;
 	position: relative;
+	-webkit-overflow-scrolling: touch;
 	z-index: 2;
 
 	&::-webkit-scrollbar {
@@ -485,6 +486,9 @@ a:focus, a:active {
 
 		&:first-child {
 			margin-top: 0;
+		}
+
+		&.chosen-one {
 		}
 	}
 
