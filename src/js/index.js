@@ -76,6 +76,7 @@ let loader = assetsLoader({
 
       if (tutorial) {
         showLayer('.layer--tutorial');
+        showLayer('.layer--mission-1');
         pauseGame();
       } else {
         continueGame();
@@ -489,7 +490,9 @@ function onGameEnd(didWin) {
     //$('#name_dialogue').show()
     pauseGame();
     $('#finish_time').html(niceTime(_game.playTime, true));
-    showLayer('.layer--finish');
+    setTimeout(function(){
+      showLayer('.layer--finish');
+    }, 10);
     $('#game_controls, #game_lives').hide()
   } else {
     startGame(didWin)
