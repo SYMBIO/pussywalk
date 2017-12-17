@@ -63,18 +63,12 @@
 				<li><a href="" class="nav__restart">Restart</a></li>
 				<li><a href="" class="nav__share">Sdílej</a></li>
 				<li><a href="" class="nav__sound" data-on="Zvuk ON" data-off="Zvuk OFF">Zvuk OFF</a></li>
-				<li><a href="" data-layer="scoreboard" class="nav__score js-show-layer">Žebříček</a></li>
+				<li><a href="" class="nav__score js-scoreboard-update">Žebříček</a></li>
 				<li><a href="" class="nav__kill">Koho zabít?</a></li>
 				<li><a href="http://old.pussywalk.com" class="nav__game">PUSSYWALK 1.</a></li>
 			</ul>
 
 			<a href="" data-layer="merch" class="btn btn--pussy js-show-layer">MERCH</a>
-
-			<ul class="test__layers">
-				<li><a href="" data-layer="tutorial" class="js-show-layer">tutorial</a></li>
-				<li><a href="" data-layer="finish" class="js-show-layer">finish</a></li>
-				<li><a href="" data-layer="scoreboard" class="js-show-layer">score</a></li>
-			</ul>
 		</div>
 
 		<div id="time" class="time-counter"></div>
@@ -92,7 +86,11 @@
 		<div class="layer layer--tutorial">
 			<div class="layer__content">
 				<div class="tutorial__info">
-					<p>Na desktopu použijte k chůzi směrové klávesy.<br>Na device virtuální L a R klávesy</p>
+					<div>
+						<p class="tutorial__desktop">Pochoduj směrovými klávesami [<] [>].</p>
+						<p class="tutorial__mobile">Virtuálními tlačítky L a R zvedej nohy a vrávorej vpřed.</p>
+						<p><a href="" class="btn js-play">Hrát</a></p>
+					</div>
 				</div>
 
 				<div class="tutorial__buttons">
@@ -124,7 +122,7 @@
 
 						<button id="send_name" class="btn">Pokračuj ></button>
 
-						<div><button id="cancel_send_name" type="button">NO</button></div>
+						<!--<div><button id="cancel_send_name" type="button">NO</button></div>-->
 					</div>
 				</div>
 			</div>
