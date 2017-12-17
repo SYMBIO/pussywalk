@@ -752,6 +752,14 @@ a:focus, a:active {
 }
 
 .layer--mission {
+	.layer__content {
+		height: 0;
+		left: auto;
+		right: 0;
+		top: 30%;
+		width: 0;
+	}
+	
 	p {
 		color: #3e384d;
 		color: @white;
@@ -761,7 +769,8 @@ a:focus, a:active {
 		right: 125px;
 		text-align: right;
 		text-transform: uppercase;
-		top: 30%;
+		top: 0;
+		white-space: nowrap;
 
 		strong {
 			display: block;
@@ -790,6 +799,12 @@ a:focus, a:active {
 			transform: translateY(-50%);
 		}
 	}
+
+	@media @phoneLand {
+		.layer__content {
+			top: 21%;
+		}
+	}	
 }
 .layer--mission-1 {
 	p {
@@ -1174,6 +1189,7 @@ body {
 		padding-top: 8%;
 
 		span {
+			border-radius: 15px;
 			width: 35%;
 		}
 	}
@@ -1249,6 +1265,14 @@ body {
 	}
 
 	@media screen and (min-aspect-ratio: 3/1) {
+		span {
+			&:before {
+				border-radius: 15px;
+			}
+		}
+	}
+
+	@media screen and (max-aspect-ratio: 3/4) {
 		span {
 			&:before {
 				border-radius: 15px;
