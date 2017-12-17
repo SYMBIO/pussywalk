@@ -687,6 +687,8 @@ export default class Box2DWorld {
 
     $('body').off('keydown keyup');
     $('.game__key').off('touchstart touchend touchcancel mousedown mouseup');
+
+    TweenMax.killTweensOf(this.recorder)
   }
 
   stepBack() {
@@ -804,7 +806,7 @@ export default class Box2DWorld {
 
     this.prepareForReset()
 
-    TweenMax.to(this.recorder, 2, {
+    this.rewindTween = TweenMax.to(this.recorder, 2, {
       ease: Cubic.easeInOut,
       currentFrame: 0,
       onUpdate: this.stepBack,

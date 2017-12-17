@@ -229,6 +229,11 @@ export default class PussywalkMinigame {
       _loaderPromise = null;
     }
 
+    if (_audioPlayer) {
+      _audioPlayer.stop()
+      _audioPlayer = null
+    }
+
     if (_preloaderEF) {
       window.cancelAnimationFrame(_preloaderEF);
       _preloaderEF = null;
