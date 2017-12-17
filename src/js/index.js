@@ -119,7 +119,7 @@ function showLayer(layer) {
 
 function hideLayer(layer) {
   $(layer).removeClass('is-visible');
-  if(!checkNav()) {
+  if(!checkNav() && !$('.layer.is-visible').length) {
     continueGame()
   }
 }
