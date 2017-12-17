@@ -79,7 +79,6 @@ a:focus, a:active {
 	position: absolute;
 	top: 29px;
 	width: 50px;
-	z-index: 2;
 
 	&:before, &:after {
 		content: '';
@@ -345,6 +344,13 @@ a:focus, a:active {
 		top: 0;
 		width: 100%;
 		z-index: 1;
+	}
+
+	.layer__content {
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+		padding-bottom: 45px;
+		padding-top: 90px;
 	}
 
 	.layer__center {
