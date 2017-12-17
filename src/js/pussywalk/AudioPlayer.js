@@ -37,6 +37,34 @@ export default class AudioPlayer {
       return sound
     })
 
+    this.smallTiltModSounds = Constants.sounds.smallTiltsMod.map(function(name) {
+      let sound = new Audio(name);
+      sound.preload = 'auto';
+      sound.load();
+      return sound
+    })
+
+    this.largeTiltModSounds = Constants.sounds.largeTiltsMod.map(function(name) {
+      let sound = new Audio(name);
+      sound.preload = 'auto';
+      sound.load();
+      return sound
+    })
+
+    this.smallSheepTiltSounds = Constants.sounds.smallSheepTilts.map(function(name) {
+      let sound = new Audio(name);
+      sound.preload = 'auto';
+      sound.load();
+      return sound
+    })
+
+    this.largeSheepTiltSounds = Constants.sounds.largeSheepTilts.map(function(name) {
+      let sound = new Audio(name);
+      sound.preload = 'auto';
+      sound.load();
+      return sound
+    })
+
     this.bottleBreakingSounds = Constants.sounds.bottlesBreak.map(function(name) {
       let sound = new Audio(name);
       sound.preload = 'auto';
@@ -107,6 +135,13 @@ export default class AudioPlayer {
       return sound
     })
 
+    this.toiletpaper = Constants.sounds.toiletpaper.map(function(name) {
+      let sound = new Audio(name);
+      sound.preload = 'auto';
+      sound.load();
+      return sound
+    })
+
     this.health = new Audio("audio/health.mp3");
     this.health.preload = 'auto';
     this.health.load();
@@ -131,6 +166,10 @@ export default class AudioPlayer {
     this.rewind = new Audio("audio/rewind.mp3");
     this.rewind.preload = 'auto';
     this.rewind.load();
+
+    this.bear = new Audio("audio/bear.mp3");
+    this.bear.preload = 'auto';
+    this.bear.load();
 
     let that = this
     this.music.forEach(function(music) {
@@ -240,12 +279,26 @@ export default class AudioPlayer {
     this.playRandom(this.bin)
   }
 
-  playTilt(tilt) {
+  playTilt(tilt, sheep) {
     if (tilt > 0.5) {
-      this.playRandom(this.largeTiltSounds)
+      if (sheep) {
+        this.playRandom(this.largeTiltModSounds)
+        this.playRandom(this.largeSheepTiltSounds)
+      } else {
+        this.playRandom(this.largeTiltSounds)
+      }
     } else {
-      this.playRandom(this.smallTiltSounds)
+      if (sheep) {
+        this.playRandom(this.smallTiltModSounds)
+        this.playRandom(this.smallSheepTiltSounds)
+      } else {
+        this.playRandom(this.smallTiltSounds)
+      }
     }
+  }
+
+  playBear() {
+    this.play(this.bear)
   }
 
   playTV(impact) {
@@ -254,6 +307,10 @@ export default class AudioPlayer {
     } else {
       this.playRandom(this.tvSmall)
     }
+  }
+
+  playToiletpaper() {
+    this.playRandom(this.toiletpaper)
   }
 
   playRandom(soundsArray) {

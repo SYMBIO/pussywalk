@@ -43,6 +43,23 @@ exports.sounds = {
     "audio/tilt_small_05.mp3",
     "audio/tilt_small_06.mp3"
   ],
+  largeTiltsMod: [
+    "audio/tilt_big_mouthfull_01.mp3",
+    "audio/tilt_big_mouthfull_02.mp3"
+  ],
+  smallTiltsMod: [
+    "audio/tilt_small_mouthfull_01.mp3",
+    "audio/tilt_small_mouthfull_02.mp3"
+  ],
+  largeSheepTilts: [
+    "audio/sheep_tilt_big_01.mp3",
+    "audio/sheep_tilt_big_02.mp3"
+  ],
+  smallSheepTilts: [
+    "audio/sheep_tilt_small_01.mp3",
+    "audio/sheep_tilt_small_02.mp3"
+  ],
+
   bottlesImpact: [
     "audio/bottle_impact_01.mp3",
     "audio/bottle_impact_02.mp3",
@@ -76,6 +93,13 @@ exports.sounds = {
   cups: [
     "audio/cup_01.mp3",
     "audio/cup_02.mp3"
+  ],
+  toiletpaper: [
+    "audio/toilettepaper_01.mp3",
+    "audio/toilettepaper_02.mp3",
+    "audio/toilettepaper_03.mp3",
+    "audio/toilettepaper_04.mp3",
+    "audio/toilettepaper_05.mp3"
   ],
   health: "audio/health.mp3",
   loseHealth: "audio/health_lower.mp3",
