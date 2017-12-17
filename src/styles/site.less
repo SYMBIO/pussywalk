@@ -678,6 +678,42 @@ a:focus, a:active {
 	}	
 }
 
+.layer--credits {
+	color: @white;
+	width: 100%;
+
+	.layer__center {
+		max-width: none;
+		padding: 52px 25px 25px 25px;
+		text-align: left;
+		width: 350px;
+
+		&:after {
+			background: rgba(63, 52, 77, .67);
+			content: '';
+			display: block;
+			height: 100%;
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 100%;
+		}
+	}
+
+	.fb_iframe_widget {
+		position: relative;
+		z-index: 2;
+	}
+
+	&.is-visible {
+		.layer__center {
+			&:after {
+				mix-blend-mode: multiply;
+			}
+		}
+	}	
+}
+
 .layer--mission {
 	p {
 		color: #3e384d;

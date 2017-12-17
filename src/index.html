@@ -63,7 +63,7 @@
 				<li><a href="https://www.facebook.com/sharer/sharer.php?u=www.pussywalk.cz" target="_blank" class="nav__share js-share">Sdílej</a></li>
 				<li><a href="" class="nav__sound" data-on="ZVUK ZAPNOUT" data-off="ZVUK VYPNOUT">ZVUK VYPNOUT</a></li>
 				<li><a href="" class="nav__score js-scoreboard-update">TABULKA VÍTĚZŮ</a></li>
-				<li><a href="" class="nav__kill">PACHATELÉ</a></li>
+				<li><a href="" data-layer="credits" class="nav__kill js-show-layer">PACHATELÉ</a></li>
 				<li><a href="http://old.pussywalk.com" class="nav__game">PUSSYWALK 1.</a></li>
 			</ul>
 
@@ -143,6 +143,16 @@
 			</div>
 		</div>
 
+		<div class="layer layer--credits">
+			<div class="layer__content">
+				<div class="layer__center">
+					<button class="layer__close"></button>
+
+					<div class="fb-like-box" data-href="https://www.facebook.com/pages/PussyWalk/601731869955851" data-colorscheme="dark" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>				
+				</div>
+			</div>
+		</div>
+
 		<div class="layer layer--scoreboard">
 			<div class="layer__content">
 				<div class="layer__center">
@@ -188,5 +198,14 @@
 
 		<div class="game__scene"></div>
 	</div>
+
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = "//connect.facebook.net/cs_CZ/sdk.js#xfbml=1&appId=102744876492578&version=v2.0";
+	fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>	
 </body>
 </html>
