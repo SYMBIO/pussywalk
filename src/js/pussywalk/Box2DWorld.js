@@ -721,6 +721,9 @@ export default class Box2DWorld {
   }
 
   onResetComplete() {
+
+    this.keymap = {};
+
     this.record = true
     this.inactive = false
     this.pausePhysics = false
