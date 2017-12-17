@@ -72,7 +72,6 @@
             "density" : 1,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
-            "friction" : 0.2,
             "id" : 1,
             "name" : "fixture8",
             "shapes" : 
@@ -93,7 +92,6 @@
             "density" : 1,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
-            "friction" : 0.2,
             "id" : 2,
             "name" : "fixture8",
             "shapes" : 
@@ -114,7 +112,6 @@
             "density" : 1,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
-            "friction" : 0.2,
             "id" : 3,
             "name" : "fixture8",
             "shapes" : 
@@ -135,7 +132,6 @@
             "density" : 1,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
-            "friction" : 0.2,
             "id" : 4,
             "name" : "fixture8",
             "shapes" : 
@@ -156,7 +152,6 @@
             "density" : 1,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
-            "friction" : 0.2,
             "id" : 5,
             "name" : "fixture8",
             "shapes" : 
@@ -177,7 +172,6 @@
             "density" : 1,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
-            "friction" : 0.2,
             "id" : 6,
             "name" : "fixture8",
             "shapes" : 
@@ -196,11 +190,11 @@
         ],
         "id" : 1,
         "linearVelocity" : 0,
-        "massData-I" : 0.1196009293198586,
+        "massData-I" : 0.1196009367704391,
         "massData-center" : 
         {
-          "x" : 0.007761077489703894,
-          "y" : -0.03876790404319763
+          "x" : 0.007761078886687756,
+          "y" : -0.03876791149377823
         },
         "massData-mass" : 0.6776448488235474,
         "name" : "hand_back_top",
@@ -444,7 +438,7 @@
         "massData-I" : 3.137815237045288,
         "massData-center" : 
         {
-          "x" : 0.06104796752333641,
+          "x" : 0.06104796379804611,
           "y" : -0.1635658740997314
         },
         "massData-mass" : 3.486048698425293,
@@ -530,7 +524,6 @@
             "density" : 1,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
-            "friction" : 0.2,
             "id" : 14,
             "name" : "fixture8",
             "shapes" : 
@@ -551,7 +544,6 @@
             "density" : 1,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
-            "friction" : 0.2,
             "id" : 15,
             "name" : "fixture8",
             "shapes" : 
@@ -572,7 +564,6 @@
             "density" : 1,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
-            "friction" : 0.2,
             "id" : 16,
             "name" : "fixture8",
             "shapes" : 
@@ -593,7 +584,6 @@
             "density" : 1,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
-            "friction" : 0.2,
             "id" : 17,
             "name" : "fixture8",
             "shapes" : 
@@ -614,7 +604,6 @@
             "density" : 1,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
-            "friction" : 0.2,
             "id" : 18,
             "name" : "fixture8",
             "shapes" : 
@@ -635,7 +624,6 @@
             "density" : 1,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
-            "friction" : 0.2,
             "id" : 19,
             "name" : "fixture8",
             "shapes" : 
@@ -654,10 +642,10 @@
         ],
         "id" : 5,
         "linearVelocity" : 0,
-        "massData-I" : 0.1196009218692780,
+        "massData-I" : 0.1196009293198586,
         "massData-center" : 
         {
-          "x" : 0.007761077489703894,
+          "x" : 0.007761078886687756,
           "y" : -0.03876791521906853
         },
         "massData-mass" : 0.6776448488235474,
@@ -950,7 +938,7 @@
         "massData-I" : 1.067031979560852,
         "massData-center" : 
         {
-          "x" : -0.1278745383024216,
+          "x" : -0.1278745234012604,
           "y" : 0.2286262363195419
         },
         "massData-mass" : 1.455700039863586,
@@ -1082,7 +1070,6 @@
             "density" : 1,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
-            "friction" : 0.2,
             "id" : 27,
             "name" : "fixture9",
             "shapes" : 
@@ -1103,7 +1090,6 @@
             "density" : 1,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
-            "friction" : 0.2,
             "id" : 28,
             "name" : "fixture9",
             "shapes" : 
@@ -1136,7 +1122,6 @@
             "density" : 1,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
-            "friction" : 0.2,
             "id" : 29,
             "name" : "fixture9",
             "shapes" : 
@@ -1169,7 +1154,6 @@
             "density" : 1,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
-            "friction" : 0.2,
             "id" : 30,
             "name" : "fixture9",
             "shapes" : 
@@ -1202,11 +1186,11 @@
         ],
         "id" : 11,
         "linearVelocity" : 0,
-        "massData-I" : 0.2868023216724396,
+        "massData-I" : 0.2868023514747620,
         "massData-center" : 
         {
-          "x" : 0.006862462963908911,
-          "y" : 0.07951408624649048
+          "x" : 0.006862460635602474,
+          "y" : 0.07951407879590988
         },
         "massData-mass" : 0.8560814857482910,
         "name" : "hand_front_bottom",
@@ -1289,7 +1273,6 @@
             "density" : 1,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
-            "friction" : 0.2,
             "id" : 32,
             "name" : "fixture9",
             "shapes" : 
@@ -1310,7 +1293,6 @@
             "density" : 1,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
-            "friction" : 0.2,
             "id" : 33,
             "name" : "fixture9",
             "shapes" : 
@@ -1343,7 +1325,6 @@
             "density" : 1,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
-            "friction" : 0.2,
             "id" : 34,
             "name" : "fixture9",
             "shapes" : 
@@ -1376,7 +1357,6 @@
             "density" : 1,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
-            "friction" : 0.2,
             "id" : 35,
             "name" : "fixture9",
             "shapes" : 
@@ -1412,10 +1392,10 @@
         "massData-I" : 0.2868023216724396,
         "massData-center" : 
         {
-          "x" : 0.006862460169941187,
-          "y" : 0.07951407879590988
+          "x" : 0.006862462963908911,
+          "y" : 0.07951408624649048
         },
-        "massData-mass" : 0.8560815453529358,
+        "massData-mass" : 0.8560814857482910,
         "name" : "hand_back_bottom",
         "position" : 
         {
