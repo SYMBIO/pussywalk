@@ -300,7 +300,7 @@ export default class Box2DWorld {
 
         setTimeout(() => {
           that.lifes -= 1
-          that.callbacks.onLifesUpdate(that.lifes)
+          that.callbacks.onLifesUpdate(that.lifes, -1)
 
           if (that.lifes < 0) {
             that.death(false)
@@ -478,7 +478,7 @@ export default class Box2DWorld {
       this.visibleLifes.splice(idx, 1)
 
       this.lifes += 1
-      this.callbacks.onLifesUpdate(this.lifes)
+      this.callbacks.onLifesUpdate(this.lifes, 1)
 
       this.renderer.setState({
         visibleLifes: this.visibleLifes

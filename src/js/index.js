@@ -243,7 +243,7 @@ function onTick(time) {
   $('#time').html(niceTime(time));
 }
 
-function onLifesUpdate(numberOfLifes) {
+function onLifesUpdate(numberOfLifes, delta) {
   //
 }
 
