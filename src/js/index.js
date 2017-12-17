@@ -69,14 +69,14 @@ let loader = assetsLoader({
   .on('complete', function(assets) {
     setTimeout(function() {
       hideLayer('.layer--loading');
-      
+
       if(tutorial) {
         showLayer('.layer--tutorial');
         pauseGame();
       } else {
         continueGame();
       }
-    }, 500)
+    }, (2 - assetsLoader.stats.secs) * 1000)
   })
   .start();
 
@@ -97,6 +97,16 @@ window.onload = function() {
   startGame()
 }
 
+var openNav = function() {
+  $('.nav').addClass('is-active');
+}
+var closeNav = function() {
+  $('.nav').removeClass('is-active');
+}
+var checkNav = function() {
+  return $('.nav').hasClass('is-active');
+}
+
 function showLayer(layer) {
   $('.layer').removeClass('is-visible');
   $(layer).addClass('is-visible');
@@ -104,7 +114,9 @@ function showLayer(layer) {
 
 function hideLayer(layer) {
   $(layer).removeClass('is-visible');
-  continueGame()
+  if(!checkNav()) {
+    continueGame()
+  }
 }
 
 function initializeElements() {
@@ -123,7 +135,7 @@ function initializeElements() {
       time: _game.playTime
     }, function(error) {
       //$('#scoreboard').show()
-      scoreUpdate();
+      scoreUpdate(_game.playTime);
     });
   });
 
@@ -147,13 +159,6 @@ function initializeElements() {
       startGame()
     }
   })
-
-  var openNav = function() {
-    $('.nav').addClass('is-active');
-  }
-  var closeNav = function() {
-    $('.nav').removeClass('is-active');
-  }
 
   $('.nav-link').on('click', function(e) {
     e.preventDefault();
@@ -231,6 +236,13 @@ function initializeElements() {
 
     closeNav();
     scoreUpdate();
+  });
+
+  $(document).on('click', '.js-share', function(e) {
+    e.preventDefault();
+
+    window.open($(this).attr('href'), 'fbShareWindow', 'height=450, width=550, top=100, left=100, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
+    return false;
   });
 }
 
@@ -339,7 +351,7 @@ function scoreUpdate(time) {
         listItem.append(timeSpan)
 
         if(snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
-          listItem.append('<span class="share"><span></span><a href="" class="btn btn--fb">Sdílej svoje score na</a></span>')
+          listItem.append('<span class="share"><span></span><a href="http://www.pussywalk.com/share.php?n='+snapshot.val().username+'&t='+niceTime(snapshot.val().time, true, true)+'" class="btn btn--fb js-share">Sdílej svoje score na</a></span>')
           
           k = 1;
         }
@@ -395,7 +407,7 @@ function scoreUpdate(time) {
   });  
 }
 
-function niceTime(time, nicer) {
+function niceTime(time, nicer, nospan) {
   var spanWrap = function(what) {
       return what.replace(/(\d)/g, '<span>$1</span>');
     },
@@ -429,7 +441,11 @@ function niceTime(time, nicer) {
       time = hours + ':' + minutes + ':' + seconds;
     }
 
-    return spanWrap(time);
+    if(nospan) {
+      return time;
+    } else {
+      return spanWrap(time);
+    }
   }
 }
 
@@ -464,7 +480,7 @@ function onGameEnd(didWin) {
     showLayer('.layer--finish');
     $('#game_controls, #game_lives').hide()
   } else {
-    startGame(true)
+    startGame(didWin)
   }
 }
 
@@ -477,7 +493,9 @@ function startGame(naked) {
   _game = new PussywalkMinigame(_callbacks, naked);
 
   setTimeout(function(){
-    hideLayer('.layer--mission-1');
+    //if($('.layer.is-visible').length) {
+      hideLayer('.layer--mission-1');
+    //}
   }, 7500);
 }
 
