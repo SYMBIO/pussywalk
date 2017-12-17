@@ -4,6 +4,12 @@ import * as firebase from 'firebase';
 import styles from '../styles/app.less';
 import PussywalkMinigame from './pussywalk/PussywalkMinigame';
 
+// tutorial
+var tutorial = true;
+if(getCookie('tutorial') == 1) {
+  tutorial = false;
+}
+
 // todo proper list
 let loader = assetsLoader({
   assets: [
@@ -63,6 +69,13 @@ let loader = assetsLoader({
   .on('complete', function(assets) {
     setTimeout(function() {
       hideLayer('.layer--loading');
+      
+      if(tutorial) {
+        showLayer('.layer--tutorial');
+        pauseGame();
+      } else {
+        continueGame();
+      }
     }, 500)
   })
   .start();
@@ -87,9 +100,6 @@ window.onload = function() {
 function showLayer(layer) {
   $('.layer').removeClass('is-visible');
   $(layer).addClass('is-visible');
-  gtag('event', 'layer', {
-    'name': $(layer).data('layer')
-  });
 }
 
 function hideLayer(layer) {
@@ -113,7 +123,7 @@ function initializeElements() {
       time: _game.playTime
     }, function(error) {
       //$('#scoreboard').show()
-      showLayer('.layer--scoreboard');
+      scoreUpdate();
     });
   })
   $('#cancel_send_name').on('click', function() {
@@ -197,10 +207,66 @@ function initializeElements() {
   $('.js-show-layer').on('click', function(e) {
     e.preventDefault();
 
-    var link = $(this);
+    var link = $(this),
+        layer = link.data('layer');
 
     $('.nav').removeClass('is-active');
-    showLayer('.layer--' + link.data('layer'))
+    showLayer('.layer--' + layer);
+
+    gtag('event', 'layer', {
+      'name': layer
+    });
+  });
+
+  $('.js-play').on('click', function(e) {
+    e.preventDefault();
+
+    closeTutorial();
+  });
+
+  $('.js-scoreboard-update').on('click', function(e) {
+    e.preventDefault();
+
+    closeNav();
+    scoreUpdate();
+  });
+}
+
+function setCookie(name,value,days) {
+  var expires = "";
+  if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + (days*24*60*60*1000));
+      expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + value + expires + "; path=/";
+}
+
+function getCookie(name) {
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(';');
+  for(var i=0;i < ca.length;i++) {
+      var c = ca[i];
+      while (c.charAt(0)==' ') c = c.substring(1,c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+  }
+  return null;
+}
+
+function closeTutorial() {
+  if(tutorial) {
+    hideLayer('.layer--tutorial');
+    tutorial = false;
+    setCookie('tutorial', '1', 365);
+    continueGame();    
+  }
+}
+
+if(tutorial) {
+  $(document).keydown(function(e) {
+    if(e.keyCode == 37 || e.keyCode == 39 || e.keyCode == 13 || e.keyCode == 27) {
+      closeTutorial();
+    }
   });
 }
 
@@ -215,6 +281,16 @@ function initializeFirebase() {
     messagingSenderId: "597701981219"
   };
   firebase.initializeApp(config);
+  
+  //scoreUpdate();
+}
+
+function scoreUpdate() {
+
+  $('#scoreboard_top3').html('<div class="lds-css ng-scope"><div style="width:100%;height:100%" class="lds-pacman"><div><div></div><div></div><div></div></div><div><div></div><div></div></div></div>');
+  $('#scoreboard_list').html('');
+
+  showLayer('.layer--scoreboard');
 
   // Nacte vysledky jen jednou (viz .once), takze je potreba tohle pustit:
   // 1) kdyz se pusti hra (aby bylo aspon neco v scoreboardu)
@@ -241,7 +317,7 @@ function initializeFirebase() {
       }
       i++;
     })
-  });
+  });  
 }
 
 function live(stats) {
