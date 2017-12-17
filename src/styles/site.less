@@ -46,6 +46,7 @@ a:focus, a:active {
 	background-size: contain;
 	height: 100px;
 	left: 50%;
+	margin-top: env(safe-area-inset-top);
 	overflow: hidden;
 	position: absolute;
 	text-indent: 100%;
@@ -70,11 +71,11 @@ a:focus, a:active {
 	cursor: pointer;
 	filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, .4));
 	height: 35px;
-	left: 25px;
-	margin-left: -3px;
-	margin-top: -1px;
+	left: 22px;
+	margin-left: env(safe-area-inset-left);
+	margin-top: env(safe-area-inset-top);
 	position: absolute;
-	top: 30px;
+	top: 29px;
 	width: 50px;
 	z-index: 2;
 
@@ -107,12 +108,12 @@ a:focus, a:active {
 .nav {
 	color: @white;
 	display: none;
-	left: 15px;
-	margin-left: -3px;
-	margin-top: -1px;
+	left: 13px;
+	margin-left: env(safe-area-inset-left);
+	margin-top: env(safe-area-inset-top);
 	padding: 50px 15px 25px;
 	position: absolute;
-	top: 15px;
+	top: 11px;
 	//transform: translateX(-200%);
 
 	&:before {
@@ -225,6 +226,8 @@ a:focus, a:active {
 	color: @white;
 	font-size: 50px;
 	line-height: 50px;
+	margin-right: env(safe-area-inset-right);
+	margin-top: env(safe-area-inset-top);
 	position: absolute;
 	right: 25px;
 	top: 25px;
@@ -896,16 +899,18 @@ a:focus, a:active {
 }
 .tutorial__desktop {
 	display: block;
-
-	@media @tablet {
-		display: none;
-	}
 }
 .tutorial__mobile {
 	display: none;
-	
-	@media @tablet {
-  		display: block;
+}
+.touch {
+	@media @desktop {
+		.tutorial__desktop {
+			display: none;
+		}
+		.tutorial__mobile {
+			display: block;
+		}
 	}
 }
 .tutorial__buttons {
@@ -1001,6 +1006,7 @@ body {
 	height: 37%;
 	left: 0;
 	position: absolute;
+	transform: translateX(-100%);
 	width: 100%;
 
 	@media screen and (min-aspect-ratio: 1/1) {
@@ -1043,6 +1049,13 @@ body {
 		height: 22%;
 	}
 	*/	
+}
+.no-touch {
+	@media @desktop {
+		#game_controls, .tutorial__buttons {
+			transform: translateX(0%);
+		}
+	}	
 }
 .game__key, .tutorial__button {
 	background: transparent;

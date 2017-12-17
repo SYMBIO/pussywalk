@@ -4,6 +4,10 @@ import * as firebase from 'firebase';
 import styles from '../styles/app.less';
 import PussywalkMinigame from './pussywalk/PussywalkMinigame';
 
+if('ontouchstart' in document.documentElement) {
+  $('html').removeClass('no-touch').addClass('touch');
+}
+
 // tutorial
 var tutorial = true;
 if (getCookie('tutorial') == 1) {
