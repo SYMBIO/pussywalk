@@ -161,7 +161,7 @@ function initializeElements() {
     hideLayer('.layer--scoreboard');
     $('#game_controls, #game_lives').show()
     if (finished) {
-      startGame()
+      startGame(true)
     }
   })
 

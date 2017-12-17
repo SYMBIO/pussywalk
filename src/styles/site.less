@@ -17,9 +17,11 @@ body {
 
 	&:before {
 		background: url(../images/layout/top-bg.png) repeat-x 0 0;
+		background-size: auto 100%;
 		content: '';
+		pointer-events: none;
 		display: block;
-		height: 100%;
+		height: 30%;
 		left: 0;
 		position: absolute;
 		top: 0;
@@ -470,6 +472,12 @@ a:focus, a:active {
 			}
 		}
 	}
+	
+	@media @phoneLand {
+		.layer__center {
+			width: 100%;
+		}
+	}
 }
 #scoreboard {
 	max-height: 500px;
@@ -621,6 +629,16 @@ a:focus, a:active {
 			z-index: 2;
 		}
 	}
+
+	@media @phone {
+  		.share {
+  			width: 235px;
+  			
+  			&:before {
+  				border-right: 159px;
+  			}
+  		}
+	}
 }
 .scoreboard__nude {
 	background: @pink;
@@ -683,6 +701,12 @@ a:focus, a:active {
 			}
 		}
 	}	
+
+	@media @phoneLand {
+		.layer__center {
+			width: 100%;
+		}
+	}	
 }
 
 .layer--credits {
@@ -717,6 +741,12 @@ a:focus, a:active {
 			&:after {
 				mix-blend-mode: multiply;
 			}
+		}
+	}
+
+	@media @phoneLand {
+		.layer__center {
+			width: 100%;
 		}
 	}	
 }
@@ -1062,7 +1092,7 @@ body {
 	}
 	*/	
 }
-.no-touch {
+.touch {
 	@media @desktop {
 		#game_controls, .tutorial__buttons {
 			transform: translateX(0%);
