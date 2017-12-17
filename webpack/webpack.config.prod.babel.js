@@ -71,7 +71,17 @@ module.exports = {
         to: `${BUILD}js/vendor`
       },
       {
+        from: `${SRC}icons`,
+        to: `${BUILD}icons`
+      },
+      {
         from: `${SRC}favicon.ico`
+      },
+      {
+        from: `${SRC}manifest.json`
+      },
+      {
+        from: `${SRC}browserconfig.xml`
       },
       {
         from: `${SRC}favicon.png`
