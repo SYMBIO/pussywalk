@@ -253,7 +253,7 @@ a:focus, a:active {
 	@media only screen and (max-width: 768px) and (orientation: landscape) {
 		font-size: 40px;
 		line-height: 40px;
-		top: 20px;
+		top: 22px;
 
 		span {
 			min-width: 18px;
@@ -1098,7 +1098,7 @@ body {
 	}
 
 	@media screen and (max-aspect-ratio: 9/16) {
-		height: 33%;
+		height: 27%;
 	}
 
 	/*
@@ -1209,7 +1209,7 @@ body {
 		padding-top: 10%;
 
 		span {
-			width: 55%;
+			width: 40%;
 		}
 	}
 
@@ -1281,6 +1281,14 @@ body {
 	}
 
 	@media screen and (max-aspect-ratio: 2/3) {
+		span {
+			&:before {
+				border-radius: 15px;
+			}
+		}
+	}
+
+	@media screen and (max-aspect-ratio: 3/4) {
 		span {
 			&:before {
 				border-radius: 15px;
