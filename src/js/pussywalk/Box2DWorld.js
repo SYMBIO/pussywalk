@@ -390,7 +390,7 @@ export default class Box2DWorld {
     this.audioPlayer.playEnd()
     setTimeout(() => {
       this.callbacks.onGameEnd(didWin);
-    }, 2000)
+    }, 3000)
   }
 
   handleArrows(keyCode, state) {
