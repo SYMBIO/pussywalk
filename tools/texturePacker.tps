@@ -1197,6 +1197,23 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../images/spritesheet_sources/figure/sheep/head_anim/sheep_head__0.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/sheep/head_anim/sheep_head__1.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/sheep/head_anim/sheep_head__2.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/sheep/head_anim/sheep_head_big_tilt_1.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/sheep/head_anim/sheep_head_big_tilt_2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>62,61,123,121</rect>
+                <key>scale9Paddings</key>
+                <rect>62,61,123,121</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../images/spritesheet_sources/figure/sheep/sheep_arm.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
