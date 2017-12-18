@@ -675,7 +675,7 @@
 	"sourceSize": {"w":75,"h":164},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"figure/naked/mod/head_anim/head_anim_1_0.png":
+"figure/naked/mod/head_anim/head_anim_2_2.png":
 {
 	"frame": {"x":492,"y":833,"w":113,"h":193},
 	"rotated": false,
@@ -1186,6 +1186,6 @@
 	"format": "RGBA4444",
 	"size": {"w":1086,"h":1027},
 	"scale": "0.5",
-	"smartupdate": "$TexturePacker:SmartUpdate:bb99d8be56c190e91238d06bb6629892:55faa29aba11982769104144b9e978a6:437812c7aaf83c13766b896da552d169$"
+	"smartupdate": "$TexturePacker:SmartUpdate:e23acb2434da3d4c266d7e206332482b:86ac4dade6bb0f1980528b573dfae410:437812c7aaf83c13766b896da552d169$"
 }
 }

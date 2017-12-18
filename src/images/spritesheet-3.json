@@ -2,7 +2,7 @@
 
 "elements/chair_0.png":
 {
-	"frame": {"x":609,"y":228,"w":113,"h":227},
+	"frame": {"x":725,"y":228,"w":113,"h":227},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":113,"h":227},
@@ -11,7 +11,7 @@
 },
 "elements/chair_1.png":
 {
-	"frame": {"x":724,"y":228,"w":114,"h":227},
+	"frame": {"x":609,"y":228,"w":114,"h":227},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":114,"h":227},
@@ -65,16 +65,7 @@
 },
 "fireball/fireball_1.png":
 {
-	"frame": {"x":457,"y":228,"w":150,"h":225},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":225},
-	"sourceSize": {"w":150,"h":225},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"fireball/fireball_4.png":
-{
-	"frame": {"x":1,"y":1,"w":150,"h":225},
+	"frame": {"x":305,"y":228,"w":150,"h":225},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":225},
@@ -128,7 +119,7 @@
 },
 "fireball/fireball_10.png":
 {
-	"frame": {"x":153,"y":228,"w":150,"h":225},
+	"frame": {"x":457,"y":228,"w":150,"h":225},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":225},
@@ -137,7 +128,7 @@
 },
 "fireball/fireball_11.png":
 {
-	"frame": {"x":305,"y":228,"w":150,"h":225},
+	"frame": {"x":153,"y":228,"w":150,"h":225},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":225},
@@ -146,7 +137,7 @@
 },
 "fireball/fireball_12.png":
 {
-	"frame": {"x":761,"y":1,"w":150,"h":225},
+	"frame": {"x":1,"y":1,"w":150,"h":225},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":225},
@@ -158,8 +149,8 @@
 	"version": "1.0",
 	"image": "spritesheet-3.png",
 	"format": "RGBA4444",
-	"size": {"w":912,"h":979},
+	"size": {"w":851,"h":979},
 	"scale": "0.5",
-	"smartupdate": "$TexturePacker:SmartUpdate:bb99d8be56c190e91238d06bb6629892:55faa29aba11982769104144b9e978a6:437812c7aaf83c13766b896da552d169$"
+	"smartupdate": "$TexturePacker:SmartUpdate:e23acb2434da3d4c266d7e206332482b:86ac4dade6bb0f1980528b573dfae410:437812c7aaf83c13766b896da552d169$"
 }
 }
