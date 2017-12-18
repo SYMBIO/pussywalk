@@ -406,12 +406,12 @@ export default class Renderer {
     if (this.startIndex < 2) {
       let offset = {
         eye1: {
-          x: 1866,
-          y: 666
+          x: 1871,
+          y: 670
         },
         eye2: {
-          x: 1904,
-          y: 670
+          x: 1908,
+          y: 672
         }
       }
 
@@ -422,40 +422,34 @@ export default class Renderer {
       let position;
 
       position = {
-        x: (offset.eye1.x + percent * 2) * this.scale,
-        y: offset.eye1.y * this.scale
+        x: offset.eye1.x + percent * 3,
+        y: offset.eye1.y
       }
-      this.context.translate(position.x, position.y);
       this.context.drawImage(this.eyeball.image,
         this.eyeball.frame.x,
         this.eyeball.frame.y,
         this.eyeball.frame.w,
         this.eyeball.frame.h,
-        0,
-        0,
-        this.eyeball.frame.w,
-        this.eyeball.frame.h
+        position.x * this.scale,
+        position.y * this.scale,
+        this.eyeball.frame.w * this.scale,
+        this.eyeball.frame.h * this.scale
       )
-      this.context.translate(-position.x, -position.y);
 
       position = {
-        x: (offset.eye2.x + percent * 2) * this.scale,
-        y: offset.eye2.y * this.scale
+        x: offset.eye2.x + percent * 3,
+        y: offset.eye2.y
       }
-      this.context.translate(position.x, position.y);
-
       this.context.drawImage(this.eyeball.image,
         this.eyeball.frame.x,
         this.eyeball.frame.y,
         this.eyeball.frame.w,
         this.eyeball.frame.h,
-        0,
-        0,
-        this.eyeball.frame.w,
-        this.eyeball.frame.h
+        position.x * this.scale,
+        position.y * this.scale,
+        this.eyeball.frame.w * this.scale,
+        this.eyeball.frame.h * this.scale
       )
-      this.context.translate(-position.x, -position.y);
-
 
       this.context.drawImage(this.mrP.image,
         this.mrP.frame.x,
