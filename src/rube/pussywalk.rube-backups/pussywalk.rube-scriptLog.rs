@@ -1,3 +1,1 @@
-//Restarted script log at Sun Dec 17 20:40:47 2017
-getBody(24).deselect();
-getBody(36).select();
+//Restarted script log at Mon Dec 18 20:09:43 2017
