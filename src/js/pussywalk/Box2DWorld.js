@@ -570,8 +570,8 @@ export default class Box2DWorld {
     let bend = this.bodies['body'].GetAngle();
 
     if ((bend < -0.3 && this.bodyAngle > -0.3) || (bend > 0.3 && this.bodyAngle < 0.3)) {
-      this.renderer.playScare(0)
       if (Math.random() < 0.5) {
+        this.renderer.playScare(0)
         this.audioPlayer.playTilt(0, this.progress > this.sheepPickupPoint.x)
       }
     } else if ((bend < -0.9 && this.bodyAngle > -0.9) || ((bend > 0.9 && this.bodyAngle < 0.9))) {
