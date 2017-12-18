@@ -1,6 +1,7 @@
 import Constants from './Constants'
 import FlashTexture from './FlashTexture'
 import HeadAnimator from './HeadAnimator'
+import SheepHeadAnimator from './SheepHeadAnimator'
 import SpriteSheet from 'spritesheet-canvas'
 import { TweenMax, Linear } from 'gsap'
 
@@ -52,6 +53,7 @@ export default class Renderer {
     this.mrP = this.imagesConfig["elements/mr_p.png"]
     this.pillbottle = this.imagesConfig["elements/pill_bottle.png"]
     this.headAnimator = new HeadAnimator(this.imagesConfig)
+    this.sheepHeadAnimator = new SheepHeadAnimator(this.imagesConfig)
     this.sheep = this.imagesConfig["elements/ctveracek.png"]
     this.fanBackground = this.imagesConfig["elements/dira.png"]
     this.fan = this.imagesConfig["elements/vetrak.png"]
@@ -589,10 +591,15 @@ export default class Renderer {
         continue
       }
 
+      if (figureConfig.name == "naked_sheep_head" || figureConfig.name == "dressed_sheep_head") {
+        this.drawTexture(this.sheepHeadAnimator.headTexture)
+        continue
+      }
+
       if (figureConfig.name == "dressed_head" || figureConfig.name == "naked_head") {
         this.drawTexture(this.headAnimator.headTexture)
 
-        // draw flies
+        // Draw flies
         let body = this.bodies.body
         let newPosition = {
           x: (body.GetPosition().get_x() * this.physicsScale - 100 + 100 * Math.sin(this.frameCounter / 100)) * this.scale,
@@ -868,6 +875,7 @@ export default class Renderer {
 
   playScare(scare) {
     this.headAnimator.playScare(scare)
+    this.sheepHeadAnimator.playTs(scare == 1)
   }
 
   removeScare() {
