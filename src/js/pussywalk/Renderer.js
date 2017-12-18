@@ -26,6 +26,11 @@ export default class Renderer {
     this.showRewind = false
     this.fireballIndex = -1
     this.drawDebug = false
+    this.flies = [[], []]
+    this.fliesPosition = {
+      x: 0,
+      y: 0
+    }
 
     this.vignette = new Image()
     this.vignette.src = "images/misc/vignette.png"
@@ -50,6 +55,27 @@ export default class Renderer {
     this.sheep = this.imagesConfig["elements/ctveracek.png"]
     this.fanBackground = this.imagesConfig["elements/dira.png"]
     this.fan = this.imagesConfig["elements/vetrak.png"]
+    debugger
+    var i = 0
+    while (true) {
+      let image = this.imagesConfig["figure/flies/around/flies_" + i + ".png"]
+      if (image) {
+        this.flies[0].push(image)
+      } else {
+        break
+      }
+      i++
+    }
+    i = 0
+    while (true) {
+      let image = this.imagesConfig["figure/flies/around/flies_" + i + ".png"]
+      if (image) {
+        this.flies[1].push(image)
+      } else {
+        break
+      }
+      i++
+    }
   }
 
   prepareLights() {
@@ -565,6 +591,46 @@ export default class Renderer {
 
       if (figureConfig.name == "dressed_head" || figureConfig.name == "naked_head") {
         this.drawTexture(this.headAnimator.headTexture)
+
+        // draw flies
+        let body = this.bodies.body
+        let newPosition = {
+          x: (body.GetPosition().get_x() * this.physicsScale - 100 + 100 * Math.sin(this.frameCounter / 100)) * this.scale,
+          y: (-body.GetPosition().get_y() * this.physicsScale - 250 + 50 * Math.sin(this.frameCounter / 66)) * this.scale
+        }
+        let delta = {
+          x: newPosition.x - this.fliesPosition.x,
+          y: newPosition.y - this.fliesPosition.y
+        }
+        this.fliesPosition.x += delta.x * 0.03
+        this.fliesPosition.y += delta.y * 0.03
+
+        let idx = Math.floor(this.frameCounter / 2 % this.flies[0].length)
+
+        let imageConfig = this.flies[0][idx]
+        this.context.drawImage(imageConfig.image,
+          imageConfig.frame.x,
+          imageConfig.frame.y,
+          imageConfig.frame.w,
+          imageConfig.frame.h,
+          this.fliesPosition.x,
+          this.fliesPosition.y,
+          imageConfig.frame.w * this.scale * 2,
+          imageConfig.frame.h * this.scale * 2,
+        )
+
+        imageConfig = this.flies[1][idx]
+        this.context.drawImage(imageConfig.image,
+          imageConfig.frame.x,
+          imageConfig.frame.y,
+          imageConfig.frame.w,
+          imageConfig.frame.h,
+          this.fliesPosition.x - 150 * this.scale,
+          this.fliesPosition.y,
+          imageConfig.frame.w * this.scale * 2,
+          imageConfig.frame.h * this.scale * 2,
+        )
+
         continue
       }
 

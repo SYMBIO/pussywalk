@@ -974,6 +974,48 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../images/spritesheet_sources/figure/flies/around/flies_0.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/flies/around/flies_1.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/flies/around/flies_10.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/flies/around/flies_11.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/flies/around/flies_12.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/flies/around/flies_13.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/flies/around/flies_14.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/flies/around/flies_2.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/flies/around/flies_3.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/flies/around/flies_4.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/flies/around/flies_5.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/flies/around/flies_6.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/flies/around/flies_7.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/flies/around/flies_8.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/flies/around/flies_9.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/flies/follow/flies_0.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/flies/follow/flies_1.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/flies/follow/flies_10.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/flies/follow/flies_11.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/flies/follow/flies_12.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/flies/follow/flies_13.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/flies/follow/flies_14.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/flies/follow/flies_2.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/flies/follow/flies_3.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/flies/follow/flies_4.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/flies/follow/flies_5.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/flies/follow/flies_6.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/flies/follow/flies_7.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/flies/follow/flies_8.png</key>
+            <key type="filename">../images/spritesheet_sources/figure/flies/follow/flies_9.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>65,65,130,130</rect>
+                <key>scale9Paddings</key>
+                <rect>65,65,130,130</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../images/spritesheet_sources/figure/naked/hand_lower_back.png</key>
             <key type="filename">../images/spritesheet_sources/figure/naked/hand_lower_top.png</key>
             <struct type="IndividualSpriteSettings">
@@ -1233,6 +1275,38 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">../images/spritesheet_sources/fireball/fireball_0.png</key>
+            <key type="filename">../images/spritesheet_sources/fireball/fireball_1.png</key>
+            <key type="filename">../images/spritesheet_sources/fireball/fireball_10.png</key>
+            <key type="filename">../images/spritesheet_sources/fireball/fireball_11.png</key>
+            <key type="filename">../images/spritesheet_sources/fireball/fireball_12.png</key>
+            <key type="filename">../images/spritesheet_sources/fireball/fireball_13.png</key>
+            <key type="filename">../images/spritesheet_sources/fireball/fireball_14.png</key>
+            <key type="filename">../images/spritesheet_sources/fireball/fireball_15.png</key>
+            <key type="filename">../images/spritesheet_sources/fireball/fireball_16.png</key>
+            <key type="filename">../images/spritesheet_sources/fireball/fireball_17.png</key>
+            <key type="filename">../images/spritesheet_sources/fireball/fireball_18.png</key>
+            <key type="filename">../images/spritesheet_sources/fireball/fireball_19.png</key>
+            <key type="filename">../images/spritesheet_sources/fireball/fireball_2.png</key>
+            <key type="filename">../images/spritesheet_sources/fireball/fireball_3.png</key>
+            <key type="filename">../images/spritesheet_sources/fireball/fireball_4.png</key>
+            <key type="filename">../images/spritesheet_sources/fireball/fireball_5.png</key>
+            <key type="filename">../images/spritesheet_sources/fireball/fireball_6.png</key>
+            <key type="filename">../images/spritesheet_sources/fireball/fireball_7.png</key>
+            <key type="filename">../images/spritesheet_sources/fireball/fireball_8.png</key>
+            <key type="filename">../images/spritesheet_sources/fireball/fireball_9.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>75,113,150,225</rect>
+                <key>scale9Paddings</key>
+                <rect>75,113,150,225</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">../images/spritesheet_sources/furnace/furnace_0.jpg</key>
             <key type="filename">../images/spritesheet_sources/furnace/furnace_1.jpg</key>
             <key type="filename">../images/spritesheet_sources/furnace/furnace_10.jpg</key>
@@ -1287,6 +1361,29 @@
                 <rect>34,36,69,71</rect>
                 <key>scale9Paddings</key>
                 <rect>34,36,69,71</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/rewind/rewind_0.png</key>
+            <key type="filename">../images/spritesheet_sources/rewind/rewind_1.png</key>
+            <key type="filename">../images/spritesheet_sources/rewind/rewind_10.png</key>
+            <key type="filename">../images/spritesheet_sources/rewind/rewind_2.png</key>
+            <key type="filename">../images/spritesheet_sources/rewind/rewind_3.png</key>
+            <key type="filename">../images/spritesheet_sources/rewind/rewind_4.png</key>
+            <key type="filename">../images/spritesheet_sources/rewind/rewind_5.png</key>
+            <key type="filename">../images/spritesheet_sources/rewind/rewind_6.png</key>
+            <key type="filename">../images/spritesheet_sources/rewind/rewind_7.png</key>
+            <key type="filename">../images/spritesheet_sources/rewind/rewind_8.png</key>
+            <key type="filename">../images/spritesheet_sources/rewind/rewind_9.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>64,64,128,128</rect>
+                <key>scale9Paddings</key>
+                <rect>64,64,128,128</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
