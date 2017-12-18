@@ -394,10 +394,11 @@ export default class Box2DWorld {
       delete this.joints[j];
     });
 
-    this.audioPlayer.silenceMusic()
-
-    this.renderer.didFinish()
-    this.audioPlayer.playEnd()
+    if (didWin) {
+      this.audioPlayer.silenceMusic()
+      this.renderer.didFinish()
+      this.audioPlayer.playEnd()
+    }
     setTimeout(() => {
       this.callbacks.onGameEnd(didWin);
     }, 3000)
