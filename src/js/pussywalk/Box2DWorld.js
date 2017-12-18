@@ -628,7 +628,7 @@ export default class Box2DWorld {
           if (thighAngle > 0) {
             // Thigh pointing fwd -> Leg in the air -> Needs balancing
             var fixture = foot.GetFixtureList()
-            fixture.SetDensity(24)
+            fixture.SetDensity(30)
             foot.ResetMassData()
 
             this.joints[k.name] = k.SetLength(0.65);
@@ -690,7 +690,7 @@ export default class Box2DWorld {
           if (thighAngle > 0) {
             // Thigh pointing fwd -> Leg in the air -> Needs balancing
             var fixture = foot.GetFixtureList()
-            fixture.SetDensity(24)
+            fixture.SetDensity(30)
             foot.ResetMassData()
 
             this.joints[k.name] = k.SetLength(0.65);
