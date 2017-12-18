@@ -234,6 +234,10 @@ export default class AudioPlayer {
   }
 
   silenceMusic() {
+    if (this.isMute) {
+      return
+    }
+
     TweenMax.to(this.music[this.musicIndex], 0.5, {
       volume: 0.1
     })
@@ -319,8 +323,6 @@ export default class AudioPlayer {
     let sound
 
     sound = soundsArray[index];
-    sound.play();
-
     this.play(sound)
 
     return index
