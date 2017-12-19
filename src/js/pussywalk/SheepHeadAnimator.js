@@ -20,8 +20,6 @@ export default class SheepHeadAnimator {
 
     this.frames = large ? this.largeTs() : this.smallTs()
 
-    console.log("frames: " + this.frames.length);
-
     if (this.frames.length > 0) {
       clearInterval(this.interval)
       this.interval = setInterval(this.stepFrame, 83)

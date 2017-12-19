@@ -9,166 +9,166 @@ export default class AudioPlayer {
     this.onMusicEnded = this.onMusicEnded.bind(this)
     this.onLoseHealthEnded = this.onLoseHealthEnded.bind(this)
 
+    this.music = Constants.sounds.music.map(function(name) {
+      let sound = new Audio(name);
+      sound.preload = 'none';
+      sound.load();
+      return sound
+    })
+
     this.smallSteppingSounds = Constants.sounds.smallSteps.map(function(name) {
       let sound = new Audio(name);
-      sound.preload = 'auto';
+      sound.preload = 'none';
       sound.load();
       return sound
     })
 
     this.largeSteppingSounds = Constants.sounds.largeSteps.map(function(name) {
       let sound = new Audio(name);
-      sound.preload = 'auto';
+      sound.preload = 'none';
       sound.load();
       return sound
     })
 
     this.smallTiltSounds = Constants.sounds.smallTilts.map(function(name) {
       let sound = new Audio(name);
-      sound.preload = 'auto';
+      sound.preload = 'none';
       sound.load();
       return sound
     })
 
     this.largeTiltSounds = Constants.sounds.largeTilts.map(function(name) {
       let sound = new Audio(name);
-      sound.preload = 'auto';
+      sound.preload = 'none';
       sound.load();
       return sound
     })
 
     this.smallTiltModSounds = Constants.sounds.smallTiltsMod.map(function(name) {
       let sound = new Audio(name);
-      sound.preload = 'auto';
+      sound.preload = 'none';
       sound.load();
       return sound
     })
 
     this.largeTiltModSounds = Constants.sounds.largeTiltsMod.map(function(name) {
       let sound = new Audio(name);
-      sound.preload = 'auto';
+      sound.preload = 'none';
       sound.load();
       return sound
     })
 
     this.smallSheepTiltSounds = Constants.sounds.smallSheepTilts.map(function(name) {
       let sound = new Audio(name);
-      sound.preload = 'auto';
+      sound.preload = 'none';
       sound.load();
       return sound
     })
 
     this.largeSheepTiltSounds = Constants.sounds.largeSheepTilts.map(function(name) {
       let sound = new Audio(name);
-      sound.preload = 'auto';
+      sound.preload = 'none';
       sound.load();
       return sound
     })
 
     this.bottleBreakingSounds = Constants.sounds.bottlesBreak.map(function(name) {
       let sound = new Audio(name);
-      sound.preload = 'auto';
+      sound.preload = 'none';
       sound.load();
       return sound
     })
 
     this.bottleImpactSounds = Constants.sounds.bottlesImpact.map(function(name) {
       let sound = new Audio(name);
-      sound.preload = 'auto';
+      sound.preload = 'none';
       sound.load();
       return sound
     })
 
     this.thumps = Constants.sounds.thumps.map(function(name) {
       let sound = new Audio(name);
-      sound.preload = 'auto';
-      sound.load();
-      return sound
-    })
-
-    this.music = Constants.sounds.music.map(function(name) {
-      let sound = new Audio(name);
-      sound.preload = 'auto';
+      sound.preload = 'none';
       sound.load();
       return sound
     })
 
     this.cane = Constants.sounds.cane.map(function(name) {
       let sound = new Audio(name);
-      sound.preload = 'auto';
+      sound.preload = 'none';
       sound.load();
       return sound
     })
 
     this.chairs = Constants.sounds.chairs.map(function(name) {
       let sound = new Audio(name);
-      sound.preload = 'auto';
+      sound.preload = 'none';
       sound.load();
       return sound
     })
 
     this.cups = Constants.sounds.cups.map(function(name) {
       let sound = new Audio(name);
-      sound.preload = 'auto';
+      sound.preload = 'none';
       sound.load();
       return sound
     })
 
     this.tvLarge = Constants.sounds.tvLargeCollide.map(function(name) {
       let sound = new Audio(name);
-      sound.preload = 'auto';
+      sound.preload = 'none';
       sound.load();
       return sound
     })
 
     this.tvSmall = Constants.sounds.tvSmallCollide.map(function(name) {
       let sound = new Audio(name);
-      sound.preload = 'auto';
+      sound.preload = 'none';
       sound.load();
       return sound
     })
 
     this.bin = Constants.sounds.bin.map(function(name) {
       let sound = new Audio(name);
-      sound.preload = 'auto';
+      sound.preload = 'none';
       sound.load();
       return sound
     })
 
     this.toiletpaper = Constants.sounds.toiletpaper.map(function(name) {
       let sound = new Audio(name);
-      sound.preload = 'auto';
+      sound.preload = 'none';
       sound.load();
       return sound
     })
 
     this.health = new Audio("audio/health.mp3");
-    this.health.preload = 'auto';
+    this.health.preload = 'none';
     this.health.load();
 
     this.loseHealth = new Audio("audio/health_lower.mp3");
-    this.loseHealth.preload = 'auto';
+    this.loseHealth.preload = 'none';
     this.loseHealth.load();
     this.loseHealth.onended = this.onLoseHealthEnded
 
     this.sheep = new Audio("audio/mrO.mp3");
-    this.sheep.preload = 'auto';
+    this.sheep.preload = 'none';
     this.sheep.load();
 
     this.tvOff = new Audio("audio/tv_porn_off.mp3");
-    this.tvOff.preload = 'auto';
+    this.tvOff.preload = 'none';
     this.tvOff.load();
 
     this.end = new Audio("audio/finish.mp3");
-    this.end.preload = 'auto';
+    this.end.preload = 'none';
     this.end.load();
 
     this.rewind = new Audio("audio/rewind.mp3");
-    this.rewind.preload = 'auto';
+    this.rewind.preload = 'none';
     this.rewind.load();
 
     this.bear = new Audio("audio/bear.mp3");
-    this.bear.preload = 'auto';
+    this.bear.preload = 'none';
     this.bear.load();
 
     let that = this
@@ -198,6 +198,10 @@ export default class AudioPlayer {
   }
 
   onLoseHealthEnded() {
+    if (this.isMute) {
+      return
+    }
+
     TweenMax.to(this.music[this.musicIndex], 0.5, {
       volume: 0.5
     })
