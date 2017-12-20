@@ -402,7 +402,7 @@ export default class Box2DWorld {
     }
 
     setTimeout(() => {
-      this.callbacks.onGameEnd(didWin);
+      this.callbacks.onGameEnd(didWin, this.progress);
     }, 3000)
   }
 

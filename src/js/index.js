@@ -515,7 +515,7 @@ function onLifesUpdate(numberOfLifes, delta) {
   });
 }
 
-function onGameEnd(didWin) {
+function onGameEnd(didWin, progress) {
   if (didWin) {
     //$('#name_dialogue').show()
     pauseGame();
