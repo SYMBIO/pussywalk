@@ -294,7 +294,13 @@ a:focus, a:active {
 	text-align: center;
 	text-decoration: none;
 	text-transform: uppercase;
+	transition: transform 100ms, box-shadow 100ms;
 	width: 48px;
+
+	&:hover {
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, .13), inset 0 0 0 0 #a13a42;
+		transform: translateY(4px);
+	}
 }
 .nav-sound {
 	background: #342c4a url(../images/layout/ico-sound-new.png) no-repeat 50% 13px;
@@ -383,6 +389,7 @@ a:focus, a:active {
 	position: absolute;
 	right: 20px;
 	top: 20px;
+	transition: transform 200ms;
 	width: 22px;
 	z-index: 2;
 
@@ -405,8 +412,12 @@ a:focus, a:active {
 		transform: rotate(45deg);
 	}
 
-	&:hover, &:focus {
+	&:focus {
 		outline: 0;
+	}
+
+	&:hover {
+		transform: rotate(-90deg);
 	}
 }
 
@@ -535,7 +546,7 @@ a:focus, a:active {
 	.layer__center {
 		background: rgba(43, 46, 88, 0.67);
 		max-width: none;
-		padding: 52px 25px 25px 25px;
+		padding: 50px 25px 25px 25px;
 		width: 330px;
 
 		/*
@@ -554,6 +565,8 @@ a:focus, a:active {
 
 	h3 {
 		color: @white;
+		font-size: 28px;
+		line-height: 28px;
 		margin-bottom: 30px;
 		position: relative;
 		z-index: 2;
@@ -768,7 +781,7 @@ a:focus, a:active {
 	.layer__center {
 		background: rgba(43, 46, 88, 0.67);
 		max-width: none;
-		padding: 52px 25px 25px 25px;
+		padding: 50px 25px 25px 25px;
 		width: 330px;
 
 		/*
@@ -821,8 +834,9 @@ a:focus, a:active {
 
 	.layer__center {
 		background: rgba(43, 46, 88, 0.67);
+		max-height: 80%;
 		max-width: none;
-		padding: 52px 25px 25px 25px;
+		padding: 50px 25px 25px 25px;
 		text-align: left;
 		width: 350px;
 
@@ -845,6 +859,76 @@ a:focus, a:active {
 		z-index: 2;
 	}
 	
+	h3 {
+		color: @white;
+		font-size: 28px;
+		line-height: 28px;
+		margin-bottom: 30px;
+		position: relative;
+		text-align: center;
+		z-index: 2;
+	}
+
+	ul {
+		margin-bottom: 50px;
+	}
+
+	li {
+		display: block;
+		min-height: 100px;
+		margin-top: 25px;
+		padding-left: 120px;
+		padding-top: 33px;
+		position: relative;
+
+		img {
+			display: block;
+			height: auto;
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 100px;
+		}
+
+		strong {
+			display: block;
+		}
+	}
+
+	p {
+		font-size: 18px;
+		line-height: 22px;
+		margin-top: 20px;
+
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+
+	a {
+		color: #fff;
+		display: inline-block;
+		position: relative;
+		text-decoration: none;
+
+		&:before {
+			background: #fff;
+			bottom: 0;
+			content: '';
+			display: block;
+			height: 1px;
+			left: 0;
+			position: absolute;
+			width: 100%;
+		}
+
+		&:hover {
+			&:before {
+				opacity: 0;
+			}
+		}
+	}
+
 	/*
 	&.is-visible {
 		.layer__center {
@@ -860,6 +944,23 @@ a:focus, a:active {
 			width: 100%;
 		}
 	}	
+}
+#credits {
+	max-height: 500px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding-right: 10px;
+	position: relative;
+	-webkit-overflow-scrolling: touch;
+	z-index: 2;
+
+	&::-webkit-scrollbar {
+		width: 12px;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: #fff;
+		border-radius: 11px;
+	}
 }
 
 .layer--mission {
