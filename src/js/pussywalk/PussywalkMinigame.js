@@ -29,8 +29,6 @@ const resizeCanvas = () => {
       context.msBackingStorePixelRatio ||
       context.oBackingStorePixelRatio ||
       context.backingStorePixelRatio || 1;
-    dpr = 1;
-    bsr = 1;
 
     htmlCanvas.width = window.innerWidth * dpr / bsr;
     htmlCanvas.height = window.innerHeight * dpr / bsr;

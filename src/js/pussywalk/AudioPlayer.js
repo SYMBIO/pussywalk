@@ -10,6 +10,8 @@ export default class AudioPlayer {
     this.onLoseHealthEnded = this.onLoseHealthEnded.bind(this)
     this.stop = this.stop.bind(this)
 
+    window.soundDidFinishPlaying = this.onSoundEnded.bind(this)
+
     this.music = Constants.sounds.music.map(function(name) {
       let sound = new Audio(name);
       sound.preload = 'none';
@@ -203,13 +205,29 @@ export default class AudioPlayer {
     })
   }
 
-  onMusicEnded() {
-    this.musicIndex++
-    if (this.musicIndex == this.music.length) {
-      this.musicIndex = 0
+  onSoundEnded(filename) {
+    if (filename == this.loseHealth.name) {
+      if (window.__delegateSound) {
+        window.location.href = "setvolume://" + this.music[this.musicIndex].name + "!0.5";
+      } else {
+        TweenMax.to(this.music[this.musicIndex], 0.5, {
+          volume: 0.5
+        })
+      }
     }
 
-    this.music[this.musicIndex].play()
+    if (this.music.indexOf(filename) != -1) {
+      this.musicIndex++
+      if (this.musicIndex == this.music.length) {
+        this.musicIndex = 0
+      }
+
+      this.play(this.music[this.musicIndex])
+    }
+  }
+
+  onMusicEnded() {
+    window.soundDidFinishPlaying(this.music[this.musicIndex])
   }
 
   onLoseHealthEnded() {
@@ -217,9 +235,7 @@ export default class AudioPlayer {
       return
     }
 
-    TweenMax.to(this.music[this.musicIndex], 0.5, {
-      volume: 0.5
-    })
+    window.soundDidFinishPlaying(this.loseHealth.name)
   }
 
   playStep(volume) {
@@ -259,9 +275,16 @@ export default class AudioPlayer {
       return
     }
 
-    TweenMax.to(this.music[this.musicIndex], 0.5, {
-      volume: 0.1
-    })
+    if (window.__delegateSound) {
+      let that = this
+      setTimeout(function() {
+        window.location.href = "setvolume://" + that.music[that.musicIndex].name + "!0.1";
+      }, 100)
+    } else {
+      TweenMax.to(this.music[this.musicIndex], 0.5, {
+        volume: 0.1
+      })
+    }
   }
 
   playThump() {
@@ -362,7 +385,6 @@ export default class AudioPlayer {
   }
 
   pause(sound) {
-    console.log(">pause: " + sound.name);
     if (window.__delegateSound) {
       window.location.href = "stopsound://" + sound.name;
     } else {
