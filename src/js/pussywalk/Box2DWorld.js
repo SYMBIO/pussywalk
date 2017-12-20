@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import Box2Debug from './Box2Debug';
 import Chain from './Chain';
+import Config from './Config';
 import Constants from './Constants';
 import Recorder from './Recorder';
 import Rube2Box2D from './Rube2Box2D';
@@ -35,11 +36,11 @@ export default class Box2DWorld {
     this.prepareForReset = this.prepareForReset.bind(this)
 
     this.frontSlipperDropPoint = {
-      x: 34,
+      x: 40,
       y: 0
     }
     this.backSlipperDropPoint = {
-      x: 38,
+      x: 76,
       y: 0
     }
     this.startPoint = {
@@ -395,32 +396,37 @@ export default class Box2DWorld {
     });
 
     if (didWin) {
+      this.world.DestroyBody(this.bodies["ball_blocker"])
+      delete this.bodies["ball_blocker"]
       this.audioPlayer.silenceMusic()
       this.renderer.didFinish()
       this.audioPlayer.playEnd()
     }
+
     setTimeout(() => {
-      this.callbacks.onGameEnd(didWin);
+      this.callbacks.onGameEnd(didWin, this.progress);
     }, 3000)
   }
 
   handleArrows(keyCode, state) {
     this.keymap[keyCode] = state;
 
-    if (keyCode == 78 && state) {
-      this.renderer.setState({
-        naked: !this.renderer.isNaked()
-      })
-    }
+    if (Config.isDebug) {
+      if (keyCode == 78 && state) {
+        this.renderer.setState({
+          naked: !this.renderer.isNaked()
+        })
+      }
 
-    if (keyCode == 79 && state) {
-      this.renderer.setState({
-        drawDebug: !this.renderer.drawDebug
-      })
-    }
+      if (keyCode == 79 && state) {
+        this.renderer.setState({
+          drawDebug: !this.renderer.drawDebug
+        })
+      }
 
-    if (keyCode == 80 && state) {
-      this.cheatReset()
+      if (keyCode == 80 && state) {
+        this.cheatReset()
+      }
     }
 
     if (keyCode === 39) {

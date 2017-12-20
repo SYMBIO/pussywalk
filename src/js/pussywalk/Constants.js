@@ -2,7 +2,9 @@ exports.sounds = {
   music: [
     "audio/music/BubbleBum.mp3",
     "audio/music/Google.mp3",
-    "audio/music/Vravoram.mp3"
+    "audio/music/Trift-Sop-Remix.mp3",
+    "audio/music/Vravoram.mp3",
+    "audio/music/Zkurvölla.mp3"
   ],
   largeSteps: [
     "audio/step_big_01.mp3",
@@ -675,6 +677,14 @@ exports.texturesConfig = [
       y: 7
     }
   },
+  {
+    body: "decor_ball",
+    asset: "elements/z_ball.png",
+    offset: {
+      x: -5,
+      y: -5
+    }
+  }
 ]
 
 exports.nakedBodyTexturesConfig = [
