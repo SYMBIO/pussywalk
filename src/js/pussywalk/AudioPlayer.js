@@ -8,168 +8,175 @@ export default class AudioPlayer {
 
     this.onMusicEnded = this.onMusicEnded.bind(this)
     this.onLoseHealthEnded = this.onLoseHealthEnded.bind(this)
+    this.stop = this.stop.bind(this)
 
     this.music = Constants.sounds.music.map(function(name) {
       let sound = new Audio(name);
       sound.preload = 'none';
-      sound.load();
+      sound.name = name
       return sound
     })
 
     this.smallSteppingSounds = Constants.sounds.smallSteps.map(function(name) {
       let sound = new Audio(name);
       sound.preload = 'none';
-      sound.load();
+      sound.name = name
       return sound
     })
 
     this.largeSteppingSounds = Constants.sounds.largeSteps.map(function(name) {
       let sound = new Audio(name);
       sound.preload = 'none';
-      sound.load();
+      sound.name = name
       return sound
     })
 
     this.smallTiltSounds = Constants.sounds.smallTilts.map(function(name) {
       let sound = new Audio(name);
       sound.preload = 'none';
-      sound.load();
+      sound.name = name
       return sound
     })
 
     this.largeTiltSounds = Constants.sounds.largeTilts.map(function(name) {
       let sound = new Audio(name);
       sound.preload = 'none';
-      sound.load();
+      sound.name = name
       return sound
     })
 
     this.smallTiltModSounds = Constants.sounds.smallTiltsMod.map(function(name) {
       let sound = new Audio(name);
       sound.preload = 'none';
-      sound.load();
+      sound.name = name
       return sound
     })
 
     this.largeTiltModSounds = Constants.sounds.largeTiltsMod.map(function(name) {
       let sound = new Audio(name);
       sound.preload = 'none';
-      sound.load();
+      sound.name = name
       return sound
     })
 
     this.smallSheepTiltSounds = Constants.sounds.smallSheepTilts.map(function(name) {
       let sound = new Audio(name);
       sound.preload = 'none';
-      sound.load();
+      sound.name = name
       return sound
     })
 
     this.largeSheepTiltSounds = Constants.sounds.largeSheepTilts.map(function(name) {
       let sound = new Audio(name);
       sound.preload = 'none';
-      sound.load();
+      sound.name = name
       return sound
     })
 
     this.bottleBreakingSounds = Constants.sounds.bottlesBreak.map(function(name) {
       let sound = new Audio(name);
       sound.preload = 'none';
-      sound.load();
+      sound.name = name
       return sound
     })
 
     this.bottleImpactSounds = Constants.sounds.bottlesImpact.map(function(name) {
       let sound = new Audio(name);
       sound.preload = 'none';
-      sound.load();
+      sound.name = name
       return sound
     })
 
     this.thumps = Constants.sounds.thumps.map(function(name) {
       let sound = new Audio(name);
       sound.preload = 'none';
-      sound.load();
+      sound.name = name
       return sound
     })
 
     this.cane = Constants.sounds.cane.map(function(name) {
       let sound = new Audio(name);
       sound.preload = 'none';
-      sound.load();
+      sound.name = name
       return sound
     })
 
     this.chairs = Constants.sounds.chairs.map(function(name) {
       let sound = new Audio(name);
       sound.preload = 'none';
-      sound.load();
+      sound.name = name
       return sound
     })
 
     this.cups = Constants.sounds.cups.map(function(name) {
       let sound = new Audio(name);
       sound.preload = 'none';
-      sound.load();
+      sound.name = name
       return sound
     })
 
     this.tvLarge = Constants.sounds.tvLargeCollide.map(function(name) {
       let sound = new Audio(name);
       sound.preload = 'none';
-      sound.load();
+      sound.name = name
       return sound
     })
 
     this.tvSmall = Constants.sounds.tvSmallCollide.map(function(name) {
       let sound = new Audio(name);
       sound.preload = 'none';
-      sound.load();
+      sound.name = name
       return sound
     })
 
     this.bin = Constants.sounds.bin.map(function(name) {
       let sound = new Audio(name);
       sound.preload = 'none';
-      sound.load();
+      sound.name = name
       return sound
     })
 
     this.toiletpaper = Constants.sounds.toiletpaper.map(function(name) {
       let sound = new Audio(name);
       sound.preload = 'none';
-      sound.load();
+      sound.name = name
       return sound
     })
 
     this.health = new Audio("audio/health.mp3");
     this.health.preload = 'none';
-    this.health.load();
+    this.health.name = 'audio/health.mp3';
+    // this.health.load();
 
     this.loseHealth = new Audio("audio/health_lower.mp3");
     this.loseHealth.preload = 'none';
-    this.loseHealth.load();
+    this.loseHealth.name = 'audio/health_lower.mp3'
     this.loseHealth.onended = this.onLoseHealthEnded
 
     this.sheep = new Audio("audio/mrO.mp3");
     this.sheep.preload = 'none';
-    this.sheep.load();
+    this.sheep.name = 'audio/mrO.mp3';
+    // this.sheep.load();
 
     this.tvOff = new Audio("audio/tv_porn_off.mp3");
     this.tvOff.preload = 'none';
-    this.tvOff.load();
+    this.tvOff.name = 'audio/tv_porn_off.mp3';
+    // this.tvOff.load();
 
     this.end = new Audio("audio/finish.mp3");
     this.end.preload = 'none';
-    this.end.load();
+    this.end.name = 'audio/finish.mp3';
+    // this.end.load();
 
     this.rewind = new Audio("audio/rewind.mp3");
     this.rewind.preload = 'none';
-    this.rewind.load();
+    this.rewind.name = 'audio/rewind.mp3';
+    // this.rewind.load();
 
     this.bear = new Audio("audio/bear.mp3");
     this.bear.preload = 'none';
-    this.bear.load();
+    this.bear.name = 'audio/bear.mp3';
+    // this.bear.load();
 
     let that = this
     this.music.forEach(function(music) {
@@ -182,6 +189,14 @@ export default class AudioPlayer {
 
   setMute(mute) {
     this.isMute = mute
+
+    if (window.__delegateSound) {
+      if (mute) {
+        window.location.href = "setmute://true";
+      } else {
+        window.location.href = "setmute://false";
+      }
+    }
 
     this.music.forEach(function(music) {
       music.volume = mute ? 0 : 0.5
@@ -208,6 +223,8 @@ export default class AudioPlayer {
   }
 
   playStep(volume) {
+
+    debugger
 
     var index = Math.floor(Math.random() * (this.smallSteppingSounds.length))
     let sound
@@ -336,32 +353,75 @@ export default class AudioPlayer {
     if (this.isMute) {
       return
     } else {
-      sound.play()
+      if (window.__delegateSound) {
+        window.location.href = "playsound://" + sound.name;
+      } else {
+        sound.play()
+      }
+    }
+  }
+
+  pause(sound) {
+    console.log(">pause: " + sound.name);
+    if (window.__delegateSound) {
+      window.location.href = "stopsound://" + sound.name;
+    } else {
+      sound.pause()
     }
   }
 
   stop() {
+
+    let that = this
+    let filenames = []
     this.smallSteppingSounds.forEach(function(sound) {
-      sound.pause()
+      that.pause(sound)
+      filenames.push(sound.name)
     })
     this.largeSteppingSounds.forEach(function(sound) {
-      sound.pause()
+      that.pause(sound)
+      filenames.push(sound.name)
     })
     this.bottleBreakingSounds.forEach(function(sound) {
-      sound.pause()
+      that.pause(sound)
+      filenames.push(sound.name)
     })
     this.bottleImpactSounds.forEach(function(sound) {
-      sound.pause()
+      that.pause(sound)
+      filenames.push(sound.name)
     })
     this.thumps.forEach(function(sound) {
-      sound.pause()
+      that.pause(sound)
+      filenames.push(sound.name)
     })
     this.music.forEach(function(sound) {
-      sound.pause()
+      that.pause(sound)
+      filenames.push(sound.name)
     })
 
-    this.health.pause()
-    this.loseHealth.pause()
-    this.sheep.pause()
+    that.pause(this.health)
+    filenames.push(this.health.name)
+
+    that.pause(this.loseHealth)
+    filenames.push(this.loseHealth.name)
+
+    that.pause(this.sheep)
+    filenames.push(this.sheep.name)
+
+    that.pause(this.tvOff)
+    filenames.push(this.tvOff.name)
+
+    that.pause(this.end)
+    filenames.push(this.end.name)
+
+    that.pause(this.rewind)
+    filenames.push(this.rewind.name)
+
+    that.pause(this.bear)
+    filenames.push(this.bear.name)
+
+    if (window.__delegateSound) {
+      window.location.href = "stopsounds://" + filenames.join(',');
+    }
   }
 }

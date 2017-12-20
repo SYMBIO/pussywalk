@@ -4,9 +4,12 @@ import * as firebase from 'firebase';
 import styles from '../styles/app.less';
 import PussywalkMinigame from './pussywalk/PussywalkMinigame';
 
-if('ontouchstart' in document.documentElement) {
+if ('ontouchstart' in document.documentElement) {
   $('html').removeClass('no-touch').addClass('touch');
 }
+
+// Used for delegating sound to app
+window.__delegateSound = false
 
 // tutorial
 var tutorial = true;
@@ -120,7 +123,7 @@ function showLayer(layer) {
 
 function hideLayer(layer) {
   $(layer).removeClass('is-visible');
-  if(!checkNav() && !$('.layer.is-visible').length) {
+  if (!checkNav() && !$('.layer.is-visible').length) {
     continueGame()
   }
 }
@@ -446,7 +449,7 @@ function niceTime(time, nicer, nospan) {
       time = hours + ':' + minutes + ':' + seconds;
     }
 
-    if(nospan) {
+    if (nospan) {
       return time;
     } else {
       return spanWrap(time);
@@ -490,7 +493,7 @@ function onGameEnd(didWin) {
     //$('#name_dialogue').show()
     pauseGame();
     $('#finish_time').html(niceTime(_game.playTime, true));
-    setTimeout(function(){
+    setTimeout(function() {
       showLayer('.layer--finish');
     }, 10);
     $('#game_controls, #game_lives').hide()
@@ -501,6 +504,8 @@ function onGameEnd(didWin) {
 
 function startGame(naked) {
   finished = false;
+
+  window.location.href = "delegatesound://";
 
   if (_game) {
     _game.dispose()
