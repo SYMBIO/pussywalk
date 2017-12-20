@@ -396,6 +396,7 @@ export default class Box2DWorld {
 
     if (didWin) {
       this.world.DestroyBody(this.bodies["ball_blocker"])
+      delete this.bodies["ball_blocker"]
       this.audioPlayer.silenceMusic()
       this.renderer.didFinish()
       this.audioPlayer.playEnd()
