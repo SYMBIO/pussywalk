@@ -599,44 +599,46 @@ export default class Renderer {
       if (figureConfig.name == "dressed_head" || figureConfig.name == "naked_head") {
         this.drawTexture(this.headAnimator.headTexture)
 
-        // Draw flies
-        let body = this.bodies.body
-        let newPosition = {
-          x: (body.GetPosition().get_x() * this.physicsScale - 100 + 100 * Math.sin(this.frameCounter / 100)) * this.scale,
-          y: (-body.GetPosition().get_y() * this.physicsScale - 250 + 50 * Math.sin(this.frameCounter / 66)) * this.scale
+        if (this.isNaked()) {
+          // Draw flies
+          let body = this.bodies.body
+          let newPosition = {
+            x: (body.GetPosition().get_x() * this.physicsScale - 100 + 100 * Math.sin(this.frameCounter / 100)) * this.scale,
+            y: (-body.GetPosition().get_y() * this.physicsScale - 250 + 50 * Math.sin(this.frameCounter / 66)) * this.scale
+          }
+          let delta = {
+            x: newPosition.x - this.fliesPosition.x,
+            y: newPosition.y - this.fliesPosition.y
+          }
+          this.fliesPosition.x += delta.x * 0.03
+          this.fliesPosition.y += delta.y * 0.03
+
+          let idx = Math.floor(this.frameCounter / 4 % this.flies[0].length)
+
+          let imageConfig = this.flies[0][idx]
+          this.context.drawImage(imageConfig.image,
+            imageConfig.frame.x,
+            imageConfig.frame.y,
+            imageConfig.frame.w,
+            imageConfig.frame.h,
+            this.fliesPosition.x,
+            this.fliesPosition.y,
+            imageConfig.frame.w * this.scale * 2,
+            imageConfig.frame.h * this.scale * 2,
+          )
+
+          imageConfig = this.flies[1][idx]
+          this.context.drawImage(imageConfig.image,
+            imageConfig.frame.x,
+            imageConfig.frame.y,
+            imageConfig.frame.w,
+            imageConfig.frame.h,
+            this.fliesPosition.x - 150 * this.scale,
+            this.fliesPosition.y,
+            imageConfig.frame.w * this.scale * 2,
+            imageConfig.frame.h * this.scale * 2,
+          )
         }
-        let delta = {
-          x: newPosition.x - this.fliesPosition.x,
-          y: newPosition.y - this.fliesPosition.y
-        }
-        this.fliesPosition.x += delta.x * 0.03
-        this.fliesPosition.y += delta.y * 0.03
-
-        let idx = Math.floor(this.frameCounter / 2 % this.flies[0].length)
-
-        let imageConfig = this.flies[0][idx]
-        this.context.drawImage(imageConfig.image,
-          imageConfig.frame.x,
-          imageConfig.frame.y,
-          imageConfig.frame.w,
-          imageConfig.frame.h,
-          this.fliesPosition.x,
-          this.fliesPosition.y,
-          imageConfig.frame.w * this.scale * 2,
-          imageConfig.frame.h * this.scale * 2,
-        )
-
-        imageConfig = this.flies[1][idx]
-        this.context.drawImage(imageConfig.image,
-          imageConfig.frame.x,
-          imageConfig.frame.y,
-          imageConfig.frame.w,
-          imageConfig.frame.h,
-          this.fliesPosition.x - 150 * this.scale,
-          this.fliesPosition.y,
-          imageConfig.frame.w * this.scale * 2,
-          imageConfig.frame.h * this.scale * 2,
-        )
 
         continue
       }
