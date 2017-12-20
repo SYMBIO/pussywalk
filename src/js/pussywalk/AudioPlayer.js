@@ -231,7 +231,7 @@ export default class AudioPlayer {
   }
 
   onMusicEnded() {
-    window.soundDidFinishPlaying(this.music[this.musicIndex])
+    window.soundDidFinishPlaying(this.music[this.musicIndex].name)
   }
 
   onLoseHealthEnded() {
