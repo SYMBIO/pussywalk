@@ -283,6 +283,59 @@ a:focus, a:active {
 	}
 }
 
+.nav-sound, .nav-share {
+	border: 0;
+	border-radius: 4px;
+	color: @white !important;
+	cursor: pointer;
+	height: 48px;
+	position: absolute;
+	right: 25px;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	width: 48px;
+}
+.nav-sound {
+	background: #342c4a url(../images/layout/ico-sound-new.png) no-repeat 50% 13px;
+	background-size: auto 20px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .13), inset 0 -4px 0 0 #06001c;
+	top: 95px;
+
+	&:before, &:after {
+		background: #fff;
+		content: '';
+		display: block;
+		height: 2px;
+		display: block;
+		left: 50%;
+		margin-left: -20px;
+		margin-top: -1px;
+		opacity: 0;
+		position: absolute;
+		top: 50%;
+		width: 40px;
+	}
+	&:before {
+		transform: rotate(-45deg);
+	}
+	&:after {
+		transform: rotate(45deg);
+	}
+
+	&.is-muted {
+		&:before, &:after {
+			opacity: 1;
+		}
+	}
+}
+.nav-share {
+	background: #fff url(../images/layout/ico-fb-new.png) no-repeat 50% 11px;
+	background-size: auto 22px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .13), inset 0 -4px 0 0 #5a94a7;
+	top: 165px;
+}
+
 // layers
 .layer {
 	//transform: translateX(-100%);
@@ -716,7 +769,6 @@ a:focus, a:active {
 		background: rgba(43, 46, 88, 0.67);
 		max-width: none;
 		padding: 52px 25px 25px 25px;
-		text-align: left;
 		width: 330px;
 
 		/*
@@ -733,9 +785,15 @@ a:focus, a:active {
 		*/
 	}
 
+	img {
+		display: block;
+		width: 100%;
+	}
+
 	p {
 		font-size: 20px;
 		line-height: 20px;
+		margin-top: 30px;
 		position: relative;
 		z-index: 2;
 	}

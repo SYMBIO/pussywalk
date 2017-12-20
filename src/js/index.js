@@ -200,6 +200,22 @@ function initializeElements() {
   });
 
   var mute = false;
+  $('.nav-sound').on('click', function(e) {
+    e.preventDefault();
+
+    var link = $(this);
+
+    if (mute) {
+      setMute(false);
+      link.removeClass('is-muted');
+      mute = false;
+    } else {
+      setMute(true);
+      link.addClass('is-muted');
+      mute = true;
+    }
+  });
+  /*
   $('.nav__sound').on('click', function(e) {
     e.preventDefault();
 
@@ -217,6 +233,7 @@ function initializeElements() {
       mute = true;
     }
   });
+  */
 
   $('.layer__close').on('click', function(e) {
     e.preventDefault();

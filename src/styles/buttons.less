@@ -15,10 +15,20 @@
 	text-align: center;
 	text-decoration: none;
 	text-transform: uppercase;
+	transition: transform 100ms, box-shadow 100ms;
 
 	&:hover {
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, .13), inset 0 0 0 0 #a13a42;
+		transform: translateY(4px);
 	}
 }
+.btn--big {
+	font-size: 22px;
+	letter-spacing: .3px;
+	line-height: 22px;
+	padding: 20px 43px;
+}
+
 .btn--pussy {
 	&:before {
 		background: url(../images/layout/logo-pussywalk-2.png) no-repeat 50% 50%;
