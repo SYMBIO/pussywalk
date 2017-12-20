@@ -395,10 +395,12 @@ export default class Box2DWorld {
     });
 
     if (didWin) {
+      this.world.DestroyBody(this.bodies["ball_blocker"])
       this.audioPlayer.silenceMusic()
       this.renderer.didFinish()
       this.audioPlayer.playEnd()
     }
+
     setTimeout(() => {
       this.callbacks.onGameEnd(didWin);
     }, 3000)

@@ -675,6 +675,14 @@ exports.texturesConfig = [
       y: 7
     }
   },
+  {
+    body: "decor_ball",
+    asset: "elements/z_ball.png",
+    offset: {
+      x: -5,
+      y: -5
+    }
+  }
 ]
 
 exports.nakedBodyTexturesConfig = [
