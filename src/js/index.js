@@ -8,6 +8,8 @@ if ('ontouchstart' in document.documentElement) {
   $('html').removeClass('no-touch').addClass('touch');
 }
 
+gtag('config', 'UA-162303-31');
+
 // Used for delegating sound to app
 window.__delegateSound = false
 
@@ -108,19 +110,11 @@ window.onload = function() {
 
 var openNav = function() {
   $('.nav').addClass('is-active');
-
-  /*
-  $(document).on('click', function(){
-    if(checkNav()) {
-      closeNav();
-    }
-  });  
-  */
+  $('.nav-link').addClass('is-active');
 }
 var closeNav = function() {
   $('.nav').removeClass('is-active');
-
-  //$(document).off('click');  
+  $('.nav-link').removeClass('is-active');
 }
 var checkNav = function() {
   return $('.nav').hasClass('is-active');
