@@ -35,11 +35,11 @@ export default class Box2DWorld {
     this.prepareForReset = this.prepareForReset.bind(this)
 
     this.frontSlipperDropPoint = {
-      x: 34,
+      x: 40,
       y: 0
     }
     this.backSlipperDropPoint = {
-      x: 38,
+      x: 76,
       y: 0
     }
     this.startPoint = {
