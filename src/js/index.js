@@ -111,6 +111,10 @@ window.onload = function() {
 var openNav = function() {
   $('.nav').addClass('is-active');
   $('.nav-link').addClass('is-active');
+
+  if($('.popup-merch').hasClass('is-visible')) {
+    $('.popup-merch').removeClass('is-visible').addClass('never-visible');
+  }
 }
 var closeNav = function() {
   $('.nav').removeClass('is-active');
@@ -483,6 +487,8 @@ function onTick(time) {
 }
 
 function onSheepPickup() {
+  $('.popup-merch').removeClass('is-visible');
+
   showLayer('.layer--mission-2');
 
   setTimeout(function() {
@@ -535,6 +541,7 @@ function startGame(naked) {
 
   setTimeout(function() {
     hideLayer('.layer--mission-1');
+    $('.popup-merch').addClass('is-visible');
   }, 7500);
 }
 
