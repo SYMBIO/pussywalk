@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import Box2Debug from './Box2Debug';
 import Chain from './Chain';
+import Config from './Config';
 import Constants from './Constants';
 import Recorder from './Recorder';
 import Rube2Box2D from './Rube2Box2D';
@@ -410,20 +411,22 @@ export default class Box2DWorld {
   handleArrows(keyCode, state) {
     this.keymap[keyCode] = state;
 
-    if (keyCode == 78 && state) {
-      this.renderer.setState({
-        naked: !this.renderer.isNaked()
-      })
-    }
+    if (Config.isDebug) {
+      if (keyCode == 78 && state) {
+        this.renderer.setState({
+          naked: !this.renderer.isNaked()
+        })
+      }
 
-    if (keyCode == 79 && state) {
-      this.renderer.setState({
-        drawDebug: !this.renderer.drawDebug
-      })
-    }
+      if (keyCode == 79 && state) {
+        this.renderer.setState({
+          drawDebug: !this.renderer.drawDebug
+        })
+      }
 
-    if (keyCode == 80 && state) {
-      this.cheatReset()
+      if (keyCode == 80 && state) {
+        this.cheatReset()
+      }
     }
 
     if (keyCode === 39) {
