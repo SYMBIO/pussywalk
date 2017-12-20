@@ -216,7 +216,11 @@ export default class AudioPlayer {
       }
     }
 
-    if (this.music.indexOf(filename) != -1) {
+    let track = this.music.find(function(music) {
+      return music.name == filename
+    })
+
+    if (track) {
       this.musicIndex++
       if (this.musicIndex == this.music.length) {
         this.musicIndex = 0
