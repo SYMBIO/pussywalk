@@ -108,9 +108,19 @@ window.onload = function() {
 
 var openNav = function() {
   $('.nav').addClass('is-active');
+
+  /*
+  $(document).on('click', function(){
+    if(checkNav()) {
+      closeNav();
+    }
+  });  
+  */
 }
 var closeNav = function() {
   $('.nav').removeClass('is-active');
+
+  //$(document).off('click');  
 }
 var checkNav = function() {
   return $('.nav').hasClass('is-active');
