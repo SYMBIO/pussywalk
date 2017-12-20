@@ -361,7 +361,7 @@ export default class Renderer {
           furnaceImage.frame.w,
           furnaceImage.frame.h,
           10158 * this.scale,
-          917 * this.scale,
+          919 * this.scale,
           furnaceImage.frame.w * this.scale * 2,
           furnaceImage.frame.h * this.scale * 2
         )
