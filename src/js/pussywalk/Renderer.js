@@ -1,8 +1,9 @@
 import Constants from './Constants'
 import FlashTexture from './FlashTexture'
+import HeadAnimator from './HeadAnimator'
+import SheepHeadAnimator from './SheepHeadAnimator'
 import SpriteSheet from 'spritesheet-canvas'
-// import SpriteSheet0 from '../../images/spritesheet-0.json'
-// import SpriteSheet1 from '../../images/spritesheet-1.json'
+import { TweenMax, Linear } from 'gsap'
 
 export default class Renderer {
 
@@ -23,6 +24,14 @@ export default class Renderer {
     this.renderPorn = true
     this.isShowingBodyMod = false
     this.visibleLifes = []
+    this.showRewind = false
+    this.fireballIndex = -1
+    this.drawDebug = false
+    this.flies = [[], []]
+    this.fliesPosition = {
+      x: 0,
+      y: 0
+    }
 
     this.vignette = new Image()
     this.vignette.src = "images/misc/vignette.png"
@@ -34,12 +43,41 @@ export default class Renderer {
     this.drawTexture = this.drawTexture.bind(this)
     this.setState = this.setState.bind(this)
     this.isNaked = this.isNaked.bind(this)
+    this.playRewind = this.playRewind.bind(this)
+    this.stopRewind = this.stopRewind.bind(this)
 
     this.prepareLights()
     this.prepareTextures()
 
     this.eyeball = this.imagesConfig["elements/eyeball.png"]
+    this.mrP = this.imagesConfig["elements/mr_p.png"]
     this.pillbottle = this.imagesConfig["elements/pill_bottle.png"]
+    this.headAnimator = new HeadAnimator(this.imagesConfig)
+    this.sheepHeadAnimator = new SheepHeadAnimator(this.imagesConfig)
+    this.sheep = this.imagesConfig["elements/ctveracek.png"]
+    this.fanBackground = this.imagesConfig["elements/dira.png"]
+    this.fan = this.imagesConfig["elements/vetrak.png"]
+    debugger
+    var i = 0
+    while (true) {
+      let image = this.imagesConfig["figure/flies/around/flies_" + i + ".png"]
+      if (image) {
+        this.flies[0].push(image)
+      } else {
+        break
+      }
+      i++
+    }
+    i = 0
+    while (true) {
+      let image = this.imagesConfig["figure/flies/around/flies_" + i + ".png"]
+      if (image) {
+        this.flies[1].push(image)
+      } else {
+        break
+      }
+      i++
+    }
   }
 
   prepareLights() {
@@ -72,7 +110,7 @@ export default class Renderer {
   }
 
   prepareTextures() {
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 8; i++) {
       let image = new Image()
       image.src = "images/level/level_" + (i + 1) + ".jpg"
       this.levelTextures.push(image)
@@ -153,7 +191,7 @@ export default class Renderer {
     }
 
     this.showNakedBody(false)
-    this.showBodyMod(false)
+    this.setModded(false)
   }
 
   setState(state) {
@@ -161,10 +199,13 @@ export default class Renderer {
       switch (key) {
         case "sheep":
           this.flash()
-          this.showBodyMod(state[key])
+          this.setModded(state[key])
           break;
         case "renderPorn":
           this.renderPorn = state[key]
+          break;
+        case "drawDebug":
+          this.drawDebug = state[key]
           break;
         case "naked":
           this.showNakedBody(state[key])
@@ -174,7 +215,6 @@ export default class Renderer {
           this.flash()
           break
       }
-
     }
   }
 
@@ -192,21 +232,19 @@ export default class Renderer {
       }
     }
 
-    this.showBodyMod(this.isShowingBodyMod)
+    this.setModded(this.isShowingBodyMod)
   }
 
-  showBodyMod(show) {
+  setModded(show) {
 
     this.isShowingBodyMod = show
 
     let normalPartNames = [
-      "head",
       "body",
       "body_collar"
     ]
     let moddedPartNames = [
       "body_mod",
-      "head_mod",
       "sheep_body",
       "sheep_arm",
       "sheep_leg",
@@ -226,6 +264,10 @@ export default class Renderer {
       if (this.figureConfig[this.figurePrefix + moddedPartNames[idx]]) {
         this.figureConfig[this.figurePrefix + moddedPartNames[idx]].visible = show
       }
+    }
+
+    if (this.headAnimator) {
+      this.headAnimator.setModded(show)
     }
   }
 
@@ -254,7 +296,7 @@ export default class Renderer {
 
     let canvasOffset = {
       x: bodyOffset.x - this.canvas.width / 2,
-      y: bodyOffset.y + this.canvas.height / 2 - 100
+      y: bodyOffset.y + this.canvas.height / 2
     }
 
     canvasOffset.x = Math.max(0, Math.round(canvasOffset.x))
@@ -266,74 +308,141 @@ export default class Renderer {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.context.translate(-canvasOffset.x, canvasOffset.y);
 
+    if (this.frameCounter % 2 == 0) {
+      this.startPixel = canvasOffset.x
+      this.endPixel = canvasOffset.x + this.canvas.width
+
+      this.startIndex = Math.floor(this.startPixel / (1500 * this.scale))
+      this.endIndex = Math.ceil(this.endPixel / (1500 * this.scale))
+    }
+
     // Draw level
-    // let startIndex = Math.max(0, Math.floor(canvasOffset.x / 3000))
-    let startIndex = 0
-    // let endIndex = Math.min(3, Math.ceil((canvasOffset.x + this.canvas.width / this.scale) / 3000))
-    let endIndex = 4
-    for (var i = startIndex; i < endIndex; i++) {
+    for (var i = this.startIndex; i < this.endIndex; i++) {
       let texture = this.levelTextures[i]
       this.context.drawImage(texture,
         0,
         0,
         texture.naturalWidth,
         texture.naturalHeight,
-        i * 3000 * this.scale,
+        i * 1500 * this.scale,
         0,
-        texture.naturalWidth * this.scale,
-        texture.naturalHeight * this.scale
+        texture.naturalWidth * this.scale * 2,
+        texture.naturalHeight * this.scale * 2
       )
     }
+
+    let idx = Math.floor((this.frameCounter % 60) / 2)
 
     // Shower
-
-    let idx = (this.frameCounter % 30)
-    let showerImage = this.imagesConfig['shower/shower_' + idx + '.png']
-    if (showerImage) {
-      this.context.drawImage(showerImage.image,
-        showerImage.frame.x,
-        showerImage.frame.y,
-        showerImage.frame.w,
-        showerImage.frame.h,
-        800 * this.scale,
-        700 * this.scale,
-        showerImage.frame.w * this.scale * 4,
-        showerImage.frame.h * this.scale * 4
-      )
-    } else {
-      console.log('shower/shower_' + idx + '.png');
+    if (this.startIndex == 0) {
+      let showerImage = this.imagesConfig['shower/shower_' + idx + '.png']
+      if (showerImage) {
+        this.context.drawImage(showerImage.image,
+          showerImage.frame.x,
+          showerImage.frame.y,
+          showerImage.frame.w,
+          showerImage.frame.h,
+          800 * this.scale,
+          700 * this.scale,
+          showerImage.frame.w * this.scale * 8,
+          showerImage.frame.h * this.scale * 8
+        )
+      } else {
+        console.log('shower/shower_' + idx + '.png');
+      }
     }
 
-    // Furnace
+    if (this.endIndex >= 7) {
+      let furnaceImage = this.imagesConfig['furnace/furnace_' + idx + '.jpg']
+      if (furnaceImage) {
+        this.context.drawImage(furnaceImage.image,
+          furnaceImage.frame.x,
+          furnaceImage.frame.y,
+          furnaceImage.frame.w,
+          furnaceImage.frame.h,
+          10158 * this.scale,
+          917 * this.scale,
+          furnaceImage.frame.w * this.scale * 2,
+          furnaceImage.frame.h * this.scale * 2
+        )
+      } else {
+        console.log('furnace/furnace_' + idx + '.png');
+      }
 
-    let furnaceImage = this.imagesConfig['furnace/furnace_' + idx + '.jpg']
-    if (furnaceImage) {
-      this.context.drawImage(furnaceImage.image,
-        furnaceImage.frame.x,
-        furnaceImage.frame.y,
-        furnaceImage.frame.w,
-        furnaceImage.frame.h,
-        10158 * this.scale,
-        917 * this.scale,
-        furnaceImage.frame.w * this.scale,
-        furnaceImage.frame.h * this.scale
+      // Fireball
+      // this.fireballIndex = 8
+
+      if (this.fireballIndex != -1) {
+
+        this.context.globalCompositeOperation = "screen"
+
+        let fireballImage = this.imagesConfig['fireball/fireball_' + Math.floor(this.fireballIndex / 4) + '.png']
+        if (fireballImage) {
+          this.context.drawImage(fireballImage.image,
+            fireballImage.frame.x,
+            fireballImage.frame.y,
+            fireballImage.frame.w,
+            fireballImage.frame.h,
+            9840 * this.scale,
+            1020 * this.scale,
+            fireballImage.frame.w * this.scale * 4,
+            fireballImage.frame.h * this.scale * 4
+          )
+
+          this.fireballIndex++
+        }
+
+        this.context.globalCompositeOperation = "source-over"
+      }
+
+
+      // Fan
+      this.context.drawImage(this.fanBackground.image,
+        this.fanBackground.frame.x,
+        this.fanBackground.frame.y,
+        this.fanBackground.frame.w,
+        this.fanBackground.frame.h,
+        9800 * this.scale,
+        1200 * this.scale,
+        this.fanBackground.frame.w * this.scale * 2,
+        this.fanBackground.frame.h * this.scale * 2
       )
-    } else {
-      console.log('furnace/furnace_' + idx + '.png');
+
+      let position = {
+        x: (9825 + this.fan.frame.w) * this.scale,
+        y: (1230 + this.fan.frame.h) * this.scale
+      }
+
+      this.context.translate(position.x, position.y);
+      this.context.rotate(this.frameCounter / 10)
+
+      this.context.drawImage(this.fan.image,
+        this.fan.frame.x,
+        this.fan.frame.y,
+        this.fan.frame.w,
+        this.fan.frame.h,
+        -this.fan.frame.w * this.scale,
+        -this.fan.frame.h * this.scale,
+        this.fan.frame.w * this.scale * 2,
+        this.fan.frame.h * this.scale * 2
+      )
+      this.context.rotate(-this.frameCounter / 10)
+      this.context.translate(-position.x, -position.y);
     }
 
     // Mr P
-    if (startIndex == 0) {
+    if (this.startIndex < 2) {
       let offset = {
         eye1: {
-          x: 1864,
-          y: 665
+          x: 1871,
+          y: 670
         },
         eye2: {
-          x: 1902,
-          y: 669
+          x: 1908,
+          y: 672
         }
       }
+
       var image = new Image();
       let percent = (this.bodies['body'].GetPosition().get_x() * this.physicsScale - (offset.eye1.x + offset.eye2.x) / 2) / 500
       percent = Math.min(1, Math.max(-1, percent))
@@ -341,39 +450,59 @@ export default class Renderer {
       let position;
 
       position = {
-        x: (offset.eye1.x + percent * 4) * this.scale,
-        y: offset.eye1.y * this.scale
+        x: offset.eye1.x + percent * 3,
+        y: offset.eye1.y
       }
-      this.context.translate(position.x, position.y);
       this.context.drawImage(this.eyeball.image,
         this.eyeball.frame.x,
         this.eyeball.frame.y,
         this.eyeball.frame.w,
         this.eyeball.frame.h,
-        0,
-        0,
-        this.eyeball.frame.w,
-        this.eyeball.frame.h
+        position.x * this.scale,
+        position.y * this.scale,
+        this.eyeball.frame.w * this.scale,
+        this.eyeball.frame.h * this.scale
       )
-      this.context.translate(-position.x, -position.y);
 
       position = {
-        x: (offset.eye2.x + percent * 4) * this.scale,
-        y: offset.eye2.y * this.scale
+        x: offset.eye2.x + percent * 3,
+        y: offset.eye2.y
       }
-      this.context.translate(position.x, position.y);
-
       this.context.drawImage(this.eyeball.image,
         this.eyeball.frame.x,
         this.eyeball.frame.y,
         this.eyeball.frame.w,
         this.eyeball.frame.h,
-        0,
-        0,
-        this.eyeball.frame.w,
-        this.eyeball.frame.h
+        position.x * this.scale,
+        position.y * this.scale,
+        this.eyeball.frame.w * this.scale,
+        this.eyeball.frame.h * this.scale
       )
-      this.context.translate(-position.x, -position.y);
+
+      this.context.drawImage(this.mrP.image,
+        this.mrP.frame.x,
+        this.mrP.frame.y,
+        this.mrP.frame.w,
+        this.mrP.frame.h,
+        1840 * this.scale,
+        520 * this.scale,
+        this.mrP.frame.w * this.scale,
+        this.mrP.frame.h * this.scale
+      )
+    }
+
+    if (!this.isShowingBodyMod) {
+      let imageConfig = this.sheep
+      this.context.drawImage(imageConfig.image,
+        imageConfig.frame.x,
+        imageConfig.frame.y,
+        imageConfig.frame.w,
+        imageConfig.frame.h,
+        4840 * this.scale,
+        1030 * this.scale,
+        imageConfig.frame.w * this.scale * 2,
+        imageConfig.frame.h * this.scale * 2
+      )
     }
 
     // Draw elements
@@ -389,22 +518,24 @@ export default class Renderer {
     }
 
     // Lift number
+    if (this.startIndex < 4 && this.endIndex > 4) {
+      let x = this.bodies.lift_1.GetPosition().get_x()
+      let y = this.bodies.lift_1.GetPosition().get_y()
+      // 27.117166 34.85
+      let percentage = Math.max(0, (y + 34.85) / (-27.117166 + 34.85) * 18)
 
-    let x = this.bodies.lift_1.GetPosition().get_x()
-    let y = this.bodies.lift_1.GetPosition().get_y()
-    let percentage = Math.max(0, (y + 39.8187) / (-32.1753 + 39.8187) * 18)
+      x = (x * this.physicsScale + 30) * this.scale
+      y = -(y * this.physicsScale + 220) * this.scale
 
-    x = (x * this.physicsScale - 30) * this.scale
-    y = -(y * this.physicsScale + 500) * this.scale
-
-    this.context.font = Math.round(48 * this.scale) + 'px serif';
-    this.context.fillStyle = "#FFF"
-    this.context.fillText(Math.round(percentage) + '%', x, y);
+      this.context.font = 'italic ' + Math.round(60 * this.scale) + 'px "barlow", Arial, Helvetica, sans-serif';
+      this.context.fillStyle = "#FFF"
+      this.context.fillText(Math.round(percentage) + '%', x, y);
+    }
 
     // Porn
     if (this.renderPorn) {
       let body = this.bodies["decor_monitor"];
-      let index = Math.floor((this.frameCounter / 20) % 4) + 1
+      let index = Math.floor((this.frameCounter / 20) % 3) + 1
       let imageConfig = this.imagesConfig["porn/porn_0" + index + ".png"]
       let position = {
         x: body.GetPosition().get_x() * this.physicsScale * this.scale,
@@ -412,8 +543,8 @@ export default class Renderer {
       }
 
       let offset = {
-        x: -imageConfig.frame.w / 4 * this.scale - 17,
-        y: -imageConfig.frame.h / 4 * this.scale - 40,
+        x: (-imageConfig.frame.w / 2 + 14) * this.scale,
+        y: (-imageConfig.frame.h / 2 - 12) * this.scale,
       }
       let angle = -body.GetAngle()
 
@@ -427,8 +558,8 @@ export default class Renderer {
         imageConfig.frame.h,
         offset.x,
         offset.y,
-        imageConfig.frame.w * this.scale,
-        imageConfig.frame.h * this.scale
+        imageConfig.frame.w * this.scale * 2,
+        imageConfig.frame.h * this.scale * 2
       )
 
       this.context.rotate(-angle)
@@ -445,8 +576,8 @@ export default class Renderer {
         this.pillbottle.frame.h,
         (this.visibleLifes[i].x * this.physicsScale) * this.scale,
         (-this.visibleLifes[i].y * this.physicsScale + delta) * this.scale,
-        this.pillbottle.frame.w * this.scale / 2,
-        this.pillbottle.frame.h * this.scale / 2
+        this.pillbottle.frame.w * this.scale,
+        this.pillbottle.frame.h * this.scale
       )
     }
 
@@ -459,6 +590,57 @@ export default class Renderer {
       if (figureConfig.visible == false) {
         continue
       }
+
+      if (figureConfig.name == "naked_sheep_head" || figureConfig.name == "dressed_sheep_head") {
+        this.drawTexture(this.sheepHeadAnimator.headTexture)
+        continue
+      }
+
+      if (figureConfig.name == "dressed_head" || figureConfig.name == "naked_head") {
+        this.drawTexture(this.headAnimator.headTexture)
+
+        // Draw flies
+        let body = this.bodies.body
+        let newPosition = {
+          x: (body.GetPosition().get_x() * this.physicsScale - 100 + 100 * Math.sin(this.frameCounter / 100)) * this.scale,
+          y: (-body.GetPosition().get_y() * this.physicsScale - 250 + 50 * Math.sin(this.frameCounter / 66)) * this.scale
+        }
+        let delta = {
+          x: newPosition.x - this.fliesPosition.x,
+          y: newPosition.y - this.fliesPosition.y
+        }
+        this.fliesPosition.x += delta.x * 0.03
+        this.fliesPosition.y += delta.y * 0.03
+
+        let idx = Math.floor(this.frameCounter / 2 % this.flies[0].length)
+
+        let imageConfig = this.flies[0][idx]
+        this.context.drawImage(imageConfig.image,
+          imageConfig.frame.x,
+          imageConfig.frame.y,
+          imageConfig.frame.w,
+          imageConfig.frame.h,
+          this.fliesPosition.x,
+          this.fliesPosition.y,
+          imageConfig.frame.w * this.scale * 2,
+          imageConfig.frame.h * this.scale * 2,
+        )
+
+        imageConfig = this.flies[1][idx]
+        this.context.drawImage(imageConfig.image,
+          imageConfig.frame.x,
+          imageConfig.frame.y,
+          imageConfig.frame.w,
+          imageConfig.frame.h,
+          this.fliesPosition.x - 150 * this.scale,
+          this.fliesPosition.y,
+          imageConfig.frame.w * this.scale * 2,
+          imageConfig.frame.h * this.scale * 2,
+        )
+
+        continue
+      }
+
       this.drawTexture(figureConfig)
     }
 
@@ -466,16 +648,18 @@ export default class Renderer {
       this.drawTexture(this.flashTexture)
     }
 
-    this.context.drawImage(this.furniceWall,
-      0,
-      0,
-      1042,
-      938,
-      10438 * this.scale,
-      1086 * this.scale,
-      1042 * this.scale,
-      938 * this.scale
-    )
+    if (this.endIndex == 8) {
+      this.context.drawImage(this.furniceWall,
+        0,
+        0,
+        1042,
+        938,
+        10438 * this.scale,
+        1086 * this.scale,
+        1042 * this.scale * 2,
+        938 * this.scale * 2
+      )
+    }
 
     // Lights
 
@@ -488,8 +672,8 @@ export default class Renderer {
       603,
       2397 * this.scale,
       305 * this.scale,
-      588 * this.scale * 2,
-      603 * this.scale * 2,
+      588 * this.scale * 4,
+      603 * this.scale * 4,
     )
 
     this.context.drawImage(this.lights[1],
@@ -499,8 +683,8 @@ export default class Renderer {
       1323,
       301 * this.scale,
       104 * this.scale,
-      1433 * this.scale * 2,
-      1323 * this.scale * 2,
+      1433 * this.scale * 4,
+      1323 * this.scale * 4,
     )
 
     this.context.drawImage(this.lights[1],
@@ -510,8 +694,8 @@ export default class Renderer {
       921,
       6422 * this.scale,
       511 * this.scale,
-      977 * this.scale * 2,
-      921 * this.scale * 2,
+      977 * this.scale * 4,
+      921 * this.scale * 4,
     )
 
     this.context.drawImage(this.lights[1],
@@ -521,8 +705,8 @@ export default class Renderer {
       921,
       7793 * this.scale,
       511 * this.scale,
-      977 * this.scale * 2,
-      921 * this.scale * 2,
+      977 * this.scale * 4,
+      921 * this.scale * 4,
     )
 
     this.context.drawImage(this.lights[2],
@@ -532,8 +716,8 @@ export default class Renderer {
       487,
       9530 * this.scale,
       881 * this.scale,
-      461 * this.scale * 2,
-      487 * this.scale * 2,
+      461 * this.scale * 4,
+      487 * this.scale * 4,
     )
 
     this.context.drawImage(this.lights[3],
@@ -543,8 +727,8 @@ export default class Renderer {
       921,
       5449 * this.scale,
       333 * this.scale,
-      977 * this.scale * 2,
-      921 * this.scale * 2,
+      977 * this.scale * 4,
+      921 * this.scale * 4,
     )
 
     this.context.drawImage(this.lights[4],
@@ -554,8 +738,8 @@ export default class Renderer {
       1667,
       4125 * this.scale,
       22 * this.scale,
-      1369 * this.scale * 2,
-      1667 * this.scale * 2,
+      1369 * this.scale * 4,
+      1667 * this.scale * 4,
     )
 
     this.context.drawImage(this.lights[5],
@@ -565,12 +749,11 @@ export default class Renderer {
       831,
       3562 * this.scale,
       353 * this.scale,
-      879 * this.scale * 2,
-      831 * this.scale * 2,
+      879 * this.scale * 4,
+      831 * this.scale * 4,
     )
 
     this.context.globalCompositeOperation = "source-over"
-
 
     this.context.drawImage(this.vignette,
       0,
@@ -583,18 +766,33 @@ export default class Renderer {
       this.context.canvas.height
     )
 
+    if (this.showRewind) {
+      let imageConfig = this.imagesConfig["rewind/rewind_" + Math.floor((this.frameCounter / 2) % 10) + ".png"]
+      this.context.drawImage(imageConfig.image,
+        imageConfig.frame.x,
+        imageConfig.frame.y,
+        128,
+        128,
+        canvasOffset.x,
+        -canvasOffset.y,
+        this.context.canvas.width,
+        this.context.canvas.height
+      )
+    }
+
     this.frameCounter += 1
 
     // Debug draw
 
-  // this.context.scale(this.physicsScale * this.scale, this.physicsScale * this.scale);
-  // this.context.lineWidth = 1 / this.physicsScale;
-  // this.context.scale(1, -1);
-  // this.world.DrawDebugData();
+    if (this.drawDebug) {
+      this.context.scale(this.physicsScale * this.scale, this.physicsScale * this.scale);
+      this.context.lineWidth = 1 / this.physicsScale;
+      this.context.scale(1, -1);
+      this.world.DrawDebugData();
+    }
   }
 
   drawTexture(textureConfig) {
-
     let angle
     let position
     let offset
@@ -651,6 +849,10 @@ export default class Renderer {
       scale = 1
     }
 
+    if (position.x < this.startPixel - 500 || position.x > this.endPixel + 500) {
+      return
+    }
+
     this.context.translate(position.x, position.y);
     this.context.rotate(angle)
     this.context.globalAlpha = alpha;
@@ -662,14 +864,42 @@ export default class Renderer {
       frame.h,
       offset.x,
       offset.y,
-      frame.w / 2 * this.scale * scale,
-      frame.h / 2 * this.scale * scale
+      frame.w * this.scale * scale,
+      frame.h * this.scale * scale
     )
 
     this.context.globalAlpha = 1
     this.context.rotate(-angle)
     this.context.translate(-position.x, -position.y);
+  }
 
+  playScare(scare) {
+    this.headAnimator.playScare(scare)
+    this.sheepHeadAnimator.playTs(scare == 1)
+  }
+
+  removeScare() {
+    this.headAnimator.removeScare()
+  }
+
+  playDeath() {
+    this.headAnimator.playDeath()
+  }
+
+  playRewind() {
+    this.showRewind = true
+    TweenMax.to(this, 1, {
+      showRewind: true,
+      onComplete: this.stopRewind
+    })
+  }
+
+  stopRewind() {
+    this.showRewind = false
+  }
+
+  didFinish() {
+    this.fireballIndex = 0
   }
 
   dispose() {

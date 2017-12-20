@@ -4,6 +4,19 @@ import * as firebase from 'firebase';
 import styles from '../styles/app.less';
 import PussywalkMinigame from './pussywalk/PussywalkMinigame';
 
+if ('ontouchstart' in document.documentElement) {
+  $('html').removeClass('no-touch').addClass('touch');
+}
+
+// Used for delegating sound to app
+window.__delegateSound = false
+
+// tutorial
+var tutorial = true;
+if (getCookie('tutorial') == 1) {
+  tutorial = false;
+}
+
 // todo proper list
 let loader = assetsLoader({
   assets: [
@@ -14,20 +27,6 @@ let loader = assetsLoader({
     '/images/spritesheet-1.png',
     '/images/spritesheet-2.json',
     '/images/spritesheet-2.png',
-    '/images/spritesheet-3.json',
-    '/images/spritesheet-3.png',
-    '/images/spritesheet-4.json',
-    '/images/spritesheet-4.png',
-    '/images/spritesheet-5.json',
-    '/images/spritesheet-5.png',
-    '/images/spritesheet-6.json',
-    '/images/spritesheet-6.png',
-    '/images/spritesheet-7.json',
-    '/images/spritesheet-7.png',
-    '/images/spritesheet-8.json',
-    '/images/spritesheet-8.png',
-    '/images/spritesheet-9.json',
-    '/images/spritesheet-9.png',
     '/images/layout/loading-bg.jpg',
     '/images/layout/loading-ico.png',
     '/images/layout/logo-pussywalk-2.png',
@@ -41,6 +40,10 @@ let loader = assetsLoader({
     '/images/level/level_2.jpg',
     '/images/level/level_3.jpg',
     '/images/level/level_4.jpg',
+    '/images/level/level_5.jpg',
+    '/images/level/level_6.jpg',
+    '/images/level/level_7.jpg',
+    '/images/level/level_8.jpg',
     '/images/level/lights/fluorescent_bathroom.jpg',
     '/images/level/lights/fluorescent_general.jpg',
     '/images/level/lights/furnice.jpg',
@@ -48,20 +51,19 @@ let loader = assetsLoader({
     '/images/level/lights/ovcacek_room_light.jpg',
     '/images/level/lights/warm_bathroom.jpg',
     '/images/misc/flash.png',
-    '/images/misc/light.jpg',
     '/images/misc/vignette.png',
 
     // audio
-    '/audio/step_big_01.wav',
-    '/audio/step_big_02.wav',
-    '/audio/step_big_03.wav',
-    '/audio/step_big_04.wav',
-    '/audio/step_small_01.wav',
-    '/audio/step_small_02.wav',
-    '/audio/step_small_03.wav',
-    '/audio/step_small_04.wav',
+    '/audio/step_big_01.mp3',
+    '/audio/step_big_02.mp3',
+    '/audio/step_big_03.mp3',
+    '/audio/step_big_04.mp3',
+    '/audio/step_small_01.mp3',
+    '/audio/step_small_02.mp3',
+    '/audio/step_small_03.mp3',
+    '/audio/step_small_04.mp3',
   ]
-  })
+})
   .on('error', function(error) {
     console.error(error);
   })
@@ -72,9 +74,17 @@ let loader = assetsLoader({
     })
   })
   .on('complete', function(assets) {
-    setTimeout(function(){
+    setTimeout(function() {
       hideLayer('.layer--loading');
-    }, 500)
+      showLayer('.layer--mission-1');
+
+      if (tutorial) {
+        showLayer('.layer--tutorial');
+        pauseGame();
+      } else {
+        continueGame();
+      }
+    }, (2 - assetsLoader.stats.secs) * 1000)
   })
   .start();
 
@@ -88,10 +98,22 @@ window.onload = function() {
 
   _callbacks = {
     onGameEnd: onGameEnd,
-    onTick: onTick
+    onTick: onTick,
+    onLifesUpdate: onLifesUpdate,
+    onSheepPickup: onSheepPickup
   }
 
   startGame()
+}
+
+var openNav = function() {
+  $('.nav').addClass('is-active');
+}
+var closeNav = function() {
+  $('.nav').removeClass('is-active');
+}
+var checkNav = function() {
+  return $('.nav').hasClass('is-active');
 }
 
 function showLayer(layer) {
@@ -101,7 +123,9 @@ function showLayer(layer) {
 
 function hideLayer(layer) {
   $(layer).removeClass('is-visible');
-  continueGame()
+  if (!checkNav() && !$('.layer.is-visible').length) {
+    continueGame()
+  }
 }
 
 function initializeElements() {
@@ -120,14 +144,16 @@ function initializeElements() {
       time: _game.playTime
     }, function(error) {
       //$('#scoreboard').show()
-      showLayer('.layer--scoreboard');
+      scoreUpdate(_game.playTime);
     });
-  })
+  });
+
   $('#cancel_send_name').on('click', function() {
     //$('#name_dialogue').hide()
     hideLayer('.layer--finish');
     startGame()
   })
+
   $('#name_input').on('input', function() {
     $('#send_name').attr("disabled", $("#name_input").val().length == 0);
   })
@@ -138,36 +164,132 @@ function initializeElements() {
     //$('#scoreboard').hide()
     hideLayer('.layer--scoreboard');
     $('#game_controls, #game_lives').show()
-    if(finished) {
-      startGame()
+    if (finished) {
+      startGame(true)
     }
   })
 
-  $('.nav-link').on('click', function(e){
+  $('.nav-link').on('click', function(e) {
     e.preventDefault();
 
-    if(!$('.nav').hasClass('is-active')) {
-      $('.nav').addClass('is-active');
+    if (!$('.nav').hasClass('is-active')) {
+      openNav()
       pauseGame()
+      gtag('event', 'navigation', {
+        'status': 'on'
+      });
     } else {
-      $('.nav').removeClass('is-active');
+      closeNav();
+      gtag('event', 'navigation', {
+        'status': 'off'
+      });
       continueGame()
     }
   });
 
-  $('.layer__close').on('click', function(e){
+  $('.nav__restart').on('click', function(e) {
+    e.preventDefault();
+
+    closeNav();
+    startGame();
+    continueGame()
+  });
+
+  var mute = false;
+  $('.nav__sound').on('click', function(e) {
+    e.preventDefault();
+
+    var link = $(this);
+
+    if (mute) {
+      setMute(false);
+      link.removeClass('is-muted');
+      link.html(link.data('off'))
+      mute = false;
+    } else {
+      setMute(true);
+      link.addClass('is-muted');
+      link.html(link.data('on'))
+      mute = true;
+    }
+  });
+
+  $('.layer__close').on('click', function(e) {
     e.preventDefault();
 
     hideLayer($(this).parents('.layer').eq(0));
   });
 
-  $('.js-show-layer').on('click', function(e){
+  $('.js-show-layer').on('click', function(e) {
     e.preventDefault();
 
-    var link = $(this);
+    var link = $(this),
+      layer = link.data('layer');
 
     $('.nav').removeClass('is-active');
-    showLayer('.layer--' + link.data('layer'))
+    showLayer('.layer--' + layer);
+
+    gtag('event', 'layer', {
+      'name': layer
+    });
+  });
+
+  $('.js-play').on('click', function(e) {
+    e.preventDefault();
+
+    closeTutorial();
+  });
+
+  $('.js-scoreboard-update').on('click', function(e) {
+    e.preventDefault();
+
+    closeNav();
+    scoreUpdate();
+  });
+
+  $(document).on('click', '.js-share', function(e) {
+    e.preventDefault();
+
+    window.open($(this).attr('href'), 'fbShareWindow', 'height=450, width=550, top=100, left=100, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
+    return false;
+  });
+}
+
+function setCookie(name, value, days) {
+  var expires = "";
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + value + expires + "; path=/";
+}
+
+function getCookie(name) {
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(';');
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
+}
+
+function closeTutorial() {
+  if (tutorial) {
+    hideLayer('.layer--tutorial');
+    tutorial = false;
+    setCookie('tutorial', '1', 365);
+    continueGame();
+  }
+}
+
+if (tutorial) {
+  $(document).keydown(function(e) {
+    if (e.keyCode == 37 || e.keyCode == 39 || e.keyCode == 13 || e.keyCode == 27) {
+      closeTutorial();
+    }
   });
 }
 
@@ -183,66 +305,155 @@ function initializeFirebase() {
   };
   firebase.initializeApp(config);
 
+//scoreUpdate();
+}
+
+function scoreUpdate(time) {
+
+  $('#scoreboard_top3').html('<div class="lds-css ng-scope"><div style="width:100%;height:100%" class="lds-pacman"><div><div></div><div></div><div></div></div><div><div></div><div></div></div></div>');
+  $('#scoreboard_list').html('');
+
+  showLayer('.layer--scoreboard');
+
   var scoreboardListener = firebase.database().ref('scoreboard');
-  scoreboardListener.orderByChild("time").on('value', function(snapshot) {
+  scoreboardListener.orderByChild("time").once('value', function(snapshot) {
     let scoreboard = $('#scoreboard_list')
     let scoreboardTop3 = $('#scoreboard_top3')
     var i = 0
+    var j = 0
+    var k = 0
+    var t = 0
     scoreboard.empty()
     scoreboardTop3.empty()
-    snapshot.forEach(function(snapshot) {
-      let listItem = $("<li />")
-      let nameSpan = $("<span class=\"username\" />")
-      let timeSpan = $("<span class=\"time\" />")
-      nameSpan.append(snapshot.val().username)
-      timeSpan.append(niceTime(snapshot.val().time))
-      listItem.append(nameSpan)
-      listItem.append(timeSpan)
-      if (i > 2) {
-        scoreboard.append(listItem)
-      } else {
-        scoreboardTop3.append(listItem)
-      }
-      i++;
-    })
+
+    if (!isNaN(parseFloat(time)) && isFinite(time)) {
+
+      var score = [];
+
+      snapshot.forEach(function(snapshot) {
+        score.push([j, snapshot.val().username, snapshot.val().time]);
+
+        if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time) {
+          t = j;
+        }
+
+        j++;
+      });
+
+      var plusminus = 35;
+
+      snapshot.forEach(function(snapshot) {
+        let listItem = $("<li />");
+        if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
+          listItem = $("<li class='chosen-one' />");
+        }
+        let posSpan = $("<span class=\"position\" />")
+        let nameSpan = $("<span class=\"username\" />")
+        let timeSpan = $("<span class=\"time\" />")
+
+        posSpan.append(i + 1 + '.')
+        nameSpan.append(snapshot.val().username)
+        timeSpan.append(niceTime(snapshot.val().time))
+
+        listItem.append(posSpan)
+        listItem.append(nameSpan)
+        listItem.append(timeSpan)
+
+        if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
+          listItem.append('<span class="share"><span></span><a href="" class="btn btn--fb">Sdílej svoje score na</a></span>')
+          k = 1;
+        }
+
+        if (t < 3) {
+
+          if (i < 15) {
+            scoreboardTop3.append(listItem)
+          }
+
+        } else {
+
+          if (i < 3) {
+            scoreboardTop3.append(listItem)
+          }
+
+          if (i > 3 && i > t - plusminus && i < t + plusminus + 2) {
+            scoreboard.append(listItem)
+          }
+
+        }
+
+        i++;
+      })
+
+      $('#scoreboard').animate({
+        scrollTop: $('.chosen-one').position().top - $('#scoreboard').height() / 3
+      }, 500);
+
+    } else {
+
+      snapshot.forEach(function(snapshot) {
+        let listItem = $("<li />")
+        let posSpan = $("<span class=\"position\" />")
+        let nameSpan = $("<span class=\"username\" />")
+        let timeSpan = $("<span class=\"time\" />")
+        posSpan.append(i + 1 + '.')
+        nameSpan.append(snapshot.val().username)
+        timeSpan.append(niceTime(snapshot.val().time))
+        listItem.append(posSpan)
+        listItem.append(nameSpan)
+        listItem.append(timeSpan)
+
+        if (i < 100) {
+          scoreboardTop3.append(listItem)
+        }
+
+        i++;
+      })
+
+    }
+
   });
 }
 
-function niceTime(time, nicer) {
+function niceTime(time, nicer, nospan) {
   var spanWrap = function(what) {
-        return what.replace(/(\d)/g, '<span>$1</span>');
-      },
-      totalSeconds = time / 1000,
-      hours = Math.floor(totalSeconds / 3600);
-  
+      return what.replace(/(\d)/g, '<span>$1</span>');
+    },
+    totalSeconds = time / 1000,
+    hours = Math.floor(totalSeconds / 3600);
+
   totalSeconds %= 3600;
 
   var minutes = ('0' + Math.floor(totalSeconds / 60)).slice(-2),
-      seconds = ('0' + Math.floor(totalSeconds % 60)).slice(-2),
-      time = '0:' + seconds;
+    seconds = ('0' + Math.floor(totalSeconds % 60)).slice(-2),
+    time = '0:' + seconds;
 
-  if(nicer) {
+  if (nicer) {
     time = seconds + ' s.';
 
-    if(minutes > 0) {
+    if (minutes > 0) {
       time = minutes + ' min. a ' + seconds + ' s.';
     }
 
-    if(hours > 0) {
+    if (hours > 0) {
       time = hours + ' hod., ' + minutes + ' min. a ' + seconds + ' s.';
     }
 
     return time;
   } else {
-    if(minutes > 0) {
+    if (minutes > 0) {
       time = minutes + ':' + seconds;
     }
 
-    if(hours > 0) {
+    if (hours > 0) {
       time = hours + ':' + minutes + ':' + seconds;
     }
 
-    return spanWrap(time);
+    if (nospan) {
+      return time;
+    } else {
+      return spanWrap(time);
+    }
   }
 }
 
@@ -250,25 +461,60 @@ function onTick(time) {
   $('#time').html(niceTime(time));
 }
 
+function onSheepPickup() {
+  showLayer('.layer--mission-2');
+
+  setTimeout(function() {
+    hideLayer('.layer--mission-2');
+  }, 7500);
+}
+
+function onLifesUpdate(numberOfLifes, delta) {
+  var cont = $('#game_lives'),
+    oldCont = $('.game__live--old'),
+    newCont = $('.game__live--new'),
+    oldLive,
+    newLive = numberOfLifes;
+
+  newCont.html(newLive);
+
+  cont.addClass('has-change');
+
+  newCont[0].addEventListener('transitionend', function() {
+
+    oldCont.html(newLive);
+    cont.removeClass('has-change');
+
+  });
+}
+
 function onGameEnd(didWin) {
   if (didWin) {
     //$('#name_dialogue').show()
     pauseGame();
-    $('#finish_time').html(niceTime(_game.playTime));
-    showLayer('.layer--finish');
+    $('#finish_time').html(niceTime(_game.playTime, true));
+    setTimeout(function() {
+      showLayer('.layer--finish');
+    }, 10);
     $('#game_controls, #game_lives').hide()
   } else {
-    startGame()
+    startGame(didWin)
   }
 }
 
-function startGame() {
+function startGame(naked) {
   finished = false;
+
+  window.location.href = "delegatesound://";
 
   if (_game) {
     _game.dispose()
   }
-  _game = new PussywalkMinigame(_callbacks);
+  _game = new PussywalkMinigame(_callbacks, naked);
+
+  setTimeout(function() {
+    hideLayer('.layer--mission-1');
+  }, 7500);
 }
 
 function pauseGame() {
@@ -281,5 +527,11 @@ function continueGame() {
   if (_game) {
     _game.pause()
     _game.play()
+  }
+}
+
+function setMute(mute) {
+  if (_game) {
+    _game.setMute(mute)
   }
 }

@@ -67,24 +67,18 @@ module.exports = {
     new CopyWebpackPlugin([
       //{from: `${SRC}/app/robots.txt`},
       {
-        from: `${SRC}.htaccess`,
-        to: `${BUILD}.htaccess`,
-        toType: 'file'
-      },
-      {
-        from: `${SRC}.htpasswd`,
-        to: `${BUILD}.htpasswd`,
-        toType: 'file'
-      },
-      {
         from: `${SRC}js/vendor`,
         to: `${BUILD}js/vendor`
       },
       {
-        from: `${SRC}images/favicon.ico`
+        from: `${SRC}icons`,
+        to: `${BUILD}icons`
       },
       {
-        from: `${SRC}images/favicon.png`
+        from: `${SRC}manifest.json`
+      },
+      {
+        from: `${SRC}browserconfig.xml`
       },
       //{ from: `${SRC}config.json` },
       {

@@ -13,21 +13,22 @@
   "license": "LGPL-3.0+",
   "scripts": {
     "dev": "babel-node ./webpack/server.js",
-    "build": "rm -rf build && npm run ss_compress && webpack --config ./webpack/webpack.config.prod.babel.js",
-    "ss_compress": "tinypng -r -k dY76SanOkUE8SaPaTDZP-vZlJsbtEARu src/images/spritesheet-*.png",
-    "test": ""
+    "build_no_app": "rm -rf build && webpack --config ./webpack/webpack.config.prod.babel.js",
+    "build": "rm -rf build && npm run compress && webpack --config ./webpack/webpack.config.prod.babel.js && npm run app_assets",
+    "compress": "tinify-cli --key 2D2k_-WA_zgQES1XKKjQqVzuNwpYaL2Q \"src/images/**/*.{jpg,png}\"",
+    "app_assets": "npm run app_build_zip && npm run app_timestamp",
+    "app_build_zip": "bestzip build.zip build/ && mkdir build/app && cp build.zip build/app",
+    "app_timestamp": "echo \"$(git rev-parse HEAD)\" >> build/app/update"
   },
   "dependencies": {
     "assets-loader": "^0.5.1",
     "firebase": "^4.6.0",
     "gsap": "^1.20.3",
     "jquery": "^3.2.1",
-    "node-tinypng": "0.0.4",
     "spritesheet-canvas": "^1.0.2",
     "stats.js": "^0.17.0"
   },
   "devDependencies": {
-    "babel-runtime": "^6.26.0",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.0",
@@ -36,6 +37,8 @@
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.0",
+    "babel-runtime": "^6.26.0",
+    "bestzip": "^1.1.4",
     "copy-webpack-plugin": "^4.2.3",
     "css-loader": "^0.28.4",
     "express": "^4.15.3",
@@ -47,6 +50,7 @@
     "less-loader": "^4.0.5",
     "open": "^0.0.5",
     "style-loader": "^0.18.2",
+    "tinify-cli": "^1.1.0",
     "webpack": "^3.4.1",
     "webpack-dev-middleware": "^1.11.0",
     "webpack-hot-middleware": "^2.18.0",

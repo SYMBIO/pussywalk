@@ -40,7 +40,7 @@ const resizeCanvas = () => {
   }
 }
 
-const loadJSON = () => {
+const loadJSON = (config) => {
 
   enableLoader(true);
 
@@ -56,12 +56,12 @@ const loadJSON = () => {
     _loaderPromise
   ).done((dn) => {
     _loaderPromise = null;
-    initGame();
+    initGame(config);
   });
 
 }
 
-const initGame = () => {
+const initGame = (config) => {
 
   _canvas = $('<canvas />');
   $('.game__scene').prepend(_canvas);
@@ -71,11 +71,12 @@ const initGame = () => {
   _renderer = new Renderer(_world.world, _canvas[0], _world.bodies)
   _audioPlayer = new AudioPlayer()
 
-  _world.addEndListener(_callbacks.onGameEnd)
+  _world.callbacks = _callbacks
   _world.renderer = _renderer
   _world.audioPlayer = _audioPlayer
 
-  _world.syncRenderer()
+  _world.sync()
+  _renderer.showNakedBody(config.startNaked)
 
   resizeCanvas()
 
@@ -139,7 +140,7 @@ const playLoader = () => {
 
 export default class PussywalkMinigame {
 
-  constructor(callbacks) {
+  constructor(callbacks, naked) {
     _callbacks = callbacks;
 
     $(window).resize(resizeCanvas)
@@ -150,7 +151,9 @@ export default class PussywalkMinigame {
     this.lastTickTime = new Date()
     this.playTime = 0
 
-    loadJSON();
+    loadJSON({
+      startNaked: naked
+    });
   }
 
   init() {}
@@ -187,6 +190,12 @@ export default class PussywalkMinigame {
     }
   }
 
+  setMute(mute) {
+    if (_audioPlayer) {
+      _audioPlayer.setMute(mute)
+    }
+  }
+
   dispose() {
 
     $(window).off("resize");
@@ -220,12 +229,16 @@ export default class PussywalkMinigame {
       _loaderPromise = null;
     }
 
+    if (_audioPlayer) {
+      _audioPlayer.stop()
+      _audioPlayer = null
+    }
+
     if (_preloaderEF) {
       window.cancelAnimationFrame(_preloaderEF);
       _preloaderEF = null;
       _preloader = null;
     }
-
   }
 }
 ;

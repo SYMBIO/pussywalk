@@ -1,57 +1,12 @@
 {"frames": {
 
-"furnace/furnace_10.jpg":
+"elements/poll_elevator.png":
 {
-	"frame": {"x":1,"y":1,"w":300,"h":420},
+	"frame": {"x":1,"y":1,"w":345,"h":521},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":420},
-	"sourceSize": {"w":300,"h":420},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"furnace/furnace_11.jpg":
-{
-	"frame": {"x":303,"y":1,"w":300,"h":420},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":420},
-	"sourceSize": {"w":300,"h":420},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"furnace/furnace_12.jpg":
-{
-	"frame": {"x":605,"y":1,"w":300,"h":420},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":420},
-	"sourceSize": {"w":300,"h":420},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"furnace/furnace_14.jpg":
-{
-	"frame": {"x":1,"y":423,"w":300,"h":420},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":420},
-	"sourceSize": {"w":300,"h":420},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"furnace/furnace_17.jpg":
-{
-	"frame": {"x":303,"y":423,"w":300,"h":420},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":420},
-	"sourceSize": {"w":300,"h":420},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"furnace/furnace_18.jpg":
-{
-	"frame": {"x":605,"y":423,"w":300,"h":420},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":420},
-	"sourceSize": {"w":300,"h":420},
+	"spriteSourceSize": {"x":0,"y":0,"w":345,"h":521},
+	"sourceSize": {"w":345,"h":521},
 	"pivot": {"x":0.5,"y":0.5}
 }},
 "meta": {
@@ -59,8 +14,8 @@
 	"version": "1.0",
 	"image": "spritesheet-4.png",
 	"format": "RGBA4444",
-	"size": {"w":906,"h":844},
-	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:6eaf6a218c0f6913315a79a1fb1916bb:e65e4f8d10cae5ff1a25fadcc4d8fd1e:5c062e2031ec4b4ae19fd922ec239988$"
+	"size": {"w":347,"h":523},
+	"scale": "0.5",
+	"smartupdate": "$TexturePacker:SmartUpdate:372d7a629f31a8305f43e6f3fafd425d:cf5b345dfee9cacb6ac549f3924d0d18:07134cf329aac6ca7222af0da5fe913f$"
 }
 }

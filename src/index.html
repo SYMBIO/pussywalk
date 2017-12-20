@@ -1,35 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-touch">
 <head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-		<meta name="viewport" content="width=device-width,initial-scale=1" />
-		<title>PussyWalk</title>
-		<meta name="title" content="PussyWalk" />
-		<meta name="description" content="PussyWalk" />
-		<meta name="keywords" content="PussyWalk, Zeman, Prasident" />
-		<meta name="author" content="" />
-		<link rel="icon" type="image/png" href="favicon.png">
-		<!--[if IE]><link rel="shortcut icon" href="favicon.ico"/><![endif]-->
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Jeho voliči k urně dojdou. Co ty?</title>
+	<meta name="title" content="Jeho voliči k urně dojdou. Co ty?" />
+	<meta name="description" content="Hra Pussywalk 2 je simulátor prezidenta (i s “virózou”). Vyzvedni Čtveráčka a dej se s panem Z. na cestu k urně." />
+	<meta name="author" content="" />
+	<!--[if IE]><link rel="shortcut icon" href="favicon.ico"/><![endif]-->
 
-		<meta property="og:title" content="PussyWalk – How far east can you go?">
-		<meta property="og:type" content="website">
-		<meta property="og:name" content="PussyWalk">
-		<meta property="og:url" content="http://pussywalk.com">
-		<meta property="og:description" content="Walk up straight to the crown jewels, dodge the spilled Rusoil & beware of the dangerous pussy!">
-		<meta property="og:image" content="http://pussywalk.com/img/fb-share.jpg">
+	<meta property="og:title" content="Jeho voliči k urně dojdou. Co ty?">
+	<meta property="og:type" content="website">
+	<meta property="og:name" content="PussyWalk">
+	<meta property="og:url" content="http://pussywalk.com">
+	<meta property="og:description" content="Hra Pussywalk 2 je simulátor prezidenta (i s “virózou”). Vyzvedni Čtveráčka a dej se s panem Z. na cestu k urně.">
+	<meta property="og:image" content="http://www.pussywalk.com/images/layout/fb-share.png">
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<!-- <link rel="shortcut icon" href="/img/16x16px-icon.jpg">
+	<link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/icons/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/icons/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/icons/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/icons/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/icons/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/icons/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/icons/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+	<link rel="icon" type="image/png" href="/icons/favicon.png">
+	<link rel="manifest" href="/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
+	<!--
 	<script type="text/javascript">
 		function share(){
 					ga('send', 'event', { eventCategory: 'Facebook', eventAction: 'Share', eventLabel: 'item'});
-			var shareUrl = "http://www.facebook.com/sharer/sharer.php?u=www.pussywalk.com/cs";
+			var shareUrl = "http://www.facebook.com/sharer/sharer.php?u=www.pussywalk.com/";
 			window.open(shareUrl, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=585,height=368');
 		}
 	</script> -->
 
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162303-20"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-162303-20');
+	</script>
 </head>
 <body>
 	<div id="app">
@@ -40,7 +65,7 @@
 
 					<div class="loading__loader"><div class="loader__bar"></div></div>
 
-					<p class="loading__info"><span>Všichni jeho voliči</span> <span>k urně dojdou</span> <span>...</span></p>
+					<p class="loading__info"><span>Jeho voliči</span> <span>k urně dojdou.</span> <span>...</span></p>
 
 					<p class="loading__q">Co ty?</p>
 				</div>
@@ -49,26 +74,6 @@
 
 		<h1 class="logo">PUSSYWALK 2</h1>
 
-		<div class="nav-link"></div>
-		<div class="nav">
-			<ul class="nav__list">
-				<li><a href="" class="nav__restart">Restart</a></li>
-				<li><a href="" class="nav__share">Sdílej</a></li>
-				<li><a href="" class="nav__sound">Zvuk ON</a></li>
-				<li><a href="" data-layer="scoreboard" class="nav__score js-show-layer">Žebříček</a></li>
-				<li><a href="" class="nav__kill">Koho zabít?</a></li>
-				<li><a href="" class="nav__game">PUSSYWALK 1.</a></li>
-			</ul>
-
-			<a href="" data-layer="merch" class="btn btn--pussy js-show-layer">MERCH</a>
-
-			<ul class="test__layers">
-				<li><a href="" data-layer="tutorial" class="js-show-layer">tutorial</a></li>
-				<li><a href="" data-layer="finish" class="js-show-layer">finish</a></li>
-				<li><a href="" data-layer="scoreboard" class="js-show-layer">score</a></li>
-			</ul>
-		</div>
-
 		<div id="time" class="time-counter"></div>
 
 		<div id="game_controls">
@@ -76,24 +81,51 @@
 			<button class="game__key game__key--right"><span></span></button>
 		</div>
 
-		<div id="game_lives">5</div>
+		<div id="game_lives">
+			<span class="game__live game__live--old"></span>
+			<span class="game__live game__live--new"></span>
+		</div>
+
+		<div class="layer layer--mission layer--mission-1">
+			<div class="layer__content">
+				<p><strong>MISE 1</strong> Vyzvedni Čtveráčka</p>
+			</div>
+		</div>
+
+		<div class="layer layer--mission layer--mission-2">
+			<div class="layer__content">
+				<p><strong>MISE 2</strong> Dovrávorej k urně</p>
+			</div>
+		</div>
+		
+		<div class="nav">
+			<ul class="nav__list">
+				<li><a href="" class="nav__restart">Restart</a></li>
+				<li><a href="https://www.facebook.com/sharer/sharer.php?u=www.pussywalk.cz" target="_blank" class="nav__share js-share">Sdílej</a></li>
+				<li><a href="" class="nav__sound" data-on="ZVUK ZAPNOUT" data-off="ZVUK VYPNOUT">ZVUK VYPNOUT</a></li>
+				<li><a href="" class="nav__score js-scoreboard-update">TABULKA VÍTĚZŮ</a></li>
+				<li><a href="" data-layer="credits" class="nav__kill js-show-layer">PACHATELÉ</a></li>
+				<li><a href="http://old.pussywalk.com" class="nav__game">PUSSYWALK 1.</a></li>
+			</ul>
+
+			<a href="" data-layer="merch" class="btn btn--pussy js-show-layer">MERCH</a>
+		</div>
+		<div class="nav-link"></div>
 
 		<div class="layer layer--tutorial">
 			<div class="layer__content">
 				<div class="tutorial__info">
-					<p>Na desktopu použijte k chůzi směrové klávesy.<br>Na device virtuální L a R klávesy</p>
+					<div>
+						<p class="tutorial__desktop">Pochoduj směrovými klávesami [<] [>]</p>
+						<p class="tutorial__mobile">Virtuálními tlačítky L a R<br>zvedej nohy a vrávorej vpřed</p>
+						<p><a href="" class="btn js-play">Hraj</a></p>
+					</div>
 				</div>
 
 				<div class="tutorial__buttons">
 					<span class="tutorial__button tutorial__button--left"><span></span></span>
 					<span class="tutorial__button tutorial__button--right"><span></span></span>
 				</div>
-			</div>
-		</div>
-
-		<div class="layer layer--mission">
-			<div class="layer__content">
-				<p><strong>MISE 2.</strong> DOJDI K URNĚ</p>
 			</div>
 		</div>
 		
@@ -129,13 +161,25 @@
 			</div>
 		</div>
 
+		<div class="layer layer--credits">
+			<div class="layer__content">
+				<div class="layer__center">
+					<button class="layer__close"></button>
+
+					<div class="fb-like-box" data-href="https://www.facebook.com/pages/PussyWalk/601731869955851" data-colorscheme="dark" data-show-faces="false" data-header="false" data-stream="false" data-show-border="false"></div>				
+				</div>
+			</div>
+		</div>
+
 		<div class="layer layer--scoreboard">
 			<div class="layer__content">
 				<div class="layer__center">
 					<button id="scoreboard_close" class="layer__close"></button>
 
+					<h3>Klub přátel žehu</h3>
 					<div id="scoreboard">
 						<ul id="scoreboard_top3" class="scoreboard__list">
+							<!--
 							<li>
 								<span class="position">1.</span>
 								<span class="username">Username_TOP Username_TOP <span class="scoreboard__nude">NUDE</span></span>
@@ -151,131 +195,19 @@
 								<span class="username">Username TOP3</span>
 								<span class="time">3:41</span>
 							</li>
+							-->
 						</ul>
 						<ul id="scoreboard_list" class="scoreboard__list">
+							<!--
 							<li>
 								<span class="position">235.</span>
 								<span class="username">Username</span>
 								<span class="time">3:41</span>
 								<span class="share"><span></span>
-									<a href="" class="btn btn--fb">Sdílej svoje score na</a>
+								<a href="" class="btn btn--fb">Sdílej svoje score na</a>
 								</span>
 							</li>
-							<li>
-								<span class="position">235.</span>
-								<span class="username">Username</span>
-								<span class="time">3:41</span>
-							</li>
-							<li>
-								<span class="position">235.</span>
-								<span class="username">Username</span>
-								<span class="time">3:41</span>
-							</li>
-								<li>
-									<span class="position">235.</span>
-									<span class="username">Username</span>
-									<span class="time">3:41</span>
-								</li>
-								<li>
-									<span class="position">235.</span>
-									<span class="username">Username</span>
-									<span class="time">3:41</span>
-								</li>
-								<li>
-									<span class="position">235.</span>
-									<span class="username">Username</span>
-									<span class="time">3:41</span>
-								</li>
-									<li>
-										<span class="position">235.</span>
-										<span class="username">Username</span>
-										<span class="time">3:41</span>
-									</li>
-									<li>
-										<span class="position">235.</span>
-										<span class="username">Username</span>
-										<span class="time">3:41</span>
-									</li>
-									<li>
-										<span class="position">235.</span>
-										<span class="username">Username</span>
-										<span class="time">3:41</span>
-									</li>
-										<li>
-											<span class="position">235.</span>
-											<span class="username">Username</span>
-											<span class="time">3:41</span>
-										</li>
-										<li>
-											<span class="position">235.</span>
-											<span class="username">Username</span>
-											<span class="time">3:41</span>
-										</li>
-										<li>
-											<span class="position">235.</span>
-											<span class="username">Username</span>
-											<span class="time">3:41</span>
-										</li>
-											<li>
-												<span class="position">235.</span>
-												<span class="username">Username</span>
-												<span class="time">3:41</span>
-											</li>
-											<li>
-												<span class="position">235.</span>
-												<span class="username">Username</span>
-												<span class="time">3:41</span>
-											</li>
-											<li>
-												<span class="position">235.</span>
-												<span class="username">Username</span>
-												<span class="time">3:41</span>
-											</li>
-												<li>
-													<span class="position">235.</span>
-													<span class="username">Username</span>
-													<span class="time">3:41</span>
-												</li>
-												<li>
-													<span class="position">235.</span>
-													<span class="username">Username</span>
-													<span class="time">3:41</span>
-												</li>
-												<li>
-													<span class="position">235.</span>
-													<span class="username">Username</span>
-													<span class="time">3:41</span>
-												</li>
-													<li>
-														<span class="position">235.</span>
-														<span class="username">Username</span>
-														<span class="time">3:41</span>
-													</li>
-													<li>
-														<span class="position">235.</span>
-														<span class="username">Username</span>
-														<span class="time">3:41</span>
-													</li>
-													<li>
-														<span class="position">235.</span>
-														<span class="username">Username</span>
-														<span class="time">3:41</span>
-													</li>
-														<li>
-															<span class="position">235.</span>
-															<span class="username">Username</span>
-															<span class="time">3:41</span>
-														</li>
-														<li>
-															<span class="position">235.</span>
-															<span class="username">Username</span>
-															<span class="time">3:41</span>
-														</li>
-														<li>
-															<span class="position">235.</span>
-															<span class="username">Username</span>
-															<span class="time">3:41</span>
-														</li>
+							-->
 						</ul>
 					</div>				
 				</div>
@@ -284,5 +216,14 @@
 
 		<div class="game__scene"></div>
 	</div>
+
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = "//connect.facebook.net/cs_CZ/sdk.js#xfbml=1&appId=102744876492578&version=v2.0";
+	fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>	
 </body>
 </html>

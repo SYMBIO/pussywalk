@@ -14,8 +14,8 @@ export default class Box2DWorld {
     this.canvas = canvas;
     this.timeStep = 1 / 60;
     this.velocityIterations = 10;
-    this.positionIterations = 8;
-    this.lives = 3000
+    this.positionIterations = 6;
+    this.lifes = 3
     this.record = false
     this.pausePhysics = false
     this.paused = false
@@ -23,6 +23,7 @@ export default class Box2DWorld {
     this.renderer = null
     this.audioPlayer = null
     this.jointsToDestroy = []
+    this.bodyAngle = 0
 
     var gravity = new Box2D.b2Vec2(0.0, -10.0);
     this.world = new Box2D.b2World(gravity);
@@ -50,7 +51,7 @@ export default class Box2DWorld {
       y: 0
     }
     this.sheepPickupPoint = {
-      x: 77,
+      x: 75,
       y: -15
     }
 
@@ -85,16 +86,16 @@ export default class Box2DWorld {
     ]
     this.lifePickupPoints = [{
       x: 42,
-      y: -19
+      y: -16
     }, {
       x: 68,
-      y: -18
+      y: -15
     }, {
       x: 91.6,
-      y: -19.5
+      y: -16.5
     }, {
       x: 127,
-      y: 27.7
+      y: 24.7
     }]
 
     this.visibleLifes = this.lifePickupPoints
@@ -191,18 +192,62 @@ export default class Box2DWorld {
       var bottle
       var otherObject
 
+      // Cane
+      if ((bA.name == "decor_stick" || bB.name == "decor_stick") && (bA.GetLinearVelocity().Length() - bB.GetLinearVelocity().Length()) > 3) {
+        that.audioPlayer.playCane()
+        return
+      }
+
+      if ((bA.name == "decor_bear" || bB.name == "decor_bear") && (bA.GetLinearVelocity().Length() - bB.GetLinearVelocity().Length()) > 3) {
+        that.audioPlayer.playBear()
+        return
+      }
+
+      if ((bA.name.indexOf("decor_chair") == 0 || bB.name.indexOf("decor_chair") == 0) && (bA.GetLinearVelocity().Length() - bB.GetLinearVelocity().Length()) > 3) {
+        that.audioPlayer.playChair()
+        return
+      }
+
+      if ((bA.name.indexOf("decor_tp_") == 0 || bB.name.indexOf("decor_tp_") == 0) && (bA.GetLinearVelocity().Length() - bB.GetLinearVelocity().Length()) > 3) {
+        that.audioPlayer.playToiletpaper()
+        return
+      }
+
+      if ((bA.name.indexOf("decor_cup") == 0 || bB.name.indexOf("decor_cup") == 0 || bA.name.indexOf("decor_pencil_holder") == 0 || bB.name.indexOf("decor_pencil_holder") == 0) && (bA.GetLinearVelocity().Length() - bB.GetLinearVelocity().Length()) > 3) {
+        that.audioPlayer.playCup()
+        return
+      }
+
+
+      if ((bA.name.indexOf("decor_trashbin_top") == 0 || bB.name.indexOf("decor_trashbin_top") == 0 || bA.name.indexOf("decor_trashbin") == 0 || bB.name.indexOf("decor_trashbin") == 0) && (bA.GetLinearVelocity().Length() - bB.GetLinearVelocity().Length()) > 3) {
+        that.audioPlayer.playBin()
+        return
+      }
+
+      // Monitor
       if (bA.name == "decor_monitor" && Constants.bodyparts.indexOf(bB.name) != -1) {
+        let impact = (bA.GetLinearVelocity().Length() - bB.GetLinearVelocity().Length())
+        that.audioPlayer.playTV(impact / 5)
+
+        that.audioPlayer.playTVOff()
         that.renderer.setState({
           renderPorn: false
         })
+        return
       }
 
       if (bB.name == "decor_monitor" && Constants.bodyparts.indexOf(bA.name) != -1) {
+        let impact = (bA.GetLinearVelocity().Length() - bB.GetLinearVelocity().Length())
+        that.audioPlayer.playTV(impact / 5)
+
+        that.audioPlayer.playTVOff()
         that.renderer.setState({
           renderPorn: false
         })
+        return
       }
 
+      // Bottles
       if (bA.name.indexOf("decor_becherovka_") == 0) {
         bottle = bA
         otherObject = bB
@@ -213,18 +258,29 @@ export default class Box2DWorld {
         otherObject = bA
       }
 
-      if (bottle && (bottle.GetLinearVelocity().Length() - otherObject.GetLinearVelocity().Length()) > 7) {
-        let i = Math.floor(Math.random() * 8)
-        let components = bA.name.split("_")
-        components.pop()
-        components.push("j" + i)
-        let jointName = components.join("_")
+      if (bottle) {
+        let impact = (bottle.GetLinearVelocity().Length() - otherObject.GetLinearVelocity().Length())
+        if (impact > 7) {
+          let i = Math.floor(Math.random() * 8)
+          let components = bA.name.split("_")
+          components.pop()
+          components.push("j" + i)
+          let jointName = components.join("_")
 
-        if (that.joints[jointName]) {
-          // that.world.DestroyJoint(that.joints[jointName]);
-          that.jointsToDestroy = [that.joints[jointName]]
-          delete that.joints[jointName]
+          if (that.joints[jointName]) {
+            // that.world.DestroyJoint(that.joints[jointName]);
+            that.jointsToDestroy = [that.joints[jointName]]
+            delete that.joints[jointName]
+          }
+          if (that.audioPlayer) {
+            that.audioPlayer.playBottleBreak()
+          }
+        } else if (impact > 4) {
+          if (that.audioPlayer) {
+            that.audioPlayer.playBottleImpact()
+          }
         }
+        return
       }
     };
     contactListener.PostSolve = function() {};
@@ -250,6 +306,9 @@ export default class Box2DWorld {
       }
 
       if (decor) {
+        if (decor.name.indexOf("decor_table") == 0 || decor.name.indexOf("decor_chair") == 0) {
+          that.audioPlayer.playThump()
+        }
         setTimeout(() => {
           let fixture = decor.GetFixtureList()
 
@@ -284,13 +343,17 @@ export default class Box2DWorld {
         (_floor.indexOf(bB.name) != -1 && _end.indexOf(bA.name) >= 0)) {
         that.inactive = true;
 
-        setTimeout(() => {
-          that.lives -= 1
+        that.renderer.playDeath()
 
-          if (that.lives < 0) {
+        setTimeout(() => {
+          that.lifes -= 1
+          that.callbacks.onLifesUpdate(that.lifes, -1)
+
+          if (that.lifes <= 0) {
             that.death(false)
           } else {
             that.resetPlayer()
+            that.audioPlayer.playLoseHealth()
           }
         }, 1000);
       }
@@ -315,14 +378,12 @@ export default class Box2DWorld {
     this.resetPlayer()
   }
 
-  syncRenderer() {
+  sync() {
     this.renderer.setState({
       visibleLifes: this.visibleLifes
     })
-  }
 
-  addEndListener(callback) {
-    this.EndListener = callback;
+    this.callbacks.onLifesUpdate(this.lifes, 0)
   }
 
   death(didWin) {
@@ -333,9 +394,14 @@ export default class Box2DWorld {
       delete this.joints[j];
     });
 
+    if (didWin) {
+      this.audioPlayer.silenceMusic()
+      this.renderer.didFinish()
+      this.audioPlayer.playEnd()
+    }
     setTimeout(() => {
-      this.EndListener(didWin);
-    }, 1000);
+      this.callbacks.onGameEnd(didWin);
+    }, 3000)
   }
 
   handleArrows(keyCode, state) {
@@ -347,8 +413,14 @@ export default class Box2DWorld {
       })
     }
 
+    if (keyCode == 79 && state) {
+      this.renderer.setState({
+        drawDebug: !this.renderer.drawDebug
+      })
+    }
+
     if (keyCode == 80 && state) {
-      this.softReset()
+      this.cheatReset()
     }
 
     if (keyCode === 39) {
@@ -452,14 +524,22 @@ export default class Box2DWorld {
       this.renderer.setState({
         sheep: true
       })
+      this.audioPlayer.playSheep()
+      this.callbacks.onSheepPickup()
     }
 
     if (this.visibleLifes.indexOf(value) != -1) {
       let idx = this.visibleLifes.indexOf(value)
       this.visibleLifes.splice(idx, 1)
+
+      this.lifes += 1
+      this.callbacks.onLifesUpdate(this.lifes, 1)
+
       this.renderer.setState({
         visibleLifes: this.visibleLifes
       })
+
+      this.audioPlayer.playHealth()
     }
 
     if (this.checkpoints.indexOf(value) != -1) {
@@ -489,22 +569,31 @@ export default class Box2DWorld {
     let frontBall = this.bodies['front_weight']
     let bend = this.bodies['body'].GetAngle();
 
+    if ((bend < -0.3 && this.bodyAngle > -0.3) || (bend > 0.3 && this.bodyAngle < 0.3)) {
+      if (Math.random() < 0.5) {
+        this.renderer.playScare(0)
+        this.audioPlayer.playTilt(0, this.progress > this.sheepPickupPoint.x)
+      }
+    } else if ((bend < -0.9 && this.bodyAngle > -0.9) || ((bend > 0.9 && this.bodyAngle < 0.9))) {
+      this.renderer.playScare(1)
+      this.audioPlayer.playTilt(1, this.progress > this.sheepPickupPoint.x)
+    } else if ((bend > -0.3 && this.bodyAngle < -0.3) || (bend < 0.3 && this.bodyAngle > 0.3)) {
+      this.renderer.removeScare()
+    }
+    this.bodyAngle = bend
+
     if (bend > 0) {
       // Leaning back
       backBall.GetFixtureList().SetDensity(1)
       frontBall.GetFixtureList().SetDensity(10)
     } else {
       // Leaning fwd
-      backBall.GetFixtureList().SetDensity(5)
-      frontBall.GetFixtureList().SetDensity(5)
+      backBall.GetFixtureList().SetDensity(10)
+      frontBall.GetFixtureList().SetDensity(1)
     }
 
     backBall.ResetMassData()
     frontBall.ResetMassData()
-
-    // var fixture = foot.GetFixtureList()
-    // fixture.SetDensity(12)
-    // foot.ResetMassData()
 
     thighAngle = this.bodies['leg_front_tie'].GetAngle()
 
@@ -540,7 +629,7 @@ export default class Box2DWorld {
           if (thighAngle > 0) {
             // Thigh pointing fwd -> Leg in the air -> Needs balancing
             var fixture = foot.GetFixtureList()
-            fixture.SetDensity(24)
+            fixture.SetDensity(30)
             foot.ResetMassData()
 
             this.joints[k.name] = k.SetLength(0.65);
@@ -602,7 +691,7 @@ export default class Box2DWorld {
           if (thighAngle > 0) {
             // Thigh pointing fwd -> Leg in the air -> Needs balancing
             var fixture = foot.GetFixtureList()
-            fixture.SetDensity(24)
+            fixture.SetDensity(30)
             foot.ResetMassData()
 
             this.joints[k.name] = k.SetLength(0.65);
@@ -651,6 +740,8 @@ export default class Box2DWorld {
 
     $('body').off('keydown keyup');
     $('.game__key').off('touchstart touchend touchcancel mousedown mouseup');
+
+    TweenMax.killTweensOf(this.recorder)
   }
 
   stepBack() {
@@ -685,6 +776,9 @@ export default class Box2DWorld {
   }
 
   onResetComplete() {
+
+    this.keymap = {};
+
     this.record = true
     this.inactive = false
     this.pausePhysics = false
@@ -759,9 +853,17 @@ export default class Box2DWorld {
 
   resetPlayer() {
 
+    if (this.renderer) {
+      this.renderer.playRewind()
+    }
+
+    if (this.audioPlayer) {
+      this.audioPlayer.playRewind()
+    }
+
     this.prepareForReset()
 
-    TweenMax.to(this.recorder, Math.min(3, this.recorder.frames.length / 300), {
+    this.rewindTween = TweenMax.to(this.recorder, 1, {
       ease: Cubic.easeInOut,
       currentFrame: 0,
       onUpdate: this.stepBack,
@@ -784,11 +886,18 @@ export default class Box2DWorld {
   }
 
   softReset() {
+    let resetPoint = this.sheepPickupPoint.x < this.progress ? this.sheepPickupPoint : this.startPoint
+    this.prepareForReset()
+    this.lastCheckpoint = resetPoint
+    this.resetPlayerToCheckpoint()
+    this.onResetComplete()
+  }
+
+  cheatReset() {
     let resetPoint = {
-      x: 130,
-      y: -16
+      x: 150,
+      y: -20
     }
-    // let resetPoint = this.sheepPickupPoint.x < this.progress ? this.sheepPickupPoint : this.startPoint
     this.prepareForReset()
     this.lastCheckpoint = resetPoint
     this.resetPlayerToCheckpoint()
