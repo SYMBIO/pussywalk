@@ -539,6 +539,10 @@ function startGame(naked) {
   }
   _game = new PussywalkMinigame(_callbacks, naked);
 
+  gtag('event', 'game', {
+    'status': 'start'
+  });
+
   setTimeout(function() {
     hideLayer('.layer--mission-1');
     $('.popup-merch').addClass('is-visible');

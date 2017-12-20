@@ -73,7 +73,7 @@ a:focus, a:active {
 .nav-link {
 	background: rgba(61, 55, 76, .8);
 	cursor: pointer;
-	filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, .4));
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, .4);
 	height: 35px;
 	left: 22px;
 	margin-left: env(safe-area-inset-left);
@@ -130,14 +130,16 @@ a:focus, a:active {
 .nav {
 	color: @white;
 	outline: 5000px rgba(43, 46, 88, 0.4) solid;
-	display: none;
 	left: 13px;
 	margin-left: env(safe-area-inset-left);
 	margin-top: env(safe-area-inset-top);
+	opacity: 0;
 	padding: 50px 15px 25px;
 	position: absolute;
 	top: 11px;
-	//transform: translateX(-200%);
+	transform: translateX(-200%);
+	transition: opacity 200ms;
+	will-change: opacity;
 
 	&:before {
 		//background: rgba(63, 52, 77, .8);
@@ -151,18 +153,20 @@ a:focus, a:active {
 		width: 100%;
 	}
 
+	/*
 	> * {
 		position: relative;
 		z-index: 2;
 	}
+	*/
 	
 	.btn {
 		margin-left: 4px;
 	}
 
 	&.is-active {
-		display: block;
-		//transform: translateX(0%);
+		opacity: 1;
+		transform: translateX(0%);
 	}
 
 	@media only screen and (max-width: 768px) and (orientation: landscape) {
