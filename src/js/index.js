@@ -19,6 +19,8 @@ if (getCookie('tutorial') == 1) {
   tutorial = false;
 }
 
+var naked = false;
+
 // todo proper list
 let loader = assetsLoader({
   assets: [
@@ -143,13 +145,14 @@ function initializeElements() {
     finished = true;
     firebase.database().ref('scoreboard').push({
       username: $("#name_input").val(),
-      time: _game.playTime
+      time: _game.playTime,
+      naked: naked
     }, function(error) {
       if (error) {
         console.log('a');
       }
       //$('#scoreboard').show()
-      scoreUpdate(_game.playTime);
+      scoreUpdate(_game.playTime, naked);
     });
   });
 
@@ -171,6 +174,13 @@ function initializeElements() {
     $('#game_controls, #game_lives').show()
     if (finished) {
       startGame(true)
+      if(!naked) {
+        setTimeout(function(){
+          pauseGame();
+          showLayer('.layer--naked');
+        }, 500)
+      }
+      naked = true;
     }
   })
 
@@ -262,6 +272,13 @@ function initializeElements() {
     closeTutorial();
   });
 
+  $('.js-play-naked').on('click', function(e) {
+    e.preventDefault();
+
+    hideLayer('.layer--naked');
+    continueGame();
+  });
+
   $('.js-scoreboard-update').on('click', function(e) {
     e.preventDefault();
 
@@ -330,7 +347,7 @@ function initializeFirebase() {
 //scoreUpdate();
 }
 
-function scoreUpdate(time) {
+function scoreUpdate(time, naked) {
 
   $('#scoreboard_top3').html('<div class="lds-css ng-scope"><div style="width:100%;height:100%" class="lds-pacman"><div><div></div><div></div><div></div></div><div><div></div><div></div></div></div>');
   $('#scoreboard_list').html('');
@@ -374,7 +391,11 @@ function scoreUpdate(time) {
         let timeSpan = $("<span class=\"time\" />")
 
         posSpan.append(i + 1 + '.')
-        nameSpan.append(snapshot.val().username)
+        let nakedSpan = '';
+        if(snapshot.val().naked) {
+          nakedSpan = ' <span class="scoreboard__nude">NUDE</span>';
+        }
+        nameSpan.append(snapshot.val().username + nakedSpan)
         timeSpan.append(niceTime(snapshot.val().time))
 
         listItem.append(posSpan)
@@ -419,7 +440,11 @@ function scoreUpdate(time) {
         let nameSpan = $("<span class=\"username\" />")
         let timeSpan = $("<span class=\"time\" />")
         posSpan.append(i + 1 + '.')
-        nameSpan.append(snapshot.val().username)
+        let nakedSpan = '';
+        if(snapshot.val().naked) {
+          nakedSpan = ' <span class="scoreboard__nude">NUDE</span>';
+        }
+        nameSpan.append(snapshot.val().username + nakedSpan)
         timeSpan.append(niceTime(snapshot.val().time))
         listItem.append(posSpan)
         listItem.append(nameSpan)

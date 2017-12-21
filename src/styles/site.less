@@ -359,14 +359,20 @@ a:focus, a:active {
 .layer {
 	//transform: translateX(-100%);
 	//display: none;
+	height: 100%;
 	opacity: 0;
 	pointer-events: none;
+	position: absolute;
 	transition: opacity 300ms;
-	will-change: oapcity;
+	will-change: opacity, transform;
+	transform: translateX(-100%);
+	width: 100%;
 
 	&.is-visible {
 		opacity: 1;
 		pointer-events: all;
+		transform: translateX(0%);
+		z-index: 2;
 	}
 }
 .layer__content {
@@ -377,7 +383,6 @@ a:focus, a:active {
 	text-align: center;
 	top: 0;
 	width: 100%;
-	z-index: 2;
 
 	&:before {
 		content: '';
@@ -932,7 +937,6 @@ a:focus, a:active {
 
 	.layer__center {
 		background: rgba(43, 46, 88, 0.67);
-		max-height: 80%;
 		max-width: none;
 		padding: 50px 25px 25px 25px;
 		text-align: left;
@@ -1039,7 +1043,7 @@ a:focus, a:active {
 
 	@media @phoneLand {
 		.layer__center {
-			width: 100%;
+			max-width: 100%;
 		}
 	}	
 }
@@ -1061,7 +1065,63 @@ a:focus, a:active {
 	}
 }
 
+
+.layer--naked {
+	color: @white;
+	width: 100%;
+
+	.layer__center {
+		background: rgba(43, 46, 88, 0.67);
+		border-radius: 15px;
+		max-width: none;
+		padding: 25px;
+		text-align: left;
+		width: 350px;
+	}
+
+	img {
+		display: block;
+		width: 100%;
+	}
+
+	p {
+		margin-top: 20px;
+	}
+
+	.btn {
+		display: block;
+	}
+
+	.scoreboard__nude {
+		box-shadow: 0px 1px 1px rgba(0, 0, 0, .4);
+		font-size: 27px;
+    	line-height: 27px;
+		padding: 4px 7px 4px 12px;
+		position: absolute;
+		right: -25px;
+		top: -10px;
+		transform: rotate(35deg);
+		
+		&:after {
+			height: 26px;
+			width: 23px;
+		}
+	}
+
+	@media @phoneLand {
+		.layer__center {
+			max-width: 100%;
+		}
+	}	
+}
+
 .layer--mission {
+	height: 0;
+	left: auto;
+	right: 0;
+	top: 30%;
+	width: 0;
+	
 	.layer__content {
 		height: 0;
 		left: auto;
@@ -1885,10 +1945,4 @@ body {
   height: 100px !important;
   -webkit-transform: translate(-50px, -50px) scale(0.5) translate(50px, 50px);
   transform: translate(-50px, -50px) scale(0.5) translate(50px, 50px);
-}
-
-
-// todo
-.game__scene {
-	background: red;
 }
