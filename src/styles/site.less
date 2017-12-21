@@ -193,7 +193,7 @@ a:focus, a:active {
 			position: relative;
 			text-decoration: none;
 
-			&:before {
+			&:before, &:after {
 				background-position: 50% 50%;
 				background-repeat: no-repeat;
 				background-size: contain;
@@ -227,6 +227,7 @@ a:focus, a:active {
 		background-image: url(../images/layout/ico-share.png);
 	}
 }
+/*
 .nav__sound {
 	&:before {
 		background-image: url(../images/layout/ico-sound.png);
@@ -238,6 +239,7 @@ a:focus, a:active {
 		}
 	}
 }
+*/
 .no-app.touch {
 	.nav__sound {
 		@media @desktop {
@@ -258,6 +260,29 @@ a:focus, a:active {
 .nav__game {
 	&:before {
 		background-image: url(../images/layout/ico-game.png);
+	}
+}
+.nav__list .nav__toggle {
+	&:before, &:after {
+		height: 30px;
+		left: -10px;
+		width: 50px;
+	}
+	&:before {
+		background-image: url(../images/layout/toggle-on.png);
+	}
+	&:after {
+		background-image: url(../images/layout/toggle-off.png);
+		opacity: 0
+	}
+
+	&.is-active {
+		&:before {
+			opacity: 0;
+		}
+		&:after {
+			opacity: 1;
+		}
 	}
 }
 

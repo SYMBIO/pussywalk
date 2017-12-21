@@ -258,14 +258,26 @@ function initializeElements() {
 
     if (mute) {
       setMute(false);
-      link.removeClass('is-muted');
-      link.html(link.data('off'))
+      link.removeClass('is-active');
       mute = false;
     } else {
       setMute(true);
-      link.addClass('is-muted');
-      link.html(link.data('on'))
+      link.addClass('is-active');
       mute = true;
+    }
+  });
+
+  $('.nav__quality').on('click', function(e) {
+    e.preventDefault();
+
+    var link = $(this);
+
+    if (link.hasClass('is-active')) {
+      link.removeClass('is-active');
+      _game.setLowQuality(true);
+    } else {
+      link.addClass('is-active');
+      _game.setLowQuality(false);
     }
   });
 
