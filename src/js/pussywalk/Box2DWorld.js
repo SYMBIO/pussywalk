@@ -369,8 +369,8 @@ export default class Box2DWorld {
       time: 0
     };
 
-    this.chain = new Chain(this.world, this.bodies.chain_base)
-    this.bodies = Object.assign({}, this.bodies, this.chain.bodies)
+    // this.chain = new Chain(this.world, this.bodies.chain_base)
+    // this.bodies = Object.assign({}, this.bodies, this.chain.bodies)
 
     this.recorder = new Recorder(this.world, {
       removedFrontSlipper: false,
@@ -818,7 +818,7 @@ export default class Box2DWorld {
       } while (fixture.e != 0)
     }
 
-    this.chain.reset()
+    // this.chain.reset()
 
     this.progressPoints = this.recorder.initialState.progressPoints
     this.progress = this.recorder.initialState.progress
