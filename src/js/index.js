@@ -33,12 +33,7 @@ var online,
       online = false;
       $('.online').hide();
       $('.offline').show();
-    },
-    onlineCheck = function(callback) {
-      if(online) {
-        callback();
-      }
-    };
+    }
 
 if(navigator.onLine) {
   onlineTrue();
@@ -222,11 +217,11 @@ function initializeElements() {
     if (!$('.nav').hasClass('is-active')) {
       openNav()
       pauseGame()
-      onlineCheck(window.wtfga('send', 'event', 'navigation', 'on'));
+      if(online) {window.wtfga('send', 'event', 'navigation', 'on')};
     } else {
       closeNav();
       continueGame()
-      onlineCheck(window.wtfga('send', 'event', 'navigation', 'off'));
+      if(online) {window.wtfga('send', 'event', 'navigation', 'off')};
     }
   });
 
@@ -288,14 +283,14 @@ function initializeElements() {
 
     $('.nav').removeClass('is-active');
     showLayer('.layer--' + layer);
-    onlineCheck(window.wtfga('send', 'event', 'layer', layer));
+    if(online) {window.wtfga('send', 'event', 'layer', layer)};
   });
 
   $('.js-play-again').on('click', function(e) {
     e.preventDefault();
 
-    hideLayer('.hide--finish');
-    startGame(naked);
+    hideLayer('.layer--finish');
+    startGame(true);
   });
 
   $('.js-play').on('click', function(e) {
@@ -336,11 +331,11 @@ function initializeElements() {
 
     $('.popup-merch').removeClass('is-visible');
 
-    onlineCheck(window.wtfga('send', 'event', 'popup', 'close'));
+    if(online) {window.wtfga('send', 'event', 'popup', 'close')};
   });
   
   $('.js-merch').on('click', function(e){
-    onlineCheck(window.wtfga('send', 'event', 'merch', 'objednat'));
+    if(online) {window.wtfga('send', 'event', 'merch', 'objednat')};
   });
 }
 
@@ -600,7 +595,7 @@ function onGameEnd(didWin, progress) {
     startGame(didWin)
   }
 
-  onlineCheck(window.wtfga('send', 'event', 'game', 'end', progress));
+  if(online) {window.wtfga('send', 'event', 'game', 'end', progress)};
 }
 
 function startGame(naked) {
@@ -615,9 +610,9 @@ function startGame(naked) {
   }
   _game = new PussywalkMinigame(_callbacks, naked);
 
-  onlineCheck(window.wtfga = ga);
+  window.wtfga = ga;
 
-  onlineCheck(window.wtfga('send', 'event', 'game', 'start'));
+  if(online) {window.wtfga('send', 'event', 'game', 'start')};
   
   $('.popup-merch').addClass('is-visible');
   
