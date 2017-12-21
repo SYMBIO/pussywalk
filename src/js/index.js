@@ -275,8 +275,23 @@ function initializeElements() {
     scoreUpdate();
   });
 
+  if (getCookie('share') != 1) {
+    var shareTimeout,
+        shareInterval = setInterval(function(){
+      $('.nav-share').addClass('has-wiggle');
+
+      shareTimeout = setTimeout(function(){
+        $('.nav-share').removeClass('has-wiggle');
+      }, 1000)
+    }, 60000);
+  }
+
   $(document).on('click', '.js-share', function(e) {
     e.preventDefault();
+
+    setCookie('share', '1', 365);
+    window.clearInterval(shareInterval);
+    window.clearTimeout(shareTimeout);
 
     window.open($(this).attr('href'), 'fbShareWindow', 'height=450, width=550, top=100, left=100, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
     return false;

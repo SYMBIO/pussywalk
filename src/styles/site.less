@@ -308,21 +308,27 @@ a:focus, a:active {
 		z-index: 2;
 	}
 
-	&:before {
-		background: rgba(0, 0, 0, .5);
+	&:before, &:after {
 		border-radius: 4px;
 		content: '';
 		display: block;
 		height: 100%;
 		left: 0;
 		position: absolute;
-		top: 4px;
 		transition: transform 100ms;
 		width: 100%;
 	}
+	&:before {
+		background: rgba(0, 0, 0, .5);
+		top: 4px;
+	}
+	&:after {
+		top: 0;
+		transition: transform 100ms;
+	}
 
 	&:hover {
-		span {
+		span, &:after {
 			transform: translateY(4px);
 		}
 	}
@@ -330,8 +336,12 @@ a:focus, a:active {
 .nav-sound {
 	top: 95px;
 
+	&:after {
+		background: #342c4a;
+	}
+
 	span {
-		background: #342c4a url(../images/layout/ico-sound-new.png) no-repeat 50% 13px;
+		background: url(../images/layout/ico-sound-new.png) no-repeat 50% 13px;
 		background-size: auto 20px;
 		//box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .13), inset 0 -4px 0 0 #06001c;
 	}
@@ -342,13 +352,49 @@ a:focus, a:active {
 		}
 	}
 }
+@keyframes share {
+	30% {
+		transform: scale(1.3);
+	}
+}
+@keyframes shareSpan {
+	15% {
+		transform: rotate(-15deg);
+	}
+	30% {
+		transform: rotate(15deg);
+	}
+	45% {
+		transform: rotate(-15deg);
+	}
+	60% {
+		transform: rotate(15deg);
+	}
+	75% {
+		transform: rotate(-15deg);
+	}
+	90% {
+		transform: rotate(15deg);
+	}
+}
 .nav-share {
 	top: 165px;
 
+	&:after {
+		background: #fff;
+	}
+
 	span {
-		background: #fff url(../images/layout/ico-fb-new.png) no-repeat 50% 11px;
+		background: url(../images/layout/ico-fb-new.png) no-repeat 50% 11px;
 		background-size: auto 22px;
-		//box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .13), inset 0 -4px 0 0 #5a94a7;
+	}
+
+	&.has-wiggle {
+		animation: share 600ms forwards;
+
+		span {
+			animation: shareSpan 600ms forwards;
+		}
 	}
 }
 
