@@ -87,7 +87,7 @@ const initGame = (config) => {
 
   _world = new Box2dWorld(_canvas[0], _json, config.startNaked);
   _renderer = new Renderer(_world.world, _canvas[0], _world.bodies)
-  _audioPlayer = new AudioPlayer()
+  _audioPlayer = new AudioPlayer(config.startNaked)
 
   _world.callbacks = _callbacks
   _world.renderer = _renderer

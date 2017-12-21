@@ -4,6 +4,9 @@ exports.sounds = {
     "audio/music/Trift-Sop-Remix.mp3",
     "audio/music/Zkurvolla.mp3"
   ],
+  hardMusic: [
+    "audio/music/loop.mp3"
+  ],
   largeSteps: [
     "audio/step_big_01.mp3",
     "audio/step_big_02.mp3",
