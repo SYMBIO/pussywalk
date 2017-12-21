@@ -403,7 +403,7 @@ function scoreUpdate(time, naked) {
         listItem.append(timeSpan)
 
         if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
-          listItem.append('<span class="share"><span></span><a href="" class="btn btn--fb">Sdílej svoje score na</a></span>')
+          listItem.append('<span class="share"><span></span><a href="https://www.pussywalk.com/images/layout/sharer.php?n='+ snapshot.val().username +'&t=' + snapshot.val().time + '" class="btn btn--fb js-share">Sdílej svoje score na</a></span>')
           k = 1;
         }
 
