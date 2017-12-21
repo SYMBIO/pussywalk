@@ -1,4 +1,4 @@
-import assetsLoader from 'assets-loader';
+import assetsLoader from './vendor/assets-loader.js';
 import $ from 'jquery';
 import * as firebase from 'firebase';
 import styles from '../styles/app.less';
