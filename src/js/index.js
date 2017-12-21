@@ -29,6 +29,10 @@ let loader = assetsLoader({
     '/images/spritesheet-1.png',
     '/images/spritesheet-2.json',
     '/images/spritesheet-2.png',
+    '/images/spritesheet-3.json',
+    '/images/spritesheet-3.png',
+    '/images/spritesheet-4.json',
+    '/images/spritesheet-4.png',
     '/images/layout/loading-bg.jpg',
     '/images/layout/loading-ico.png',
     '/images/layout/logo-pussywalk-2.png',
@@ -54,16 +58,6 @@ let loader = assetsLoader({
     '/images/level/lights/warm_bathroom.jpg',
     '/images/misc/flash.png',
     '/images/misc/vignette.png',
-
-    // audio
-    '/audio/step_big_01.mp3',
-    '/audio/step_big_02.mp3',
-    '/audio/step_big_03.mp3',
-    '/audio/step_big_04.mp3',
-    '/audio/step_small_01.mp3',
-    '/audio/step_small_02.mp3',
-    '/audio/step_small_03.mp3',
-    '/audio/step_small_04.mp3',
   ]
 })
   .on('error', function(error) {
@@ -112,7 +106,7 @@ var openNav = function() {
   $('.nav').addClass('is-active');
   $('.nav-link').addClass('is-active');
 
-  if($('.popup-merch').hasClass('is-visible')) {
+  if ($('.popup-merch').hasClass('is-visible')) {
     $('.popup-merch').removeClass('is-visible').addClass('never-visible');
   }
 }
@@ -151,7 +145,7 @@ function initializeElements() {
       username: $("#name_input").val(),
       time: _game.playTime
     }, function(error) {
-      if(error) {
+      if (error) {
         console.log('a');
       }
       //$('#scoreboard').show()
