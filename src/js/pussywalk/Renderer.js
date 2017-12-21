@@ -1,4 +1,5 @@
 import Constants from './Constants'
+import Config from './Config'
 import FlashTexture from './FlashTexture'
 import HeadAnimator from './HeadAnimator'
 import SheepHeadAnimator from './SheepHeadAnimator'
@@ -37,7 +38,7 @@ export default class Renderer {
     this.vignette.src = "images/misc/vignette.png"
 
     this.furniceWall = new Image()
-    this.furniceWall.src = "images/level/furnice_wall.jpg"
+    this.furniceWall.src = "images/level/furnice_wall.jpg?" + Config.cachebuster
 
     this.render = this.render.bind(this)
     this.drawTexture = this.drawTexture.bind(this)
@@ -105,7 +106,7 @@ export default class Renderer {
   prepareTextures() {
     for (var i = 0; i < 8; i++) {
       let image = new Image()
-      image.src = "images/level/level_" + (i + 1) + ".jpg"
+      image.src = "images/level/level_" + (i + 1) + ".jpg?" + Config.cachebuster
       this.levelTextures.push(image)
     }
 
@@ -123,7 +124,7 @@ export default class Renderer {
 
       // Went through OK
       image = new Image()
-      image.src = 'images/spritesheet-' + i + '.png'
+      image.src = 'images/spritesheet-' + i + '.png?' + Config.cachebuster
 
       for (let path in config.frames) {
         let frame = config.frames[path]
