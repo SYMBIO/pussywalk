@@ -654,12 +654,12 @@ export default class Renderer {
       this.context.drawImage(this.furniceWall,
         0,
         0,
-        1042,
-        938,
+        this.furniceWall.naturalWidth,
+        this.furniceWall.naturalHeight,
         10438 * this.scale,
         1086 * this.scale,
-        1042 * this.scale * 2,
-        938 * this.scale * 2
+        this.furniceWall.naturalWidth * this.scale * 2,
+        this.furniceWall.naturalHeight * this.scale * 2
       )
     }
 
