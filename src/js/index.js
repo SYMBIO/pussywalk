@@ -201,6 +201,7 @@ function initializeElements() {
   });
 
   var mute = false;
+  /*
   $('.nav-sound').on('click', function(e) {
     e.preventDefault();
 
@@ -216,7 +217,7 @@ function initializeElements() {
       mute = true;
     }
   });
-  /*
+  */
   $('.nav__sound').on('click', function(e) {
     e.preventDefault();
 
@@ -234,7 +235,6 @@ function initializeElements() {
       mute = true;
     }
   });
-  */
 
   $('.layer__close').on('click', function(e) {
     e.preventDefault();
@@ -546,7 +546,7 @@ function startGame(naked) {
   gtag('event', 'game', {
     'status': 'start'
   });
-
+  
   setTimeout(function() {
     hideLayer('.layer--mission-1');
     $('.popup-merch').addClass('is-visible');
