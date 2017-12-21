@@ -10,7 +10,7 @@ import { TweenMax, Cubic } from 'gsap'
 
 export default class Box2DWorld {
 
-  constructor(canvas, json) {
+  constructor(canvas, json, hard) {
 
     this.canvas = canvas;
     this.timeStep = 1 / 60;
@@ -85,7 +85,10 @@ export default class Box2DWorld {
       this.backSlipperDropPoint,
       this.sheepPickupPoint,
     ]
-    this.lifePickupPoints = [{
+    this.lifePickupPoints = hard ? [{
+      x: 68,
+      y: -15
+    }] : [{
       x: 42,
       y: -16
     }, {
@@ -366,8 +369,8 @@ export default class Box2DWorld {
       time: 0
     };
 
-    this.chain = new Chain(this.world, this.bodies.chain_base)
-    this.bodies = Object.assign({}, this.bodies, this.chain.bodies)
+    // this.chain = new Chain(this.world, this.bodies.chain_base)
+    // this.bodies = Object.assign({}, this.bodies, this.chain.bodies)
 
     this.recorder = new Recorder(this.world, {
       removedFrontSlipper: false,
@@ -815,7 +818,7 @@ export default class Box2DWorld {
       } while (fixture.e != 0)
     }
 
-    this.chain.reset()
+    // this.chain.reset()
 
     this.progressPoints = this.recorder.initialState.progressPoints
     this.progress = this.recorder.initialState.progress
