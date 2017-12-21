@@ -50,6 +50,11 @@ const updateQuality = () => {
 
     // (pixel density) * (figure to scene ratio) * (default graphics in 2x res.)
     _renderer.scale = (dpr / bsr) * (window.innerHeight / 500) / 3;
+
+    let paused = _world.paused
+    _world.paused = false
+    _world.step()
+    _world.paused = paused
   }
 }
 
