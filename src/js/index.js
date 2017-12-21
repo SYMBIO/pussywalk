@@ -291,6 +291,10 @@ function initializeElements() {
 
     window.wtfga('send', 'event', 'popup', 'close');
   });
+  
+  $('.js-merch').on('click', function(e){
+    window.wtfga('send', 'event', 'merch', 'objednat');
+  });
 }
 
 function setCookie(name, value, days) {
@@ -537,8 +541,6 @@ function onLifesUpdate(numberOfLifes, delta) {
 }
 
 function onGameEnd(didWin, progress) {
-  window.wtfga('send', 'event', 'game', 'end', progress);
-
   if (didWin) {
     //$('#name_dialogue').show()
     pauseGame();
@@ -550,6 +552,8 @@ function onGameEnd(didWin, progress) {
   } else {
     startGame(didWin)
   }
+
+  window.wtfga('send', 'event', 'game', 'end', progress);
 }
 
 function startGame(naked) {
@@ -564,7 +568,7 @@ function startGame(naked) {
   }
   _game = new PussywalkMinigame(_callbacks, naked);
 
-  window.wtfga = ga
+  window.wtfga = ga;
 
   window.wtfga('send', 'event', 'game', 'start');
   
