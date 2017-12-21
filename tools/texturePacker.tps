@@ -90,9 +90,9 @@
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
-            <int>1100</int>
+            <int>1024</int>
             <key>height</key>
-            <int>1100</int>
+            <int>1024</int>
         </QSize>
         <key>fixedTextureSize</key>
         <QSize>
@@ -1376,6 +1376,84 @@
                 <rect>75,105,150,210</rect>
                 <key>scale9Paddings</key>
                 <rect>75,105,150,210</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/lights/fluorescent_bathroom.jpg</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>74,76,147,151</rect>
+                <key>scale9Paddings</key>
+                <rect>74,76,147,151</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/lights/fluorescent_general.jpg</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>90,83,180,166</rect>
+                <key>scale9Paddings</key>
+                <rect>90,83,180,166</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/lights/furnice.jpg</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>58,61,115,122</rect>
+                <key>scale9Paddings</key>
+                <rect>58,61,115,122</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/lights/general_lightbulb.jpg</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>61,58,123,116</rect>
+                <key>scale9Paddings</key>
+                <rect>61,58,123,116</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/lights/ovcacek_room_light.jpg</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>86,104,172,209</rect>
+                <key>scale9Paddings</key>
+                <rect>86,104,172,209</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../images/spritesheet_sources/lights/warm_bathroom.jpg</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>55,52,110,104</rect>
+                <key>scale9Paddings</key>
+                <rect>55,52,110,104</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
