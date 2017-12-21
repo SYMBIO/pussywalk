@@ -47,8 +47,8 @@ export default class Renderer {
     this.playRewind = this.playRewind.bind(this)
     this.stopRewind = this.stopRewind.bind(this)
 
-    this.prepareTextures()
     this.prepareLights()
+    this.prepareTextures()
 
     this.eyeball = this.imagesConfig["elements/eyeball.png"]
     this.mrP = this.imagesConfig["elements/mr_p.png"]
@@ -84,22 +84,28 @@ export default class Renderer {
     var image
     this.lights = []
 
-    image = this.imagesConfig["lights/fluorescent_bathroom.jpg"]
+    image = new Image()
+    image.src = "images/level/lights/fluorescent_bathroom.jpg"
     this.lights.push(image)
 
-    image = this.imagesConfig["lights/fluorescent_general.jpg"]
+    image = new Image()
+    image.src = "images/level/lights/fluorescent_general.jpg"
     this.lights.push(image)
 
-    image = this.imagesConfig["lights/furnice.jpg"]
+    image = new Image()
+    image.src = "images/level/lights/furnice.jpg"
     this.lights.push(image)
 
-    image = this.imagesConfig["lights/general_lightbulb.jpg"]
+    image = new Image()
+    image.src = "images/level/lights/general_lightbulb.jpg"
     this.lights.push(image)
 
-    image = this.imagesConfig["lights/ovcacek_room_light.jpg"]
+    image = new Image()
+    image.src = "images/level/lights/ovcacek_room_light.jpg"
     this.lights.push(image)
 
-    image = this.imagesConfig["lights/warm_bathroom.jpg"]
+    image = new Image()
+    image.src = "images/level/lights/warm_bathroom.jpg"
     this.lights.push(image)
   }
 
@@ -661,92 +667,92 @@ export default class Renderer {
 
     this.context.globalCompositeOperation = "screen"
 
-    this.context.drawImage(this.lights[0].image,
-      this.lights[0].frame.x,
-      this.lights[0].frame.y,
-      this.lights[0].frame.w,
-      this.lights[0].frame.h,
+    this.context.drawImage(this.lights[0],
+      0,
+      0,
+      this.lights[0].naturalWidth,
+      this.lights[0].naturalHeight,
       2397 * this.scale,
       305 * this.scale,
-      this.lights[0].frame.w * this.scale * 8,
-      this.lights[0].frame.h * this.scale * 8,
+      this.lights[0].naturalWidth * this.scale * 4,
+      this.lights[0].naturalHeight * this.scale * 4,
     )
 
-    this.context.drawImage(this.lights[1].image,
-      this.lights[1].frame.x,
-      this.lights[1].frame.y,
-      this.lights[1].frame.w,
-      this.lights[1].frame.h,
+    this.context.drawImage(this.lights[1],
+      0,
+      0,
+      this.lights[1].naturalWidth,
+      this.lights[1].naturalHeight,
       301 * this.scale,
       104 * this.scale,
-      this.lights[1].frame.w * this.scale * 8,
-      this.lights[1].frame.h * this.scale * 8,
+      this.lights[1].naturalWidth * this.scale * 4,
+      this.lights[1].naturalHeight * this.scale * 4,
     )
 
-    this.context.drawImage(this.lights[1].image,
-      this.lights[1].frame.x,
-      this.lights[1].frame.y,
-      this.lights[1].frame.w,
-      this.lights[1].frame.h,
+    this.context.drawImage(this.lights[1],
+      0,
+      0,
+      this.lights[1].naturalWidth,
+      this.lights[1].naturalHeight,
       6422 * this.scale,
       511 * this.scale,
-      this.lights[1].frame.w * this.scale * 8,
-      this.lights[1].frame.h * this.scale * 8,
+      this.lights[1].naturalWidth * this.scale * 4,
+      this.lights[1].naturalHeight * this.scale * 4,
     )
 
-    this.context.drawImage(this.lights[1].image,
-      this.lights[1].frame.x,
-      this.lights[1].frame.y,
-      this.lights[1].frame.w,
-      this.lights[1].frame.h,
+    this.context.drawImage(this.lights[1],
+      0,
+      0,
+      this.lights[1].naturalWidth,
+      this.lights[1].naturalHeight,
       7793 * this.scale,
       511 * this.scale,
-      this.lights[1].frame.w * this.scale * 8,
-      this.lights[1].frame.h * this.scale * 8,
+      this.lights[1].naturalWidth * this.scale * 4,
+      this.lights[1].naturalHeight * this.scale * 4,
     )
 
-    this.context.drawImage(this.lights[2].image,
-      this.lights[2].frame.x,
-      this.lights[2].frame.y,
-      this.lights[2].frame.w,
-      this.lights[2].frame.h,
+    this.context.drawImage(this.lights[2],
+      0,
+      0,
+      this.lights[2].naturalWidth,
+      this.lights[2].naturalHeight,
       9530 * this.scale,
       881 * this.scale,
-      this.lights[2].frame.w * this.scale * 8,
-      this.lights[2].frame.h * this.scale * 8,
+      this.lights[2].naturalWidth * this.scale * 4,
+      this.lights[2].naturalHeight * this.scale * 4,
     )
 
-    this.context.drawImage(this.lights[3].image,
-      this.lights[3].frame.x,
-      this.lights[3].frame.y,
-      this.lights[3].frame.w,
-      this.lights[3].frame.h,
+    this.context.drawImage(this.lights[3],
+      0,
+      0,
+      this.lights[3].naturalWidth,
+      this.lights[3].naturalHeight,
       5449 * this.scale,
       333 * this.scale,
-      this.lights[3].frame.w * this.scale * 8,
-      this.lights[3].frame.h * this.scale * 8,
+      this.lights[3].naturalWidth * this.scale * 4,
+      this.lights[3].naturalHeight * this.scale * 4,
     )
 
-    this.context.drawImage(this.lights[4].image,
-      this.lights[4].frame.x,
-      this.lights[4].frame.y,
-      this.lights[4].frame.w,
-      this.lights[4].frame.h,
+    this.context.drawImage(this.lights[4],
+      0,
+      0,
+      this.lights[4].naturalWidth,
+      this.lights[4].naturalHeight,
       4125 * this.scale,
       22 * this.scale,
-      this.lights[4].frame.w * this.scale * 8,
-      this.lights[4].frame.h * this.scale * 8,
+      this.lights[4].naturalWidth * this.scale * 4,
+      this.lights[4].naturalHeight * this.scale * 4,
     )
 
-    this.context.drawImage(this.lights[5].image,
-      this.lights[5].frame.x,
-      this.lights[5].frame.y,
-      this.lights[5].frame.w,
-      this.lights[5].frame.h,
+    this.context.drawImage(this.lights[5],
+      0,
+      0,
+      this.lights[5].naturalWidth,
+      this.lights[5].naturalHeight,
       3562 * this.scale,
       353 * this.scale,
-      this.lights[5].frame.w * this.scale * 8,
-      this.lights[5].frame.h * this.scale * 8,
+      this.lights[5].naturalWidth * this.scale * 4,
+      this.lights[5].naturalHeight * this.scale * 4,
     )
 
     this.context.globalCompositeOperation = "source-over"
