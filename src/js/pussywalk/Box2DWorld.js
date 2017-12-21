@@ -10,7 +10,7 @@ import { TweenMax, Cubic } from 'gsap'
 
 export default class Box2DWorld {
 
-  constructor(canvas, json) {
+  constructor(canvas, json, hard) {
 
     this.canvas = canvas;
     this.timeStep = 1 / 60;
@@ -85,7 +85,10 @@ export default class Box2DWorld {
       this.backSlipperDropPoint,
       this.sheepPickupPoint,
     ]
-    this.lifePickupPoints = [{
+    this.lifePickupPoints = hard ? [{
+      x: 68,
+      y: -15
+    }] : [{
       x: 42,
       y: -16
     }, {

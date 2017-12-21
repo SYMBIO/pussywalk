@@ -67,7 +67,7 @@ const initGame = (config) => {
   $('.game__scene').prepend(_canvas);
   _ctx = _canvas[0].getContext('2d');
 
-  _world = new Box2dWorld(_canvas[0], _json);
+  _world = new Box2dWorld(_canvas[0], _json, config.startNaked);
   _renderer = new Renderer(_world.world, _canvas[0], _world.bodies)
   _audioPlayer = new AudioPlayer()
 
