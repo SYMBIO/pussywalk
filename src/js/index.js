@@ -151,6 +151,9 @@ function initializeElements() {
       username: $("#name_input").val(),
       time: _game.playTime
     }, function(error) {
+      if(error) {
+        console.log('a');
+      }
       //$('#scoreboard').show()
       scoreUpdate(_game.playTime);
     });
@@ -516,6 +519,11 @@ function onLifesUpdate(numberOfLifes, delta) {
 }
 
 function onGameEnd(didWin, progress) {
+  gtag('event', 'game', {
+    'status': 'start',
+    'meters': progress
+  });
+
   if (didWin) {
     //$('#name_dialogue').show()
     pauseGame();

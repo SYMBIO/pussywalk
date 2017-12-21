@@ -289,8 +289,6 @@ a:focus, a:active {
 
 .nav-sound, .nav-share {
 	border: 0;
-	border-radius: 4px;
-	color: @white !important;
 	cursor: pointer;
 	height: 48px;
 	position: absolute;
@@ -298,39 +296,44 @@ a:focus, a:active {
 	text-align: center;
 	text-decoration: none;
 	text-transform: uppercase;
-	transition: transform 100ms, box-shadow 100ms;
 	width: 48px;
 
+	span {
+		border-radius: 4px;
+		display: block;
+		height: 48px;
+		position: relative;
+		transition: transform 100ms;
+		width: 48px;
+		z-index: 2;
+	}
+
+	&:before {
+		background: rgba(0, 0, 0, .5);
+		border-radius: 4px;
+		content: '';
+		display: block;
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 4px;
+		transition: transform 100ms;
+		width: 100%;
+	}
+
 	&:hover {
-		box-shadow: 0 0 0 0 rgba(0, 0, 0, .13), inset 0 0 0 0 #a13a42;
-		transform: translateY(4px);
+		span {
+			transform: translateY(4px);
+		}
 	}
 }
 .nav-sound {
-	background: #342c4a url(../images/layout/ico-sound-new.png) no-repeat 50% 13px;
-	background-size: auto 20px;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .13), inset 0 -4px 0 0 #06001c;
 	top: 95px;
 
-	&:before, &:after {
-		background: #fff;
-		content: '';
-		display: block;
-		height: 2px;
-		display: block;
-		left: 50%;
-		margin-left: -20px;
-		margin-top: -1px;
-		opacity: 0;
-		position: absolute;
-		top: 50%;
-		width: 40px;
-	}
-	&:before {
-		transform: rotate(-45deg);
-	}
-	&:after {
-		transform: rotate(45deg);
+	span {
+		background: #342c4a url(../images/layout/ico-sound-new.png) no-repeat 50% 13px;
+		background-size: auto 20px;
+		//box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .13), inset 0 -4px 0 0 #06001c;
 	}
 
 	&.is-muted {
@@ -340,10 +343,13 @@ a:focus, a:active {
 	}
 }
 .nav-share {
-	background: #fff url(../images/layout/ico-fb-new.png) no-repeat 50% 11px;
-	background-size: auto 22px;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .13), inset 0 -4px 0 0 #5a94a7;
 	top: 165px;
+
+	span {
+		background: #fff url(../images/layout/ico-fb-new.png) no-repeat 50% 11px;
+		background-size: auto 22px;
+		//box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .13), inset 0 -4px 0 0 #5a94a7;
+	}
 }
 
 // layers
@@ -368,6 +374,7 @@ a:focus, a:active {
 	text-align: center;
 	top: 0;
 	width: 100%;
+	z-index: 2;
 
 	&:before {
 		content: '';
@@ -643,7 +650,7 @@ a:focus, a:active {
 		text-align: left;
 
 		&:after {
-			content: '. . . . . . . . . . . . . . . . . . . . . . . . ';
+			content: '. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ';
 			bottom: 0;
 			display: inline-block;
 			margin-left: 8px;
@@ -714,14 +721,14 @@ a:focus, a:active {
 		}
 		&:before {
 			border-left: 57px @white solid;
-			border-right: 172px @white solid;
+			border-right: 162px @white solid;
 			content: '';
 			display: block;
 			height: 3px;
 			left: -3px;
 			position: absolute;
 			bottom: 100%;
-			width: 19px;
+			width: 29px;
 		}
 		&:after {
 			background: rgba(63, 52, 77, .8);
@@ -743,12 +750,12 @@ a:focus, a:active {
 		}
 	}
 
-	@media @phone {
+	@media @phoneLand {
   		.share {
   			width: 235px;
   			
   			&:before {
-  				border-right: 159px;
+  				border-right-width: 149px;
   			}
   		}
 	}
@@ -1061,12 +1068,17 @@ a:focus, a:active {
 		color: #3e384d;
 		font-size: 20px;
 		line-height: 22px;
+		opacity: 0;
 		position: absolute;
 		right: 125px;
 		//text-shadow: 0 0 5px #fff;
 		text-align: right;
 		text-transform: uppercase;
 		top: 0;
+		transform: rotate(-45deg);
+		transform-origin: 300px 50%;
+		transition: transform 250ms cubic-bezier(0.2, -0.07, 0.5, 1.51), opacity 150ms;
+		width: 175px;
 		white-space: nowrap;
 
 		strong {
@@ -1082,12 +1094,14 @@ a:focus, a:active {
 			left: 100%;
 			position: absolute;
 			top: 50%;
+			transform: translateX(100%);
+			transition: 200ms 200ms transform;
 			width: 98px;
 		}
 		&:before {
 			background: rgba(63, 52, 77, .8);
 			border-radius: 98px 98px 0 98px;
-			mix-blend-mode: multiply;
+			//mix-blend-mode: multiply;
 			transform: translateY(-50%) rotate(-45deg);
 		}
 		&:after {
@@ -1095,6 +1109,13 @@ a:focus, a:active {
 			background-repeat: no-repeat;
 			background-size: contain;
 			transform: translateY(-50%);
+		}
+	}
+
+	&.is-visible {
+		p {
+			opacity: 1;
+			transform: rotate(0deg);
 		}
 	}
 
@@ -1107,6 +1128,7 @@ a:focus, a:active {
 			padding-top: 180px;
 			right: 20px;
 			text-align: center;
+			transform-origin: 125px 50%;
 			width: 100px;
 			white-space: normal;
 
@@ -1119,6 +1141,8 @@ a:focus, a:active {
 }
 .layer--mission-1 {
 	p {
+		transition-delay: 300ms;
+
 		&:after {
 			background-image: url(../images/layout/mission-sheep.png);
 		}
