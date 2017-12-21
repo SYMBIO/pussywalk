@@ -8,8 +8,6 @@ if ('ontouchstart' in document.documentElement) {
   $('html').removeClass('no-touch').addClass('touch');
 }
 
-gtag('config', 'UA-162303-31');
-
 // Used for delegating sound to app
 window.__delegateSound = false
 
@@ -190,15 +188,11 @@ function initializeElements() {
     if (!$('.nav').hasClass('is-active')) {
       openNav()
       pauseGame()
-      gtag('event', 'navigation', {
-        'status': 'on'
-      });
+      window.wtfga('send', 'event', 'navigation', 'on');
     } else {
       closeNav();
-      gtag('event', 'navigation', {
-        'status': 'off'
-      });
       continueGame()
+      window.wtfga('send', 'event', 'navigation', 'off');
     }
   });
 
@@ -260,10 +254,7 @@ function initializeElements() {
 
     $('.nav').removeClass('is-active');
     showLayer('.layer--' + layer);
-
-    gtag('event', 'layer', {
-      'name': layer
-    });
+    window.wtfga('send', 'event', 'layer', layer);
   });
 
   $('.js-play').on('click', function(e) {
@@ -291,6 +282,14 @@ function initializeElements() {
 
     window.open($(this).attr('href'), 'fbShareWindow', 'height=450, width=550, top=100, left=100, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
     return false;
+  });
+
+  $('.popup__close').on('click', function(e){
+    e.preventDefault();
+
+    $('.popup-merch').removeClass('is-visible');
+
+    window.wtfga('send', 'event', 'popup', 'close');
   });
 }
 
@@ -538,10 +537,7 @@ function onLifesUpdate(numberOfLifes, delta) {
 }
 
 function onGameEnd(didWin, progress) {
-  gtag('event', 'game', {
-    'status': 'start',
-    'meters': progress
-  });
+  window.wtfga('send', 'event', 'game', 'end', progress);
 
   if (didWin) {
     //$('#name_dialogue').show()
@@ -568,9 +564,9 @@ function startGame(naked) {
   }
   _game = new PussywalkMinigame(_callbacks, naked);
 
-  gtag('event', 'game', {
-    'status': 'start'
-  });
+  window.wtfga = ga
+
+  window.wtfga('send', 'event', 'game', 'start');
   
   $('.popup-merch').addClass('is-visible');
   
@@ -598,3 +594,11 @@ function setMute(mute) {
     _game.setMute(mute)
   }
 }
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-162303-31', 'auto');
+ga('send', 'pageview'); 
