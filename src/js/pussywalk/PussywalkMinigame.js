@@ -16,19 +16,37 @@ var _keymap = {};
 var _loaderPromise;
 var _paused = false;
 var _callbacks;
+var _lowQuality;
 
 const resizeCanvas = () => {
+  updateQuality()
+}
+
+const setLowQuality = (lowQuality) => {
+  _lowQuality = lowQuality
+  updateQuality()
+}
+
+const updateQuality = () => {
   let htmlCanvas = $('canvas')[0]
   if (htmlCanvas && htmlCanvas.getContext) {
 
     let context = htmlCanvas.getContext('2d')
 
-    let dpr = window.devicePixelRatio || 1;
-    let bsr = context.webkitBackingStorePixelRatio ||
-      context.mozBackingStorePixelRatio ||
-      context.msBackingStorePixelRatio ||
-      context.oBackingStorePixelRatio ||
-      context.backingStorePixelRatio || 1;
+    let dpr
+    let bsr
+
+    if (_lowQuality) {
+      dpr = 1
+      bsr = 1
+    } else {
+      dpr = window.devicePixelRatio || 1;
+      bsr = context.webkitBackingStorePixelRatio ||
+        context.mozBackingStorePixelRatio ||
+        context.msBackingStorePixelRatio ||
+        context.oBackingStorePixelRatio ||
+        context.backingStorePixelRatio || 1;
+    }
 
     htmlCanvas.width = window.innerWidth * dpr / bsr;
     htmlCanvas.height = window.innerHeight * dpr / bsr;

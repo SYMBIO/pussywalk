@@ -15,7 +15,7 @@
     "dev": "babel-node ./webpack/server.js",
     "build_no_app": "rm -rf build && webpack --config ./webpack/webpack.config.prod.babel.js",
     "build": "npm run config && rm -rf build && npm run compress && webpack --config ./webpack/webpack.config.prod.babel.js && npm run app_assets",
-    "config": "rm ./src/js/pussywalk/Config.js && cp ./src/js/pussywalk/prod/Config.js ./src/js/pussywalk/Config.js",
+    "config": "rm ./src/js/pussywalk/Config.js && cp ./src/js/pussywalk/prod/Config.js ./src/js/pussywalk/Config.js && echo \"exports.cachebuster='$(git rev-parse HEAD)'\" >> ./src/js/pussywalk/Config.js",
     "compress": "tinify-cli --key 2D2k_-WA_zgQES1XKKjQqVzuNwpYaL2Q \"src/images/**/*.{jpg,png}\"",
     "app_assets": "npm run app_build_zip && npm run app_timestamp",
     "app_build_zip": "bestzip build.zip build/ && mkdir build/app && cp build.zip build/app",

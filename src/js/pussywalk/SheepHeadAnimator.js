@@ -59,8 +59,6 @@ export default class SheepHeadAnimator {
   }
 
   setHeadTexture(texture) {
-
-    debugger
     texture.body = "sheep_head"
     texture.offset = {
       x: -30,

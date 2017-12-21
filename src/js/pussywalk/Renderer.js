@@ -1,4 +1,5 @@
 import Constants from './Constants'
+import Config from './Config'
 import FlashTexture from './FlashTexture'
 import HeadAnimator from './HeadAnimator'
 import SheepHeadAnimator from './SheepHeadAnimator'
@@ -37,7 +38,7 @@ export default class Renderer {
     this.vignette.src = "images/misc/vignette.png"
 
     this.furniceWall = new Image()
-    this.furniceWall.src = "images/level/furnice_wall.jpg"
+    this.furniceWall.src = "images/level/furnice_wall.jpg?" + Config.cachebuster
 
     this.render = this.render.bind(this)
     this.drawTexture = this.drawTexture.bind(this)
@@ -57,7 +58,6 @@ export default class Renderer {
     this.sheep = this.imagesConfig["elements/ctveracek.png"]
     this.fanBackground = this.imagesConfig["elements/dira.png"]
     this.fan = this.imagesConfig["elements/vetrak.png"]
-    debugger
     var i = 0
     while (true) {
       let image = this.imagesConfig["figure/flies/around/flies_" + i + ".png"]
@@ -112,7 +112,7 @@ export default class Renderer {
   prepareTextures() {
     for (var i = 0; i < 8; i++) {
       let image = new Image()
-      image.src = "images/level/level_" + (i + 1) + ".jpg"
+      image.src = "images/level/level_" + (i + 1) + ".jpg?" + Config.cachebuster
       this.levelTextures.push(image)
     }
 
@@ -130,7 +130,7 @@ export default class Renderer {
 
       // Went through OK
       image = new Image()
-      image.src = 'images/spritesheet-' + i + '.png'
+      image.src = 'images/spritesheet-' + i + '.png?' + Config.cachebuster
 
       for (let path in config.frames) {
         let frame = config.frames[path]
@@ -670,89 +670,89 @@ export default class Renderer {
     this.context.drawImage(this.lights[0],
       0,
       0,
-      588,
-      603,
+      this.lights[0].naturalWidth,
+      this.lights[0].naturalHeight,
       2397 * this.scale,
       305 * this.scale,
-      588 * this.scale * 4,
-      603 * this.scale * 4,
+      this.lights[0].naturalWidth * this.scale * 4,
+      this.lights[0].naturalHeight * this.scale * 4,
     )
 
     this.context.drawImage(this.lights[1],
       0,
       0,
-      1433,
-      1323,
+      this.lights[1].naturalWidth,
+      this.lights[1].naturalHeight,
       301 * this.scale,
       104 * this.scale,
-      1433 * this.scale * 4,
-      1323 * this.scale * 4,
+      this.lights[1].naturalWidth * this.scale * 4,
+      this.lights[1].naturalHeight * this.scale * 4,
     )
 
     this.context.drawImage(this.lights[1],
       0,
       0,
-      977,
-      921,
+      this.lights[1].naturalWidth,
+      this.lights[1].naturalHeight,
       6422 * this.scale,
       511 * this.scale,
-      977 * this.scale * 4,
-      921 * this.scale * 4,
+      this.lights[1].naturalWidth * this.scale * 4,
+      this.lights[1].naturalHeight * this.scale * 4,
     )
 
     this.context.drawImage(this.lights[1],
       0,
       0,
-      977,
-      921,
+      this.lights[1].naturalWidth,
+      this.lights[1].naturalHeight,
       7793 * this.scale,
       511 * this.scale,
-      977 * this.scale * 4,
-      921 * this.scale * 4,
+      this.lights[1].naturalWidth * this.scale * 4,
+      this.lights[1].naturalHeight * this.scale * 4,
     )
 
     this.context.drawImage(this.lights[2],
       0,
       0,
-      461,
-      487,
+      this.lights[2].naturalWidth,
+      this.lights[2].naturalHeight,
       9530 * this.scale,
       881 * this.scale,
-      461 * this.scale * 4,
-      487 * this.scale * 4,
+      this.lights[2].naturalWidth * this.scale * 4,
+      this.lights[2].naturalHeight * this.scale * 4,
     )
 
     this.context.drawImage(this.lights[3],
       0,
       0,
-      977,
-      921,
+      this.lights[3].naturalWidth,
+      this.lights[3].naturalHeight,
       5449 * this.scale,
       333 * this.scale,
-      977 * this.scale * 4,
-      921 * this.scale * 4,
+      this.lights[3].naturalWidth * this.scale * 4,
+      this.lights[3].naturalHeight * this.scale * 4,
     )
 
     this.context.drawImage(this.lights[4],
       0,
       0,
-      1369,
-      1667,
+      this.lights[4].naturalWidth,
+      this.lights[4].naturalHeight,
       4125 * this.scale,
       22 * this.scale,
-      1369 * this.scale * 4,
-      1667 * this.scale * 4,
+      this.lights[4].naturalWidth * this.scale * 4,
+      this.lights[4].naturalHeight * this.scale * 4,
     )
 
     this.context.drawImage(this.lights[5],
       0,
       0,
-      879,
-      831,
+      this.lights[5].naturalWidth,
+      this.lights[5].naturalHeight,
       3562 * this.scale,
       353 * this.scale,
-      879 * this.scale * 4,
-      831 * this.scale * 4,
+      this.lights[5].naturalWidth * this.scale * 4,
+      this.lights[5].naturalHeight * this.scale * 4,
     )
 
     this.context.globalCompositeOperation = "source-over"
