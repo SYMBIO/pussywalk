@@ -534,7 +534,9 @@ function onGameEnd(didWin, progress) {
 function startGame(naked) {
   finished = false;
 
-  window.location.href = "delegatesound://";
+  if (window.location.href.indexOf("localhost") != -1) {
+    window.location.href = "delegatesound://";
+  }
 
   if (_game) {
     _game.dispose()
