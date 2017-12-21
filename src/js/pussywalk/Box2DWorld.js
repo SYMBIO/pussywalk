@@ -16,7 +16,7 @@ export default class Box2DWorld {
     this.timeStep = 1 / 60;
     this.velocityIterations = 10;
     this.positionIterations = 6;
-    this.lifes = 3
+    this.lifes = hard ? 1 : 3
     this.record = false
     this.pausePhysics = false
     this.paused = false
@@ -85,10 +85,7 @@ export default class Box2DWorld {
       this.backSlipperDropPoint,
       this.sheepPickupPoint,
     ]
-    this.lifePickupPoints = hard ? [{
-      x: 68,
-      y: -15
-    }] : [{
+    this.lifePickupPoints = hard ? [] : [{
       x: 42,
       y: -16
     }, {
