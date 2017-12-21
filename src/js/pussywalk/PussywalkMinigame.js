@@ -22,11 +22,6 @@ const resizeCanvas = () => {
   updateQuality()
 }
 
-const setLowQuality = (lowQuality) => {
-  _lowQuality = lowQuality
-  updateQuality()
-}
-
 const updateQuality = () => {
   let htmlCanvas = $('canvas')[0]
   if (htmlCanvas && htmlCanvas.getContext) {
@@ -172,6 +167,11 @@ export default class PussywalkMinigame {
     loadJSON({
       startNaked: naked
     });
+  }
+
+  setLowQuality(lowQuality) {
+    _lowQuality = lowQuality
+    updateQuality()
   }
 
   init() {}
