@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-touch">
+<html lang="en" class="no-touch no-app">
 <head>
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
@@ -135,11 +135,18 @@
 					</p>
 
 					<div class="finish__form">
-						<label for="name_input">Mr. Z se nakonec dostal k jiné urně, než čekal. My však doufáme, že ty k té opravdové - volební, přijdeš! Zapiš své jméno do tabulky a dočkej se sladkého překvapení...</label>
+						<label for="name_input">Mr. Z se nakonec dostal k jiné urně, než čekal. My však doufáme, že ty k té opravdové - volební, přijdeš! <span class="online">Zapiš své jméno do tabulky a dočkej se sladkého překvapení...</span></label>
 
-						<input id="name_input" maxlength="20" type="text">
+						<div class="offline">
+							<p>Vypadá to, že jsi bez netu!</p>
+							<p><a href="" class="btn js-play-again">Hraj znovu</a></p>
+						</div>
 
-						<button id="send_name" class="btn">Pokračuj ></button>
+						<span class="online">
+							<input id="name_input" maxlength="20" type="text">
+
+							<button id="send_name" class="btn">Pokračuj ></button>
+						</span>
 
 						<!--<div><button id="cancel_send_name" type="button">NO</button></div>-->
 					</div>

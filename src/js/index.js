@@ -8,6 +8,10 @@ if ('ontouchstart' in document.documentElement) {
   $('html').removeClass('no-touch').addClass('touch');
 }
 
+if(window.location.hostname == 'localhost') {
+  $('html').removeClass('no-app').addClass('app'); 
+}
+
 // Used for delegating sound to app
 window.__delegateSound = false
 
@@ -18,6 +22,36 @@ if (getCookie('tutorial') == 1) {
 }
 
 var naked = false;
+
+var online,
+    onlineTrue = function() {
+      online = true;
+      $('.online').show();
+      $('.offline').hide();
+    },
+    onlineFalse = function() {
+      online = false;
+      $('.online').hide();
+      $('.offline').show();
+    },
+    onlineCheck = function(callback) {
+      if(online) {
+        callback();
+      }
+    };
+
+if(navigator.onLine) {
+  onlineTrue();
+} else {
+  onlineFalse();
+}
+
+window.addEventListener('online', function(){
+  onlineTrue();
+});
+window.addEventListener('offline', function(){
+  onlineFalse();
+});
 
 // todo proper list
 let loader = assetsLoader({
@@ -71,13 +105,11 @@ let loader = assetsLoader({
   })
   .on('complete', function(assets) {
     setTimeout(function() {
-      hideLayer('.layer--loading');
-      showLayer('.layer--mission-1');
-
       if (tutorial) {
         showLayer('.layer--tutorial');
         pauseGame();
       } else {
+        showLayer('.layer--mission-1');
         continueGame();
       }
     }, (2 - assetsLoader.stats.secs) * 1000)
@@ -141,15 +173,17 @@ function initializeElements() {
     hideLayer('.layer--finish');
     pauseGame();
     finished = true;
+
     firebase.database().ref('scoreboard').push({
       username: $("#name_input").val(),
       time: _game.playTime,
       naked: naked
     }, function(error) {
-      if (error) {
-        console.log('a');
-      }
       //$('#scoreboard').show()
+      console.log(error);
+      if (error) {
+        console.log(error);
+      }
       scoreUpdate(_game.playTime, naked);
     });
   });
@@ -188,11 +222,11 @@ function initializeElements() {
     if (!$('.nav').hasClass('is-active')) {
       openNav()
       pauseGame()
-      window.wtfga('send', 'event', 'navigation', 'on');
+      onlineCheck(window.wtfga('send', 'event', 'navigation', 'on'));
     } else {
       closeNav();
       continueGame()
-      window.wtfga('send', 'event', 'navigation', 'off');
+      onlineCheck(window.wtfga('send', 'event', 'navigation', 'off'));
     }
   });
 
@@ -254,13 +288,26 @@ function initializeElements() {
 
     $('.nav').removeClass('is-active');
     showLayer('.layer--' + layer);
-    window.wtfga('send', 'event', 'layer', layer);
+    onlineCheck(window.wtfga('send', 'event', 'layer', layer));
+  });
+
+  $('.js-play-again').on('click', function(e) {
+    e.preventDefault();
+
+    hideLayer('.hide--finish');
+    startGame(naked);
   });
 
   $('.js-play').on('click', function(e) {
     e.preventDefault();
 
     closeTutorial();
+    
+    showLayer('.layer--mission-1');
+
+    setTimeout(function() {
+      $('.popup-merch').addClass('is-visible');
+    }, 7500);     
   });
 
   $('.js-play-naked').on('click', function(e) {
@@ -289,11 +336,11 @@ function initializeElements() {
 
     $('.popup-merch').removeClass('is-visible');
 
-    window.wtfga('send', 'event', 'popup', 'close');
+    onlineCheck(window.wtfga('send', 'event', 'popup', 'close'));
   });
   
   $('.js-merch').on('click', function(e){
-    window.wtfga('send', 'event', 'merch', 'objednat');
+    onlineCheck(window.wtfga('send', 'event', 'merch', 'objednat'));
   });
 }
 
@@ -553,7 +600,7 @@ function onGameEnd(didWin, progress) {
     startGame(didWin)
   }
 
-  window.wtfga('send', 'event', 'game', 'end', progress);
+  onlineCheck(window.wtfga('send', 'event', 'game', 'end', progress));
 }
 
 function startGame(naked) {
@@ -568,16 +615,18 @@ function startGame(naked) {
   }
   _game = new PussywalkMinigame(_callbacks, naked);
 
-  window.wtfga = ga;
+  onlineCheck(window.wtfga = ga);
 
-  window.wtfga('send', 'event', 'game', 'start');
+  onlineCheck(window.wtfga('send', 'event', 'game', 'start'));
   
   $('.popup-merch').addClass('is-visible');
   
-  setTimeout(function() {
-    hideLayer('.layer--mission-1');
-    $('.popup-merch').addClass('is-visible');
-  }, 7500);
+  if(!tutorial) {
+    setTimeout(function() {
+      hideLayer('.layer--mission-1');
+      $('.popup-merch').addClass('is-visible');
+    }, 7500); 
+  }
 }
 
 function pauseGame() {

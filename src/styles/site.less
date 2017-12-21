@@ -39,6 +39,10 @@ a:focus, a:active {
 
 // LAYOUT
 // ---------
+.offline {
+	display: none;
+}
+
 #app {
 	display: block;
 	height: 100%;
@@ -234,6 +238,13 @@ a:focus, a:active {
 		}
 	}
 }
+.no-app.touch {
+	.nav__sound {
+		@media @desktop {
+			display: none;
+		}
+	}
+}
 .nav__score {
 	&:before {
 		background-image: url(../images/layout/ico-score.png);
@@ -361,16 +372,13 @@ a:focus, a:active {
 	//display: none;
 	height: 100%;
 	opacity: 0;
-	pointer-events: none;
 	position: absolute;
-	transition: opacity 300ms;
-	will-change: opacity, transform;
 	transform: translateX(-100%);
+	transition: opacity 300ms;
 	width: 100%;
 
 	&.is-visible {
 		opacity: 1;
-		pointer-events: all;
 		transform: translateX(0%);
 		z-index: 2;
 	}
@@ -1229,9 +1237,7 @@ a:focus, a:active {
 	}
 
 	@media @phoneLand {
-		.layer__content {
-			top: 21%;
-		}
+		top: 100px;
 
 		p {
 			padding-top: 180px;
@@ -1341,6 +1347,8 @@ a:focus, a:active {
 }
 
 .layer--tutorial {
+	left: -10px;
+	
 	&:after {
 		background: rgba(63, 52, 77, .8);
 		content: '';
@@ -1353,6 +1361,8 @@ a:focus, a:active {
 	}
 
 	&.is-visible {
+		left: 0;
+		
 		&:after {
 			mix-blend-mode: multiply;
 		}
