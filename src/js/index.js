@@ -52,12 +52,6 @@ let loader = assetsLoader({
     '/images/level/level_6.jpg',
     '/images/level/level_7.jpg',
     '/images/level/level_8.jpg',
-    '/images/level/lights/fluorescent_bathroom.jpg',
-    '/images/level/lights/fluorescent_general.jpg',
-    '/images/level/lights/furnice.jpg',
-    '/images/level/lights/general_lightbulb.jpg',
-    '/images/level/lights/ovcacek_room_light.jpg',
-    '/images/level/lights/warm_bathroom.jpg',
     '/images/misc/flash.png',
     '/images/misc/vignette.png',
   ]
@@ -174,8 +168,8 @@ function initializeElements() {
     $('#game_controls, #game_lives').show()
     if (finished) {
       startGame(true)
-      if(!naked) {
-        setTimeout(function(){
+      if (!naked) {
+        setTimeout(function() {
           pauseGame();
           showLayer('.layer--naked');
         }, 500)
@@ -392,7 +386,7 @@ function scoreUpdate(time, naked) {
 
         posSpan.append(i + 1 + '.')
         let nakedSpan = '';
-        if(snapshot.val().naked) {
+        if (snapshot.val().naked) {
           nakedSpan = ' <span class="scoreboard__nude">NUDE</span>';
         }
         nameSpan.append(snapshot.val().username + nakedSpan)
@@ -441,7 +435,7 @@ function scoreUpdate(time, naked) {
         let timeSpan = $("<span class=\"time\" />")
         posSpan.append(i + 1 + '.')
         let nakedSpan = '';
-        if(snapshot.val().naked) {
+        if (snapshot.val().naked) {
           nakedSpan = ' <span class="scoreboard__nude">NUDE</span>';
         }
         nameSpan.append(snapshot.val().username + nakedSpan)
@@ -571,9 +565,9 @@ function startGame(naked) {
   gtag('event', 'game', {
     'status': 'start'
   });
-  
+
   $('.popup-merch').addClass('is-visible');
-  
+
   setTimeout(function() {
     hideLayer('.layer--mission-1');
     $('.popup-merch').addClass('is-visible');

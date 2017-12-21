@@ -57,7 +57,6 @@ export default class Renderer {
     this.sheep = this.imagesConfig["elements/ctveracek.png"]
     this.fanBackground = this.imagesConfig["elements/dira.png"]
     this.fan = this.imagesConfig["elements/vetrak.png"]
-    debugger
     var i = 0
     while (true) {
       let image = this.imagesConfig["figure/flies/around/flies_" + i + ".png"]
