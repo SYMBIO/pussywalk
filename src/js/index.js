@@ -547,6 +547,8 @@ function startGame(naked) {
     'status': 'start'
   });
   
+  $('.popup-merch').addClass('is-visible');
+  
   setTimeout(function() {
     hideLayer('.layer--mission-1');
     $('.popup-merch').addClass('is-visible');
