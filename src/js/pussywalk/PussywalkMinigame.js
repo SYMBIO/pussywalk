@@ -33,6 +33,9 @@ const updateQuality = () => {
 
     let context = htmlCanvas.getContext('2d')
 
+    let dpr
+    let bsr
+
     if (_lowQuality) {
       dpr = 1
       bsr = 1
