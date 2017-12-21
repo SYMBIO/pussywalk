@@ -799,8 +799,8 @@ exports.nakedBodyTexturesConfig = [
     body: "body",
     asset: "figure/naked/mod/torso.png",
     offset: {
-      x: -30,
-      y: -60
+      x: -25,
+      y: -55
     }
   },
   {
@@ -808,8 +808,8 @@ exports.nakedBodyTexturesConfig = [
     body: "body",
     asset: "figure/naked/torso.png",
     offset: {
-      x: -30,
-      y: -60
+      x: -25,
+      y: -55
     }
   },
   {
