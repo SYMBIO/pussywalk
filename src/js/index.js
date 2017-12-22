@@ -15,6 +15,9 @@ if(window.location.hostname == 'localhost') {
 // Used for delegating sound to app
 window.__delegateSound = false
 
+//
+var mute = false;
+
 // tutorial
 var tutorial = true;
 if (getCookie('tutorial') == 1) {
@@ -230,7 +233,6 @@ function initializeElements() {
     if(online) {window.wtfga('send', 'event', 'navigation', 'restart')};
   });
 
-  var mute = false;
   /*
   $('.nav-sound').on('click', function(e) {
     e.preventDefault();
