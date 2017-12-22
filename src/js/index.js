@@ -696,7 +696,7 @@ function startGame(naked) {
   if (_game) {
     _game.dispose()
   }
-  _game = new PussywalkMinigame(_callbacks, naked);
+  _game = new PussywalkMinigame(_callbacks, naked, mute);
 
   if(typeof ga === 'function') {
     window.wtfga = ga;
