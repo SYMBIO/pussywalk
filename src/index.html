@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" class="no-touch">
+<html lang="en" class="no-touch no-app">
 <head>
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
 	<title>Jeho voliči k urně dojdou. Co ty?</title>
-	<meta name="title" content="Jeho voliči k urně dojdou. Co ty?" />
-	<meta name="description" content="Hra Pussywalk 2 je simulátor prezidenta (i s “virózou”). Vyzvedni Čtveráčka a dej se s panem Z. na cestu k urně." />
+	<meta name="title" content="PussyWalk II: Cesta k urně | Jeho voliči k urně dojdou. Co ty?" />
+	<meta name="description" content="Hra PussyWalk 2 je prezidentským simulátorem. Vyzvedni Čtveráčka a dej se s panem Z. na cestu k urně." />
 	<meta name="author" content="" />
 	<!--[if IE]><link rel="shortcut icon" href="favicon.ico"/><![endif]-->
 
@@ -14,7 +14,7 @@
 	<meta property="og:type" content="website">
 	<meta property="og:name" content="PussyWalk">
 	<meta property="og:url" content="http://pussywalk.com">
-	<meta property="og:description" content="Hra Pussywalk 2 je simulátor prezidenta (i s “virózou”). Vyzvedni Čtveráčka a dej se s panem Z. na cestu k urně.">
+	<meta property="og:description" content="PussyWalk je simulátor prezidenta, který je pro každého zdarma. Vyzvedni Čtveráčka a dej se s panem Z. na cestu k urně.">
 	<meta property="og:image" content="http://www.pussywalk.com/images/layout/fb-share.png">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -39,13 +39,6 @@
 	<meta name="theme-color" content="#ffffff">
 
 	<!--
-	<script type="text/javascript">
-		function share(){
-					ga('send', 'event', { eventCategory: 'Facebook', eventAction: 'Share', eventLabel: 'item'});
-			var shareUrl = "http://www.facebook.com/sharer/sharer.php?u=www.pussywalk.com/";
-			window.open(shareUrl, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width=585,height=368');
-		}
-	</script> -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162303-31"></script>
 	<script>
 	  window.dataLayer = window.dataLayer || [];
@@ -54,6 +47,7 @@
 
 	  gtag('config', 'UA-162303-31');
 	</script>
+	-->
 </head>
 <body>
 	<div id="app">
@@ -96,9 +90,24 @@
 				<p><strong>MISE 2</strong> Dovrávorej k urně</p>
 			</div>
 		</div>
+		
+		<div class="nav">
+			<ul class="nav__list">
+				<li><a href="" class="nav__restart">Restart</a></li>
+				<!--<li><a href="https://www.facebook.com/sharer/sharer.php?u=www.pussywalk.cz" target="_blank" class="nav__share js-share">Sdílej</a></li>-->
+				<li><a href="" class="nav__quality nav__toggle">VYSOKÁ KVALITA</a></li>
+				<li><a href="" class="nav__sound nav__toggle">ZVUK</a></li>
+				<li><a href="" class="nav__score js-scoreboard-update">TABULKA VÍTĚZŮ</a></li>
+				<li><a href="" data-layer="credits" class="nav__kill js-show-layer">PACHATELÉ</a></li>
+				<li><a href="http://1.pussywalk.com" class="nav__game">PUSSYWALK I</a></li>
+			</ul>
+
+			<a href="" data-layer="merch" class="btn btn--pussy js-show-layer">Něco si kup</a>
+		</div>
+		<div class="nav-link"><span></span></div>
 
 		<a href="https://www.facebook.com/sharer/sharer.php?u=www.pussywalk.cz" target="_blank" class="nav-share js-share"><span></span></a>
-		<a href="" class="nav-sound"><span></span></a>
+		<!--<a href="" class="nav-sound"><span></span></a>-->
 
 		<div class="layer layer--tutorial">
 			<div class="layer__content">
@@ -127,11 +136,18 @@
 					</p>
 
 					<div class="finish__form">
-						<label for="name_input">Mr. Z se nakonec dostal k jiné urně, než čekal. My však doufáme, že ty k té opravdové - volební, přijdeš! Zapiš své jméno do tabulky a dočkej se sladkého překvapení...</label>
+						<label for="name_input">Krokem vratkým, ale přece se pan&nbsp;Z. k&nbsp;urně dostal! I&nbsp;když k&nbsp;trochu jiné. <span class="online">Za&nbsp;odměnu připoj své jméno k&nbsp;vítězům.</span> A&nbsp;nezapomeň přijít k urně volební!</label>
 
-						<input id="name_input" type="text">
+						<div class="offline">
+							<p>Vypadá to, že jsi bez netu!</p>
+							<p><a href="" class="btn js-play-again">Hraj znovu</a></p>
+						</div>
 
-						<button id="send_name" class="btn">Pokračuj ></button>
+						<span class="online">
+							<input id="name_input" maxlength="20" type="text">
+
+							<button id="send_name" class="btn">Pokračuj ></button>
+						</span>
 
 						<!--<div><button id="cancel_send_name" type="button">NO</button></div>-->
 					</div>
@@ -146,16 +162,18 @@
 
 					<img src="/images/layout/merch.png" alt="">
 
-					<p>Veškerý výdělek z této hry jde na podporu neziskové organizace Cesta domů pečující o umírající a jejich blízké.</p>
+					<p><strong>Kup si něco na sebe, ať ti to u voleb sluší!</strong> Udělej si radost tričkem nebo mikinou PussyWalk. Pomůžeš nám k výrobě 
+					dalších prkotin s motivy ze hry. <strong>A hlavně spácháš dobro</strong> – z výtěžku z prodeje podpoříme neziskovku pečující o staré a umírající lidi.</p>
 
-					<p><a href="" class="btn btn--big" target="_blank">Objednat</a></p>
+					<p><a href="http://www.merchmaster.cz/pussywalk/" class="btn btn--big js-merch" target="_blank">Objednat</a></p>
 				</div>
 			</div>
 		</div>
 
 		<div class="popup-merch">
+			<span class="popup__close"></span>
 			<p>
-				Kupte si mega tričko <strong>Pussywalk</strong> a podpořte tak péči o <strong>staré a umírající lidi</strong>.
+				Kup si tričko <strong>PussyWalk</strong> a&nbsp;podpoř tak péči o <strong>staré lidi</strong>.
 			</p>
 		</div>
 
@@ -186,7 +204,7 @@
 							<li>
 								<img src="/images/layout/vojta.png" alt="">
 								<strong>Vojtěch Šmíd</strong>
-								project mannager
+								project manager
 							</li>
 							<li>
 								<img src="/images/layout/jirka.png" alt="">
@@ -209,12 +227,23 @@
 			</div>
 		</div>
 
+		<div class="layer layer--naked">
+			<div class="layer__content">
+				<div class="layer__center">
+					<span class="scoreboard__nude">NUDE</span>
+					<img src="/images/layout/cisar.png" alt="Císařovy nové šaty">
+					<p>Vítej v nudistickém režimu! Zařaď se k&nbsp;PussyWalk elitě a&nbsp;zvládni dokončit hru s&nbsp;jediným životem... hodně štěstí!</p>
+					<p><a href="" class="btn js-play-naked">Jdu na to</a></p>
+				</div>
+			</div>
+		</div>
+
 		<div class="layer layer--scoreboard">
 			<div class="layer__content">
 				<div class="layer__center">
 					<button id="scoreboard_close" class="layer__close"></button>
 
-					<h3>Klub přátel žehu</h3>
+					<h3>Zodpovědní voliči</h3>
 					<div id="scoreboard">
 						<ul id="scoreboard_top3" class="scoreboard__list">
 							<!--
@@ -251,20 +280,6 @@
 				</div>
 			</div>	
 		</div>
-
-		<div class="nav">
-			<ul class="nav__list">
-				<li><a href="" class="nav__restart">Restart</a></li>
-				<!--<li><a href="https://www.facebook.com/sharer/sharer.php?u=www.pussywalk.cz" target="_blank" class="nav__share js-share">Sdílej</a></li>-->
-				<!--<li><a href="" class="nav__sound" data-on="ZVUK ZAPNOUT" data-off="ZVUK VYPNOUT">ZVUK VYPNOUT</a></li>-->
-				<li><a href="" class="nav__score js-scoreboard-update">TABULKA VÍTĚZŮ</a></li>
-				<li><a href="" data-layer="credits" class="nav__kill js-show-layer">PACHATELÉ</a></li>
-				<li><a href="http://old.pussywalk.com" class="nav__game">PUSSYWALK 1.</a></li>
-			</ul>
-
-			<a href="" data-layer="merch" class="btn btn--pussy js-show-layer">MERCH</a>
-		</div>
-		<div class="nav-link"><span></span></div>
 
 		<div class="game__scene"></div>
 	</div>

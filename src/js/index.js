@@ -1,4 +1,4 @@
-import assetsLoader from 'assets-loader';
+import assetsLoader from './vendor/assets-loader.js';
 import $ from 'jquery';
 import * as firebase from 'firebase';
 import styles from '../styles/app.less';
@@ -8,7 +8,9 @@ if ('ontouchstart' in document.documentElement) {
   $('html').removeClass('no-touch').addClass('touch');
 }
 
-gtag('config', 'UA-162303-31');
+if(window.location.hostname == 'localhost') {
+  $('html').removeClass('no-app').addClass('app'); 
+}
 
 // Used for delegating sound to app
 window.__delegateSound = false
@@ -18,6 +20,33 @@ var tutorial = true;
 if (getCookie('tutorial') == 1) {
   tutorial = false;
 }
+
+var naked = false;
+
+var online,
+    onlineTrue = function() {
+      online = true;
+      $('.online').show();
+      $('.offline').hide();
+    },
+    onlineFalse = function() {
+      online = false;
+      $('.online').hide();
+      $('.offline').show();
+    }
+
+if(navigator.onLine) {
+  onlineTrue();
+} else {
+  onlineFalse();
+}
+
+window.addEventListener('online', function(){
+  onlineTrue();
+});
+window.addEventListener('offline', function(){
+  onlineFalse();
+});
 
 // todo proper list
 let loader = assetsLoader({
@@ -29,6 +58,10 @@ let loader = assetsLoader({
     '/images/spritesheet-1.png',
     '/images/spritesheet-2.json',
     '/images/spritesheet-2.png',
+    '/images/spritesheet-3.json',
+    '/images/spritesheet-3.png',
+    '/images/spritesheet-4.json',
+    '/images/spritesheet-4.png',
     '/images/layout/loading-bg.jpg',
     '/images/layout/loading-ico.png',
     '/images/layout/logo-pussywalk-2.png',
@@ -46,24 +79,8 @@ let loader = assetsLoader({
     '/images/level/level_6.jpg',
     '/images/level/level_7.jpg',
     '/images/level/level_8.jpg',
-    '/images/level/lights/fluorescent_bathroom.jpg',
-    '/images/level/lights/fluorescent_general.jpg',
-    '/images/level/lights/furnice.jpg',
-    '/images/level/lights/general_lightbulb.jpg',
-    '/images/level/lights/ovcacek_room_light.jpg',
-    '/images/level/lights/warm_bathroom.jpg',
     '/images/misc/flash.png',
     '/images/misc/vignette.png',
-
-    // audio
-    '/audio/step_big_01.mp3',
-    '/audio/step_big_02.mp3',
-    '/audio/step_big_03.mp3',
-    '/audio/step_big_04.mp3',
-    '/audio/step_small_01.mp3',
-    '/audio/step_small_02.mp3',
-    '/audio/step_small_03.mp3',
-    '/audio/step_small_04.mp3',
   ]
 })
   .on('error', function(error) {
@@ -77,13 +94,11 @@ let loader = assetsLoader({
   })
   .on('complete', function(assets) {
     setTimeout(function() {
-      hideLayer('.layer--loading');
-      showLayer('.layer--mission-1');
-
       if (tutorial) {
         showLayer('.layer--tutorial');
         pauseGame();
       } else {
+        showLayer('.layer--mission-1');
         continueGame();
       }
     }, (2 - assetsLoader.stats.secs) * 1000)
@@ -112,9 +127,11 @@ var openNav = function() {
   $('.nav').addClass('is-active');
   $('.nav-link').addClass('is-active');
 
-  if($('.popup-merch').hasClass('is-visible')) {
+  /*
+  if ($('.popup-merch').hasClass('is-visible')) {
     $('.popup-merch').removeClass('is-visible').addClass('never-visible');
   }
+  */
 }
 var closeNav = function() {
   $('.nav').removeClass('is-active');
@@ -147,15 +164,18 @@ function initializeElements() {
     hideLayer('.layer--finish');
     pauseGame();
     finished = true;
+
     firebase.database().ref('scoreboard').push({
       username: $("#name_input").val(),
-      time: _game.playTime
+      time: _game.playTime,
+      naked: naked
     }, function(error) {
-      if(error) {
-        console.log('a');
-      }
       //$('#scoreboard').show()
-      scoreUpdate(_game.playTime);
+      console.log(error);
+      if (error) {
+        console.log(error);
+      }
+      scoreUpdate(_game.playTime, naked);
     });
   });
 
@@ -177,6 +197,13 @@ function initializeElements() {
     $('#game_controls, #game_lives').show()
     if (finished) {
       startGame(true)
+      if (!naked) {
+        setTimeout(function() {
+          pauseGame();
+          showLayer('.layer--naked');
+        }, 500)
+      }
+      naked = true;
     }
   })
 
@@ -186,15 +213,11 @@ function initializeElements() {
     if (!$('.nav').hasClass('is-active')) {
       openNav()
       pauseGame()
-      gtag('event', 'navigation', {
-        'status': 'on'
-      });
+      if(online) {window.wtfga('send', 'event', 'navigation', 'on')};
     } else {
       closeNav();
-      gtag('event', 'navigation', {
-        'status': 'off'
-      });
       continueGame()
+      if(online) {window.wtfga('send', 'event', 'navigation', 'off')};
     }
   });
 
@@ -207,6 +230,7 @@ function initializeElements() {
   });
 
   var mute = false;
+  /*
   $('.nav-sound').on('click', function(e) {
     e.preventDefault();
 
@@ -222,7 +246,7 @@ function initializeElements() {
       mute = true;
     }
   });
-  /*
+  */
   $('.nav__sound').on('click', function(e) {
     e.preventDefault();
 
@@ -230,17 +254,28 @@ function initializeElements() {
 
     if (mute) {
       setMute(false);
-      link.removeClass('is-muted');
-      link.html(link.data('off'))
+      link.removeClass('is-active');
       mute = false;
     } else {
       setMute(true);
-      link.addClass('is-muted');
-      link.html(link.data('on'))
+      link.addClass('is-active');
       mute = true;
     }
   });
-  */
+
+  $('.nav__quality').on('click', function(e) {
+    e.preventDefault();
+
+    var link = $(this);
+
+    if (link.hasClass('is-active')) {
+      link.removeClass('is-active');
+      _game.setLowQuality(true);
+    } else {
+      link.addClass('is-active');
+      _game.setLowQuality(false);
+    }
+  });
 
   $('.layer__close').on('click', function(e) {
     e.preventDefault();
@@ -256,16 +291,37 @@ function initializeElements() {
 
     $('.nav').removeClass('is-active');
     showLayer('.layer--' + layer);
+    if(online) {window.wtfga('send', 'event', 'layer', layer)};
+  });
 
-    gtag('event', 'layer', {
-      'name': layer
-    });
+  $('.js-play-again').on('click', function(e) {
+    e.preventDefault();
+
+    hideLayer('.layer--finish');
+
+    startGame(true);
   });
 
   $('.js-play').on('click', function(e) {
     e.preventDefault();
 
     closeTutorial();
+    
+    showLayer('.layer--mission-1');
+
+    /*
+    setTimeout(function() {
+      $('.popup-merch').addClass('is-visible');
+    }, 7500);
+    */
+  });
+
+  $('.js-play-naked').on('click', function(e) {
+    e.preventDefault();
+
+    hideLayer('.layer--naked');
+
+    continueGame();
   });
 
   $('.js-scoreboard-update').on('click', function(e) {
@@ -295,6 +351,18 @@ function initializeElements() {
 
     window.open($(this).attr('href'), 'fbShareWindow', 'height=450, width=550, top=100, left=100, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
     return false;
+  });
+
+  $('.popup__close').on('click', function(e){
+    e.preventDefault();
+
+    $('.popup-merch').removeClass('is-visible');
+
+    if(online) {window.wtfga('send', 'event', 'popup', 'close')};
+  });
+  
+  $('.js-merch').on('click', function(e){
+    if(online) {window.wtfga('send', 'event', 'merch', 'objednat')};
   });
 }
 
@@ -351,7 +419,7 @@ function initializeFirebase() {
 //scoreUpdate();
 }
 
-function scoreUpdate(time) {
+function scoreUpdate(time, naked) {
 
   $('#scoreboard_top3').html('<div class="lds-css ng-scope"><div style="width:100%;height:100%" class="lds-pacman"><div><div></div><div></div><div></div></div><div><div></div><div></div></div></div>');
   $('#scoreboard_list').html('');
@@ -395,7 +463,11 @@ function scoreUpdate(time) {
         let timeSpan = $("<span class=\"time\" />")
 
         posSpan.append(i + 1 + '.')
-        nameSpan.append(snapshot.val().username)
+        let nakedSpan = '';
+        if (snapshot.val().naked) {
+          nakedSpan = ' <span class="scoreboard__nude">NUDE</span>';
+        }
+        nameSpan.append(snapshot.val().username + nakedSpan)
         timeSpan.append(niceTime(snapshot.val().time))
 
         listItem.append(posSpan)
@@ -403,7 +475,7 @@ function scoreUpdate(time) {
         listItem.append(timeSpan)
 
         if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
-          listItem.append('<span class="share"><span></span><a href="" class="btn btn--fb">Sdílej svoje score na</a></span>')
+          listItem.append('<span class="share"><span></span><a href="https://www.pussywalk.com/images/layout/sharer.php?n='+ snapshot.val().username +'&t=' + snapshot.val().time + '" class="btn btn--fb js-share">Sdílej svoje score na</a></span>')
           k = 1;
         }
 
@@ -440,7 +512,11 @@ function scoreUpdate(time) {
         let nameSpan = $("<span class=\"username\" />")
         let timeSpan = $("<span class=\"time\" />")
         posSpan.append(i + 1 + '.')
-        nameSpan.append(snapshot.val().username)
+        let nakedSpan = '';
+        if (snapshot.val().naked) {
+          nakedSpan = ' <span class="scoreboard__nude">NUDE</span>';
+        }
+        nameSpan.append(snapshot.val().username + nakedSpan)
         timeSpan.append(niceTime(snapshot.val().time))
         listItem.append(posSpan)
         listItem.append(nameSpan)
@@ -505,7 +581,7 @@ function onTick(time) {
 }
 
 function onSheepPickup() {
-  $('.popup-merch').removeClass('is-visible');
+  //$('.popup-merch').removeClass('is-visible');
 
   showLayer('.layer--mission-2');
 
@@ -534,11 +610,6 @@ function onLifesUpdate(numberOfLifes, delta) {
 }
 
 function onGameEnd(didWin, progress) {
-  gtag('event', 'game', {
-    'status': 'start',
-    'meters': progress
-  });
-
   if (didWin) {
     //$('#name_dialogue').show()
     pauseGame();
@@ -550,26 +621,36 @@ function onGameEnd(didWin, progress) {
   } else {
     startGame(didWin)
   }
+
+  if(online) {window.wtfga('send', 'event', 'game', 'end', progress)};
 }
 
 function startGame(naked) {
   finished = false;
 
-  window.location.href = "delegatesound://";
+  if (window.location.href.indexOf("localhost") != -1) {
+    window.location.href = "delegatesound://";
+  }
 
   if (_game) {
     _game.dispose()
   }
   _game = new PussywalkMinigame(_callbacks, naked);
 
-  gtag('event', 'game', {
-    'status': 'start'
-  });
+  window.wtfga = ga;
 
-  setTimeout(function() {
-    hideLayer('.layer--mission-1');
+  if(online) {window.wtfga('send', 'event', 'game', 'start')};
+  
+  if(naked) {
     $('.popup-merch').addClass('is-visible');
-  }, 7500);
+  }
+  
+  if(!tutorial) {
+    setTimeout(function() {
+      hideLayer('.layer--mission-1');
+      //$('.popup-merch').addClass('is-visible');
+    }, 7500); 
+  }
 }
 
 function pauseGame() {
@@ -590,3 +671,11 @@ function setMute(mute) {
     _game.setMute(mute)
   }
 }
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-162303-31', 'auto');
+ga('send', 'pageview'); 

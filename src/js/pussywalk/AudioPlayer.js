@@ -4,7 +4,7 @@ import SpriteSheet from 'spritesheet-canvas'
 
 export default class AudioPlayer {
 
-  constructor() {
+  constructor(hard) {
 
     this.onMusicEnded = this.onMusicEnded.bind(this)
     this.onLoseHealthEnded = this.onLoseHealthEnded.bind(this)
@@ -12,12 +12,21 @@ export default class AudioPlayer {
 
     window.soundDidFinishPlaying = this.onSoundEnded.bind(this)
 
-    this.music = Constants.sounds.music.map(function(name) {
-      let sound = new Audio(name);
-      sound.preload = 'none';
-      sound.name = name
-      return sound
-    })
+    if (hard) {
+      this.music = Constants.sounds.hardMusic.map(function(name) {
+        let sound = new Audio(name);
+        sound.preload = 'none';
+        sound.name = name
+        return sound
+      })
+    } else {
+      this.music = Constants.sounds.music.map(function(name) {
+        let sound = new Audio(name);
+        sound.preload = 'none';
+        sound.name = name
+        return sound
+      })
+    }
 
     this.smallSteppingSounds = Constants.sounds.smallSteps.map(function(name) {
       let sound = new Audio(name);
@@ -231,7 +240,7 @@ export default class AudioPlayer {
   }
 
   onMusicEnded() {
-    window.soundDidFinishPlaying(this.music[this.musicIndex])
+    window.soundDidFinishPlaying(this.music[this.musicIndex].name)
   }
 
   onLoseHealthEnded() {

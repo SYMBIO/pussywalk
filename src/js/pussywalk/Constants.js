@@ -1,10 +1,11 @@
 exports.sounds = {
   music: [
     "audio/music/BubbleBum.mp3",
-    "audio/music/Google.mp3",
     "audio/music/Trift-Sop-Remix.mp3",
-    "audio/music/Vravoram.mp3",
-    "audio/music/Zkurvölla.mp3"
+    "audio/music/Zkurvolla.mp3"
+  ],
+  hardMusic: [
+    "audio/music/loop.mp3"
   ],
   largeSteps: [
     "audio/step_big_01.mp3",
@@ -801,8 +802,8 @@ exports.nakedBodyTexturesConfig = [
     body: "body",
     asset: "figure/naked/mod/torso.png",
     offset: {
-      x: -30,
-      y: -60
+      x: -25,
+      y: -55
     }
   },
   {
@@ -810,8 +811,8 @@ exports.nakedBodyTexturesConfig = [
     body: "body",
     asset: "figure/naked/torso.png",
     offset: {
-      x: -30,
-      y: -60
+      x: -25,
+      y: -55
     }
   },
   {
