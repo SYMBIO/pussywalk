@@ -184,6 +184,7 @@ export default class PussywalkMinigame {
   onResize() {}
 
   pause() {
+    this.onTick();
     _paused = true;
     if (_enterFrame) {
       window.cancelAnimationFrame(_enterFrame);
