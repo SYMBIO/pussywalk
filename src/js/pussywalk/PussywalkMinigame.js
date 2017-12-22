@@ -176,6 +176,7 @@ export default class PussywalkMinigame {
 
   setLowQuality(lowQuality) {
     _lowQuality = lowQuality
+    _renderer.lowQuality = lowQuality
     updateQuality()
   }
 
@@ -184,6 +185,7 @@ export default class PussywalkMinigame {
   onResize() {}
 
   pause() {
+    this.onTick();
     _paused = true;
     if (_enterFrame) {
       window.cancelAnimationFrame(_enterFrame);
@@ -204,8 +206,6 @@ export default class PussywalkMinigame {
     this.lastTickTime = now
     if (!_paused) {
       this.playTime += delta
-
-      //console.log(this.playTime);
 
       if (_callbacks.onTick) {
         _callbacks.onTick(this.playTime)

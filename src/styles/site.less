@@ -1789,6 +1789,17 @@ body {
 .game__key {
 	cursor: pointer;
 	
+	&:before {
+		content: '';
+		display: block;
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 2;
+	}
+	
 	span {
 		background-color: #201a33;
 		box-shadow: 0 30px 90px rgba(0, 0, 0, .5);

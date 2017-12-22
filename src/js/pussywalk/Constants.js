@@ -2,7 +2,8 @@ exports.sounds = {
   music: [
     "audio/music/BubbleBum.mp3",
     "audio/music/Trift-Sop-Remix.mp3",
-    "audio/music/Zkurvolla.mp3"
+    "audio/music/Zkurvolla.mp3",
+    "audio/music/Jak_jsem_na_tom.mp3"
   ],
   hardMusic: [
     "audio/music/loop.mp3"
@@ -682,8 +683,8 @@ exports.texturesConfig = [
     body: "decor_ball",
     asset: "elements/z_ball.png",
     offset: {
-      x: -5,
-      y: -5
+      x: -8,
+      y: -8
     }
   }
 ]

@@ -15,6 +15,9 @@ if(window.location.hostname == 'localhost') {
 // Used for delegating sound to app
 window.__delegateSound = false
 
+//
+var mute = false;
+
 // tutorial
 var tutorial = true;
 if (getCookie('tutorial') == 1) {
@@ -222,13 +225,14 @@ function initializeElements() {
 
   $('.nav__restart').on('click', function(e) {
     e.preventDefault();
-
+    
     closeNav();
     startGame();
-    continueGame()
+    continueGame();
+
+    if(online) {window.wtfga('send', 'event', 'navigation', 'restart')};
   });
 
-  var mute = false;
   /*
   $('.nav-sound').on('click', function(e) {
     e.preventDefault();
@@ -253,10 +257,12 @@ function initializeElements() {
 
     if (mute) {
       setMute(false);
+      if(online) {window.wtfga('send', 'event', 'sound', 'on')};
       link.removeClass('is-active');
       mute = false;
     } else {
       setMute(true);
+      if(online) {window.wtfga('send', 'event', 'sound', 'off')};
       link.addClass('is-active');
       mute = true;
     }
@@ -270,9 +276,11 @@ function initializeElements() {
     if (link.hasClass('is-active')) {
       link.removeClass('is-active');
       _game.setLowQuality(true);
+      if(online) {window.wtfga('send', 'event', 'low quality', 'off')};
     } else {
       link.addClass('is-active');
       _game.setLowQuality(false);
+      if(online) {window.wtfga('send', 'event', 'low quality', 'on')};
     }
   });
 
@@ -690,7 +698,7 @@ function startGame(naked) {
   if (_game) {
     _game.dispose()
   }
-  _game = new PussywalkMinigame(_callbacks, naked);
+  _game = new PussywalkMinigame(_callbacks, naked, mute);
 
   if(typeof ga === 'function') {
     window.wtfga = ga;
