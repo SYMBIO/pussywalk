@@ -161,8 +161,6 @@ function initializeElements() {
     pauseGame();
     finished = true;
 
-    console.log(nudeModePlaying);
-
     firebase.database().ref('scoreboard').push({
       username: $("#name_input").val(),
       time: _game.playTime,
