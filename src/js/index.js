@@ -127,11 +127,9 @@ var openNav = function() {
   $('.nav').addClass('is-active');
   $('.nav-link').addClass('is-active');
 
-  /*
   if ($('.popup-merch').hasClass('is-visible')) {
-    $('.popup-merch').removeClass('is-visible').addClass('never-visible');
+    $('.popup-merch').removeClass('is-visible');
   }
-  */
 }
 var closeNav = function() {
   $('.nav').removeClass('is-active');
@@ -154,13 +152,10 @@ function hideLayer(layer) {
 }
 
 function initializeElements() {
-  //$('#name_dialogue').hide()
-  //$('#scoreboard').hide()
   $('#game_controls, #game_lives').show()
   $('#send_name').attr("disabled", true);
 
   $('#send_name').on('click', function() {
-    //$('#name_dialogue').hide()
     hideLayer('.layer--finish');
     pauseGame();
     finished = true;
@@ -170,7 +165,6 @@ function initializeElements() {
       time: _game.playTime,
       naked: naked
     }, function(error) {
-      //$('#scoreboard').show()
       console.log(error);
       if (error) {
         console.log(error);
@@ -180,7 +174,6 @@ function initializeElements() {
   });
 
   $('#cancel_send_name').on('click', function() {
-    //$('#name_dialogue').hide()
     hideLayer('.layer--finish');
     startGame()
   })
@@ -190,9 +183,7 @@ function initializeElements() {
   })
 
   $('#scoreboard_close').on('click', function() {
-    //$('#name_dialogue').hide()
     hideLayer('.layer--finish');
-    //$('#scoreboard').hide()
     hideLayer('.layer--scoreboard');
     $('#game_controls, #game_lives').show()
     if (finished) {
@@ -219,6 +210,14 @@ function initializeElements() {
       continueGame()
       if(online) {window.wtfga('send', 'event', 'navigation', 'off')};
     }
+  });
+
+  $('.nav-link-bg').on('click', function(e) {
+    e.preventDefault();
+
+    closeNav();
+    continueGame()
+    if(online) {window.wtfga('send', 'event', 'navigation', 'off', 'mimo menu')};
   });
 
   $('.nav__restart').on('click', function(e) {
@@ -299,7 +298,16 @@ function initializeElements() {
 
     hideLayer('.layer--finish');
 
+    finished = true;
     startGame(true);
+    $('#game_controls, #game_lives').show();
+    if (!naked) {
+      setTimeout(function() {
+        pauseGame();
+        showLayer('.layer--naked');
+      }, 500)
+    }
+    naked = true;    
   });
 
   $('.js-play').on('click', function(e) {
@@ -351,6 +359,13 @@ function initializeElements() {
 
     window.open($(this).attr('href'), 'fbShareWindow', 'height=450, width=550, top=100, left=100, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
     return false;
+  });
+
+  $('.popup-merch p').on('click', function(){
+    $('.popup-merch').removeClass('is-visible');
+    pauseGame();
+    showLayer('.layer--merch');
+    if(online) {window.wtfga('send', 'event', 'popup', 'show merch')};
   });
 
   $('.popup__close').on('click', function(e){

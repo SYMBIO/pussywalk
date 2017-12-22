@@ -85,6 +85,7 @@ a:focus, a:active {
 	position: absolute;
 	top: 29px;
 	width: 50px;
+	z-index: 10;
 
 	&:before, &:after {
 		content: '';
@@ -108,21 +109,8 @@ a:focus, a:active {
 		top: 16px;
 	}
 
-	span {
-		cursor: default;
-		left: -100px;
-		height: 5000px;
-		content: '';
-		display: block;
-		position: absolute;
-		top: -100px;
-		transform: translateX(-5000px);
-		width: 5000px;
-		z-index: -1;
-	}
-
 	&.is-active {
-		span {
+		+ .nav-link-bg {
 			transform: translateX(0);
 		}
 	}
@@ -130,6 +118,18 @@ a:focus, a:active {
 	@media only screen and (max-width: 768px) and (orientation: landscape) {
 		top: 20px;
 	}	
+}
+.nav-link-bg {
+	cursor: pointer;
+	left: -100px;
+	height: 5000px;
+	content: '';
+	display: block;
+	position: absolute;
+	top: -100px;
+	transform: translateX(-5000px);
+	width: 5000px;
+	z-index: 5;
 }
 .nav {
 	color: @white;
@@ -144,6 +144,7 @@ a:focus, a:active {
 	transform: translateX(-200%);
 	transition: opacity 200ms;
 	will-change: opacity;
+	z-index: 7;
 
 	&:before {
 		//background: rgba(63, 52, 77, .8);
@@ -163,7 +164,7 @@ a:focus, a:active {
 		z-index: 2;
 	}
 	*/
-	
+
 	.btn {
 		margin-left: 4px;
 	}
@@ -207,6 +208,7 @@ a:focus, a:active {
 			}
 
 			&:hover {
+
 			}
 		}
 	}	
@@ -266,6 +268,7 @@ a:focus, a:active {
 	&:before, &:after {
 		height: 30px;
 		left: -10px;
+		top: 3px;
 		width: 50px;
 	}
 	&:before {
@@ -452,7 +455,7 @@ a:focus, a:active {
 	&.is-visible {
 		opacity: 1;
 		transform: translateX(0%);
-		z-index: 2;
+		z-index: 15;
 	}
 }
 .layer__content {
@@ -882,6 +885,7 @@ a:focus, a:active {
 	p {
 		background: rgba(43, 46, 88, 0.67);
 		border-radius: 10px;
+		cursor: pointer;
 		font-size: 18px;
 		line-height: 20px;
 		opacity: 0;
@@ -914,6 +918,17 @@ a:focus, a:active {
 			right: 20px;
 			width: 110px;
 		}
+
+		&:hover {
+			span {
+				text-decoration: none;
+			}
+		}	
+	}
+	
+	span {
+		display: inline-block;
+		text-decoration: underline;
 	}
 
 	&.is-visible {
@@ -965,12 +980,12 @@ a:focus, a:active {
 	background: transparent;
 	border: 0;
 	cursor: pointer;
-	height: 18px;
+	height: 35px;
 	position: absolute;
-	right: 10px;
-	top: 10px;
+	right: 0;
+	top: 0;
 	transition: transform 200ms;
-	width: 18px;
+	width: 38px;
 	z-index: 2;
 
 	&:before, &:after {
@@ -978,10 +993,9 @@ a:focus, a:active {
 		content: '';
 		display: block;
 		height: 4px;
-		left: 0;
-		margin-top: -2px;
 		position: absolute;
-		top: 50%;
+		right: 10px;
+		top: 15px;
 		transform-origin: 9px 2px;
 		width: 18px;
 	}
@@ -1245,6 +1259,10 @@ a:focus, a:active {
 	right: 0;
 	top: 30%;
 	width: 0;
+	
+	&.is-visible {
+		z-index: 5;
+	}
 	
 	.layer__content {
 		height: 0;
