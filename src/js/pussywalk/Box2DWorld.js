@@ -90,9 +90,6 @@ export default class Box2DWorld {
       x: 42,
       y: -16
     }, {
-      x: 68,
-      y: -15
-    }, {
       x: 91.6,
       y: -16.5
     }, {
