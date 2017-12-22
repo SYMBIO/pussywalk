@@ -448,6 +448,8 @@ function scoreUpdate(time, naked) {
 
   showLayer('.layer--scoreboard');
 
+  var reqTime = 30000;
+
   var scoreboardListener = firebase.database().ref('scoreboard');
   scoreboardListener.orderByChild("time").once('value', function(snapshot) {
     let scoreboard = $('#scoreboard_list')
@@ -464,62 +466,66 @@ function scoreUpdate(time, naked) {
       var score = [];
 
       snapshot.forEach(function(snapshot) {
-        score.push([j, snapshot.val().username, snapshot.val().time]);
+        if(snapshot.val().time > reqTime) {
+          score.push([j, snapshot.val().username, snapshot.val().time]);
 
-        if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time) {
-          t = j;
+          if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time) {
+            t = j;
+          }
+
+          j++;
         }
-
-        j++;
       });
 
       var plusminus = 35;
 
       snapshot.forEach(function(snapshot) {
-        let listItem = $("<li />");
-        if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
-          listItem = $("<li class='chosen-one' />");
-        }
-        let posSpan = $("<span class=\"position\" />")
-        let nameSpan = $("<span class=\"username\" />")
-        let timeSpan = $("<span class=\"time\" />")
+        if(snapshot.val().time > reqTime) {
+          let listItem = $("<li />");
+          if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
+            listItem = $("<li class='chosen-one' />");
+          }
+          let posSpan = $("<span class=\"position\" />")
+          let nameSpan = $("<span class=\"username\" />")
+          let timeSpan = $("<span class=\"time\" />")
 
-        posSpan.append(i + 1 + '.')
-        let nakedSpan = '';
-        if (snapshot.val().naked) {
-          nakedSpan = ' <span class="scoreboard__nude">NUDE</span>';
-        }
-        nameSpan.append(snapshot.val().username + nakedSpan)
-        timeSpan.append(scoreTime(snapshot.val().time))
+          posSpan.append(i + 1 + '.')
+          let nakedSpan = '';
+          if (snapshot.val().naked) {
+            nakedSpan = ' <span class="scoreboard__nude">NUDE</span>';
+          }
+          nameSpan.append(snapshot.val().username + nakedSpan)
+          timeSpan.append(scoreTime(snapshot.val().time))
 
-        listItem.append(posSpan)
-        listItem.append(nameSpan)
-        listItem.append(timeSpan)
+          listItem.append(posSpan)
+          listItem.append(nameSpan)
+          listItem.append(timeSpan)
 
-        if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
-          listItem.append('<span class="share"><span></span><a href="https://www.facebook.com/sharer/sharer.php?u=http://pussywalk.com/images/layout/share.php?n='+ snapshot.val().username +'%26t=' + niceTime(snapshot.val().time, true, true) + '" class="btn btn--fb js-share">Sdílej svoje score na</a><img src="/images/layout/master.png" alt=""></span>')
-          k = 1;
-        }
-
-        if (t < 3) {
-
-          if (i < 15) {
-            scoreboardTop3.append(listItem)
+          if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
+            listItem.append('<span class="share"><span></span><a href="https://www.facebook.com/sharer/sharer.php?u=http://pussywalk.com/images/layout/share.php?n='+ snapshot.val().username +'%26t=' + niceTime(snapshot.val().time, true, true) + '" class="btn btn--fb js-share">Sdílej svoje score na</a><img src="/images/layout/master.png" alt=""></span>')
+            k = 1;
           }
 
-        } else {
+          if (t < 3) {
 
-          if (i < 3) {
-            scoreboardTop3.append(listItem)
+            if (i < 15) {
+              scoreboardTop3.append(listItem)
+            }
+
+          } else {
+
+            if (i < 3) {
+              scoreboardTop3.append(listItem)
+            }
+
+            if (i >= 3 && i > t - plusminus && i < t + plusminus + 2) {
+              scoreboard.append(listItem)
+            }
+
           }
 
-          if (i >= 3 && i > t - plusminus && i < t + plusminus + 2) {
-            scoreboard.append(listItem)
-          }
-
+          i++;
         }
-
-        i++;
       })
 
       $('#scoreboard').animate({
@@ -529,26 +535,28 @@ function scoreUpdate(time, naked) {
     } else {
 
       snapshot.forEach(function(snapshot) {
-        let listItem = $("<li />")
-        let posSpan = $("<span class=\"position\" />")
-        let nameSpan = $("<span class=\"username\" />")
-        let timeSpan = $("<span class=\"time\" />")
-        posSpan.append(i + 1 + '.')
-        let nakedSpan = '';
-        if (snapshot.val().naked) {
-          nakedSpan = ' <span class="scoreboard__nude">NUDE</span>';
-        }
-        nameSpan.append(snapshot.val().username + nakedSpan)
-        timeSpan.append(scoreTime(snapshot.val().time))
-        listItem.append(posSpan)
-        listItem.append(nameSpan)
-        listItem.append(timeSpan)
+        if(snapshot.val().time > reqTime) {
+          let listItem = $("<li />")
+          let posSpan = $("<span class=\"position\" />")
+          let nameSpan = $("<span class=\"username\" />")
+          let timeSpan = $("<span class=\"time\" />")
+          posSpan.append(i + 1 + '.')
+          let nakedSpan = '';
+          if (snapshot.val().naked) {
+            nakedSpan = ' <span class="scoreboard__nude">NUDE</span>';
+          }
+          nameSpan.append(snapshot.val().username + nakedSpan)
+          timeSpan.append(scoreTime(snapshot.val().time))
+          listItem.append(posSpan)
+          listItem.append(nameSpan)
+          listItem.append(timeSpan)
 
-        if (i < 100) {
-          scoreboardTop3.append(listItem)
-        }
+          if (i < 100) {
+            scoreboardTop3.append(listItem)
+          }
 
-        i++;
+          i++;
+        }
       })
 
     }
