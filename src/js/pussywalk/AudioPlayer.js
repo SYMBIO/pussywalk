@@ -10,6 +10,7 @@ export default class AudioPlayer {
     this.onLoseHealthEnded = this.onLoseHealthEnded.bind(this)
     this.stop = this.stop.bind(this)
     this.init = this.init.bind(this)
+    this.playBallPop = this.playBallPop.bind(this)
 
     window.soundDidFinishPlaying = this.onSoundEnded.bind(this)
 
@@ -190,6 +191,14 @@ export default class AudioPlayer {
     this.bear.name = 'audio/bear.mp3';
     // this.bear.load();
 
+    this.ballBounce = new Audio("audio/ball_bounce.mp3");
+    this.ballBounce.preload = 'none';
+    this.ballBounce.name = 'audio/ball_bounce.mp3';
+
+    this.ballPop = new Audio("audio/ball_out_furnice.mp3");
+    this.ballPop.preload = 'none';
+    this.ballPop.name = 'audio/ball_out_furnice.mp3';
+
     let that = this
     this.music.forEach(function(music) {
       music.volume = 0.5
@@ -216,13 +225,19 @@ export default class AudioPlayer {
   }
 
   init() {
+    let music = this.music[this.musicIndex]
     this.mobileSounds.forEach(function(sound) {
-      sound.play()
-      sound.pause()
-      sound.currentTime = 0
+      let process = (sound == music && music.paused) || sound != music
+      if (process) {
+        sound.play()
+        sound.pause()
+        sound.currentTime = 0
+      }
     })
 
-    this.musicIndex = this.playRandom(this.music)
+    if (music.paused) {
+      this.play(this.music[this.musicIndex])
+    }
 
     this.isInitialized = true
   }
@@ -400,6 +415,14 @@ export default class AudioPlayer {
     this.playRandom(this.toiletpaper)
   }
 
+  playBallPop() {
+    this.play(this.ballPop)
+  }
+
+  playBallBounce() {
+    this.play(this.ballBounce)
+  }
+
   playRandom(soundsArray) {
     var index = Math.floor(Math.random() * soundsArray.length)
 
@@ -480,6 +503,12 @@ export default class AudioPlayer {
 
     that.pause(this.bear)
     filenames.push(this.bear.name)
+
+    that.pause(this.ballPop)
+    filenames.push(this.ballPop.name)
+
+    that.pause(this.ballBounce)
+    filenames.push(this.ballBounce.name)
 
     if (window.__delegateSound) {
       window.location.href = "stopsounds://" + filenames.join(',');

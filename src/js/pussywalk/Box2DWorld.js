@@ -219,6 +219,11 @@ export default class Box2DWorld {
         return
       }
 
+      if ((bA.name.indexOf("decor_ball") == 0 || bB.name.indexOf("decor_ball") == 0) && (bA.GetLinearVelocity().Length() - bB.GetLinearVelocity().Length()) > 3) {
+        that.audioPlayer.playBallBounce()
+        return
+      }
+
 
       if ((bA.name.indexOf("decor_trashbin_top") == 0 || bB.name.indexOf("decor_trashbin_top") == 0 || bA.name.indexOf("decor_trashbin") == 0 || bB.name.indexOf("decor_trashbin") == 0) && (bA.GetLinearVelocity().Length() - bB.GetLinearVelocity().Length()) > 3) {
         that.audioPlayer.playBin()
@@ -398,6 +403,7 @@ export default class Box2DWorld {
     if (didWin) {
       this.world.DestroyBody(this.bodies["ball_blocker"])
       delete this.bodies["ball_blocker"]
+      setTimeout(this.audioPlayer.playBallPop, 600)
       this.audioPlayer.silenceMusic()
       this.renderer.didFinish()
       this.audioPlayer.playEnd()
