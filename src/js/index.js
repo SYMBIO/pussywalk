@@ -188,7 +188,7 @@ function initializeElements() {
     $('#game_controls, #game_lives').show()
     if (finished) {
       startGame(naked)
-      if (!naked) {
+      if (naked) {
         setTimeout(function() {
           pauseGame();
           showLayer('.layer--naked');
@@ -300,7 +300,7 @@ function initializeElements() {
     finished = true;
     startGame(naked);
     $('#game_controls, #game_lives').show();
-    if (!naked) {
+    if(naked) {
       setTimeout(function() {
         pauseGame();
         showLayer('.layer--naked');
