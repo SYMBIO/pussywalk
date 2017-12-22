@@ -216,7 +216,6 @@ export default class AudioPlayer {
   }
 
   init() {
-    debugger
     this.mobileSounds.forEach(function(sound) {
       sound.play()
       sound.pause()
@@ -282,9 +281,6 @@ export default class AudioPlayer {
   }
 
   playStep(volume) {
-
-    debugger
-
     var index = Math.floor(Math.random() * (this.smallSteppingSounds.length))
     let sound
     if (volume > 0.5) {

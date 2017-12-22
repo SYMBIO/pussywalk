@@ -680,7 +680,6 @@ export default class Renderer {
     }
 
     // Lights
-    console.log(this.lowQuality);
     if (!this.lowQuality) {
 
       this.context.globalCompositeOperation = "screen"
