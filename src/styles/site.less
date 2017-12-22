@@ -43,6 +43,35 @@ a:focus, a:active {
 	display: none;
 }
 
+.disc {
+	bottom: 20px;
+	color: #fff;
+	font-size: 15px;
+	line-height: 15px;
+	left: 10px;
+	right: 10px;
+	pointer-events: none;
+	position: absolute;
+	text-align: center;
+	z-index: 20;
+
+	@media @phoneLand {
+		bottom: 10px;
+		font-size: 13px;
+		line-height: 13px;
+		left: 10px;
+		right: 10px;
+	}
+
+	@media @phone {
+		bottom: 10px;
+		font-size: 10px;
+		line-height: 10px;
+		left: 10px;
+		right: 10px;
+	}
+}
+
 #app {
 	display: block;
 	height: 100%;
@@ -853,7 +882,7 @@ a:focus, a:active {
 			display: block;
 			margin-top: 15px;
 			position: relative;
-			z-index: 2;
+			z-index: 3;
 			width: 100%;
 		}
 	}
