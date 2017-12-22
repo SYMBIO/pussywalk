@@ -246,7 +246,8 @@ export default class AudioPlayer {
     }
 
     this.music.forEach(function(music) {
-      music.volume = mute ? 0 : 0.5
+      // music.volume = mute ? 0 : 0.5
+      music.muted = mute
     })
   }
 
