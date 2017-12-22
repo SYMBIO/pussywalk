@@ -513,7 +513,7 @@ function scoreUpdate(time, naked) {
             scoreboardTop3.append(listItem)
           }
 
-          if (i > 3 && i > t - plusminus && i < t + plusminus + 2) {
+          if (i >= 3 && i > t - plusminus && i < t + plusminus + 2) {
             scoreboard.append(listItem)
           }
 
