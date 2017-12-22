@@ -13,6 +13,7 @@ export default class Box2DWorld {
   constructor(canvas, json, hard) {
 
     this.canvas = canvas;
+    this.hard = hard
     this.timeStep = 1 / 60;
     this.velocityIterations = 10;
     this.positionIterations = 6;
@@ -410,7 +411,7 @@ export default class Box2DWorld {
     }
 
     setTimeout(() => {
-      this.callbacks.onGameEnd(didWin, this.progress);
+      this.callbacks.onGameEnd(didWin, this.progress, this.hard);
     }, 3000)
   }
 

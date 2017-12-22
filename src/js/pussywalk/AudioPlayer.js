@@ -212,8 +212,7 @@ export default class AudioPlayer {
     this.mobileSounds.push(this.sheep)
     this.mobileSounds.push(this.end)
 
-    this.musicIndex = 0
-    this.play(this.music[this.musicIndex])
+    this.musicIndex = this.playRandom(this.music)
   }
 
   init() {

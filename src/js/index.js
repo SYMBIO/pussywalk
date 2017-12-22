@@ -665,7 +665,7 @@ function onLifesUpdate(numberOfLifes, delta) {
   });
 }
 
-function onGameEnd(didWin, progress) {
+function onGameEnd(didWin, progress, wasNude) {
   nudeMode = didWin;
   
   if (didWin) {
@@ -677,7 +677,7 @@ function onGameEnd(didWin, progress) {
     }, 10);
     $('#game_controls, #game_lives').hide()
   } else {
-    startGame(didWin)
+    startGame(didWin || wasNude)
   }
 
   if(online) {window.wtfga('send', 'event', 'game', 'end', progress)};
