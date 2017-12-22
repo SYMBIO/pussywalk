@@ -275,12 +275,12 @@ function initializeElements() {
 
     if (link.hasClass('is-active')) {
       link.removeClass('is-active');
-      _game.setLowQuality(true);
-      if(online) {window.wtfga('send', 'event', 'low quality', 'off')};
-    } else {
-      link.addClass('is-active');
       _game.setLowQuality(false);
       if(online) {window.wtfga('send', 'event', 'low quality', 'on')};
+    } else {
+      link.addClass('is-active');
+      _game.setLowQuality(true);
+      if(online) {window.wtfga('send', 'event', 'low quality', 'off')};
     }
   });
 
