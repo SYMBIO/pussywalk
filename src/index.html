@@ -38,16 +38,24 @@
 	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
 
-	<!--
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162303-31"></script>
+	<!-- Facebook Pixel Code -->
 	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-
-	  gtag('config', 'UA-162303-31');
+	!function(f,b,e,v,n,t,s)
+	{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+	n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+	if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+	n.queue=[];t=b.createElement(e);t.async=!0;
+	t.src=v;s=b.getElementsByTagName(e)[0];
+	s.parentNode.insertBefore(t,s)}(window,document,'script',
+	'https://connect.facebook.net/en_US/fbevents.js');
+	fbq('init', '200389647196209'); 
+	fbq('track', 'PageView');
 	</script>
-	-->
+	<noscript>
+	<img height="1" width="1" 
+	src="https://www.facebook.com/tr?id=200389647196209&ev=PageView &noscript=1"/>
+	</noscript>
+	<!-- End Facebook Pixel Code -->
 </head>
 <body>
 	<div id="app">
@@ -147,8 +155,7 @@
 
 					<img src="/images/layout/merch.png" alt="">
 
-					<p><strong>Kup si něco na sebe, ať ti to u voleb sluší!</strong> Udělej si radost tričkem nebo mikinou PussyWalk. Pomůžeš nám k výrobě 
-					dalších prkotin s motivy ze hry. <strong>A hlavně spácháš dobro</strong> – z výtěžku z prodeje podpoříme neziskovku pečující o staré a umírající lidi.</p>
+					<p><strong>Kup si něco na sebe, ať ti to u voleb sluší!</strong> Udělej si radost tričkem nebo mikinou PussyWalk. Pomůžeš nám k&nbsp;výrobě dalších prkotin s&nbsp;motivy ze hry. <strong>A&nbsp;hlavně spácháš dobro</strong> – z&nbsp;výtěžku z&nbsp;prodeje podpoříme neziskovku pečující o&nbsp;staré a&nbsp;umírající lidi.</p>
 
 					<p><a href="http://www.merchmaster.cz/pussywalk/" class="btn btn--big js-merch" target="_blank">Objednat</a></p>
 				</div>
@@ -158,7 +165,7 @@
 		<div class="popup-merch is-visible">
 			<span class="popup__close"></span>
 			<p>
-				<span>Kup si tričko <strong>PussyWalk</strong></span> a&nbsp;podpoř tak péči o <strong>staré lidi</strong>.
+				<span>Kup si tričko <strong>PussyWalk</strong></span> a&nbsp;podpoř tak péči o <strong>umírající</strong>.
 			</p>
 		</div>
 
@@ -178,23 +185,31 @@
 						<ul>
 							<li>
 								<img src="/images/layout/vasek.png" alt="">
-								<strong>Václav Krbůšek</strong>
-								vedení, grafika
+								<div>
+									<strong>Václav Krbůšek</strong>
+									Ilustrace, grafika, zvuk, autor námětu.
+								</div>
 							</li>
 							<li>
 								<img src="/images/layout/zoltan.png" alt="">
-								<strong>Páll Zoltán</strong>
-								developer
+								<div>
+									<strong>Páll Zoltán</strong>
+									Hlavní programátor hry.
+								</div>
 							</li>
 							<li>
 								<img src="/images/layout/vojta.png" alt="">
-								<strong>Vojtěch Šmíd</strong>
-								project manager
+								<div>
+									<strong>Vojtěch Šmíd</strong>
+									Produkční, autor textů.
+								</div>
 							</li>
 							<li>
 								<img src="/images/layout/jirka.png" alt="">
-								<strong>Jiří Váňa</strong>
-								kodér
+								<div>
+									<strong>Jiří Váňa</strong>
+									Kodér, autor originálního námětu.
+								</div>
 							</li>
 						</ul>
 

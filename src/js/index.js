@@ -187,14 +187,13 @@ function initializeElements() {
     hideLayer('.layer--scoreboard');
     $('#game_controls, #game_lives').show()
     if (finished) {
-      startGame(true)
+      startGame(naked)
       if (!naked) {
         setTimeout(function() {
           pauseGame();
           showLayer('.layer--naked');
         }, 500)
       }
-      naked = true;
     }
   })
 
@@ -299,7 +298,7 @@ function initializeElements() {
     hideLayer('.layer--finish');
 
     finished = true;
-    startGame(true);
+    startGame(naked);
     $('#game_controls, #game_lives').show();
     if (!naked) {
       setTimeout(function() {
@@ -307,7 +306,6 @@ function initializeElements() {
         showLayer('.layer--naked');
       }, 500)
     }
-    naked = true;    
   });
 
   $('.js-play').on('click', function(e) {
@@ -490,7 +488,7 @@ function scoreUpdate(time, naked) {
         listItem.append(timeSpan)
 
         if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
-          listItem.append('<span class="share"><span></span><a href="https://www.pussywalk.com/images/layout/sharer.php?n='+ snapshot.val().username +'&t=' + snapshot.val().time + '" class="btn btn--fb js-share">Sdílej svoje score na</a></span>')
+          listItem.append('<span class="share"><span></span><a href="https://www.pussywalk.com/images/layout/sharer.php?n='+ snapshot.val().username +'&t=' + niceTime(snapshot.val().time, true, true) + '" class="btn btn--fb js-share">Sdílej svoje score na</a></span>')
           k = 1;
         }
 
@@ -625,6 +623,7 @@ function onLifesUpdate(numberOfLifes, delta) {
 }
 
 function onGameEnd(didWin, progress) {
+  naked = didWin;
   if (didWin) {
     //$('#name_dialogue').show()
     pauseGame();
