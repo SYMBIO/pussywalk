@@ -211,16 +211,24 @@ export default class AudioPlayer {
     this.mobileSounds.push(this.end)
     this.mobileSounds.push(this.rewind)
     this.mobileSounds.push(this.bear)
+   
+    this.musicIndex = this.playRandom(this.music)
   }
 
   init() {
+    let music = this.music[this.musicIndex]
     this.mobileSounds.forEach(function(sound) {
-      sound.play()
-      sound.pause()
-      sound.currentTime = 0
+      let process = (sound == music && music.paused) || sound != music
+      if (process) {
+        sound.play()
+        sound.pause()
+        sound.currentTime = 0
+      }
     })
 
-    this.musicIndex = this.playRandom(this.music)
+    if (music.paused) {
+      this.play(this.music[this.musicIndex])
+    }
 
     this.isInitialized = true
   }
