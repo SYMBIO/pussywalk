@@ -68,7 +68,7 @@ export default class Box2DWorld {
         x: 65,
         y: -15
       }, {
-        x: 77,
+        x: 75,
         y: -15
       }, {
         x: 92,
