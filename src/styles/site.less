@@ -479,7 +479,7 @@ a:focus, a:active {
 	height: 100%;
 	opacity: 0;
 	position: absolute;
-	transform: translateX(-100%);
+	transform: translateX(-5000px);
 	transition: opacity 300ms;
 	width: 100%;
 
@@ -596,13 +596,12 @@ a:focus, a:active {
 		}
 	}
 
-	/*
 	&.is-visible {
-		&:after {
-			mix-blend-mode: multiply;
+		~ .disc {
+			opacity: .2;
+			z-index: 8;
 		}
 	}
-	*/
 }
 .finish__time {
 	color: @white;
@@ -705,15 +704,12 @@ a:focus, a:active {
 		z-index: 2;
 	}
 
-	/*
 	&.is-visible {
-		.layer__center {
-			&:after {
-				mix-blend-mode: multiply;
-			}
+		~ .disc {
+			opacity: .2;
+			z-index: 8;
 		}
 	}
-	*/
 	
 	@media @phoneLand {
 		.layer__center {
@@ -1098,15 +1094,12 @@ a:focus, a:active {
 		z-index: 2;
 	}
 
-	/*
 	&.is-visible {
-		.layer__center {
-			&:after {
-				mix-blend-mode: multiply;
-			}
+		~ .disc {
+			opacity: .2;
+			z-index: 8;
 		}
 	}
-	*/	
 
 	@media @phoneLand {
 		.layer__center {
@@ -1222,15 +1215,12 @@ a:focus, a:active {
 		}
 	}
 
-	/*
 	&.is-visible {
-		.layer__center {
-			&:after {
-				mix-blend-mode: multiply;
-			}
+		~ .disc {
+			opacity: .2;
+			z-index: 8;
 		}
 	}
-	*/
 
 	@media @phoneLand {
 		.layer__center {
@@ -1296,6 +1286,13 @@ a:focus, a:active {
 		&:after {
 			height: 26px;
 			width: 23px;
+		}
+	}
+
+	&.is-visible {
+		~ .disc {
+			opacity: .2;
+			z-index: 8;
 		}
 	}
 
