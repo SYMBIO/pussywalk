@@ -216,6 +216,10 @@ export default class AudioPlayer {
   }
 
   init() {
+    if (this.isInitialized) {
+      return
+    }
+
     let music = this.music[this.musicIndex]
     this.mobileSounds.forEach(function(sound) {
       let process = (sound == music && music.paused) || sound != music

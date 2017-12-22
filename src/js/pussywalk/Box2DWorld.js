@@ -414,10 +414,6 @@ export default class Box2DWorld {
 
   handleArrows(keyCode, state) {
 
-    if (!this.audioPlayer.isInitialized) {
-      this.audioPlayer.init()
-    }
-
     this.keymap[keyCode] = state;
 
     if (Config.isDebug) {
