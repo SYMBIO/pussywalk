@@ -68,7 +68,7 @@ export default class Box2DWorld {
         x: 65,
         y: -15
       }, {
-        x: 77,
+        x: 75,
         y: -15
       }, {
         x: 92,
@@ -409,6 +409,11 @@ export default class Box2DWorld {
   }
 
   handleArrows(keyCode, state) {
+
+    if (!this.audioPlayer.isInitialized) {
+      this.audioPlayer.init()
+    }
+
     this.keymap[keyCode] = state;
 
     if (Config.isDebug) {

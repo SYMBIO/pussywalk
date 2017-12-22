@@ -27,7 +27,9 @@ export default class Renderer {
     this.visibleLifes = []
     this.showRewind = false
     this.fireballIndex = -1
+    this.followBall = false
     this.drawDebug = false
+    this.lowQuality = false
     this.flies = [[], []]
     this.fliesPosition = {
       x: 0,
@@ -294,9 +296,23 @@ export default class Renderer {
       y: this.bodies['body'].GetPosition().get_y() * this.physicsScale * this.scale
     };
 
-    let canvasOffset = {
-      x: bodyOffset.x - this.canvas.width / 2,
-      y: bodyOffset.y + this.canvas.height / 2
+    let canvasOffset
+
+    if (this.followBall) {
+      let ballOffset = {
+        x: this.bodies['decor_ball'].GetPosition().get_x() * this.physicsScale * this.scale,
+        y: this.bodies['decor_ball'].GetPosition().get_y() * this.physicsScale * this.scale
+      }
+
+      canvasOffset = {
+        x: ballOffset.x - this.canvas.width / 2,
+        y: Math.min(bodyOffset.y, ballOffset.y) + this.canvas.height / 2
+      }
+    } else {
+      canvasOffset = {
+        x: bodyOffset.x - this.canvas.width / 2,
+        y: bodyOffset.y + this.canvas.height / 2
+      }
     }
 
     canvasOffset.x = Math.max(0, Math.round(canvasOffset.x))
@@ -664,99 +680,100 @@ export default class Renderer {
     }
 
     // Lights
+    if (!this.lowQuality) {
 
-    this.context.globalCompositeOperation = "screen"
+      this.context.globalCompositeOperation = "screen"
 
-    this.context.drawImage(this.lights[0],
-      0,
-      0,
-      this.lights[0].naturalWidth,
-      this.lights[0].naturalHeight,
-      2397 * this.scale,
-      305 * this.scale,
-      this.lights[0].naturalWidth * this.scale * 4,
-      this.lights[0].naturalHeight * this.scale * 4,
-    )
+      this.context.drawImage(this.lights[0],
+        0,
+        0,
+        this.lights[0].naturalWidth,
+        this.lights[0].naturalHeight,
+        2397 * this.scale,
+        305 * this.scale,
+        this.lights[0].naturalWidth * this.scale * 4,
+        this.lights[0].naturalHeight * this.scale * 4,
+      )
 
-    this.context.drawImage(this.lights[1],
-      0,
-      0,
-      this.lights[1].naturalWidth,
-      this.lights[1].naturalHeight,
-      301 * this.scale,
-      104 * this.scale,
-      this.lights[1].naturalWidth * this.scale * 4,
-      this.lights[1].naturalHeight * this.scale * 4,
-    )
+      this.context.drawImage(this.lights[1],
+        0,
+        0,
+        this.lights[1].naturalWidth,
+        this.lights[1].naturalHeight,
+        301 * this.scale,
+        104 * this.scale,
+        this.lights[1].naturalWidth * this.scale * 4,
+        this.lights[1].naturalHeight * this.scale * 4,
+      )
 
-    this.context.drawImage(this.lights[1],
-      0,
-      0,
-      this.lights[1].naturalWidth,
-      this.lights[1].naturalHeight,
-      6422 * this.scale,
-      511 * this.scale,
-      this.lights[1].naturalWidth * this.scale * 4,
-      this.lights[1].naturalHeight * this.scale * 4,
-    )
+      this.context.drawImage(this.lights[1],
+        0,
+        0,
+        this.lights[1].naturalWidth,
+        this.lights[1].naturalHeight,
+        6422 * this.scale,
+        511 * this.scale,
+        this.lights[1].naturalWidth * this.scale * 4,
+        this.lights[1].naturalHeight * this.scale * 4,
+      )
 
-    this.context.drawImage(this.lights[1],
-      0,
-      0,
-      this.lights[1].naturalWidth,
-      this.lights[1].naturalHeight,
-      7793 * this.scale,
-      511 * this.scale,
-      this.lights[1].naturalWidth * this.scale * 4,
-      this.lights[1].naturalHeight * this.scale * 4,
-    )
+      this.context.drawImage(this.lights[1],
+        0,
+        0,
+        this.lights[1].naturalWidth,
+        this.lights[1].naturalHeight,
+        7793 * this.scale,
+        511 * this.scale,
+        this.lights[1].naturalWidth * this.scale * 4,
+        this.lights[1].naturalHeight * this.scale * 4,
+      )
 
-    this.context.drawImage(this.lights[2],
-      0,
-      0,
-      this.lights[2].naturalWidth,
-      this.lights[2].naturalHeight,
-      9530 * this.scale,
-      881 * this.scale,
-      this.lights[2].naturalWidth * this.scale * 4,
-      this.lights[2].naturalHeight * this.scale * 4,
-    )
+      this.context.drawImage(this.lights[2],
+        0,
+        0,
+        this.lights[2].naturalWidth,
+        this.lights[2].naturalHeight,
+        9530 * this.scale,
+        881 * this.scale,
+        this.lights[2].naturalWidth * this.scale * 4,
+        this.lights[2].naturalHeight * this.scale * 4,
+      )
 
-    this.context.drawImage(this.lights[3],
-      0,
-      0,
-      this.lights[3].naturalWidth,
-      this.lights[3].naturalHeight,
-      5449 * this.scale,
-      333 * this.scale,
-      this.lights[3].naturalWidth * this.scale * 4,
-      this.lights[3].naturalHeight * this.scale * 4,
-    )
+      this.context.drawImage(this.lights[3],
+        0,
+        0,
+        this.lights[3].naturalWidth,
+        this.lights[3].naturalHeight,
+        5449 * this.scale,
+        333 * this.scale,
+        this.lights[3].naturalWidth * this.scale * 4,
+        this.lights[3].naturalHeight * this.scale * 4,
+      )
 
-    this.context.drawImage(this.lights[4],
-      0,
-      0,
-      this.lights[4].naturalWidth,
-      this.lights[4].naturalHeight,
-      4125 * this.scale,
-      22 * this.scale,
-      this.lights[4].naturalWidth * this.scale * 4,
-      this.lights[4].naturalHeight * this.scale * 4,
-    )
+      this.context.drawImage(this.lights[4],
+        0,
+        0,
+        this.lights[4].naturalWidth,
+        this.lights[4].naturalHeight,
+        4125 * this.scale,
+        22 * this.scale,
+        this.lights[4].naturalWidth * this.scale * 4,
+        this.lights[4].naturalHeight * this.scale * 4,
+      )
 
-    this.context.drawImage(this.lights[5],
-      0,
-      0,
-      this.lights[5].naturalWidth,
-      this.lights[5].naturalHeight,
-      3562 * this.scale,
-      353 * this.scale,
-      this.lights[5].naturalWidth * this.scale * 4,
-      this.lights[5].naturalHeight * this.scale * 4,
-    )
+      this.context.drawImage(this.lights[5],
+        0,
+        0,
+        this.lights[5].naturalWidth,
+        this.lights[5].naturalHeight,
+        3562 * this.scale,
+        353 * this.scale,
+        this.lights[5].naturalWidth * this.scale * 4,
+        this.lights[5].naturalHeight * this.scale * 4,
+      )
 
-    this.context.globalCompositeOperation = "source-over"
-
+      this.context.globalCompositeOperation = "source-over"
+    }
     this.context.drawImage(this.vignette,
       0,
       0,
@@ -902,6 +919,7 @@ export default class Renderer {
 
   didFinish() {
     this.fireballIndex = 0
+    this.followBall = true
   }
 
   dispose() {
