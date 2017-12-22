@@ -21,7 +21,8 @@ if (getCookie('tutorial') == 1) {
   tutorial = false;
 }
 
-var naked = false;
+var nudeMode = false;
+var nudeModePlaying = false;
 
 var online,
     onlineTrue = function() {
@@ -160,16 +161,18 @@ function initializeElements() {
     pauseGame();
     finished = true;
 
+    console.log(nudeModePlaying);
+
     firebase.database().ref('scoreboard').push({
       username: $("#name_input").val(),
       time: _game.playTime,
-      naked: naked
+      naked: nudeModePlaying
     }, function(error) {
       console.log(error);
       if (error) {
         console.log(error);
       }
-      scoreUpdate(_game.playTime, naked);
+      scoreUpdate(_game.playTime, nudeMode);
     });
   });
 
@@ -187,8 +190,8 @@ function initializeElements() {
     hideLayer('.layer--scoreboard');
     $('#game_controls, #game_lives').show()
     if (finished) {
-      startGame(naked)
-      if (naked) {
+      startGame(nudeMode)
+      if (nudeMode) {
         setTimeout(function() {
           pauseGame();
           showLayer('.layer--naked');
@@ -298,9 +301,9 @@ function initializeElements() {
     hideLayer('.layer--finish');
 
     finished = true;
-    startGame(naked);
+    startGame(nudeMode);
     $('#game_controls, #game_lives').show();
-    if(naked) {
+    if(nudeMode) {
       setTimeout(function() {
         pauseGame();
         showLayer('.layer--naked');
@@ -481,7 +484,7 @@ function scoreUpdate(time, naked) {
           nakedSpan = ' <span class="scoreboard__nude">NUDE</span>';
         }
         nameSpan.append(snapshot.val().username + nakedSpan)
-        timeSpan.append(niceTime(snapshot.val().time))
+        timeSpan.append(scoreTime(snapshot.val().time))
 
         listItem.append(posSpan)
         listItem.append(nameSpan)
@@ -530,7 +533,7 @@ function scoreUpdate(time, naked) {
           nakedSpan = ' <span class="scoreboard__nude">NUDE</span>';
         }
         nameSpan.append(snapshot.val().username + nakedSpan)
-        timeSpan.append(niceTime(snapshot.val().time))
+        timeSpan.append(scoreTime(snapshot.val().time))
         listItem.append(posSpan)
         listItem.append(nameSpan)
         listItem.append(timeSpan)
@@ -589,6 +592,40 @@ function niceTime(time, nicer, nospan) {
   }
 }
 
+function scoreTime(duration, nicer) {
+  var spanWrap = function(what) {
+        return what.replace(/(\d)/g, '<span>$1</span>');
+      },
+      milliseconds = parseInt(duration%1000),
+      seconds = parseInt((duration/1000)%60),
+      minutes = parseInt((duration/(1000*60))%60),
+      hours = parseInt((duration/(1000*60*60))%24),
+      timeHours, timeMinutes, timeSeconds, timeMilliseconds, time;
+
+  timeHours = (hours < 10) ? "0" + hours : hours;
+  timeMinutes = (minutes < 10) ? "0" + minutes : minutes;
+  timeSeconds = (seconds < 10) ? "0" + seconds : seconds;
+  timeMilliseconds = milliseconds;
+  if(milliseconds < 10) {
+    timeMilliseconds = "0" + milliseconds;
+  }
+  if(timeMilliseconds < 100) {
+    timeMilliseconds = "0" + timeMilliseconds;
+  }
+
+  time = 0 + ':' + timeSeconds + ':' + timeMilliseconds;
+
+  if (minutes > 0) {
+    time = timeMinutes + ':' + timeSeconds + ':' + timeMilliseconds;
+  }
+
+  if (hours > 0) {
+    time = timeHours + ':' + timeMinutes + ':' + timeSeconds + ':' + timeMilliseconds;
+  }
+
+  return spanWrap(time);
+}
+
 function onTick(time) {
   $('#time').html(niceTime(time));
 }
@@ -623,7 +660,8 @@ function onLifesUpdate(numberOfLifes, delta) {
 }
 
 function onGameEnd(didWin, progress) {
-  naked = didWin;
+  nudeMode = didWin;
+  
   if (didWin) {
     //$('#name_dialogue').show()
     pauseGame();
@@ -641,6 +679,11 @@ function onGameEnd(didWin, progress) {
 
 function startGame(naked) {
   finished = false;
+  
+  nudeModePlaying = naked;
+  if(!naked) {
+    nudeModePlaying = false;
+  }
 
   if (window.location.href.indexOf("localhost") != -1) {
     window.location.href = "delegatesound://";
@@ -652,13 +695,12 @@ function startGame(naked) {
   _game = new PussywalkMinigame(_callbacks, naked);
 
   if(typeof ga === 'function') {
-    console.log('ga');
     window.wtfga = ga;
   }
 
   if(online) {window.wtfga('send', 'event', 'game', 'start')};
   
-  if(naked) {
+  if(nudeMode) {
     $('.popup-merch').addClass('is-visible');
   }
   
