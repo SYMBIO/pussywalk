@@ -9,6 +9,7 @@ export default class AudioPlayer {
     this.onMusicEnded = this.onMusicEnded.bind(this)
     this.onLoseHealthEnded = this.onLoseHealthEnded.bind(this)
     this.stop = this.stop.bind(this)
+    this.init = this.init.bind(this)
 
     window.soundDidFinishPlaying = this.onSoundEnded.bind(this)
 
@@ -195,7 +196,36 @@ export default class AudioPlayer {
       music.onended = that.onMusicEnded
     })
 
+    this.mobileSounds = []
+    this.mobileSounds = this.mobileSounds.concat(this.music)
+    this.mobileSounds = this.mobileSounds.concat(this.largeTiltSounds)
+    this.mobileSounds = this.mobileSounds.concat(this.largeTiltModSounds)
+    this.mobileSounds = this.mobileSounds.concat(this.largeSheepTiltSounds)
+    this.mobileSounds = this.mobileSounds.concat(this.bottleBreakingSounds)
+    this.mobileSounds = this.mobileSounds.concat(this.cane)
+    this.mobileSounds = this.mobileSounds.concat(this.chairs)
+    this.mobileSounds = this.mobileSounds.concat(this.bin)
+    this.mobileSounds.push(this.health)
+    this.mobileSounds.push(this.loseHealth)
+    this.mobileSounds.push(this.sheep)
+    this.mobileSounds.push(this.end)
+    this.mobileSounds.push(this.rewind)
+    this.mobileSounds.push(this.bear)
+
     this.musicIndex = this.playRandom(this.music)
+  }
+
+  init() {
+    debugger
+    this.mobileSounds.forEach(function(sound) {
+      sound.play()
+      sound.pause()
+      sound.currentTime = 0
+    })
+
+    this.musicIndex = this.playRandom(this.music)
+
+    this.isInitialized = true
   }
 
   setMute(mute) {
