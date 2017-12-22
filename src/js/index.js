@@ -222,10 +222,12 @@ function initializeElements() {
 
   $('.nav__restart').on('click', function(e) {
     e.preventDefault();
-
+    
     closeNav();
     startGame();
-    continueGame()
+    continueGame();
+
+    if(online) {window.wtfga('send', 'event', 'navigation', 'restart')};
   });
 
   var mute = false;
@@ -253,10 +255,12 @@ function initializeElements() {
 
     if (mute) {
       setMute(false);
+      if(online) {window.wtfga('send', 'event', 'sound', 'on')};
       link.removeClass('is-active');
       mute = false;
     } else {
       setMute(true);
+      if(online) {window.wtfga('send', 'event', 'sound', 'off')};
       link.addClass('is-active');
       mute = true;
     }
@@ -270,9 +274,11 @@ function initializeElements() {
     if (link.hasClass('is-active')) {
       link.removeClass('is-active');
       _game.setLowQuality(true);
+      if(online) {window.wtfga('send', 'event', 'low quality', 'off')};
     } else {
       link.addClass('is-active');
       _game.setLowQuality(false);
+      if(online) {window.wtfga('send', 'event', 'low quality', 'on')};
     }
   });
 
