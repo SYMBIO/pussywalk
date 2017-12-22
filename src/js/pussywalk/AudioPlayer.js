@@ -207,21 +207,13 @@ export default class AudioPlayer {
 
     this.mobileSounds = []
     this.mobileSounds = this.mobileSounds.concat(this.music)
-    this.mobileSounds = this.mobileSounds.concat(this.largeTiltSounds)
-    this.mobileSounds = this.mobileSounds.concat(this.largeTiltModSounds)
-    this.mobileSounds = this.mobileSounds.concat(this.largeSheepTiltSounds)
-    this.mobileSounds = this.mobileSounds.concat(this.bottleBreakingSounds)
-    this.mobileSounds = this.mobileSounds.concat(this.cane)
-    this.mobileSounds = this.mobileSounds.concat(this.chairs)
-    this.mobileSounds = this.mobileSounds.concat(this.bin)
     this.mobileSounds.push(this.health)
     this.mobileSounds.push(this.loseHealth)
     this.mobileSounds.push(this.sheep)
     this.mobileSounds.push(this.end)
-    this.mobileSounds.push(this.rewind)
-    this.mobileSounds.push(this.bear)
 
-    this.musicIndex = this.playRandom(this.music)
+    this.musicIndex = 0
+    this.play(this.music[this.musicIndex])
   }
 
   init() {
@@ -254,7 +246,8 @@ export default class AudioPlayer {
     }
 
     this.music.forEach(function(music) {
-      music.volume = mute ? 0 : 0.5
+      // music.volume = mute ? 0 : 0.5
+      music.muted = mute
     })
   }
 
