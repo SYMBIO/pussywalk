@@ -176,6 +176,7 @@ export default class PussywalkMinigame {
 
   setLowQuality(lowQuality) {
     _lowQuality = lowQuality
+    _renderer.lowQuality = lowQuality
     updateQuality()
   }
 
