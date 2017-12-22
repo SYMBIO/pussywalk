@@ -651,7 +651,10 @@ function startGame(naked) {
   }
   _game = new PussywalkMinigame(_callbacks, naked);
 
-  window.wtfga = ga;
+  if(typeof ga === 'function') {
+    console.log('ga');
+    window.wtfga = ga;
+  }
 
   if(online) {window.wtfga('send', 'event', 'game', 'start')};
   
