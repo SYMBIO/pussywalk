@@ -96,6 +96,10 @@ const initGame = (config) => {
   _world.sync()
   _renderer.showNakedBody(config.startNaked)
 
+  if (config.mute) {
+    _audioPlayer.setMute(true)
+  }
+
   resizeCanvas()
 
   if (!_paused) {
@@ -158,7 +162,7 @@ const playLoader = () => {
 
 export default class PussywalkMinigame {
 
-  constructor(callbacks, naked) {
+  constructor(callbacks, naked, mute) {
     _callbacks = callbacks;
 
     $(window).resize(resizeCanvas)
@@ -170,7 +174,8 @@ export default class PussywalkMinigame {
     this.playTime = 0
 
     loadJSON({
-      startNaked: naked
+      startNaked: naked,
+      mute: mute
     });
   }
 
