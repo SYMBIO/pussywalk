@@ -213,7 +213,7 @@ export default class AudioPlayer {
     this.mobileSounds.push(this.end)
 
     this.musicIndex = 0
-    this.play(this.music)
+    this.play(this.music[this.musicIndex])
   }
 
   init() {
