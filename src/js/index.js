@@ -163,7 +163,7 @@ function initializeElements() {
     hideLayer('.layer--finish');
     pauseGame();
     finished = true;
-
+    
     firebase.database().ref('scoreboard').push({
       username: $("#name_input").val(),
       time: _game.playTime,
@@ -497,7 +497,7 @@ function scoreUpdate(time, naked) {
         listItem.append(timeSpan)
 
         if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
-          listItem.append('<span class="share"><span></span><a href="https://www.pussywalk.com/images/layout/sharer.php?n='+ snapshot.val().username +'&t=' + niceTime(snapshot.val().time, true, true) + '" class="btn btn--fb js-share">Sdílej svoje score na</a></span>')
+          listItem.append('<span class="share"><span></span><a href="https://www.pussywalk.com/images/layout/sharer.php?n='+ snapshot.val().username +'&t=' + niceTime(snapshot.val().time, true, true) + '" class="btn btn--fb js-share">Sdílej svoje score na</a><img src="/iamges/layout/master.png" alt=""></span>')
           k = 1;
         }
 

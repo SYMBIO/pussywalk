@@ -696,6 +696,7 @@ a:focus, a:active {
 	max-height: 500px;
 	overflow-x: hidden;
 	overflow-y: auto;
+	padding-bottom: 105px;
 	position: relative;
 	-webkit-overflow-scrolling: touch;
 	z-index: 2;
@@ -778,6 +779,7 @@ a:focus, a:active {
 		display: block;
 		left: 0;
 		margin-top: 20px;
+		max-width: 240px;
 		padding: 20px 25px;
 		position: absolute;
 		right: 20px;
@@ -819,7 +821,7 @@ a:focus, a:active {
 		}
 		&:before {
 			border-left: 57px @white solid;
-			border-right: 162px @white solid;
+			border-right: 154px @white solid;
 			content: '';
 			display: block;
 			height: 3px;
@@ -845,6 +847,14 @@ a:focus, a:active {
 			position: relative;
 			text-transform: none;
 			z-index: 2;
+		}
+
+		img {
+			display: block;
+			margin-top: 15px;
+			position: relative;
+			z-index: 2;
+			width: 100%;
 		}
 	}
 
