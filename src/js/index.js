@@ -256,6 +256,7 @@ function initializeElements() {
     var link = $(this);
 
     if (mute) {
+      initAudio();
       setMute(false);
       if(online) {window.wtfga('send', 'event', 'sound', 'on')};
       link.removeClass('is-active');
@@ -444,7 +445,8 @@ function initializeFirebase() {
   };
   firebase.initializeApp(config);
 
-//scoreUpdate();
+  //$("#name_input").val('Ondratra');
+  //scoreUpdate(67913);
 }
 
 function scoreUpdate(time, naked) {
@@ -454,18 +456,24 @@ function scoreUpdate(time, naked) {
 
   showLayer('.layer--scoreboard');
 
-  var scoreboardListener = firebase.database().ref('scoreboard');
-  scoreboardListener.orderByChild("time").once('value', function(snapshot) {
-    let scoreboard = $('#scoreboard_list')
-    let scoreboardTop3 = $('#scoreboard_top3')
-    var i = 0
-    var j = 0
-    var k = 0
-    var t = 0
-    scoreboard.empty()
-    scoreboardTop3.empty()
+  var reqTime = 30000;
 
-    if (!isNaN(parseFloat(time)) && isFinite(time)) {
+  var scoreboardListener = firebase.database().ref('scoreboard');
+
+  let scoreboard = $('#scoreboard_list')
+  let scoreboardTop3 = $('#scoreboard_top3')
+
+  scoreboard.empty()
+  scoreboardTop3.empty()
+
+  var i = 0
+  var j = 0
+  var k = 0
+  var t = 0  
+
+  if (!isNaN(parseFloat(time)) && isFinite(time)) {
+
+    scoreboardListener.orderByChild('time').startAt(reqTime).endAt(time + 2000).once('value', function(snapshot) {
 
       var score = [];
 
@@ -532,7 +540,11 @@ function scoreUpdate(time, naked) {
         scrollTop: $('.chosen-one').position().top - $('#scoreboard').height() / 3
       }, 500);
 
-    } else {
+    });
+
+  } else {
+
+    scoreboardListener.orderByChild('time').startAt(reqTime).limitToFirst(100).once('value', function(snapshot) {
 
       snapshot.forEach(function(snapshot) {
         let listItem = $("<li />")
@@ -557,9 +569,9 @@ function scoreUpdate(time, naked) {
         i++;
       })
 
-    }
+    });
 
-  });
+  }
 }
 
 function niceTime(time, nicer, nospan) {
@@ -716,6 +728,12 @@ function startGame(naked) {
     $('.popup-merch').addClass('is-visible');
   }
   
+  if(!isMusicPlaying()) {
+    mute = true;
+  } else {
+    mute = false;
+  }
+
   if(!tutorial) {
     setTimeout(function() {
       hideLayer('.layer--mission-1');
@@ -740,6 +758,18 @@ function continueGame() {
 function setMute(mute) {
   if (_game) {
     _game.setMute(mute)
+  }
+}
+
+function initAudio() {
+  if (_game) {
+    _game.initAudio()
+  }
+}
+
+function isMusicPlaying() {
+  if (_game) {
+    return _game.isMusicPlaying()
   }
 }
 

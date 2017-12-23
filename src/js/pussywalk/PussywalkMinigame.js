@@ -87,7 +87,6 @@ const initGame = (config) => {
 
   _world = new Box2dWorld(_canvas[0], _json, config.startNaked);
   _renderer = new Renderer(_world.world, _canvas[0], _world.bodies)
-  _audioPlayer = new AudioPlayer(config.startNaked)
 
   _world.callbacks = _callbacks
   _world.renderer = _renderer
@@ -164,10 +163,18 @@ export default class PussywalkMinigame {
 
   constructor(callbacks, naked, mute) {
     _callbacks = callbacks;
+    _audioPlayer = new AudioPlayer(naked);
 
     $(window).resize(resizeCanvas)
 
+    if(_audioPlayer.isMusicPlaying()) {
+      $('.nav__sound').removeClass('is-active');
+    } else {
+      $('.nav__sound').addClass('is-active');
+    }
+
     this.onTick = this.onTick.bind(this)
+    this.isMusicPlaying = this.isMusicPlaying.bind(this)
 
     this.updateInterval = setInterval(this.onTick, 1000)
     this.lastTickTime = new Date()
@@ -215,6 +222,18 @@ export default class PussywalkMinigame {
       if (_callbacks.onTick) {
         _callbacks.onTick(this.playTime)
       }
+    }
+  }
+
+  isMusicPlaying() {
+    if (_audioPlayer) {
+      return _audioPlayer.isMusicPlaying()
+    }
+  }
+
+  initAudio() {
+    if (_audioPlayer && !_audioPlayer.isInitialized) {
+      _audioPlayer.init()
     }
   }
 

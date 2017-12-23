@@ -90,9 +90,6 @@ export default class Box2DWorld {
       x: 42,
       y: -16
     }, {
-      x: 68,
-      y: -15
-    }, {
       x: 91.6,
       y: -16.5
     }, {
@@ -416,10 +413,6 @@ export default class Box2DWorld {
   }
 
   handleArrows(keyCode, state) {
-
-    if (!this.audioPlayer.isInitialized) {
-      this.audioPlayer.init()
-    }
 
     this.keymap[keyCode] = state;
 
@@ -913,8 +906,8 @@ export default class Box2DWorld {
 
   cheatReset() {
     let resetPoint = {
-      x: 150,
-      y: -20
+      x: 99,
+      y: -10
     }
     this.prepareForReset()
     this.lastCheckpoint = resetPoint

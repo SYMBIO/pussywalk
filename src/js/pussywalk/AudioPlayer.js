@@ -11,6 +11,9 @@ export default class AudioPlayer {
     this.stop = this.stop.bind(this)
     this.init = this.init.bind(this)
     this.playBallPop = this.playBallPop.bind(this)
+    this.isMusicPlaying = this.isMusicPlaying.bind(this)
+
+    this.isInitialized = false
 
     window.soundDidFinishPlaying = this.onSoundEnded.bind(this)
 
@@ -216,6 +219,10 @@ export default class AudioPlayer {
   }
 
   init() {
+    if (this.isInitialized) {
+      return
+    }
+
     let music = this.music[this.musicIndex]
     this.mobileSounds.forEach(function(sound) {
       let process = (sound == music && music.paused) || sound != music
@@ -231,6 +238,10 @@ export default class AudioPlayer {
     }
 
     this.isInitialized = true
+  }
+
+  isMusicPlaying() {
+    return !this.music[this.musicIndex].paused
   }
 
   setMute(mute) {
