@@ -231,6 +231,12 @@ export default class PussywalkMinigame {
     }
   }
 
+  initAudio() {
+    if (_audioPlayer) {
+      _audioPlayer.init()
+    }
+  }
+
   setMute(mute) {
     if (_audioPlayer) {
       _audioPlayer.setMute(mute)

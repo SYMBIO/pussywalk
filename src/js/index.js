@@ -16,7 +16,7 @@ if(window.location.hostname == 'localhost') {
 window.__delegateSound = false
 
 //
-var mute = true;
+var mute = false;
 
 // tutorial
 var tutorial = true;
@@ -721,6 +721,12 @@ function startGame(naked) {
     $('.popup-merch').addClass('is-visible');
   }
   
+  if(!isMusicPlaying()) {
+    mute = true;
+  } else {
+    mute = false;
+  }
+
   if(!tutorial) {
     setTimeout(function() {
       hideLayer('.layer--mission-1');
@@ -745,6 +751,12 @@ function continueGame() {
 function setMute(mute) {
   if (_game) {
     _game.setMute(mute)
+  }
+}
+
+function initAudio() {
+  if (_game) {
+    _game.initAudio()
   }
 }
 
