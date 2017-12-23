@@ -765,6 +765,7 @@
           },
           
           {
+            "density" : 31.97919654846191,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
             "id" : 78,
@@ -805,13 +806,13 @@
         ],
         "id" : 7,
         "linearVelocity" : 0,
-        "massData-I" : 0.3395154774188995,
+        "massData-I" : 0.3837639093399048,
         "massData-center" : 
         {
-          "x" : -0.06091242656111717,
-          "y" : -0.1004408374428749
+          "x" : -0.07604198902845383,
+          "y" : -0.1006842777132988
         },
-        "massData-mass" : 5,
+        "massData-mass" : 5.200083732604980,
         "name" : "leg_shoe_back",
         "position" : 
         {
@@ -1195,10 +1196,10 @@
         "massData-I" : 0.2868023216724396,
         "massData-center" : 
         {
-          "x" : 0.006862462963908911,
-          "y" : 0.07951408624649048
+          "x" : 0.006862460169941187,
+          "y" : 0.07951407879590988
         },
-        "massData-mass" : 0.8560814857482910,
+        "massData-mass" : 0.8560815453529358,
         "name" : "hand_front_bottom",
         "position" : 
         {
@@ -1236,6 +1237,7 @@
           },
           
           {
+            "density" : 31.97919654846191,
             "filter-categoryBits" : 2,
             "filter-maskBits" : 65533,
             "id" : 76,
@@ -1291,13 +1293,13 @@
         ],
         "id" : 12,
         "linearVelocity" : 0,
-        "massData-I" : 0.4999380707740784,
+        "massData-I" : 0.5362336039543152,
         "massData-center" : 
         {
-          "x" : 0.01537916809320450,
-          "y" : -0.1804585158824921
+          "x" : 0.002602620748803020,
+          "y" : -0.1805037409067154
         },
-        "massData-mass" : 6,
+        "massData-mass" : 6.200083732604980,
         "name" : "leg_shoe_front",
         "position" : 
         {
@@ -1438,7 +1440,7 @@
         "massData-center" : 
         {
           "x" : 0.006862461101263762,
-          "y" : 0.07951408624649048
+          "y" : 0.07951407134532928
         },
         "massData-mass" : 0.8560815453529358,
         "name" : "hand_back_bottom",
