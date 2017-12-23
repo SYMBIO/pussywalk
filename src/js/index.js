@@ -364,6 +364,12 @@ function initializeElements() {
     window.clearInterval(shareInterval);
     window.clearTimeout(shareTimeout);
 
+    if($(this).hasClass('nav-share')) {
+      if(online) {window.wtfga('send', 'event', 'share', 'vitez')};
+    } else {
+      if(online) {window.wtfga('send', 'event', 'share', 'like')};
+    }
+
     window.open($(this).attr('href'), 'fbShareWindow', 'height=450, width=550, top=100, left=100, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
     return false;
   });
