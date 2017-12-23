@@ -11,6 +11,7 @@ export default class AudioPlayer {
     this.stop = this.stop.bind(this)
     this.init = this.init.bind(this)
     this.playBallPop = this.playBallPop.bind(this)
+    this.isMusicPlaying = this.isMusicPlaying.bind(this)
 
     window.soundDidFinishPlaying = this.onSoundEnded.bind(this)
 

@@ -438,7 +438,8 @@ function initializeFirebase() {
   };
   firebase.initializeApp(config);
 
-//scoreUpdate();
+  //$("#name_input").val('Ondratra');
+  //scoreUpdate(67913);
 }
 
 function scoreUpdate(time, naked) {
@@ -451,117 +452,119 @@ function scoreUpdate(time, naked) {
   var reqTime = 30000;
 
   var scoreboardListener = firebase.database().ref('scoreboard');
-  scoreboardListener.orderByChild("time").once('value', function(snapshot) {
-    let scoreboard = $('#scoreboard_list')
-    let scoreboardTop3 = $('#scoreboard_top3')
-    var i = 0
-    var j = 0
-    var k = 0
-    var t = 0
-    scoreboard.empty()
-    scoreboardTop3.empty()
 
-    if (!isNaN(parseFloat(time)) && isFinite(time)) {
+  let scoreboard = $('#scoreboard_list')
+  let scoreboardTop3 = $('#scoreboard_top3')
+
+  scoreboard.empty()
+  scoreboardTop3.empty()
+
+  var i = 0
+  var j = 0
+  var k = 0
+  var t = 0  
+
+  if (!isNaN(parseFloat(time)) && isFinite(time)) {
+
+    scoreboardListener.orderByChild('time').startAt(reqTime).endAt(time + 2000).once('value', function(snapshot) {
 
       var score = [];
 
       snapshot.forEach(function(snapshot) {
-        if(snapshot.val().time > reqTime) {
-          score.push([j, snapshot.val().username, snapshot.val().time]);
+        score.push([j, snapshot.val().username, snapshot.val().time]);
 
-          if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time) {
-            t = j;
-          }
-
-          j++;
+        if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time) {
+          t = j;
         }
+
+        j++;
       });
 
       var plusminus = 35;
 
       snapshot.forEach(function(snapshot) {
-        if(snapshot.val().time > reqTime) {
-          let listItem = $("<li />");
-          if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
-            listItem = $("<li class='chosen-one' />");
-          }
-          let posSpan = $("<span class=\"position\" />")
-          let nameSpan = $("<span class=\"username\" />")
-          let timeSpan = $("<span class=\"time\" />")
-
-          posSpan.append(i + 1 + '.')
-          let nakedSpan = '';
-          if (snapshot.val().naked) {
-            nakedSpan = ' <span class="scoreboard__nude">NUDE</span>';
-          }
-          nameSpan.append(snapshot.val().username + nakedSpan)
-          timeSpan.append(scoreTime(snapshot.val().time))
-
-          listItem.append(posSpan)
-          listItem.append(nameSpan)
-          listItem.append(timeSpan)
-
-          if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
-            listItem.append('<span class="share"><span></span><a href="https://www.facebook.com/sharer/sharer.php?u=http://pussywalk.com/images/layout/share.php?n='+ snapshot.val().username +'%26t=' + niceTime(snapshot.val().time, true, true) + '" class="btn btn--fb js-share">Sdílej svoje score na</a><img src="/images/layout/master.png" alt=""></span>')
-            k = 1;
-          }
-
-          if (t < 3) {
-
-            if (i < 15) {
-              scoreboardTop3.append(listItem)
-            }
-
-          } else {
-
-            if (i < 3) {
-              scoreboardTop3.append(listItem)
-            }
-
-            if (i >= 3 && i > t - plusminus && i < t + plusminus + 2) {
-              scoreboard.append(listItem)
-            }
-
-          }
-
-          i++;
+        let listItem = $("<li />");
+        if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
+          listItem = $("<li class='chosen-one' />");
         }
+        let posSpan = $("<span class=\"position\" />")
+        let nameSpan = $("<span class=\"username\" />")
+        let timeSpan = $("<span class=\"time\" />")
+
+        posSpan.append(i + 1 + '.')
+        let nakedSpan = '';
+        if (snapshot.val().naked) {
+          nakedSpan = ' <span class="scoreboard__nude">NUDE</span>';
+        }
+        nameSpan.append(snapshot.val().username + nakedSpan)
+        timeSpan.append(scoreTime(snapshot.val().time))
+
+        listItem.append(posSpan)
+        listItem.append(nameSpan)
+        listItem.append(timeSpan)
+
+        if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
+          listItem.append('<span class="share"><span></span><a href="https://www.facebook.com/sharer/sharer.php?u=http://pussywalk.com/images/layout/share.php?n='+ snapshot.val().username +'%26t=' + niceTime(snapshot.val().time, true, true) + '" class="btn btn--fb js-share">Sdílej svoje score na</a><img src="/images/layout/master.png" alt=""></span>')
+          k = 1;
+        }
+
+        if (t < 3) {
+
+          if (i < 15) {
+            scoreboardTop3.append(listItem)
+          }
+
+        } else {
+
+          if (i < 3) {
+            scoreboardTop3.append(listItem)
+          }
+
+          if (i >= 3 && i > t - plusminus && i < t + plusminus + 2) {
+            scoreboard.append(listItem)
+          }
+
+        }
+
+        i++;
       })
 
       $('#scoreboard').animate({
         scrollTop: $('.chosen-one').position().top - $('#scoreboard').height() / 3
       }, 500);
 
-    } else {
+    });
+
+  } else {
+
+    scoreboardListener.orderByChild('time').startAt(reqTime).limitToFirst(100).once('value', function(snapshot) {
 
       snapshot.forEach(function(snapshot) {
-        if(snapshot.val().time > reqTime) {
-          let listItem = $("<li />")
-          let posSpan = $("<span class=\"position\" />")
-          let nameSpan = $("<span class=\"username\" />")
-          let timeSpan = $("<span class=\"time\" />")
-          posSpan.append(i + 1 + '.')
-          let nakedSpan = '';
-          if (snapshot.val().naked) {
-            nakedSpan = ' <span class="scoreboard__nude">NUDE</span>';
-          }
-          nameSpan.append(snapshot.val().username + nakedSpan)
-          timeSpan.append(scoreTime(snapshot.val().time))
-          listItem.append(posSpan)
-          listItem.append(nameSpan)
-          listItem.append(timeSpan)
-
-          if (i < 100) {
-            scoreboardTop3.append(listItem)
-          }
-
-          i++;
+        let listItem = $("<li />")
+        let posSpan = $("<span class=\"position\" />")
+        let nameSpan = $("<span class=\"username\" />")
+        let timeSpan = $("<span class=\"time\" />")
+        posSpan.append(i + 1 + '.')
+        let nakedSpan = '';
+        if (snapshot.val().naked) {
+          nakedSpan = ' <span class="scoreboard__nude">NUDE</span>';
         }
+        nameSpan.append(snapshot.val().username + nakedSpan)
+        timeSpan.append(scoreTime(snapshot.val().time))
+        listItem.append(posSpan)
+        listItem.append(nameSpan)
+        listItem.append(timeSpan)
+
+        if (i < 100) {
+          scoreboardTop3.append(listItem)
+        }
+
+        i++;
       })
 
-    }
+    });
 
-  });
+  }
 }
 
 function niceTime(time, nicer, nospan) {
@@ -717,6 +720,16 @@ function startGame(naked) {
   if(nudeMode) {
     $('.popup-merch').addClass('is-visible');
   }
+
+  console.log(isMusicPlaying());
+
+  /*
+  if(!isMusicPlaying()) {
+    $('.nav__sound').removeClass('is-active');
+  } else {
+    $('.nav__sound').addClass('is-active');
+  }
+  */
   
   if(!tutorial) {
     setTimeout(function() {
@@ -742,6 +755,12 @@ function continueGame() {
 function setMute(mute) {
   if (_game) {
     _game.setMute(mute)
+  }
+}
+
+function isMusicPlaying() {
+  if (_game) {
+    _game.isMusicPlaying()
   }
 }
 
