@@ -167,6 +167,12 @@ export default class PussywalkMinigame {
 
     $(window).resize(resizeCanvas)
 
+    if(_audioPlayer.isMusicPlaying()) {
+      $('.nav__sound').removeClass('is-active');
+    } else {
+      $('.nav__sound').addClass('is-active');
+    }
+
     this.onTick = this.onTick.bind(this)
 
     this.updateInterval = setInterval(this.onTick, 1000)

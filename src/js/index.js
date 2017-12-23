@@ -16,7 +16,7 @@ if(window.location.hostname == 'localhost') {
 window.__delegateSound = false
 
 //
-var mute = false;
+var mute = true;
 
 // tutorial
 var tutorial = true;
@@ -720,16 +720,6 @@ function startGame(naked) {
   if(nudeMode) {
     $('.popup-merch').addClass('is-visible');
   }
-
-  console.log(isMusicPlaying());
-
-  /*
-  if(!isMusicPlaying()) {
-    $('.nav__sound').removeClass('is-active');
-  } else {
-    $('.nav__sound').addClass('is-active');
-  }
-  */
   
   if(!tutorial) {
     setTimeout(function() {
