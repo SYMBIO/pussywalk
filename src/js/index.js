@@ -256,6 +256,7 @@ function initializeElements() {
     var link = $(this);
 
     if (mute) {
+      initAudio();
       setMute(false);
       if(online) {window.wtfga('send', 'event', 'sound', 'on')};
       link.removeClass('is-active');
