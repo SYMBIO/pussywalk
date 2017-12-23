@@ -237,6 +237,10 @@ export default class AudioPlayer {
     this.isInitialized = true
   }
 
+  isMusicPlaying() {
+    return !this.music[this.musicIndex].paused
+  }
+
   setMute(mute) {
     this.isMute = mute
 
