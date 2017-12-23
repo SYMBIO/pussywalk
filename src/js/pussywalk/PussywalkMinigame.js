@@ -232,7 +232,7 @@ export default class PussywalkMinigame {
   }
 
   initAudio() {
-    if (_audioPlayer) {
+    if (_audioPlayer && !_audioPlayer.isInitialized) {
       _audioPlayer.init()
     }
   }
