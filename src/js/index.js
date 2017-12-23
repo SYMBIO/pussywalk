@@ -760,7 +760,7 @@ function setMute(mute) {
 
 function isMusicPlaying() {
   if (_game) {
-    _game.isMusicPlaying()
+    return _game.isMusicPlaying()
   }
 }
 

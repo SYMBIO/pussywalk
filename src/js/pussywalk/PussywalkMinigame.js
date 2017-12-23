@@ -168,6 +168,7 @@ export default class PussywalkMinigame {
     $(window).resize(resizeCanvas)
 
     this.onTick = this.onTick.bind(this)
+    this.isMusicPlaying = this.isMusicPlaying.bind(this)
 
     this.updateInterval = setInterval(this.onTick, 1000)
     this.lastTickTime = new Date()
@@ -220,7 +221,7 @@ export default class PussywalkMinigame {
 
   isMusicPlaying() {
     if (_audioPlayer) {
-      _audioPlayer.isMusicPlaying()
+      return _audioPlayer.isMusicPlaying()
     }
   }
 
