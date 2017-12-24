@@ -456,7 +456,7 @@ function scoreUpdate(time, naked) {
 
   showLayer('.layer--scoreboard');
 
-  var reqTime = 30000;
+  var reqTime = 40000;
 
   var scoreboardListener = firebase.database().ref('scoreboard');
 
