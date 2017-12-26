@@ -21,7 +21,7 @@ var mute = !window.__canAutoPlaySounds;
 
 // tutorial
 var tutorial = true;
-if (getCookie('tutorial1') == 1) {
+if (getCookie('tutorial') == 1) {
   tutorial = false;
 }
 
