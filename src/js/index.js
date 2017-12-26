@@ -3,6 +3,7 @@ import $ from 'jquery';
 import * as firebase from 'firebase';
 import styles from '../styles/app.less';
 import PussywalkMinigame from './pussywalk/PussywalkMinigame';
+import Config from './pussywalk/Config';
 
 if ('ontouchstart' in document.documentElement) {
   $('html').removeClass('no-touch').addClass('touch');
@@ -39,16 +40,16 @@ var online,
       $('.offline').show();
     }
 
-if(navigator.onLine) {
+if (navigator.onLine) {
   onlineTrue();
 } else {
   onlineFalse();
 }
 
-window.addEventListener('online', function(){
+window.addEventListener('online', function() {
   onlineTrue();
 });
-window.addEventListener('offline', function(){
+window.addEventListener('offline', function() {
   onlineFalse();
 });
 
@@ -56,16 +57,16 @@ window.addEventListener('offline', function(){
 let loader = assetsLoader({
   assets: [
     // images
-    '/images/spritesheet-0.json',
-    '/images/spritesheet-0.png',
-    '/images/spritesheet-1.json',
-    '/images/spritesheet-1.png',
-    '/images/spritesheet-2.json',
-    '/images/spritesheet-2.png',
-    '/images/spritesheet-3.json',
-    '/images/spritesheet-3.png',
-    '/images/spritesheet-4.json',
-    '/images/spritesheet-4.png',
+    '/images/spritesheet-0.json?' + Config.cachebuster,
+    '/images/spritesheet-0.png?' + Config.cachebuster,
+    '/images/spritesheet-1.json?' + Config.cachebuster,
+    '/images/spritesheet-1.png?' + Config.cachebuster,
+    '/images/spritesheet-2.json?' + Config.cachebuster,
+    '/images/spritesheet-2.png?' + Config.cachebuster,
+    '/images/spritesheet-3.json?' + Config.cachebuster,
+    '/images/spritesheet-3.png?' + Config.cachebuster,
+    '/images/spritesheet-4.json?' + Config.cachebuster,
+    '/images/spritesheet-4.png?' + Config.cachebuster,
     '/images/layout/loading-bg.jpg',
     '/images/layout/loading-ico.png',
     '/images/layout/logo-pussywalk-2.png',
@@ -74,15 +75,15 @@ let loader = assetsLoader({
     '/images/layout/mission-ico.png',
     '/images/layout/top-bg.png',
     '/images/layout/tutorial-keys.png',
-    '/images/level/furnice_wall.jpg',
-    '/images/level/level_1.jpg',
-    '/images/level/level_2.jpg',
-    '/images/level/level_3.jpg',
-    '/images/level/level_4.jpg',
-    '/images/level/level_5.jpg',
-    '/images/level/level_6.jpg',
-    '/images/level/level_7.jpg',
-    '/images/level/level_8.jpg',
+    '/images/level/furnice_wall.jpg?' + Config.cachebuster,
+    '/images/level/level_1.jpg?' + Config.cachebuster,
+    '/images/level/level_2.jpg?' + Config.cachebuster,
+    '/images/level/level_3.jpg?' + Config.cachebuster,
+    '/images/level/level_4.jpg?' + Config.cachebuster,
+    '/images/level/level_5.jpg?' + Config.cachebuster,
+    '/images/level/level_6.jpg?' + Config.cachebuster,
+    '/images/level/level_7.jpg?' + Config.cachebuster,
+    '/images/level/level_8.jpg?' + Config.cachebuster,
     '/images/misc/flash.png',
     '/images/misc/vignette.png',
   ]
