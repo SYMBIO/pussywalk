@@ -21,7 +21,7 @@ var mute = !window.__canAutoPlaySounds;
 
 // tutorial
 var tutorial = true;
-if (getCookie('tutorial') == 1) {
+if (getCookie('tutorial1') == 1) {
   tutorial = false;
 }
 
@@ -72,7 +72,6 @@ let loader = assetsLoader({
     '/images/layout/logo-pussywalk-2.png',
     '/images/layout/logo-pussywalk-2-pink.png',
     '/images/layout/menu-bg.png',
-    '/images/layout/mission-ico.png',
     '/images/layout/top-bg.png',
     '/images/layout/tutorial-keys.png',
     '/images/level/furnice_wall.jpg?' + Config.cachebuster,
@@ -575,7 +574,9 @@ function scoreUpdate(time, naked) {
         listItem.append(timeSpan)
 
         if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
-          listItem.append('<span class="share"><span></span><a href="https://www.facebook.com/sharer/sharer.php?u=http://pussywalk.com/images/layout/share.php?n=' + snapshot.val().username + '%26t=' + niceTime(snapshot.val().time, true, true) + '" class="btn btn--fb js-share">Sdílej svoje score na</a><img src="/images/layout/master.png" alt=""></span>')
+          var listItemNude = nudeModePlaying ? '1' : '';
+          var listItemNude2 = nudeModePlaying ? '-nude' : '';
+          listItem.append('<span class="share"><span></span><a href="https://www.facebook.com/sharer/sharer.php?u=http://pussywalk.com/images/layout/share.php?n=' + snapshot.val().username +'%26t=' + niceTime(snapshot.val().time, true, true) + '%26c=' + listItemNude + '" class="btn btn--fb js-share">Sdílej svoje score na</a><img src="/images/layout/master' + listItemNude2 +  '.png" alt=""></span>')
           k = 1;
         }
 
@@ -758,6 +759,11 @@ function onGameEnd(didWin, progress, wasNude) {
     //$('#name_dialogue').show()
     pauseGame();
     $('#finish_time').html(niceTime(_game.playTime, true));
+    if(nudeModePlaying) {
+      $('.layer--finish').addClass('is-naked');
+    } else {
+      $('.layer--finish').removeClass('is-naked');
+    }
     setTimeout(function() {
       showLayer('.layer--finish');
     }, 10);

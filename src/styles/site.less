@@ -367,11 +367,15 @@ a:focus, a:active {
 	text-decoration: none;
 	text-transform: uppercase;
 	width: 48px;
-	z-index: 1;
+	z-index: 4;
+
+	em {
+		transition: transform 100ms;
+	}
 
 	span {
 		border-radius: 4px;
-		display: block;
+		display: inline-block;
 		height: 48px;
 		position: relative;
 		transition: transform 100ms;
@@ -399,7 +403,7 @@ a:focus, a:active {
 	}
 
 	&:hover {
-		span, &:after {
+		span, em, &:after {
 			transform: translateY(4px);
 		}
 	}
@@ -451,16 +455,35 @@ a:focus, a:active {
 	}
 }
 .nav-share {
+	color: #fff;
+	font-size: 16px;
+	text-transform: none;
 	top: 85px;
+	width: 97px;
 
+	&:before {
+		background: #2c4b8d;
+	}
 	&:after {
-		background: #342c4a;
+		background: #4868ad;
 		box-shadow: inset 0px 1px 1px 0px rgba(255, 255, 255, 0.4);
 	}
 
 	span {
 		background: url(../images/layout/ico-fb-new.png) no-repeat 50% 11px;
 		background-size: auto 22px;
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	em {
+		display: inline-block;
+		font-style: normal;
+		line-height: 48px;
+		padding-left: 15px;
+		position: relative;
+		vertical-align: top;
+		z-index: 2;
 	}
 
 	&.has-wiggle {
@@ -596,12 +619,27 @@ a:focus, a:active {
 		}
 	}
 
+	&.is-naked {
+		.finish__naked {
+			display: inline-block;
+		}
+
+		.finish__time {
+			&:after {
+				background-image: url(../images/layout/finish-ico-naked.png);
+			}
+		}
+	}
+
 	&.is-visible {
 		~ .disc {
 			opacity: .2;
 			z-index: 8;
 		}
 	}
+}
+.finish__naked {
+	display: none;
 }
 .finish__time {
 	color: @white;
@@ -617,7 +655,7 @@ a:focus, a:active {
 	z-index: 2;
 
 	 &:after {
-		background: url(../images/layout/mission-ico.png) no-repeat 50% 50%;
+		background: url(../images/layout/finish-ico.png) no-repeat 50% 50%;
 		background-size: contain;
 		content: '';
 		display: block;
@@ -637,7 +675,7 @@ a:focus, a:active {
 		margin-bottom: 1px;
 	}
 
-	> span {
+	.finish__time-span {
 		display: block;
 		font-size: 18px;
 		line-height: 18px;
@@ -929,13 +967,13 @@ a:focus, a:active {
 		border-radius: 10px;
 		cursor: pointer;
 		font-size: 18px;
-		line-height: 20px;
+		line-height: 24px;
 		opacity: 0;
-		padding: 15px 110px 15px 15px;
+		padding: 15px 15px 80px;
 		transform: rotate(-45deg);
 		transform-origin: 27px -4px;
 		transition: transform 250ms cubic-bezier(0.2, -0.07, 0.5, 1.51), opacity 150ms;
-		width: 325px;
+		width: 225px;
 
 		&:before {
 			background: url(../images/layout/popup-merch-arrow.png) no-repeat 50% 100%;
@@ -950,15 +988,15 @@ a:focus, a:active {
 		}
 
 		&:after {
-			background: url(../images/layout/popup-merch.png) no-repeat 100% 100%;
+			background: url(../images/layout/popup-merch.png) no-repeat 50% 100%;
 			background-size: contain;
 			bottom: 0;
 			content: '';
 			display: block;
-			height: 90%;
+			height: 80px;
 			position: absolute;
-			right: 20px;
-			width: 110px;
+			right: 0;
+			width: 100%;
 		}
 
 		&:hover {
@@ -993,6 +1031,7 @@ a:focus, a:active {
 		}
 	}
 
+	/*
 	@media @phoneLand {
 		p {
 			font-size: 14px;
@@ -1011,6 +1050,20 @@ a:focus, a:active {
 		p {
 			padding: 8px 50px 8px 12px;
     		width: 210px;
+
+			&:after {
+				display: none;
+			}
+		}	  
+	}	
+	*/
+
+	@media only screen and (max-width: 390px) {
+		p {
+			font-size: 14px;
+			line-height: 18px;	
+			padding: 8px 0px 8px 12px;
+    		width: 160px;
 
 			&:after {
 				display: none;
@@ -1311,7 +1364,7 @@ a:focus, a:active {
 	width: 0;
 	
 	&.is-visible {
-		z-index: 5;
+		z-index: 3;
 	}
 	
 	.layer__content {
