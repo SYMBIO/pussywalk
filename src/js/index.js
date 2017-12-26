@@ -9,15 +9,15 @@ if ('ontouchstart' in document.documentElement) {
   $('html').removeClass('no-touch').addClass('touch');
 }
 
-if(window.location.hostname == 'localhost') {
-  $('html').removeClass('no-app').addClass('app'); 
+if (window.location.hostname == 'localhost') {
+  $('html').removeClass('no-app').addClass('app');
 }
 
 // Used for delegating sound to app
 window.__delegateSound = false
 
 //
-var mute = false;
+var mute = !window.__canAutoPlaySounds;
 
 // tutorial
 var tutorial = true;
@@ -29,16 +29,16 @@ var nudeMode = false;
 var nudeModePlaying = false;
 
 var online,
-    onlineTrue = function() {
-      online = true;
-      $('.online').show();
-      $('.offline').hide();
-    },
-    onlineFalse = function() {
-      online = false;
-      $('.online').hide();
-      $('.offline').show();
-    }
+  onlineTrue = function() {
+    online = true;
+    $('.online').show();
+    $('.offline').hide();
+  },
+  onlineFalse = function() {
+    online = false;
+    $('.online').hide();
+    $('.offline').show();
+}
 
 if (navigator.onLine) {
   onlineTrue();
@@ -125,10 +125,33 @@ window.onload = function() {
     onSheepPickup: onSheepPickup
   }
 
-  startGame()
+  initializeAudio().then(startGame)
+}
+
+function initializeAudio() {
+  return new Promise(function(resolve, reject) {
+    // The following block should not be executed as a result of a user generated event
+    let testSound = new Audio()
+    testSound.volume = 0
+    testSound.src = "data:audio/mpeg;base64,/+MYxAAAAANIAUAAAASEEB/jwOFM/0MM/90b/+RhST//w4NFwOjf///PZu////9lns5GFDv//l9GlUIEEIAAAgIg8Ir/JGq3/+MYxDsLIj5QMYcoAP0dv9HIjUcH//yYSg+CIbkGP//8w0bLVjUP///3Z0x5QCAv/yLjwtGKTEFNRTMuOTeqqqqqqqqqqqqq/+MYxEkNmdJkUYc4AKqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq"
+    testSound.play().then(function() {
+      // Went through OK
+      window.__canAutoPlaySounds = true
+      $('.nav__sound').removeClass('is-active');
+      mute = false
+      resolve()
+    }, function() {
+      // Can't play
+      window.__canAutoPlaySounds = false
+      $('.nav__sound').addClass('is-active');
+      mute = true
+      resolve()
+    });
+  })
 }
 
 var openNav = function() {
+
   $('.nav').addClass('is-active');
   $('.nav-link').addClass('is-active');
 
@@ -164,7 +187,7 @@ function initializeElements() {
     hideLayer('.layer--finish');
     pauseGame();
     finished = true;
-    
+
     firebase.database().ref('scoreboard').push({
       username: $("#name_input").val(),
       time: _game.playTime,
@@ -208,11 +231,17 @@ function initializeElements() {
     if (!$('.nav').hasClass('is-active')) {
       openNav()
       pauseGame()
-      if(online) {window.wtfga('send', 'event', 'navigation', 'on')};
+      if (online) {
+        window.wtfga('send', 'event', 'navigation', 'on')
+      }
+      ;
     } else {
       closeNav();
       continueGame()
-      if(online) {window.wtfga('send', 'event', 'navigation', 'off')};
+      if (online) {
+        window.wtfga('send', 'event', 'navigation', 'off')
+      }
+      ;
     }
   });
 
@@ -221,17 +250,23 @@ function initializeElements() {
 
     closeNav();
     continueGame()
-    if(online) {window.wtfga('send', 'event', 'navigation', 'off', 'mimo menu')};
+    if (online) {
+      window.wtfga('send', 'event', 'navigation', 'off', 'mimo menu')
+    }
+    ;
   });
 
   $('.nav__restart').on('click', function(e) {
     e.preventDefault();
-    
+
     closeNav();
     startGame();
     continueGame();
 
-    if(online) {window.wtfga('send', 'event', 'navigation', 'restart')};
+    if (online) {
+      window.wtfga('send', 'event', 'navigation', 'restart')
+    }
+    ;
   });
 
   /*
@@ -257,14 +292,18 @@ function initializeElements() {
     var link = $(this);
 
     if (mute) {
-      initAudio();
       setMute(false);
-      if(online) {window.wtfga('send', 'event', 'sound', 'on')};
+      if (online) {
+        window.wtfga('send', 'event', 'sound', 'on')
+      }
       link.removeClass('is-active');
       mute = false;
+      initMobileAudio();
     } else {
       setMute(true);
-      if(online) {window.wtfga('send', 'event', 'sound', 'off')};
+      if (online) {
+        window.wtfga('send', 'event', 'sound', 'off')
+      }
       link.addClass('is-active');
       mute = true;
     }
@@ -278,11 +317,17 @@ function initializeElements() {
     if (link.hasClass('is-active')) {
       link.removeClass('is-active');
       _game.setLowQuality(false);
-      if(online) {window.wtfga('send', 'event', 'low quality', 'on')};
+      if (online) {
+        window.wtfga('send', 'event', 'low quality', 'on')
+      }
+      ;
     } else {
       link.addClass('is-active');
       _game.setLowQuality(true);
-      if(online) {window.wtfga('send', 'event', 'low quality', 'off')};
+      if (online) {
+        window.wtfga('send', 'event', 'low quality', 'off')
+      }
+      ;
     }
   });
 
@@ -300,7 +345,10 @@ function initializeElements() {
 
     $('.nav').removeClass('is-active');
     showLayer('.layer--' + layer);
-    if(online) {window.wtfga('send', 'event', 'layer', layer)};
+    if (online) {
+      window.wtfga('send', 'event', 'layer', layer)
+    }
+    ;
   });
 
   $('.js-play-again').on('click', function(e) {
@@ -311,7 +359,7 @@ function initializeElements() {
     finished = true;
     startGame(nudeMode);
     $('#game_controls, #game_lives').show();
-    if(nudeMode) {
+    if (nudeMode) {
       setTimeout(function() {
         pauseGame();
         showLayer('.layer--naked');
@@ -323,14 +371,14 @@ function initializeElements() {
     e.preventDefault();
 
     closeTutorial();
-    
+
     showLayer('.layer--mission-1');
 
-    /*
-    setTimeout(function() {
-      $('.popup-merch').addClass('is-visible');
-    }, 7500);
-    */
+  /*
+  setTimeout(function() {
+    $('.popup-merch').addClass('is-visible');
+  }, 7500);
+  */
   });
 
   $('.js-play-naked').on('click', function(e) {
@@ -350,13 +398,13 @@ function initializeElements() {
 
   if (getCookie('share') != 1) {
     var shareTimeout,
-        shareInterval = setInterval(function(){
-      $('.nav-share').addClass('has-wiggle');
+      shareInterval = setInterval(function() {
+        $('.nav-share').addClass('has-wiggle');
 
-      shareTimeout = setTimeout(function(){
-        $('.nav-share').removeClass('has-wiggle');
-      }, 1000)
-    }, 60000);
+        shareTimeout = setTimeout(function() {
+          $('.nav-share').removeClass('has-wiggle');
+        }, 1000)
+      }, 60000);
   }
 
   $(document).on('click', '.js-share', function(e) {
@@ -366,33 +414,48 @@ function initializeElements() {
     window.clearInterval(shareInterval);
     window.clearTimeout(shareTimeout);
 
-    if($(this).hasClass('nav-share')) {
-      if(online) {window.wtfga('send', 'event', 'share', 'like')};
+    if ($(this).hasClass('nav-share')) {
+      if (online) {
+        window.wtfga('send', 'event', 'share', 'like')
+      }
+      ;
     } else {
-      if(online) {window.wtfga('send', 'event', 'share', 'vitez')};
+      if (online) {
+        window.wtfga('send', 'event', 'share', 'vitez')
+      }
+      ;
     }
 
     window.open($(this).attr('href'), 'fbShareWindow', 'height=450, width=550, top=100, left=100, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
     return false;
   });
 
-  $('.popup-merch p').on('click', function(){
+  $('.popup-merch p').on('click', function() {
     $('.popup-merch').removeClass('is-visible');
     pauseGame();
     showLayer('.layer--merch');
-    if(online) {window.wtfga('send', 'event', 'popup', 'show merch')};
+    if (online) {
+      window.wtfga('send', 'event', 'popup', 'show merch')
+    }
+    ;
   });
 
-  $('.popup__close').on('click', function(e){
+  $('.popup__close').on('click', function(e) {
     e.preventDefault();
 
     $('.popup-merch').removeClass('is-visible');
 
-    if(online) {window.wtfga('send', 'event', 'popup', 'close')};
+    if (online) {
+      window.wtfga('send', 'event', 'popup', 'close')
+    }
+    ;
   });
-  
-  $('.js-merch').on('click', function(e){
-    if(online) {window.wtfga('send', 'event', 'merch', 'objednat')};
+
+  $('.js-merch').on('click', function(e) {
+    if (online) {
+      window.wtfga('send', 'event', 'merch', 'objednat')
+    }
+    ;
   });
 }
 
@@ -446,8 +509,8 @@ function initializeFirebase() {
   };
   firebase.initializeApp(config);
 
-  //$("#name_input").val('Ondratra');
-  //scoreUpdate(67913);
+//$("#name_input").val('Ondratra');
+//scoreUpdate(67913);
 }
 
 function scoreUpdate(time, naked) {
@@ -470,7 +533,7 @@ function scoreUpdate(time, naked) {
   var i = 0
   var j = 0
   var k = 0
-  var t = 0  
+  var t = 0
 
   if (!isNaN(parseFloat(time)) && isFinite(time)) {
 
@@ -512,7 +575,7 @@ function scoreUpdate(time, naked) {
         listItem.append(timeSpan)
 
         if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
-          listItem.append('<span class="share"><span></span><a href="https://www.facebook.com/sharer/sharer.php?u=http://pussywalk.com/images/layout/share.php?n='+ snapshot.val().username +'%26t=' + niceTime(snapshot.val().time, true, true) + '" class="btn btn--fb js-share">Sdílej svoje score na</a><img src="/images/layout/master.png" alt=""></span>')
+          listItem.append('<span class="share"><span></span><a href="https://www.facebook.com/sharer/sharer.php?u=http://pussywalk.com/images/layout/share.php?n=' + snapshot.val().username + '%26t=' + niceTime(snapshot.val().time, true, true) + '" class="btn btn--fb js-share">Sdílej svoje score na</a><img src="/images/layout/master.png" alt=""></span>')
           k = 1;
         }
 
@@ -619,22 +682,26 @@ function niceTime(time, nicer, nospan) {
 
 function scoreTime(duration, nicer) {
   var spanWrap = function(what) {
-        return what.replace(/(\d)/g, '<span>$1</span>');
-      },
-      milliseconds = parseInt(duration%1000),
-      seconds = parseInt((duration/1000)%60),
-      minutes = parseInt((duration/(1000*60))%60),
-      hours = parseInt((duration/(1000*60*60))%24),
-      timeHours, timeMinutes, timeSeconds, timeMilliseconds, time;
+      return what.replace(/(\d)/g, '<span>$1</span>');
+    },
+    milliseconds = parseInt(duration % 1000),
+    seconds = parseInt((duration / 1000) % 60),
+    minutes = parseInt((duration / (1000 * 60)) % 60),
+    hours = parseInt((duration / (1000 * 60 * 60)) % 24),
+    timeHours,
+    timeMinutes,
+    timeSeconds,
+    timeMilliseconds,
+    time;
 
   timeHours = (hours < 10) ? "0" + hours : hours;
   timeMinutes = (minutes < 10) ? "0" + minutes : minutes;
   timeSeconds = (seconds < 10) ? "0" + seconds : seconds;
   timeMilliseconds = milliseconds;
-  if(milliseconds < 10) {
+  if (milliseconds < 10) {
     timeMilliseconds = "0" + milliseconds;
   }
-  if(timeMilliseconds < 100) {
+  if (timeMilliseconds < 100) {
     timeMilliseconds = "0" + timeMilliseconds;
   }
 
@@ -686,7 +753,7 @@ function onLifesUpdate(numberOfLifes, delta) {
 
 function onGameEnd(didWin, progress, wasNude) {
   nudeMode = didWin;
-  
+
   if (didWin) {
     //$('#name_dialogue').show()
     pauseGame();
@@ -699,14 +766,17 @@ function onGameEnd(didWin, progress, wasNude) {
     startGame(didWin || wasNude)
   }
 
-  if(online) {window.wtfga('send', 'event', 'game', 'end', progress)};
+  if (online) {
+    window.wtfga('send', 'event', 'game', 'end', progress)
+  }
+  ;
 }
 
 function startGame(naked) {
   finished = false;
-  
+
   nudeModePlaying = naked;
-  if(!naked) {
+  if (!naked) {
     nudeModePlaying = false;
   }
 
@@ -719,27 +789,24 @@ function startGame(naked) {
   }
   _game = new PussywalkMinigame(_callbacks, naked, mute);
 
-  if(typeof ga === 'function') {
+  if (typeof ga === 'function') {
     window.wtfga = ga;
   }
 
-  if(online) {window.wtfga('send', 'event', 'game', 'start')};
-  
-  if(nudeMode) {
+  if (online) {
+    window.wtfga('send', 'event', 'game', 'start')
+  }
+  ;
+
+  if (nudeMode) {
     $('.popup-merch').addClass('is-visible');
   }
-  
-  if(!isMusicPlaying()) {
-    mute = true;
-  } else {
-    mute = false;
-  }
 
-  if(!tutorial) {
+  if (!tutorial) {
     setTimeout(function() {
       hideLayer('.layer--mission-1');
-      //$('.popup-merch').addClass('is-visible');
-    }, 7500); 
+    //$('.popup-merch').addClass('is-visible');
+    }, 7500);
   }
 }
 
@@ -762,22 +829,20 @@ function setMute(mute) {
   }
 }
 
-function initAudio() {
+function initMobileAudio() {
   if (_game) {
-    _game.initAudio()
+    _game.initMobileAudio()
   }
 }
 
-function isMusicPlaying() {
-  if (_game) {
-    return _game.isMusicPlaying()
-  }
-}
-
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+(function(i, s, o, g, r, a, m) {
+  i['GoogleAnalyticsObject'] = r;i[r] = i[r] || function() {
+    (i[r].q = i[r].q || []).push(arguments)
+  }, i[r].l = 1 * new Date();a = s.createElement(o),
+  m = s.getElementsByTagName(o)[0];
+  a.async = 1;
+  a.src = g;m.parentNode.insertBefore(a, m)
+})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
 ga('create', 'UA-162303-31', 'auto');
-ga('send', 'pageview'); 
+ga('send', 'pageview');

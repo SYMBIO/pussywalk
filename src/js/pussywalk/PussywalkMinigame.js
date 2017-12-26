@@ -167,14 +167,7 @@ export default class PussywalkMinigame {
 
     $(window).resize(resizeCanvas)
 
-    if(_audioPlayer.isMusicPlaying()) {
-      $('.nav__sound').removeClass('is-active');
-    } else {
-      $('.nav__sound').addClass('is-active');
-    }
-
     this.onTick = this.onTick.bind(this)
-    this.isMusicPlaying = this.isMusicPlaying.bind(this)
 
     this.updateInterval = setInterval(this.onTick, 1000)
     this.lastTickTime = new Date()
@@ -225,15 +218,9 @@ export default class PussywalkMinigame {
     }
   }
 
-  isMusicPlaying() {
-    if (_audioPlayer) {
-      return _audioPlayer.isMusicPlaying()
-    }
-  }
-
-  initAudio() {
-    if (_audioPlayer && !_audioPlayer.isInitialized) {
-      _audioPlayer.init()
+  initMobileAudio() {
+    if (_audioPlayer && !_audioPlayer.isMobileInitialized) {
+      _audioPlayer.initMobile()
     }
   }
 
