@@ -94,7 +94,7 @@ export default class Box2DWorld {
       y: -16.5
     }, {
       x: 127,
-      y: 24.7
+      y: -24.7
     }]
 
     this.visibleLifes = this.lifePickupPoints
