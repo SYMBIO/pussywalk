@@ -103,6 +103,7 @@ let loader = assetsLoader({
         pauseGame();
       } else {
         showLayer('.layer--mission-1');
+        //showLayer('.layer--tutorial-new');
         continueGame();
       }
     }, (2 - assetsLoader.stats.secs) * 1000)
@@ -523,11 +524,8 @@ function scoreUpdate(time, naked) {
 
   var scoreboardListener = firebase.database().ref('scoreboard');
 
-  let scoreboard = $('#scoreboard_list')
-  let scoreboardTop3 = $('#scoreboard_top3')
-
-  scoreboard.empty()
-  scoreboardTop3.empty()
+  let scoreboard = $('#scoreboard_list');
+  let scoreboardTop3 = $('#scoreboard_top3');
 
   var i = 0
   var j = 0
@@ -537,6 +535,9 @@ function scoreUpdate(time, naked) {
   if (!isNaN(parseFloat(time)) && isFinite(time)) {
 
     scoreboardListener.orderByChild('time').startAt(reqTime).endAt(time + 2000).once('value', function(snapshot) {
+
+      scoreboard.empty()
+      scoreboardTop3.empty()
 
       var score = [];
 
@@ -610,6 +611,9 @@ function scoreUpdate(time, naked) {
   } else {
 
     scoreboardListener.orderByChild('time').startAt(reqTime).limitToFirst(100).once('value', function(snapshot) {
+
+      scoreboard.empty()
+      scoreboardTop3.empty()
 
       snapshot.forEach(function(snapshot) {
         let listItem = $("<li />")
