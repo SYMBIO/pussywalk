@@ -247,15 +247,19 @@
 	left: 50%;
 	position: absolute;
 	top: 50%;
-	transform: translate(20%, 10%);
+	transform: translate(65%, 0%);
 	width: 20%;
 
 	@media only screen and (orientation: landscape) {
 		width: 10%;
 	}	
 
+	@media only screen and (orientation: landscape)and (max-width: 1023px) {
+		transform: translate(35%, 0%);
+	}	
+
 	@media @phoneLand {
-  		width: 30%;
+  		width: 25%;
 	}
 }
 .tutorial-new__circle {
