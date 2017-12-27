@@ -909,7 +909,7 @@ export default class Box2DWorld {
 
   cheatReset() {
     let resetPoint = {
-      x: 170,
+      x: 79,
       y: -10
     }
     this.prepareForReset()
