@@ -759,7 +759,7 @@ a:focus, a:active {
 	max-height: 500px;
 	overflow-x: hidden;
 	overflow-y: auto;
-	padding-bottom: 105px;
+	//padding-bottom: 105px;
 	position: relative;
 	-webkit-overflow-scrolling: touch;
 	z-index: 2;
@@ -954,6 +954,46 @@ a:focus, a:active {
 }
 #scoreboard_list {
 	margin-top: 15px;
+}
+.scoreboard__normal {
+	display: none;
+}
+.scoreboard__too-bad {
+	display: none;
+
+	&:before {
+		background: url(../images/layout/too-bad.png) no-repeat 50% 100%;
+		background-size: contain;
+		content: '';
+		display: block;
+		height: 130px;
+		margin-bottom: 20px;
+		margin-top: -100px;
+		width: 100%
+	}
+	
+	p {
+		line-height: 22px;
+		margin-top: 20px;
+
+		strong {
+			display: block;
+			font-size: 30px;
+			line-height: 30px;
+			margin-top: 20px;
+		}
+
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+
+	.btn {
+		display: block;
+	}
+}
+#scoreboard__too-bad__share {
+	margin-top: 10px;
 }
 
 .popup-merch {

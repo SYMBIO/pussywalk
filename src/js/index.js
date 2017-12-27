@@ -217,7 +217,9 @@ function initializeElements() {
     $('#send_name').attr("disabled", $("#name_input").val().length == 0);
   })
 
-  $('#scoreboard_close').on('click', function() {
+  $(document).on('click', '#scoreboard_close, .js-too-bad-play', function(e) {
+    e.preventDefault();
+    
     hideLayer('.layer--finish');
     hideLayer('.layer--scoreboard');
     $('#game_controls, #game_lives').show()
@@ -538,18 +540,20 @@ function initializeFirebase() {
   };
   firebase.initializeApp(config);
 
-//$("#name_input").val('Ondratra');
-//scoreUpdate(67913);
+  //$("#name_input").val('Ondratra');
+  //scoreUpdate(67913);
 }
 
 function scoreUpdate(time, naked) {
 
-  $('#scoreboard_top3').html('<div class="lds-css ng-scope"><div style="width:100%;height:100%" class="lds-pacman"><div><div></div><div></div><div></div></div><div><div></div><div></div></div></div>');
+  $('.pacman').html('<div class="lds-css ng-scope"><div style="width:100%;height:100%" class="lds-pacman"><div><div></div><div></div><div></div></div><div><div></div><div></div></div></div>');
+  $('#scoreboard_top3').html('');
   $('#scoreboard_list').html('');
 
   showLayer('.layer--scoreboard');
 
-  var reqTime = 40000;
+  var reqTime = 40000,
+      upTo = 2000;
 
   var scoreboardListener = firebase.database().ref('scoreboard');
 
@@ -563,81 +567,108 @@ function scoreUpdate(time, naked) {
 
   if (!isNaN(parseFloat(time)) && isFinite(time)) {
 
-    scoreboardListener.orderByChild('time').startAt(reqTime).endAt(time + 2000).once('value', function(snapshot) {
+    var listItemNude = nudeModePlaying ? '1' : '';
+    var listItemNude2 = nudeModePlaying ? '-nude' : '';
+
+    scoreboardListener.orderByChild('time').startAt(reqTime).limitToFirst(upTo).once('value', function(snapshot) {
 
       scoreboard.empty()
       scoreboardTop3.empty()
 
-      var score = [];
-
+      var lastTime = 0;
       snapshot.forEach(function(snapshot) {
-        score.push([j, snapshot.val().username, snapshot.val().time]);
-
-        if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time) {
-          t = j;
-        }
-
-        j++;
+        lastTime = snapshot.val().time;
       });
 
-      var plusminus = 35;
+      //console.log(lastTime);
+      //2000. Gelu NUDE 01:17:230
 
-      snapshot.forEach(function(snapshot) {
-        let listItem = $("<li />");
-        if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
-          listItem = $("<li class='chosen-one' />");
-        }
-        let posSpan = $("<span class=\"position\" />")
-        let nameSpan = $("<span class=\"username\" />")
-        let timeSpan = $("<span class=\"time\" />")
+      if(time > lastTime) {
+        $('.scoreboard__too-bad').show();
+        $('.scoreboard__normal').hide();
 
-        posSpan.append(i + 1 + '.')
-        let nakedSpan = '';
-        if (snapshot.val().naked) {
-          nakedSpan = ' <span class="scoreboard__nude">NUDE</span>';
-        }
-        nameSpan.append(snapshot.val().username + nakedSpan)
-        timeSpan.append(scoreTime(snapshot.val().time))
+        $('.pacman').html('');
 
-        listItem.append(posSpan)
-        listItem.append(nameSpan)
-        listItem.append(timeSpan)
+        $('#scoreboard__too-bad_time').html(niceTime((time - lastTime), true, true));
+        $('#scoreboard__too-bad__share').html('<a href="https://www.facebook.com/sharer/sharer.php?u=http://pussywalk.com/images/layout/share.php?n=' + $("#name_input").val() +'%26t=' + niceTime(time, true, true) + '%26c=' + listItemNude + '" class="btn btn--fb js-share">Sdílej svoje score na</a>');
 
-        if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
-          var listItemNude = nudeModePlaying ? '1' : '';
-          var listItemNude2 = nudeModePlaying ? '-nude' : '';
-          listItem.append('<span class="share"><span></span><a href="https://www.facebook.com/sharer/sharer.php?u=http://pussywalk.com/images/layout/share.php?n=' + snapshot.val().username +'%26t=' + niceTime(snapshot.val().time, true, true) + '%26c=' + listItemNude + '" class="btn btn--fb js-share">Sdílej svoje score na</a><img src="/images/layout/master' + listItemNude2 +  '.png" alt=""></span>')
-          k = 1;
-        }
+      } else {
+        $('.scoreboard__normal').show();
+        $('.scoreboard__too-bad').hide();
 
-        if (t < 3) {
+        var score = [];
 
-          if (i < 15) {
-            scoreboardTop3.append(listItem)
+        snapshot.forEach(function(snapshot) {
+          score.push([j, snapshot.val().username, snapshot.val().time]);
+
+          if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time) {
+            t = j;
           }
 
-        } else {
+          j++;
+        });
 
-          if (i < 3) {
-            scoreboardTop3.append(listItem)
+        var plusminus = 35;
+
+        snapshot.forEach(function(snapshot) {
+          let listItem = $("<li />");
+          if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
+            listItem = $("<li class='chosen-one' />");
+          }
+          let posSpan = $("<span class=\"position\" />")
+          let nameSpan = $("<span class=\"username\" />")
+          let timeSpan = $("<span class=\"time\" />")
+
+          posSpan.append(i + 1 + '.')
+          let nakedSpan = '';
+          if (snapshot.val().naked) {
+            nakedSpan = ' <span class="scoreboard__nude">NUDE</span>';
+          }
+          nameSpan.append(snapshot.val().username + nakedSpan)
+          timeSpan.append(scoreTime(snapshot.val().time))
+
+          listItem.append(posSpan)
+          listItem.append(nameSpan)
+          listItem.append(timeSpan)
+
+          if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
+            listItem.append('<span class="share"><span></span><a href="https://www.facebook.com/sharer/sharer.php?u=http://pussywalk.com/images/layout/share.php?n=' + snapshot.val().username +'%26t=' + niceTime(snapshot.val().time, true, true) + '%26c=' + listItemNude + '" class="btn btn--fb js-share">Sdílej svoje score na</a><img src="/images/layout/master' + listItemNude2 +  '.png" alt=""></span>')
+            k = 1;
           }
 
-          if (i >= 3 && i > t - plusminus && i < t + plusminus + 2) {
-            scoreboard.append(listItem)
+          if (t < 3) {
+
+            if (i < 15) {
+              scoreboardTop3.append(listItem)
+            }
+
+          } else {
+
+            if (i < 3) {
+              scoreboardTop3.append(listItem)
+            }
+
+            if (i >= 3 && i > t - plusminus && i < t + plusminus + 2) {
+              scoreboard.append(listItem)
+            }
+
           }
 
-        }
+          i++;
+        })
 
-        i++;
-      })
+        $('.pacman').html('');
 
-      $('#scoreboard').animate({
-        scrollTop: $('.chosen-one').position().top - $('#scoreboard').height() / 3
-      }, 500);
-
+        $('#scoreboard').animate({
+          scrollTop: $('.chosen-one').position().top - $('#scoreboard').height() / 3
+        }, 500);
+      }
     });
 
   } else {
+
+    $('.scoreboard__too-bad').hide();
+    $('.scoreboard__normal').show();
 
     scoreboardListener.orderByChild('time').startAt(reqTime).limitToFirst(100).once('value', function(snapshot) {
 
@@ -660,12 +691,12 @@ function scoreUpdate(time, naked) {
         listItem.append(nameSpan)
         listItem.append(timeSpan)
 
-        if (i < 100) {
-          scoreboardTop3.append(listItem)
-        }
+        scoreboardTop3.append(listItem)
 
         i++;
       })
+
+      $('.pacman').html('');
 
     });
 
