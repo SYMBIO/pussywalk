@@ -21,7 +21,7 @@ var mute = !window.__canAutoPlaySounds;
 
 // tutorial
 var tutorial = true;
-if (getCookie('tutorial') == 1) {
+if (getCookie('tutorial-new') == 1) {
   tutorial = false;
 }
 
@@ -74,6 +74,13 @@ let loader = assetsLoader({
     '/images/layout/menu-bg.png',
     '/images/layout/top-bg.png',
     '/images/layout/tutorial-keys.png',
+    '/images/layout/tutorial-bg.png',
+    '/images/layout/tutorial-circle.png',
+    '/images/layout/tutorial-desktop-arrow.png',
+    '/images/layout/tutorial-finger.png',
+    '/images/layout/tutorial-leg.png',
+    '/images/layout/tutorial-mobile-button-l.png',
+    '/images/layout/tutorial-mobile-button-r.png',
     '/images/level/furnice_wall.jpg?' + Config.cachebuster,
     '/images/level/level_1.jpg?' + Config.cachebuster,
     '/images/level/level_2.jpg?' + Config.cachebuster,
@@ -99,11 +106,11 @@ let loader = assetsLoader({
   .on('complete', function(assets) {
     setTimeout(function() {
       if (tutorial) {
-        showLayer('.layer--tutorial');
-        pauseGame();
+        //showLayer('.layer--tutorial');
+        hideLayer('.layer--loading');
+        $('.tutorial-new').addClass('is-visible');
       } else {
         showLayer('.layer--mission-1');
-        //showLayer('.layer--tutorial-new');
         continueGame();
       }
     }, (2 - assetsLoader.stats.secs) * 1000)
@@ -370,15 +377,15 @@ function initializeElements() {
   $('.js-play').on('click', function(e) {
     e.preventDefault();
 
-    closeTutorial();
+    //closeTutorial();
 
     showLayer('.layer--mission-1');
 
-  /*
-  setTimeout(function() {
-    $('.popup-merch').addClass('is-visible');
-  }, 7500);
-  */
+    /*
+    setTimeout(function() {
+      $('.popup-merch').addClass('is-visible');
+    }, 7500);
+    */
   });
 
   $('.js-play-naked').on('click', function(e) {
@@ -482,16 +489,38 @@ function getCookie(name) {
 
 function closeTutorial() {
   if (tutorial) {
-    hideLayer('.layer--tutorial');
+    //hideLayer('.layer--tutorial');
+    $('.tutorial-new').removeClass('is-visible');
     tutorial = false;
-    setCookie('tutorial', '1', 365);
+    setCookie('tutorial-new', '1', 365);
     continueGame();
   }
 }
 
 if (tutorial) {
+  var leftButtonPress = false,
+      rightButtonPress = false;
+
   $(document).keydown(function(e) {
-    if (e.keyCode == 37 || e.keyCode == 39 || e.keyCode == 13 || e.keyCode == 27) {
+    if (e.keyCode == 37) {
+      leftButtonPress = true;
+    }
+    if (e.keyCode == 39) {
+      rightButtonPress = true;
+    }
+    if(leftButtonPress && rightButtonPress) {
+      closeTutorial();
+    }
+  });
+
+ $('.game__key').on('touchstart', function(e){
+    if ($(this).hasClass('game__key--left')) {
+      leftButtonPress = true;
+    }
+    if ($(this).hasClass('game__key--right')) {
+      rightButtonPress = true;
+    }
+    if(leftButtonPress && rightButtonPress) {
       closeTutorial();
     }
   });
