@@ -540,11 +540,11 @@ export default class Renderer {
       // 27.117166 34.85
       let percentage = Math.max(0, (y + 34.85) / (-27.117166 + 34.85) * 18)
 
-      x = (x * this.physicsScale + 30) * this.scale
+      x = (x * this.physicsScale + 50) * this.scale
       y = -(y * this.physicsScale + 220) * this.scale
 
       this.context.font = 'italic ' + Math.round(60 * this.scale) + 'px "barlow", Arial, Helvetica, sans-serif';
-      this.context.fillStyle = "#FFF"
+      this.context.fillStyle = "#c46768"
       this.context.fillText(Math.round(percentage) + '%', x, y);
     }
 

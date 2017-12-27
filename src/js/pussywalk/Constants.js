@@ -5,7 +5,7 @@ exports.sounds = {
     "audio/music/Zkurvolla.mp3"
   ],
   hardMusic: [
-    "audio/music/loop.mp3"
+    "audio/music/loop.wav"
   ],
   largeSteps: [
     "audio/step_big_01.mp3",
