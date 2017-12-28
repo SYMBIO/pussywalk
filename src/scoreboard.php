@@ -5,7 +5,11 @@ $filename = "scoreboard.json";
 $loadNew = false;
 $now = time();
 
-chmod($filename, 0755);
+if (chmod($filename, 0755)) {
+  //
+} else {
+  echo "chmfa";
+}
 
 if (file_exists($filename)) {
   $loadNew = $loadNew || ($now - filemtime($filename) > 6);
