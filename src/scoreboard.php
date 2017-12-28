@@ -5,12 +5,6 @@ $filename = "scoreboard.json";
 $loadNew = false;
 $now = time();
 
-if (chmod($filename, 0755)) {
-  //
-} else {
-  echo "chmfa";
-}
-
 if (file_exists($filename)) {
   $loadNew = $loadNew || ($now - filemtime($filename) > 6);
 } else {
@@ -20,7 +14,11 @@ if (file_exists($filename)) {
 if ($loadNew) {
   $json = file_get_contents($fburl);
   $file = fopen($filename,"w");
-  fwrite($file,$json);
+  if(fwrite($file,$json)) {
+    // OK
+  } else {
+    echo "can't fucking write .(";
+  }
   fclose($file);
 }
 
