@@ -5,6 +5,8 @@ $filename = "scoreboard.json";
 $loadNew = false;
 $now = time();
 
+chmod($filename, 0755);
+
 if (file_exists($filename)) {
   $loadNew = $loadNew || ($now - filemtime($filename) > 6);
 } else {
@@ -17,8 +19,6 @@ if ($loadNew) {
   fwrite($file,$json);
   fclose($file);
 }
-
-echo $now - filemtime($filename);
 
 readfile($filename);
 
