@@ -35,6 +35,9 @@ export default class Box2DWorld {
     this.onResetComplete = this.onResetComplete.bind(this)
     this.resetPlayer = this.resetPlayer.bind(this)
     this.prepareForReset = this.prepareForReset.bind(this)
+    if (Config.isDebug) {
+      window.cheatReset = this.cheatReset.bind(this)
+    }
 
     this.frontSlipperDropPoint = {
       x: 40,
@@ -94,7 +97,7 @@ export default class Box2DWorld {
       y: -16.5
     }, {
       x: 127,
-      y: 24.7
+      y: -24.7
     }]
 
     this.visibleLifes = this.lifePickupPoints
@@ -906,8 +909,8 @@ export default class Box2DWorld {
 
   cheatReset() {
     let resetPoint = {
-      x: 99,
-      y: -10
+      x: 150,
+      y: -20
     }
     this.prepareForReset()
     this.lastCheckpoint = resetPoint

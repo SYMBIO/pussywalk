@@ -99,9 +99,10 @@
 			</div>
 		</div>
 
-		<a href="https://www.facebook.com/sharer/sharer.php?u=www.pussywalk.cz" target="_blank" class="nav-share js-share"><span></span></a>
+		<a href="https://www.facebook.com/sharer/sharer.php?u=www.pussywalk.cz" target="_blank" class="nav-share js-share"><em>share</em> <span></span></a>
 		<!--<a href="" class="nav-sound"><span></span></a>-->
 
+		<!--
 		<div class="layer layer--tutorial">
 			<div class="layer__content">
 				<div class="tutorial__info">
@@ -118,14 +119,53 @@
 				</div>
 			</div>
 		</div>
+		-->
+
+		<div class="tutorial-new">
+			<div class="tutorial-new__desktop">
+				<img src="/images/layout/tutorial-circle.png" alt="" class="tutorial-new__circle tutorial-new__circle--1">
+				<img src="/images/layout/tutorial-circle.png" alt="" class="tutorial-new__circle tutorial-new__circle--2">
+				<img src="/images/layout/tutorial-bg.png" alt="" class="tutorial-new__bg">
+
+				<div class="tutorial-new__desktop__content">
+					<img src="/images/layout/tutorial-desktop-arrow.png" alt="" class="tutorial-new__desktop__arrow tutorial-new__desktop__arrow--top">
+					<img src="/images/layout/tutorial-desktop-arrow.png" alt="" class="tutorial-new__desktop__arrow tutorial-new__desktop__arrow--down">
+					<img src="/images/layout/tutorial-desktop-arrow.png" alt="" class="tutorial-new__desktop__arrow tutorial-new__desktop__arrow--left">
+					<img src="/images/layout/tutorial-desktop-arrow.png" alt="" class="tutorial-new__desktop__arrow tutorial-new__desktop__arrow--right">
+
+					<img src="/images/layout/tutorial-finger.png" alt="" class="tutorial-new__finger tutorial-new__finger--left">
+					<img src="/images/layout/tutorial-finger.png" alt="" class="tutorial-new__finger tutorial-new__finger--right">
+
+					<img src="/images/layout/tutorial-leg.png" alt="" class="tutorial-new__leg tutorial-new__leg--left">
+					<img src="/images/layout/tutorial-leg.png" alt="" class="tutorial-new__leg tutorial-new__leg--right">
+				</div>
+			</div>
+
+			<div class="tutorial-new__mobile">
+				<img src="/images/layout/tutorial-circle.png" alt="" class="tutorial-new__circle tutorial-new__circle--1">
+				<img src="/images/layout/tutorial-circle.png" alt="" class="tutorial-new__circle tutorial-new__circle--2">
+				<img src="/images/layout/tutorial-bg.png" alt="" class="tutorial-new__bg">
+
+				<div class="tutorial-new__mobile__content">
+					<img src="/images/layout/tutorial-mobile-button-l.png" alt="" class="tutorial-new__mobile__button tutorial-new__mobile__button--left">
+					<img src="/images/layout/tutorial-mobile-button-r.png" alt="" class="tutorial-new__mobile__button tutorial-new__mobile__button--right">
+
+					<img src="/images/layout/tutorial-finger.png" alt="" class="tutorial-new__finger tutorial-new__finger--left">
+					<img src="/images/layout/tutorial-finger.png" alt="" class="tutorial-new__finger tutorial-new__finger--right">
+
+					<img src="/images/layout/tutorial-leg.png" alt="" class="tutorial-new__leg tutorial-new__leg--left">
+					<img src="/images/layout/tutorial-leg.png" alt="" class="tutorial-new__leg tutorial-new__leg--right">
+				</div>
+			</div>
+		</div>
 		
 		<div class="layer layer--finish">
 			<div class="layer__content">
 				<div id="name_dialogue" class="layer__center">
 					<p class="finish__time">
-						<strong>Gratulujeme</strong> došel jsi k urně!
+						<strong>Gratulujeme</strong> došel jsi <span class="finish__naked">nahý</span> k urně!
 
-						<span>v čase <span id="finish_time"></span></span>
+						<span class="finish__time-span">v čase <span id="finish_time"></span></span>
 					</p>
 
 					<div class="finish__form">
@@ -198,22 +238,24 @@
 								</div>
 							</li>
 							<li>
-								<img src="/images/layout/vojta.png" alt="">
-								<div>
-									<strong>Vojtěch Šmíd</strong>
-									Produkční, autor textů.
-								</div>
-							</li>
-							<li>
 								<img src="/images/layout/jirka.png" alt="">
 								<div>
 									<strong>Jiří Váňa</strong>
 									Kodér, autor originálního námětu.
 								</div>
 							</li>
+							<li>
+								<img src="/images/layout/vojta.png" alt="">
+								<div>
+									<strong>Vojtěch Šmíd</strong>
+									Produkční, autor textů.
+								</div>
+							</li>
 						</ul>
 
-						<p>Hudba: <strong>Mindhole</strong>, <strong>Total Woods</strong>, <strong>SajmunekK</strong></p>
+						<p>Mediální partner: <a href="https://www.facebook.com/TMBKOFFICIAL/" target="_blank" class="tmbk"><img src="/images/layout/tmbk.png" alt="TMBK"></a></p>
+
+						<p>Hudba: <strong>Mindhole</strong>, <strong>Total Woods</strong></p>
 
 						<p>Děkujeme: Radim Zeifart, Klára Slavíková, Tomáš Klíma, Vojta Urbánek, Franta, Vietsky, Von Schau a SYMBIO.</p>
 
@@ -241,43 +283,52 @@
 		<div class="layer layer--scoreboard">
 			<div class="layer__content">
 				<div class="layer__center">
-					<button id="scoreboard_close" class="layer__close"></button>
+					<div class="scoreboard__normal">
+						<button id="scoreboard_close" class="layer__close"></button>
 
-					<h3>Zodpovědní voliči</h3>
-					<div id="scoreboard">
-						<ul id="scoreboard_top3" class="scoreboard__list">
-							<!--
-							<li>
-								<span class="position">1.</span>
-								<span class="username">Username_TOP Username_TOP <span class="scoreboard__nude">NUDE</span></span>
-								<span class="time">3:41</span>
-							</li>
-							<li>
-								<span class="position">2.</span>
-								<span class="username">Username_TOP <span class="scoreboard__nude">NUDE</span></span>
-								<span class="time">3:41</span>
-							</li>
-							<li>
-								<span class="position">3.</span>
-								<span class="username">Username TOP3</span>
-								<span class="time">3:41</span>
-							</li>
-							-->
-						</ul>
-						<ul id="scoreboard_list" class="scoreboard__list">
-							<!--
-							<li>
-								<span class="position">235.</span>
-								<span class="username">Username</span>
-								<span class="time">3:41</span>
-								<span class="share"><span></span>
-								<a href="" class="btn btn--fb">Sdílej svoje score na</a>
-								<img src="/iamges/layout/master.png" alt="">
-								</span>
-							</li>
-							-->
-						</ul>
-					</div>				
+						<h3>Zodpovědní voliči</h3>
+						<div id="scoreboard">
+							<ul id="scoreboard_top3" class="scoreboard__list">
+								<!--
+								<li>
+									<span class="position">1.</span>
+									<span class="username">Username_TOP Username_TOP <span class="scoreboard__nude">NUDE</span></span>
+									<span class="time">3:41</span>
+								</li>
+								<li>
+									<span class="position">2.</span>
+									<span class="username">Username_TOP <span class="scoreboard__nude">NUDE</span></span>
+									<span class="time">3:41</span>
+								</li>
+								<li>
+									<span class="position">3.</span>
+									<span class="username">Username TOP3</span>
+									<span class="time">3:41</span>
+								</li>
+								-->
+							</ul>
+							<ul id="scoreboard_list" class="scoreboard__list">
+								<!--
+								<li>
+									<span class="position">235.</span>
+									<span class="username">Username</span>
+									<span class="time">3:41</span>
+									<span class="share"><span></span>
+									<a href="" class="btn btn--fb">Sdílej svoje score na</a>
+									<img src="/iamges/layout/master.png" alt="">
+									</span>
+								</li>
+								-->
+							</ul>
+						</div>
+					</div>	
+					<div class="pacman"></div>
+					<div class="scoreboard__too-bad">
+						<p>Mohl/a jsi vidět své jméno v tabulce vítězů, bohužel ti ale do umístění chybí: <strong id="scoreboard__too-bad_time"></strong></p>
+						<p>Už jen kousek a budeš mezi nejlepšími, vyzkoušej to znovu a rychleji!</p>
+						<p><a href="" class="btn js-too-bad-play">Pokračuj</a></p>
+						<div id="scoreboard__too-bad__share"></div>
+					</div>
 				</div>
 			</div>	
 		</div>

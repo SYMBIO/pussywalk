@@ -3,24 +3,25 @@ import $ from 'jquery';
 import * as firebase from 'firebase';
 import styles from '../styles/app.less';
 import PussywalkMinigame from './pussywalk/PussywalkMinigame';
+import Config from './pussywalk/Config';
 
 if ('ontouchstart' in document.documentElement) {
   $('html').removeClass('no-touch').addClass('touch');
 }
 
-if(window.location.hostname == 'localhost') {
-  $('html').removeClass('no-app').addClass('app'); 
+if (window.location.hostname == 'localhost') {
+  $('html').removeClass('no-app').addClass('app');
 }
 
 // Used for delegating sound to app
 window.__delegateSound = false
 
 //
-var mute = false;
+var mute = !window.__canAutoPlaySounds;
 
 // tutorial
 var tutorial = true;
-if (getCookie('tutorial') == 1) {
+if (getCookie('tutorial-new1') == 1) {
   tutorial = false;
 }
 
@@ -28,27 +29,27 @@ var nudeMode = false;
 var nudeModePlaying = false;
 
 var online,
-    onlineTrue = function() {
-      online = true;
-      $('.online').show();
-      $('.offline').hide();
-    },
-    onlineFalse = function() {
-      online = false;
-      $('.online').hide();
-      $('.offline').show();
-    }
+  onlineTrue = function() {
+    online = true;
+    $('.online').show();
+    $('.offline').hide();
+  },
+  onlineFalse = function() {
+    online = false;
+    $('.online').hide();
+    $('.offline').show();
+}
 
-if(navigator.onLine) {
+if (navigator.onLine) {
   onlineTrue();
 } else {
   onlineFalse();
 }
 
-window.addEventListener('online', function(){
+window.addEventListener('online', function() {
   onlineTrue();
 });
-window.addEventListener('offline', function(){
+window.addEventListener('offline', function() {
   onlineFalse();
 });
 
@@ -56,33 +57,39 @@ window.addEventListener('offline', function(){
 let loader = assetsLoader({
   assets: [
     // images
-    '/images/spritesheet-0.json',
-    '/images/spritesheet-0.png',
-    '/images/spritesheet-1.json',
-    '/images/spritesheet-1.png',
-    '/images/spritesheet-2.json',
-    '/images/spritesheet-2.png',
-    '/images/spritesheet-3.json',
-    '/images/spritesheet-3.png',
-    '/images/spritesheet-4.json',
-    '/images/spritesheet-4.png',
+    '/images/spritesheet-0.json?' + Config.cachebuster,
+    '/images/spritesheet-0.png?' + Config.cachebuster,
+    '/images/spritesheet-1.json?' + Config.cachebuster,
+    '/images/spritesheet-1.png?' + Config.cachebuster,
+    '/images/spritesheet-2.json?' + Config.cachebuster,
+    '/images/spritesheet-2.png?' + Config.cachebuster,
+    '/images/spritesheet-3.json?' + Config.cachebuster,
+    '/images/spritesheet-3.png?' + Config.cachebuster,
+    '/images/spritesheet-4.json?' + Config.cachebuster,
+    '/images/spritesheet-4.png?' + Config.cachebuster,
     '/images/layout/loading-bg.jpg',
     '/images/layout/loading-ico.png',
     '/images/layout/logo-pussywalk-2.png',
     '/images/layout/logo-pussywalk-2-pink.png',
     '/images/layout/menu-bg.png',
-    '/images/layout/mission-ico.png',
     '/images/layout/top-bg.png',
     '/images/layout/tutorial-keys.png',
-    '/images/level/furnice_wall.jpg',
-    '/images/level/level_1.jpg',
-    '/images/level/level_2.jpg',
-    '/images/level/level_3.jpg',
-    '/images/level/level_4.jpg',
-    '/images/level/level_5.jpg',
-    '/images/level/level_6.jpg',
-    '/images/level/level_7.jpg',
-    '/images/level/level_8.jpg',
+    '/images/layout/tutorial-bg.png',
+    '/images/layout/tutorial-circle.png',
+    '/images/layout/tutorial-desktop-arrow.png',
+    '/images/layout/tutorial-finger.png',
+    '/images/layout/tutorial-leg.png',
+    '/images/layout/tutorial-mobile-button-l.png',
+    '/images/layout/tutorial-mobile-button-r.png',
+    '/images/level/furnice_wall.jpg?' + Config.cachebuster,
+    '/images/level/level_1.jpg?' + Config.cachebuster,
+    '/images/level/level_2.jpg?' + Config.cachebuster,
+    '/images/level/level_3.jpg?' + Config.cachebuster,
+    '/images/level/level_4.jpg?' + Config.cachebuster,
+    '/images/level/level_5.jpg?' + Config.cachebuster,
+    '/images/level/level_6.jpg?' + Config.cachebuster,
+    '/images/level/level_7.jpg?' + Config.cachebuster,
+    '/images/level/level_8.jpg?' + Config.cachebuster,
     '/images/misc/flash.png',
     '/images/misc/vignette.png',
   ]
@@ -99,8 +106,9 @@ let loader = assetsLoader({
   .on('complete', function(assets) {
     setTimeout(function() {
       if (tutorial) {
-        showLayer('.layer--tutorial');
-        pauseGame();
+        //showLayer('.layer--tutorial');
+        hideLayer('.layer--loading');
+        $('.tutorial-new').addClass('is-visible');
       } else {
         showLayer('.layer--mission-1');
         continueGame();
@@ -124,10 +132,33 @@ window.onload = function() {
     onSheepPickup: onSheepPickup
   }
 
-  startGame()
+  initializeAudio().then(startGame)
+}
+
+function initializeAudio() {
+  return new Promise(function(resolve, reject) {
+    // The following block should not be executed as a result of a user generated event
+    let testSound = new Audio()
+    testSound.volume = 0
+    testSound.src = "data:audio/mpeg;base64,/+MYxAAAAANIAUAAAASEEB/jwOFM/0MM/90b/+RhST//w4NFwOjf///PZu////9lns5GFDv//l9GlUIEEIAAAgIg8Ir/JGq3/+MYxDsLIj5QMYcoAP0dv9HIjUcH//yYSg+CIbkGP//8w0bLVjUP///3Z0x5QCAv/yLjwtGKTEFNRTMuOTeqqqqqqqqqqqqq/+MYxEkNmdJkUYc4AKqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq"
+    testSound.play().then(function() {
+      // Went through OK
+      window.__canAutoPlaySounds = true
+      $('.nav__sound').removeClass('is-active');
+      mute = false
+      resolve()
+    }, function() {
+      // Can't play
+      window.__canAutoPlaySounds = false
+      $('.nav__sound').addClass('is-active');
+      mute = true
+      resolve()
+    });
+  })
 }
 
 var openNav = function() {
+
   $('.nav').addClass('is-active');
   $('.nav-link').addClass('is-active');
 
@@ -163,7 +194,7 @@ function initializeElements() {
     hideLayer('.layer--finish');
     pauseGame();
     finished = true;
-    
+
     firebase.database().ref('scoreboard').push({
       username: $("#name_input").val(),
       time: _game.playTime,
@@ -186,7 +217,9 @@ function initializeElements() {
     $('#send_name').attr("disabled", $("#name_input").val().length == 0);
   })
 
-  $('#scoreboard_close').on('click', function() {
+  $(document).on('click', '#scoreboard_close, .js-too-bad-play', function(e) {
+    e.preventDefault();
+    
     hideLayer('.layer--finish');
     hideLayer('.layer--scoreboard');
     $('#game_controls, #game_lives').show()
@@ -207,11 +240,17 @@ function initializeElements() {
     if (!$('.nav').hasClass('is-active')) {
       openNav()
       pauseGame()
-      if(online) {window.wtfga('send', 'event', 'navigation', 'on')};
+      if (online) {
+        window.wtfga('send', 'event', 'navigation', 'on')
+      }
+      ;
     } else {
       closeNav();
       continueGame()
-      if(online) {window.wtfga('send', 'event', 'navigation', 'off')};
+      if (online) {
+        window.wtfga('send', 'event', 'navigation', 'off')
+      }
+      ;
     }
   });
 
@@ -220,17 +259,23 @@ function initializeElements() {
 
     closeNav();
     continueGame()
-    if(online) {window.wtfga('send', 'event', 'navigation', 'off', 'mimo menu')};
+    if (online) {
+      window.wtfga('send', 'event', 'navigation', 'off', 'mimo menu')
+    }
+    ;
   });
 
   $('.nav__restart').on('click', function(e) {
     e.preventDefault();
-    
+
     closeNav();
     startGame();
     continueGame();
 
-    if(online) {window.wtfga('send', 'event', 'navigation', 'restart')};
+    if (online) {
+      window.wtfga('send', 'event', 'navigation', 'restart')
+    }
+    ;
   });
 
   /*
@@ -256,14 +301,18 @@ function initializeElements() {
     var link = $(this);
 
     if (mute) {
-      initAudio();
       setMute(false);
-      if(online) {window.wtfga('send', 'event', 'sound', 'on')};
+      if (online) {
+        window.wtfga('send', 'event', 'sound', 'on')
+      }
       link.removeClass('is-active');
       mute = false;
+      initMobileAudio();
     } else {
       setMute(true);
-      if(online) {window.wtfga('send', 'event', 'sound', 'off')};
+      if (online) {
+        window.wtfga('send', 'event', 'sound', 'off')
+      }
       link.addClass('is-active');
       mute = true;
     }
@@ -277,11 +326,17 @@ function initializeElements() {
     if (link.hasClass('is-active')) {
       link.removeClass('is-active');
       _game.setLowQuality(false);
-      if(online) {window.wtfga('send', 'event', 'low quality', 'on')};
+      if (online) {
+        window.wtfga('send', 'event', 'low quality', 'on')
+      }
+      ;
     } else {
       link.addClass('is-active');
       _game.setLowQuality(true);
-      if(online) {window.wtfga('send', 'event', 'low quality', 'off')};
+      if (online) {
+        window.wtfga('send', 'event', 'low quality', 'off')
+      }
+      ;
     }
   });
 
@@ -299,7 +354,10 @@ function initializeElements() {
 
     $('.nav').removeClass('is-active');
     showLayer('.layer--' + layer);
-    if(online) {window.wtfga('send', 'event', 'layer', layer)};
+    if (online) {
+      window.wtfga('send', 'event', 'layer', layer)
+    }
+    ;
   });
 
   $('.js-play-again').on('click', function(e) {
@@ -310,7 +368,7 @@ function initializeElements() {
     finished = true;
     startGame(nudeMode);
     $('#game_controls, #game_lives').show();
-    if(nudeMode) {
+    if (nudeMode) {
       setTimeout(function() {
         pauseGame();
         showLayer('.layer--naked');
@@ -321,8 +379,8 @@ function initializeElements() {
   $('.js-play').on('click', function(e) {
     e.preventDefault();
 
-    closeTutorial();
-    
+    //closeTutorial();
+
     showLayer('.layer--mission-1');
 
     /*
@@ -349,13 +407,13 @@ function initializeElements() {
 
   if (getCookie('share') != 1) {
     var shareTimeout,
-        shareInterval = setInterval(function(){
-      $('.nav-share').addClass('has-wiggle');
+      shareInterval = setInterval(function() {
+        $('.nav-share').addClass('has-wiggle');
 
-      shareTimeout = setTimeout(function(){
-        $('.nav-share').removeClass('has-wiggle');
-      }, 1000)
-    }, 60000);
+        shareTimeout = setTimeout(function() {
+          $('.nav-share').removeClass('has-wiggle');
+        }, 1000)
+      }, 60000);
   }
 
   $(document).on('click', '.js-share', function(e) {
@@ -365,33 +423,48 @@ function initializeElements() {
     window.clearInterval(shareInterval);
     window.clearTimeout(shareTimeout);
 
-    if($(this).hasClass('nav-share')) {
-      if(online) {window.wtfga('send', 'event', 'share', 'like')};
+    if ($(this).hasClass('nav-share')) {
+      if (online) {
+        window.wtfga('send', 'event', 'share', 'like')
+      }
+      ;
     } else {
-      if(online) {window.wtfga('send', 'event', 'share', 'vitez')};
+      if (online) {
+        window.wtfga('send', 'event', 'share', 'vitez')
+      }
+      ;
     }
 
     window.open($(this).attr('href'), 'fbShareWindow', 'height=450, width=550, top=100, left=100, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0');
     return false;
   });
 
-  $('.popup-merch p').on('click', function(){
+  $('.popup-merch p').on('click', function() {
     $('.popup-merch').removeClass('is-visible');
     pauseGame();
     showLayer('.layer--merch');
-    if(online) {window.wtfga('send', 'event', 'popup', 'show merch')};
+    if (online) {
+      window.wtfga('send', 'event', 'popup', 'show merch')
+    }
+    ;
   });
 
-  $('.popup__close').on('click', function(e){
+  $('.popup__close').on('click', function(e) {
     e.preventDefault();
 
     $('.popup-merch').removeClass('is-visible');
 
-    if(online) {window.wtfga('send', 'event', 'popup', 'close')};
+    if (online) {
+      window.wtfga('send', 'event', 'popup', 'close')
+    }
+    ;
   });
-  
-  $('.js-merch').on('click', function(e){
-    if(online) {window.wtfga('send', 'event', 'merch', 'objednat')};
+
+  $('.js-merch').on('click', function(e) {
+    if (online) {
+      window.wtfga('send', 'event', 'merch', 'objednat')
+    }
+    ;
   });
 }
 
@@ -418,16 +491,38 @@ function getCookie(name) {
 
 function closeTutorial() {
   if (tutorial) {
-    hideLayer('.layer--tutorial');
+    //hideLayer('.layer--tutorial');
+    $('.tutorial-new').removeClass('is-visible');
     tutorial = false;
-    setCookie('tutorial', '1', 365);
+    setCookie('tutorial-new', '1', 365);
     continueGame();
   }
 }
 
 if (tutorial) {
+  var leftButtonPress = false,
+      rightButtonPress = false;
+
   $(document).keydown(function(e) {
-    if (e.keyCode == 37 || e.keyCode == 39 || e.keyCode == 13 || e.keyCode == 27) {
+    if (e.keyCode == 37) {
+      leftButtonPress = true;
+    }
+    if (e.keyCode == 39) {
+      rightButtonPress = true;
+    }
+    if(leftButtonPress && rightButtonPress) {
+      closeTutorial();
+    }
+  });
+
+ $('.game__key').on('touchstart', function(e){
+    if ($(this).hasClass('game__key--left')) {
+      leftButtonPress = true;
+    }
+    if ($(this).hasClass('game__key--right')) {
+      rightButtonPress = true;
+    }
+    if(leftButtonPress && rightButtonPress) {
       closeTutorial();
     }
   });
@@ -451,100 +546,134 @@ function initializeFirebase() {
 
 function scoreUpdate(time, naked) {
 
-  $('#scoreboard_top3').html('<div class="lds-css ng-scope"><div style="width:100%;height:100%" class="lds-pacman"><div><div></div><div></div><div></div></div><div><div></div><div></div></div></div>');
+  $('.pacman').html('<div class="lds-css ng-scope"><div style="width:100%;height:100%" class="lds-pacman"><div><div></div><div></div><div></div></div><div><div></div><div></div></div></div>');
+  $('#scoreboard_top3').html('');
   $('#scoreboard_list').html('');
 
   showLayer('.layer--scoreboard');
 
-  var reqTime = 40000;
+  var reqTime = 40000,
+      upTo = 2000;
 
   var scoreboardListener = firebase.database().ref('scoreboard');
 
-  let scoreboard = $('#scoreboard_list')
-  let scoreboardTop3 = $('#scoreboard_top3')
-
-  scoreboard.empty()
-  scoreboardTop3.empty()
+  let scoreboard = $('#scoreboard_list');
+  let scoreboardTop3 = $('#scoreboard_top3');
 
   var i = 0
   var j = 0
   var k = 0
-  var t = 0  
+  var t = 0
 
   if (!isNaN(parseFloat(time)) && isFinite(time)) {
 
-    scoreboardListener.orderByChild('time').startAt(reqTime).endAt(time + 2000).once('value', function(snapshot) {
+    var listItemNude = nudeModePlaying ? '1' : '';
+    var listItemNude2 = nudeModePlaying ? '-nude' : '';
 
-      var score = [];
+    scoreboardListener.orderByChild('time').startAt(reqTime).limitToFirst(upTo).once('value', function(snapshot) {
 
+      scoreboard.empty()
+      scoreboardTop3.empty()
+
+      var lastTime = 0;
       snapshot.forEach(function(snapshot) {
-        score.push([j, snapshot.val().username, snapshot.val().time]);
-
-        if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time) {
-          t = j;
-        }
-
-        j++;
+        lastTime = snapshot.val().time;
       });
 
-      var plusminus = 35;
+      //console.log(lastTime);
+      //2000. Gelu NUDE 01:17:230
 
-      snapshot.forEach(function(snapshot) {
-        let listItem = $("<li />");
-        if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
-          listItem = $("<li class='chosen-one' />");
-        }
-        let posSpan = $("<span class=\"position\" />")
-        let nameSpan = $("<span class=\"username\" />")
-        let timeSpan = $("<span class=\"time\" />")
+      if(time > lastTime) {
+        $('.scoreboard__too-bad').show();
+        $('.scoreboard__normal').hide();
 
-        posSpan.append(i + 1 + '.')
-        let nakedSpan = '';
-        if (snapshot.val().naked) {
-          nakedSpan = ' <span class="scoreboard__nude">NUDE</span>';
-        }
-        nameSpan.append(snapshot.val().username + nakedSpan)
-        timeSpan.append(scoreTime(snapshot.val().time))
+        $('.pacman').html('');
 
-        listItem.append(posSpan)
-        listItem.append(nameSpan)
-        listItem.append(timeSpan)
+        $('#scoreboard__too-bad_time').html(niceTime((time - lastTime), true, true));
+        $('#scoreboard__too-bad__share').html('<a href="https://www.facebook.com/sharer/sharer.php?u=http://pussywalk.com/images/layout/share.php?n=' + $("#name_input").val() +'%26t=' + niceTime(time, true, true) + '%26c=' + listItemNude + '" class="btn btn--fb js-share">Sdílej svoje score na</a>');
 
-        if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
-          listItem.append('<span class="share"><span></span><a href="https://www.facebook.com/sharer/sharer.php?u=http://pussywalk.com/images/layout/share.php?n='+ snapshot.val().username +'%26t=' + niceTime(snapshot.val().time, true, true) + '" class="btn btn--fb js-share">Sdílej svoje score na</a><img src="/images/layout/master.png" alt=""></span>')
-          k = 1;
-        }
+      } else {
+        $('.scoreboard__normal').show();
+        $('.scoreboard__too-bad').hide();
 
-        if (t < 3) {
+        var score = [];
 
-          if (i < 15) {
-            scoreboardTop3.append(listItem)
+        snapshot.forEach(function(snapshot) {
+          score.push([j, snapshot.val().username, snapshot.val().time]);
+
+          if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time) {
+            t = j;
           }
 
-        } else {
+          j++;
+        });
 
-          if (i < 3) {
-            scoreboardTop3.append(listItem)
+        var plusminus = 35;
+
+        snapshot.forEach(function(snapshot) {
+          let listItem = $("<li />");
+          if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
+            listItem = $("<li class='chosen-one' />");
+          }
+          let posSpan = $("<span class=\"position\" />")
+          let nameSpan = $("<span class=\"username\" />")
+          let timeSpan = $("<span class=\"time\" />")
+
+          posSpan.append(i + 1 + '.')
+          let nakedSpan = '';
+          if (snapshot.val().naked) {
+            nakedSpan = ' <span class="scoreboard__nude">NUDE</span>';
+          }
+          nameSpan.append(snapshot.val().username + nakedSpan)
+          timeSpan.append(scoreTime(snapshot.val().time))
+
+          listItem.append(posSpan)
+          listItem.append(nameSpan)
+          listItem.append(timeSpan)
+
+          if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
+            listItem.append('<span class="share"><span></span><a href="https://www.facebook.com/sharer/sharer.php?u=http://pussywalk.com/images/layout/share.php?n=' + snapshot.val().username +'%26t=' + niceTime(snapshot.val().time, true, true) + '%26c=' + listItemNude + '" class="btn btn--fb js-share">Sdílej svoje score na</a><img src="/images/layout/master' + listItemNude2 +  '.png" alt=""></span>')
+            k = 1;
           }
 
-          if (i >= 3 && i > t - plusminus && i < t + plusminus + 2) {
-            scoreboard.append(listItem)
+          if (t < 3) {
+
+            if (i < 15) {
+              scoreboardTop3.append(listItem)
+            }
+
+          } else {
+
+            if (i < 3) {
+              scoreboardTop3.append(listItem)
+            }
+
+            if (i >= 3 && i > t - plusminus && i < t + plusminus + 2) {
+              scoreboard.append(listItem)
+            }
+
           }
 
-        }
+          i++;
+        })
 
-        i++;
-      })
+        $('.pacman').html('');
 
-      $('#scoreboard').animate({
-        scrollTop: $('.chosen-one').position().top - $('#scoreboard').height() / 3
-      }, 500);
-
+        $('#scoreboard').animate({
+          scrollTop: $('.chosen-one').position().top - $('#scoreboard').height() / 3
+        }, 500);
+      }
     });
 
   } else {
 
+    $('.scoreboard__too-bad').hide();
+    $('.scoreboard__normal').show();
+
     scoreboardListener.orderByChild('time').startAt(reqTime).limitToFirst(100).once('value', function(snapshot) {
+
+      scoreboard.empty()
+      scoreboardTop3.empty()
 
       snapshot.forEach(function(snapshot) {
         let listItem = $("<li />")
@@ -562,12 +691,12 @@ function scoreUpdate(time, naked) {
         listItem.append(nameSpan)
         listItem.append(timeSpan)
 
-        if (i < 100) {
-          scoreboardTop3.append(listItem)
-        }
+        scoreboardTop3.append(listItem)
 
         i++;
       })
+
+      $('.pacman').html('');
 
     });
 
@@ -618,22 +747,26 @@ function niceTime(time, nicer, nospan) {
 
 function scoreTime(duration, nicer) {
   var spanWrap = function(what) {
-        return what.replace(/(\d)/g, '<span>$1</span>');
-      },
-      milliseconds = parseInt(duration%1000),
-      seconds = parseInt((duration/1000)%60),
-      minutes = parseInt((duration/(1000*60))%60),
-      hours = parseInt((duration/(1000*60*60))%24),
-      timeHours, timeMinutes, timeSeconds, timeMilliseconds, time;
+      return what.replace(/(\d)/g, '<span>$1</span>');
+    },
+    milliseconds = parseInt(duration % 1000),
+    seconds = parseInt((duration / 1000) % 60),
+    minutes = parseInt((duration / (1000 * 60)) % 60),
+    hours = parseInt((duration / (1000 * 60 * 60)) % 24),
+    timeHours,
+    timeMinutes,
+    timeSeconds,
+    timeMilliseconds,
+    time;
 
   timeHours = (hours < 10) ? "0" + hours : hours;
   timeMinutes = (minutes < 10) ? "0" + minutes : minutes;
   timeSeconds = (seconds < 10) ? "0" + seconds : seconds;
   timeMilliseconds = milliseconds;
-  if(milliseconds < 10) {
+  if (milliseconds < 10) {
     timeMilliseconds = "0" + milliseconds;
   }
-  if(timeMilliseconds < 100) {
+  if (timeMilliseconds < 100) {
     timeMilliseconds = "0" + timeMilliseconds;
   }
 
@@ -685,11 +818,16 @@ function onLifesUpdate(numberOfLifes, delta) {
 
 function onGameEnd(didWin, progress, wasNude) {
   nudeMode = didWin;
-  
+
   if (didWin) {
     //$('#name_dialogue').show()
     pauseGame();
     $('#finish_time').html(niceTime(_game.playTime, true));
+    if(nudeModePlaying) {
+      $('.layer--finish').addClass('is-naked');
+    } else {
+      $('.layer--finish').removeClass('is-naked');
+    }
     setTimeout(function() {
       showLayer('.layer--finish');
     }, 10);
@@ -698,14 +836,17 @@ function onGameEnd(didWin, progress, wasNude) {
     startGame(didWin || wasNude)
   }
 
-  if(online) {window.wtfga('send', 'event', 'game', 'end', progress)};
+  if (online) {
+    window.wtfga('send', 'event', 'game', 'end', progress)
+  }
+  ;
 }
 
 function startGame(naked) {
   finished = false;
-  
+
   nudeModePlaying = naked;
-  if(!naked) {
+  if (!naked) {
     nudeModePlaying = false;
   }
 
@@ -718,27 +859,24 @@ function startGame(naked) {
   }
   _game = new PussywalkMinigame(_callbacks, naked, mute);
 
-  if(typeof ga === 'function') {
+  if (typeof ga === 'function') {
     window.wtfga = ga;
   }
 
-  if(online) {window.wtfga('send', 'event', 'game', 'start')};
-  
-  if(nudeMode) {
+  if (online) {
+    window.wtfga('send', 'event', 'game', 'start')
+  }
+  ;
+
+  if (nudeMode) {
     $('.popup-merch').addClass('is-visible');
   }
-  
-  if(!isMusicPlaying()) {
-    mute = true;
-  } else {
-    mute = false;
-  }
 
-  if(!tutorial) {
+  if (!tutorial) {
     setTimeout(function() {
       hideLayer('.layer--mission-1');
-      //$('.popup-merch').addClass('is-visible');
-    }, 7500); 
+    //$('.popup-merch').addClass('is-visible');
+    }, 7500);
   }
 }
 
@@ -761,22 +899,20 @@ function setMute(mute) {
   }
 }
 
-function initAudio() {
+function initMobileAudio() {
   if (_game) {
-    _game.initAudio()
+    _game.initMobileAudio()
   }
 }
 
-function isMusicPlaying() {
-  if (_game) {
-    return _game.isMusicPlaying()
-  }
-}
-
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+(function(i, s, o, g, r, a, m) {
+  i['GoogleAnalyticsObject'] = r;i[r] = i[r] || function() {
+    (i[r].q = i[r].q || []).push(arguments)
+  }, i[r].l = 1 * new Date();a = s.createElement(o),
+  m = s.getElementsByTagName(o)[0];
+  a.async = 1;
+  a.src = g;m.parentNode.insertBefore(a, m)
+})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
 ga('create', 'UA-162303-31', 'auto');
-ga('send', 'pageview'); 
+ga('send', 'pageview');
