@@ -83,6 +83,9 @@ module.exports = {
       {
         from: `${SRC}scoreboard.php`
       },
+      {
+        from: `${SRC}scoreboard.json`
+      },
       //{ from: `${SRC}config.json` },
       {
         from: `${SRC}images`,
