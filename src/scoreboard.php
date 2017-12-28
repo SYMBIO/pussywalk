@@ -18,6 +18,8 @@ if ($loadNew) {
   fclose($file);
 }
 
+echo getcwd() . "\n";
+echo "<br />";
 echo substr(sprintf('%o', fileperms($filename)), -4);
 echo "<br />";
 
