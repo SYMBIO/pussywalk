@@ -80,6 +80,9 @@ module.exports = {
       {
         from: `${SRC}browserconfig.xml`
       },
+      {
+        from: `${SRC}scoreboard.php`
+      },
       //{ from: `${SRC}config.json` },
       {
         from: `${SRC}images`,
