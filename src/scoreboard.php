@@ -30,6 +30,7 @@ if ($loadNew) {
   echo "5";
   file_put_contents($filepath, $json);
   echo "6";
+  echo $json;
 }
 
 echo "7";
