@@ -19,7 +19,7 @@ if ($loadNew) {
 }
 
 echo substr(sprintf('%o', fileperms($filename)), -4);
-echo "<br />"
+echo "<br />";
 
 readfile($filename);
 
