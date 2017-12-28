@@ -6,7 +6,7 @@ $loadNew = false;
 $now = time();
 
 if (file_exists($filename)) {
-  $loadNew = $loadNew || ($now - filemtime($filename) > 60);
+  $loadNew = $loadNew || ($now - filemtime($filename) > 6);
 } else {
   $loadNew = true;
 }
@@ -18,10 +18,7 @@ if ($loadNew) {
   fclose($file);
 }
 
-echo getcwd() . "\n";
-echo "<br />";
-echo substr(sprintf('%o', fileperms($filename)), -4);
-echo "<br />";
+echo $now - filemtime($filename);
 
 readfile($filename);
 
