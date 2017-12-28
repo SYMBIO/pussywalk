@@ -96,6 +96,11 @@ module.exports = {
         to: `${BUILD}audio`
       },
     ]),
+    function() {
+      this.plugin('done', () => {
+        fs.chmodSync('${BUILD}scoreboard.json', '777');
+      })
+    },
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.optimize.UglifyJsPlugin({
