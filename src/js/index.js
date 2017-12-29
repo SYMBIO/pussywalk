@@ -102,6 +102,7 @@ let loader = assetsLoader({
     $('.loader__bar').css({
       'transform': 'translateX(' + percentage + ')'
     })
+    $('.loading__logo').attr('src', window.__isCensored ? 'images/layout/censored/logo-pussywalk-2-pink.png' : 'images/layout/logo-pussywalk-2-pink.png')
   })
   .on('complete', function(assets) {
     setTimeout(function() {
@@ -113,6 +114,10 @@ let loader = assetsLoader({
         showLayer('.layer--mission-1');
         continueGame();
       }
+
+      let filename = window.__isCensored ? 'images/layout/censored/logo-pussywalk-2.png' : 'images/layout/logo-pussywalk-2.png'
+      $('.logo').css('background-image', 'url(' + filename + ')')
+
     }, (2 - assetsLoader.stats.secs) * 1000)
   })
   .start();
@@ -219,7 +224,7 @@ function initializeElements() {
 
   $(document).on('click', '#scoreboard_close, .js-too-bad-play', function(e) {
     e.preventDefault();
-    
+
     hideLayer('.layer--finish');
     hideLayer('.layer--scoreboard');
     $('#game_controls, #game_lives').show()
@@ -383,11 +388,11 @@ function initializeElements() {
 
     showLayer('.layer--mission-1');
 
-    /*
-    setTimeout(function() {
-      $('.popup-merch').addClass('is-visible');
-    }, 7500);
-    */
+  /*
+  setTimeout(function() {
+    $('.popup-merch').addClass('is-visible');
+  }, 7500);
+  */
   });
 
   $('.js-play-naked').on('click', function(e) {
@@ -501,7 +506,7 @@ function closeTutorial() {
 
 if (tutorial) {
   var leftButtonPress = false,
-      rightButtonPress = false;
+    rightButtonPress = false;
 
   $(document).keydown(function(e) {
     if (e.keyCode == 37) {
@@ -510,19 +515,19 @@ if (tutorial) {
     if (e.keyCode == 39) {
       rightButtonPress = true;
     }
-    if(leftButtonPress && rightButtonPress) {
+    if (leftButtonPress && rightButtonPress) {
       closeTutorial();
     }
   });
 
- $('.game__key').on('touchstart', function(e){
+  $('.game__key').on('touchstart', function(e) {
     if ($(this).hasClass('game__key--left')) {
       leftButtonPress = true;
     }
     if ($(this).hasClass('game__key--right')) {
       rightButtonPress = true;
     }
-    if(leftButtonPress && rightButtonPress) {
+    if (leftButtonPress && rightButtonPress) {
       closeTutorial();
     }
   });
@@ -540,8 +545,8 @@ function initializeFirebase() {
   };
   firebase.initializeApp(config);
 
-  //$("#name_input").val('Ondratra');
-  //scoreUpdate(67913);
+//$("#name_input").val('Ondratra');
+//scoreUpdate(67913);
 }
 
 function scoreUpdate(time, naked) {
@@ -553,7 +558,7 @@ function scoreUpdate(time, naked) {
   showLayer('.layer--scoreboard');
 
   var reqTime = 40000,
-      upTo = 2000;
+    upTo = 2000;
 
   var scoreboardListener = firebase.database().ref('scoreboard');
 
@@ -583,14 +588,14 @@ function scoreUpdate(time, naked) {
       //console.log(lastTime);
       //2000. Gelu NUDE 01:17:230
 
-      if(time > lastTime) {
+      if (time > lastTime) {
         $('.scoreboard__too-bad').show();
         $('.scoreboard__normal').hide();
 
         $('.pacman').html('');
 
         $('#scoreboard__too-bad_time').html(niceTime((time - lastTime), true, true));
-        $('#scoreboard__too-bad__share').html('<a href="https://www.facebook.com/sharer/sharer.php?u=http://pussywalk.com/images/layout/share.php?n=' + $("#name_input").val() +'%26t=' + niceTime(time, true, true) + '%26c=' + listItemNude + '" class="btn btn--fb js-share">Sdílej svoje score na</a>');
+        $('#scoreboard__too-bad__share').html('<a href="https://www.facebook.com/sharer/sharer.php?u=http://pussywalk.com/images/layout/share.php?n=' + $("#name_input").val() + '%26t=' + niceTime(time, true, true) + '%26c=' + listItemNude + '" class="btn btn--fb js-share">Sdílej svoje score na</a>');
 
       } else {
         $('.scoreboard__normal').show();
@@ -632,7 +637,7 @@ function scoreUpdate(time, naked) {
           listItem.append(timeSpan)
 
           if (snapshot.val().username == $("#name_input").val() && snapshot.val().time == time && k == 0) {
-            listItem.append('<span class="share"><span></span><a href="https://www.facebook.com/sharer/sharer.php?u=http://pussywalk.com/images/layout/share.php?n=' + snapshot.val().username +'%26t=' + niceTime(snapshot.val().time, true, true) + '%26c=' + listItemNude + '" class="btn btn--fb js-share">Sdílej svoje score na</a><img src="/images/layout/master' + listItemNude2 +  '.png" alt=""></span>')
+            listItem.append('<span class="share"><span></span><a href="https://www.facebook.com/sharer/sharer.php?u=http://pussywalk.com/images/layout/share.php?n=' + snapshot.val().username + '%26t=' + niceTime(snapshot.val().time, true, true) + '%26c=' + listItemNude + '" class="btn btn--fb js-share">Sdílej svoje score na</a><img src="/images/layout/master' + listItemNude2 + '.png" alt=""></span>')
             k = 1;
           }
 
@@ -823,7 +828,7 @@ function onGameEnd(didWin, progress, wasNude) {
     //$('#name_dialogue').show()
     pauseGame();
     $('#finish_time').html(niceTime(_game.playTime, true));
-    if(nudeModePlaying) {
+    if (nudeModePlaying) {
       $('.layer--finish').addClass('is-naked');
     } else {
       $('.layer--finish').removeClass('is-naked');

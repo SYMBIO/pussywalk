@@ -30,12 +30,16 @@ export default class Renderer {
     this.followBall = false
     this.drawDebug = false
     this.lowQuality = false
+    this.isCensored = window.__isCensored
 
     this.vignette = new Image()
     this.vignette.src = "images/misc/vignette.png"
 
     this.furniceWall = new Image()
     this.furniceWall.src = "images/level/furnice_wall.jpg?" + Config.cachebuster
+
+    this.censored = new Image()
+    this.censored.src = "images/misc/censored.png"
 
     this.render = this.render.bind(this)
     this.drawTexture = this.drawTexture.bind(this)
@@ -322,6 +326,11 @@ export default class Renderer {
       )
     }
 
+    // Mr Z. photo
+    if (this.isCensored) {
+      this.drawCensored(8597, 1378, -12, 32)
+    }
+
     let idx = Math.floor((this.frameCounter % 60) / 2)
 
     // Shower
@@ -480,6 +489,16 @@ export default class Renderer {
         this.mrP.frame.w * this.scale,
         this.mrP.frame.h * this.scale
       )
+
+      // Mr. P
+      if (this.isCensored) {
+        this.drawCensored(1830, 692, -33, 42)
+      }
+    }
+
+    // Mr. B
+    if (this.isCensored) {
+      this.drawCensored(3209, 836, 5, 19)
     }
 
     if (!this.isShowingBodyMod) {
@@ -494,6 +513,11 @@ export default class Renderer {
         imageConfig.frame.w * this.scale * 2,
         imageConfig.frame.h * this.scale * 2
       )
+
+      // Sheep
+      if (this.isCensored) {
+        this.drawCensored(4836, 1063, 13, 21)
+      }
     }
 
     // Draw elements
@@ -584,11 +608,29 @@ export default class Renderer {
 
       if (figureConfig.name == "naked_sheep_head" || figureConfig.name == "dressed_sheep_head") {
         this.drawTexture(this.sheepHeadAnimator.headTexture)
+
+        if (this.isCensored) {
+          this.drawCensored(
+            this.bodies.sheep_head.GetPosition().get_x() * this.physicsScale,
+            -this.bodies.sheep_head.GetPosition().get_y() * this.physicsScale + 8,
+            -this.bodies.sheep_head.GetAngle() / Math.PI * 180,
+            21,
+            true)
+        }
         continue
       }
 
       if (figureConfig.name == "dressed_head" || figureConfig.name == "naked_head") {
         this.drawTexture(this.headAnimator.headTexture)
+
+        if (this.isCensored) {
+          this.drawCensored(
+            this.bodies.head.GetPosition().get_x() * this.physicsScale,
+            -this.bodies.head.GetPosition().get_y() * this.physicsScale + 8,
+            -this.bodies.head.GetAngle() / Math.PI * 180,
+            21,
+            true)
+        }
 
         continue
       }
@@ -611,6 +653,11 @@ export default class Renderer {
         this.furniceWall.naturalWidth * this.scale * 2,
         this.furniceWall.naturalHeight * this.scale * 2
       )
+
+      // Skeleton
+      if (this.isCensored) {
+        this.drawCensored(10635, 1547, 12, 42)
+      }
     }
 
     // Lights
@@ -824,6 +871,28 @@ export default class Renderer {
     this.context.globalAlpha = 1
     this.context.rotate(-angle)
     this.context.translate(-position.x, -position.y);
+  }
+
+  drawCensored(x, y, r, h, centered = false) {
+    let ratio = h / this.censored.naturalHeight
+
+    this.context.translate(x * this.scale, y * this.scale);
+    this.context.rotate(r / 180 * Math.PI)
+
+    this.context.drawImage(this.censored,
+      0,
+      0,
+      this.censored.naturalWidth,
+      this.censored.naturalHeight,
+      centered ? -this.censored.naturalWidth * this.scale * ratio / 2 : 0,
+      centered ? -this.censored.naturalHeight * this.scale * ratio / 2 : 0,
+      this.censored.naturalWidth * this.scale * ratio,
+      this.censored.naturalHeight * this.scale * ratio
+    )
+
+    this.context.rotate(-r / 180 * Math.PI)
+    this.context.translate(-x * this.scale, -y * this.scale);
+
   }
 
   playScare(scare) {
