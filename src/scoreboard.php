@@ -14,10 +14,25 @@ if (file_exists($filename)) {
 if ($loadNew) {
   $json = file_get_contents($fburl);
   $file = fopen($filename,"w");
-  if(fwrite($file,$json)) {
-    // OK
+
+  echo substr(sprintf('%o', fileperms($filename)), -4);
+  echo "<br />";
+
+  if (false === $file) {
+    echo "cant open file .(";
+    echo "<br />";
+  }
+$result = fwrite($file, $json);
+
+echo "result: " . $result;
+echo "<br />";
+
+  if($result) {
+    echo "written .)";
+    echo "<br />";
   } else {
-    echo "can't fucking write .(";
+    echo "can't write .(";
+    echo "<br />";
   }
   fclose($file);
 }
