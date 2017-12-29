@@ -17,6 +17,9 @@ if (file_exists($filename)) {
 if ($loadNew) {
   $json = file_get_contents($fburl);
   $file = fopen($filename,"w");
+
+  chmod($filename, 0755);
+
   echo realpath($filename);
   echo "<br />";
 
