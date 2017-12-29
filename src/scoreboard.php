@@ -1,5 +1,8 @@
 <?php
 
+ini_set('display_errors', 1); // set to 0 for production version
+error_reporting(E_ALL);
+
 $fburl = "https://pussywalk-2.firebaseio.com/scoreboard.json?orderBy=\"time\"&limitToFirst=2";
 $filename = "scoreboard.json";
 $loadNew = false;
@@ -14,6 +17,8 @@ if (file_exists($filename)) {
 if ($loadNew) {
   $json = file_get_contents($fburl);
   $file = fopen($filename,"w");
+  echo realpath($filename);
+  echo "<br />";
 
   echo substr(sprintf('%o', fileperms($filename)), -4);
   echo "<br />";
