@@ -1,9 +1,9 @@
 exports.sounds = {
   music: [
+    "audio/music/Google.mp3",
     "audio/music/Jak_jsem_na_tom.mp3",
     "audio/music/BubbleBum.mp3",
     "audio/music/Zkurvolla.mp3",
-    "audio/music/Google.mp3",
     "audio/music/Vravoram.mp3"
   ],
   hardMusic: [

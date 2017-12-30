@@ -71,7 +71,10 @@ export default class AudioPlayer {
 
     debugger
 
-    this.musicIndex = this.playRandom(this.hard ? this.hardMusic : this.music)
+    // this.musicIndex = this.playRandom(this.hard ? this.hardMusic : this.music)
+    let musicArray = this.hard ? this.hardMusic : this.music
+    this.musicIndex = 0
+    this.play(musicArray[this.musicIndex])
   }
 
   createOrReuseSound(name) {
