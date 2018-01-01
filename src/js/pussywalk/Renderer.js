@@ -31,6 +31,7 @@ export default class Renderer {
     this.drawDebug = false
     this.lowQuality = false
     this.isCensored = window.__isCensored
+    this.isNakedCensored = window.__isNakedCensored
 
     this.vignette = new Image()
     this.vignette.src = "images/misc/vignette.png"
@@ -40,6 +41,10 @@ export default class Renderer {
 
     this.censored = new Image()
     this.censored.src = "images/misc/censored.png"
+    this.pantsBack = new Image()
+    this.pantsBack.src = "images/misc/pants/leg_thigh_back.png"
+    this.pantsFront = new Image()
+    this.pantsFront.src = "images/misc/pants/leg_thigh_top.png"
 
     this.render = this.render.bind(this)
     this.drawTexture = this.drawTexture.bind(this)
@@ -635,7 +640,63 @@ export default class Renderer {
         continue
       }
 
+      if (this.isNakedCensored && figureConfig.name == "naked_johnson") {
+        continue
+      }
+
       this.drawTexture(figureConfig)
+
+      if (this.isNakedCensored && figureConfig.name == "naked_leg_back_tie") {
+        //
+        let body = this.bodies[figureConfig.body]
+        let x = body.GetPosition().get_x() * this.physicsScale
+        let y = -body.GetPosition().get_y() * this.physicsScale
+        let r = -body.GetAngle() / Math.PI * 180
+
+        this.context.translate(x * this.scale, y * this.scale);
+        this.context.rotate(r / 180 * Math.PI)
+
+        this.context.drawImage(this.pantsBack,
+          0,
+          0,
+          this.pantsBack.naturalWidth,
+          this.pantsBack.naturalHeight,
+          -60,
+          -100,
+          this.pantsBack.naturalWidth * this.scale / 2,
+          this.pantsBack.naturalHeight * this.scale / 2
+        )
+
+        this.context.rotate(-r / 180 * Math.PI)
+        this.context.translate(-x * this.scale, -y * this.scale);
+
+        continue
+      }
+      if (this.isNakedCensored && figureConfig.name == "naked_leg_front_tie") {
+        let body = this.bodies[figureConfig.body]
+        let x = body.GetPosition().get_x() * this.physicsScale
+        let y = -body.GetPosition().get_y() * this.physicsScale
+        let r = -body.GetAngle() / Math.PI * 180
+
+        this.context.translate(x * this.scale, y * this.scale);
+        this.context.rotate(r / 180 * Math.PI)
+
+        this.context.drawImage(this.pantsFront,
+          0,
+          0,
+          this.pantsFront.naturalWidth,
+          this.pantsFront.naturalHeight,
+          -50,
+          -70,
+          this.pantsFront.naturalWidth * this.scale / 2,
+          this.pantsFront.naturalHeight * this.scale / 2
+        )
+
+        this.context.rotate(-r / 180 * Math.PI)
+        this.context.translate(-x * this.scale, -y * this.scale);
+
+        continue
+      }
     }
 
     if (this.flashTexture) {
@@ -892,7 +953,6 @@ export default class Renderer {
 
     this.context.rotate(-r / 180 * Math.PI)
     this.context.translate(-x * this.scale, -y * this.scale);
-
   }
 
   playScare(scare) {
