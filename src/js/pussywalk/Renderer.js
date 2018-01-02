@@ -661,8 +661,8 @@ export default class Renderer {
           0,
           this.pantsBack.naturalWidth,
           this.pantsBack.naturalHeight,
-          -60,
-          -100,
+          -60 * this.scale,
+          -100 * this.scale,
           this.pantsBack.naturalWidth * this.scale / 2,
           this.pantsBack.naturalHeight * this.scale / 2
         )
@@ -686,8 +686,8 @@ export default class Renderer {
           0,
           this.pantsFront.naturalWidth,
           this.pantsFront.naturalHeight,
-          -50,
-          -70,
+          -50 * this.scale,
+          -70 * this.scale,
           this.pantsFront.naturalWidth * this.scale / 2,
           this.pantsFront.naturalHeight * this.scale / 2
         )
