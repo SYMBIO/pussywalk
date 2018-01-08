@@ -399,6 +399,69 @@ exports.texturesConfig = [
     body: "decor_stick",
     asset: "elements/walking_stick.png"
   },
+
+  // Fikus
+  {
+    body: "decor_fikus_bottom",
+    asset: "fikus_pot.png",
+    offset: {
+      x: -15,
+      y: -15
+    }
+  },
+  {
+    body: "decor_fikus_stem",
+    asset: "fikus_stem.png",
+    offset: {
+      x: 0,
+      y: -20
+    }
+  },
+  {
+    body: "decor_fikus_l0",
+    asset: "fikus_leaf_06.png"
+  },
+  {
+    body: "decor_fikus_l1",
+    asset: "fikus_leaf_01.png",
+    offset: {
+      x: -25,
+      y: 0
+    }
+  },
+  {
+    body: "decor_fikus_l2",
+    asset: "fikus_leaf_02.png",
+    offset: {
+      x: 0,
+      y: -10
+    }
+  },
+  {
+    body: "decor_fikus_l3",
+    asset: "fikus_leaf_03.png",
+    offset: {
+      x: -45,
+      y: 0
+    }
+  },
+  {
+    body: "decor_fikus_l4",
+    asset: "fikus_leaf_04.png",
+    offset: {
+      x: -25,
+      y: -15
+    }
+  },
+  {
+    body: "decor_fikus_l6",
+    asset: "fikus_leaf_05.png",
+    offset: {
+      x: -10,
+      y: 0
+    }
+  },
+
   // Classroom
 
   {
