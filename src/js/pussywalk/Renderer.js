@@ -332,9 +332,9 @@ export default class Renderer {
     }
 
     // Mr Z. photo
-    if (this.isCensored) {
-      this.drawCensored(8597, 1378, -12, 32)
-    }
+    // if (this.isCensored) {
+    //   this.drawCensored(8597, 1378, -12, 32)
+    // }
 
     let idx = Math.floor((this.frameCounter % 60) / 2)
 
@@ -495,16 +495,16 @@ export default class Renderer {
         this.mrP.frame.h * this.scale
       )
 
-      // Mr. P
-      if (this.isCensored) {
-        this.drawCensored(1830, 692, -33, 42)
-      }
+    // Mr. P
+    // if (this.isCensored) {
+    //   this.drawCensored(1830, 692, -33, 42)
+    // }
     }
 
     // Mr. B
-    if (this.isCensored) {
-      this.drawCensored(3209, 836, 5, 19)
-    }
+    // if (this.isCensored) {
+    //   this.drawCensored(3209, 836, 5, 19)
+    // }
 
     if (!this.isShowingBodyMod) {
       let imageConfig = this.sheep
@@ -519,10 +519,10 @@ export default class Renderer {
         imageConfig.frame.h * this.scale * 2
       )
 
-      // Sheep
-      if (this.isCensored) {
-        this.drawCensored(4836, 1063, 13, 21)
-      }
+    // Sheep
+    // if (this.isCensored) {
+    //   this.drawCensored(4836, 1063, 13, 21)
+    // }
     }
 
     // Draw elements
@@ -584,6 +584,20 @@ export default class Renderer {
 
       this.context.rotate(-angle)
       this.context.translate(-position.x, -position.y);
+
+      this.drawCensored(
+        this.bodies.decor_monitor.GetPosition().get_x() * this.physicsScale + 40,
+        -this.bodies.decor_monitor.GetPosition().get_y() * this.physicsScale + 40,
+        -this.bodies.decor_monitor.GetAngle() / Math.PI * 180 + 30,
+        31,
+        true)
+
+      this.drawCensored(
+        this.bodies.decor_monitor.GetPosition().get_x() * this.physicsScale + 70,
+        -this.bodies.decor_monitor.GetPosition().get_y() * this.physicsScale + 10,
+        -this.bodies.decor_monitor.GetAngle() / Math.PI * 180 + 30,
+        31,
+        true)
     }
 
     // Draw the pills
@@ -615,12 +629,12 @@ export default class Renderer {
         this.drawTexture(this.sheepHeadAnimator.headTexture)
 
         if (this.isCensored) {
-          this.drawCensored(
-            this.bodies.sheep_head.GetPosition().get_x() * this.physicsScale,
-            -this.bodies.sheep_head.GetPosition().get_y() * this.physicsScale + 8,
-            -this.bodies.sheep_head.GetAngle() / Math.PI * 180,
-            21,
-            true)
+          // this.drawCensored(
+          //   this.bodies.sheep_head.GetPosition().get_x() * this.physicsScale,
+          //   -this.bodies.sheep_head.GetPosition().get_y() * this.physicsScale + 8,
+          //   -this.bodies.sheep_head.GetAngle() / Math.PI * 180,
+          //   21,
+          //   true)
         }
         continue
       }
@@ -629,12 +643,12 @@ export default class Renderer {
         this.drawTexture(this.headAnimator.headTexture)
 
         if (this.isCensored) {
-          this.drawCensored(
-            this.bodies.head.GetPosition().get_x() * this.physicsScale,
-            -this.bodies.head.GetPosition().get_y() * this.physicsScale + 8,
-            -this.bodies.head.GetAngle() / Math.PI * 180,
-            21,
-            true)
+          // this.drawCensored(
+          //   this.bodies.head.GetPosition().get_x() * this.physicsScale,
+          //   -this.bodies.head.GetPosition().get_y() * this.physicsScale + 8,
+          //   -this.bodies.head.GetAngle() / Math.PI * 180,
+          //   21,
+          //   true)
         }
 
         continue
@@ -715,10 +729,10 @@ export default class Renderer {
         this.furniceWall.naturalHeight * this.scale * 2
       )
 
-      // Skeleton
-      if (this.isCensored) {
-        this.drawCensored(10635, 1547, 12, 42)
-      }
+    // Skeleton
+    // if (this.isCensored) {
+    //   this.drawCensored(10635, 1547, 12, 42)
+    // }
     }
 
     // Lights
