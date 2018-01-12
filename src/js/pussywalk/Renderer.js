@@ -585,19 +585,21 @@ export default class Renderer {
       this.context.rotate(-angle)
       this.context.translate(-position.x, -position.y);
 
-      this.drawCensored(
-        this.bodies.decor_monitor.GetPosition().get_x() * this.physicsScale + 40,
-        -this.bodies.decor_monitor.GetPosition().get_y() * this.physicsScale + 40,
-        -this.bodies.decor_monitor.GetAngle() / Math.PI * 180 + 30,
-        31,
-        true)
+      if (this.isCensored) {
+        this.drawCensored(
+          this.bodies.decor_monitor.GetPosition().get_x() * this.physicsScale + 40,
+          -this.bodies.decor_monitor.GetPosition().get_y() * this.physicsScale + 40,
+          -this.bodies.decor_monitor.GetAngle() / Math.PI * 180 + 30,
+          31,
+          true)
 
-      this.drawCensored(
-        this.bodies.decor_monitor.GetPosition().get_x() * this.physicsScale + 70,
-        -this.bodies.decor_monitor.GetPosition().get_y() * this.physicsScale + 10,
-        -this.bodies.decor_monitor.GetAngle() / Math.PI * 180 + 30,
-        31,
-        true)
+        this.drawCensored(
+          this.bodies.decor_monitor.GetPosition().get_x() * this.physicsScale + 70,
+          -this.bodies.decor_monitor.GetPosition().get_y() * this.physicsScale + 10,
+          -this.bodies.decor_monitor.GetAngle() / Math.PI * 180 + 30,
+          31,
+          true)
+      }
     }
 
     // Draw the pills
