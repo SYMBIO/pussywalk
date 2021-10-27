@@ -1,7 +1,7 @@
 import { SRC } from './constants';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import ExtractTextPlugin from 'mini-css-extract-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 const extractLess = new ExtractTextPlugin({
@@ -10,6 +10,7 @@ const extractLess = new ExtractTextPlugin({
 });
 
 module.exports = {
+    mode: 'development',
     devtool: 'inline-source-map',
     entry: [
         'webpack/hot/dev-server',
@@ -25,45 +26,25 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.jsx?$/,
-                exclude: /node_modules/,
-                use: ['babel-loader']
-            },
-            // {
-            //     test: /\.css/,
-            //     loader: loader: extractLess.extract({
-            //         use: [
-            //             { loader: 'css-loader' }
-            //         ]
-            //         fallback: 'style-loader'
-            //     })
-            // },
-            {
-                test: /\.less$/,
-                loader: extractLess.extract({
-                    use: [
-                        { loader: 'css-loader' },
-                        { loader: 'less-loader' }
-                    ],
-                    fallback: 'style-loader'
-                })
+              test: /\.m?js$/,
+              exclude: /node_modules/,
+              use: {
+                loader: 'babel-loader',
+                options: {
+                  presets: [
+                    ['@babel/preset-env', { targets: "defaults" }]
+                  ]
+                }
+              }
             },
             {
-                test: /\.(png|gif|jpg)$/,
-                loader: 'file-loader?name=./images/[name].[ext]'
+                test: /\.less$/i,
+                use: [ExtractTextPlugin.loader, "css-loader", "less-loader"],
             },
             {
-                test: /\.json$/,
-                loader: 'json-loader'
-            },
-            {
-                test: /\.(ttf|eot|svg|woff|woff2)$/,
-                loader: 'file-loader',
-                query: {
-                    name: '[name].[ext]',
-                },
-            },
-            
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                type: 'asset/resource'
+            }
         ]
     },
     resolve: {
@@ -78,12 +59,12 @@ module.exports = {
             template: `${SRC}index.html`,
             inject: 'body',
         }),
-        // new CopyWebpackPlugin([
-        //     { from: `${SRC}images/favicon.ico` },
-        //     { from: `${SRC}images/favicon.png` },
-        //     { from: `${SRC}images` },
-        // ]),
-        new webpack.optimize.OccurrenceOrderPlugin(),
+        new CopyWebpackPlugin({
+            patterns: [
+                `${SRC}icons/favicon.ico`,
+                `${SRC}icons/favicon.png`
+            ]
+        }),
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.DefinePlugin({

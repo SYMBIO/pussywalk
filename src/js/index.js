@@ -54,7 +54,7 @@ window.addEventListener('offline', function() {
 });
 
 // todo proper list
-let loader = assetsLoader({
+let loader = window.assetsLoader({
   assets: [
     // images
     '/images/spritesheet-0.json?' + Config.cachebuster,
@@ -118,7 +118,7 @@ let loader = assetsLoader({
       let filename = window.__isCensored ? 'images/layout/censored/logo-pussywalk-2.png' : 'images/layout/logo-pussywalk-2.png'
       $('.logo').css('background-image', 'url(' + filename + ')')
 
-    }, (2 - assetsLoader.stats.secs) * 1000)
+    }, (2 - window.assetsLoader.stats.secs) * 1000)
   })
   .start();
 

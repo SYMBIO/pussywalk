@@ -9,11 +9,6 @@ const app = express();
 const compiler = webpack(config);
 
 app.use(require('webpack-dev-middleware')(compiler, {
-  contentBase: '/',
-  hot: true,
-  inline: true,
-  compress: true,
-  noInfo: false,
   stats: {
     colors: true
   }

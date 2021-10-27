@@ -69,8 +69,6 @@ export default class AudioPlayer {
       music.onended = that.onMusicEnded
     })
 
-    debugger
-
     // this.musicIndex = this.playRandom(this.hard ? this.hardMusic : this.music)
     let musicArray = this.hard ? this.hardMusic : this.music
     this.musicIndex = 0
