@@ -1,0 +1,354 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	height: 100%;
+	overflow: hidden;
+}
+
+body {
+	background: #1B1416;
+	font-family: 'aller_lightregular', 'Arial', sans-serif;
+	color: #362F31;
+	text-align: center;
+
+	position: relative;
+}
+
+body:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 20;
+	width: 100px;
+	height: 100px;
+	background: url(../img/DayTopRight.png) no-repeat;
+}
+
+.countdownlBackgroundWrapper {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background: #F08684;
+}
+
+.page404 {
+	background: #1B1416 !important;
+}
+
+.countdownWrapper {
+	position: absolute;
+	width: 1000px;
+	height: 300px;
+	left: 50%;
+	top: 50%;
+	margin: -300px 0 0 -500px;
+	padding: 300px 0 0 0;
+	text-align: center;
+	/*border: 1px solid #ee748a;*/
+}
+
+.page404 .countdownWrapper {
+	height: 150px;
+	border-color: #EDDDD1;
+	padding: 450px 0 0 0;
+	color: #EDDDD1;
+}
+
+.page404 a, .pussyWalkGameWrapper a {
+	color: #f18785;
+}
+
+.page404 a:hover, .pussyWalkGameWrapper a:hover {
+	text-decoration: none;
+}
+
+.page404 .countdownWrapper::before {
+	background: url(../img/pussy-404.jpg) no-repeat 0 0;
+}
+
+.page404en .countdownWrapper::before {
+	background: url(../img/pussy-404-en.jpg) no-repeat 0 0;
+}
+
+.countdownWrapper::before {
+	content: '';
+	position: absolute;
+	width: 1000px;
+	height: 433px;
+	top: 0;
+	left: 0;
+	background: url('../img/pussy-header.jpg') no-repeat 0 0;
+}
+
+.countdown {
+	position: relative;
+	width: 100%;
+	font-size: 46pt;
+}
+
+.words {
+	position: relative;
+	display: block;
+	margin-top: 50px;
+	line-height: 16pt;
+	font-size: 10pt;
+}
+
+.share {
+	position: relative;
+	display: block;
+	margin-top: 30px;
+	overflow: hidden;
+}
+
+.share:hover {
+	background-color: #1b1517 !important;
+	border: 1px solid #1b1517 !important;
+}
+
+.btn {
+	position: relative;
+	display: inline-block;
+	padding: 8px 10px 8px 40px;
+	border: 1px solid #EEDDD0;
+	color: #EEDDD0;
+	text-decoration: none;
+	font-size: 12px;
+	background: url('../img/pussy-fb.png') no-repeat 7px 2px;
+	cursor: pointer;
+}
+
+.btn:hover {
+	background-color: #f18885;
+	border: 1px solid #f18885;
+}
+
+.btn::before {
+	content: '';
+	position: absolute;
+	width: 1px;
+	height: 15px;
+	left: 30px;
+	top: 8px;
+	background: #EEDDD0;
+}
+
+/*GAME*/
+
+.pussyWalkGameWrapper {
+	position: absolute;
+	width: 1000px;
+	height: 160px;
+	left: 50%;
+	top: 50%;
+	margin: -300px 0 0 -500px;
+	padding: 440px 0 0 0;
+	text-align: center;
+	/*border: 1px solid #ee748a;*/
+	color: #EEDDD0;
+}
+
+.pussyWalkGameWrapper::before {
+	content: '';
+	position: absolute;
+	width: 1000px;
+	height: 408px;
+	top: 0;
+	left: 0;
+	background: url('../img/pussy-no-flash.jpg') no-repeat 0 0;
+}
+
+.pussyNoFlashEn::before {
+	background: url('../img/pussy-no-flash-en.jpg') no-repeat 0 0 !important;
+}
+
+.flash-wrapper, .no-flash, .switch {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.no-flash {
+	visibility: hidden;
+}
+
+.switch {
+	background: #1B1416;
+	z-index: 10;
+}
+
+.pussyWalkSwitch {
+	position: absolute;
+	width: 400px;
+	height: 200px;
+	left: 50%;
+	top: 50%;
+	margin: -150px 0 0 -200px;
+	color: #F18784;
+	font-size: 16px;
+	text-transform: uppercase;
+}
+
+.switch::before {
+	content: '';
+	position: absolute;
+	width: 297px;
+	height: 158px;
+	top: 0;
+	right: 0;
+	background: url('../img/pussy-logo.jpg') no-repeat 0 0;
+}
+
+.pussyWalkSwitch ul {
+	margin-top: 50px;
+	background: url('../img/vertical-line.jpg') no-repeat center 18px;
+}
+
+.pussyWalkSwitch span {
+	padding-bottom: 10px;
+	background: url('../img/line.png') no-repeat center bottom;
+}
+
+.pussyWalkSwitch ul li {
+	display: inline-block;
+	width: 86px;
+	height: 90px;
+	padding: 0 40px;
+}
+
+.pussyWalkSwitch ul li a {
+	position: relative;
+	display: inline-block;
+	width: 86px;
+	height: 15px;
+	padding-top: 110px;
+	color: #F18784;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+
+.pussyWalkSwitch ul li a::before {
+	content: '';
+	position: absolute;
+	width: 82px;
+	height: 82px;
+	top: 0;
+	left: 0;
+	-webkit-border-radius: 100px;
+	-moz-border-radius: 100px;
+	border-radius: 100px;
+	border: 2px solid #efded2;
+}
+
+.cs a::before {
+	background: url('../img/cz.jpg') no-repeat center center;
+}
+
+
+.eng a::before {
+	background: url('../img/eng.jpg') no-repeat center center;
+}
+
+.pussyWalkSwitch ul li a:hover::before {
+	-webkit-box-shadow: 0px 0px 70px 0px rgba(241,134,136,1);
+	-moz-box-shadow:    0px 0px 70px 0px rgba(241,134,136,1);
+	box-shadow:         0px 0px 70px 0px rgba(241,134,136,1);
+}
+
+.created {
+	position: absolute;
+	width: 100%;
+	height: 60px;
+	bottom: 50px;
+	text-align: center;
+	color: #F18784;
+	font-size: 13px;
+	line-height: 18px;
+}
+.created a {
+	display: inline-block;
+	margin-top: 5px;
+}
+
+.shareBox {
+	position: absolute;
+	width: 100%;
+	height: auto;
+	bottom: 130px;
+}
+.shareBox a {
+	display: inline-block;
+	margin-right: 10px;
+	vertical-align: middle;
+}
+.fb_iframe_widget {
+	vertical-align: middle;
+	width: 165px;
+}
+
+/*COUNT DOWN*/
+
+table.countdown-table {
+	margin: auto;
+}
+
+table.countdown-table::after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 15px;
+	bottom: -20px;
+	left: -12px;
+	background: url('../img/pussy-line.jpg') no-repeat center center;
+}
+
+table.countdown-table td {
+	position: relative;
+	padding: 0 20px;
+}
+
+table.countdown-table td span.timedays,
+table.countdown-table td span.timehours,
+table.countdown-table td span.timeminutes {
+	position: relative;
+}
+
+.dot {
+	position: absolute;
+	width: 5px;
+	height: 5px;
+	top: 35px;
+	right: -22px;
+	background: url('../img/pussy-dot.jpg') no-repeat 0 0;
+}
+
+table.countdown-table .sub td {
+	font-size: 14px;
+}
+
+table.countdown-table .sub td::before {
+	display: none;
+}
+
+.pussyNoFlash {
+	position: relative;
+	z-index: 2;	
+}
+
+/*fonts*/
+
+@font-face {
+    font-family: 'aller_lightregular';
+    src: url('../fonts/aller_lt-webfont.eot');
+    src: url('../fonts/aller_lt-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/aller_lt-webfont.woff2') format('woff2'),
+         url('../fonts/aller_lt-webfont.woff') format('woff'),
+         url('../fonts/aller_lt-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}

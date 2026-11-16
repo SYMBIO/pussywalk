@@ -22,3 +22,17 @@ ALTER TABLE scores ADD COLUMN IF NOT EXISTS ip_hash text;
 CREATE INDEX IF NOT EXISTS scores_ip_recent_idx
   ON scores (ip_hash, created_at)
   WHERE ip_hash IS NOT NULL;
+
+-- PussyWalk I (Flash, 1.pussywalk.com): the "winners" list is just names,
+-- newest first. Legacy rows come from web/scores.json of the old server.
+CREATE TABLE IF NOT EXISTS scores_v1 (
+  id          integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  name        text        NOT NULL,
+  created_at  timestamptz NOT NULL DEFAULT now(),
+  ip_hash     text,
+  legacy      boolean     NOT NULL DEFAULT false
+);
+
+CREATE INDEX IF NOT EXISTS scores_v1_ip_recent_idx
+  ON scores_v1 (ip_hash, created_at)
+  WHERE ip_hash IS NOT NULL;

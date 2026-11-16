@@ -15,6 +15,7 @@ webpack/jQuery aplikace na Next.js + Neon Postgres, hostovaná na Vercelu
 | `scripts/` | Migrace a jednorázový import dat z Firebase |
 | `public/` | Assety z produkčního buildu (obrázky, zvuky, fonty, Box2D, `app/` pro nativní aplikaci) |
 | `assets-src/` | Zdroje grafiky (TexturePacker, RUBE level, LESS styly) |
+| `public/v1/` | **PussyWalk I** (Flash, 2014) pro `1.pussywalk.com` – SWF, statické stránky, Ruffle emulátor |
 
 ## Vývoj
 
@@ -42,3 +43,15 @@ Tabulka zobrazuje jen časy ≥ 40 s, seřazené od nejrychlejšího – stejně
 - Stejné jméno se stejným časem na milisekundu se odmítne jako duplicita.
 - Rate limit: max. 3 skóre za 5 minut na IP (ukládá se jen HMAC hash IP ve sloupci `ip_hash`).
 - Oba POST endpointy chrání Vercel BotID (`instrumentation-client.ts`).
+
+## PussyWalk I (1.pussywalk.com)
+
+Původní Flash hra (Symfony web z roku 2014) běží ve stejném deploymentu. Požadavky na doménu
+`1.pussywalk.com` přepisuje `next.config.ts` do `public/v1/` (lokálně http://1.localhost:3000).
+
+- SWF běží v emulátoru [Ruffle](https://ruffle.rs) (`@ruffle-rs/ruffle`), který se při `dev`/`build`
+  kopíruje do `public/v1/ruffle/` (`scripts/copy-ruffle.mjs`, v gitu není).
+- Flash čte seznam vítězů z `/scores.json` a ukládá přes `POST /saveScore.php` – obojí obsluhuje
+  `app/api/v1/*` nad tabulkou `scores_v1` (jen jména, nejnovější nahoře; 4 803 jmen ze zálohy,
+  import `scripts/import-v1-scores.mjs`).
+- Na mobilu se zobrazí stránka „No keyboard, no fun“ (hra se ovládá šipkami).

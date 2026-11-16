@@ -3,13 +3,14 @@
   "version": "3.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "node scripts/copy-ruffle.mjs && next dev",
+    "build": "node scripts/copy-ruffle.mjs && next build",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
     "@neondatabase/serverless": "1.2.1",
+    "@ruffle-rs/ruffle": "0.7.1",
     "botid": "1.5.13",
     "gsap": "1.20.6",
     "jquery": "3.7.1",
