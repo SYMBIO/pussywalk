@@ -161,20 +161,50 @@ function initializeAudio() {
     let testSound = new Audio()
     testSound.volume = 0
     testSound.src = "data:audio/mpeg;base64,/+MYxAAAAANIAUAAAASEEB/jwOFM/0MM/90b/+RhST//w4NFwOjf///PZu////9lns5GFDv//l9GlUIEEIAAAgIg8Ir/JGq3/+MYxDsLIj5QMYcoAP0dv9HIjUcH//yYSg+CIbkGP//8w0bLVjUP///3Z0x5QCAv/yLjwtGKTEFNRTMuOTeqqqqqqqqqqqqq/+MYxEkNmdJkUYc4AKqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq"
-    testSound.play().then(function() {
+    // Dev-only: `?noautoplay` simulates a browser that blocks autoplay.
+    var playTest = process.env.NODE_ENV !== 'production' && /[?&]noautoplay\b/.test(window.location.search)
+      ? Promise.reject(new Error('autoplay blocked (simulated)'))
+      : testSound.play()
+    playTest.then(function() {
       // Went through OK
       window.__canAutoPlaySounds = true
       $('.nav__sound').removeClass('is-active');
       mute = false
       resolve()
     }, function() {
-      // Can't play
+      // Autoplay is blocked until the visitor interacts with the page. Sound
+      // stays ON by default anyway: it starts on the first key press / click /
+      // tap (the game is played with the arrow keys, so that is the first step).
       window.__canAutoPlaySounds = false
-      $('.nav__sound').addClass('is-active');
-      mute = true
+      $('.nav__sound').removeClass('is-active');
+      mute = false
+      unlockAudioOnFirstGesture()
       resolve()
     });
   })
+}
+
+function unlockAudioOnFirstGesture() {
+  // Events that count as user activation for the browser's autoplay policy.
+  var events = ['keydown', 'mousedown', 'pointerup', 'touchend', 'click'];
+
+  function unlock(e) {
+    if (e.type === 'keydown' && e.key === 'Escape') {
+      return; // Escape does not grant user activation
+    }
+    events.forEach(function(type) {
+      document.removeEventListener(type, unlock, true);
+    });
+    window.__canAutoPlaySounds = true
+    if (!mute) {
+      setMute(false);
+      initMobileAudio();
+    }
+  }
+
+  events.forEach(function(type) {
+    document.addEventListener(type, unlock, true);
+  });
 }
 
 var openNav = function() {
