@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<properties>
+		<PHP host="/amf-service/" service="ZWalkService" />
+		<highscore host="/scores.json" />
+		<save host="/saveScore.php" />
+	</properties>
+	<model>/xml/bohemiajewels.json?r=3</model>
+
+	<!-- 1, 20; 4, 50; -->
+	<balance>
+		<back init="1" increment="50" />
+		<front init="4" incrementB="70" incrementF="50" />
+	</balance>
+
+	<sounds>
+		<sound id="song3" src="/sound/Google.mp3" />
+		<sound id="song1" src="/sound/BubbleBum.mp3" />
+		<sound id="song2" src="/sound/Vravoram.mp3" />
+	</sounds>
+
+</data>

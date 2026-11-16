@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
   }
 
   const id = result.id
-  revalidateTag(SCORES_TAG, 'max')
+  revalidateTag(SCORES_TAG, { expire: 0 })
 
   const entries = await getTopScoresFresh(MAX_LIMIT)
   return Response.json({ id, entries }, { status: 201 })

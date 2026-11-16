@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Ruffle (copied from node_modules by scripts/copy-ruffle.mjs)
+/public/v1/ruffle/
