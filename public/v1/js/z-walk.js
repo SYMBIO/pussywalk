@@ -74,7 +74,34 @@ var PussyWalk = (function () {
 
     PussyWalk.setLang(lang);
     PussyWalk.setContainer(player);
-    player.focus();
+    keepKeyboardFocus(player);
+  }
+
+  // Ruffle only receives keys while the player element has focus. The game is
+  // played with the arrow keys only, so keep the focus on it: once the SWF has
+  // loaded, on any click on the page, when the tab regains focus, and on the
+  // first arrow/space press that lands elsewhere (that one keypress is used to
+  // move the focus; holding the key keeps working right away).
+  function keepKeyboardFocus(player) {
+    var GAME_KEYS = { ArrowLeft: 1, ArrowRight: 1, ArrowUp: 1, ArrowDown: 1, ' ': 1 };
+
+    function focusGame() {
+      if (document.activeElement !== player) {
+        player.focus({ preventScroll: true });
+      }
+    }
+
+    focusGame();
+    player.addEventListener('loadeddata', focusGame);
+    player.addEventListener('loadedmetadata', focusGame);
+    document.addEventListener('click', focusGame);
+    window.addEventListener('focus', focusGame);
+    document.addEventListener('keydown', function (e) {
+      if (GAME_KEYS[e.key] && document.activeElement !== player) {
+        e.preventDefault(); // don't scroll the page
+        focusGame();
+      }
+    });
   }
 
   if (document.readyState === 'loading') {
