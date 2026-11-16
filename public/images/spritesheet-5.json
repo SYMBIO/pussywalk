@@ -1,0 +1,84 @@
+{"frames": {
+
+"fikus_leaf_01.png":
+{
+	"frame": {"x":1,"y":50,"w":85,"h":26},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":85,"h":26},
+	"sourceSize": {"w":85,"h":26},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"fikus_leaf_02.png":
+{
+	"frame": {"x":1,"y":115,"w":52,"h":61},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":52,"h":61},
+	"sourceSize": {"w":52,"h":61},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"fikus_leaf_03.png":
+{
+	"frame": {"x":1,"y":78,"w":97,"h":35},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":97,"h":35},
+	"sourceSize": {"w":97,"h":35},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"fikus_leaf_04.png":
+{
+	"frame": {"x":1,"y":258,"w":89,"h":98},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":89,"h":98},
+	"sourceSize": {"w":89,"h":98},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"fikus_leaf_05.png":
+{
+	"frame": {"x":1,"y":1,"w":111,"h":19},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":111,"h":19},
+	"sourceSize": {"w":111,"h":19},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"fikus_leaf_06.png":
+{
+	"frame": {"x":1,"y":22,"w":67,"h":26},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":67,"h":26},
+	"sourceSize": {"w":67,"h":26},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"fikus_pot.png":
+{
+	"frame": {"x":1,"y":178,"w":74,"h":78},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":74,"h":78},
+	"sourceSize": {"w":74,"h":78},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"fikus_stem.png":
+{
+	"frame": {"x":92,"y":258,"w":11,"h":107},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":11,"h":107},
+	"sourceSize": {"w":11,"h":107},
+	"pivot": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "spritesheet-5.png",
+	"format": "RGBA4444",
+	"size": {"w":113,"h":366},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:f173b2a46ef9cb96d44eb02413daa162:0b5982b21204a42edaba3b7addd98d05:e1d4d22b5077fa14f8bb5bae48cc57c8$"
+}
+}

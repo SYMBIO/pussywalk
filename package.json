@@ -1,60 +1,31 @@
 {
-  "name": "Pussywalk",
-  "version": "2.0.0",
-  "author": "Szymon Lesisz",
-  "description": "",
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
-  "bugs": {
-    "url": ""
-  },
-  "license": "LGPL-3.0+",
+  "name": "pussywalk",
+  "version": "3.0.0",
+  "private": true,
   "scripts": {
-    "dev": "babel-node ./webpack/server.js",
-    "build_no_app": "rm -rf build && webpack --config ./webpack/webpack.config.prod.babel.js",
-    "build": "npm run config && rm -rf build && npm run compress && webpack --config ./webpack/webpack.config.prod.babel.js && npm run app_assets",
-    "config": "rm ./src/js/pussywalk/Config.js && cp ./src/js/pussywalk/prod/Config.js ./src/js/pussywalk/Config.js && echo \"exports.cachebuster='$(git rev-parse HEAD)'\" >> ./src/js/pussywalk/Config.js",
-    "compress": "tinify-cli --key sJnwQTgpWvs4_NTr9HJlmKlHKn_NRPTZ \"src/images/**/*.{jpg,png}\"",
-    "app_assets": "npm run app_build_zip && npm run app_timestamp",
-    "app_build_zip": "bestzip build.zip build/ && mkdir build/app && cp build.zip build/app",
-    "app_timestamp": "echo \"$(git rev-parse HEAD)\" >> build/app/update"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
   },
   "dependencies": {
-    "assets-loader": "^0.5.1",
-    "firebase": "^4.6.0",
-    "gsap": "^1.20.3",
-    "jquery": "^3.2.1",
-    "spritesheet-canvas": "^1.0.2",
-    "stats.js": "^0.17.0"
+    "@neondatabase/serverless": "1.2.1",
+    "gsap": "1.20.6",
+    "jquery": "3.7.1",
+    "next": "16.4.6",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "server-only": "^0.0.1",
+    "spritesheet-canvas": "1.0.2",
+    "stats.js": "0.17.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-flow-strip-types": "^6.22.0",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.6.0",
-    "babel-runtime": "^6.26.0",
-    "bestzip": "^1.1.4",
-    "copy-webpack-plugin": "^4.2.3",
-    "css-loader": "^0.28.4",
-    "express": "^4.15.3",
-    "extract-text-webpack-plugin": "^3.0.0",
-    "file-loader": "^0.11.2",
-    "html-webpack-plugin": "^2.29.0",
-    "json-loader": "^0.5.7",
-    "less": "^2.7.2",
-    "less-loader": "^4.0.5",
-    "open": "^0.0.5",
-    "style-loader": "^0.18.2",
-    "tinify-cli": "^1.1.0",
-    "webpack": "^3.4.1",
-    "webpack-dev-middleware": "^1.11.0",
-    "webpack-hot-middleware": "^2.18.0",
-    "whatwg-fetch": "^2.0.3"
-  }
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.6",
+    "typescript": "^5"
+  },
+  "packageManager": "pnpm@10.27.0"
 }
