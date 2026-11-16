@@ -34,3 +34,11 @@ node --env-file=.env.local scripts/import-firebase.mjs <scoreboard.json>
 Původní tabulka vítězů běžela ve Firebase Realtime DB (`pussywalk-2`).
 Import je idempotentní (klíčem je Firebase push key ve sloupci `legacy_key`).
 Tabulka zobrazuje jen časy ≥ 40 s, seřazené od nejrychlejšího – stejně jako originál.
+
+### Ochrana proti podvrženým výsledkům
+
+- Při startu hry klient získá z `POST /api/runs` podepsaný token s časem startu (`lib/runs.ts`, HMAC přes `SCORE_SECRET`).
+  Server přijme jen čas, který mohl reálně uplynout od startu, a každý token jde použít jen jednou (`scores.run_id`).
+- Stejné jméno se stejným časem na milisekundu se odmítne jako duplicita.
+- Rate limit: max. 3 skóre za 5 minut na IP (ukládá se jen HMAC hash IP ve sloupci `ip_hash`).
+- Oba POST endpointy chrání Vercel BotID (`instrumentation-client.ts`).

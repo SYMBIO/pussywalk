@@ -2,7 +2,7 @@ import assetsLoader from './vendor/assets-loader.js';
 import $ from 'jquery';
 import PussywalkMinigame from './PussywalkMinigame';
 import Config from './Config';
-import { fetchScoreboard, submitScore, MIN_SCORE_TIME } from './scoreboard';
+import { fetchScoreboard, submitScore, startRun, MIN_SCORE_TIME } from './scoreboard';
 
 // Original site ran Universal Analytics (shut down by Google in 2023).
 // Keep the call sites as a no-op so the game logic stays untouched.
@@ -139,6 +139,8 @@ let loader = assetsLoader({
 let _game;
 let _callbacks;
 let finished = false;
+// Server-signed token for the current run (see lib/runs.ts); requested on every game start.
+let _runToken = Promise.resolve(null);
 
 {
   initializeElements()
@@ -215,10 +217,13 @@ function initializeElements() {
 
     var playTime = _game.playTime;
 
-    submitScore({
-      username: $("#name_input").val(),
-      time: playTime,
-      naked: !!nudeModePlaying
+    _runToken.then(function(runToken) {
+      return submitScore({
+        username: $("#name_input").val(),
+        time: playTime,
+        naked: !!nudeModePlaying,
+        runToken: runToken
+      });
     }).then(function(result) {
       scoreUpdate(playTime, nudeMode, result);
     }, function(error) {
@@ -846,6 +851,7 @@ function onGameEnd(didWin, progress, wasNude) {
 
 function startGame(naked) {
   finished = false;
+  _runToken = startRun();
 
   nudeModePlaying = naked;
   if (!naked) {

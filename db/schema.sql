@@ -13,3 +13,12 @@ CREATE TABLE IF NOT EXISTS scores (
 CREATE INDEX IF NOT EXISTS scores_board_idx
   ON scores (time_ms, created_at, id)
   WHERE time_ms >= 40000;
+
+-- Anti-cheat (2026-11): each score is bound to a single server-issued run
+-- token, and submissions are rate limited per (hashed) client IP.
+ALTER TABLE scores ADD COLUMN IF NOT EXISTS run_id text UNIQUE;
+ALTER TABLE scores ADD COLUMN IF NOT EXISTS ip_hash text;
+
+CREATE INDEX IF NOT EXISTS scores_ip_recent_idx
+  ON scores (ip_hash, created_at)
+  WHERE ip_hash IS NOT NULL;
